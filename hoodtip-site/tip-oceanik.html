@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hôtel Les Rives Oceanik — HoodTip Latin Quarter</title>
+  <meta name="description" content="~€200, ironwork balcony, Haussmann view, Tintin poster on the wall. Skip the hotel breakfast. Walk to Luxembourg. Latin Quarter, Paris 5th." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:  #f7f4ef;
+      --ink:    #1a1816;
+      --muted:  #6b6560;
+      --rule:   #e0dbd3;
+      --accent: #8c7355; /* warm stone — pulled from the Haussmann facade */
+      --serif:  'Playfair Display', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 56px; background: rgba(247,244,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-right { display: flex; gap: 24px; align-items: center; }
+    .nav-right a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .nav-right a:hover { color: var(--ink); }
+    .nav-cta { background: var(--ink); color: var(--cream) !important; padding: 7px 16px; border-radius: 2px; }
+    .nav-cta:hover { background: var(--accent) !important; }
+
+    /* BREADCRUMB */
+    .breadcrumb { padding: 80px 32px 0; display: flex; gap: 8px; align-items: center; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb span { opacity: 0.4; }
+
+    /* HERO */
+    .hero { margin: 20px 32px 0; position: relative; overflow: hidden; border-radius: 4px; height: clamp(360px, 56vw, 640px); }
+    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 40%; transition: transform 0.8s ease; }
+    .hero:hover img { transform: scale(1.015); }
+    .hero-badge { position: absolute; top: 20px; left: 20px; background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
+
+    /* LAYOUT */
+    .layout { max-width: 1080px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 64px; }
+
+    /* LEFT */
+    .meta-line { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .meta-line a { color: var(--accent); text-decoration: none; }
+    .meta-line a:hover { text-decoration: underline; }
+    h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .tipped-line { font-size: 0.78rem; color: var(--muted); margin-bottom: 32px; }
+    .tipped-dot { display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .divider { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
+    .copy { font-size: 1.05rem; line-height: 1.75; color: var(--ink); max-width: 600px; }
+    .copy p + p { margin-top: 1.2em; }
+
+    .pull-quote { margin: 36px 0; padding: 24px 28px; border-left: 3px solid var(--accent); background: rgba(140,115,85,0.05); border-radius: 0 3px 3px 0; }
+    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: 1.15rem; line-height: 1.5; color: var(--ink); }
+
+    /* PHOTO GRID */
+    .photos { margin-top: 40px; }
+    .photos-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .photo-grid img { width: 100%; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; }
+    .photo-grid img:hover { opacity: 0.88; }
+    .photo-grid .portrait { aspect-ratio: 3/4; }
+    .photo-grid .landscape { aspect-ratio: 4/3; }
+    .photo-grid .wide { grid-column: 1 / -1; aspect-ratio: 16/9; }
+
+    /* SIDEBAR */
+    .sidebar { padding-top: 6px; }
+    .fact-block { border-top: 1px solid var(--rule); padding: 18px 0; }
+    .fact-block:last-of-type { border-bottom: 1px solid var(--rule); }
+    .fact-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+    .fact-value { font-size: 0.92rem; font-weight: 400; color: var(--ink); }
+
+    .map-block { margin-top: 32px; border-radius: 3px; overflow: hidden; border: 1px solid var(--rule); }
+    .map-inner { background: #e8e4dc; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+    .map-pin { font-size: 1.5rem; }
+    .map-address { font-size: 0.8rem; color: var(--muted); text-align: center; line-height: 1.4; }
+    .map-link { display: block; background: var(--ink); color: var(--cream); text-align: center; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; padding: 12px; text-decoration: none; transition: background 0.2s; }
+    .map-link:hover { background: var(--accent); }
+
+    .tags { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid var(--rule); border-radius: 2px; padding: 4px 10px; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+    .tag:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* MORE TIPS */
+    .more-section { max-width: 1080px; margin: 0 auto; padding: 0 32px 80px; border-top: 1px solid var(--rule); }
+    .more-header { display: flex; justify-content: space-between; align-items: baseline; padding: 32px 0 24px; }
+    .more-header h2 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+    .more-header a { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .more-header a:hover { color: var(--accent); }
+    .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .tip-card { text-decoration: none; color: var(--ink); display: block; }
+    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; margin-bottom: 12px; background: var(--rule); }
+    .tip-card:hover .tip-card-img { opacity: 0.85; }
+    .tip-card-cat { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .tip-card-name { font-family: var(--serif); font-size: 1rem; font-weight: 600; line-height: 1.2; margin-bottom: 4px; }
+    .tip-card-hood { font-size: 0.75rem; color: var(--muted); }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: var(--cream); padding: 40px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; }
+    .footer-logo em { font-style: italic; }
+    .footer-sub { font-size: 0.75rem; color: rgba(247,244,239,0.45); margin-top: 4px; }
+    .footer-right { font-size: 0.75rem; color: rgba(247,244,239,0.45); letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .breadcrumb { padding: 72px 16px 0; }
+      .hero { margin: 16px 16px 0; height: 56vw; min-height: 220px; }
+      .layout { grid-template-columns: 1fr; padding: 32px 16px 48px; gap: 40px; }
+      h1 { font-size: 2rem; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid .wide { aspect-ratio: 4/3; }
+      .more-section { padding: 0 16px 48px; }
+      .more-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .more-grid .tip-card:last-child { display: none; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .more-grid { grid-template-columns: 1fr; }
+      .more-grid .tip-card:last-child { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://hoodtip.com">Hood<em>Tip.</em></a>
+  <div class="nav-right">
+    <a href="https://hoodtip.com/paris">Paris</a>
+    <a href="https://hoodtip.com/geneva">Geneva</a>
+    <a href="#" class="nav-cta">Leave a tip</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="https://hoodtip.com">HoodTip</a>
+  <span>/</span>
+  <a href="https://hoodtip.com/paris">Paris</a>
+  <span>/</span>
+  <a href="https://hoodtip.com/paris#latin-quarter">Latin Quarter</a>
+  <span>/</span>
+  Hôtel Les Rives Oceanik
+</div>
+
+<div class="hero">
+  <img src="paris-oceanik-window-dusk.jpg" alt="Haussmann facade through hotel window, Paris 5th arrondissement" />
+  <div class="hero-badge">Hotel</div>
+</div>
+
+<div class="layout">
+  <main>
+    <div class="meta-line">
+      <a href="https://hoodtip.com/paris#latin-quarter">Latin Quarter</a> · Paris 5th
+    </div>
+
+    <h1>Hôtel Les Rives Oceanik</h1>
+
+    <div class="tipped-line">
+      <span class="tipped-dot"></span>9 people tipped this
+    </div>
+
+    <hr class="divider" />
+
+    <div class="copy">
+      <p>Not trying to be the best hotel in Paris, just a good one at a fair price in the right location. Around €200 a night for the 5th, which is honest money. Rooms are small but right — ironwork balcony, Haussmann view, Tintin poster on the wall.</p>
+      <p>Skip the hotel breakfast. Walk five minutes to Jardin du Luxembourg, find a café on the way, get a coffee and a pain au chocolat, do a lap of the gardens. That's your morning sorted.</p>
+      <p>The Latin Quarter earns its reputation — narrow streets, the kind of Paris that still feels like Paris. The hotel puts you right in it without charging Île Saint-Louis prices to do so.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"Skip the hotel breakfast. Walk to Luxembourg, find a café on the way. That's your morning sorted."</p>
+    </div>
+
+    <div class="photos">
+      <div class="photos-label">Photos</div>
+      <div class="photo-grid">
+        <img class="portrait" src="paris-oceanik-window-dusk.jpg" alt="Haussmann facade through hotel window" />
+        <img class="portrait" src="paris-oceanik-room-tintin.jpg" alt="Hotel room with Tintin poster and ironwork balcony" />
+        <img class="landscape" src="paris-oceanik-bag-bed.jpg" alt="Travel bag on hotel bed, morning light" />
+        <img class="landscape" src="paris-oceanik-street.jpg" alt="Narrow Latin Quarter street, Paris 5th" />
+      </div>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="fact-block">
+      <div class="fact-label">Best for</div>
+      <div class="fact-value">A proper Paris base without the hotel-district markup</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Price</div>
+      <div class="fact-value">~€200/night — honest money for the 5th</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Skip</div>
+      <div class="fact-value">The hotel breakfast. Walk to Luxembourg instead.</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Walk from here</div>
+      <div class="fact-value">Jardin du Luxembourg — 5 minutes. Panthéon — 8 minutes. Shakespeare and Company — 15 minutes.</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Season</div>
+      <div class="fact-value">Year-round — Paris in any season</div>
+    </div>
+
+    <div class="map-block">
+      <div class="map-inner">
+        <div class="map-pin">📍</div>
+        <div class="map-address">29 rue Gay-Lussac<br>75005 Paris</div>
+      </div>
+      <a class="map-link" href="https://maps.google.com/?q=Hotel+Les+Rives+Oceanik+29+rue+Gay-Lussac+Paris" target="_blank" rel="noopener">Open in Maps →</a>
+    </div>
+
+    <div class="tags">
+      <a class="tag" href="#">Hotel</a>
+      <a class="tag" href="#">Paris</a>
+      <a class="tag" href="#">Latin Quarter</a>
+      <a class="tag" href="#">5th arr.</a>
+      <a class="tag" href="#">Value</a>
+      <a class="tag" href="#">Luxembourg</a>
+    </div>
+  </aside>
+</div>
+
+<section class="more-section">
+  <div class="more-header">
+    <h2>More tips in Paris</h2>
+    <a href="https://hoodtip.com/paris">All Paris tips →</a>
+  </div>
+  <div class="more-grid">
+    <a class="tip-card" href="https://hoodtip.com/tip-bongojoe">
+      <img class="tip-card-img" src="https://hoodtip.com/bongojoe-yellow-table.jpg" alt="Bongo Joe's Geneva" />
+      <div class="tip-card-cat">Bar</div>
+      <div class="tip-card-name">Bongo Joe's</div>
+      <div class="tip-card-hood">Plainpalais · Geneva</div>
+    </a>
+    <a class="tip-card" href="https://hoodtip.com/tip-saintamour">
+      <img class="tip-card-img" src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" />
+      <div class="tip-card-cat">Wine</div>
+      <div class="tip-card-name">Domaine Saint-Amour</div>
+      <div class="tip-card-hood">Lavaux · Vaud</div>
+    </a>
+    <a class="tip-card" href="https://hoodtip.com/tip-electriccinema">
+      <img class="tip-card-img" src="682384E6-2714-486C-A716-4757245349A1.jpg" alt="Electric Cinema" />
+      <div class="tip-card-cat">Cinema</div>
+      <div class="tip-card-name">Electric Cinema</div>
+      <div class="tip-card-hood">Notting Hill · London</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Hood<em>Tip.</em></div>
+    <div class="footer-sub">Only the good stuff.</div>
+  </div>
+  <div class="footer-right">© 2026 HoodTip</div>
+</footer>
+
+</body>
+</html>

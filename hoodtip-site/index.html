@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HoodTip — Only the good stuff</title>
+  <meta name="description" content="Neighbourhood travel tips from people who actually know. Specific, positive, useful. Geneva, London, Paris, Istanbul and beyond." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:  #f7f4ef;
+      --ink:    #1a1816;
+      --muted:  #6b6560;
+      --rule:   #e0dbd3;
+      --warm:   #c8a96e;
+      --serif:  'Playfair Display', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: rgba(247,244,239,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { background: var(--ink) !important; color: var(--cream) !important; padding: 7px 18px; border-radius: 2px; }
+    .nav-cta:hover { background: var(--warm) !important; color: var(--ink) !important; }
+
+    .hero { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; min-height: 88vh; }
+    .hero-image { position: relative; overflow: hidden; }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 30%; transition: transform 1s ease; }
+    .hero-image:hover img { transform: scale(1.03); }
+    .hero-image-label { position: absolute; bottom: 24px; left: 24px; background: rgba(26,24,22,0.72); backdrop-filter: blur(8px); color: #fff; padding: 10px 16px; border-radius: 2px; }
+    .hero-image-label .cat { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; margin-bottom: 3px; }
+    .hero-image-label .name { font-family: var(--serif); font-size: 1rem; font-weight: 600; }
+    .hero-image-label .hood { font-size: 0.72rem; opacity: 0.7; margin-top: 2px; }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px; background: var(--ink); color: var(--cream); }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm); margin-bottom: 24px; }
+    .hero-headline { font-family: var(--serif); font-size: clamp(2.4rem, 3.5vw, 3.8rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 28px; }
+    .hero-headline em { font-style: italic; font-weight: 400; color: var(--warm); }
+    .hero-body { font-size: 1rem; line-height: 1.7; color: rgba(247,244,239,0.7); max-width: 380px; margin-bottom: 40px; }
+    .hero-stats { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid rgba(247,244,239,0.12); }
+    .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: var(--warm); line-height: 1; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(247,244,239,0.45); margin-top: 4px; }
+
+    .section-label { display: flex; align-items: center; gap: 16px; padding: 56px 40px 0; }
+    .section-label h2 { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .section-label-line { flex: 1; height: 1px; background: var(--rule); }
+
+    .hood-block { padding: 40px 40px 48px; border-bottom: 1px solid var(--rule); }
+    .hood-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 8px; }
+    .hood-name { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1; }
+    .hood-location { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
+    .hood-count { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+    .tips-grid { display: grid; gap: 16px; }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .g2 { grid-template-columns: repeat(2, 1fr); }
+
+    .tip-card { text-decoration: none; color: var(--ink); display: block; transition: transform 0.25s; }
+    .tip-card:hover { transform: translateY(-2px); }
+    .tip-card-img-wrap { position: relative; overflow: hidden; border-radius: 3px; margin-bottom: 11px; background: var(--rule); }
+    .tip-card-img-wrap img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: opacity 0.3s, transform 0.5s; }
+    .tip-card:hover .tip-card-img-wrap img { opacity: 0.9; transform: scale(1.04); }
+    .no-photo { width: 100%; aspect-ratio: 4/3; background: var(--rule); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: #b5afa7; }
+    .tip-card-cat { font-size: 0.65rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .tip-card-name { font-family: var(--serif); font-size: 0.98rem; font-weight: 600; line-height: 1.25; margin-bottom: 5px; }
+    .tip-card-copy { font-size: 0.8rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .tip-card-copy.tbd { font-style: italic; opacity: 0.5; }
+    .span2 { grid-column: span 2; }
+    .span2 .tip-card-img-wrap img { aspect-ratio: 16/9; }
+    .span2 .tip-card-name { font-size: 1.1rem; }
+
+    .manifesto { background: var(--ink); color: var(--cream); padding: 64px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .manifesto h3 { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .manifesto h3 em { font-style: italic; color: var(--warm); }
+    .manifesto-body { font-size: 0.95rem; line-height: 1.75; color: rgba(247,244,239,0.65); }
+    .manifesto-points { display: flex; flex-direction: column; gap: 20px; }
+    .manifesto-point { display: flex; gap: 16px; }
+    .manifesto-num { font-family: var(--serif); font-size: 1.1rem; color: var(--warm); font-weight: 600; flex-shrink: 0; }
+    .manifesto-text { font-size: 0.88rem; line-height: 1.6; color: rgba(247,244,239,0.7); }
+    .manifesto-text strong { color: var(--cream); font-weight: 500; }
+
+    .cta-block { padding: 72px 40px; text-align: center; border-top: 1px solid var(--rule); }
+    .cta-block h3 { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .cta-block p { font-size: 0.95rem; color: var(--muted); margin-bottom: 32px; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .btn-primary { display: inline-block; background: var(--ink); color: var(--cream); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; padding: 14px 32px; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--warm); color: var(--ink); }
+
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(26,24,22,0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--cream); width: 100%; max-width: 480px; border-radius: 4px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.25); }
+    .modal-header { background: var(--ink); color: var(--cream); padding: 24px 28px; display: flex; justify-content: space-between; align-items: center; }
+    .modal-header h4 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
+    .modal-close { background: none; border: none; cursor: pointer; color: rgba(247,244,239,0.6); font-size: 1.2rem; }
+    .modal-close:hover { color: var(--cream); }
+    .modal-body { padding: 28px; }
+    .modal-tagline { font-size: 0.8rem; color: var(--muted); margin-bottom: 24px; font-style: italic; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-weight: 500; }
+    .field input, .field textarea, .field select { width: 100%; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 2px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 0.9rem; font-weight: 300; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--ink); }
+    .field textarea { resize: vertical; min-height: 100px; }
+    .submit-btn { width: 100%; padding: 13px; background: var(--ink); color: var(--cream); border: none; border-radius: 2px; cursor: pointer; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; transition: background 0.2s; }
+    .submit-btn:hover { background: var(--warm); color: var(--ink); }
+
+    footer { background: var(--ink); color: var(--cream); padding: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.15rem; letter-spacing: -0.01em; }
+    .footer-logo em { font-style: italic; }
+    .footer-sub { font-size: 0.75rem; color: rgba(247,244,239,0.4); margin-top: 4px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,244,239,0.4); text-decoration: none; }
+    .footer-links a:hover { color: var(--cream); }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 16px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { height: 60vw; min-height: 260px; }
+      .hero-text { padding: 40px 24px; }
+      .section-label { padding: 40px 20px 0; }
+      .hood-block { padding: 32px 20px 40px; }
+      .tips-grid { grid-template-columns: 1fr 1fr !important; }
+      .span2 { grid-column: span 2; }
+      .manifesto { grid-template-columns: 1fr; gap: 36px; padding: 48px 20px; }
+      .cta-block { padding: 48px 20px; }
+      footer { padding: 32px 20px; }
+    }
+    @media (max-width: 520px) {
+      .tips-grid { grid-template-columns: 1fr !important; }
+      .span2 { grid-column: span 1; }
+      .span2 .tip-card-img-wrap img { aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Hood<em>Tip.</em></a>
+  <div class="nav-links">
+    <a href="/geneva">Geneva</a>
+    <a href="/london">London</a>
+    <a href="/istanbul">Istanbul</a>
+    <a href="/paris">Paris</a>
+    <a href="#" onclick="openModal();return false;" class="nav-cta">Leave a tip</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-image">
+    <img src="IMG_3513.JPG" alt="Springer spaniel at The Cow pub, Notting Hill" />
+    <div class="hero-image-label">
+      <div class="cat">Pub · Bar</div>
+      <div class="name">The Cow</div>
+      <div class="hood">Notting Hill · London</div>
+    </div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">The neighbourhood travel guide</div>
+    <h1 class="hero-headline">Only the<br><em>good stuff.</em></h1>
+    <p class="hero-body">A tip has to be specific. Not "great bar in Geneva" — "order the cold local white, ask for the nuts, sit outside and watch the swans." The neighbourhood is the unit. The specificity is the point.</p>
+    <div class="hero-stats">
+      <div><div class="stat-num">29</div><div class="stat-label">Tips</div></div>
+      <div><div class="stat-num">10</div><div class="stat-label">Neighbourhoods</div></div>
+      <div><div class="stat-num">7</div><div class="stat-label">Cities</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-label">
+  <h2>All tips by neighbourhood</h2>
+  <div class="section-label-line"></div>
+</div>
+
+<!-- NOTTING HILL -->
+<div class="hood-block" id="notting-hill">
+  <div class="hood-header">
+    <div><div class="hood-name">Notting Hill</div><div class="hood-location">London · England</div></div>
+    <div class="hood-count">4 tips</div>
+  </div>
+  <div class="tips-grid g4">
+    <a class="tip-card" href="/tip-thecow">
+      <div class="tip-card-img-wrap"><img src="IMG_3513.JPG" alt="The Cow pub" /></div>
+      <div class="tip-card-cat">Pub · Bar</div>
+      <div class="tip-card-name">The Cow</div>
+      <div class="tip-card-copy">Best Guinness in west London. Order oysters with it at the bar. That's the move.</div>
+    </a>
+    <a class="tip-card" href="/tip-electriccinema">
+      <div class="tip-card-img-wrap"><img src="682384E6-2714-486C-A716-4757245349A1.jpg" alt="Electric Cinema" /></div>
+      <div class="tip-card-cat">Cinema · Experience</div>
+      <div class="tip-card-name">Electric Cinema</div>
+      <div class="tip-card-copy">Leather sofa seats, a lamp on the armrest, a glass of champagne. Britain's oldest cinema.</div>
+    </a>
+    <a class="tip-card" href="/tip-rubyzoe">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/london-rubyzoe-view-rain.jpg" alt="Ruby Zoë Hotel" /></div>
+      <div class="tip-card-cat">Hotel</div>
+      <div class="tip-card-name">Ruby Zoë Hotel</div>
+      <div class="tip-card-copy">Book the top floor. Notting Hill rooftops, under £200. Skip the hotel breakfast.</div>
+    </a>
+    <a class="tip-card" href="#">
+      <div class="tip-card-img-wrap"><div class="no-photo">Photo coming</div></div>
+      <div class="tip-card-cat">Bakery · Café</div>
+      <div class="tip-card-name">Kuro Bagels</div>
+      <div class="tip-card-copy tbd">Tip coming soon</div>
+    </a>
+  </div>
+</div>
+
+<!-- HAMPSTEAD HEATH -->
+<div class="hood-block" id="hampstead-heath">
+  <div class="hood-header">
+    <div><div class="hood-name">Hampstead Heath</div><div class="hood-location">London · England</div></div>
+    <div class="hood-count">1 tip</div>
+  </div>
+  <div class="tips-grid g3">
+    <a class="tip-card span2" href="/tip-karmabread">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/london-karmabread-challah-hand.jpg" alt="Karma Bread challah" /></div>
+      <div class="tip-card-cat">Bakery</div>
+      <div class="tip-card-name">Karma Bread</div>
+      <div class="tip-card-copy">Best challah in London. Come on Friday — that's when they bake it and it goes fast.</div>
+    </a>
+  </div>
+</div>
+
+<!-- PLAINPALAIS -->
+<div class="hood-block" id="plainpalais">
+  <div class="hood-header">
+    <div><div class="hood-name">Plainpalais</div><div class="hood-location">Geneva · Switzerland</div></div>
+    <div class="hood-count">3 tips</div>
+  </div>
+  <div class="tips-grid g3">
+    <a class="tip-card" href="/tip-bongojoe">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/bongojoe-yellow-table.jpg" alt="Bongo Joe's" /></div>
+      <div class="tip-card-cat">Bar</div>
+      <div class="tip-card-name">Bongo Joe's</div>
+      <div class="tip-card-copy">Order the cold local white, ask for the nuts, watch the swans on the Rhône.</div>
+    </a>
+    <a class="tip-card" href="/tip-tanuki">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/geneva-tanuki-platter.jpg" alt="Tanuki sushi platter" /></div>
+      <div class="tip-card-cat">Sushi · Takeaway</div>
+      <div class="tip-card-name">Tanuki</div>
+      <div class="tip-card-copy">Get the large platter, stop at Uchitomi for sake, go home. Better than any restaurant.</div>
+    </a>
+    <a class="tip-card" href="/tip-uchitomi">
+      <div class="tip-card-img-wrap"><div class="no-photo">Photo coming</div></div>
+      <div class="tip-card-cat">Japanese Grocery</div>
+      <div class="tip-card-name">Uchitomi</div>
+      <div class="tip-card-copy">Pairs with Tanuki. Stop here for sake on the way home.</div>
+    </a>
+  </div>
+</div>
+
+<!-- CAROUGE -->
+<div class="hood-block" id="carouge">
+  <div class="hood-header">
+    <div><div class="hood-name">Carouge</div><div class="hood-location">Geneva · Switzerland</div></div>
+    <div class="hood-count">7 tips</div>
+  </div>
+  <div class="tips-grid g4">
+    <a class="tip-card" href="/tip-paulhenri">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/carouge-wine-bottles.jpg" alt="Paul-Henri Soler" /></div>
+      <div class="tip-card-cat">Wine · Market</div>
+      <div class="tip-card-name">Paul-Henri Soler</div>
+      <div class="tip-card-copy">Natural wine at the Saturday market. Chalk prices on a barrel. Get there before noon.</div>
+    </a>
+    <a class="tip-card" href="/tip-samourai">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/carouge-oyster-lady.jpg" alt="Samouraï des Mers" /></div>
+      <div class="tip-card-cat">Oysters · Market</div>
+      <div class="tip-card-name">Samouraï des Mers</div>
+      <div class="tip-card-copy">Breton oysters, blue barrel tables. Order a Muscadet, eat standing up.</div>
+    </a>
+    <a class="tip-card" href="/tip-lacleman">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/carouge-whitefish.jpg" alt="Lac Léman Fishmonger" /></div>
+      <div class="tip-card-cat">Fish · Market</div>
+      <div class="tip-card-name">Lac Léman Fishmonger</div>
+      <div class="tip-card-copy">Not always there, but when he is — don't walk past. Smoked féra fumée is exceptional.</div>
+    </a>
+    <a class="tip-card" href="/tip-cucagna">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/carouge-pizza.jpg" alt="La Cucagna" /></div>
+      <div class="tip-card-cat">Restaurant</div>
+      <div class="tip-card-name">La Cucagna</div>
+      <div class="tip-card-copy">Real Italian guys, good pizza, house white carafe. Kids' pizza comes with bunny ears.</div>
+    </a>
+    <a class="tip-card" href="/tip-renou">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/carouge-renou.jpg" alt="Renou Genève" /></div>
+      <div class="tip-card-cat">Pâtisserie</div>
+      <div class="tip-card-name">Renou Genève</div>
+      <div class="tip-card-copy">Get the all-chocolate madeleines. That's it. That's the tip.</div>
+    </a>
+    <a class="tip-card" href="/tip-cinemabio">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/carouge-cinema-bio-summer.jpg" alt="Cinéma Bio" /></div>
+      <div class="tip-card-cat">Cinema · Café</div>
+      <div class="tip-card-name">Cinéma Bio</div>
+      <div class="tip-card-copy">Independent cinema and café. The gravitational centre of Carouge. Summer outdoor screenings.</div>
+    </a>
+    <a class="tip-card" href="/tip-gallay">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/carouge-flowers-gallay.jpg" alt="Gallay Fleurs" /></div>
+      <div class="tip-card-cat">Market Stall</div>
+      <div class="tip-card-name">Gallay Fleurs</div>
+      <div class="tip-card-copy">Local producer flowers and produce. The heirloom tomatoes are expensive and worth it.</div>
+    </a>
+  </div>
+</div>
+
+<!-- NATIONS -->
+<div class="hood-block" id="nations">
+  <div class="hood-header">
+    <div><div class="hood-name">Nations</div><div class="hood-location">Geneva · Switzerland</div></div>
+    <div class="hood-count">2 tips</div>
+  </div>
+  <div class="tips-grid g2">
+    <a class="tip-card" href="/tip-empanadas">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/geneva-empanadas-plate-wide.jpg" alt="Empanadas Factory" /></div>
+      <div class="tip-card-cat">Restaurant</div>
+      <div class="tip-card-name">Empanadas Factory</div>
+      <div class="tip-card-copy">Get the Beef Boliviano. Ask for the sauce picante. Don't forget to ask for it.</div>
+    </a>
+    <a class="tip-card" href="/tip-merigonde">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/geneva-merigonde-sandwich.jpg" alt="Chocolaterie Mérigonde" /></div>
+      <div class="tip-card-cat">Boulangerie</div>
+      <div class="tip-card-name">Chocolaterie Mérigonde</div>
+      <div class="tip-card-copy">Roast beef sandwich, take it to Parc Vermont. Under 10 francs.</div>
+    </a>
+  </div>
+</div>
+
+<!-- CORNAVIN -->
+<div class="hood-block" id="cornavin">
+  <div class="hood-header">
+    <div><div class="hood-name">Cornavin</div><div class="hood-location">Geneva · Switzerland</div></div>
+    <div class="hood-count">2 tips</div>
+  </div>
+  <div class="tips-grid g2">
+    <a class="tip-card" href="/tip-swisstrains">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/swiss-train-restaurant-forest.jpg" alt="Swiss train restaurant car" /></div>
+      <div class="tip-card-cat">Travel</div>
+      <div class="tip-card-name">Swiss Train Restaurant Car</div>
+      <div class="tip-card-copy">Don't book first class. Buy standard, walk to the restaurant car. White tablecloth, Alps out the window.</div>
+    </a>
+    <a class="tip-card" href="/tip-mulligans">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/geneva-mulligans-dog.jpg" alt="Mulligans Irish Pub" /></div>
+      <div class="tip-card-cat">Bar · Pub</div>
+      <div class="tip-card-name">Mulligans Irish Pub</div>
+      <div class="tip-card-copy">Geneva's best Guinness. Get salt and vinegar crisps. Outside feels like a proper city for an hour.</div>
+    </a>
+  </div>
+</div>
+
+<!-- LAVAUX -->
+<div class="hood-block" id="lavaux">
+  <div class="hood-header">
+    <div><div class="hood-name">Lavaux</div><div class="hood-location">Vaud · Switzerland</div></div>
+    <div class="hood-count">1 tip</div>
+  </div>
+  <div class="tips-grid g3">
+    <a class="tip-card span2" href="/tip-saintamour">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" /></div>
+      <div class="tip-card-cat">Wine</div>
+      <div class="tip-card-name">Domaine Saint-Amour</div>
+      <div class="tip-card-copy">Honour system rosé in a UNESCO vineyard above Lake Geneva. Leave cash, take a bottle, sit in the vines. Train drops you nearby.</div>
+    </a>
+  </div>
+</div>
+
+<!-- WENGEN -->
+<div class="hood-block" id="wengen">
+  <div class="hood-header">
+    <div><div class="hood-name">Wengen</div><div class="hood-location">Berner Oberland · Switzerland</div></div>
+    <div class="hood-count">1 tip</div>
+  </div>
+  <div class="tips-grid g3">
+    <a class="tip-card span2" href="/tip-belvedere">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/wengen-belvedere-pool-snow.jpg" alt="Grand Hotel Belvedere" /></div>
+      <div class="tip-card-cat">Hotel</div>
+      <div class="tip-card-name">Grand Hotel Belvedere</div>
+      <div class="tip-card-copy">Tyler Brûlé renovation, outdoor pool in the snow, a cocktail guy who summers at Scorpios. Getting there is part of it.</div>
+    </a>
+  </div>
+</div>
+
+<!-- LATIN QUARTER -->
+<div class="hood-block" id="latin-quarter">
+  <div class="hood-header">
+    <div><div class="hood-name">Latin Quarter</div><div class="hood-location">Paris · France — 5th arrondissement</div></div>
+    <div class="hood-count">1 tip</div>
+  </div>
+  <div class="tips-grid g3">
+    <a class="tip-card span2" href="/tip-oceanik">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/paris-oceanik-window-dusk.jpg" alt="Hôtel Les Rives Oceanik" /></div>
+      <div class="tip-card-cat">Hotel</div>
+      <div class="tip-card-name">Hôtel Les Rives Oceanik</div>
+      <div class="tip-card-copy">~€200, ironwork balcony, Haussmann view, Tintin poster on the wall. Skip breakfast, walk to Luxembourg.</div>
+    </a>
+  </div>
+</div>
+
+<!-- YENIKÖY -->
+<div class="hood-block" id="yenikoy">
+  <div class="hood-header">
+    <div><div class="hood-name">Yeniköy</div><div class="hood-location">Istanbul · Turkey</div></div>
+    <div class="hood-count">6 tips</div>
+  </div>
+  <div class="tips-grid g3">
+    <a class="tip-card" href="/tip-arnavutkoy">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/photo-arnavutkoy-restaurant.jpg" alt="Arnavutköy Restaurant" /></div>
+      <div class="tip-card-cat">Restaurant</div>
+      <div class="tip-card-name">Arnavutköy Restaurant</div>
+      <div class="tip-card-copy">Raki-balık on the Bosphorus. Smoke-free kids cabin on the side. Don't skip the salad.</div>
+    </a>
+    <a class="tip-card" href="/tip-grea">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/photo-roastery-cafe.jpg" alt="Grea Coffee" /></div>
+      <div class="tip-card-cat">Coffee</div>
+      <div class="tip-card-name">Grea Coffee Nations</div>
+      <div class="tip-card-copy">Courtyard roastery café. One of the good ones.</div>
+    </a>
+    <a class="tip-card" href="/tip-pero">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/photo-pero-cafe.jpg" alt="Pero bar" /></div>
+      <div class="tip-card-cat">Bar</div>
+      <div class="tip-card-name">Pero</div>
+      <div class="tip-card-copy">Waterfront cocktail bar. Terrazzo floors.</div>
+    </a>
+    <a class="tip-card" href="/tip-emekmanti">
+      <div class="tip-card-img-wrap"><div class="no-photo">Photo coming</div></div>
+      <div class="tip-card-cat">Restaurant</div>
+      <div class="tip-card-name">Emek Mantı</div>
+      <div class="tip-card-copy">Mantı and su börek. The real thing.</div>
+    </a>
+    <a class="tip-card" href="/tip-sahilkafe">
+      <div class="tip-card-img-wrap"><div class="no-photo">Photo coming</div></div>
+      <div class="tip-card-cat">Café</div>
+      <div class="tip-card-name">Yeniköy Sahil Kafe</div>
+      <div class="tip-card-copy">Tea house on the water.</div>
+    </a>
+    <a class="tip-card" href="/tip-bonitofish">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/photo-fish-truck.jpg" alt="Bonito fish truck" /></div>
+      <div class="tip-card-cat">Food · Seasonal</div>
+      <div class="tip-card-name">Bonito Fish Truck</div>
+      <div class="tip-card-copy">Autumn only. Çinekop and İstavrit. Don't miss it.</div>
+    </a>
+  </div>
+</div>
+
+<!-- SAUGATUCK -->
+<div class="hood-block" id="saugatuck">
+  <div class="hood-header">
+    <div><div class="hood-name">Saugatuck</div><div class="hood-location">Michigan · USA</div></div>
+    <div class="hood-count">1 tip</div>
+  </div>
+  <div class="tips-grid g3">
+    <a class="tip-card span2" href="/tip-kilwins">
+      <div class="tip-card-img-wrap"><img src="https://hoodtip.com/saugatuck-kilwins-exterior.jpg" alt="Kilwins" /></div>
+      <div class="tip-card-cat">Ice Cream</div>
+      <div class="tip-card-name">Kilwins</div>
+      <div class="tip-card-copy">The quintessential American sweet shop. Take someone who's never been to America and watch their face.</div>
+    </a>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div>
+    <h3>What makes a<br><em>HoodTip?</em></h3>
+    <p class="manifesto-body">Not a rating. Not a ranking. A note from someone who actually knows — telling you what to order, when to go, what to know. The kind of thing a friend texts you the day before you leave.</p>
+  </div>
+  <div class="manifesto-points">
+    <div class="manifesto-point"><div class="manifesto-num">01</div><div class="manifesto-text"><strong>Specific over general.</strong> Not "great bar" — "order the cold local white, ask for the nuts."</div></div>
+    <div class="manifesto-point"><div class="manifesto-num">02</div><div class="manifesto-text"><strong>Positive only.</strong> If it's not worth telling a friend, it's not here.</div></div>
+    <div class="manifesto-point"><div class="manifesto-num">03</div><div class="manifesto-text"><strong>Neighbourhood is the unit.</strong> Not cities. The place you actually spend time in.</div></div>
+    <div class="manifesto-point"><div class="manifesto-num">04</div><div class="manifesto-text"><strong>From people who know.</strong> One person. One tip. Real knowledge.</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <h3>Know somewhere good?</h3>
+  <p>Leave a HoodTip. Positive only. Write it like a note to a friend going next week.</p>
+  <a href="#" class="btn-primary" onclick="openModal();return false;">Leave a HoodTip →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Hood<em>Tip.</em></div>
+    <div class="footer-sub">Only the good stuff.</div>
+  </div>
+  <div class="footer-links">
+    <a href="/geneva">Geneva</a>
+    <a href="/london">London</a>
+    <a href="/istanbul">Istanbul</a>
+    <a href="/paris">Paris</a>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="tipModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h4>Leave a HoodTip</h4>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-tagline">Positive only. Specific over general. Write it like a note to a friend going next week.</p>
+      <div class="field"><label>Place name</label><input type="text" placeholder="e.g. Bongo Joe's" /></div>
+      <div class="field"><label>Neighbourhood & City</label><input type="text" placeholder="e.g. Plainpalais, Geneva" /></div>
+      <div class="field">
+        <label>Category</label>
+        <select><option value="">Select one</option><option>Bar</option><option>Restaurant</option><option>Coffee</option><option>Wine</option><option>Market</option><option>Hotel</option><option>Travel</option><option>Cinema</option><option>Experience</option><option>Other</option></select>
+      </div>
+      <div class="field"><label>Your tip</label><textarea placeholder="What to order, when to go, what to know. Be specific."></textarea></div>
+      <button class="submit-btn">Submit tip</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal() { document.getElementById('tipModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModal() { document.getElementById('tipModal').classList.remove('open'); document.body.style.overflow=''; }
+  document.getElementById('tipModal').addEventListener('click', function(e) { if(e.target===this) closeModal(); });
+</script>
+
+</body>
+</html>
