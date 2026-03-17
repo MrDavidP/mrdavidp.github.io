@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yeniköy, Istanbul — HoodTip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --white: #FAFAF8; --paper: #F2F0EB; --ink: #1A1A18; --ink-light: #3A3A38;
+  --mid: #8A8A86; --rule: #D8D6D0; --accent: #B5322A; --sky: #2C4A6E; --gap: 2px;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+/* MASTHEAD */
+.masthead { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--ink); height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+.logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.5px; }
+.logo span { color: var(--accent); }
+.breadcrumb { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); display: flex; gap: 8px; align-items: center; }
+.breadcrumb a { color: var(--mid); text-decoration: none; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb .cur { color: var(--ink); }
+.nav-tip { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 7px 16px; background: var(--ink); color: var(--white); border: none; cursor: pointer; transition: background 0.15s; }
+.nav-tip:hover { background: var(--accent); }
+
+/* HERO */
+.ed-hero { margin-top: 52px; height: calc(100vh - 52px); position: relative; overflow: hidden; }
+.ed-hero-img { position: absolute; inset: 0; background-image: url('photo-moon.jpg'); background-size: cover; background-position: center; filter: brightness(0.45) saturate(0.8); transform: scale(1.04); transition: transform 10s ease; }
+.ed-hero-img.loaded { transform: scale(1); }
+.ed-hero-content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 56px 64px; }
+.ed-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(250,250,248,0.45); margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
+.ed-eyebrow-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+.ed-hero-title { font-family: 'Playfair Display', serif; font-size: clamp(64px, 10vw, 136px); font-weight: 400; line-height: 0.92; letter-spacing: -3px; color: var(--white); margin-bottom: 24px; }
+.ed-hero-title em { font-style: italic; color: rgba(250,250,248,0.45); display: block; font-size: 0.52em; letter-spacing: -1px; margin-top: 10px; }
+.ed-hero-deck { font-family: 'Source Serif 4', serif; font-size: 19px; font-weight: 300; font-style: italic; line-height: 1.6; color: rgba(250,250,248,0.65); max-width: 500px; }
+.ed-hero-scroll { position: absolute; right: 56px; bottom: 64px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.ed-hero-scroll span { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(250,250,248,0.25); writing-mode: vertical-rl; }
+.scroll-line { width: 1px; height: 48px; background: rgba(250,250,248,0.12); overflow: hidden; position: relative; }
+.scroll-line::after { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: rgba(250,250,248,0.45); animation: sl 2.2s ease infinite; }
+@keyframes sl { to { top: 100%; } }
+
+/* CONTEXT STRIP */
+.ed-context { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--rule); }
+.ed-context-cell { padding: 22px 28px; border-right: 1px solid var(--rule); }
+.ed-context-cell:last-child { border-right: none; }
+.ec-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
+.ec-value { font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); line-height: 1.4; }
+
+/* PROSE + ASIDE */
+.ed-prose-wrap { display: grid; grid-template-columns: 1fr 320px; border-bottom: 1px solid var(--rule); }
+.ed-prose { padding: 72px 56px; border-right: 1px solid var(--rule); }
+.ed-prose-label { display: flex; align-items: center; gap: 10px; margin-bottom: 36px; }
+.ed-prose-label::before { content: ''; width: 28px; height: 2px; background: var(--accent); }
+.ed-prose-label span { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+.ed-prose p { font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 300; line-height: 1.85; color: var(--ink-light); margin-bottom: 24px; max-width: 600px; }
+.ed-prose p:first-of-type::first-letter { font-family: 'Playfair Display', serif; font-size: 68px; font-weight: 600; float: left; line-height: 0.75; margin-right: 10px; margin-top: 12px; color: var(--accent); }
+.ed-prose-aside { padding: 72px 36px; background: var(--paper); display: flex; flex-direction: column; gap: 28px; }
+.aside-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; filter: saturate(0.82); transition: filter 0.4s; }
+.aside-img:hover { filter: saturate(1); }
+.aside-caption { font-family: 'Source Serif 4', serif; font-size: 13px; font-style: italic; color: var(--mid); line-height: 1.55; }
+.aside-stat { border-top: 1px solid var(--rule); padding-top: 24px; }
+.aside-stat-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 400; color: var(--ink); line-height: 1; }
+.aside-stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-top: 4px; }
+
+/* PHOTO STRIP */
+.ed-photo-strip { display: grid; grid-template-columns: 2fr 1fr; gap: var(--gap); height: 440px; border-bottom: 1px solid var(--rule); }
+.ed-photo-strip-item { overflow: hidden; position: relative; }
+.ed-photo-strip-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85); transition: transform 0.7s ease, filter 0.3s; }
+.ed-photo-strip-item:hover img { transform: scale(1.04); filter: saturate(1); }
+.strip-cap { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 18px; background: linear-gradient(transparent, rgba(26,26,24,0.75)); font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(250,250,248,0.6); opacity: 0; transition: opacity 0.2s; }
+.ed-photo-strip-item:hover .strip-cap { opacity: 1; }
+
+/* PULLQUOTE */
+.ed-pullquote { padding: 80px 56px; border-bottom: 1px solid var(--rule); background: var(--paper); display: grid; grid-template-columns: 64px 1fr; gap: 0 28px; align-items: start; }
+.pq-mark { font-family: 'Playfair Display', serif; font-size: 100px; line-height: 0.7; color: var(--accent); opacity: 0.2; font-style: italic; }
+.pq-text { font-family: 'Playfair Display', serif; font-size: clamp(20px, 2.8vw, 34px); font-weight: 400; font-style: italic; line-height: 1.4; color: var(--ink); margin-bottom: 20px; }
+.pq-attr { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); }
+
+/* PHOTO GRID */
+.ed-photo-grid { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 300px 300px; gap: var(--gap); border-bottom: 1px solid var(--rule); }
+.ed-photo-grid-item { overflow: hidden; position: relative; }
+.ed-photo-grid-item.tall { grid-row: span 2; }
+.ed-photo-grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85); transition: transform 0.6s ease, filter 0.3s; }
+.ed-photo-grid-item:hover img { transform: scale(1.04); filter: saturate(1); }
+.ed-photo-grid-item:hover .strip-cap { opacity: 1; }
+
+/* FULL BLEED */
+.ed-fullbleed { position: relative; height: 520px; overflow: hidden; border-bottom: 1px solid var(--rule); }
+.ed-fullbleed img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.75) brightness(0.85); }
+.ed-fullbleed-caption { position: absolute; bottom: 36px; left: 56px; font-family: 'Source Serif 4', serif; font-size: 16px; font-style: italic; color: rgba(250,250,248,0.55); max-width: 380px; line-height: 1.55; }
+
+/* ── PART 2: HOODTIPS ── */
+.tips-header { padding: 64px 56px 40px; border-bottom: 3px solid var(--ink); display: flex; align-items: flex-end; justify-content: space-between; }
+.tips-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.tips-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 400; color: var(--ink); line-height: 1; letter-spacing: -1px; }
+.tips-title em { font-style: italic; color: var(--mid); }
+.tips-meta { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); }
+
+.tips-categories { display: flex; border-bottom: 1px solid var(--rule); overflow-x: auto; }
+.tip-cat-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 14px 24px; background: none; border: none; border-bottom: 2px solid transparent; color: var(--mid); cursor: pointer; white-space: nowrap; transition: all 0.15s; margin-bottom: -1px; }
+.tip-cat-btn:hover { color: var(--ink); }
+.tip-cat-btn.active { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* TIPS GRID — 2 across */
+.tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border-bottom: 1px solid var(--rule); }
+.tip-card { background: var(--white); display: flex; flex-direction: column; transition: background 0.15s; cursor: pointer; }
+.tip-card:hover { background: var(--paper); }
+.tip-card-img { width: 100%; aspect-ratio: 3/2; overflow: hidden; background: var(--rule); }
+.tip-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85); transition: transform 0.6s ease, filter 0.3s; }
+.tip-card:hover .tip-card-img img { transform: scale(1.04); filter: saturate(1.05); }
+.tip-card-body { padding: 24px 28px 28px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.tip-card-cat { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(181,50,42,0.25); padding: 2px 8px; display: inline-block; }
+.tip-card-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--ink); line-height: 1.2; }
+.tip-card-text { font-family: 'Source Serif 4', serif; font-size: 14px; font-weight: 300; font-style: italic; line-height: 1.75; color: var(--mid); flex: 1; }
+.tip-card-footer { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule); font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); }
+.tip-card-footer strong { color: var(--ink); }
+
+.tips-divider { grid-column: span 2; padding: 20px 28px 14px; border-top: 1px solid var(--rule); background: var(--paper); font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); }
+
+/* NEED TO KNOW */
+.ntk-wrap { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--rule); }
+.ntk-col { padding: 48px 56px; border-right: 1px solid var(--rule); }
+.ntk-col:last-child { border-right: none; background: var(--paper); }
+.ntk-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+.ntk-list { list-style: none; }
+.ntk-list li { padding: 11px 0; border-bottom: 1px solid var(--rule); font-family: 'Source Serif 4', serif; font-size: 15px; font-weight: 300; line-height: 1.5; color: var(--ink-light); display: flex; gap: 12px; }
+.ntk-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+
+/* CTA */
+.tips-cta { padding: 72px 56px; background: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+.cta-overline { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(250,250,248,0.3); margin-bottom: 10px; }
+.cta-headline { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400; font-style: italic; color: var(--white); line-height: 1.2; }
+.cta-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; padding: 16px 36px; background: var(--accent); color: var(--white); border: none; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
+.cta-btn:hover { background: #8a2420; }
+
+footer { border-top: 2px solid var(--ink); padding: 24px 40px; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; }
+.footer-logo span { color: var(--accent); }
+.footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1px; color: var(--mid); }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,26,24,0.85); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--white); width: 90%; max-width: 480px; border-top: 3px solid var(--ink); position: relative; animation: mIn 0.25s ease; }
+@keyframes mIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+.modal-head { padding: 28px 32px 20px; border-bottom: 1px solid var(--rule); }
+.modal-over { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
+.modal-title { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--ink); }
+.modal-body { padding: 24px 32px 32px; }
+.modal-notice { padding: 10px 14px; background: var(--paper); border-left: 3px solid var(--sky); font-size: 13px; color: var(--ink-light); margin-bottom: 20px; line-height: 1.5; font-family: 'Source Serif 4', serif; font-style: italic; }
+.form-row { margin-bottom: 14px; }
+.form-row label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 5px; }
+.form-row input, .form-row select, .form-row textarea { width: 100%; padding: 10px 12px; background: var(--paper); border: 1px solid var(--rule); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); outline: none; border-radius: 0; appearance: none; transition: border-color 0.15s; }
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--ink); }
+.form-row textarea { resize: none; height: 80px; }
+.modal-submit { width: 100%; padding: 12px; background: var(--ink); color: var(--white); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+.modal-submit:hover { background: var(--accent); }
+.modal-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--mid); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .masthead { padding: 0 20px; }
+  .ed-hero-content { padding: 0 24px 40px; }
+  .ed-hero-scroll { display: none; }
+  .ed-context { grid-template-columns: 1fr 1fr; }
+  .ed-context-cell:nth-child(2) { border-right: none; }
+  .ed-prose-wrap { grid-template-columns: 1fr; }
+  .ed-prose { padding: 48px 24px; border-right: none; }
+  .ed-prose-aside { padding: 40px 24px; display: none; }
+  .ed-photo-strip { grid-template-columns: 1fr; height: auto; }
+  .ed-photo-strip-item img { aspect-ratio: 16/9; height: auto; }
+  .ed-pullquote { padding: 48px 24px; grid-template-columns: 40px 1fr; }
+  .pq-mark { font-size: 72px; }
+  .ed-photo-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .ed-photo-grid-item.tall { grid-row: span 1; }
+  .ed-photo-grid-item img { aspect-ratio: 16/9; height: auto; }
+  .ed-fullbleed { height: 280px; }
+  .ed-fullbleed-caption { left: 24px; bottom: 20px; font-size: 14px; }
+  .tips-header { padding: 48px 24px 32px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .tips-divider { grid-column: span 1; }
+  .ntk-wrap { grid-template-columns: 1fr; }
+  .ntk-col { padding: 40px 24px; border-right: none; }
+  .tips-cta { padding: 48px 24px; flex-direction: column; align-items: flex-start; }
+  footer { padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="index.html" class="logo">HoodTip<span>.</span></a>
+  <div class="breadcrumb">
+    <a href="#">Istanbul</a>
+    <span>/</span>
+    <span class="cur">Yeniköy</span>
+  </div>
+  <button class="nav-tip" onclick="openModal()">Leave a tip</button>
+</header>
+
+<!-- ══════════════════════════ -->
+<!-- PART 1 — EDITORIAL        -->
+<!-- ══════════════════════════ -->
+
+<section class="ed-hero">
+  <div class="ed-hero-img" id="heroBg"></div>
+  <div class="ed-hero-content">
+    <div class="ed-eyebrow">
+      <span>Istanbul, Turkey</span>
+      <div class="ed-eyebrow-dot"></div>
+      <span>Upper Bosphorus</span>
+    </div>
+    <h1 class="ed-hero-title">
+      Yeniköy
+      <em>on the Bosphorus</em>
+    </h1>
+    <p class="ed-hero-deck">Old money, fresh fish, and a waterfront that makes you feel like you found something most visitors never will.</p>
+  </div>
+  <div class="ed-hero-scroll">
+    <span>Read</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="ed-context reveal">
+  <div class="ed-context-cell">
+    <div class="ec-label">Location</div>
+    <div class="ec-value">European shore, 25 min from Taksim by bus</div>
+  </div>
+  <div class="ed-context-cell">
+    <div class="ec-label">Best season</div>
+    <div class="ec-value">Autumn — bonito runs, golden light, perfect weather</div>
+  </div>
+  <div class="ed-context-cell">
+    <div class="ec-label">Go for</div>
+    <div class="ec-value">Raki & fish, great coffee, the long waterfront walk</div>
+  </div>
+  <div class="ed-context-cell">
+    <div class="ec-label">Don't miss</div>
+    <div class="ec-value">The fish truck in October. The ferry at dusk.</div>
+  </div>
+</div>
+
+<div class="ed-prose-wrap">
+  <div class="ed-prose reveal">
+    <div class="ed-prose-label"><span>The Neighbourhood</span></div>
+    <p>Yeniköy sits on the upper Bosphorus where the strait narrows and the water turns slate-green in winter. It's an old neighbourhood — Greek Orthodox churches still stand between the yalıs, the grand waterfront mansions of Istanbul's former elite — and that layered history gives it a texture that the more visited parts of the city have long since lost.</p>
+    <p>The architecture tells the story. Wooden yalıs painted in faded pastels lean over the water. Ferraris park outside the fish restaurant. A man in white gloves cleans fish on a plastic crate while two cats watch patiently from a nearby wall. The taxi drivers have occupied the same tea stand for thirty years. It is a neighbourhood that has not been curated for visitors, and that is the point.</p>
+    <p>Most people who visit Istanbul never make it this far up the European shore. The tour buses stop at Sultanahmet. The boutique hotel crowd goes to Balık Pazar and calls it local. Yeniköy requires a bus, a bit of curiosity, and the willingness to arrive somewhere without a plan. In return it gives you raki on the water at dusk, the best coffee on the Bosphorus, and a fish sandwich eaten standing up while the ferry goes by.</p>
+    <p>Come in autumn if you can. The bonito run through the Bosphorus in October and the fish truck appears on the main road selling çinekop and İstavrit straight from the water. The light goes gold. The cyclists are still out on their long Bosphorus rides. The tea houses fill up. It is the best version of this city, and almost no one knows it.</p>
+  </div>
+  <div class="ed-prose-aside reveal">
+    <img src="photo-ferrari.jpg" alt="Ferrari next to fish truck, Yeniköy" class="aside-img">
+    <p class="aside-caption">The neighbourhood in one image — old money and fresh fish, coexisting without irony.</p>
+    <div class="aside-stat">
+      <div class="aside-stat-num">24</div>
+      <div class="aside-stat-label">Hood tips collected</div>
+    </div>
+  </div>
+</div>
+
+<div class="ed-photo-strip reveal">
+  <div class="ed-photo-strip-item">
+    <img src="photo-waterfront-dining.jpg" alt="Waterfront dining at dusk">
+    <div class="strip-cap">Arnavutköy Restaurant at dusk — raki, fish, Bosphorus</div>
+  </div>
+  <div class="ed-photo-strip-item">
+    <img src="photo-fisherman.jpg" alt="Fisherman on the waterfront">
+    <div class="strip-cap">Early morning on the waterfront</div>
+  </div>
+</div>
+
+<div class="ed-pullquote reveal">
+  <div class="pq-mark">"</div>
+  <div>
+    <p class="pq-text">It is a neighbourhood that has not been curated for visitors. The taxi drivers have occupied the same tea stand for thirty years. The cats were here before the restaurants. That is the point.</p>
+    <div class="pq-attr">From the HoodTip guide to Yeniköy</div>
+  </div>
+</div>
+
+<div class="ed-photo-grid reveal">
+  <div class="ed-photo-grid-item tall">
+    <img src="photo-teahouse.jpg" alt="Tea house on the Bosphorus">
+    <div class="strip-cap">Yeniköy Sahil Kafe — tea and the strait</div>
+  </div>
+  <div class="ed-photo-grid-item">
+    <img src="photo-cats-fish.jpg" alt="Cats waiting by fish cleaning">
+    <div class="strip-cap">The morning ritual</div>
+  </div>
+  <div class="ed-photo-grid-item">
+    <img src="photo-bosphorus-boat.jpg" alt="Wooden boat on the Bosphorus">
+    <div class="strip-cap">The view from the restaurant terrace</div>
+  </div>
+</div>
+
+<div class="ed-fullbleed reveal">
+  <img src="photo-seagulls-night.jpg" alt="Seagulls at night over the Bosphorus">
+  <div class="ed-fullbleed-caption">After dinner, on the waterfront — the Bosphorus Bridge lit up across the water. The seagulls don't sleep.</div>
+</div>
+
+<!-- ══════════════════════════ -->
+<!-- PART 2 — HOODTIPS         -->
+<!-- ══════════════════════════ -->
+
+<div class="tips-header reveal">
+  <div>
+    <div class="tips-eyebrow">Yeniköy, Istanbul</div>
+    <h2 class="tips-title">The Hood<em>Tips</em></h2>
+  </div>
+  <div class="tips-meta">24 tips — positive only</div>
+</div>
+
+<div class="tips-categories">
+  <button class="tip-cat-btn active" onclick="filterTips('all',this)">All tips</button>
+  <button class="tip-cat-btn" onclick="filterTips('restaurant',this)">Restaurants</button>
+  <button class="tip-cat-btn" onclick="filterTips('coffee',this)">Coffee</button>
+  <button class="tip-cat-btn" onclick="filterTips('food',this)">Food & Drink</button>
+  <button class="tip-cat-btn" onclick="filterTips('experience',this)">Experiences</button>
+</div>
+
+<div class="tips-grid" id="tipsGrid">
+
+  <div class="tips-divider">Eat & Drink</div>
+
+  <div class="tip-card" data-cat="restaurant">
+    <div class="tip-card-img"><img src="photo-waterfront-dining.jpg" alt="Arnavutköy Restaurant"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Restaurant</span>
+      <div class="tip-card-name">Arnavutköy Restaurant</div>
+      <div class="tip-card-text">"The holy grail of Yeniköy. A proper raki-balık meyhane right on the water. They bring mezzes, you pick your fish from the display, you drink your raki, you watch the boats pass. Don't skip the salad. If you have kids, ask for the smoke-free cabin on the side."</div>
+      <div class="tip-card-footer"><strong>12</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="restaurant">
+    <div class="tip-card-img"><img src="photo-shrimp.jpg" alt="464 Yeniköy mezze"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Restaurant</span>
+      <div class="tip-card-name">464 Yeniköy</div>
+      <div class="tip-card-text">"More modern and polished than Arnavutköy — great view, excellent food, slightly dressier crowd. Worth booking ahead on weekends. The mezze spread is serious."</div>
+      <div class="tip-card-footer"><strong>7</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="food">
+    <div class="tip-card-img"><img src="photo-pero-cafe.jpg" alt="Pero bar"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Bar</span>
+      <div class="tip-card-name">Pero</div>
+      <div class="tip-card-text">"Right on the water, beautiful terrazzo floors, the kind of place where you arrive for one drink and leave several hours later. Great cocktails, genuinely lovely space."</div>
+      <div class="tip-card-footer"><strong>9</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="food">
+    <div class="tip-card-img"><img src="photo-burek.jpg" alt="Su börek at Emek Mantı"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Börek & Mantı</span>
+      <div class="tip-card-name">Emek Mantı</div>
+      <div class="tip-card-text">"Get the manti — tiny Turkish dumplings in yogurt with butter and chili oil. Also get the su börek: layered pastry with white cheese. Looks unassuming, genuinely one of the best things you'll eat here."</div>
+      <div class="tip-card-footer"><strong>5</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tips-divider">Coffee</div>
+
+  <div class="tip-card" data-cat="coffee">
+    <div class="tip-card-img"><img src="photo-coffee.jpg" alt="Coffee in Yeniköy"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Café</span>
+      <div class="tip-card-name">The Bicycle Café</div>
+      <div class="tip-card-text">"The social hub of the neighbourhood. Great coffee, big street dogs, cyclists off long Bosphorus rides. The bench-table setup out front is one of the better places to sit in Istanbul."</div>
+      <div class="tip-card-footer"><strong>8</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="coffee">
+    <div class="tip-card-img"><img src="photo-roastery-cafe.jpg" alt="Grea Coffee Nations"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Roastery</span>
+      <div class="tip-card-name">Grea Coffee Nations</div>
+      <div class="tip-card-text">"Tucked behind a park, roasting for cafés across Istanbul. Sit in the courtyard, have an exceptional cup, play with the cat. One of those places you accidentally stay three hours. @greacoffeenations"</div>
+      <div class="tip-card-footer"><strong>6</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="coffee">
+    <div class="tip-card-img"><img src="photo-fisherman.jpg" alt="Yeniköy Coffee House view"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Breakfast Café</span>
+      <div class="tip-card-name">Yeniköy Coffee House</div>
+      <div class="tip-card-text">"Up the hill with a water view. Wood burning stove in winter. Sucuk and eggs, strong tea, unhurried morning. The kind of place that makes you want to move to Istanbul."</div>
+      <div class="tip-card-footer"><strong>5</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="food">
+    <div class="tip-card-img"><img src="photo-submarine.jpg" alt="MUÀ ice cream"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Ice Cream</span>
+      <div class="tip-card-name">MUÀ Yeniköy</div>
+      <div class="tip-card-text">"Get the pistachio. Turkey is where pistachios come from and they know exactly what to do with them. Small café with books and cats upstairs."</div>
+      <div class="tip-card-footer"><strong>5</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tips-divider">Experiences</div>
+
+  <div class="tip-card" data-cat="experience">
+    <div class="tip-card-img"><img src="photo-fish-truck.jpg" alt="Bonito fish truck"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Seasonal</span>
+      <div class="tip-card-name">The Bonito Fish Truck</div>
+      <div class="tip-card-text">"Come in autumn and you'll find a man selling fresh bonito from the back of a truck on the main road. Çinekop and İstavrit pulled straight from the Bosphorus. This is what the neighbourhood is actually about."</div>
+      <div class="tip-card-footer"><strong>5</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="experience">
+    <div class="tip-card-img"><img src="photo-teahouse.jpg" alt="Yeniköy Sahil Kafe"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Tea House</span>
+      <div class="tip-card-name">Yeniköy Sahil Kafe</div>
+      <div class="tip-card-text">"The çay evi right on the water. Sit, have tea, watch little fish swim below the tables. Turks have this figured out — the right to sit somewhere beautiful and drink tea without being rushed."</div>
+      <div class="tip-card-footer"><strong>4</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="experience">
+    <div class="tip-card-img"><img src="photo-fishmarket.jpg" alt="Fish market Yeniköy"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Experience</span>
+      <div class="tip-card-name">The Taxi Stand, Early Morning</div>
+      <div class="tip-card-text">"The drivers gather every morning, drink tea, smoke, and listen to the news on a small radio. It's one of the most Istanbul things you'll see and it happens right on the main road. Don't walk past it."</div>
+      <div class="tip-card-footer"><strong>3</strong> tips</div>
+    </div>
+  </div>
+
+  <div class="tip-card" data-cat="experience">
+    <div class="tip-card-img"><img src="photo-dog.jpg" alt="Street dog in café"></div>
+    <div class="tip-card-body">
+      <span class="tip-card-cat">Just So You Know</span>
+      <div class="tip-card-name">The Cats & Dogs</div>
+      <div class="tip-card-text">"Every café has a dog. Every fish restaurant has cats waiting outside. The animals of Yeniköy were here before the restaurants and they know it."</div>
+      <div class="tip-card-footer"><strong>6</strong> tips</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="ntk-wrap reveal">
+  <div class="ntk-col">
+    <div class="ntk-label">Need to know</div>
+    <ul class="ntk-list">
+      <li>Bus from Beşiktaş up the Bosphorus road — 25 minutes</li>
+      <li>Everything is better in autumn. Bonito season: September–November</li>
+      <li>Always get the pistachio at MUÀ</li>
+      <li>At Arnavutköy: order the salad. Eat it.</li>
+      <li>The cats were here first. Respect accordingly.</li>
+      <li>Learn two words: balık (fish) and raki</li>
+    </ul>
+  </div>
+  <div class="ntk-col">
+    <div class="ntk-label">Nearby hoods</div>
+    <ul class="ntk-list">
+      <li>Arnavutköy — 10 min south, same energy, excellent meyhanes</li>
+      <li>Bebek — further south, more manicured, good coffee</li>
+      <li>Tarabya — north up the strait, quieter, good fish</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tips-cta reveal">
+  <div>
+    <div class="cta-overline">Yeniköy, Istanbul</div>
+    <div class="cta-headline">Been here? Know something worth knowing?</div>
+  </div>
+  <button class="cta-btn" onclick="openModal()">Leave a HoodTip</button>
+</div>
+
+<footer>
+  <div class="footer-logo">HoodTip<span>.</span></div>
+  <span class="footer-copy">© 2025 HoodTip.com</span>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="handleOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-head">
+      <div class="modal-over">Yeniköy, Istanbul</div>
+      <div class="modal-title">Leave a HoodTip</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-notice">Only positive tips published here. Write it like a note to a friend who's going next week.</div>
+      <div class="form-row"><label>Place name</label><input type="text" placeholder="What's it called?"></div>
+      <div class="form-row"><label>Category</label>
+        <select><option value="">Select one</option><option>Restaurant</option><option>Coffee</option><option>Bar</option><option>Street Food</option><option>Experience</option><option>Other</option></select>
+      </div>
+      <div class="form-row"><label>Your tip</label><textarea placeholder="Be specific. The best tips read like advice from someone who actually knows."></textarea></div>
+      <button class="modal-submit" onclick="submitTip()">Submit tip</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('heroBg').classList.add('loaded'), 100));
+function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+function handleOverlay(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+function submitTip() {
+  const btn = document.querySelector('.modal-submit');
+  btn.textContent = 'Tip received — thank you';
+  btn.style.background = '#2C4A6E';
+  setTimeout(() => { closeModal(); btn.textContent = 'Submit tip'; btn.style.background = ''; }, 1800);
+}
+function filterTips(cat, btn) {
+  document.querySelectorAll('.tip-cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tip-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+  document.querySelectorAll('.tips-divider').forEach(div => {
+    let next = div.nextElementSibling;
+    let visible = false;
+    while (next && !next.classList.contains('tips-divider')) {
+      if (next.style.display !== 'none') visible = true;
+      next = next.nextElementSibling;
+    }
+    div.style.display = (cat === 'all' || visible) ? '' : 'none';
+  });
+}
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

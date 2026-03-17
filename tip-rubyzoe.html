@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruby Zoë Hotel — HoodTip London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --white: #FFFFFF; --off: #F7F6F3; --ink: #141412; --ink2: #3C3C3A;
+  --mid: #888884; --rule: #E2E0DA; --accent: #B5322A; --tag-bg: #F0EDE6;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+.mast { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 50px; background: var(--white); border-bottom: 1.5px solid var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
+.logo { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.logo span { color: var(--accent); }
+.mast-nav { display: flex; align-items: center; gap: 28px; }
+.mast-crumb { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); display: flex; gap: 10px; align-items: center; }
+.mast-crumb a { color: var(--mid); text-decoration: none; transition: color 0.15s; }
+.mast-crumb a:hover { color: var(--ink); }
+.mast-crumb .sep { opacity: 0.35; }
+.mast-crumb .cur { color: var(--ink); }
+.mast-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 6px 14px; background: var(--ink); color: var(--white); border: none; cursor: pointer; transition: background 0.15s; }
+.mast-btn:hover { background: var(--accent); }
+.tip-hero { margin-top: 50px; position: relative; height: 78vh; min-height: 500px; overflow: hidden; }
+.tip-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; transition: transform 8s ease; }
+.tip-hero img.loaded { transform: scale(1.03); }
+.tip-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(20,20,18,0.55) 100%); }
+.tip-hero-tag { position: absolute; top: 28px; left: 40px; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--white); background: var(--accent); padding: 4px 10px; }
+.tip-wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+.tip-header { padding: 52px 0 36px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+.tip-location { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.tip-location svg { width: 10px; height: 10px; fill: var(--accent); flex-shrink: 0; }
+.tip-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 76px); font-weight: 300; line-height: 0.95; letter-spacing: -1px; color: var(--ink); }
+.tip-meta-right { text-align: right; }
+.tip-cat-tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; border: 1px solid var(--rule); color: var(--ink2); background: var(--tag-bg); }
+.tip-tips-count { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); margin-top: 8px; }
+.tip-tips-count strong { color: var(--ink); }
+.tip-body { display: grid; grid-template-columns: 1fr 300px; gap: 80px; padding: 48px 0; border-bottom: 1px solid var(--rule); }
+.tip-text { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; line-height: 1.65; color: var(--ink2); }
+.tip-text p { margin-bottom: 20px; }
+.tip-text p:last-child { margin-bottom: 0; }
+.tip-sidebar { display: flex; flex-direction: column; }
+.sidebar-section { padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.sidebar-section:first-child { padding-top: 0; }
+.sidebar-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 5px; }
+.sidebar-value { font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); line-height: 1.5; }
+.sidebar-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.sidebar-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; background: var(--tag-bg); color: var(--ink2); border: 1px solid var(--rule); text-decoration: none; transition: all 0.15s; }
+.sidebar-tag:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.tip-photos { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; border-bottom: 1px solid var(--rule); }
+.tip-photo-item { overflow: hidden; aspect-ratio: 3/4; }
+.tip-photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.88); transition: transform 0.6s ease, filter 0.3s; }
+.tip-photo-item:hover img { transform: scale(1.03); filter: saturate(1); }
+.tip-map-section { padding: 40px 0 64px; }
+.tip-map-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.tip-map-label::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.map-embed { width: 100%; height: 380px; border: 1px solid var(--rule); overflow: hidden; }
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+.map-footer { margin-top: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.map-address { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); }
+.map-open-link { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(181,50,42,0.3); padding-bottom: 1px; }
+.map-open-link:hover { border-color: var(--accent); }
+.more-section { border-top: 1.5px solid var(--ink); padding: 48px 0; }
+.more-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); margin-bottom: 28px; }
+.more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); }
+.more-card { background: var(--white); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: background 0.15s; }
+.more-card:hover { background: var(--off); }
+.more-card-img { width: 100%; aspect-ratio: 3/2; overflow: hidden; }
+.more-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85); transition: transform 0.5s ease; }
+.more-card:hover .more-card-img img { transform: scale(1.04); }
+.more-card-body { padding: 16px 18px 20px; }
+.more-card-cat { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.more-card-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 3px; }
+.more-card-hood { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); }
+.submit-strip { background: var(--ink); padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.submit-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; font-style: italic; color: var(--white); }
+.submit-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; padding: 14px 32px; background: var(--accent); color: var(--white); border: none; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
+.submit-btn:hover { background: #8a2420; }
+footer { border-top: 1.5px solid var(--ink); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; }
+.footer-logo span { color: var(--accent); }
+.footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1px; color: var(--mid); }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(20,20,18,0.82); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--white); width: 90%; max-width: 460px; border-top: 2px solid var(--ink); position: relative; animation: mIn 0.22s ease; }
+@keyframes mIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.modal-head { padding: 24px 28px 18px; border-bottom: 1px solid var(--rule); }
+.modal-over { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.modal-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; }
+.modal-body { padding: 20px 28px 28px; }
+.modal-note { padding: 9px 12px; background: var(--off); border-left: 2px solid var(--mid); font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--ink2); margin-bottom: 18px; line-height: 1.5; }
+.form-row { margin-bottom: 12px; }
+.form-row label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
+.form-row input, .form-row select, .form-row textarea { width: 100%; padding: 9px 11px; background: var(--off); border: 1px solid var(--rule); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); outline: none; border-radius: 0; appearance: none; transition: border-color 0.15s; }
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--ink); }
+.form-row textarea { resize: none; height: 75px; }
+.modal-submit { width: 100%; padding: 11px; background: var(--ink); color: var(--white); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background 0.15s; margin-top: 4px; }
+.modal-submit:hover { background: var(--accent); }
+.modal-close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--mid); }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (max-width: 860px) {
+  .mast { padding: 0 20px; }
+  .mast-crumb { display: none; }
+  .tip-wrap { padding: 0 20px; }
+  .tip-header { grid-template-columns: 1fr; gap: 14px; }
+  .tip-meta-right { text-align: left; }
+  .tip-body { grid-template-columns: 1fr; gap: 40px; }
+  .tip-photos { grid-template-columns: 1fr 1fr; }
+  .more-grid { grid-template-columns: 1fr; }
+  .submit-strip { flex-direction: column; padding: 40px 20px; }
+  footer { padding: 18px 20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <a href="index.html" class="logo">HoodTip<span>.</span></a>
+  <div class="mast-nav">
+    <div class="mast-crumb">
+      <a href="index.html">Cities</a>
+      <span class="sep">/</span>
+      <span class="cur">Notting Hill · London</span>
+      <span class="sep">/</span>
+      <span class="cur">Ruby Zoë</span>
+    </div>
+    <button class="mast-btn" onclick="openModal()">Leave a tip</button>
+  </div>
+</header>
+
+<div class="tip-hero">
+  <img src="london-rubyzoe-view-rain.jpg" alt="Ruby Zoë Hotel — rooftop view over Notting Hill" id="heroImg">
+  <div class="tip-hero-overlay"></div>
+  <div class="tip-hero-tag">Hotel · Notting Hill</div>
+</div>
+
+<div class="tip-wrap">
+  <div class="tip-header reveal">
+    <div>
+      <div class="tip-location">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Notting Hill, London
+      </div>
+      <h1 class="tip-name">Ruby Zoë Hotel</h1>
+    </div>
+    <div class="tip-meta-right">
+      <div class="tip-cat-tag">Hotel</div>
+      <div class="tip-tips-count"><strong>5</strong> people tipped this</div>
+    </div>
+  </div>
+
+  <div class="tip-body reveal">
+    <div class="tip-text">
+      <p>Book the top floor. The view over the Notting Hill rooftops is worth the small premium and it still comes in under £200 a night — honest money for this part of London. Not the Connaught, but solid, well-located, and the room does what it needs to do.</p>
+      <p>Skip the hotel breakfast. There's a good bagel spot and a coffee place a few blocks away. The Central line is right there for getting into the city. If you're partial to west London — and you should be — this is the base.</p>
+    </div>
+    <div class="tip-sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Address</div>
+        <div class="sidebar-value">146-164 Notting Hill Gate<br>London W11 3QG</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Price</div>
+        <div class="sidebar-value">Under £200/night on the top floor</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Book</div>
+        <div class="sidebar-value">Top floor room for the view</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Skip</div>
+        <div class="sidebar-value">Hotel breakfast — get a bagel from Kuro Bagels nearby instead</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Getting around</div>
+        <div class="sidebar-value">Notting Hill Gate station — Central & Circle line</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Tags</div>
+        <div class="sidebar-tags">
+          <a class="sidebar-tag" href="#">Hotel</a>
+          <a class="sidebar-tag" href="#">West London</a>
+          <a class="sidebar-tag" href="#">Notting Hill</a>
+          <a class="sidebar-tag" href="#">Under £200</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tip-photos reveal">
+  <div class="tip-photo-item">
+    <img src="london-rubyzoe-view-morning.jpg" alt="Ruby Zoë — morning view">
+  </div>
+  <div class="tip-photo-item">
+    <img src="london-rubyzoe-feet.jpg" alt="Ruby Zoë — feet up, rooftop view">
+  </div>
+  <div class="tip-photo-item">
+    <img src="london-rubyzoe-street.jpg" alt="Notting Hill street below">
+  </div>
+</div>
+
+<div class="tip-wrap">
+  <div class="tip-map-section reveal">
+    <div class="tip-map-label">Find it</div>
+    <div class="map-embed">
+      <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU3c_o&q=Ruby+Zoe+Hotel+Notting+Hill+London&zoom=15">
+      </iframe>
+    </div>
+    <div class="map-footer">
+      <span class="map-address">146-164 Notting Hill Gate, London W11 3QG</span>
+      <a href="https://maps.google.com/?q=Ruby+Zoe+Hotel+Notting+Hill+London" target="_blank" class="map-open-link">Open in Maps →</a>
+    </div>
+  </div>
+
+  <div class="more-section reveal">
+    <div class="more-label">More tips</div>
+    <div class="more-grid">
+      <a href="tip-karmabread.html" class="more-card">
+        <div class="more-card-img"><img src="london-karmabread-challah-hand.jpg" alt="Karma Bread"></div>
+        <div class="more-card-body">
+          <div class="more-card-cat">Bakery</div>
+          <div class="more-card-name">Karma Bread</div>
+          <div class="more-card-hood">Hampstead Heath · London</div>
+        </div>
+      </a>
+      <a href="tip-bongojoe.html" class="more-card">
+        <div class="more-card-img"><img src="bongojoe-yellow-table.jpg" alt="Bongo Joe's"></div>
+        <div class="more-card-body">
+          <div class="more-card-cat">Bar</div>
+          <div class="more-card-name">Bongo Joe's</div>
+          <div class="more-card-hood">Plainpalais · Geneva</div>
+        </div>
+      </a>
+      <a href="tip-saintamour.html" class="more-card">
+        <div class="more-card-img"><img src="saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour"></div>
+        <div class="more-card-body">
+          <div class="more-card-cat">Wine</div>
+          <div class="more-card-name">Domaine Saint-Amour</div>
+          <div class="more-card-hood">Lavaux · Vaud</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="submit-strip">
+  <div class="submit-text">Know somewhere good in Notting Hill?</div>
+  <button class="submit-btn" onclick="openModal()">Leave a HoodTip</button>
+</div>
+
+<footer>
+  <div class="footer-logo">HoodTip<span>.</span></div>
+  <span class="footer-copy">Only the good stuff.</span>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="handleOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-head">
+      <div class="modal-over">London</div>
+      <div class="modal-title">Leave a HoodTip</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-note">Positive only. Specific over general. Write it like a note to a friend going next week.</div>
+      <div class="form-row"><label>Place name</label><input type="text" placeholder="What's it called?"></div>
+      <div class="form-row"><label>Neighbourhood</label><input type="text" placeholder="e.g. Notting Hill, Hampstead..."></div>
+      <div class="form-row"><label>Category</label>
+        <select><option>Hotel</option><option>Bar</option><option>Restaurant</option><option>Coffee</option><option>Bakery</option><option>Experience</option><option>Other</option></select>
+      </div>
+      <div class="form-row"><label>Your tip</label><textarea placeholder="Be specific. What to order, when to go, what to know."></textarea></div>
+      <button class="modal-submit" onclick="submitTip()">Submit tip</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => {
+  const img = document.getElementById('heroImg');
+  if (img.complete) img.classList.add('loaded');
+  else img.addEventListener('load', () => img.classList.add('loaded'));
+});
+function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+function handleOverlay(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+function submitTip() {
+  const btn = document.querySelector('.modal-submit');
+  btn.textContent = 'Tip received — thank you';
+  btn.style.background = '#2C4A6E';
+  setTimeout(() => { closeModal(); btn.textContent = 'Submit tip'; btn.style.background = ''; }, 1800);
+}
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

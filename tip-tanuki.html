@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanuki — HoodTip Plainpalais Geneva</title>
+  <meta name="description" content="Takeout sushi run by an elderly Japanese couple in Plainpalais. Get the large platter, grab sake from Uchitomi, eat at home. Better than any restaurant." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #f7f4ef; --ink: #1a1816; --muted: #6b6560; --rule: #e0dbd3; --accent: #2a5a3a; --serif: 'Playfair Display', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 56px; background: rgba(247,244,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-right { display: flex; gap: 24px; align-items: center; }
+    .nav-right a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .nav-right a:hover { color: var(--ink); }
+    .nav-cta { background: var(--ink); color: var(--cream) !important; padding: 7px 16px; border-radius: 2px; }
+    .nav-cta:hover { background: var(--accent) !important; }
+    .breadcrumb { padding: 80px 32px 0; display: flex; gap: 8px; align-items: center; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb span { opacity: 0.4; }
+    .hero { margin: 20px 32px 0; position: relative; overflow: hidden; border-radius: 4px; height: clamp(360px, 56vw, 640px); }
+    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 30%; transition: transform 0.8s ease; }
+    .hero:hover img { transform: scale(1.015); }
+    .hero-badge { position: absolute; top: 20px; left: 20px; background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
+    .layout { max-width: 1080px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 64px; }
+    .meta-line { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .meta-line a { color: var(--accent); text-decoration: none; }
+    h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .tipped-line { font-size: 0.78rem; color: var(--muted); margin-bottom: 32px; }
+    .tipped-dot { display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .divider { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
+    .copy { font-size: 1.05rem; line-height: 1.75; color: var(--ink); max-width: 600px; }
+    .copy p + p { margin-top: 1.2em; }
+    .pull-quote { margin: 36px 0; padding: 24px 28px; border-left: 3px solid var(--accent); background: rgba(42,90,58,0.04); border-radius: 0 3px 3px 0; }
+    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: 1.15rem; line-height: 1.5; color: var(--ink); }
+    .photos { margin-top: 40px; }
+    .photos-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .photo-grid img { width: 100%; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; }
+    .photo-grid img:hover { opacity: 0.88; }
+    .photo-grid .sq { aspect-ratio: 1/1; }
+    .photo-grid .wide { grid-column: 1 / -1; aspect-ratio: 16/9; }
+    .sidebar { padding-top: 6px; }
+    .fact-block { border-top: 1px solid var(--rule); padding: 18px 0; }
+    .fact-block:last-of-type { border-bottom: 1px solid var(--rule); }
+    .fact-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+    .fact-value { font-size: 0.92rem; font-weight: 400; color: var(--ink); }
+    .pair-tip { margin-top: 24px; padding: 16px 18px; border: 1px solid var(--rule); border-radius: 3px; background: #fff; }
+    .pair-tip-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .pair-tip a { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .pair-tip a:hover { color: var(--accent); }
+    .pair-tip p { font-size: 0.78rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+    .map-block { margin-top: 24px; border-radius: 3px; overflow: hidden; border: 1px solid var(--rule); }
+    .map-inner { background: #e8e4dc; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+    .map-pin { font-size: 1.5rem; }
+    .map-address { font-size: 0.8rem; color: var(--muted); text-align: center; line-height: 1.4; }
+    .map-link { display: block; background: var(--ink); color: var(--cream); text-align: center; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; padding: 12px; text-decoration: none; transition: background 0.2s; }
+    .map-link:hover { background: var(--accent); }
+    .tags { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid var(--rule); border-radius: 2px; padding: 4px 10px; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+    .tag:hover { border-color: var(--ink); color: var(--ink); }
+    .more-section { max-width: 1080px; margin: 0 auto; padding: 0 32px 80px; border-top: 1px solid var(--rule); }
+    .more-header { display: flex; justify-content: space-between; align-items: baseline; padding: 32px 0 24px; }
+    .more-header h2 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+    .more-header a { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .more-header a:hover { color: var(--accent); }
+    .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .tip-card { text-decoration: none; color: var(--ink); display: block; transition: transform 0.25s; }
+    .tip-card:hover { transform: translateY(-2px); }
+    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; margin-bottom: 12px; background: var(--rule); }
+    .tip-card:hover .tip-card-img { opacity: 0.85; }
+    .tip-card-cat { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .tip-card-name { font-family: var(--serif); font-size: 1rem; font-weight: 600; line-height: 1.2; margin-bottom: 4px; }
+    .tip-card-hood { font-size: 0.75rem; color: var(--muted); }
+    footer { background: var(--ink); color: var(--cream); padding: 40px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; }
+    .footer-logo em { font-style: italic; }
+    .footer-sub { font-size: 0.75rem; color: rgba(247,244,239,0.45); margin-top: 4px; }
+    .footer-right { font-size: 0.75rem; color: rgba(247,244,239,0.45); letter-spacing: 0.05em; text-transform: uppercase; }
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .breadcrumb { padding: 72px 16px 0; }
+      .hero { margin: 16px 16px 0; height: 56vw; min-height: 220px; }
+      .layout { grid-template-columns: 1fr; padding: 32px 16px 48px; gap: 40px; }
+      h1 { font-size: 2rem; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .more-section { padding: 0 16px 48px; }
+      .more-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .more-grid .tip-card:last-child { display: none; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .more-grid { grid-template-columns: 1fr; }
+      .more-grid .tip-card:last-child { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://hoodtip.com">Hood<em>Tip.</em></a>
+  <div class="nav-right">
+    <a href="https://hoodtip.com/geneva">Geneva</a>
+    <a href="https://hoodtip.com">All tips</a>
+    <a href="#" class="nav-cta">Leave a tip</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="https://hoodtip.com">HoodTip</a>
+  <span>/</span>
+  <a href="https://hoodtip.com/geneva">Geneva</a>
+  <span>/</span>
+  <a href="https://hoodtip.com/#plainpalais">Plainpalais</a>
+  <span>/</span>
+  Tanuki
+</div>
+
+<div class="hero">
+  <img src="Screenshot_2026-03-17_at_08_56_54.png" alt="Tanuki large sushi platter, Plainpalais Geneva" />
+  <div class="hero-badge">Sushi · Takeaway</div>
+</div>
+
+<div class="layout">
+  <main>
+    <div class="meta-line">
+      <a href="https://hoodtip.com/#plainpalais">Plainpalais</a> · Geneva
+    </div>
+    <h1>Tanuki</h1>
+    <div class="tipped-line"><span class="tipped-dot"></span>8 people tipped this</div>
+    <hr class="divider" />
+    <div class="copy">
+      <p>Takeout only, and that's the whole point. An elderly Japanese couple running a tiny sushi spot on Rue Vignier — he makes the sushi, she handles everything else. No tables, no dine-in, no fuss. Just some of the freshest fish in Geneva out of a small kitchen.</p>
+      <p>The wasabi is homemade and excellent. When they're out of something, that's it for the day — so don't leave it too late. The large platter in the photo ran about 110 CHF, which is extremely fair considering any sit-down meal in Geneva will probably cost the same and not be half as good.</p>
+      <p>The move: get the large platter, stop at Uchitomi — the Japanese grocery nearby — for a good bottle of sake, go home. You've just made one of the best meals available in this city without setting foot in a restaurant.</p>
+    </div>
+    <div class="pull-quote">
+      <p>"Get the large platter. Stop at Uchitomi for sake on the way home. Better than any restaurant and about the same price."</p>
+    </div>
+    <div class="photos">
+      <div class="photos-label">Photos</div>
+      <div class="photo-grid">
+        <img class="sq" src="Screenshot_2026-03-17_at_08_56_54.png" alt="Tanuki large sushi platter overhead" />
+        <img class="sq" src="Screenshot_2026-03-17_at_08_57_24.png" alt="Sushi plated at home with Suigei sake bottle" />
+        <img class="wide" src="Screenshot_2026-03-17_at_08_59_08.png" alt="Tanuki menu in window, Plainpalais" />
+      </div>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="fact-block">
+      <div class="fact-label">Best for</div>
+      <div class="fact-value">The best sushi dinner in Geneva, eaten at home</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Order</div>
+      <div class="fact-value">The large platter. Don't overthink it.</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Price</div>
+      <div class="fact-value">~110 CHF for the large platter — honest money for what it is</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Good to know</div>
+      <div class="fact-value">Takeout only. No tables. They sell out — don't leave it too late. Homemade wasabi, it's excellent.</div>
+    </div>
+
+    <div class="pair-tip">
+      <div class="pair-tip-label">Pair this with</div>
+      <a href="https://hoodtip.com/tip-uchitomi">→ Uchitomi Japanese Grocery</a>
+      <p>Stop here on the way home for a bottle of sake. Just around the corner.</p>
+    </div>
+
+    <div class="map-block">
+      <div class="map-inner">
+        <div class="map-pin">📍</div>
+        <div class="map-address">Rue Vignier 5<br>1205 Genève</div>
+      </div>
+      <a class="map-link" href="https://maps.google.com/?q=Tanuki+Sushi+Rue+Vignier+5+Geneva" target="_blank" rel="noopener">Open in Maps →</a>
+    </div>
+
+    <div class="tags">
+      <a class="tag" href="#">Sushi</a>
+      <a class="tag" href="#">Takeaway</a>
+      <a class="tag" href="#">Plainpalais</a>
+      <a class="tag" href="#">Geneva</a>
+      <a class="tag" href="#">Dinner</a>
+      <a class="tag" href="#">Value</a>
+    </div>
+  </aside>
+</div>
+
+<section class="more-section">
+  <div class="more-header">
+    <h2>More tips in Plainpalais</h2>
+    <a href="https://hoodtip.com/#plainpalais">All Plainpalais tips →</a>
+  </div>
+  <div class="more-grid">
+    <a class="tip-card" href="https://hoodtip.com/tip-bongojoe">
+      <img class="tip-card-img" src="https://hoodtip.com/bongojoe-yellow-table.jpg" alt="Bongo Joe's" />
+      <div class="tip-card-cat">Bar</div>
+      <div class="tip-card-name">Bongo Joe's</div>
+      <div class="tip-card-hood">Plainpalais · Geneva</div>
+    </a>
+    <a class="tip-card" href="https://hoodtip.com/tip-uchitomi">
+      <div class="tip-card-img" style="background:var(--rule);display:flex;align-items:center;justify-content:center;font-size:0.7rem;letter-spacing:0.05em;text-transform:uppercase;color:#b5afa7;aspect-ratio:4/3;border-radius:3px;">Photo coming</div>
+      <div class="tip-card-cat">Japanese Grocery</div>
+      <div class="tip-card-name">Uchitomi</div>
+      <div class="tip-card-hood">Plainpalais · Geneva</div>
+    </a>
+    <a class="tip-card" href="https://hoodtip.com/tip-saintamour">
+      <img class="tip-card-img" src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" />
+      <div class="tip-card-cat">Wine</div>
+      <div class="tip-card-name">Domaine Saint-Amour</div>
+      <div class="tip-card-hood">Lavaux · Vaud</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Hood<em>Tip.</em></div>
+    <div class="footer-sub">Only the good stuff.</div>
+  </div>
+  <div class="footer-right">© 2026 HoodTip</div>
+</footer>
+
+</body>
+</html>
