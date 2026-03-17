@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pero — HoodTip Yeniköy Istanbul</title>
+  <meta name="description" content="Waterfront cocktail bar on the Bosphorus. Terrazzo floors. Arrive for one drink, leave several hours later. Yeniköy, Istanbul." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #f7f4ef; --ink: #1a1816; --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Barlow', system-ui, sans-serif; --cond: 'Barlow Condensed', system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 400; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 56px; background: rgba(247,244,239,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--ink); }
+    .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-logo .dot { color: var(--red); }
+    .nav-right { display: flex; gap: 24px; align-items: center; }
+    .nav-right a { font-family: var(--cond); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .nav-right a:hover { color: var(--ink); }
+    .nav-cta { background: var(--ink); color: var(--cream) !important; padding: 7px 16px; }
+    .breadcrumb { padding: 80px 32px 0; display: flex; gap: 8px; align-items: center; font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb span { opacity: 0.4; }
+    .hero { margin: 20px 32px 0; position: relative; overflow: hidden; border-radius: 3px; height: clamp(360px, 56vw, 620px); }
+    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 50%; transition: transform 0.8s; }
+    .hero:hover img { transform: scale(1.015); }
+    .hero-badge { position: absolute; top: 20px; left: 20px; background: var(--ink); color: var(--cream); font-family: var(--cond); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; }
+    .layout { max-width: 1080px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 64px; }
+    .meta-line { font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .meta-line a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+    h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 500; line-height: 1.1; margin-bottom: 8px; }
+    .tipped-line { font-size: 0.78rem; color: var(--muted); margin-bottom: 32px; }
+    .tipped-dot { display: inline-block; width: 5px; height: 5px; background: var(--red); border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .divider { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
+    .copy { font-size: 1.05rem; line-height: 1.75; color: var(--ink); max-width: 600px; }
+    .copy p + p { margin-top: 1.2em; }
+    .pull-quote { margin: 36px 0; padding: 24px 28px; border-left: 2px solid var(--ink); background: rgba(26,24,22,0.03); }
+    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.5; }
+    .photos { margin-top: 40px; }
+    .photos-label { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .photo-single img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 3px; }
+    .sidebar { padding-top: 6px; }
+    .fact-block { border-top: 1px solid var(--rule); padding: 18px 0; }
+    .fact-block:last-of-type { border-bottom: 1px solid var(--rule); }
+    .fact-label { font-family: var(--cond); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+    .fact-value { font-size: 0.92rem; color: var(--ink); }
+    .map-block { margin-top: 32px; border-radius: 3px; overflow: hidden; border: 1px solid var(--rule); }
+    .map-inner { background: #ece9e2; height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+    .map-pin { font-size: 1.4rem; }
+    .map-address { font-size: 0.8rem; color: var(--muted); text-align: center; line-height: 1.4; }
+    .map-link { display: block; background: var(--ink); color: var(--cream); text-align: center; font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 11px; text-decoration: none; }
+    .tags { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--rule); padding: 4px 10px; color: var(--muted); text-decoration: none; }
+    .tag:hover { border-color: var(--ink); color: var(--ink); }
+    .more-section { max-width: 1080px; margin: 0 auto; padding: 0 32px 80px; border-top: 1px solid var(--rule); }
+    .more-header { display: flex; justify-content: space-between; align-items: baseline; padding: 32px 0 24px; }
+    .more-header h2 { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; }
+    .more-header a { font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .tip-card { text-decoration: none; color: var(--ink); display: block; transition: opacity 0.2s; }
+    .tip-card:hover { opacity: 0.75; }
+    .tip-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-bottom: 12px; background: var(--rule); }
+    .tip-card-cat { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .tip-card-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.2; margin-bottom: 3px; }
+    .tip-card-hood { font-size: 0.75rem; color: var(--muted); }
+    footer { background: var(--ink); color: var(--cream); padding: 40px 32px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--red); }
+    .footer-logo { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-sub { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,244,239,0.35); margin-top: 4px; }
+    .footer-right { font-family: var(--cond); font-size: 0.68rem; color: rgba(247,244,239,0.35); text-transform: uppercase; letter-spacing: 0.08em; }
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .breadcrumb { padding: 72px 16px 0; }
+      .hero { margin: 16px 16px 0; height: 56vw; min-height: 220px; }
+      .layout { grid-template-columns: 1fr; padding: 32px 16px 48px; gap: 40px; }
+      .more-section { padding: 0 16px 48px; }
+      .more-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="https://hoodtip.com">Hood<em>Tip<span class="dot">.</span></em></a>
+  <div class="nav-right">
+    <a href="https://hoodtip.com/yenikoy.html">Yeniköy</a>
+    <a href="https://hoodtip.com">All tips</a>
+    <a href="#" class="nav-cta">Leave a tip</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="https://hoodtip.com">HoodTip</a><span>/</span>
+  <a href="https://hoodtip.com/yenikoy.html">Yeniköy</a><span>/</span>
+  Pero
+</div>
+
+<div class="hero">
+  <img src="IMG_7505.JPG" alt="Pero bar interior — striped floor, stained glass, Bosphorus open at the end, Yeniköy Istanbul" />
+  <div class="hero-badge">Bar</div>
+</div>
+
+<div class="layout">
+  <main>
+    <div class="meta-line"><a href="https://hoodtip.com/yenikoy.html">Yeniköy</a> · Istanbul</div>
+    <h1>Pero</h1>
+    <div class="tipped-line"><span class="tipped-dot"></span>9 people tipped this</div>
+    <hr class="divider" />
+    <div class="copy">
+      <p>A cocktail bar on the Bosphorus with genuinely great aesthetic — terrazzo floors, right on the water, the kind of place that shouldn't really exist in this part of the city but does and is all the better for it.</p>
+      <p>It's not why you come to Yeniköy, but if you find yourself up this way — and you should, for Arnavutköy restaurant nearby — then Pero is where you go after. Or before. Or instead of going home.</p>
+      <p>Good cocktails. Great room. The Bosphorus out the window. That's the whole tip.</p>
+    </div>
+    <div class="pull-quote">
+      <p>"Not why you come to Yeniköy. But if you find yourself up this way, go."</p>
+    </div>
+    <div class="photos">
+      <div class="photos-label">Photos</div>
+      <div class="photo-grid">
+        <img src="IMG_7505.JPG" alt="Pero interior — full room, striped floor, Bosphorus open at end" style="grid-column:1/-1;aspect-ratio:16/9;object-fit:cover;border-radius:3px;width:100%;" />
+        <img src="IMG_7503.JPG" alt="Pero — palm fronds, marble table, Bosphorus" style="aspect-ratio:3/4;object-fit:cover;border-radius:3px;width:100%;" />
+        <img src="IMG_7497.JPG" alt="Pero — container ship on the Bosphorus" style="aspect-ratio:3/4;object-fit:cover;border-radius:3px;width:100%;" />
+      </div>
+    </div>
+  </main>
+
+  <aside class="sidebar">
+    <div class="fact-block">
+      <div class="fact-label">Best for</div>
+      <div class="fact-value">Evening cocktails on the Bosphorus</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Vibe</div>
+      <div class="fact-value">Terrazzo floors, waterfront terrace, genuinely beautiful room</div>
+    </div>
+    <div class="fact-block">
+      <div class="fact-label">Season</div>
+      <div class="fact-value">Year-round — spectacular in autumn when the Bosphorus light goes gold</div>
+    </div>
+    <div class="map-block">
+      <div class="map-inner">
+        <div class="map-pin">📍</div>
+        <div class="map-address">Yeniköy<br>Istanbul, Turkey</div>
+      </div>
+      <a class="map-link" href="https://maps.google.com/?q=Pero+Yenikoy+Istanbul" target="_blank" rel="noopener">Open in Maps →</a>
+    </div>
+    <div class="tags">
+      <a class="tag" href="#">Bar</a>
+      <a class="tag" href="#">Waterfront</a>
+      <a class="tag" href="#">Yeniköy</a>
+      <a class="tag" href="#">Istanbul</a>
+      <a class="tag" href="#">Evening</a>
+    </div>
+  </aside>
+</div>
+
+<section class="more-section">
+  <div class="more-header">
+    <h2>More tips in Yeniköy</h2>
+    <a href="https://hoodtip.com/yenikoy.html">Full Yeniköy guide →</a>
+  </div>
+  <div class="more-grid">
+    <a class="tip-card" href="https://hoodtip.com/tip-arnavutkoy">
+      <img src="https://hoodtip.com/photo-arnavutkoy-restaurant.jpg" alt="Arnavutköy Restaurant" />
+      <div class="tip-card-cat">Restaurant</div>
+      <div class="tip-card-name">Arnavutköy Restaurant</div>
+      <div class="tip-card-hood">Yeniköy · Istanbul</div>
+    </a>
+    <a class="tip-card" href="https://hoodtip.com/tip-grea">
+      <img src="https://hoodtip.com/photo-roastery-cafe.jpg" alt="Grea Coffee" />
+      <div class="tip-card-cat">Coffee</div>
+      <div class="tip-card-name">Grea Coffee Nations</div>
+      <div class="tip-card-hood">Yeniköy · Istanbul</div>
+    </a>
+    <a class="tip-card" href="https://hoodtip.com/tip-thecow">
+      <img src="IMG_3513.JPG" alt="The Cow" />
+      <div class="tip-card-cat">Pub · Bar</div>
+      <div class="tip-card-name">The Cow</div>
+      <div class="tip-card-hood">Notting Hill · London</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-sub">Only the good stuff.</div>
+  </div>
+  <div class="footer-right">© 2026 HoodTip</div>
+</footer>
+</body>
+</html>
