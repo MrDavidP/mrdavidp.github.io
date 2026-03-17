@@ -176,12 +176,28 @@
     }
     .hood-card:last-child { border-right: none; }
     .hood-card:hover { background: #f3efe8; }
-    .hood-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
-    .hood-body { padding: 16px 20px 20px; }
-    .hood-loc { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-    .hood-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; line-height: 1.1; margin-bottom: 6px; }
+    .hood-img-wrap { position: relative; overflow: hidden; aspect-ratio: 3/2; }
+    .hood-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .hood-card:hover .hood-img { transform: scale(1.04); }
+    .hood-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,8,6,0.72) 0%, rgba(10,8,6,0.1) 55%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 16px 18px;
+    }
+    .hood-name {
+      font-family: var(--serif); font-size: 1.55rem; font-weight: 500;
+      line-height: 1.05; letter-spacing: 0.01em;
+      color: #fff;
+    }
+    .hood-loc {
+      font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.6);
+      margin-top: 3px;
+    }
+    .hood-body { padding: 12px 18px 18px; }
     .hood-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .hood-count { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rule); }
+    .hood-count { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--rule); }
 
     /* Second row of hoods */
     .hoods-grid-2 {
@@ -425,46 +441,36 @@
 
 <div class="hoods-grid">
   <a class="hood-card" href="https://hoodtip.com/tip-karmabread">
-    <img class="hood-img" src="london-karmabread-challah-hand.jpg" alt="Hampstead Heath" />
+    <div class="hood-img-wrap"><img class="hood-img" src="london-karmabread-challah-hand.jpg" alt="Hampstead Heath" /><div class="hood-overlay"><div class="hood-name">Hampstead Heath</div><div class="hood-loc">London · England</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">London · England</div>
-      <div class="hood-name">Hampstead Heath</div>
       <div class="hood-desc">Best challah in London on a Friday. Walk the ponds after.</div>
       <div class="hood-count">1 tip</div>
     </div>
   </a>
   <a class="hood-card" href="https://hoodtip.com/tip-bongojoe">
-    <img class="hood-img" src="https://hoodtip.com/bongojoe-yellow-table.jpg" alt="Plainpalais" />
+    <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/bongojoe-yellow-table.jpg" alt="Plainpalais" /><div class="hood-overlay"><div class="hood-name">Plainpalais</div><div class="hood-loc">Geneva · Switzerland</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Geneva · Switzerland</div>
-      <div class="hood-name">Plainpalais</div>
       <div class="hood-desc">Record shop turned outdoor bar. Freshest sushi in the city. A Japanese grocery you need.</div>
       <div class="hood-count">3 tips</div>
     </div>
   </a>
   <a class="hood-card" href="https://hoodtip.com/tip-paulhenri">
-    <img class="hood-img" src="https://hoodtip.com/carouge-oyster-lady.jpg" alt="Carouge" />
+    <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/carouge-oyster-lady.jpg" alt="Carouge" /><div class="hood-overlay"><div class="hood-name">Carouge</div><div class="hood-loc">Geneva · Switzerland</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Geneva · Switzerland</div>
-      <div class="hood-name">Carouge</div>
       <div class="hood-desc">Saturday market: natural wine, Breton oysters, smoked lake fish. Best pizza in town.</div>
       <div class="hood-count">7 tips</div>
     </div>
   </a>
   <a class="hood-card" href="https://hoodtip.com/tip-empanadas">
-    <img class="hood-img" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Nations" />
+    <div class="hood-img-wrap"><img class="hood-img" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Nations" /><div class="hood-overlay"><div class="hood-name">Nations</div><div class="hood-loc">Geneva · Switzerland</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Geneva · Switzerland</div>
-      <div class="hood-name">Nations</div>
       <div class="hood-desc">Two good reasons to go near the UN. Ask for the sauce picante at one. Take the sandwich to the park at the other.</div>
       <div class="hood-count">2 tips</div>
     </div>
   </a>
   <a class="hood-card" href="https://hoodtip.com/tip-mulligans">
-    <img class="hood-img" src="geneva-mulligans-pints.jpg" alt="Cornavin" />
+    <div class="hood-img-wrap"><img class="hood-img" src="geneva-mulligans-pints.jpg" alt="Cornavin" /><div class="hood-overlay"><div class="hood-name">Cornavin</div><div class="hood-loc">Geneva · Switzerland</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Geneva · Switzerland</div>
-      <div class="hood-name">Cornavin</div>
       <div class="hood-desc">Geneva's best Guinness. And the train restaurant car almost nobody knows exists.</div>
       <div class="hood-count">2 tips</div>
     </div>
@@ -473,46 +479,36 @@
 
 <div class="hoods-grid-2">
   <a class="hood-card" href="https://hoodtip.com/tip-saintamour">
-    <img class="hood-img" src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Lavaux" />
+    <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Lavaux" /><div class="hood-overlay"><div class="hood-name">Lavaux</div><div class="hood-loc">Vaud · Switzerland</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Vaud · Switzerland</div>
-      <div class="hood-name">Lavaux</div>
       <div class="hood-desc">Honour system rosé in a UNESCO vineyard. Leave cash, take a bottle, sit in the vines.</div>
       <div class="hood-count">1 tip</div>
     </div>
   </a>
   <a class="hood-card" href="https://hoodtip.com/tip-belvedere">
-    <img class="hood-img" src="wengen-belvedere-pool-snow.jpg" alt="Wengen" />
+    <div class="hood-img-wrap"><img class="hood-img" src="wengen-belvedere-pool-snow.jpg" alt="Wengen" /><div class="hood-overlay"><div class="hood-name">Wengen</div><div class="hood-loc">Berner Oberland · Switzerland</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Berner Oberland · Switzerland</div>
-      <div class="hood-name">Wengen</div>
       <div class="hood-desc">A hotel you reach by cog railway. Outdoor pool in the snow. Cocktail guy who summers at Scorpios.</div>
       <div class="hood-count">1 tip</div>
     </div>
   </a>
   <a class="hood-card" href="https://hoodtip.com/tip-oceanik">
-    <img class="hood-img" src="paris-oceanik-window-dusk.jpg" alt="Latin Quarter" />
+    <div class="hood-img-wrap"><img class="hood-img" src="paris-oceanik-window-dusk.jpg" alt="Latin Quarter" /><div class="hood-overlay"><div class="hood-name">Latin Quarter</div><div class="hood-loc">Paris · France</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Paris · France</div>
-      <div class="hood-name">Latin Quarter</div>
       <div class="hood-desc">The right hotel at the right price for the 5th. Skip breakfast. Walk to Luxembourg.</div>
       <div class="hood-count">1 tip</div>
     </div>
   </a>
   <a class="hood-card" href="https://hoodtip.com/yenikoy.html">
-    <img class="hood-img" src="https://hoodtip.com/photo-waterfront-dining.jpg" alt="Yeniköy" />
+    <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/photo-waterfront-dining.jpg" alt="Yeniköy" /><div class="hood-overlay"><div class="hood-name">Yeniköy</div><div class="hood-loc">Istanbul · Turkey</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Istanbul · Turkey</div>
-      <div class="hood-name">Yeniköy</div>
       <div class="hood-desc">Raki on the Bosphorus. Courtyard roastery. Bonito fish truck in October. Not curated for visitors.</div>
       <div class="hood-count">6 tips</div>
     </div>
   </a>
   <a class="hood-card" href="https://hoodtip.com/tip-kilwins">
-    <img class="hood-img" src="https://hoodtip.com/saugatuck-kilwins-exterior.jpg" alt="Saugatuck" />
+    <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/saugatuck-kilwins-exterior.jpg" alt="Saugatuck" /><div class="hood-overlay"><div class="hood-name">Saugatuck</div><div class="hood-loc">Michigan · USA</div></div></div>
     <div class="hood-body">
-      <div class="hood-loc">Michigan · USA</div>
-      <div class="hood-name">Saugatuck</div>
       <div class="hood-desc">The quintessential American sweet shop. Take someone who's never been to America. Watch their face.</div>
       <div class="hood-count">1 tip</div>
     </div>
