@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asri Turşucu — Beyoğlu, Istanbul · HoodTip</title>
+  <meta name="description" content="The amazing pickle place. Since 1938. If you like pickled things, this place will bring you joy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+
+    .hero { width: 100%; height: clamp(420px, 58vw, 640px); overflow: hidden; position: relative; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+    .hero-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 2.5rem; background: linear-gradient(transparent, rgba(20,16,12,0.65)); }
+    .hero-caption-location { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; }
+    .hero-caption-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: #fff; }
+
+    .article { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 2rem; }
+
+    .breadcrumb { font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb-sep { opacity: 0.4; }
+
+    .category { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.2rem 0.65rem; border-radius: 2px; display: inline-block; margin-bottom: 1rem; }
+
+    h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+    .subtitle { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); line-height: 1.45; margin-bottom: 2.5rem; }
+
+    .meta-strip { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .meta-value { font-size: 0.88rem; color: var(--ink); }
+
+    .body p { font-size: 1.05rem; line-height: 1.8; color: var(--ink); margin-bottom: 1.4rem; font-weight: 300; }
+    .body p:last-child { margin-bottom: 0; }
+
+    .pull-quote { border-left: 2px solid var(--ink); padding: 0.75rem 0 0.75rem 1.75rem; margin: 2.5rem 0; }
+    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: clamp(1.4rem, 3vw, 1.75rem); line-height: 1.35; color: var(--ink); font-weight: 400; }
+
+    .img-full { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 3rem 0; }
+    .img-full img { width: 100%; display: block; max-height: 580px; object-fit: cover; }
+    .img-caption { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.6rem 2rem 0; max-width: 1200px; margin: 0 auto; }
+
+    .img-contained { margin: 2.5rem 0; }
+    .img-contained img { width: 100%; display: block; }
+    .img-contained .img-caption { padding-left: 0; }
+
+    .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
+    .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .tip-box li { font-size: 0.9rem; color: var(--ink); padding-left: 1rem; position: relative; line-height: 1.55; }
+    .tip-box li::before { content: '—'; position: absolute; left: 0; color: var(--muted); font-size: 0.8rem; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--cond); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-top: 3.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.15rem; transition: color 0.15s, border-color 0.15s; }
+    .back-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 5rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.cta) { display: none; }
+      .nav-tagline { display: none; }
+      .article { padding: 2.5rem 1.25rem 2rem; }
+      .footer-stats { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="yenikoy.html">Istanbul</a></li>
+      <li><a href="index.html" class="cta">Leave a tip</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <img src="pickle-shop.jpg" alt="Asri Turşucu window — wall of pickle jars, Istanbul taxi reflected in the glass" />
+  <div class="hero-caption">
+    <div class="hero-caption-location">Beyoğlu · Istanbul · Turkey</div>
+    <div class="hero-caption-name">Asri Turşucu — The Amazing Pickle Place</div>
+  </div>
+</div>
+
+<div class="article">
+
+  <div class="breadcrumb">
+    <a href="index.html">HoodTip</a>
+    <span class="breadcrumb-sep">·</span>
+    <span>Istanbul</span>
+    <span class="breadcrumb-sep">·</span>
+    <span>Beyoğlu</span>
+  </div>
+
+  <span class="category">Shop · Food</span>
+
+  <h1>Asri Turşucu</h1>
+  <p class="subtitle">Just call it the amazing pickle place. Everyone will know.</p>
+
+  <div class="meta-strip">
+    <div class="meta-item">
+      <span class="meta-label">Address</span>
+      <span class="meta-value">Ağa Hamamı Sk. 9/A, Beyoğlu, Istanbul</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Since</span>
+      <span class="meta-value">1938</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Pronounced</span>
+      <span class="meta-value">Don't worry about it</span>
+    </div>
+    <div class="meta-item" style="margin-left:auto;text-align:right;">
+      <span class="meta-label">Tip by</span>
+      <span class="meta-value"><a href="profile-dave.html" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);">@dave</a></span>
+    </div>
+  </div>
+
+  <div class="body">
+    <p>You walk past the window and you stop. Wall-to-wall jars with red-checked lids, stacked floor to ceiling — pickled green tomatoes, carrots, beans, peppers, cucumbers, things you can't identify and need to try. The yellow taxi reflected in the glass. Since 1938, says the logo. You go in.</p>
+    <p>This is not the pickle you know. We're not talking a half sour spear on the side of a sandwich. Turkish fermentation is its own thing — vinegary, deeply savoury, the kind of flavour that makes everything you eat alongside it taste better. Asri Turşucu has been perfecting it for nearly ninety years and they have the newspaper clippings on the wall to prove it.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"If you like pickled things, this place will bring you joy."</p>
+  </div>
+
+  <div class="img-full">
+    <img src="istanbul-pickles.jpg" alt="Asri Turşucu interior — pickle display cases with press clippings on the wall" />
+    <div class="img-caption">Since 1938. The press clippings are wallpaper.</div>
+  </div>
+
+  <div class="body">
+    <p>Get a selection to take home — the pickled green tomatoes are the move, but point at things and see what happens. Eat them over the next few days with whatever you're cooking. They make a mediocre meal good and a good meal great.</p>
+  </div>
+
+  <div class="img-contained">
+    <img src="pickled-tomato.jpg" alt="Pickled green tomatoes in brine at Asri Turşucu" />
+    <div class="img-caption" style="padding-left:0;">Pickled green tomatoes. Start here.</div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-box-label">The tip</div>
+    <ul>
+      <li>Just point at things — the staff are used to it and the selection is the fun</li>
+      <li>Pickled green tomatoes are the standout but get a mix</li>
+      <li>Buy more than you think you need — they travel well and last</li>
+      <li>In Beyoğlu, near Çukurcuma — combine with a walk through the antique district</li>
+      <li>The pronunciation is "Ahs-ree Toor-shoo-joo" but honestly just say "the pickle place" and anyone in Istanbul will know</li>
+    </ul>
+  </div>
+
+  <a href="index.html" class="back-link">← All tips</a>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats">
+      <span>33 tips</span><span>·</span>
+      <span>12 neighbourhoods</span><span>·</span>
+      <span>7 cities</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
