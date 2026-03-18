@@ -1,413 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carouge, Geneva — HoodTip</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Brawn:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --white: #ffffff;
-  --off: #f9f9f7;
-  --paper: #f3f1ed;
-  --ink: #111110;
-  --ink-light: #3a3a38;
-  --mid: #888884;
-  --rule: #d8d8d4;
-  --accent: #c0392b;
-}
-html { scroll-behavior: smooth; }
-body { background: var(--white); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carouge — Geneva · HoodTip</title>
+  <meta name="description" content="Carouge is what Geneva would be if it relaxed. Saturday market, natural wine, Breton oysters, the best pizza in the city. HoodTip's guide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef;
+      --ink:   #1a1816;
+      --muted: #6b6560;
+      --rule:  #e0dbd3;
+      --red:   #b5322a;
+    }
 
-.mast { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 52px; background: var(--white); border-bottom: 2px solid var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
-.logo { font-family: 'Brawn', serif; font-size: 20px; font-weight: 700; color: var(--ink); text-decoration: none; }
-.logo span { color: var(--accent); }
-.mast-trail { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); display: flex; align-items: center; gap: 8px; }
-.mast-trail a { color: var(--mid); text-decoration: none; transition: color 0.15s; }
-.mast-trail a:hover { color: var(--ink); }
-.mast-trail .cur { color: var(--ink); }
-.mast-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 8px 18px; background: var(--ink); color: var(--white); border: none; cursor: pointer; transition: background 0.15s; }
-.mast-btn:hover { background: var(--accent); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-.hero { margin-top: 52px; height: calc(100vh - 52px); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
-.hero-img { position: absolute; inset: 0; background-image: url('carouge-oyster-lady.jpg'); background-size: cover; background-position: center 25%; filter: brightness(0.5) saturate(0.85); transform: scale(1.03); transition: transform 8s ease; }
-.hero-img.loaded { transform: scale(1); }
-.hero-text { position: relative; z-index: 2; padding: 0 48px 56px; max-width: 780px; }
-.hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
-.hero-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
-.hero-h1 { font-family: 'Brawn', serif; font-size: clamp(56px, 9vw, 116px); font-weight: 400; line-height: 0.93; letter-spacing: -3px; color: #fff; margin-bottom: 22px; }
-.hero-h1 em { font-style: italic; color: rgba(255,255,255,0.45); font-size: 0.5em; display: block; letter-spacing: -1px; margin-top: 8px; }
-.hero-deck { font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 300; font-style: italic; line-height: 1.65; color: rgba(255,255,255,0.65); max-width: 520px; }
+    /* ── NAV ── */
+    nav {
+      padding: 0 2rem;
+      border-bottom: 1.5px solid var(--ink);
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+    }
+    .nav-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 1.05rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; color: var(--ink);
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .logo-dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--red); margin-bottom: 1px;
+    }
+    .nav-links { display: flex; gap: 0; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500; font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      padding: 0 1.5rem; height: 56px;
+      display: flex; align-items: center;
+      border-left: 1px solid var(--rule);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta {
+      background: var(--ink); color: var(--cream);
+      border-left: 1px solid var(--ink);
+    }
+    .nav-links a.cta:hover { opacity: 0.85; color: var(--cream); }
 
-.intro-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--rule); background: var(--paper); }
-.intro-cell { padding: 24px 32px; border-right: 1px solid var(--rule); }
-.intro-cell:last-child { border-right: none; }
-.ic-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 5px; }
-.ic-value { font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); line-height: 1.5; }
+    /* ── HERO ── */
+    .hero {
+      width: 100%;
+      height: clamp(380px, 50vw, 600px);
+      overflow: hidden; position: relative;
+    }
+    .hero img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 55%;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,12,10,0.7) 0%, rgba(15,12,10,0.1) 50%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 3rem 3.5rem;
+    }
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
+      margin-bottom: 0.5rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 400; line-height: 0.95;
+      letter-spacing: -0.01em; color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: clamp(1rem, 2vw, 1.3rem);
+      color: rgba(255,255,255,0.7); max-width: 520px;
+      line-height: 1.45;
+    }
 
-.main-wrap { display: grid; grid-template-columns: 1fr 300px; border-bottom: 1px solid var(--rule); }
-.main-col { padding: 64px 48px; border-right: 1px solid var(--rule); }
-.side-col { padding: 56px 32px; background: var(--off); }
+    /* ── INTRO ── */
+    .intro-wrap {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 2fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .intro-meta {
+      padding: 3rem 2.5rem;
+      border-right: 1px solid var(--rule);
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+    .intro-stat { display: flex; flex-direction: column; gap: 0.2rem; }
+    .intro-stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+    }
+    .intro-stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--ink);
+    }
+    .intro-body {
+      padding: 3rem 3.5rem;
+    }
+    .intro-body p {
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--ink); font-weight: 300;
+      margin-bottom: 1.2rem; max-width: 640px;
+    }
+    .intro-body p:last-child { margin-bottom: 0; }
 
-.intro-text { margin-bottom: 56px; }
-.intro-text p { font-family: 'Source Serif 4', serif; font-size: 17px; font-weight: 300; line-height: 1.85; color: var(--ink-light); margin-bottom: 20px; max-width: 600px; }
-.intro-text p:first-child::first-letter { font-family: 'Brawn', serif; font-size: 56px; font-weight: 700; float: left; line-height: 0.78; margin-right: 10px; margin-top: 10px; color: var(--accent); }
+    /* ── SECTION HEAD ── */
+    .section-head-wrap {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+    .section-head {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      padding: 2.5rem 0 1.25rem;
+      border-bottom: 1px solid var(--ink);
+    }
+    .section-head h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted); font-weight: 400;
+      white-space: nowrap;
+    }
+    .section-head-line { flex: 1; height: 1px; background: var(--rule); }
 
-.sec-head { border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 0; }
-.sec-head-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--ink); }
+    /* ── TIPS GRID ── */
+    .tips-grid {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--ink);
+    }
+    .tip-card {
+      text-decoration: none; color: var(--ink);
+      border-right: 1px solid var(--rule);
+      display: block; transition: background 0.2s;
+      position: relative;
+    }
+    .tip-card:last-child { border-right: none; }
+    .tip-card:hover { background: #f3efe8; }
+    .tip-card-img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+    }
+    .tip-card:hover .tip-card-img { transform: scale(1.03); }
+    .tip-card-img-wrap { overflow: hidden; }
+    .tip-card-body { padding: 1.25rem 1.5rem 1.75rem; }
+    .tip-card-cat {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem;
+    }
+    .tip-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 500; line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+    .tip-card-copy {
+      font-size: 0.82rem; color: var(--muted);
+      line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .tip-card-arrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 1rem; display: inline-block;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.1rem;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tip-card:hover .tip-card-arrow { color: var(--ink); border-color: var(--ink); }
 
-.tips-section { margin-bottom: 56px; }
+    /* placeholder card */
+    .tip-card.placeholder {
+      opacity: 0.45; pointer-events: none;
+    }
+    .tip-card-placeholder-img {
+      width: 100%; aspect-ratio: 4/3;
+      background: #ece9e3;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tip-card-placeholder-img span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #b5b0a8;
+    }
 
-.tip { display: grid; grid-template-columns: 44px 1fr; border-bottom: 1px solid var(--rule); padding: 32px 0; cursor: default; }
-.tip-num { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 300; color: var(--rule); line-height: 1; padding-top: 4px; transition: color 0.2s; }
-.tip:hover .tip-num { color: var(--accent); }
-.tip-cat { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(192,57,43,0.25); padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
-.tip-name { font-family: 'Source Serif 4', serif; font-size: 21px; font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 10px; }
-.tip-quote { font-family: 'Source Serif 4', serif; font-size: 14px; font-style: italic; font-weight: 300; line-height: 1.75; color: var(--mid); max-width: 540px; }
-.tip-count { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); margin-top: 12px; }
-.tip-count strong { color: var(--ink); }
+    /* ── NEIGHBOURHOOD FEEL ── */
+    .feel-wrap {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 3fr 2fr;
+      border-bottom: 1px solid var(--ink);
+    }
+    .feel-img-wrap { overflow: hidden; }
+    .feel-img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      min-height: 380px;
+    }
+    .feel-body {
+      padding: 3.5rem;
+      border-left: 1px solid var(--rule);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .feel-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.25rem;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--rule);
+    }
+    .feel-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      line-height: 1.4; color: var(--ink);
+      font-weight: 400;
+    }
+    .feel-body-text {
+      font-size: 0.88rem; line-height: 1.75;
+      color: var(--muted); margin-top: 1.5rem;
+    }
 
-.tip-photo { display: grid; grid-template-columns: 44px 1fr 188px; gap: 0 20px; border-bottom: 1px solid var(--rule); padding: 32px 0; cursor: default; }
-.tip-photo:hover .tip-num { color: var(--accent); }
-.tip-photo-img { overflow: hidden; align-self: start; }
-.tip-photo-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: saturate(0.85); transition: transform 0.5s ease, filter 0.3s; }
-.tip-photo:hover .tip-photo-img img { transform: scale(1.03); filter: saturate(1); }
+    /* ── GETTING THERE ── */
+    .getting-there {
+      max-width: 1400px; margin: 0 auto;
+      padding: 3rem 2.5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      border-bottom: 1px solid var(--ink);
+    }
+    .gt-item {}
+    .gt-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.6rem;
+    }
+    .gt-value {
+      font-size: 0.9rem; color: var(--ink); line-height: 1.6;
+    }
 
-.photo-break { margin: 0 -48px 56px; }
-.photo-break img { width: 100%; height: 380px; object-fit: cover; display: block; filter: saturate(0.82); }
-.photo-break-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 0 -48px 56px; }
-.photo-break-2 img { width: 100%; height: 300px; object-fit: cover; display: block; filter: saturate(0.82); transition: filter 0.3s; }
-.photo-break-2 img:hover { filter: saturate(1); }
+    /* ── MORE GENEVA ── */
+    .more-hoods {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--ink);
+    }
+    .hood-link {
+      text-decoration: none; color: var(--ink);
+      padding: 2rem 2.5rem;
+      border-right: 1px solid var(--rule);
+      display: flex; flex-direction: column; gap: 0.3rem;
+      transition: background 0.2s;
+    }
+    .hood-link:last-child { border-right: none; }
+    .hood-link:hover { background: #f3efe8; }
+    .hood-link-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .hood-link-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 500;
+    }
+    .hood-link-count {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 0.5rem;
+    }
 
-.side-block { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--rule); }
-.side-block:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.side-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
-.side-list { list-style: none; }
-.side-list li { padding: 10px 0; border-bottom: 1px solid var(--rule); font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 300; line-height: 1.55; color: var(--ink-light); display: flex; gap: 10px; }
-.side-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
-.side-list li:last-child { border-bottom: none; }
-.side-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: saturate(0.82); margin-bottom: 10px; transition: filter 0.3s; }
-.side-photo:hover { filter: saturate(1); }
-.side-caption { font-family: 'Source Serif 4', serif; font-size: 12px; font-style: italic; color: var(--mid); line-height: 1.5; }
-.side-cta { background: var(--ink); padding: 20px; margin-top: 36px; }
-.side-cta p { font-family: 'Source Serif 4', serif; font-size: 14px; font-style: italic; color: rgba(255,255,255,0.55); margin-bottom: 14px; line-height: 1.5; }
-.side-cta-btn { display: block; width: 100%; padding: 11px; background: var(--accent); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; text-align: center; border: none; cursor: pointer; transition: background 0.15s; }
-.side-cta-btn:hover { background: #8a2420; }
+    /* ── FOOTER ── */
+    footer {
+      border-top: 2px solid var(--red);
+      background: var(--ink);
+    }
+    .footer-inner {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+      height: 72px;
+    }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--cream); text-decoration: none;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .footer-stats {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(247,244,239,0.35);
+      display: flex; gap: 1.5rem;
+    }
+    .footer-note {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem; color: rgba(247,244,239,0.35);
+      font-style: italic;
+    }
 
-footer { border-top: 2px solid var(--ink); padding: 24px 40px; display: flex; align-items: center; justify-content: space-between; }
-.footer-logo { font-family: 'Brawn', serif; font-size: 18px; font-weight: 700; }
-.footer-logo span { color: var(--accent); }
-.footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1px; color: var(--mid); }
-
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(17,17,16,0.82); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
-.modal-overlay.open { display: flex; }
-.modal { background: var(--white); width: 90%; max-width: 480px; border-top: 3px solid var(--ink); position: relative; animation: mIn 0.22s ease; }
-@keyframes mIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-.modal-head { padding: 28px 32px 20px; border-bottom: 1px solid var(--rule); }
-.modal-over { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
-.modal-title { font-family: 'Brawn', serif; font-size: 26px; }
-.modal-body { padding: 24px 32px 32px; }
-.modal-note { padding: 10px 14px; background: var(--paper); border-left: 3px solid var(--rule); font-family: 'Source Serif 4', serif; font-size: 13px; font-style: italic; color: var(--ink-light); margin-bottom: 20px; line-height: 1.5; }
-.form-row { margin-bottom: 14px; }
-.form-row label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 5px; }
-.form-row input, .form-row select, .form-row textarea { width: 100%; padding: 10px 12px; background: var(--paper); border: 1px solid var(--rule); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); outline: none; border-radius: 0; appearance: none; transition: border-color 0.15s; }
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--ink); background: white; }
-.form-row textarea { resize: none; height: 80px; }
-.modal-submit { width: 100%; padding: 12px; background: var(--ink); color: #fff; border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background 0.15s; }
-.modal-submit:hover { background: var(--accent); }
-.modal-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--mid); }
-
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.in { opacity: 1; transform: none; }
-
-@media (max-width: 900px) {
-  .mast { padding: 0 20px; }
-  .hero-text { padding: 0 20px 40px; }
-  .intro-strip { grid-template-columns: 1fr; }
-  .intro-cell { border-right: none; }
-  .main-wrap { grid-template-columns: 1fr; }
-  .main-col { padding: 40px 20px; border-right: none; }
-  .side-col { padding: 40px 20px; }
-  .photo-break { margin: 0 -20px 40px; }
-  .photo-break-2 { margin: 0 -20px 40px; grid-template-columns: 1fr; }
-  .tip-photo { grid-template-columns: 44px 1fr; }
-  .tip-photo-img { display: none; }
-  footer { padding: 20px; }
-}
-</style>
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .tips-grid { grid-template-columns: repeat(2, 1fr); }
+      .tip-card:nth-child(2n) { border-right: none; }
+      .tip-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
+      .feel-wrap { grid-template-columns: 1fr; }
+      .feel-img { min-height: 280px; }
+      .feel-body { border-left: none; border-top: 1px solid var(--rule); padding: 2.5rem 2rem; }
+      .getting-there { grid-template-columns: 1fr 1fr; }
+      .more-hoods { grid-template-columns: 1fr; }
+      .hood-link { border-right: none; border-bottom: 1px solid var(--rule); }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero-overlay { padding: 2rem 1.5rem; }
+      .intro-wrap { grid-template-columns: 1fr; }
+      .intro-meta { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 1.5rem; flex-direction: row; flex-wrap: wrap; }
+      .intro-body { padding: 2rem 1.5rem; }
+      .section-head-wrap { padding: 0 1.5rem; }
+      .tips-grid { grid-template-columns: 1fr; }
+      .tip-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .tip-card:nth-child(n+3) { border-top: none; }
+      .getting-there { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+      .footer-stats, .footer-note { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="mast">
-  <a href="index.html" class="logo">HoodTip<span>.</span></a>
-  <div class="mast-trail">
-    <a href="geneva.html">Geneva</a>
-    <span>/</span>
-    <span class="cur">Carouge</span>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Hood<span class="logo-dot"></span>Tip</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#neighbourhoods">Neighbourhoods</a></li>
+      <li><a href="index.html" class="cta">Leave a tip</a></li>
+    </ul>
   </div>
-  <button class="mast-btn" onclick="openModal()">Leave a tip</button>
-</header>
+</nav>
 
-<section class="hero">
-  <div class="hero-img" id="heroBg"></div>
-  <div class="hero-text">
-    <div class="hero-eyebrow">
-      <span>Geneva, Switzerland</span>
-      <div class="hero-dot"></div>
-      <span>18 tips</span>
-    </div>
-    <h1 class="hero-h1">Carouge<em>the village within</em></h1>
-    <p class="hero-deck">South of the Arve, a former Italian village that never quite decided it's part of Geneva. Come on a Saturday. Come hungry.</p>
-  </div>
-</section>
-
-<div class="intro-strip">
-  <div class="intro-cell">
-    <div class="ic-label">Getting there</div>
-    <div class="ic-value">Walk along the Arve from the city centre — 20 min. Or tram 12/13 to Place du Marché</div>
-  </div>
-  <div class="intro-cell">
-    <div class="ic-label">Go when</div>
-    <div class="ic-value">Saturday morning for the market. Any evening for dinner. Summer for the terrasse at Cinéma Bio</div>
-  </div>
-  <div class="intro-cell">
-    <div class="ic-label">Best for</div>
-    <div class="ic-value">Natural wine, oysters, flowers, a good pizza, and escaping the corporate version of Geneva</div>
+<!-- HERO -->
+<div class="hero">
+  <img src="carouge-sunny-day.jpg" alt="Saturday market at Carouge — violinist playing in the square, Carouge Cinéma in the background" />
+  <div class="hero-overlay">
+    <div class="hero-eyebrow">Geneva · Switzerland · HoodTip</div>
+    <div class="hero-title">Carouge</div>
+    <div class="hero-subtitle">What Geneva would be if it relaxed. Italian streets, Saturday market, natural wine on a barrel.</div>
   </div>
 </div>
 
-<div class="main-wrap">
-  <main class="main-col">
-
-    <div class="intro-text reveal">
-      <p>Cross the Arve and something changes. Carouge was built by the King of Sardinia in the 18th century as a deliberate provocation to its buttoned-up neighbour — and it has never fully surrendered that identity. The architecture is different. The pace is different. On a Saturday morning in October, with the plane trees going gold and the market filling the square, it feels nothing like Switzerland.</p>
-      <p>The market is the anchor. Come hungry, leave with bottles.</p>
+<!-- INTRO -->
+<div class="intro-wrap">
+  <div class="intro-meta">
+    <div class="intro-stat">
+      <span class="intro-stat-label">City</span>
+      <span class="intro-stat-value">Geneva, Switzerland</span>
     </div>
-
-    <div class="tips-section reveal">
-      <div class="sec-head"><span class="sec-head-label">The Tips</span></div>
-
-      <div class="tip-photo">
-        <div class="tip-num">01</div>
-        <div>
-          <span class="tip-cat">Natural Wine</span>
-          <div class="tip-name">Paul-Henri Soler — Vigneron</div>
-          <p class="tip-quote">"A French guy who married a Swiss woman and makes wine from grapes sourced from vineyards near the airport. Local chefs, sommeliers, and food people treat him like a god — and they're right. It's always good, it's always changing, and he'll pour you glasses to taste for free while you decide. The chalk-price bottles on the barrel are the most honest wine transaction in Geneva. Buy more than you think you need."</p>
-          <div class="tip-count"><strong>14</strong> people tipped this</div>
-        </div>
-        <div class="tip-photo-img">
-          <img src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler wine with chalk prices">
-        </div>
-      </div>
-
-      <div class="tip-photo">
-        <div class="tip-num">02</div>
-        <div>
-          <span class="tip-cat">Pizza</span>
-          <div class="tip-name">La Cucagna</div>
-          <p class="tip-quote">"Real Italian guys, real pizza — thin crust, good tomato, nothing too complicated. The reviews online don't do it justice. I've been ten times and it's been good ten times, which is its own kind of excellence. Order a green salad. Sit outside if you can. House white by the carafe."</p>
-          <div class="tip-count"><strong>8</strong> people tipped this</div>
-        </div>
-        <div class="tip-photo-img">
-          <img src="carouge-pizza.jpg" alt="Pizza at La Cucagna">
-        </div>
-      </div>
-
-      <div class="tip-photo">
-        <div class="tip-num">03</div>
-        <div>
-          <span class="tip-cat">Oysters</span>
-          <div class="tip-name">Samouraï des Mers — Bar à Huîtres</div>
-          <p class="tip-quote">"Breton oysters, a cold Muscadet, a blue barrel table, and a woman who laughs when you toast her. There is no better use of a Saturday morning. Get six minimum, order a second glass, slow down."</p>
-          <div class="tip-count"><strong>9</strong> people tipped this</div>
-        </div>
-        <div class="tip-photo-img">
-          <img src="carouge-oyster-lady.jpg" alt="Oysters at the Saturday market">
-        </div>
-      </div>
-
-      <div class="tip-photo">
-        <div class="tip-num">04</div>
-        <div>
-          <span class="tip-cat">Fish</span>
-          <div class="tip-name">The Lac Léman Fishmonger</div>
-          <p class="tip-quote">"Not always there, but when he is, don't walk past. He fishes Lac Léman himself and sells what he caught. The smoked whitefish — féra fumée — is exceptional. Buy it, take it home, eat it with capers and good bread."</p>
-          <div class="tip-count"><strong>6</strong> people tipped this</div>
-        </div>
-        <div class="tip-photo-img">
-          <img src="carouge-whitefish.jpg" alt="Smoked whitefish from Lac Léman">
-        </div>
-      </div>
-
-      <div class="tip-photo">
-        <div class="tip-num">05</div>
-        <div>
-          <span class="tip-cat">Flowers</span>
-          <div class="tip-name">Gallay — Fleurs, Fruits & Légumes</div>
-          <p class="tip-quote">"Producers, not resellers — the flowers are grown nearby and you can tell. In spring it's tulips under the yellow canopy. In autumn it's sunflowers and chrysanthemums. Buy something every time you go. It's one of the cheapest nice things you can do in Geneva."</p>
-          <div class="tip-count"><strong>7</strong> people tipped this</div>
-        </div>
-        <div class="tip-photo-img">
-          <img src="carouge-sunflower-girl.jpg" alt="Sunflowers from Gallay">
-        </div>
-      </div>
-
+    <div class="intro-stat">
+      <span class="intro-stat-label">Tips</span>
+      <span class="intro-stat-value">4 and growing</span>
     </div>
-
-    <div class="photo-break reveal">
-      <img src="carouge-market-square.jpg" alt="Place du Marché, Carouge — Saturday morning">
+    <div class="intro-stat">
+      <span class="intro-stat-label">Best day</span>
+      <span class="intro-stat-value">Saturday morning</span>
     </div>
-
-    <div class="tips-section reveal">
-      <div class="sec-head"><span class="sec-head-label">While You're Here</span></div>
-
-      <div class="tip">
-        <div class="tip-num">06</div>
-        <div>
-          <span class="tip-cat">Café · Cinema</span>
-          <div class="tip-name">Cinéma Bio</div>
-          <p class="tip-quote">"The gravitational centre of Carouge. Small independent cinema with a good café and tables spilling onto the square. Good for a coffee before the market, a glass of wine after. On Saturday mornings in summer the oyster stand sets up right outside it, which is one of the more civilised things Geneva has to offer."</p>
-          <div class="tip-count"><strong>6</strong> people tipped this</div>
-        </div>
-      </div>
-
-      <div class="tip-photo">
-        <div class="tip-num">07</div>
-        <div>
-          <span class="tip-cat">Pâtisserie</span>
-          <div class="tip-name">Renou Genève</div>
-          <p class="tip-quote">"A proper Geneva pâtisserie with impeccable display cases and things made by someone who cares. Get the all-chocolate madeleines. The best version of that thing you'll find in this city."</p>
-          <div class="tip-count"><strong>5</strong> people tipped this</div>
-        </div>
-        <div class="tip-photo-img">
-          <img src="carouge-renou.jpg" alt="Renou pâtisserie display">
-        </div>
-      </div>
-
-      <div class="tip-photo">
-        <div class="tip-num">08</div>
-        <div>
-          <span class="tip-cat">Toy Shop</span>
-          <div class="tip-name">L'Astuce Jeux</div>
-          <p class="tip-quote">"A proper independent toy shop — wooden things, games you've never heard of, things that will last. Swiss toy shops have a different philosophy: things that use imagination, no screens. If you have kids, or know people who do, go in."</p>
-          <div class="tip-count"><strong>4</strong> people tipped this</div>
-        </div>
-        <div class="tip-photo-img">
-          <img src="carouge-lastuce-jeux.jpg" alt="L'Astuce Jeux toy shop">
-        </div>
-      </div>
-
-      <div class="tip">
-        <div class="tip-num">09</div>
-        <div>
-          <span class="tip-cat">Walk</span>
-          <div class="tip-name">Along the Arve — from the city centre</div>
-          <p class="tip-quote">"Don't take the tram. Walk from the city centre along the Arve — it takes about 20 minutes and it's genuinely beautiful, especially in autumn when the trees are turning. There are small rapids about halfway that are worth stopping at. The river makes a sound the city doesn't."</p>
-          <div class="tip-count"><strong>5</strong> people tipped this</div>
-        </div>
-      </div>
-
+    <div class="intro-stat">
+      <span class="intro-stat-label">Getting there</span>
+      <span class="intro-stat-value">Tram 12 or 18 from Cornavin</span>
     </div>
-
-    <div class="photo-break-2 reveal">
-      <img src="carouge-cinema-bio-summer.jpg" alt="Cinéma Bio in summer">
-      <img src="carouge-arve-autumn.jpg" alt="The Arve in autumn">
-    </div>
-
-  </main>
-
-  <aside class="side-col">
-
-    <div class="side-block reveal">
-      <div class="side-label">The Saturday sequence</div>
-      <ul class="side-list">
-        <li>Arrive at Place du Marché around 10am — the market fills up fast</li>
-        <li>Paul-Henri Soler first. Taste. Buy. Set the bottles somewhere safe.</li>
-        <li>Check if the fishmonger is there. If yes, get the smoked whitefish.</li>
-        <li>Oysters and Muscadet at Samouraï des Mers. Don't rush this.</li>
-        <li>Flowers from Gallay. Always buy something.</li>
-        <li>Pizza at La Cucagna for lunch. House white carafe. Green salad.</li>
-        <li>Coffee at Cinéma Bio. Check what's showing.</li>
-        <li>Walk home along the Arve. Stop at the rapids.</li>
-      </ul>
-    </div>
-
-    <div class="side-block reveal">
-      <div class="side-label">Need to know</div>
-      <ul class="side-list">
-        <li>Market is Saturday mornings only — winds down by 1pm</li>
-        <li>Paul-Henri Soler's wine sells out. Come early.</li>
-        <li>The fishmonger isn't always there — no way to know, just look</li>
-        <li>La Cucagna doesn't take bookings — go early or wait</li>
-        <li>Carouge has its own pace. Don't rush it.</li>
-      </ul>
-    </div>
-
-    <div class="side-block reveal">
-      <div class="side-label">The Arve walk</div>
-      <img src="carouge-arve-autumn.jpg" alt="Arve river walk in autumn" class="side-photo">
-      <p class="side-caption">Start at Pont de Carouge, walk the south bank. The rapids are about 10 minutes in.</p>
-    </div>
-
-    <div class="side-cta reveal">
-      <p>Know something about Carouge worth passing on?</p>
-      <button class="side-cta-btn" onclick="openModal()">Leave a HoodTip</button>
-    </div>
-
-  </aside>
+  </div>
+  <div class="intro-body">
+    <p>Carouge is technically a separate municipality from Geneva, and it feels like it. The streets are arcaded, the buildings are Italian — it was built by the King of Sardinia in the 18th century as a deliberate counterpoint to Protestant Geneva across the river. The vibe stuck.</p>
+    <p>The Saturday market is the main event. It fills the Place du Marché from 8h to 14h with producers, a natural wine guy, a Breton oyster guy, a chocolatier, a flower seller, street food, and usually someone playing violin between the stalls. Come hungry, leave heavy.</p>
+    <p>The neighbourhood itself is walkable, dense with good cafés and restaurants, and completely un-curated for tourists. That's the point.</p>
+  </div>
 </div>
 
+<!-- TIPS -->
+<div class="section-head-wrap">
+  <div class="section-head">
+    <h2>Tips in Carouge</h2>
+    <div class="section-head-line"></div>
+  </div>
+</div>
+
+<div class="tips-grid">
+
+  <!-- Paul-Henri -->
+  <a class="tip-card" href="tip-paulhenri.html">
+    <div class="tip-card-img-wrap">
+      <img class="tip-card-img" src="paulhenri-wine-bottles.jpg" alt="Paul-Henri Soler wine" />
+    </div>
+    <div class="tip-card-body">
+      <div class="tip-card-cat">Wine · Market</div>
+      <div class="tip-card-name">Paul-Henri Soler</div>
+      <div class="tip-card-copy">The best wine in Geneva, maybe Switzerland, maybe the world. A French winemaker, a yellow tent, chalk prices on the bottles. Get there before noon.</div>
+      <span class="tip-card-arrow">Read the tip →</span>
+    </div>
+  </a>
+
+  <!-- Samourai -->
+  <a class="tip-card" href="tip-samourai.html">
+    <div class="tip-card-img-wrap">
+      <img class="tip-card-img" src="carouge-oyster-lady.jpg" alt="Oysters at the Carouge market" />
+    </div>
+    <div class="tip-card-body">
+      <div class="tip-card-cat">Seafood · Market</div>
+      <div class="tip-card-name">Samouraï des Mers</div>
+      <div class="tip-card-copy">A frazzled Frenchman drives Breton oysters to the market every Saturday. Blue barrel table, cold muscadet, keep moving.</div>
+      <span class="tip-card-arrow">Read the tip →</span>
+    </div>
+  </a>
+
+  <!-- Renou — coming -->
+  <div class="tip-card placeholder">
+    <div class="tip-card-placeholder-img"><span>Photo coming</span></div>
+    <div class="tip-card-body">
+      <div class="tip-card-cat">Chocolate</div>
+      <div class="tip-card-name">Renou</div>
+      <div class="tip-card-copy">The chocolatier at the market. Coming soon.</div>
+    </div>
+  </div>
+
+  <!-- Cucagna — coming -->
+  <div class="tip-card placeholder">
+    <div class="tip-card-placeholder-img"><span>Photo coming</span></div>
+    <div class="tip-card-body">
+      <div class="tip-card-cat">Pizza</div>
+      <div class="tip-card-name">Cucagna</div>
+      <div class="tip-card-copy">Best pizza in Geneva. Coming soon.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FEEL FOR THE PLACE -->
+<div class="feel-wrap">
+  <div class="feel-img-wrap">
+    <img class="feel-img" src="carouge-market-square.jpg" alt="Carouge market square" />
+  </div>
+  <div class="feel-body">
+    <div class="feel-label">The feel of the place</div>
+    <div class="feel-quote">"The market runs until 14h but the energy peaks around 10. That's when the wine is open, the oysters are cold, and people are in no hurry to be anywhere else."</div>
+    <p class="feel-body-text">Saturday in Carouge has a rhythm to it. Arrive early, walk the stalls, make your decisions slowly. Paul-Henri will let you taste everything. The oyster guy will shuck to order. There is nowhere to rush to.</p>
+  </div>
+</div>
+
+<!-- GETTING THERE -->
+<div class="section-head-wrap">
+  <div class="section-head">
+    <h2>Getting there</h2>
+    <div class="section-head-line"></div>
+  </div>
+</div>
+
+<div class="getting-there">
+  <div class="gt-item">
+    <div class="gt-label">By tram</div>
+    <div class="gt-value">Tram 12 or 18 from Cornavin. Get off at Marché de Carouge. 15 minutes from the centre.</div>
+  </div>
+  <div class="gt-item">
+    <div class="gt-label">Market hours</div>
+    <div class="gt-value">Saturday 8h–14h. Get there by 10h for the best selection. Paul-Henri sells out of certain bottles by noon.</div>
+  </div>
+  <div class="gt-item">
+    <div class="gt-label">Worth knowing</div>
+    <div class="gt-value">The Cinéma Bio on the square does coffee and natural wine. Good place to land if you need to sit down between stalls.</div>
+  </div>
+</div>
+
+<!-- MORE GENEVA -->
+<div class="section-head-wrap">
+  <div class="section-head">
+    <h2>More in Geneva</h2>
+    <div class="section-head-line"></div>
+  </div>
+</div>
+
+<div class="more-hoods">
+  <a class="hood-link" href="tip-bongojoe.html">
+    <span class="hood-link-label">Neighbourhood</span>
+    <span class="hood-link-name">Plainpalais</span>
+    <span class="hood-link-count">3 tips — Bar, sushi, Japanese grocery</span>
+  </a>
+  <a class="hood-link" href="tip-mulligans.html">
+    <span class="hood-link-label">Neighbourhood</span>
+    <span class="hood-link-name">Cornavin</span>
+    <span class="hood-link-count">2 tips — Best Guinness, train restaurant car</span>
+  </a>
+  <a class="hood-link" href="tip-empanadas.html">
+    <span class="hood-link-label">Neighbourhood</span>
+    <span class="hood-link-name">Nations</span>
+    <span class="hood-link-count">2 tips — Empanadas, sandwich park</span>
+  </a>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">HoodTip<span>.</span></div>
-  <span class="footer-copy">© 2025 HoodTip.com</span>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Hood<span class="logo-dot"></span>Tip</a>
+    <div class="footer-stats">
+      <span>31 tips</span>
+      <span>12 neighbourhoods</span>
+      <span>7 cities</span>
+    </div>
+    <p class="footer-note">Write it like you're giving a friend advice the night before they leave.</p>
+  </div>
 </footer>
 
-<div class="modal-overlay" id="modal" onclick="handleOverlay(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-head">
-      <div class="modal-over">Carouge, Geneva</div>
-      <div class="modal-title">Leave a HoodTip</div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-note">Positive only. Write it like a note to a friend going next Saturday.</div>
-      <div class="form-row"><label>Place name</label><input type="text" placeholder="What's it called?"></div>
-      <div class="form-row"><label>Category</label>
-        <select>
-          <option value="">Select one</option>
-          <option>Wine</option>
-          <option>Food / Restaurant</option>
-          <option>Coffee</option>
-          <option>Market</option>
-          <option>Shop</option>
-          <option>Walk / Outdoors</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-row"><label>Your tip</label><textarea placeholder="Be specific. What to order, when to go, what to know."></textarea></div>
-      <button class="modal-submit" onclick="submitTip()">Submit tip</button>
-    </div>
-  </div>
-</div>
-
-<script>
-window.addEventListener('load', () => setTimeout(() => document.getElementById('heroBg').classList.add('loaded'), 100));
-function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
-function handleOverlay(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-function submitTip() {
-  const btn = document.querySelector('.modal-submit');
-  btn.textContent = 'Tip received — thank you';
-  btn.style.background = '#2C4A6E';
-  setTimeout(() => { closeModal(); btn.textContent = 'Submit tip'; btn.style.background = ''; }, 1800);
-}
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-}, { threshold: 0.06 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
