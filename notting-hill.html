@@ -1,331 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notting Hill, London — HoodTip</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Brawn:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --white: #ffffff;
-  --off: #f9f9f7;
-  --paper: #f3f1ed;
-  --ink: #111110;
-  --ink-light: #3a3a38;
-  --mid: #888884;
-  --rule: #d8d8d4;
-  --accent: #c0392b;
-}
-html { scroll-behavior: smooth; }
-body { background: var(--white); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notting Hill — London · HoodTip</title>
+  <meta name="description" content="West London at its best. A proper pub with Guinness and oysters, Britain's oldest cinema, and a rooftop hotel under £200. HoodTip's guide to Notting Hill." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
-.mast { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 52px; background: var(--white); border-bottom: 2px solid var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
-.logo { font-family: 'Brawn', serif; font-size: 20px; font-weight: 700; color: var(--ink); text-decoration: none; }
-.logo span { color: var(--accent); }
-.mast-trail { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); display: flex; align-items: center; gap: 8px; }
-.mast-trail a { color: var(--mid); text-decoration: none; transition: color 0.15s; }
-.mast-trail a:hover { color: var(--ink); }
-.mast-trail .cur { color: var(--ink); }
-.mast-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 8px 18px; background: var(--ink); color: var(--white); border: none; cursor: pointer; transition: background 0.15s; }
-.mast-btn:hover { background: var(--accent); }
+    /* NAV */
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
+    .nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-links { display: flex; gap: 0; list-style: none; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+    .nav-links a.cta:hover { background: var(--ink2); }
 
-.hero { margin-top: 52px; height: calc(100vh - 52px); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
-.hero-img { position: absolute; inset: 0; background-image: url('electric-cinema-curtain.jpg'); background-size: cover; background-position: center 30%; filter: brightness(0.45) saturate(0.8); transform: scale(1.03); transition: transform 8s ease; }
-.hero-img.loaded { transform: scale(1); }
-.hero-text { position: relative; z-index: 2; padding: 0 48px 56px; max-width: 780px; }
-.hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
-.hero-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
-.hero-h1 { font-family: 'Brawn', serif; font-size: clamp(56px, 9vw, 116px); font-weight: 400; line-height: 0.93; letter-spacing: -3px; color: #fff; margin-bottom: 22px; }
-.hero-h1 em { font-style: italic; color: rgba(255,255,255,0.45); font-size: 0.5em; display: block; letter-spacing: -1px; margin-top: 8px; }
-.hero-deck { font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 300; font-style: italic; line-height: 1.65; color: rgba(255,255,255,0.65); max-width: 520px; }
+    /* HERO */
+    .hero { width: 100%; height: clamp(380px, 50vw, 580px); overflow: hidden; position: relative; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0.1) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem 3.5rem; }
+    .hero-eyebrow { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; }
+    .hero-title { font-family: var(--serif); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.01em; color: #fff; margin-bottom: 0.75rem; }
+    .hero-subtitle { font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(255,255,255,0.7); max-width: 480px; line-height: 1.45; }
 
-.intro-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--rule); background: var(--paper); }
-.intro-cell { padding: 24px 32px; border-right: 1px solid var(--rule); }
-.intro-cell:last-child { border-right: none; }
-.ic-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 5px; }
-.ic-value { font-family: 'Source Serif 4', serif; font-size: 14px; color: var(--ink); line-height: 1.5; }
+    /* INTRO */
+    .intro-wrap { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; border-bottom: 1px solid var(--ink); }
+    .intro-meta { padding: 2.5rem 2rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 1.75rem; }
+    .intro-stat { display: flex; flex-direction: column; gap: 0.2rem; }
+    .intro-stat-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .intro-stat-value { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+    .intro-body { padding: 2.5rem 3rem; }
+    .intro-body p { font-size: 1.0rem; line-height: 1.8; color: var(--ink); font-weight: 300; margin-bottom: 1.1rem; max-width: 620px; }
+    .intro-body p:last-child { margin-bottom: 0; }
 
-.main-wrap { display: grid; grid-template-columns: 1fr 300px; border-bottom: 1px solid var(--rule); }
-.main-col { padding: 64px 48px; border-right: 1px solid var(--rule); }
-.side-col { padding: 56px 32px; background: var(--off); }
+    /* SECTION HEAD */
+    .section-head { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+    .section-head-inner { display: flex; align-items: baseline; gap: 16px; padding: 24px 0 0; border-bottom: 1px solid var(--ink); padding-bottom: 14px; }
+    .section-head-inner h2 { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; white-space: nowrap; }
+    .section-line { flex: 1; height: 1px; background: var(--rule); }
 
-.intro-text { margin-bottom: 56px; }
-.intro-text p { font-family: 'Source Serif 4', serif; font-size: 17px; font-weight: 300; line-height: 1.85; color: var(--ink-light); margin-bottom: 20px; max-width: 600px; }
-.intro-text p:first-child::first-letter { font-family: 'Brawn', serif; font-size: 56px; font-weight: 700; float: left; line-height: 0.78; margin-right: 10px; margin-top: 10px; color: var(--accent); }
+    /* TIPS GRID */
+    .tips-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--ink); }
+    .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.2s; padding-bottom: 24px; }
+    .tip-card:last-child { border-right: none; }
+    .tip-card:hover { background: rgba(0,0,0,0.015); }
+    .tip-card-img-wrap { overflow: hidden; }
+    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .tip-card:hover .tip-card-img { transform: scale(1.03); }
+    .tip-card-body { padding: 14px 20px 0; }
+    .tip-card-cat { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .tip-card-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; line-height: 1.15; margin-bottom: 6px; }
+    .tip-card-copy { font-size: 0.82rem; color: var(--muted); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 12px; }
+    .tip-card-cta { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--rule); padding-bottom: 2px; display: inline-block; transition: color 0.15s, border-color 0.15s; }
+    .tip-card:hover .tip-card-cta { color: var(--ink); border-color: var(--ink); }
 
-.sec-head { border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 0; }
-.sec-head-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--ink); }
+    /* FEEL */
+    .feel-wrap { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 3fr 2fr; border-bottom: 1px solid var(--ink); }
+    .feel-img-wrap { overflow: hidden; }
+    .feel-img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 360px; object-position: center 30%; }
+    .feel-body { padding: 3rem 3rem; border-left: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: center; }
+    .feel-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+    .feel-quote { font-family: var(--serif); font-style: italic; font-size: clamp(1.25rem, 2.2vw, 1.65rem); line-height: 1.4; color: var(--ink); font-weight: 400; }
+    .feel-body-text { font-size: 0.86rem; line-height: 1.75; color: var(--muted); margin-top: 1.5rem; }
 
-.tips-section { margin-bottom: 56px; }
+    /* MORE LONDON */
+    .more-section { max-width: 1400px; margin: 0 auto; border-bottom: 1px solid var(--ink); }
+    .more-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .more-link { text-decoration: none; color: var(--ink); padding: 1.75rem 2rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.25rem; transition: background 0.2s; }
+    .more-link:last-child { border-right: none; }
+    .more-link:hover { background: rgba(0,0,0,0.015); }
+    .more-link-label { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .more-link-name { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; }
+    .more-link-count { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
 
-.tip { display: grid; grid-template-columns: 44px 1fr; border-bottom: 1px solid var(--rule); padding: 32px 0; cursor: default; }
-.tip-num { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 300; color: var(--rule); line-height: 1; padding-top: 4px; transition: color 0.2s; }
-.tip:hover .tip-num { color: var(--accent); }
-.tip-cat { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(192,57,43,0.25); padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
-.tip-name { font-family: 'Source Serif 4', serif; font-size: 21px; font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 10px; }
-.tip-quote { font-family: 'Source Serif 4', serif; font-size: 14px; font-style: italic; font-weight: 300; line-height: 1.75; color: var(--mid); max-width: 540px; }
-.tip-count { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); margin-top: 12px; }
-.tip-count strong { color: var(--ink); }
+    /* BACK */
+    .back-wrap { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+    .back-link { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: color 0.15s, border-color 0.15s; }
+    .back-link:hover { color: var(--ink); border-color: var(--ink); }
 
-/* TIP WITH EXPANDED PHOTO BLOCK BELOW */
-.tip-full { border-bottom: 1px solid var(--rule); padding: 32px 0 0; cursor: default; }
-.tip-full:hover .tip-num { color: var(--accent); }
-.tip-full-head { display: grid; grid-template-columns: 44px 1fr; margin-bottom: 24px; }
-.tip-full-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 0 -48px 32px; }
-.tip-full-photos img { width: 100%; height: 300px; object-fit: cover; display: block; filter: saturate(0.82); transition: filter 0.3s; }
-.tip-full-photos img:hover { filter: saturate(1); }
-.tip-full-photos.wide { grid-template-columns: 1fr; }
-.tip-full-photos.wide img { height: 420px; }
-.tip-full-photos.three { grid-template-columns: 2fr 1fr; }
-.tip-full-photos.three img:first-child { height: 380px; }
-.tip-full-photos.three img:last-child { height: 380px; }
+    /* FOOTER */
+    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 0; }
+    .footer-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
+    .footer-note { font-family: var(--serif); font-style: italic; font-size: 0.78rem; color: rgba(247,244,239,0.3); }
 
-/* SIDE PHOTOS: panorama strip */
-.photo-strip { margin: 0 -48px 56px; }
-.photo-strip img { width: 100%; height: 280px; object-fit: cover; display: block; filter: saturate(0.82); }
-
-.side-block { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--rule); }
-.side-block:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.side-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; }
-.side-list { list-style: none; }
-.side-list li { padding: 10px 0; border-bottom: 1px solid var(--rule); font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 300; line-height: 1.55; color: var(--ink-light); display: flex; gap: 10px; }
-.side-list li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
-.side-list li:last-child { border-bottom: none; }
-.side-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: saturate(0.82); margin-bottom: 10px; transition: filter 0.3s; }
-.side-photo:hover { filter: saturate(1); }
-.side-caption { font-family: 'Source Serif 4', serif; font-size: 12px; font-style: italic; color: var(--mid); line-height: 1.5; }
-.side-cta { background: var(--ink); padding: 20px; margin-top: 36px; }
-.side-cta p { font-family: 'Source Serif 4', serif; font-size: 14px; font-style: italic; color: rgba(255,255,255,0.55); margin-bottom: 14px; line-height: 1.5; }
-.side-cta-btn { display: block; width: 100%; padding: 11px; background: var(--accent); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; text-align: center; border: none; cursor: pointer; transition: background 0.15s; }
-.side-cta-btn:hover { background: #8a2420; }
-
-footer { border-top: 2px solid var(--ink); padding: 24px 40px; display: flex; align-items: center; justify-content: space-between; }
-.footer-logo { font-family: 'Brawn', serif; font-size: 18px; font-weight: 700; }
-.footer-logo span { color: var(--accent); }
-.footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1px; color: var(--mid); }
-
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(17,17,16,0.82); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
-.modal-overlay.open { display: flex; }
-.modal { background: var(--white); width: 90%; max-width: 480px; border-top: 3px solid var(--ink); position: relative; animation: mIn 0.22s ease; }
-@keyframes mIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-.modal-head { padding: 28px 32px 20px; border-bottom: 1px solid var(--rule); }
-.modal-over { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 5px; }
-.modal-title { font-family: 'Brawn', serif; font-size: 26px; }
-.modal-body { padding: 24px 32px 32px; }
-.modal-note { padding: 10px 14px; background: var(--paper); border-left: 3px solid var(--rule); font-family: 'Source Serif 4', serif; font-size: 13px; font-style: italic; color: var(--ink-light); margin-bottom: 20px; line-height: 1.5; }
-.form-row { margin-bottom: 14px; }
-.form-row label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 5px; }
-.form-row input, .form-row select, .form-row textarea { width: 100%; padding: 10px 12px; background: var(--paper); border: 1px solid var(--rule); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); outline: none; border-radius: 0; appearance: none; transition: border-color 0.15s; }
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--ink); background: white; }
-.form-row textarea { resize: none; height: 80px; }
-.modal-submit { width: 100%; padding: 12px; background: var(--ink); color: #fff; border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background 0.15s; }
-.modal-submit:hover { background: var(--accent); }
-.modal-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--mid); }
-
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.in { opacity: 1; transform: none; }
-
-@media (max-width: 900px) {
-  .mast { padding: 0 20px; }
-  .hero-text { padding: 0 20px 40px; }
-  .intro-strip { grid-template-columns: 1fr; }
-  .intro-cell { border-right: none; }
-  .main-wrap { grid-template-columns: 1fr; }
-  .main-col { padding: 40px 20px; border-right: none; }
-  .side-col { padding: 40px 20px; }
-  .tip-full-photos, .tip-full-photos.three { grid-template-columns: 1fr; margin: 0 -20px 32px; }
-  .tip-full-photos img, .tip-full-photos.three img { height: 240px; }
-  .photo-strip { margin: 0 -20px 40px; }
-  footer { padding: 20px; }
-}
-</style>
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .intro-wrap { grid-template-columns: 1fr; }
+      .intro-meta { border-right: none; border-bottom: 1px solid var(--rule); flex-direction: row; flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem 1.5rem; }
+      .intro-body { padding: 1.75rem 1.5rem; }
+      .tips-grid { grid-template-columns: 1fr; }
+      .tip-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .feel-wrap { grid-template-columns: 1fr; }
+      .feel-body { border-left: none; border-top: 1px solid var(--rule); padding: 2rem 1.5rem; }
+      .feel-img { min-height: 260px; }
+      .hero-overlay { padding: 2rem 1.5rem; }
+      .nav-tagline { display: none; }
+      .footer-stats, .footer-note { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav-links a:not(.cta) { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="mast">
-  <a href="index.html" class="logo">HoodTip<span>.</span></a>
-  <div class="mast-trail">
-    <a href="#">London</a>
-    <span>/</span>
-    <span class="cur">Notting Hill</span>
-  </div>
-  <button class="mast-btn" onclick="openModal()">Leave a tip</button>
-</header>
-
-<section class="hero">
-  <div class="hero-img" id="heroBg"></div>
-  <div class="hero-text">
-    <div class="hero-eyebrow">
-      <span>London, England</span>
-      <div class="hero-dot"></div>
-      <span>12 tips</span>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
     </div>
-    <h1 class="hero-h1">Notting Hill<em>west london proper</em></h1>
-    <p class="hero-deck">Portobello on a Saturday, the Electric on a rainy evening, a pint at The Cow any time. One of the neighbourhoods that earns the hype.</p>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="carouge.html">Carouge</a></li>
+      <li><a href="yenikoy.html">Yeniköy</a></li>
+      <li><a href="index.html" class="cta">Leave a tip</a></li>
+    </ul>
   </div>
-</section>
+</nav>
 
-<div class="intro-strip">
-  <div class="intro-cell">
-    <div class="ic-label">Getting there</div>
-    <div class="ic-value">Notting Hill Gate or Ladbroke Grove tube. Walk from Westbourne Park for Portobello</div>
-  </div>
-  <div class="intro-cell">
-    <div class="ic-label">Go when</div>
-    <div class="ic-value">Saturday for the market. Any evening for dinner or the cinema. Rainy afternoons are made for The Cow</div>
-  </div>
-  <div class="intro-cell">
-    <div class="ic-label">Best for</div>
-    <div class="ic-value">A genuinely great cinema, proper pub culture, oysters, and the kind of streets worth getting lost in</div>
+<!-- HERO -->
+<div class="hero">
+  <img src="682384E6-2714-486C-A716-4757245349A1.jpg" alt="Electric Cinema, Notting Hill" />
+  <div class="hero-overlay">
+    <div class="hero-eyebrow">London · England · HoodTip</div>
+    <div class="hero-title">Notting Hill</div>
+    <div class="hero-subtitle">West London at its best. Stay here and don't leave.</div>
   </div>
 </div>
 
-<div class="main-wrap">
-  <main class="main-col">
-
-    <div class="intro-text reveal">
-      <p>Notting Hill has a reputation problem — too famous, too pretty, too much the setting of a certain film — but spend a proper afternoon here and you'll forgive it all. Portobello is one of the best streets in London. The pubs are good. And the Electric Cinema is, genuinely, one of the finest ways to spend three hours on a rainy Tuesday in any city anywhere.</p>
+<!-- INTRO -->
+<div class="intro-wrap">
+  <div class="intro-meta">
+    <div class="intro-stat">
+      <span class="intro-stat-label">City</span>
+      <span class="intro-stat-value">London, England</span>
     </div>
-
-    <div class="tips-section reveal">
-      <div class="sec-head"><span class="sec-head-label">The Tips</span></div>
-
-      <!-- Electric Cinema -->
-      <div class="tip-full">
-        <div class="tip-full-head">
-          <div class="tip-num">01</div>
-          <div>
-            <span class="tip-cat">Cinema</span>
-            <div class="tip-name">Electric Cinema</div>
-            <p class="tip-quote">"Honestly the nicest cinema I've ever been to. It's part of Soho House but you don't need to be a member to watch a film — just buy a ticket. Get a glass of champagne or a little Negroni, order a snack, sink into a leather club chair, and enjoy whatever's on. The room itself — the ornate plasterwork ceiling, the red curtain, the little lamps on the armrests — is worth going for before the film even starts."</p>
-            <div class="tip-count"><strong>11</strong> people tipped this</div>
-          </div>
-        </div>
-        <div class="tip-full-photos three">
-          <img src="electric-cinema-curtain.jpg" alt="Electric Cinema red curtain and neon sign">
-          <img src="electric-cinema-panorama.jpg" alt="Electric Cinema interior panorama" style="object-position: center center;">
-        </div>
-      </div>
-
-      <!-- The Cow -->
-      <div class="tip-full">
-        <div class="tip-full-head">
-          <div class="tip-num">02</div>
-          <div>
-            <span class="tip-cat">Pub</span>
-            <div class="tip-name">The Cow</div>
-            <p class="tip-quote">"Best pint of Guinness in west London, maybe the city. The flow is right, the pour is right, the bar is properly old. Food is excellent — oysters, winkles, whelks, proper pub seafood done well. Sit at the bar. The dogs are good. This is what a pub is supposed to feel like."</p>
-            <div class="tip-count"><strong>9</strong> people tipped this</div>
-          </div>
-        </div>
-        <div class="tip-full-photos three">
-          <img src="thecow-oysters-guinness.jpg" alt="Oysters and Guinness at The Cow">
-          <div style="display:flex; flex-direction:column; gap:2px;">
-            <img src="thecow-pub-dog.jpg" alt="Pub dog at The Cow" style="height:189px; object-fit:cover; filter:saturate(0.82);">
-            <img src="thecow-guinness-newspaper.jpg" alt="Guinness and newspaper at The Cow" style="height:189px; object-fit:cover; filter:saturate(0.82);">
-          </div>
-        </div>
-      </div>
-
+    <div class="intro-stat">
+      <span class="intro-stat-label">Tips</span>
+      <span class="intro-stat-value">3</span>
     </div>
-
-    <!-- Bar photo -->
-    <div class="photo-strip reveal">
-      <img src="thecow-bar.jpg" alt="The Cow bar, Notting Hill">
+    <div class="intro-stat">
+      <span class="intro-stat-label">Best for</span>
+      <span class="intro-stat-value">A long weekend</span>
     </div>
-
-  </main>
-
-  <aside class="side-col">
-
-    <div class="side-block reveal">
-      <div class="side-label">The Electric — what to know</div>
-      <ul class="side-list">
-        <li>Book ahead — it fills up, especially weekends</li>
-        <li>They programme well. Check what's on before you go.</li>
-        <li>The bar is to the right as you enter. Order before you sit down.</li>
-        <li>Non-members can buy tickets online direct — no Soho House card needed</li>
-        <li>191 Portobello Road, W11</li>
-      </ul>
+    <div class="intro-stat">
+      <span class="intro-stat-label">Getting there</span>
+      <span class="intro-stat-value">Notting Hill Gate tube, Circle or District line</span>
     </div>
-
-    <div class="side-block reveal">
-      <div class="side-label">The Cow — what to order</div>
-      <ul class="side-list">
-        <li>Guinness — obviously. Don't rush the pour.</li>
-        <li>Half a dozen rock oysters with a cold white</li>
-        <li>Winkles if they have them — underrated</li>
-        <li>Sit at the bar if you can get a stool</li>
-        <li>89 Westbourne Park Road, W2</li>
-      </ul>
-    </div>
-
-    <div class="side-block reveal">
-      <div class="side-label">The pub dog situation</div>
-      <img src="thecow-pub-dog.jpg" alt="Dog at The Cow pub" class="side-photo">
-      <p class="side-caption">Dog-friendly, which tells you everything you need to know about a pub's intentions.</p>
-    </div>
-
-    <div class="side-cta reveal">
-      <p>Know something about Notting Hill worth passing on?</p>
-      <button class="side-cta-btn" onclick="openModal()">Leave a HoodTip</button>
-    </div>
-
-  </aside>
+  </div>
+  <div class="intro-body">
+    <p>Notting Hill is the kind of neighbourhood that does everything right without trying too hard. A proper pub that serves Guinness and oysters, Britain's oldest cinema with leather sofas instead of seats, a rooftop hotel under £200. That's three reasons to go and three reasons to stay.</p>
+    <p>It's leafy, walkable, and completely un-self-conscious — which for London is saying something. The market on Portobello Road is worth a Saturday morning. The streets off the main drag are worth an afternoon of wandering with nowhere specific to go.</p>
+  </div>
 </div>
 
+<!-- TIPS -->
+<div class="section-head">
+  <div class="section-head-inner">
+    <h2>Tips in Notting Hill</h2>
+    <div class="section-line"></div>
+  </div>
+</div>
+
+<div class="tips-grid">
+
+  <a class="tip-card" href="tip-thecow.html">
+    <div class="tip-card-img-wrap">
+      <img class="tip-card-img" src="IMG_3513.JPG" alt="The Cow pub, Notting Hill" />
+    </div>
+    <div class="tip-card-body">
+      <div class="tip-card-cat">Pub · Bar</div>
+      <div class="tip-card-name">The Cow</div>
+      <div class="tip-card-copy">Best Guinness in west London. Order oysters with it at the bar. Upstairs is a proper sit-down restaurant if you want to stay longer. That's the move — and it's always the move.</div>
+      <span class="tip-card-cta">Read the tip →</span>
+    </div>
+  </a>
+
+  <a class="tip-card" href="tip-electriccinema.html">
+    <div class="tip-card-img-wrap">
+      <img class="tip-card-img" src="682384E6-2714-486C-A716-4757245349A1.jpg" alt="Electric Cinema, Notting Hill" />
+    </div>
+    <div class="tip-card-body">
+      <div class="tip-card-cat">Cinema</div>
+      <div class="tip-card-name">Electric Cinema</div>
+      <div class="tip-card-copy">Britain's oldest working cinema. Leather sofas, footstools, the kind of seat you settle into for two hours and don't want to leave. Book in advance — the good seats go.</div>
+      <span class="tip-card-cta">Read the tip →</span>
+    </div>
+  </a>
+
+  <a class="tip-card" href="tip-rubyzoe.html">
+    <div class="tip-card-img-wrap">
+      <img class="tip-card-img" src="Screenshot_2026-03-17_at_12_13_20.png" alt="Ruby Zoë Hotel, Notting Hill" />
+    </div>
+    <div class="tip-card-body">
+      <div class="tip-card-cat">Hotel</div>
+      <div class="tip-card-name">Ruby Zoë</div>
+      <div class="tip-card-copy">Rooftop bar, well-designed rooms, under £200 a night. For a Notting Hill address that's remarkable. The rooftop alone is worth telling people about.</div>
+      <span class="tip-card-cta">Read the tip →</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- FEEL -->
+<div class="feel-wrap">
+  <div class="feel-img-wrap">
+    <img class="feel-img" src="IMG_3513.JPG" alt="The Cow pub exterior, Notting Hill" />
+  </div>
+  <div class="feel-body">
+    <div class="feel-label">The feel of the place</div>
+    <div class="feel-quote">"The kind of neighbourhood where you arrive for one thing and end up spending the whole day."</div>
+    <p class="feel-body-text">Start at The Cow for a Guinness and oysters at the bar. Walk up Portobello in the afternoon. If there's a film on at the Electric that evening, book a sofa seat and stay. Ruby Zoë if you're sleeping over. That's a perfect Notting Hill day and none of it requires a reservation more than a few hours out.</p>
+  </div>
+</div>
+
+<!-- MORE LONDON -->
+<div class="section-head">
+  <div class="section-head-inner">
+    <h2>More in London</h2>
+    <div class="section-line"></div>
+  </div>
+</div>
+<div class="more-section">
+  <div class="more-grid">
+    <a class="more-link" href="tip-karmabread.html">
+      <span class="more-link-label">Neighbourhood</span>
+      <span class="more-link-name">Hampstead Heath</span>
+      <span class="more-link-count">1 tip — Best challah in London</span>
+    </a>
+    <a class="more-link" href="index.html">
+      <span class="more-link-label">All cities</span>
+      <span class="more-link-name">Browse everything</span>
+      <span class="more-link-count">31 tips across 12 neighbourhoods</span>
+    </a>
+  </div>
+</div>
+
+<div class="back-wrap">
+  <a href="index.html" class="back-link">← All neighbourhoods</a>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">HoodTip<span>.</span></div>
-  <span class="footer-copy">© 2025 HoodTip.com</span>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats">
+      <span>31 tips</span><span>·</span>
+      <span>12 neighbourhoods</span><span>·</span>
+      <span>7 cities</span>
+    </div>
+    <div class="footer-note">Write it like you're giving a friend advice the night before they leave.</div>
+  </div>
 </footer>
 
-<div class="modal-overlay" id="modal" onclick="handleOverlay(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-head">
-      <div class="modal-over">Notting Hill, London</div>
-      <div class="modal-title">Leave a HoodTip</div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-note">Positive only. Write it like a note to a friend going next Saturday.</div>
-      <div class="form-row"><label>Place name</label><input type="text" placeholder="What's it called?"></div>
-      <div class="form-row"><label>Category</label>
-        <select>
-          <option value="">Select one</option>
-          <option>Bar / Pub</option>
-          <option>Food / Restaurant</option>
-          <option>Coffee</option>
-          <option>Cinema / Culture</option>
-          <option>Market</option>
-          <option>Shop</option>
-          <option>Walk / Outdoors</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-row"><label>Your tip</label><textarea placeholder="Be specific. What to order, when to go, what to know."></textarea></div>
-      <button class="modal-submit" onclick="submitTip()">Submit tip</button>
-    </div>
-  </div>
-</div>
-
-<script>
-window.addEventListener('load', () => setTimeout(() => document.getElementById('heroBg').classList.add('loaded'), 100));
-function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
-function handleOverlay(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-function submitTip() {
-  const btn = document.querySelector('.modal-submit');
-  btn.textContent = 'Tip received — thank you';
-  btn.style.background = '#2C4A6E';
-  setTimeout(() => { closeModal(); btn.textContent = 'Submit tip'; btn.style.background = ''; }, 1800);
-}
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-}, { threshold: 0.06 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
