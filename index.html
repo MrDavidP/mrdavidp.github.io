@@ -97,28 +97,17 @@
     /* Second in-depth piece */
     .indepth-second { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--rule); }
 
-    /* RIGHT — feature + hoods */
+    /* RIGHT — neighbourhood cards */
     .col-right { padding: 28px 0 28px 28px; }
     .col-right-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
-    .sidebar-feature { text-decoration: none; color: var(--ink); display: block; }
-    .sidebar-img-wrap { overflow: hidden; margin-bottom: 12px; }
-    .sidebar-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform 0.55s ease; }
-    .sidebar-feature:hover .sidebar-img { transform: scale(1.03); }
-    .sidebar-cat { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-    .sidebar-hed { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; line-height: 1.15; margin-bottom: 6px; }
-    .sidebar-body { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
-    .sidebar-cta { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-top: 10px; display: inline-block; border-bottom: 1px solid var(--rule); padding-bottom: 2px; text-decoration: none; }
-    .sidebar-cta:hover { border-color: var(--ink); }
-
-    /* Neighbourhood list in sidebar */
-    .hood-list { margin-top: 24px; border-top: 1px solid var(--rule); }
-    .hood-list-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); padding: 12px 0 10px; border-bottom: 1px solid var(--rule); }
-    .hood-list-item { display: flex; align-items: baseline; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); transition: opacity 0.15s; gap: 8px; }
-    .hood-list-item:last-child { border-bottom: none; }
-    .hood-list-item:hover { opacity: 0.6; }
-    .hood-list-name { font-family: var(--serif); font-size: 1.0rem; font-weight: 500; line-height: 1.2; }
-    .hood-list-loc { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .hood-list-count { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); flex-shrink: 0; }
+    .hood-cards { display: flex; flex-direction: column; gap: 1px; }
+    .hood-card-mini { text-decoration: none; color: var(--ink); display: block; position: relative; overflow: hidden; transition: opacity 0.2s; }
+    .hood-card-mini:hover { opacity: 0.88; }
+    .hood-card-mini img { width: 100%; height: 100px; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .hood-card-mini:hover img { transform: scale(1.04); }
+    .hood-card-mini-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.75) 0%, rgba(15,12,10,0.1) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 8px 12px; }
+    .hood-card-mini-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: #fff; line-height: 1; }
+    .hood-card-mini-meta { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 2px; display: flex; justify-content: space-between; }
 
     /* ── SECOND ROW — tips grid ── */
     .tips-section { border-bottom: 1.5px solid var(--ink); }
@@ -341,37 +330,59 @@
 
     <div class="col-divider"></div>
 
-    <!-- RIGHT: SIDEBAR FEATURE + HOOD LIST -->
+    <!-- RIGHT: NEIGHBOURHOOD CARDS -->
     <div class="col-right">
-      <div class="col-right-label">Long read</div>
+      <div class="col-right-label">Browse neighbourhoods</div>
+      <div class="hood-cards">
 
-      <a class="sidebar-feature" href="tip-swisstrains.html">
-        <div class="sidebar-img-wrap">
-          <img class="sidebar-img" src="Screenshot_2026-03-17_at_09_39_02.png" alt="Swiss Train Restaurant Car" />
-        </div>
-        <div class="sidebar-cat">Travel &middot; Cornavin &middot; Geneva</div>
-        <h3 class="sidebar-hed">The restaurant car almost nobody knows exists</h3>
-        <p class="sidebar-body">Don't book first class. Buy a standard ticket and walk to the restaurant car. White tablecloth, Alps out the window, proper food and wine at 200km/h. This is one of the best kept secrets in Swiss travel and it costs almost nothing extra.</p>
-        <span class="sidebar-cta">Read the tip &rarr;</span>
-      </a>
+        <a class="hood-card-mini" href="carouge.html">
+          <img src="carouge-cover.jpg" alt="Carouge" style="object-position: center 60%;" />
+          <div class="hood-card-mini-overlay">
+            <div class="hood-card-mini-name">Carouge</div>
+            <div class="hood-card-mini-meta"><span>Geneva</span><span>4 tips</span></div>
+          </div>
+        </a>
 
-      <!-- Neighbourhood list -->
-      <div class="hood-list">
-        <div class="hood-list-label">All neighbourhoods</div>
-        <a class="hood-list-item" href="carouge.html"><div><div class="hood-list-name">Carouge</div><div class="hood-list-loc">Geneva</div></div><span class="hood-list-count">4 tips</span></a>
-        <a class="hood-list-item" href="yenikoy.html"><div><div class="hood-list-name">Yenik&ouml;y</div><div class="hood-list-loc">Istanbul</div></div><span class="hood-list-count">6 tips</span></a>
-        <a class="hood-list-item" href="notting-hill.html"><div><div class="hood-list-name">Notting Hill</div><div class="hood-list-loc">London</div></div><span class="hood-list-count">3 tips</span></a>
-        <a class="hood-list-item" href="tip-bongojoe.html"><div><div class="hood-list-name">Plainpalais</div><div class="hood-list-loc">Geneva</div></div><span class="hood-list-count">3 tips</span></a>
-        <a class="hood-list-item" href="tip-mulligans.html"><div><div class="hood-list-name">Cornavin</div><div class="hood-list-loc">Geneva</div></div><span class="hood-list-count">2 tips</span></a>
-        <a class="hood-list-item" href="nations.html"><div><div class="hood-list-name">Nations</div><div class="hood-list-loc">Geneva</div></div><span class="hood-list-count">3 tips</span></a>
-        <a class="hood-list-item" href="tip-lagrandeboucherie.html"><div><div class="hood-list-name">New York</div><div class="hood-list-loc">USA</div></div><span class="hood-list-count">3 tips</span></a>
-        <a class="hood-list-item" href="tip-karmabread.html"><div><div class="hood-list-name">Hampstead Heath</div><div class="hood-list-loc">London</div></div><span class="hood-list-count">1 tip</span></a>
-        <a class="hood-list-item" href="tip-iskender.html"><div><div class="hood-list-name">&#350;i&#351;li</div><div class="hood-list-loc">Istanbul</div></div><span class="hood-list-count">1 tip</span></a>
-        <a class="hood-list-item" href="tip-asritursucu.html"><div><div class="hood-list-name">Beyo&#287;lu</div><div class="hood-list-loc">Istanbul</div></div><span class="hood-list-count">1 tip</span></a>
-        <a class="hood-list-item" href="tip-oceanik.html"><div><div class="hood-list-name">Latin Quarter</div><div class="hood-list-loc">Paris</div></div><span class="hood-list-count">1 tip</span></a>
-        <a class="hood-list-item" href="tip-saintamour.html"><div><div class="hood-list-name">Lavaux</div><div class="hood-list-loc">Vaud</div></div><span class="hood-list-count">1 tip</span></a>
-        <a class="hood-list-item" href="tip-belvedere.html"><div><div class="hood-list-name">Wengen</div><div class="hood-list-loc">Switzerland</div></div><span class="hood-list-count">1 tip</span></a>
-        <a class="hood-list-item" href="tip-kilwins.html"><div><div class="hood-list-name">Saugatuck</div><div class="hood-list-loc">Michigan</div></div><span class="hood-list-count">1 tip</span></a>
+        <a class="hood-card-mini" href="yenikoy.html">
+          <img src="IMG_2486.JPG" alt="Yeniköy" style="object-position: center 40%;" />
+          <div class="hood-card-mini-overlay">
+            <div class="hood-card-mini-name">Yeniköy</div>
+            <div class="hood-card-mini-meta"><span>Istanbul</span><span>3 tips</span></div>
+          </div>
+        </a>
+
+        <a class="hood-card-mini" href="notting-hill.html">
+          <img src="nottinghill-cover.jpg" alt="Notting Hill" style="object-position: center 55%;" />
+          <div class="hood-card-mini-overlay">
+            <div class="hood-card-mini-name">Notting Hill</div>
+            <div class="hood-card-mini-meta"><span>London</span><span>3 tips</span></div>
+          </div>
+        </a>
+
+        <a class="hood-card-mini" href="nations.html">
+          <img src="Nations-chair.jpg" alt="Nations" style="object-position: center 35%;" />
+          <div class="hood-card-mini-overlay">
+            <div class="hood-card-mini-name">Nations</div>
+            <div class="hood-card-mini-meta"><span>Geneva</span><span>3 tips</span></div>
+          </div>
+        </a>
+
+        <a class="hood-card-mini" href="tip-lagrandeboucherie.html">
+          <img src="midtown.jpg" alt="New York" style="object-position: center 50%;" />
+          <div class="hood-card-mini-overlay">
+            <div class="hood-card-mini-name">New York</div>
+            <div class="hood-card-mini-meta"><span>USA</span><span>3 tips</span></div>
+          </div>
+        </a>
+
+        <a class="hood-card-mini" href="tip-bongojoe.html">
+          <img src="bongojoe-yellow-table.jpg" alt="Plainpalais" style="object-position: center 50%;" />
+          <div class="hood-card-mini-overlay">
+            <div class="hood-card-mini-name">Plainpalais</div>
+            <div class="hood-card-mini-meta"><span>Geneva</span><span>3 tips</span></div>
+          </div>
+        </a>
+
       </div>
     </div>
 
