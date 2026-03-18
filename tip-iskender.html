@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barney Greengrass — Upper West Side, New York · HoodTip</title>
-  <meta name="description" content="Classic for a reason. Get your half sour and smoked fish fix while in the city. Upper West Side, New York." />
+  <title>Bursa İskenderoğlu — Şişli, Istanbul · HoodTip</title>
+  <meta name="description" content="The İskender kebab. Lamb shaved off the spit, over bread, under butter and tomato sauce, yogurt on the side. Go here. Get this. That's it." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -20,7 +20,6 @@
     html { font-size: 16px; }
     body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
-    /* NAV */
     nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
     .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
     .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
@@ -32,14 +31,12 @@
     .nav-links a:hover { color: var(--ink); }
     .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
 
-    /* HERO */
     .hero { width: 100%; height: clamp(420px, 58vw, 640px); overflow: hidden; position: relative; }
     .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
-    .hero-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 2.5rem; background: linear-gradient(transparent, rgba(20,16,12,0.6)); }
+    .hero-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 2.5rem; background: linear-gradient(transparent, rgba(20,16,12,0.65)); }
     .hero-caption-location { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; }
     .hero-caption-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: #fff; }
 
-    /* ARTICLE */
     .article { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 2rem; }
 
     .breadcrumb { font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -63,16 +60,10 @@
     .pull-quote { border-left: 2px solid var(--ink); padding: 0.75rem 0 0.75rem 1.75rem; margin: 2.5rem 0; }
     .pull-quote p { font-family: var(--serif); font-style: italic; font-size: clamp(1.4rem, 3vw, 1.75rem); line-height: 1.35; color: var(--ink); font-weight: 400; }
 
-    /* full-bleed */
     .img-full { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 3rem 0; }
-    .img-full img { width: 100%; display: block; max-height: 560px; object-fit: cover; }
+    .img-full img { width: 100%; display: block; max-height: 580px; object-fit: cover; }
     .img-caption { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.6rem 2rem 0; max-width: 1200px; margin: 0 auto; }
 
-    /* two-up */
-    .img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
-    .img-pair img { width: 100%; display: block; height: 420px; object-fit: cover; }
-
-    /* tip box */
     .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
     .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
     .tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
@@ -82,22 +73,18 @@
     .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--cond); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-top: 3.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.15rem; transition: color 0.15s, border-color 0.15s; }
     .back-link:hover { color: var(--ink); border-color: var(--ink); }
 
-    /* FOOTER */
-    footer { border-top: 2px solid var(--red); padding: 0; background: var(--ink); margin-top: 5rem; }
+    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 5rem; }
     .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
     .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
     .footer-logo em { font-style: italic; font-weight: 400; }
     .footer-logo .dot { color: var(--red); }
     .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
-    .footer-note { font-family: var(--serif); font-style: italic; font-size: 0.78rem; color: rgba(247,244,239,0.3); }
 
     @media (max-width: 640px) {
       .nav-links a:not(.cta) { display: none; }
       .nav-tagline { display: none; }
       .article { padding: 2.5rem 1.25rem 2rem; }
-      .img-pair { grid-template-columns: 1fr; }
-      .img-pair img { height: 280px; }
-      .footer-stats, .footer-note { display: none; }
+      .footer-stats { display: none; }
     }
   </style>
 </head>
@@ -111,16 +98,17 @@
     </div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="yenikoy.html">Istanbul</a></li>
       <li><a href="index.html" class="cta">Leave a tip</a></li>
     </ul>
   </div>
 </nav>
 
 <div class="hero">
-  <img src="Screenshot_2026-03-17_at_15_29_09.png" alt="Bagel, smoked salmon, scrambled eggs and pickles at Barney Greengrass" />
+  <img src="Bursa-meat-stick.jpg" alt="The doner spit at Bursa İskenderoğlu, Şişli Istanbul" />
   <div class="hero-caption">
-    <div class="hero-caption-location">Upper West Side · New York · USA</div>
-    <div class="hero-caption-name">Barney Greengrass</div>
+    <div class="hero-caption-location">Şişli · Istanbul · Turkey</div>
+    <div class="hero-caption-name">Bursa İskenderoğlu</div>
   </div>
 </div>
 
@@ -129,28 +117,28 @@
   <div class="breadcrumb">
     <a href="index.html">HoodTip</a>
     <span class="breadcrumb-sep">·</span>
-    <span>New York</span>
+    <span>Istanbul</span>
     <span class="breadcrumb-sep">·</span>
-    <span>Upper West Side</span>
+    <span>Şişli</span>
   </div>
 
-  <span class="category">Deli</span>
+  <span class="category">Restaurant</span>
 
-  <h1>Barney Greengrass</h1>
-  <p class="subtitle">Classic for a reason. Get your half sour and smoked fish fix while in the city.</p>
+  <h1>Bursa İskenderoğlu</h1>
+  <p class="subtitle">The king of all Turkish kebab meals. Go here. Get the İskender. That's it.</p>
 
   <div class="meta-strip">
     <div class="meta-item">
-      <span class="meta-label">Address</span>
-      <span class="meta-value">541 Amsterdam Ave, New York, NY 10024</span>
+      <span class="meta-label">Location</span>
+      <span class="meta-value">Şişli, Istanbul</span>
     </div>
     <div class="meta-item">
-      <span class="meta-label">Neighbourhood</span>
-      <span class="meta-value">Upper West Side</span>
+      <span class="meta-label">Plus code</span>
+      <span class="meta-value">3X2V+R5 Şişli</span>
     </div>
     <div class="meta-item">
-      <span class="meta-label">Best for</span>
-      <span class="meta-value">Breakfast, brunch, a proper feed</span>
+      <span class="meta-label">Order</span>
+      <span class="meta-value">The İskender plate. Nothing else.</span>
     </div>
     <div class="meta-item" style="margin-left:auto;text-align:right;">
       <span class="meta-label">Tip by</span>
@@ -159,38 +147,31 @@
   </div>
 
   <div class="body">
-    <p>Barney Greengrass has been on Amsterdam Avenue since 1908. Nothing about it has been updated to make you feel comfortable with that fact. The fluorescent lights, the formica tables, the waiters who have been there for decades — it's all completely intact and completely correct.</p>
-    <p>Get the smoked fish. Nova Scotia salmon, sturgeon, whitefish salad — any of it. Get a bagel with it. Get a half sour pickle on the side, which arrives automatically anyway. Eat the scrambled eggs if you want but the fish is the point.</p>
+    <p>İskender means Alexander in Turkish. The dish was invented in Bursa in the 1860s by a man named İskender Efendi, and it has been made by his family ever since. This is one of those restaurants. The placemat says so. The food confirms it.</p>
+    <p>The dish is straightforward and extraordinary: thinly shaved lamb from a vertical spit, laid over torn pide bread, doused in tomato sauce and hot butter, with a cold dollop of yogurt on the side. The combination of temperatures and textures is the whole point — hot meat, warm bread, cool yogurt, the butter soaking through everything underneath. Any Turkish person you ask will tell you this is the real one.</p>
   </div>
 
   <div class="pull-quote">
-    <p>"The kind of place that doesn't need to try because it never stopped being itself."</p>
+    <p>"Any real Turkish guy will tell you — yes, that's the good stuff."</p>
   </div>
 
-  <!-- Pickles -->
   <div class="img-full">
-    <img src="IMG_3946_VSCO.jpg" alt="Half sour pickles in a jar at Barney Greengrass" style="object-position: center 40%;" />
-    <div class="img-caption">$1.50 each. Get one.</div>
+    <img src="Iskender-Bursa.jpg" alt="İskender plate at Bursa İskenderoğlu — lamb, tomato sauce, butter, yogurt, pide" />
+    <div class="img-caption">The plate. Eat it while it's hot.</div>
   </div>
 
   <div class="body">
-    <p>The blackboard above the counter still offers to pack your order with dry ice for the Hamptons. The menu is handwritten. The price of a pickle is $1.50 and it says so on a little card taped to the jar. This is New York doing what New York does when it's not performing for anyone.</p>
-  </div>
-
-  <!-- Counter + blackboard pair -->
-  <div class="img-pair">
-    <img src="Screenshot_2026-03-17_at_15_29_38.png" alt="The counter at Barney Greengrass — smoked fish, lox, whitefish" />
-    <img src="Screenshot_2026-03-17_at_15_29_51.png" alt="Barney Greengrass blackboard — Going to the Hamptons?" />
+    <p>Don't over-think the order. You're getting the İskender. There's no decision to make. Eat it while the butter is still sizzling and the bread hasn't gone soft all the way through yet. Have an ayran — cold, salty yogurt drink — alongside it. That's the correct pairing and it's been the correct pairing for 150 years.</p>
   </div>
 
   <div class="tip-box">
     <div class="tip-box-label">The tip</div>
     <ul>
-      <li>Go for breakfast or brunch — it gets crowded by late morning on weekends</li>
-      <li>Get the smoked fish platter. Nova, sturgeon, or the whitefish salad</li>
-      <li>Half sour pickle. Non-negotiable</li>
-      <li>Cash-friendly, no-frills, no reservations — just show up</li>
-      <li>It's on the Upper West Side, not Midtown — worth the detour if you're anywhere near Central Park</li>
+      <li>Order the İskender plate — there is no other order</li>
+      <li>Get an ayran with it. Cold, salty, yogurt-based. Trust the process</li>
+      <li>Eat it fast — the bread goes soggy if you wait too long</li>
+      <li>This is a lunch place more than a dinner place — go midday</li>
+      <li>The family connection to the original Bursa recipe is real — it says so on the placemat and they mean it</li>
     </ul>
   </div>
 
@@ -202,11 +183,10 @@
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
     <div class="footer-stats">
-      <span>31 tips</span><span>·</span>
+      <span>32 tips</span><span>·</span>
       <span>12 neighbourhoods</span><span>·</span>
       <span>7 cities</span>
     </div>
-    <div class="footer-note">Write it like you're giving a friend advice the night before they leave.</div>
   </div>
 </footer>
 
