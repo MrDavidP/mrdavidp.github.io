@@ -1,293 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paul-Henri Soler — HoodTip Geneva</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --white: #FFFFFF; --off: #F7F6F3; --ink: #141412; --ink2: #3C3C3A;
-  --mid: #888884; --rule: #E2E0DA; --accent: #B5322A; --tag-bg: #F0EDE6;
-}
-html { scroll-behavior: smooth; }
-body { background: var(--white); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
-.mast { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 50px; background: var(--white); border-bottom: 1.5px solid var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
-.logo { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--ink); text-decoration: none; }
-.logo span { color: var(--accent); }
-.mast-nav { display: flex; align-items: center; gap: 28px; }
-.mast-crumb { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); display: flex; gap: 10px; align-items: center; }
-.mast-crumb a { color: var(--mid); text-decoration: none; transition: color 0.15s; }
-.mast-crumb a:hover { color: var(--ink); }
-.mast-crumb .sep { opacity: 0.35; }
-.mast-crumb .cur { color: var(--ink); }
-.mast-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 6px 14px; background: var(--ink); color: var(--white); border: none; cursor: pointer; transition: background 0.15s; }
-.mast-btn:hover { background: var(--accent); }
-.tip-hero { margin-top: 50px; position: relative; height: 75vh; min-height: 480px; overflow: hidden; }
-.tip-hero img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 8s ease; }
-.tip-hero img.loaded { transform: scale(1.03); }
-.tip-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(20,20,18,0.55) 100%); }
-.tip-hero-tag { position: absolute; top: 28px; left: 40px; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--white); background: var(--accent); padding: 4px 10px; }
-.tip-wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
-.tip-header { padding: 52px 0 36px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
-.tip-location { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.tip-location svg { width: 10px; height: 10px; fill: var(--accent); flex-shrink: 0; }
-.tip-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 76px); font-weight: 300; line-height: 0.95; letter-spacing: -1px; color: var(--ink); }
-.tip-meta-right { text-align: right; }
-.tip-cat-tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; border: 1px solid var(--rule); color: var(--ink2); background: var(--tag-bg); }
-.tip-tips-count { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); margin-top: 8px; }
-.tip-tips-count strong { color: var(--ink); }
-.tip-body { display: grid; grid-template-columns: 1fr 300px; gap: 80px; padding: 48px 0; border-bottom: 1px solid var(--rule); }
-.tip-text { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; line-height: 1.65; color: var(--ink2); }
-.tip-text p { margin-bottom: 20px; }
-.tip-text p:last-child { margin-bottom: 0; }
-.tip-sidebar { display: flex; flex-direction: column; }
-.sidebar-section { padding: 18px 0; border-bottom: 1px solid var(--rule); }
-.sidebar-section:first-child { padding-top: 0; }
-.sidebar-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 5px; }
-.sidebar-value { font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); line-height: 1.5; }
-.sidebar-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-.sidebar-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; background: var(--tag-bg); color: var(--ink2); border: 1px solid var(--rule); text-decoration: none; transition: all 0.15s; }
-.sidebar-tag:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
-.tip-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-bottom: 1px solid var(--rule); }
-.tip-photo-item { overflow: hidden; aspect-ratio: 4/3; }
-.tip-photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.88); transition: transform 0.6s ease, filter 0.3s; }
-.tip-photo-item:hover img { transform: scale(1.03); filter: saturate(1); }
-.tip-map-section { padding: 40px 0 64px; }
-.tip-map-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-.tip-map-label::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.map-embed { width: 100%; height: 380px; border: 1px solid var(--rule); overflow: hidden; }
-.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
-.map-footer { margin-top: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.map-address { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); }
-.map-open-link { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(181,50,42,0.3); padding-bottom: 1px; }
-.more-section { border-top: 1.5px solid var(--ink); padding: 48px 0; }
-.more-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--mid); margin-bottom: 28px; }
-.more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); }
-.more-card { background: var(--white); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: background 0.15s; }
-.more-card:hover { background: var(--off); }
-.more-card-img { width: 100%; aspect-ratio: 3/2; overflow: hidden; }
-.more-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85); transition: transform 0.5s ease; }
-.more-card:hover .more-card-img img { transform: scale(1.04); }
-.more-card-body { padding: 16px 18px 20px; }
-.more-card-cat { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-.more-card-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 3px; }
-.more-card-hood { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); }
-.submit-strip { background: var(--ink); padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-.submit-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; font-style: italic; color: var(--white); }
-.submit-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; padding: 14px 32px; background: var(--accent); color: var(--white); border: none; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
-.submit-btn:hover { background: #8a2420; }
-footer { border-top: 1.5px solid var(--ink); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
-.footer-logo { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; }
-.footer-logo span { color: var(--accent); }
-.footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1px; color: var(--mid); }
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(20,20,18,0.82); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
-.modal-overlay.open { display: flex; }
-.modal { background: var(--white); width: 90%; max-width: 460px; border-top: 2px solid var(--ink); position: relative; animation: mIn 0.22s ease; }
-@keyframes mIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-.modal-head { padding: 24px 28px 18px; border-bottom: 1px solid var(--rule); }
-.modal-over { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-.modal-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; }
-.modal-body { padding: 20px 28px 28px; }
-.modal-note { padding: 9px 12px; background: var(--off); border-left: 2px solid var(--mid); font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--ink2); margin-bottom: 18px; line-height: 1.5; }
-.form-row { margin-bottom: 12px; }
-.form-row label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
-.form-row input, .form-row select, .form-row textarea { width: 100%; padding: 9px 11px; background: var(--off); border: 1px solid var(--rule); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); outline: none; border-radius: 0; appearance: none; transition: border-color 0.15s; }
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--ink); }
-.form-row textarea { resize: none; height: 75px; }
-.modal-submit { width: 100%; padding: 11px; background: var(--ink); color: var(--white); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background 0.15s; margin-top: 4px; }
-.modal-submit:hover { background: var(--accent); }
-.modal-close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--mid); }
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.in { opacity: 1; transform: none; }
-@media (max-width: 860px) {
-  .mast { padding: 0 20px; }
-  .mast-crumb { display: none; }
-  .tip-wrap { padding: 0 20px; }
-  .tip-header { grid-template-columns: 1fr; gap: 14px; }
-  .tip-meta-right { text-align: left; }
-  .tip-body { grid-template-columns: 1fr; gap: 40px; }
-  .tip-photos { grid-template-columns: 1fr; }
-  .more-grid { grid-template-columns: 1fr; }
-  .submit-strip { flex-direction: column; padding: 40px 20px; }
-  footer { padding: 18px 20px; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paul-Henri Soler — Carouge Market, Geneva · HoodTip</title>
+  <meta name="description" content="A French winemaker near Geneva airport makes the best wine in the city and sells it on Saturday mornings at the Carouge market. Get there before noon." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef;
+      --ink:   #1a1816;
+      --muted: #6b6560;
+      --rule:  #e0dbd3;
+      --red:   #b5322a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      padding: 0 2rem;
+      border-bottom: 1.5px solid var(--ink);
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 1.05rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; color: var(--ink);
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .logo-dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--red); margin-bottom: 1px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500; font-size: 0.78rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      width: 100%; height: clamp(420px, 60vw, 680px);
+      overflow: hidden; position: relative;
+    }
+    .hero img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 40%;
+      display: block;
+    }
+    .hero-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2rem 2.5rem;
+      background: linear-gradient(transparent, rgba(20,16,12,0.55));
+    }
+    .hero-caption-location {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.65);
+      margin-bottom: 0.3rem;
+    }
+    .hero-caption-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 500; color: #fff;
+    }
+
+    /* ── ARTICLE WRAP ── */
+    .article {
+      max-width: 760px; margin: 0 auto;
+      padding: 3.5rem 2rem 2rem;
+    }
+
+    /* breadcrumb */
+    .breadcrumb {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 1.75rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb-sep { opacity: 0.4; }
+
+    /* category */
+    .category {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid var(--rule);
+      padding: 0.2rem 0.65rem; border-radius: 2px;
+      display: inline-block; margin-bottom: 1rem;
+    }
+
+    /* headline */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500; font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.05; letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1.25rem;
+      color: var(--muted); line-height: 1.45;
+      margin-bottom: 2.5rem;
+    }
+
+    /* meta strip */
+    .meta-strip {
+      display: flex; flex-wrap: wrap; gap: 1.5rem 3rem;
+      padding: 1.5rem 0; border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+    }
+    .meta-value { font-size: 0.88rem; color: var(--ink); }
+
+    /* body copy */
+    .body p {
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--ink); margin-bottom: 1.4rem;
+      font-weight: 300;
+    }
+    .body p:last-child { margin-bottom: 0; }
+
+    /* section label */
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule);
+    }
+
+    /* pull quote */
+    .pull-quote {
+      border-left: 2px solid var(--ink);
+      padding: 0.75rem 0 0.75rem 1.75rem;
+      margin: 3rem 0;
+    }
+    .pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: clamp(1.45rem, 3vw, 1.85rem);
+      line-height: 1.35; color: var(--ink); font-weight: 400;
+    }
+
+    /* full-bleed image — breaks out of article width */
+    .img-full {
+      width: 100vw; position: relative; left: 50%;
+      transform: translateX(-50%);
+      margin: 3.5rem 0;
+    }
+    .img-full img {
+      width: 100%; display: block;
+      max-height: 620px; object-fit: cover;
+    }
+    .img-caption {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      padding: 0.6rem 2rem 0;
+    }
+
+    /* contained image */
+    .img-contained { margin: 3rem 0; }
+    .img-contained img { width: 100%; display: block; }
+    .img-contained .img-caption { padding-left: 0; }
+
+    /* two-up images */
+    .img-pair {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; margin: 3.5rem 0;
+      width: 100vw; position: relative; left: 50%;
+      transform: translateX(-50%);
+    }
+    .img-pair img { width: 100%; display: block; height: 480px; object-fit: cover; }
+    .img-pair-captions {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; padding: 0 2rem;
+    }
+    .img-pair-captions span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      padding-top: 0.6rem; display: block;
+    }
+
+    /* feature aside — image + text side by side */
+    .aside-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+      margin: 3rem 0;
+    }
+    .aside-wrap img { width: 100%; display: block; }
+    .aside-body { display: flex; flex-direction: column; justify-content: center; }
+
+    /* the sticker / practical card */
+    .practical {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 2rem; align-items: start;
+      border: 1px solid var(--rule);
+      padding: 2rem; margin: 3.5rem 0;
+      background: #fff;
+    }
+    .practical img { width: 160px; display: block; }
+    .practical-body {}
+    .practical-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    .practical-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .practical-list li {
+      font-size: 0.9rem; color: var(--ink);
+      padding-left: 1rem; position: relative; line-height: 1.5;
+    }
+    .practical-list li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--muted); font-size: 0.8rem;
+    }
+    .practical-list li strong {
+      font-weight: 500; font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.04em; font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    /* back link */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      margin-top: 3.5rem; border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.15rem; transition: color 0.15s, border-color 0.15s;
+    }
+    .back-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 2px solid var(--red);
+      padding: 2rem; margin-top: 5rem;
+      background: var(--ink);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--cream); text-decoration: none;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .footer-stats {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(247,244,239,0.35);
+      display: flex; gap: 1.5rem;
+    }
+    .footer-note {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem; color: rgba(247,244,239,0.35);
+      font-style: italic;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .article { padding: 2.5rem 1.25rem 2rem; }
+      .img-pair { grid-template-columns: 1fr; }
+      .img-pair img { height: 260px; }
+      .img-pair-captions { grid-template-columns: 1fr; }
+      .aside-wrap { grid-template-columns: 1fr; gap: 1.5rem; }
+      .practical { grid-template-columns: 1fr; }
+      .practical img { width: 120px; }
+      .footer-stats, .footer-note { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="mast">
-  <a href="index.html" class="logo">HoodTip<span>.</span></a>
-  <div class="mast-nav">
-    <div class="mast-crumb">
-      <a href="geneva.html">Geneva</a>
-      <span class="sep">/</span>
-      <a href="geneva.html#carouge">Carouge</a>
-      <span class="sep">/</span>
-      <span class="cur">Paul-Henri Soler</span>
-    </div>
-    <button class="mast-btn" onclick="openModal()">Leave a tip</button>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Hood<span class="logo-dot"></span>Tip</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#neighbourhoods">Neighbourhoods</a></li>
+    </ul>
   </div>
-</header>
+</nav>
 
-<div class="tip-hero">
-  <img src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler natural wine" id="heroImg">
-  <div class="tip-hero-overlay"></div>
-  <div class="tip-hero-tag">Wine · Carouge</div>
-</div>
-
-<div class="tip-wrap">
-  <div class="tip-header reveal">
-    <div>
-      <div class="tip-location">
-        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        Carouge Market, Geneva
-      </div>
-      <h1 class="tip-name">Paul-Henri Soler</h1>
-    </div>
-    <div class="tip-meta-right">
-      <div class="tip-cat-tag">Wine</div>
-      <div class="tip-tips-count"><strong>11</strong> people tipped this</div>
-    </div>
-  </div>
-
-  <div class="tip-body reveal">
-    <div class="tip-text">
-      <p>The reason to go to Carouge market. Paul-Henri is a natural wine vigneron who sets up at the Saturday market with his bottles chalked up on a barrel and free tastings for anyone who stops. Local grapes, honest prices, the kind of wine you carry home carefully.</p>
-      <p>Get there before noon. Buy at least two bottles. The white is exceptional.</p>
-    </div>
-    <div class="tip-sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-label">Where</div>
-        <div class="sidebar-value">Carouge Saturday market, Place du Marché</div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">When</div>
-        <div class="sidebar-value">Saturday mornings. Get there before noon.</div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">Get</div>
-        <div class="sidebar-value">At least two bottles. The white is exceptional.</div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">Tags</div>
-        <div class="sidebar-tags">
-          <a class="sidebar-tag" href="#">Wine</a>
-          <a class="sidebar-tag" href="#">Natural wine</a>
-          <a class="sidebar-tag" href="#">Market</a>
-          <a class="sidebar-tag" href="#">Saturday</a>
-          <a class="sidebar-tag" href="#">Carouge</a>
-        </div>
-      </div>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <img src="carouge-sunny-day.jpg" alt="Saturday market at Carouge, Geneva — violinist playing in the square, Carouge Cinéma in the background" />
+  <div class="hero-caption">
+    <div class="hero-caption-location">Carouge · Geneva · Switzerland</div>
+    <div class="hero-caption-name">Saturday at the Marché de Carouge</div>
   </div>
 </div>
 
-<div class="tip-photos reveal">
-  <div class="tip-photo-item">
-    <img src="carouge-market-square.jpg" alt="Carouge market">
-  </div>
-  <div class="tip-photo-item">
-    <img src="carouge-market-haul.jpg" alt="Market haul — wine and produce">
-  </div>
-</div>
+<!-- ARTICLE -->
+<div class="article">
 
-<div class="tip-wrap">
-  <div class="tip-map-section reveal">
-    <div class="tip-map-label">Find it</div>
-    <div class="map-embed">
-      <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU3c_o&q=Place+du+Marche+Carouge+Geneva&zoom=15">
-      </iframe>
-    </div>
-    <div class="map-footer">
-      <span class="map-address">Place du Marché, Carouge, Geneva — Saturday market</span>
-      <a href="https://maps.google.com/?q=Place+du+Marche+Carouge+Geneva" target="_blank" class="map-open-link">Open in Maps →</a>
-    </div>
+  <div class="breadcrumb">
+    <a href="index.html">HoodTip</a>
+    <span class="breadcrumb-sep">·</span>
+    <a href="index.html">Geneva</a>
+    <span class="breadcrumb-sep">·</span>
+    <span>Carouge</span>
   </div>
 
-  <div class="more-section reveal">
-    <div class="more-label">More tips in Geneva</div>
-    <div class="more-grid">
-      <a href="tip-bongojoe.html" class="more-card">
-        <div class="more-card-img"><img src="bongojoe-yellow-table.jpg" alt="Bongo Joe's"></div>
-        <div class="more-card-body">
-          <div class="more-card-cat">Bar</div>
-          <div class="more-card-name">Bongo Joe's</div>
-          <div class="more-card-hood">Plainpalais</div>
-        </div>
-      </a>
-      <a href="tip-saintamour.html" class="more-card">
-        <div class="more-card-img"><img src="saintamour-bottle-view.jpg" alt="Domaine Saint-Amour"></div>
-        <div class="more-card-body">
-          <div class="more-card-cat">Wine</div>
-          <div class="more-card-name">Domaine Saint-Amour</div>
-          <div class="more-card-hood">Lavaux · Vaud</div>
-        </div>
-      </a>
-      <a href="tip-kilwins.html" class="more-card">
-        <div class="more-card-img"><img src="saugatuck-kilwins-exterior.jpg" alt="Kilwins"></div>
-        <div class="more-card-body">
-          <div class="more-card-cat">Ice Cream</div>
-          <div class="more-card-name">Kilwins</div>
-          <div class="more-card-hood">Saugatuck, Michigan</div>
-        </div>
-      </a>
+  <span class="category">Wine · Market</span>
+
+  <h1>Paul-Henri Soler</h1>
+  <p class="subtitle">The best wine in Geneva, sold from a wooden barrel on Saturday mornings</p>
+
+  <div class="meta-strip">
+    <div class="meta-item">
+      <span class="meta-label">Where</span>
+      <span class="meta-value">Marché de Carouge, Place du Marché</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">When</span>
+      <span class="meta-value">Saturdays, 8h–14h</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Price</span>
+      <span class="meta-value">CHF 16–19 per bottle</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Also at</span>
+      <span class="meta-value">Marché des Grottes, Thursdays 16h30–20h</span>
     </div>
   </div>
+
+  <div class="section-label">The market</div>
+  <div class="body">
+    <p>The Saturday market in Carouge is a wonderful way to spend your early afternoon. Like all farmers markets, the shopping is more performative, experiential, than pragmatic — you still need to go to Coop and get real stuff. But there is one thing worth making the trip for that you genuinely cannot get anywhere else, and that is Paul-Henri Soler's wine.</p>
+    <p>The market itself is worth the visit regardless. It spills across the Place du Marché in front of the Carouge Cinéma, which has one of the best walls in Geneva. In summer someone usually sets up playing violin between the stalls. The neighbourhood is Italian-inflected, arcaded, completely unlike the rest of the city — it's what Geneva would be if it relaxed a bit.</p>
+  </div>
+
+  <!-- Full bleed: chalk prices on barrel -->
+  <div class="img-full">
+    <img src="paulhenri-wine-bottles.jpg" alt="Paul-Henri Soler bottles at the Carouge market — prices chalked directly onto the glass" />
+    <div class="img-caption">Chalk prices on glass. No labels, no nonsense.</div>
+  </div>
+
+  <div class="section-label">The wine guy</div>
+  <div class="body">
+    <p>Paul-Henri is a French guy who married a Swiss woman and set up a small operation near the Geneva airport. He sources grapes exclusively from the Geneva region — local varieties, local terroir — and makes everything himself with a sensibility that sits somewhere between natural wine and actual wizardry. Think of him as a French Willy Wonka who decided to get into wine instead.</p>
+    <p>He is not a large producer. The range changes seasonally, the labels are hand-illustrated in a scratchy bike-riding figure that shows up on everything, and whatever he is selling this week will be good. All the wine obsessives in Geneva — and there are many, this is still Switzerland — quietly revere him. If you're ever at Bombar and you mention Paul-Henri, you will pass the cool test and be greeted accordingly.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Say his name at Bombar and you will pass the cool test."</p>
+  </div>
+
+  <!-- Biceps section: aside layout -->
+  <div class="aside-wrap">
+    <img src="paulhenri-biceps.jpg" alt="Paul-Henri Soler Biceps bottle — held up to candlelight" />
+    <div class="aside-body">
+      <div class="section-label" style="margin-top:0">The one to start with</div>
+      <div class="body">
+        <p>There's a wine he makes called <em>Biceps</em>. It's a maceration wine — technically somewhere between white and red, what people call orange wine — but the way to think about it is: a light red you put in the fridge. Drinking temperature, easy, completely sessionable. I have opened a bottle to have a glass and then proceeded to finish the entire thing without noticing.</p>
+        <p>The colours of his wines are beautiful. The Biceps in particular goes this extraordinary amber-copper colour when you hold it up to the light. Buy one to drink now and one to take home.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wine color photo -->
+  <div class="img-contained">
+    <img src="paulhenri-wine-color.jpg" alt="Paul-Henri Soler wine held up to a window — the amber colour of the maceration wine" />
+    <div class="img-caption">The colour of the Biceps held up to a Carouge window.</div>
+  </div>
+
+  <div class="body">
+    <p>He'll happily let you taste everything before buying — that's part of the ritual. On a good Saturday you can stand there and work through four or five wines. There are wooden barrel tables set up where you can sit with a glass if it's a nice day, which in Carouge in the summer, it often is. Or you stock up for the house, which is what I try to do whenever I have the chance. CHF 16–19 a bottle for wine this good is not something you take for granted in Switzerland.</p>
+    <p>I can promise you with no hesitation that you will like the wine. It's a good vibe all around — one of those genuinely unique Geneva things that you won't find anywhere else and that locals know is special.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"CHF 16–19 a bottle for wine this good is not something you take for granted in Switzerland."</p>
+  </div>
+
+  <!-- Two-up: the operation -->
+  <div class="img-pair">
+    <img src="paulhenri-office.jpg" alt="Paul-Henri Soler's cave — bottles in the fridge with chalk prices" />
+    <img src="paulhenri-name-wall.jpg" alt="Paul-Henri Soler's name scratched into the plaster wall of his cave" />
+  </div>
+  <div class="img-pair-captions" style="max-width:1200px;margin:0 auto;">
+    <span>Inside the cave near the airport. Not the market.</span>
+    <span>His name in the plaster. Kids, presumably.</span>
+  </div>
+
+  <!-- Haul photo -->
+  <div class="img-contained" style="margin-top:3.5rem;">
+    <img src="carouge-market-haul.jpg" alt="A Saturday market haul — strawberries, chard, tomatoes, and several Paul-Henri bottles on a kitchen counter" />
+    <div class="img-caption">The full Carouge Saturday haul. The wine-to-vegetable ratio is correct.</div>
+  </div>
+
+  <div class="body" style="margin-top: 2.5rem;">
+    <p>One note: the indoor cellar photos in this tip are from his operation near Meyrin, not the Carouge market itself. If you want to buy a case or visit the source, that's where to go. But for most purposes, the Saturday stall is perfect. Get there before noon — he does sell out of certain bottles by early afternoon on busy weekends.</p>
+  </div>
+
+  <!-- Practical box -->
+  <div class="practical">
+    <img src="paulhenri-sticker.jpg" alt="Paul-Henri Soler business card" />
+    <div class="practical-body">
+      <div class="practical-title">The practical bit</div>
+      <ul class="practical-list">
+        <li><strong>Market</strong> Marché de Carouge, Place du Marché — Saturdays 8h–14h</li>
+        <li><strong>Also</strong> Marché des Grottes, Thursdays 16h30–20h</li>
+        <li><strong>Cave</strong> Route de Prévessin 60, CH-1217 Meyrin-Mategnin</li>
+        <li><strong>Contact</strong> paul-henri.soler@bluewin.ch · +41 79 746 24 61</li>
+        <li><strong>Price</strong> CHF 16–19 per bottle at the market</li>
+        <li>Get there before noon. He does sell out.</li>
+        <li>Tastings are free and offered freely — work through everything before deciding.</li>
+        <li>The Biceps is the one to start with. The Escargot is the one for dinner.</li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← All tips</a>
+
 </div>
 
-<div class="submit-strip">
-  <div class="submit-text">Know somewhere else good in Carouge?</div>
-  <button class="submit-btn" onclick="openModal()">Leave a HoodTip</button>
-</div>
-
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">HoodTip<span>.</span></div>
-  <span class="footer-copy">Only the good stuff.</span>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Hood<span class="logo-dot"></span>Tip</a>
+    <div class="footer-stats">
+      <span>31 tips</span>
+      <span>12 neighbourhoods</span>
+      <span>7 cities</span>
+    </div>
+    <p class="footer-note">Write it like you're giving a friend advice the night before they leave.</p>
+  </div>
 </footer>
 
-<div class="modal-overlay" id="modal" onclick="handleOverlay(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-head">
-      <div class="modal-over">Carouge, Geneva</div>
-      <div class="modal-title">Leave a HoodTip</div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-note">Positive only. Specific over general. Write it like a note to a friend going next week.</div>
-      <div class="form-row"><label>Place name</label><input type="text" placeholder="What's it called?"></div>
-      <div class="form-row"><label>Neighbourhood</label><input type="text" placeholder="e.g. Carouge, Plainpalais..."></div>
-      <div class="form-row"><label>Category</label>
-        <select><option>Wine</option><option>Bar</option><option>Restaurant</option><option>Coffee</option><option>Market</option><option>Experience</option><option>Other</option></select>
-      </div>
-      <div class="form-row"><label>Your tip</label><textarea placeholder="Be specific. What to order, when to go, what to know."></textarea></div>
-      <button class="modal-submit" onclick="submitTip()">Submit tip</button>
-    </div>
-  </div>
-</div>
-
-<script>
-window.addEventListener('load', () => {
-  const img = document.getElementById('heroImg');
-  if (img.complete) img.classList.add('loaded');
-  else img.addEventListener('load', () => img.classList.add('loaded'));
-});
-function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
-function handleOverlay(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-function submitTip() {
-  const btn = document.querySelector('.modal-submit');
-  btn.textContent = 'Tip received — thank you';
-  btn.style.background = '#2C4A6E';
-  setTimeout(() => { closeModal(); btn.textContent = 'Submit tip'; btn.style.background = ''; }, 1800);
-}
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-}, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
