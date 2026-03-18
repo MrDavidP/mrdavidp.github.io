@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HoodTip — Only the good stuff</title>
-  <meta name="description" content="Neighbourhood tips from people who actually know. Specific, positive, useful. Write it like you're giving a friend advice the night before they leave." />
+  <meta name="description" content="Neighbourhood tips from people who actually know. Specific, positive, useful." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -14,168 +14,160 @@
       --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
       --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
       --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Barlow', system-ui, sans-serif;
-      --cond: 'Barlow Condensed', system-ui, sans-serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-    /* NAV */
+    /* ── NAV ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300; background: var(--cream); border-bottom: 1.5px solid var(--ink); }
-    .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 40px; height: 52px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
+    .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; height: 50px; display: flex; align-items: center; justify-content: space-between; gap: 0; }
+    .nav-left { display: flex; align-items: baseline; gap: 12px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; line-height: 1; }
     .nav-logo em { font-style: italic; font-weight: 400; }
     .nav-logo .dot { color: var(--red); }
-    .nav-links { display: flex; gap: 0; }
-    .nav-links a { font-family: var(--cond); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 20px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 2px; }
+    .nav-links { display: flex; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 50px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
     .nav-links a:hover { color: var(--ink); }
     .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
-    .nav-links a.cta:hover { background: var(--ink2); color: var(--cream); }
+    .nav-links a.cta:hover { background: var(--ink2); }
 
-    /* MASTHEAD */
-    .masthead { margin-top: 52px; border-bottom: 1.5px solid var(--ink); }
-    .masthead-inner { max-width: 1400px; margin: 0 auto; padding: 52px 40px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: end; }
-    .masthead-hed { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.8rem); font-weight: 400; line-height: 1.0; letter-spacing: -0.01em; }
-    .masthead-hed em { font-style: italic; }
-    .masthead-right { padding-left: 48px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 1.5rem; }
-    .masthead-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.7; max-width: 380px; }
-    .masthead-rule-list { display: flex; flex-direction: column; gap: 0; }
-    .masthead-rule { display: flex; gap: 1rem; align-items: baseline; padding: 0.65rem 0; border-top: 1px solid var(--rule); font-size: 0.82rem; color: var(--muted); }
-    .masthead-rule:last-child { border-bottom: 1px solid var(--rule); }
-    .masthead-rule-num { font-family: var(--serif); font-size: 0.85rem; color: var(--rule); flex-shrink: 0; width: 1.2rem; }
+    /* ── PAGE WRAP ── */
+    .page { margin-top: 50px; }
 
-    /* CITY NAV */
-    .city-nav { border-bottom: 1.5px solid var(--ink); position: sticky; top: 52px; z-index: 200; background: var(--cream); }
-    .city-nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 0; height: 44px; overflow-x: auto; }
-    .city-nav-inner::-webkit-scrollbar { display: none; }
-    .city-btn { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 20px; height: 44px; display: flex; align-items: center; border-right: 1px solid var(--rule); white-space: nowrap; transition: color 0.15s; }
-    .city-btn:first-child { padding-left: 0; }
-    .city-btn:hover { color: var(--ink); }
+    /* ── SECTION DIVIDER ── */
+    .divider { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    .divider-inner { display: flex; align-items: center; gap: 16px; padding: 22px 0 0; border-top: 1.5px solid var(--ink); margin-top: 0; }
+    .divider-inner:first-child { border-top: none; padding-top: 0; }
+    .divider-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .divider-line { flex: 1; height: 1px; background: var(--rule); }
+    .divider-count { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rule); white-space: nowrap; }
 
-    /* SECTION HEAD */
-    .section-head { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-    .section-head-inner { display: flex; align-items: baseline; gap: 20px; padding: 28px 0 16px; border-bottom: 1px solid var(--ink); }
-    .section-head-inner h2 { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; white-space: nowrap; }
-    .section-line { flex: 1; height: 1px; background: var(--rule); }
-    .section-count { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rule); white-space: nowrap; }
+    /* ── CITY LABEL ── */
+    .city-label { max-width: 1400px; margin: 0 auto; padding: 20px 32px 0; display: flex; align-items: center; gap: 12px; }
+    .city-label-text { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rule); }
+    .city-label-line { flex: 1; height: 1px; background: var(--rule); }
 
-    /* NEIGHBOURHOOD GRID */
-    .hoods-editorial { max-width: 1400px; margin: 0 auto; border-bottom: 1.5px solid var(--ink); }
-    .city-group { border-bottom: 1px solid var(--rule); }
-    .city-group:last-child { border-bottom: none; }
-    .city-group-label { padding: 18px 40px 0; font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rule); }
-    .city-hoods { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); margin-top: 14px; }
-    .city-hoods.has-featured { grid-template-columns: 2fr 1fr 1fr; }
-    .city-hoods.two-col { grid-template-columns: 1fr 1fr; }
-    .city-hoods.one-col { grid-template-columns: 1fr 1fr 1fr; }
-    .hood-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.2s; }
+    /* ── NEIGHBOURHOOD GRID ── */
+    .hoods { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    .hoods-row { display: grid; gap: 0; border-bottom: 1px solid var(--rule); }
+    .hoods-row.six   { grid-template-columns: repeat(6, 1fr); }
+    .hoods-row.four  { grid-template-columns: repeat(4, 1fr); }
+    .hoods-row.three { grid-template-columns: repeat(3, 1fr); }
+    .hoods-row.two   { grid-template-columns: repeat(2, 1fr); }
+
+    .hood-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: flex; flex-direction: column; transition: background 0.18s; }
     .hood-card:last-child { border-right: none; }
-    .hood-card:hover { background: rgba(0,0,0,0.015); }
-    .hood-img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; }
-    .hood-card.featured .hood-img-wrap { aspect-ratio: 16/9; }
-    .hood-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
-    .hood-card:hover .hood-img { transform: scale(1.03); }
-    .hood-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.75) 0%, rgba(15,12,10,0.05) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 16px 20px; }
-    .hood-name { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; line-height: 1.05; color: #fff; letter-spacing: 0.01em; }
-    .hood-card.featured .hood-name { font-size: 2.4rem; }
-    .hood-loc { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 3px; }
-    .hood-body { padding: 14px 20px 20px; }
-    .hood-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .hood-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rule); }
-    .hood-count { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .hood-arrow { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); transition: color 0.15s; }
-    .hood-card:hover .hood-arrow { color: var(--muted); }
+    .hood-card:hover { background: rgba(26,24,22,0.03); }
+    .hood-img-wrap { position: relative; overflow: hidden; aspect-ratio: 1/1; }
+    .hood-card.wide .hood-img-wrap { aspect-ratio: 4/3; }
+    .hood-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s ease; }
+    .hood-card:hover .hood-img { transform: scale(1.04); }
+    .hood-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 12px 14px; }
+    .hood-name { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; line-height: 1.05; color: #fff; }
+    .hood-card.wide .hood-name { font-size: 1.6rem; }
+    .hood-loc { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .hood-foot { padding: 10px 14px 14px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--rule); }
+    .hood-desc { font-size: 0.74rem; color: var(--muted); line-height: 1.45; flex: 1; padding-right: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .hood-count { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); white-space: nowrap; flex-shrink: 0; }
+    .hood-card:hover .hood-count { color: var(--muted); }
 
-    /* RECENT TIPS */
-    .recent-strip { max-width: 1400px; margin: 0 auto; border-bottom: 1.5px solid var(--ink); }
-    .recent-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
-    .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.2s; padding-bottom: 20px; }
+    /* ── TIPS GRID ── */
+    .tips { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    .tips-row { display: grid; gap: 0; border-bottom: 1px solid var(--rule); }
+    .tips-row.five  { grid-template-columns: repeat(5, 1fr); }
+    .tips-row.four  { grid-template-columns: repeat(4, 1fr); }
+
+    .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: flex; flex-direction: column; padding-bottom: 18px; transition: background 0.18s; }
     .tip-card:last-child { border-right: none; }
-    .tip-card:hover { background: rgba(0,0,0,0.015); }
-    .tip-card-img-wrap { overflow: hidden; }
-    .tip-card-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .tip-card:hover .tip-card-img { transform: scale(1.03); }
-    .tip-card-body { padding: 12px 16px 0; }
-    .tip-card-cat { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .tip-card-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.2; margin-bottom: 3px; }
-    .tip-card-hood { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
-    .tip-card-copy { font-size: 0.78rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .tip-card:hover { background: rgba(26,24,22,0.03); }
+    .tip-img-wrap { overflow: hidden; }
+    .tip-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.55s ease; }
+    .tip-card:hover .tip-img { transform: scale(1.04); }
+    .tip-body { padding: 10px 14px 0; }
+    .tip-cat { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .tip-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.15; margin-bottom: 2px; }
+    .tip-hood { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .tip-copy { font-size: 0.76rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-    /* CTA */
-    .cta { border-bottom: 1.5px solid var(--ink); }
-    .cta-inner { max-width: 1400px; margin: 0 auto; padding: 72px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center; }
-    .cta-hed { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 400; line-height: 1.1; }
+    /* ── CTA STRIP ── */
+    .cta-strip { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    .cta-strip-inner { display: flex; align-items: center; justify-content: space-between; padding: 28px 0; border-top: 1.5px solid var(--ink); gap: 2rem; }
+    .cta-hed { font-family: var(--serif); font-size: clamp(1.6rem, 2.8vw, 2.4rem); font-weight: 400; line-height: 1.1; }
     .cta-hed em { font-style: italic; }
-    .cta-right { padding-left: 48px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-start; }
-    .cta-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-width: 360px; }
-    .cta-btn { display: inline-block; background: var(--ink); color: var(--cream); font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 13px 28px; text-decoration: none; }
+    .cta-right { display: flex; align-items: center; gap: 2rem; flex-shrink: 0; }
+    .cta-body { font-size: 0.82rem; color: var(--muted); line-height: 1.65; max-width: 280px; }
+    .cta-btn { display: inline-block; background: var(--ink); color: var(--cream); font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 12px 24px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
     .cta-btn:hover { background: var(--ink2); }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer { background: var(--ink); border-top: 2px solid var(--red); }
-    .footer-inner { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 40px; height: 64px; }
-    .footer-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--cream); letter-spacing: 0.01em; }
+    .footer-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 2rem; }
+    .footer-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--cream); letter-spacing: 0.01em; }
     .footer-logo em { font-style: italic; font-weight: 400; }
     .footer-logo .dot { color: var(--red); }
-    .footer-stats { display: flex; align-items: center; gap: 8px; justify-content: center; }
-    .footer-stat { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); }
-    .footer-sep { color: rgba(247,244,239,0.15); }
-    .footer-tagline { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: rgba(247,244,239,0.3); text-align: right; }
+    .footer-stats { display: flex; align-items: center; gap: 8px; }
+    .footer-stat { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.28); }
+    .footer-sep { color: rgba(247,244,239,0.15); font-size: 0.7rem; }
+    .footer-note { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: rgba(247,244,239,0.28); }
 
-    /* MODAL */
-    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(20,16,12,0.7); align-items: center; justify-content: center; }
+    /* ── MODAL ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(20,16,12,0.72); align-items: center; justify-content: center; }
     .modal-overlay.open { display: flex; }
-    .modal { background: var(--cream); width: 100%; max-width: 480px; margin: 20px; max-height: 90vh; overflow-y: auto; }
-    .modal-header { padding: 20px 24px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; }
-    .modal-header h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; }
-    .modal-close { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 1rem; }
-    .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
-    .modal-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.6; font-style: italic; }
-    .field { display: flex; flex-direction: column; gap: 6px; }
-    .field label { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .field input, .field select, .field textarea { background: white; border: 1px solid var(--rule); padding: 10px 12px; font-family: var(--sans); font-size: 0.88rem; color: var(--ink); outline: none; border-radius: 0; }
+    .modal { background: var(--cream); width: 100%; max-width: 460px; margin: 20px; max-height: 90vh; overflow-y: auto; }
+    .modal-header { padding: 18px 22px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; }
+    .modal-header h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; }
+    .modal-close { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 0.9rem; }
+    .modal-body { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+    .modal-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.6; font-style: italic; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .field input, .field select, .field textarea { background: white; border: 1px solid var(--rule); padding: 9px 11px; font-family: var(--sans); font-size: 0.86rem; color: var(--ink); outline: none; border-radius: 0; }
     .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink); }
-    .field textarea { resize: vertical; min-height: 88px; }
-    .submit-btn { padding: 12px; background: var(--ink); color: var(--cream); border: none; cursor: pointer; font-family: var(--cond); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .field textarea { resize: vertical; min-height: 84px; }
+    .submit-btn { padding: 11px; background: var(--ink); color: var(--cream); border: none; cursor: pointer; font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
     .submit-btn:hover { background: var(--ink2); }
 
-    /* RESPONSIVE */
+    /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
-      .city-hoods { grid-template-columns: repeat(3, 1fr); }
-      .city-hoods.has-featured { grid-template-columns: 2fr 1fr; }
-      .recent-grid { grid-template-columns: repeat(3, 1fr); }
-      .recent-grid .tip-card:nth-child(n+4) { display: none; }
+      .hoods-row.six { grid-template-columns: repeat(3, 1fr); }
+      .hoods-row.four { grid-template-columns: repeat(2, 1fr); }
+      .tips-row.five { grid-template-columns: repeat(3, 1fr); }
+      .tips-row .tip-card:nth-child(n+4) { border-top: 1px solid var(--rule); }
     }
     @media (max-width: 800px) {
       .nav-inner { padding: 0 20px; }
       .nav-links a:not(.cta) { display: none; }
-      .masthead-inner { grid-template-columns: 1fr; padding: 36px 20px; gap: 2rem; }
-      .masthead-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2rem; }
-      .section-head { padding: 0 20px; }
-      .city-group-label { padding: 14px 20px 0; }
-      .city-hoods, .city-hoods.has-featured, .city-hoods.two-col { grid-template-columns: 1fr 1fr; }
-      .recent-grid { grid-template-columns: 1fr 1fr; }
-      .recent-grid .tip-card:nth-child(n+3) { display: none; }
-      .cta-inner { grid-template-columns: 1fr; padding: 48px 20px; gap: 2rem; }
-      .cta-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 2rem; }
-      .footer-inner { grid-template-columns: 1fr; height: auto; padding: 20px; gap: 8px; }
-      .footer-stats, .footer-tagline { display: none; }
+      .nav-tagline { display: none; }
+      .hoods, .tips, .divider, .city-label, .cta-strip { padding-left: 20px; padding-right: 20px; }
+      .hoods-row.six, .hoods-row.four, .hoods-row.three { grid-template-columns: repeat(2, 1fr); }
+      .hood-card:nth-child(2n) { border-right: none; }
+      .tips-row.five, .tips-row.four { grid-template-columns: repeat(2, 1fr); }
+      .tip-card:nth-child(2n) { border-right: none; }
+      .cta-strip-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      .cta-right { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .footer-inner { padding: 0 20px; }
+      .footer-stats, .footer-note { display: none; }
     }
     @media (max-width: 480px) {
-      .city-hoods, .city-hoods.has-featured, .city-hoods.two-col { grid-template-columns: 1fr; }
+      .hoods-row.six, .hoods-row.four, .hoods-row.three, .hoods-row.two { grid-template-columns: 1fr; }
       .hood-card { border-right: none; border-bottom: 1px solid var(--rule); }
-      .recent-grid { grid-template-columns: 1fr; }
-      .recent-grid .tip-card { border-right: none; }
-      .recent-grid .tip-card:nth-child(n+3) { display: block; }
-      .recent-grid .tip-card:nth-child(n+4) { display: none; }
+      .tips-row.five, .tips-row.four { grid-template-columns: 1fr; }
+      .tip-card { border-right: none; border-bottom: 1px solid var(--rule); }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="/">Hood<em>Tip<span class="dot">.</span></em></a>
+    <div class="nav-left">
+      <a class="nav-logo" href="/">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
+    </div>
     <div class="nav-links">
       <a href="#geneva">Geneva</a>
       <a href="#london">London</a>
@@ -186,169 +178,164 @@
   </div>
 </nav>
 
-<div class="masthead">
-  <div class="masthead-inner">
-    <div class="masthead-hed">Neighbourhood tips<br>from people who<br><em>actually know.</em></div>
-    <div class="masthead-right">
-      <p class="masthead-desc">Specific over general. Positive only. Write it like you're giving a friend advice the night before they leave.</p>
-      <div class="masthead-rule-list">
-        <div class="masthead-rule"><span class="masthead-rule-num">1</span> Only the good stuff. No ranking, no negativity.</div>
-        <div class="masthead-rule"><span class="masthead-rule-num">2</span> Filed by neighbourhood, not by category.</div>
-        <div class="masthead-rule"><span class="masthead-rule-num">3</span> Tell me what to order. Tell me when to go. Be specific.</div>
+<div class="page">
+
+  <!-- ── GENEVA ── -->
+  <div class="city-label" id="geneva">
+    <span class="city-label-text">Geneva &middot; Switzerland</span>
+    <div class="city-label-line"></div>
+  </div>
+  <div class="hoods">
+    <div class="hoods-row six">
+
+      <a class="hood-card wide" href="carouge.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="carouge-sunny-day.jpg" alt="Carouge" /><div class="hood-overlay"><div class="hood-name">Carouge</div><div class="hood-loc">Geneva &middot; Switzerland</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Saturday market: wine, oysters, best pizza in the city.</span><span class="hood-count">4 tips</span></div>
+      </a>
+
+      <a class="hood-card" href="tip-bongojoe.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="bongojoe-yellow-table.jpg" alt="Plainpalais" /><div class="hood-overlay"><div class="hood-name">Plainpalais</div><div class="hood-loc">Geneva &middot; Switzerland</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Record shop turned outdoor bar. Freshest sushi in the city.</span><span class="hood-count">3 tips</span></div>
+      </a>
+
+      <a class="hood-card" href="tip-mulligans.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="geneva-mulligans-pints.jpg" alt="Cornavin" /><div class="hood-overlay"><div class="hood-name">Cornavin</div><div class="hood-loc">Geneva &middot; Switzerland</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Best Guinness in Geneva. And a train restaurant car nobody knows about.</span><span class="hood-count">2 tips</span></div>
+      </a>
+
+      <a class="hood-card" href="tip-empanadas.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Nations" /><div class="hood-overlay"><div class="hood-name">Nations</div><div class="hood-loc">Geneva &middot; Switzerland</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Two good reasons to go near the UN. The sauce picante. The park sandwich.</span><span class="hood-count">2 tips</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── LONDON ── -->
+  <div class="city-label" id="london" style="margin-top:32px;">
+    <span class="city-label-text">London &middot; England</span>
+    <div class="city-label-line"></div>
+  </div>
+  <div class="hoods">
+    <div class="hoods-row six">
+
+      <a class="hood-card" href="tip-thecow.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="IMG_3513.JPG" alt="Notting Hill" /><div class="hood-overlay"><div class="hood-name">Notting Hill</div><div class="hood-loc">London &middot; England</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Proper pub, oldest cinema in Britain, rooftop hotel under £200.</span><span class="hood-count">3 tips</span></div>
+      </a>
+
+      <a class="hood-card" href="tip-karmabread.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="london-karmabread-challah-hand.jpg" alt="Hampstead Heath" /><div class="hood-overlay"><div class="hood-name">Hampstead Heath</div><div class="hood-loc">London &middot; England</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Best challah in London on a Friday. Walk the ponds after.</span><span class="hood-count">1 tip</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── ISTANBUL ── -->
+  <div class="city-label" id="istanbul" style="margin-top:32px;">
+    <span class="city-label-text">Istanbul &middot; Turkey</span>
+    <div class="city-label-line"></div>
+  </div>
+  <div class="hoods">
+    <div class="hoods-row six">
+
+      <a class="hood-card" href="yenikoy.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/photo-waterfront-dining.jpg" alt="Yeniköy" /><div class="hood-overlay"><div class="hood-name">Yenik&ouml;y</div><div class="hood-loc">Istanbul &middot; Turkey</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Raki on the Bosphorus. Bonito fish truck in October. Not curated for visitors.</span><span class="hood-count">6 tips</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── ELSEWHERE ── -->
+  <div class="city-label" id="elsewhere" style="margin-top:32px;">
+    <span class="city-label-text">Elsewhere</span>
+    <div class="city-label-line"></div>
+  </div>
+  <div class="hoods">
+    <div class="hoods-row six">
+
+      <a class="hood-card" href="tip-lagrandeboucherie.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="Screenshot_2026-03-17_at_15_29_23.png" alt="New York" /><div class="hood-overlay"><div class="hood-name">New York</div><div class="hood-loc">New York &middot; USA</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">A zinc bar under stained glass. The Jewish deli that never changes.</span><span class="hood-count">2 tips</span></div>
+      </a>
+
+      <a class="hood-card" href="tip-oceanik.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="paris-oceanik-window-dusk.jpg" alt="Latin Quarter" /><div class="hood-overlay"><div class="hood-name">Latin Quarter</div><div class="hood-loc">Paris &middot; France</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">The right hotel at the right price for the 5th. Skip breakfast.</span><span class="hood-count">1 tip</span></div>
+      </a>
+
+      <a class="hood-card" href="tip-saintamour.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Lavaux" /><div class="hood-overlay"><div class="hood-name">Lavaux</div><div class="hood-loc">Vaud &middot; Switzerland</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Honour system ros&eacute; in a UNESCO vineyard. Leave cash, take a bottle.</span><span class="hood-count">1 tip</span></div>
+      </a>
+
+      <a class="hood-card" href="tip-belvedere.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="wengen-belvedere-pool-snow.jpg" alt="Wengen" /><div class="hood-overlay"><div class="hood-name">Wengen</div><div class="hood-loc">Switzerland</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">Outdoor pool in the snow. Cocktail guy who summers at Scorpios.</span><span class="hood-count">1 tip</span></div>
+      </a>
+
+      <a class="hood-card" href="tip-kilwins.html">
+        <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/saugatuck-kilwins-exterior.jpg" alt="Saugatuck" /><div class="hood-overlay"><div class="hood-name">Saugatuck</div><div class="hood-loc">Michigan &middot; USA</div></div></div>
+        <div class="hood-foot"><span class="hood-desc">The quintessential American sweet shop. Take someone who's never been.</span><span class="hood-count">1 tip</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── RECENTLY ADDED ── -->
+  <div class="divider" style="margin-top:32px;">
+    <div class="divider-inner">
+      <span class="divider-label">Recently added</span>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+  <div class="tips">
+    <div class="tips-row five">
+
+      <a class="tip-card" href="tip-samourai.html">
+        <div class="tip-img-wrap"><img class="tip-img" src="carouge-oyster-lady.jpg" alt="Samourai" /></div>
+        <div class="tip-body"><div class="tip-cat">Seafood &middot; Market</div><div class="tip-name">Samoura&iuml; des Mers</div><div class="tip-hood">Carouge &middot; Geneva</div><div class="tip-copy">A Frenchman drives Breton oysters to the Saturday market. Half a dozen and a muscadet. Keep moving.</div></div>
+      </a>
+
+      <a class="tip-card" href="tip-paulhenri.html">
+        <div class="tip-img-wrap"><img class="tip-img" src="paulhenri-wine-bottles.jpg" alt="Paul-Henri" /></div>
+        <div class="tip-body"><div class="tip-cat">Wine &middot; Market</div><div class="tip-name">Paul-Henri Soler</div><div class="tip-hood">Carouge &middot; Geneva</div><div class="tip-copy">The best wine in Geneva, maybe Switzerland, maybe the world. Chalk prices on the bottles. Get there before noon.</div></div>
+      </a>
+
+      <a class="tip-card" href="tip-lagrandeboucherie.html">
+        <div class="tip-img-wrap"><img class="tip-img" src="Screenshot_2026-03-17_at_15_29_23.png" alt="La Grande Boucherie" /></div>
+        <div class="tip-body"><div class="tip-cat">Restaurant &middot; Bar</div><div class="tip-name">La Grande Boucherie</div><div class="tip-hood">Midtown &middot; New York</div><div class="tip-copy">Stained glass ceiling, zinc bar, seafood on ice. Midtown is going to try to break you. Duck in here instead.</div></div>
+      </a>
+
+      <a class="tip-card" href="tip-bongojoe.html">
+        <div class="tip-img-wrap"><img class="tip-img" src="bongojoe-sunset-crowd.jpg" alt="Bongo Joe" /></div>
+        <div class="tip-body"><div class="tip-cat">Bar</div><div class="tip-name">Bongo Joe</div><div class="tip-hood">Plainpalais &middot; Geneva</div><div class="tip-copy">A record shop that became Geneva's best outdoor bar. Cold local white, ask for the nuts, watch the Rh&ocirc;ne.</div></div>
+      </a>
+
+      <a class="tip-card" href="tip-belvedere.html">
+        <div class="tip-img-wrap"><img class="tip-img" src="wengen-belvedere-pool-snow.jpg" alt="Belvedere" /></div>
+        <div class="tip-body"><div class="tip-cat">Hotel</div><div class="tip-name">Grand Hotel Belvedere</div><div class="tip-hood">Wengen &middot; Switzerland</div><div class="tip-copy">Tyler Br&ucirc;l&eacute; renovation, outdoor pool in the snow, cocktail guy who summers at Scorpios.</div></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <div class="cta-strip">
+    <div class="cta-strip-inner">
+      <div class="cta-hed">Know something <em>good?</em></div>
+      <div class="cta-right">
+        <p class="cta-body">Share some pics. Write it like a note to a friend going next week. Positive only, specific over general.</p>
+        <a href="#" class="cta-btn" onclick="openModal();return false;">Leave a HoodTip &rarr;</a>
       </div>
     </div>
   </div>
-</div>
 
-<div class="city-nav">
-  <div class="city-nav-inner">
-    <a class="city-btn" href="#geneva">Geneva</a>
-    <a class="city-btn" href="#london">London</a>
-    <a class="city-btn" href="#istanbul">Istanbul</a>
-    <a class="city-btn" href="#paris">Paris</a>
-    <a class="city-btn" href="#switzerland">Switzerland</a>
-    <a class="city-btn" href="#elsewhere">Elsewhere</a>
-  </div>
-</div>
+</div><!-- /page -->
 
-<div class="section-head">
-  <div class="section-head-inner">
-    <h2>Browse by neighbourhood</h2>
-    <div class="section-line"></div>
-    <span class="section-count">12 neighbourhoods &middot; 7 cities</span>
-  </div>
-</div>
-
-<div class="hoods-editorial">
-
-  <div class="city-group" id="geneva">
-    <div class="city-group-label">Geneva &middot; Switzerland</div>
-    <div class="city-hoods has-featured">
-      <a class="hood-card featured" href="carouge.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="carouge-sunny-day.jpg" alt="Carouge" /><div class="hood-overlay"><div class="hood-name">Carouge</div><div class="hood-loc">Geneva &middot; Switzerland</div></div></div>
-        <div class="hood-body"><div class="hood-desc">Saturday market: natural wine, Breton oysters, best pizza in the city. What Geneva would be if it relaxed.</div><div class="hood-meta"><span class="hood-count">4 tips</span><span class="hood-arrow">Browse &rarr;</span></div></div>
-      </a>
-      <a class="hood-card" href="tip-bongojoe.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="bongojoe-yellow-table.jpg" alt="Plainpalais" /><div class="hood-overlay"><div class="hood-name">Plainpalais</div><div class="hood-loc">Geneva &middot; Switzerland</div></div></div>
-        <div class="hood-body"><div class="hood-desc">Record shop turned outdoor bar. Freshest sushi in the city. A Japanese grocery you need.</div><div class="hood-meta"><span class="hood-count">3 tips</span><span class="hood-arrow">Browse &rarr;</span></div></div>
-      </a>
-      <a class="hood-card" href="tip-mulligans.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="geneva-mulligans-pints.jpg" alt="Cornavin" /><div class="hood-overlay"><div class="hood-name">Cornavin</div><div class="hood-loc">Geneva &middot; Switzerland</div></div></div>
-        <div class="hood-body"><div class="hood-desc">Geneva's best Guinness. And the train restaurant car almost nobody knows exists.</div><div class="hood-meta"><span class="hood-count">2 tips</span><span class="hood-arrow">Browse &rarr;</span></div></div>
-      </a>
-      <a class="hood-card" href="tip-empanadas.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Nations" /><div class="hood-overlay"><div class="hood-name">Nations</div><div class="hood-loc">Geneva &middot; Switzerland</div></div></div>
-        <div class="hood-body"><div class="hood-desc">Two good reasons to go near the UN. Ask for the sauce picante. Take the sandwich to the park.</div><div class="hood-meta"><span class="hood-count">2 tips</span><span class="hood-arrow">Browse &rarr;</span></div></div>
-      </a>
-    </div>
-  </div>
-
-  <div class="city-group" id="london">
-    <div class="city-group-label">London &middot; England</div>
-    <div class="city-hoods two-col">
-      <a class="hood-card" href="tip-thecow.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="IMG_3513.JPG" alt="Notting Hill" /><div class="hood-overlay"><div class="hood-name">Notting Hill</div><div class="hood-loc">London &middot; England</div></div></div>
-        <div class="hood-body"><div class="hood-desc">Proper pub, oldest cinema in Britain, rooftop hotel under £200. Stay here, don't leave.</div><div class="hood-meta"><span class="hood-count">3 tips</span><span class="hood-arrow">Browse &rarr;</span></div></div>
-      </a>
-      <a class="hood-card" href="tip-karmabread.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="london-karmabread-challah-hand.jpg" alt="Hampstead Heath" /><div class="hood-overlay"><div class="hood-name">Hampstead Heath</div><div class="hood-loc">London &middot; England</div></div></div>
-        <div class="hood-body"><div class="hood-desc">Best challah in London on a Friday. Walk the ponds after.</div><div class="hood-meta"><span class="hood-count">1 tip</span><span class="hood-arrow">Read &rarr;</span></div></div>
-      </a>
-    </div>
-  </div>
-
-  <div class="city-group" id="istanbul">
-    <div class="city-group-label">Istanbul &middot; Turkey</div>
-    <div class="city-hoods one-col">
-      <a class="hood-card" href="yenikoy.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/photo-waterfront-dining.jpg" alt="Yeniköy" /><div class="hood-overlay"><div class="hood-name">Yenik&ouml;y</div><div class="hood-loc">Istanbul &middot; Turkey</div></div></div>
-        <div class="hood-body"><div class="hood-desc">Raki on the Bosphorus. Courtyard roastery. Bonito fish truck in October. Not curated for visitors.</div><div class="hood-meta"><span class="hood-count">6 tips</span><span class="hood-arrow">Browse &rarr;</span></div></div>
-      </a>
-    </div>
-  </div>
-
-  <div class="city-group" id="paris">
-    <div class="city-group-label">Paris &middot; France</div>
-    <div class="city-hoods one-col">
-      <a class="hood-card" href="tip-oceanik.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="paris-oceanik-window-dusk.jpg" alt="Latin Quarter" /><div class="hood-overlay"><div class="hood-name">Latin Quarter</div><div class="hood-loc">Paris &middot; France</div></div></div>
-        <div class="hood-body"><div class="hood-desc">The right hotel at the right price for the 5th. Skip breakfast. Walk to Luxembourg.</div><div class="hood-meta"><span class="hood-count">1 tip</span><span class="hood-arrow">Read &rarr;</span></div></div>
-      </a>
-    </div>
-  </div>
-
-  <div class="city-group" id="switzerland">
-    <div class="city-group-label">Switzerland &middot; Beyond Geneva</div>
-    <div class="city-hoods two-col">
-      <a class="hood-card" href="tip-saintamour.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Lavaux" /><div class="hood-overlay"><div class="hood-name">Lavaux</div><div class="hood-loc">Vaud &middot; Switzerland</div></div></div>
-        <div class="hood-body"><div class="hood-desc">Honour system ros&eacute; in a UNESCO vineyard. Leave cash, take a bottle, sit in the vines.</div><div class="hood-meta"><span class="hood-count">1 tip</span><span class="hood-arrow">Read &rarr;</span></div></div>
-      </a>
-      <a class="hood-card" href="tip-belvedere.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="wengen-belvedere-pool-snow.jpg" alt="Wengen" /><div class="hood-overlay"><div class="hood-name">Wengen</div><div class="hood-loc">Berner Oberland &middot; Switzerland</div></div></div>
-        <div class="hood-body"><div class="hood-desc">A hotel you reach by cog railway. Outdoor pool in the snow. Cocktail guy who summers at Scorpios.</div><div class="hood-meta"><span class="hood-count">1 tip</span><span class="hood-arrow">Read &rarr;</span></div></div>
-      </a>
-    </div>
-  </div>
-
-  <div class="city-group" id="elsewhere">
-    <div class="city-group-label">Elsewhere</div>
-    <div class="city-hoods two-col">
-      <a class="hood-card" href="tip-lagrandeboucherie.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="Screenshot_2026-03-17_at_15_29_23.png" alt="New York" /><div class="hood-overlay"><div class="hood-name">New York</div><div class="hood-loc">New York &middot; USA</div></div></div>
-        <div class="hood-body"><div class="hood-desc">A zinc bar under a stained glass ceiling. The Jewish deli that never changes. New York doing what New York does.</div><div class="hood-meta"><span class="hood-count">2 tips</span><span class="hood-arrow">Browse &rarr;</span></div></div>
-      </a>
-      <a class="hood-card" href="tip-kilwins.html">
-        <div class="hood-img-wrap"><img class="hood-img" src="https://hoodtip.com/saugatuck-kilwins-exterior.jpg" alt="Saugatuck" /><div class="hood-overlay"><div class="hood-name">Saugatuck</div><div class="hood-loc">Michigan &middot; USA</div></div></div>
-        <div class="hood-body"><div class="hood-desc">The quintessential American sweet shop. Take someone who's never been to America. Watch their face.</div><div class="hood-meta"><span class="hood-count">1 tip</span><span class="hood-arrow">Read &rarr;</span></div></div>
-      </a>
-    </div>
-  </div>
-
-</div>
-
-<div class="section-head">
-  <div class="section-head-inner">
-    <h2>Recently added</h2>
-    <div class="section-line"></div>
-  </div>
-</div>
-
-<div class="recent-strip">
-  <div class="recent-grid">
-    <a class="tip-card" href="tip-samourai.html">
-      <div class="tip-card-img-wrap"><img class="tip-card-img" src="carouge-oyster-lady.jpg" alt="Samourai des Mers" /></div>
-      <div class="tip-card-body"><div class="tip-card-cat">Seafood &middot; Market</div><div class="tip-card-name">Samoura&iuml; des Mers</div><div class="tip-card-hood">Carouge &middot; Geneva</div><div class="tip-card-copy">A Frenchman drives Breton oysters to the Saturday market. Half a dozen and a muscadet. Keep moving.</div></div>
-    </a>
-    <a class="tip-card" href="tip-paulhenri.html">
-      <div class="tip-card-img-wrap"><img class="tip-card-img" src="paulhenri-wine-bottles.jpg" alt="Paul-Henri Soler" /></div>
-      <div class="tip-card-body"><div class="tip-card-cat">Wine &middot; Market</div><div class="tip-card-name">Paul-Henri Soler</div><div class="tip-card-hood">Carouge &middot; Geneva</div><div class="tip-card-copy">The best wine in Geneva, maybe Switzerland, maybe the world. Chalk prices on the bottles. Get there before noon.</div></div>
-    </a>
-    <a class="tip-card" href="tip-lagrandeboucherie.html">
-      <div class="tip-card-img-wrap"><img class="tip-card-img" src="Screenshot_2026-03-17_at_15_29_23.png" alt="La Grande Boucherie" /></div>
-      <div class="tip-card-body"><div class="tip-card-cat">Restaurant &middot; Bar</div><div class="tip-card-name">La Grande Boucherie</div><div class="tip-card-hood">Midtown &middot; New York</div><div class="tip-card-copy">Stained glass ceiling, zinc bar, seafood on ice. Midtown is going to try to break you. Duck in here instead.</div></div>
-    </a>
-    <a class="tip-card" href="tip-bongojoe.html">
-      <div class="tip-card-img-wrap"><img class="tip-card-img" src="bongojoe-sunset-crowd.jpg" alt="Bongo Joe" /></div>
-      <div class="tip-card-body"><div class="tip-card-cat">Bar</div><div class="tip-card-name">Bongo Joe</div><div class="tip-card-hood">Plainpalais &middot; Geneva</div><div class="tip-card-copy">A record shop that became Geneva's best outdoor bar. Cold local white, ask for the nuts, watch the Rh&ocirc;ne.</div></div>
-    </a>
-    <a class="tip-card" href="tip-belvedere.html">
-      <div class="tip-card-img-wrap"><img class="tip-card-img" src="wengen-belvedere-pool-snow.jpg" alt="Grand Hotel Belvedere" /></div>
-      <div class="tip-card-body"><div class="tip-card-cat">Hotel</div><div class="tip-card-name">Grand Hotel Belvedere</div><div class="tip-card-hood">Wengen &middot; Switzerland</div><div class="tip-card-copy">Tyler Br&ucirc;l&eacute; renovation, outdoor pool in the snow, cocktail guy who summers at Scorpios.</div></div>
-    </a>
-  </div>
-</div>
-
-<div class="cta">
-  <div class="cta-inner">
-    <div class="cta-hed">Know something<br><em>good?</em></div>
-    <div class="cta-right">
-      <p class="cta-body">Share some pics. Write it like a note to a friend going next week. Positive only, specific over general. We'll build the page.</p>
-      <a href="#" class="cta-btn" onclick="openModal();return false;">Leave a HoodTip &rarr;</a>
-    </div>
-  </div>
-</div>
-
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
@@ -357,10 +344,11 @@
       <span class="footer-stat">12 neighbourhoods</span><span class="footer-sep">&middot;</span>
       <span class="footer-stat">7 cities</span>
     </div>
-    <div class="footer-tagline">Only the good stuff.</div>
+    <div class="footer-note">Write it like you're giving a friend advice the night before they leave.</div>
   </div>
 </footer>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="tipModal">
   <div class="modal">
     <div class="modal-header"><h4>Leave a HoodTip</h4><button class="modal-close" onclick="closeModal()">&#x2715;</button></div>
