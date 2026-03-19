@@ -7,6 +7,7 @@
   <meta name="description" content="Geneva neighbourhood guide. Carouge, Plainpalais, Cornavin, Nations and beyond. Only the good stuff." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -45,12 +46,25 @@
     .city-body { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; border-bottom: 1.5px solid var(--ink); min-height: 680px; }
 
     /* MAP */
-    .map-wrap { position: relative; border-right: 1px solid var(--rule); padding: 2rem; background: #f3f0ea; }
-    .map-wrap svg { width: 100%; height: auto; display: block; }
-    .map-legend { display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
-    .map-legend-item { display: flex; align-items: center; gap: 0.4rem; font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .map-legend-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); flex-shrink: 0; }
-    .map-legend-water { width: 20px; height: 6px; background: var(--water); flex-shrink: 0; border-radius: 2px; }
+    .map-wrap { position: relative; border-right: 1px solid var(--rule); background: #f3f0ea; min-height: 620px; display: flex; flex-direction: column; }
+    #geneva-map { flex: 1; min-height: 560px; }
+
+    /* Custom Leaflet pin styles */
+    .hood-pin { width: 36px; height: 36px; border-radius: 50%; background: #f7f4ef; border: 2px solid #1a1816; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; color: #1a1816; cursor: pointer; transition: all 0.15s; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .hood-pin.active { background: #1a1816; color: #f7f4ef; transform: scale(1.1); }
+    .hood-pin:hover { transform: scale(1.1); }
+    .leaflet-popup-content-wrapper { background: #f7f4ef; border: 1px solid #e0dbd3; border-radius: 3px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0; }
+    .leaflet-popup-content { margin: 0; padding: 0; }
+    .leaflet-popup-tip { background: #f7f4ef; }
+    .leaflet-popup-close-button { color: #6b6560 !important; font-size: 16px !important; padding: 6px 8px !important; }
+    .map-popup { padding: 14px 18px 12px; min-width: 180px; }
+    .map-popup-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6b6560; margin-bottom: 3px; }
+    .map-popup-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 500; color: #1a1816; margin-bottom: 4px; line-height: 1.2; }
+    .map-popup-desc { font-family: 'Barlow', sans-serif; font-size: 0.75rem; color: #6b6560; line-height: 1.5; margin-bottom: 10px; }
+    .map-popup-link { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1816; text-decoration: none; border-bottom: 1px solid #e0dbd3; padding-bottom: 1px; }
+    .map-popup-link:hover { border-color: #1a1816; }
+
+    .map-note { padding: 10px 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6560; border-top: 1px solid #e0dbd3; }
 
     /* HOOD LIST */
     .hood-list-wrap { display: flex; flex-direction: column; }
@@ -162,145 +176,10 @@
 <!-- MAP + HOOD LIST -->
 <div class="city-body">
 
-  <!-- ILLUSTRATED SVG MAP -->
+  <!-- LEAFLET MAP -->
   <div class="map-wrap">
-    <svg viewBox="0 0 580 520" xmlns="http://www.w3.org/2000/svg" style="font-family:'Barlow Condensed',system-ui,sans-serif;">
-
-      <!-- Lake Geneva -->
-      <path d="M 310 210 Q 340 195 370 200 Q 420 205 460 230 Q 510 260 540 310 Q 560 350 555 400 Q 548 440 520 460 Q 490 475 460 470 Q 420 465 390 450 Q 360 435 340 410 Q 310 380 300 340 Q 288 295 295 250 Q 300 225 310 210 Z"
-            fill="#c8dce8" stroke="#a8c4d8" stroke-width="1" />
-      <text x="440" y="360" font-size="11" fill="#7a9db5" letter-spacing="0.15em" text-anchor="middle" font-weight="400">LAC LÉMAN</text>
-
-      <!-- Jet d'Eau -->
-      <line x1="325" y1="215" x2="325" y2="170" stroke="#a8c4d8" stroke-width="1.5" stroke-linecap="round" />
-      <ellipse cx="325" cy="170" rx="3" ry="6" fill="#c8dce8" opacity="0.7"/>
-      <text x="338" y="172" font-size="9" fill="#7a9db5" letter-spacing="0.1em">JET D'EAU</text>
-
-      <!-- Rhône River -->
-      <path d="M 20 255 Q 60 250 100 248 Q 140 246 180 250 Q 220 254 260 252 Q 290 250 310 240 Q 315 225 310 210"
-            fill="none" stroke="#c8dce8" stroke-width="14" stroke-linecap="round"/>
-      <path d="M 20 255 Q 60 250 100 248 Q 140 246 180 250 Q 220 254 260 252 Q 290 250 310 240 Q 315 225 310 210"
-            fill="none" stroke="#a8c4d8" stroke-width="1" stroke-linecap="round"/>
-      <text x="140" y="243" font-size="9" fill="#7a9db5" letter-spacing="0.12em" text-anchor="middle">RHÔNE</text>
-
-      <!-- Arve River -->
-      <path d="M 185 520 Q 190 480 195 450 Q 200 420 205 390 Q 210 360 215 330 Q 218 310 220 290 Q 222 270 220 255"
-            fill="none" stroke="#c8dce8" stroke-width="10" stroke-linecap="round"/>
-      <path d="M 185 520 Q 190 480 195 450 Q 200 420 205 390 Q 210 360 215 330 Q 218 310 220 290 Q 222 270 220 255"
-            fill="none" stroke="#a8c4d8" stroke-width="1" stroke-linecap="round"/>
-      <text x="232" y="400" font-size="9" fill="#7a9db5" letter-spacing="0.12em" transform="rotate(-80, 232, 400)">ARVE</text>
-
-      <!-- Street grid hints — light lines -->
-      <g stroke="#d8d4cc" stroke-width="0.5" opacity="0.6">
-        <!-- Nations area roads -->
-        <line x1="40" y1="60" x2="160" y2="90"/>
-        <line x1="40" y1="90" x2="160" y2="110"/>
-        <line x1="60" y1="50" x2="80" y2="140"/>
-        <line x1="100" y1="55" x2="120" y2="140"/>
-        <line x1="140" y1="60" x2="155" y2="140"/>
-        <!-- Cornavin/centre roads -->
-        <line x1="100" y1="145" x2="280" y2="145"/>
-        <line x1="100" y1="175" x2="280" y2="175"/>
-        <line x1="100" y1="205" x2="180" y2="205"/>
-        <line x1="120" y1="140" x2="120" y2="260"/>
-        <line x1="155" y1="140" x2="160" y2="260"/>
-        <line x1="200" y1="140" x2="205" y2="255"/>
-        <line x1="240" y1="145" x2="245" y2="255"/>
-        <!-- Plainpalais area roads -->
-        <line x1="80" y1="265" x2="215" y2="265"/>
-        <line x1="80" y1="295" x2="215" y2="295"/>
-        <line x1="80" y1="325" x2="215" y2="325"/>
-        <line x1="80" y1="260" x2="80" y2="395"/>
-        <line x1="115" y1="260" x2="115" y2="390"/>
-        <line x1="155" y1="260" x2="155" y2="340"/>
-        <!-- Carouge area roads -->
-        <line x1="140" y1="400" x2="280" y2="400"/>
-        <line x1="140" y1="430" x2="280" y2="430"/>
-        <line x1="140" y1="460" x2="280" y2="460"/>
-        <line x1="140" y1="395" x2="140" y2="490"/>
-        <line x1="175" y1="395" x2="175" y2="490"/>
-        <line x1="215" y1="395" x2="215" y2="490"/>
-        <line x1="255" y1="395" x2="255" y2="490"/>
-      </g>
-
-      <!-- Palais des Nations hint -->
-      <rect x="55" y="62" width="85" height="55" rx="3" fill="none" stroke="#c8c4bc" stroke-width="0.8" stroke-dasharray="3 2"/>
-      <text x="97" y="94" font-size="8" fill="#b0ac9e" text-anchor="middle" letter-spacing="0.08em">PALAIS DES NATIONS</text>
-
-      <!-- Old Town hint -->
-      <path d="M 250 260 Q 280 255 300 265 Q 310 275 305 290 Q 295 305 275 308 Q 255 308 245 295 Q 238 280 250 260 Z"
-            fill="#ede8df" stroke="#c8c4bc" stroke-width="0.8"/>
-      <text x="275" y="288" font-size="8" fill="#8a8278" text-anchor="middle" letter-spacing="0.06em">VIEILLE</text>
-      <text x="275" y="298" font-size="8" fill="#8a8278" text-anchor="middle" letter-spacing="0.06em">VILLE</text>
-
-      <!-- NEIGHBOURHOOD PINS -->
-
-      <!-- 1. Nations -->
-      <g style="cursor:pointer;" onclick="window.location='nations.html'">
-        <circle cx="88" cy="110" r="20" fill="#f7f4ef" stroke="#1a1816" stroke-width="1.5"/>
-        <text x="88" y="115" font-size="13" font-weight="600" fill="#1a1816" text-anchor="middle">1</text>
-        <line x1="88" y1="131" x2="88" y2="148" stroke="#1a1816" stroke-width="1" stroke-dasharray="2 2"/>
-        <circle cx="88" cy="150" r="3" fill="#1a1816"/>
-      </g>
-      <text x="88" y="84" font-size="10" font-weight="600" fill="#1a1816" text-anchor="middle" letter-spacing="0.1em">NATIONS</text>
-
-      <!-- 2. Cornavin -->
-      <g style="cursor:pointer;" onclick="window.location='tip-mulligans.html'">
-        <circle cx="155" cy="185" r="20" fill="#f7f4ef" stroke="#1a1816" stroke-width="1.5"/>
-        <text x="155" y="190" font-size="13" font-weight="600" fill="#1a1816" text-anchor="middle">2</text>
-        <line x1="155" y1="205" x2="155" y2="222" stroke="#1a1816" stroke-width="1" stroke-dasharray="2 2"/>
-        <circle cx="155" cy="224" r="3" fill="#1a1816"/>
-      </g>
-      <!-- Train station symbol -->
-      <rect x="145" y="195" width="1" height="1" fill="none"/>
-      <text x="192" y="182" font-size="10" font-weight="600" fill="#1a1816" text-anchor="start" letter-spacing="0.1em">CORNAVIN</text>
-      <text x="192" y="194" font-size="8" fill="#6b6560" text-anchor="start" letter-spacing="0.06em">GARE</text>
-
-      <!-- 3. Plainpalais -->
-      <g style="cursor:pointer;" onclick="window.location='tip-bongojoe.html'">
-        <circle cx="112" cy="320" r="20" fill="#f7f4ef" stroke="#1a1816" stroke-width="1.5"/>
-        <text x="112" y="325" font-size="13" font-weight="600" fill="#1a1816" text-anchor="middle">3</text>
-        <line x1="112" y1="340" x2="112" y2="357" stroke="#1a1816" stroke-width="1" stroke-dasharray="2 2"/>
-        <circle cx="112" cy="359" r="3" fill="#1a1816"/>
-      </g>
-      <text x="55" y="318" font-size="10" font-weight="600" fill="#1a1816" text-anchor="middle" letter-spacing="0.1em">PLAIN-</text>
-      <text x="55" y="330" font-size="10" font-weight="600" fill="#1a1816" text-anchor="middle" letter-spacing="0.1em">PALAIS</text>
-
-      <!-- 4. Carouge -->
-      <g style="cursor:pointer;" onclick="window.location='carouge.html'">
-        <circle cx="200" cy="445" r="22" fill="#1a1816" stroke="#1a1816" stroke-width="1.5"/>
-        <text x="200" y="450" font-size="13" font-weight="600" fill="#f7f4ef" text-anchor="middle">4</text>
-        <line x1="200" y1="423" x2="200" y2="406" stroke="#1a1816" stroke-width="1" stroke-dasharray="2 2"/>
-        <circle cx="200" cy="404" r="3" fill="#1a1816"/>
-      </g>
-      <text x="255" y="441" font-size="10" font-weight="600" fill="#1a1816" text-anchor="start" letter-spacing="0.1em">CAROUGE</text>
-      <text x="255" y="453" font-size="8" fill="#6b6560" text-anchor="start" letter-spacing="0.06em">MUNICIPALITY</text>
-
-      <!-- North indicator -->
-      <g transform="translate(530, 60)">
-        <line x1="0" y1="20" x2="0" y2="0" stroke="#1a1816" stroke-width="1.5" stroke-linecap="round"/>
-        <polygon points="0,0 -5,12 0,8 5,12" fill="#1a1816"/>
-        <text y="32" font-size="9" fill="#6b6560" text-anchor="middle" letter-spacing="0.1em">N</text>
-      </g>
-
-      <!-- Scale bar -->
-      <g transform="translate(40, 490)">
-        <line x1="0" y1="0" x2="80" y2="0" stroke="#6b6560" stroke-width="1"/>
-        <line x1="0" y1="-4" x2="0" y2="4" stroke="#6b6560" stroke-width="1"/>
-        <line x1="80" y1="-4" x2="80" y2="4" stroke="#6b6560" stroke-width="1"/>
-        <line x1="40" y1="-2" x2="40" y2="2" stroke="#6b6560" stroke-width="0.8"/>
-        <text x="-2" y="14" font-size="8" fill="#6b6560" text-anchor="start">0</text>
-        <text x="36" y="14" font-size="8" fill="#6b6560" text-anchor="middle">1km</text>
-        <text x="82" y="14" font-size="8" fill="#6b6560" text-anchor="end">2km</text>
-      </g>
-
-    </svg>
-
-    <div class="map-legend">
-      <div class="map-legend-item"><div class="map-legend-water"></div>Water</div>
-      <div class="map-legend-item"><div class="map-legend-dot"></div>Neighbourhood with tips</div>
-      <div class="map-legend-item" style="font-style:italic;color:var(--muted);">Click pins to browse</div>
-    </div>
+    <div id="geneva-map"></div>
+    <div class="map-note">Click pins to browse neighbourhoods</div>
   </div>
 
   <!-- NEIGHBOURHOOD LIST -->
@@ -449,5 +328,94 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  var map = L.map('geneva-map', {
+    center: [46.204, 6.143],
+    zoom: 13,
+    zoomControl: true,
+    scrollWheelZoom: false
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  var hoods = [
+    {
+      num: '1',
+      name: 'Nations',
+      loc: 'Geneva · Switzerland',
+      desc: 'The beating heart of international Geneva. Shockingly few places to eat.',
+      tips: '3 tips',
+      url: 'nations.html',
+      lat: 46.2259,
+      lng: 6.1394
+    },
+    {
+      num: '2',
+      name: 'Cornavin',
+      loc: 'Geneva · Switzerland',
+      desc: "Geneva's main station neighbourhood. Best Guinness in the city. The train restaurant car nobody knows about.",
+      tips: '2 tips',
+      url: 'tip-mulligans.html',
+      lat: 46.2096,
+      lng: 6.1427
+    },
+    {
+      num: '3',
+      name: 'Plainpalais',
+      loc: 'Geneva · Switzerland',
+      desc: 'A record shop turned outdoor bar on the Rhône. Freshest sushi in the city.',
+      tips: '3 tips',
+      url: 'tip-bongojoe.html',
+      lat: 46.1992,
+      lng: 6.1388
+    },
+    {
+      num: '4',
+      name: 'Carouge',
+      loc: 'Geneva · Switzerland',
+      desc: 'What Geneva would be if it relaxed. Saturday market, natural wine, Breton oysters.',
+      tips: '4 tips',
+      url: 'carouge.html',
+      lat: 46.1847,
+      lng: 6.1414,
+      featured: true
+    }
+  ];
+
+  hoods.forEach(function(h) {
+    var el = document.createElement('div');
+    el.className = 'hood-pin' + (h.featured ? ' active' : '');
+    el.innerHTML = h.num;
+
+    var icon = L.divIcon({
+      html: el.outerHTML,
+      iconSize: [36, 36],
+      iconAnchor: [18, 18],
+      popupAnchor: [0, -22],
+      className: ''
+    });
+
+    var popup = L.popup({
+      closeButton: true,
+      className: 'hood-popup'
+    }).setContent(
+      '<div class="map-popup">' +
+        '<div class="map-popup-num">' + h.tips + '</div>' +
+        '<div class="map-popup-name">' + h.name + '</div>' +
+        '<div class="map-popup-desc">' + h.desc + '</div>' +
+        '<a class="map-popup-link" href="' + h.url + '">Browse tips →</a>' +
+      '</div>'
+    );
+
+    L.marker([h.lat, h.lng], { icon: icon })
+      .addTo(map)
+      .bindPopup(popup);
+  });
+</script>
 </body>
 </html>
