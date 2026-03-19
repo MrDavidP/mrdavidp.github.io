@@ -35,9 +35,10 @@
     .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
 
     /* CITY HEADER */
-    .city-header { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 2rem; border-bottom: 1.5px solid var(--ink); display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; }
-    .city-title { font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; }
-    .city-meta { display: flex; gap: 2.5rem; flex-shrink: 0; padding-bottom: 0.5rem; }
+    .city-header { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 2.5rem; border-bottom: 1.5px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .city-title { font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .city-desc { font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.75; color: var(--muted); max-width: 520px; }
+    .city-meta { display: flex; gap: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); margin-top: 2rem; }
     .city-stat { display: flex; flex-direction: column; gap: 0.2rem; }
     .city-stat-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
     .city-stat-value { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); }
@@ -81,8 +82,9 @@
     .hood-entry-arrow { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); margin-top: 0.5rem; display: inline-block; transition: color 0.15s; }
     .hood-entry:hover .hood-entry-arrow { color: var(--muted); }
 
-    /* PIN NUMBER */
-    .hood-entry-num { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--rule); line-height: 1; }
+    .hood-entry.active { background: rgba(26,24,22,0.04); border-left: 2px solid var(--ink); }
+    .hood-entry-num { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--rule); line-height: 1; transition: color 0.15s; }
+    .hood-entry.active .hood-entry-num { color: var(--ink); }
 
     /* TIPS BELOW */
     .tips-section { max-width: 1400px; margin: 0 auto; border-bottom: 1.5px solid var(--ink); }
@@ -95,17 +97,17 @@
     .hood-tip-group { border-bottom: 1px solid var(--rule); }
     .hood-tip-group:last-child { border-bottom: none; }
     .hood-tip-group-label { padding: 16px 2rem 0; font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rule); }
-    .tips-row { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); margin-top: 12px; }
-    .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.18s; padding-bottom: 20px; }
+    .tips-row { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--rule); margin-top: 12px; }
+    .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.18s; padding-bottom: 14px; }
     .tip-card:last-child { border-right: none; }
     .tip-card:hover { background: rgba(26,24,22,0.025); }
     .tip-card-img-wrap { overflow: hidden; }
-    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .tip-card-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform 0.5s ease; }
     .tip-card:hover .tip-card-img { transform: scale(1.03); }
-    .tip-card-body { padding: 10px 14px 0; }
-    .tip-card-cat { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
-    .tip-card-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.15; margin-bottom: 3px; }
-    .tip-card-copy { font-size: 0.76rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .tip-card-body { padding: 8px 10px 0; }
+    .tip-card-cat { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+    .tip-card-name { font-family: var(--serif); font-size: 0.9rem; font-weight: 500; line-height: 1.15; margin-bottom: 2px; }
+    .tip-card-copy { font-size: 0.7rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
     /* BACK */
     .back-wrap { max-width: 1400px; margin: 0 auto; padding: 2rem; }
@@ -120,19 +122,20 @@
     .footer-logo .dot { color: var(--red); }
     .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
 
-    /* RESPONSIVE */
     @media (max-width: 1000px) {
+      .city-header { grid-template-columns: 1fr; gap: 2rem; }
       .city-body { grid-template-columns: 1fr; }
       .map-wrap { border-right: none; border-bottom: 1px solid var(--rule); }
-      .tips-row { grid-template-columns: repeat(2, 1fr); }
-      .tip-card:nth-child(2n) { border-right: none; }
+      .tips-row { grid-template-columns: repeat(3, 1fr); }
+      .tip-card:nth-child(3n) { border-right: none; }
     }
     @media (max-width: 640px) {
       .nav-links a:not(.cta) { display: none; }
       .nav-tagline { display: none; }
-      .city-header { flex-direction: column; align-items: flex-start; padding: 2rem 1.5rem 1.5rem; }
-      .tips-row { grid-template-columns: 1fr; }
-      .tip-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .city-header { padding: 2rem 1.5rem 1.5rem; }
+      .tips-row { grid-template-columns: repeat(2, 1fr); }
+      .tip-card:nth-child(2n) { border-right: none; }
+      .tip-card:nth-child(3n) { border-right: 1px solid var(--rule); }
       .footer-stats { display: none; }
     }
   </style>
@@ -156,20 +159,23 @@
 <div class="city-header">
   <div>
     <div class="city-title">Geneva</div>
+    <div class="city-meta">
+      <div class="city-stat">
+        <span class="city-stat-label">Country</span>
+        <span class="city-stat-value">Switzerland</span>
+      </div>
+      <div class="city-stat">
+        <span class="city-stat-label">Neighbourhoods</span>
+        <span class="city-stat-value">4</span>
+      </div>
+      <div class="city-stat">
+        <span class="city-stat-label">Tips</span>
+        <span class="city-stat-value">14</span>
+      </div>
+    </div>
   </div>
-  <div class="city-meta">
-    <div class="city-stat">
-      <span class="city-stat-label">Country</span>
-      <span class="city-stat-value">Switzerland</span>
-    </div>
-    <div class="city-stat">
-      <span class="city-stat-label">Neighbourhoods</span>
-      <span class="city-stat-value">4</span>
-    </div>
-    <div class="city-stat">
-      <span class="city-stat-label">Tips</span>
-      <span class="city-stat-value">14</span>
-    </div>
+  <div>
+    <p class="city-desc">The city of refuge. Home to three major things: international organisations, banks, and watches. It attracts the people who work in those things, and also a lot of Portuguese and others who came here to live their lives — because it's a genuinely lovely place to be. The Jura mountains to the west, the French Alps to the east, Lake Geneva and two rivers all around it. Immaculately beautiful in most places, flowing water everywhere that is usually drinkable. You can get a good cortado, a sushi hand roll, some A+ natural wine, a smashburger, and a second-hand Rolex in many windows around the city. The francophone outpost of Switzerland. Clandestine political meetings next to family bicycle rides through the park. Geneva is a wonderful place to have some kids.</p>
   </div>
 </div>
 
@@ -188,7 +194,7 @@
       <div class="hood-list-label">Neighbourhoods</div>
     </div>
 
-    <a class="hood-entry" href="nations.html">
+    <a class="hood-entry" href="nations.html" data-hood="1">
       <div class="hood-entry-num">1</div>
       <div class="hood-entry-top">
         <div class="hood-entry-name">Nations</div>
@@ -198,7 +204,7 @@
       <span class="hood-entry-arrow">Browse →</span>
     </a>
 
-    <a class="hood-entry" href="tip-mulligans.html">
+    <a class="hood-entry" href="tip-mulligans.html" data-hood="2">
       <div class="hood-entry-num">2</div>
       <div class="hood-entry-top">
         <div class="hood-entry-name">Cornavin</div>
@@ -208,7 +214,7 @@
       <span class="hood-entry-arrow">Browse →</span>
     </a>
 
-    <a class="hood-entry" href="tip-bongojoe.html">
+    <a class="hood-entry" href="tip-bongojoe.html" data-hood="3">
       <div class="hood-entry-num">3</div>
       <div class="hood-entry-top">
         <div class="hood-entry-name">Plainpalais</div>
@@ -218,7 +224,7 @@
       <span class="hood-entry-arrow">Browse →</span>
     </a>
 
-    <a class="hood-entry" href="carouge.html">
+    <a class="hood-entry" href="carouge.html" data-hood="4">
       <div class="hood-entry-num">4</div>
       <div class="hood-entry-top">
         <div class="hood-entry-name">Carouge</div>
@@ -344,53 +350,37 @@
   }).addTo(map);
 
   var hoods = [
-    {
-      num: '1',
-      name: 'Nations',
-      loc: 'Geneva · Switzerland',
-      desc: 'The beating heart of international Geneva. Shockingly few places to eat.',
-      tips: '3 tips',
-      url: 'nations.html',
-      lat: 46.2259,
-      lng: 6.1394
-    },
-    {
-      num: '2',
-      name: 'Cornavin',
-      loc: 'Geneva · Switzerland',
-      desc: "Geneva's main station neighbourhood. Best Guinness in the city. The train restaurant car nobody knows about.",
-      tips: '2 tips',
-      url: 'tip-mulligans.html',
-      lat: 46.2096,
-      lng: 6.1427
-    },
-    {
-      num: '3',
-      name: 'Plainpalais',
-      loc: 'Geneva · Switzerland',
-      desc: 'A record shop turned outdoor bar on the Rhône. Freshest sushi in the city.',
-      tips: '3 tips',
-      url: 'tip-bongojoe.html',
-      lat: 46.1992,
-      lng: 6.1388
-    },
-    {
-      num: '4',
-      name: 'Carouge',
-      loc: 'Geneva · Switzerland',
-      desc: 'What Geneva would be if it relaxed. Saturday market, natural wine, Breton oysters.',
-      tips: '4 tips',
-      url: 'carouge.html',
-      lat: 46.1847,
-      lng: 6.1414,
-      featured: true
-    }
+    { num: '1', name: 'Nations', desc: 'The beating heart of international Geneva. Shockingly few places to eat.', tips: '3 tips', url: 'nations.html', lat: 46.2259, lng: 6.1394 },
+    { num: '2', name: 'Cornavin', desc: "Geneva's main station neighbourhood. Best Guinness in the city.", tips: '2 tips', url: 'tip-mulligans.html', lat: 46.2096, lng: 6.1427 },
+    { num: '3', name: 'Plainpalais', desc: 'Record shop turned outdoor bar on the Rhône. Freshest sushi in the city.', tips: '3 tips', url: 'tip-bongojoe.html', lat: 46.1992, lng: 6.1388 },
+    { num: '4', name: 'Carouge', desc: 'What Geneva would be if it relaxed. Saturday market, natural wine, oysters.', tips: '4 tips', url: 'carouge.html', lat: 46.1847, lng: 6.1414, featured: true }
   ];
+
+  var markers = {};
+  var pinEls = {};
+
+  function setActive(num) {
+    // Reset all pins and entries
+    Object.keys(pinEls).forEach(function(k) {
+      pinEls[k].classList.remove('active');
+    });
+    document.querySelectorAll('.hood-entry').forEach(function(el) {
+      el.classList.remove('active');
+    });
+    // Activate selected
+    if (pinEls[num]) pinEls[num].classList.add('active');
+    var entry = document.querySelector('.hood-entry[data-hood="' + num + '"]');
+    if (entry) {
+      entry.classList.add('active');
+      entry.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
 
   hoods.forEach(function(h) {
     var el = document.createElement('div');
     el.className = 'hood-pin' + (h.featured ? ' active' : '');
     el.innerHTML = h.num;
+    pinEls[h.num] = el;
 
     var icon = L.divIcon({
       html: el.outerHTML,
@@ -400,10 +390,7 @@
       className: ''
     });
 
-    var popup = L.popup({
-      closeButton: true,
-      className: 'hood-popup'
-    }).setContent(
+    var popup = L.popup({ closeButton: true, className: 'hood-popup' }).setContent(
       '<div class="map-popup">' +
         '<div class="map-popup-num">' + h.tips + '</div>' +
         '<div class="map-popup-name">' + h.name + '</div>' +
@@ -412,10 +399,32 @@
       '</div>'
     );
 
-    L.marker([h.lat, h.lng], { icon: icon })
-      .addTo(map)
-      .bindPopup(popup);
+    var marker = L.marker([h.lat, h.lng], { icon: icon }).addTo(map).bindPopup(popup);
+
+    marker.on('click', function() {
+      setActive(h.num);
+    });
+
+    markers[h.num] = marker;
   });
+
+  // Hood list → map highlighting
+  document.querySelectorAll('.hood-entry').forEach(function(el) {
+    el.addEventListener('mouseenter', function(e) {
+      e.preventDefault();
+      var num = el.getAttribute('data-hood');
+      setActive(num);
+      if (markers[num]) {
+        map.panTo(markers[num].getLatLng(), { animate: true, duration: 0.4 });
+      }
+    });
+    el.addEventListener('click', function(e) {
+      // Allow normal navigation
+    });
+  });
+
+  // Init — activate Carouge
+  setActive('4');
 </script>
 </body>
 </html>
