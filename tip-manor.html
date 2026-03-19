@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manor Food Hall — Saint-Gervais, Geneva · HoodTip</title>
+  <meta name="description" content="The best grocery in central Geneva. Best fishmonger by far, great meat, great bread, serious focus on local. Go and see what's on action." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+
+    .hero { width: 100%; height: clamp(420px, 55vw, 620px); overflow: hidden; position: relative; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; display: block; }
+    .hero-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 2.5rem; background: linear-gradient(transparent, rgba(20,16,12,0.7)); }
+    .hero-caption-location { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.3rem; }
+    .hero-caption-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: #fff; }
+
+    .article { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 2rem; }
+
+    .breadcrumb { font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb-sep { opacity: 0.4; }
+
+    .category { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.2rem 0.65rem; border-radius: 2px; display: inline-block; margin-bottom: 1rem; }
+
+    h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+    .subtitle { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); line-height: 1.45; margin-bottom: 2.5rem; }
+
+    .meta-strip { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .meta-value { font-size: 0.88rem; color: var(--ink); }
+
+    .body p { font-size: 1.05rem; line-height: 1.8; color: var(--ink); margin-bottom: 1.4rem; font-weight: 300; }
+    .body p:last-child { margin-bottom: 0; }
+
+    .pull-quote { border-left: 2px solid var(--ink); padding: 0.75rem 0 0.75rem 1.75rem; margin: 2.5rem 0; }
+    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: clamp(1.4rem, 3vw, 1.75rem); line-height: 1.35; color: var(--ink); font-weight: 400; }
+
+    .img-full { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 3rem 0; }
+    .img-full img { width: 100%; display: block; max-height: 560px; object-fit: cover; }
+    .img-caption { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.6rem 2rem 0; max-width: 1200px; margin: 0 auto; }
+
+    .img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
+    .img-pair img { width: 100%; display: block; height: 400px; object-fit: cover; }
+
+    .img-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
+    .img-trio img { width: 100%; display: block; height: 340px; object-fit: cover; }
+
+    .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
+    .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .tip-box li { font-size: 0.9rem; color: var(--ink); padding-left: 1rem; position: relative; line-height: 1.55; }
+    .tip-box li::before { content: '—'; position: absolute; left: 0; color: var(--muted); font-size: 0.8rem; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--cond); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-top: 3.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.15rem; transition: color 0.15s, border-color 0.15s; }
+    .back-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 5rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.cta) { display: none; }
+      .nav-tagline { display: none; }
+      .article { padding: 2.5rem 1.25rem 2rem; }
+      .img-pair, .img-trio { grid-template-columns: 1fr; }
+      .img-pair img, .img-trio img { height: 260px; }
+      .footer-stats { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="geneva.html">Geneva</a></li>
+      <li><a href="index.html" class="cta">Leave a tip</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <img src="manor-exterior.jpg" alt="Manor department store at night, Rue de Cornavin, Geneva" />
+  <div class="hero-caption">
+    <div class="hero-caption-location">Saint-Gervais · Geneva · Switzerland</div>
+    <div class="hero-caption-name">Manor Food Hall</div>
+  </div>
+</div>
+
+<div class="article">
+
+  <div class="breadcrumb">
+    <a href="index.html">HoodTip</a>
+    <span class="breadcrumb-sep">·</span>
+    <a href="geneva.html">Geneva</a>
+    <span class="breadcrumb-sep">·</span>
+    <span>Saint-Gervais</span>
+  </div>
+
+  <span class="category">Food Hall · Grocery</span>
+
+  <h1>Manor Food Hall</h1>
+  <p class="subtitle">The best grocery in central Geneva. Not even close.</p>
+
+  <div class="meta-strip">
+    <div class="meta-item">
+      <span class="meta-label">Address</span>
+      <span class="meta-value">Rue de Cornavin 6, 1201 Geneva</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Neighbourhood</span>
+      <span class="meta-value">Saint-Gervais</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Best for</span>
+      <span class="meta-value">Fresh fish, meat, local produce</span>
+    </div>
+    <div class="meta-item" style="margin-left:auto;text-align:right;">
+      <span class="meta-label">Tip by</span>
+      <span class="meta-value"><a href="profile-dave.html" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);">@dave</a></span>
+    </div>
+  </div>
+
+  <div class="body">
+    <p>Manor is a Swiss department store — shoes, watches, housewares, the lot — but the food hall in the basement is what you're here for. It's the best grocery in central Geneva by a significant margin, and the fishmonger is in a different league from anything else in the neighbourhood.</p>
+    <p>The fish comes from real places. There's a fishmonger based in Nyon who supplies them with fera, the local lake fish — white, mild, incredibly fresh — and it's one of those things you can only really get here. The sardine fillets, the salmon, the selection of cured meats from the Valais. The bread is good. The local vegetables section is properly curated, not just a sticker that says local on something from Spain.</p>
+  </div>
+
+  <div class="img-full">
+    <img src="manor-lettuce-2.jpg" alt="Manor food hall interior — local produce section, Geneva" style="object-position: center 40%;"/>
+    <div class="img-caption">Local. Produit de votre région. They mean it.</div>
+  </div>
+
+  <div class="body">
+    <p>The thing to know about Manor is the daily sales — they call it <em>action</em>. Every day there's something significantly reduced in the fish or meat counter. Sometimes it's lamb chops, sometimes a good steak, sometimes scallops or salmon. Worth checking what's on action before you decide what you're cooking. Half the time it's better than whatever you planned.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"The fishmonger gets fera from Lake Geneva. That alone is worth the trip."</p>
+  </div>
+
+  <div class="img-trio">
+    <img src="Manor-fera.jpg" alt="Filet de fera from Lake Geneva at Manor" style="object-position: center 40%;" />
+    <img src="manor-duck.jpg" alt="Duck breasts at Manor butcher counter, Geneva" style="object-position: center 30%;" />
+    <img src="Manor-sardines.jpg" alt="Fresh sardine fillets at Manor, Geneva" style="object-position: center 50%;" />
+  </div>
+
+  <div class="body">
+    <p>And it's a department store — so if you need a pair of shoes, a gift, a watch, a kitchen knife, or something for the house, you're already there. Efficient Geneva errand running.</p>
+  </div>
+
+  <div class="img-pair">
+    <img src="manor-viande-seche.jpg" alt="Viande séchée du Valais and cured meats at Manor" style="object-position: center 40%;"/>
+    <img src="manor-haul.jpg" alt="A good Manor haul — fera, wine, vegetables, bread" style="object-position: center 30%;"/>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-box-label">The tip</div>
+    <ul>
+      <li>Go to the fishmonger first — ask what's fresh, get the fera if they have it</li>
+      <li>Check what's on <em>action</em> at the meat and fish counter before deciding what to cook</li>
+      <li>Viande séchée du Valais from the charcuterie counter — better than anything packaged</li>
+      <li>The local produce section is genuinely local — worth using over the supermarket alternatives</li>
+      <li>It's also a full department store — shoes, watches, homewares, presents — all in the same building</li>
+      <li>Food hall is in the basement. Follow the signs from the main entrance on Rue de Cornavin</li>
+    </ul>
+  </div>
+
+  <a href="geneva.html" class="back-link">← Geneva</a>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats">
+      <span>36 tips</span><span>·</span>
+      <span>15 neighbourhoods</span><span>·</span>
+      <span>7 cities</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
