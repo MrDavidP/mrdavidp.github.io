@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Where to Stay in Geneva — HoodTip</title>
+  <meta name="description" content="Where to stay in Geneva — by neighbourhood. Opinionated recommendations for Eaux-Vives, Carouge, the centre and beyond. Not a list. An actual opinion." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+    .nav-links a.cta:hover { background: var(--ink2); }
+
+    /* HERO — text only, no photo needed */
+    .page-hero { border-bottom: 1.5px solid var(--ink); }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; }
+    .page-hero-eyebrow { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .page-hero-title { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 400; line-height: 1; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .page-hero-title em { font-style: italic; }
+    .page-hero-intro { font-size: 0.95rem; line-height: 1.8; color: var(--muted); }
+    .page-hero-intro strong { color: var(--ink); font-weight: 400; }
+
+    /* QUICK NAV */
+    .quick-nav { border-bottom: 1px solid var(--rule); background: var(--cream); position: sticky; top: 52px; z-index: 50; }
+    .quick-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; height: 38px; gap: 0; overflow-x: auto; }
+    .quick-nav-inner::-webkit-scrollbar { display: none; }
+    .quick-nav-inner a { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px 0 0; white-space: nowrap; transition: color 0.15s; }
+    .quick-nav-inner a:hover { color: var(--ink); }
+    .quick-nav-sep { color: var(--rule); padding-right: 16px; font-size: 0.7rem; }
+
+    /* ARTICLE */
+    .article { max-width: 800px; margin: 0 auto; padding: 0 2rem 4rem; }
+
+    /* SECTION */
+    .hood-section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+    .hood-section:last-of-type { border-bottom: none; }
+    .hood-section-head { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.4rem; }
+    .hood-section-name { font-family: var(--serif); font-size: 1.8rem; font-weight: 500; line-height: 1; }
+    .hood-section-link { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; transition: color 0.15s, border-color 0.15s; }
+    .hood-section-link:hover { color: var(--ink); border-color: var(--ink); }
+    .hood-section-vibe { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .hood-section-body { font-size: 0.95rem; line-height: 1.8; color: var(--ink); font-weight: 300; margin-bottom: 1.75rem; }
+
+    /* HOTEL CARD */
+    .hotel-card { border: 1px solid var(--rule); margin-bottom: 1rem; display: grid; grid-template-columns: 1fr auto; align-items: start; }
+    .hotel-card-body { padding: 1.25rem 1.5rem; }
+    .hotel-card-cat { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .hotel-card-name { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; margin-bottom: 0.4rem; line-height: 1.1; }
+    .hotel-card-copy { font-size: 0.84rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.85rem; }
+    .hotel-card-copy strong { color: var(--ink); font-weight: 400; }
+    .hotel-card-book { display: inline-block; font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 8px 16px; text-decoration: none; transition: background 0.15s; }
+    .hotel-card-book:hover { background: var(--ink2); }
+    .hotel-card-price { padding: 1.25rem 1.5rem 1.25rem 0; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start; gap: 0.2rem; }
+    .hotel-card-price-label { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .hotel-card-price-value { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
+
+    /* PULL NOTE */
+    .pull-note { background: white; border-left: 2px solid var(--ink); padding: 1rem 1.5rem; margin: 2rem 0; }
+    .pull-note p { font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.55; color: var(--ink); }
+
+    /* AREA PHOTO */
+    .area-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; margin-bottom: 1.5rem; }
+
+    /* DISCLOSURE */
+    .disclosure { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); opacity: 0.6; padding: 2rem 0 1rem; border-top: 1px solid var(--rule); line-height: 1.7; }
+
+    /* MORE GUIDES */
+    .more-guides { border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+    .more-guides-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
+    .more-guide-link { text-decoration: none; color: var(--ink); padding: 1.5rem 2rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.25rem; transition: background 0.18s; }
+    .more-guide-link:last-child { border-right: none; }
+    .more-guide-link:hover { background: rgba(26,24,22,0.025); }
+    .more-guide-label { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .more-guide-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; }
+    .more-guide-desc { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; }
+
+    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
+
+    @media (max-width: 800px) {
+      .page-hero-inner { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1.5rem; }
+      .hotel-card { grid-template-columns: 1fr; }
+      .hotel-card-price { padding: 0 1.5rem 1.25rem; flex-direction: row; align-items: center; gap: 0.5rem; }
+      .more-guides-inner { grid-template-columns: 1fr; }
+      .more-guide-link { border-right: none; border-bottom: 1px solid var(--rule); }
+      .nav-links a:not(.cta) { display: none; }
+      .nav-tagline { display: none; }
+      .footer-stats { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="geneva.html">Geneva</a></li>
+      <li><a href="index.html" class="cta">Leave a tip</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="page-hero-eyebrow">Geneva · Switzerland · HoodTip</div>
+      <h1 class="page-hero-title">Where to stay<br>in <em>Geneva</em></h1>
+    </div>
+    <div>
+      <p class="page-hero-intro">Geneva is small. You can walk most of it in an hour. But <strong>where you stay changes what you experience</strong> — stay near the station and you'll feel like you're always transiting. Stay in Eaux-Vives and you feel like you live here. Stay in Carouge and you might not want to leave.<br><br>These are the areas worth staying in, and the hotels worth booking in each.</p>
+    </div>
+  </div>
+</div>
+
+<div class="quick-nav">
+  <div class="quick-nav-inner">
+    <a href="#eaux-vives">Eaux-Vives</a>
+    <span class="quick-nav-sep">·</span>
+    <a href="#carouge">Carouge</a>
+    <span class="quick-nav-sep">·</span>
+    <a href="#rive">Rive &amp; Old Town</a>
+    <span class="quick-nav-sep">·</span>
+    <a href="#centre">Centre &amp; Cornavin</a>
+    <span class="quick-nav-sep">·</span>
+    <a href="#avoid">What to avoid</a>
+  </div>
+</div>
+
+<div class="article">
+
+  <!-- EAUX-VIVES -->
+  <div class="hood-section" id="eaux-vives">
+    <div class="hood-section-head">
+      <span class="hood-section-name">Eaux-Vives</span>
+      <a href="eaux-vives.html" class="hood-section-link">Neighbourhood guide →</a>
+    </div>
+    <p class="hood-section-vibe">Best for: feeling like a local, lake access, longer stays</p>
+    <img src="eauxvives-streetscene.jpg" alt="Eaux-Vives neighbourhood, Geneva" class="area-img" style="object-position: center 30%;" />
+    <p class="hood-section-body">The right bank neighbourhood east of the lake. Quieter than the centre, genuinely residential, the Jet d'Eau visible at the end of half the streets. Parc La Grange is a ten-minute walk. The quais along the lake are some of the best walking in the city. If you're here for more than two nights, this is the area.</p>
+
+    <div class="hotel-card">
+      <div class="hotel-card-body">
+        <div class="hotel-card-cat">Boutique · Place Longemalle</div>
+        <div class="hotel-card-name">Hôtel de la Cigogne</div>
+        <div class="hotel-card-copy">On one of the quieter squares in the city, a few minutes from the lake. Small, elegant, the kind of hotel that doesn't feel like a chain. <strong>Rooms are genuinely comfortable.</strong> The location puts you between the old town and Eaux-Vives — well placed for everything.</div>
+        <!-- AFFILIATE LINK: replace YOUR_AFFILIATE_ID in the URL below with your Booking.com affiliate ID -->
+        <a href="https://www.booking.com/hotel/ch/de-la-cigogne.html?aid=YOUR_AFFILIATE_ID" class="hotel-card-book" target="_blank" rel="noopener">Check availability →</a>
+      </div>
+      <div class="hotel-card-price">
+        <span class="hotel-card-price-label">From</span>
+        <span class="hotel-card-price-value">CHF 280</span>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-card-body">
+        <div class="hotel-card-cat">Grand · Quai du Mont-Blanc</div>
+        <div class="hotel-card-name">Hôtel Beau-Rivage</div>
+        <div class="hotel-card-copy">If you're going to do a Geneva grand hotel, do this one. On the lake, proper views, the Empress Sisi connection if you care about that kind of thing. <strong>Splurge-worthy for a night.</strong> Not cheap. Worth it if you want the full Geneva experience.</div>
+        <!-- AFFILIATE LINK: replace YOUR_AFFILIATE_ID -->
+        <a href="https://www.booking.com/hotel/ch/beau-rivage-geneve.html?aid=YOUR_AFFILIATE_ID" class="hotel-card-book" target="_blank" rel="noopener">Check availability →</a>
+      </div>
+      <div class="hotel-card-price">
+        <span class="hotel-card-price-label">From</span>
+        <span class="hotel-card-price-value">CHF 480</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAROUGE -->
+  <div class="hood-section" id="carouge">
+    <div class="hood-section-head">
+      <span class="hood-section-name">Carouge</span>
+      <a href="carouge.html" class="hood-section-link">Neighbourhood guide →</a>
+    </div>
+    <p class="hood-section-vibe">Best for: weekends, the market, people who want Geneva to feel Italian</p>
+    <img src="carouge-cover.jpg" alt="Carouge, Geneva" class="area-img" style="object-position: center 55%;" />
+    <p class="hood-section-body">What Geneva would be if it relaxed. Technically its own municipality, Sardinian-baroque architecture, courtyard apartments, a Saturday market that's worth building a trip around. The tram takes you into the centre in ten minutes. Staying here and staying in, say, Pâquis are completely different experiences of the same city.</p>
+
+    <div class="hotel-card">
+      <div class="hotel-card-body">
+        <div class="hotel-card-cat">Boutique · Carouge</div>
+        <div class="hotel-card-name">La Cour des Augustins</div>
+        <div class="hotel-card-copy">A converted 18th-century convent in the heart of Carouge. Courtyard, gallery, genuinely good breakfast. <strong>The most characterful hotel in Geneva.</strong> Book the courtyard room if it's available. This is the one.</div>
+        <!-- AFFILIATE LINK: replace YOUR_AFFILIATE_ID -->
+        <a href="https://www.booking.com/hotel/ch/la-cour-des-augustins.html?aid=YOUR_AFFILIATE_ID" class="hotel-card-book" target="_blank" rel="noopener">Check availability →</a>
+      </div>
+      <div class="hotel-card-price">
+        <span class="hotel-card-price-label">From</span>
+        <span class="hotel-card-price-value">CHF 220</span>
+      </div>
+    </div>
+
+    <div class="pull-note">
+      <p>"If you're visiting on a Saturday, stay in Carouge. Wake up, walk to the market, buy wine, buy oysters. That's the move."</p>
+    </div>
+  </div>
+
+  <!-- RIVE & OLD TOWN -->
+  <div class="hood-section" id="rive">
+    <div class="hood-section-head">
+      <span class="hood-section-name">Rive &amp; Old Town</span>
+    </div>
+    <p class="hood-section-vibe">Best for: first timers, walking the city, the historic sites</p>
+    <p class="hood-section-body">Central, walkable to everything, a mix of old city architecture and covered market energy. More tourist-facing than Eaux-Vives or Carouge but not in a bad way — if it's your first time in Geneva and you want to understand the layout, staying here makes sense. The old town is five minutes uphill.</p>
+
+    <div class="hotel-card">
+      <div class="hotel-card-body">
+        <div class="hotel-card-cat">Design · Rive</div>
+        <div class="hotel-card-name">Hôtel N'vY</div>
+        <div class="hotel-card-copy">Modern boutique hotel between Cornavin and Rive. Well-designed rooms, no fuss. <strong>Good value for Geneva</strong> — which is saying something. The bar downstairs is worth a drink. Central enough to walk almost everywhere.</div>
+        <!-- AFFILIATE LINK: replace YOUR_AFFILIATE_ID -->
+        <a href="https://www.booking.com/hotel/ch/nvy.html?aid=YOUR_AFFILIATE_ID" class="hotel-card-book" target="_blank" rel="noopener">Check availability →</a>
+      </div>
+      <div class="hotel-card-price">
+        <span class="hotel-card-price-label">From</span>
+        <span class="hotel-card-price-value">CHF 200</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CENTRE & CORNAVIN -->
+  <div class="hood-section" id="centre">
+    <div class="hood-section-head">
+      <span class="hood-section-name">Centre &amp; Cornavin</span>
+      <a href="cornavin.html" class="hood-section-link">Station tips →</a>
+    </div>
+    <p class="hood-section-vibe">Best for: business trips, early trains, airport connections</p>
+    <p class="hood-section-body">Practical. If you're here for work, catching an early train to Zurich, or in and out in 24 hours, staying near Cornavin makes sense. Trams and buses to everywhere. It's not the most atmospheric part of the city but that's not the point.</p>
+
+    <div class="hotel-card">
+      <div class="hotel-card-body">
+        <div class="hotel-card-cat">Mid-range · Cornavin</div>
+        <div class="hotel-card-name">Hôtel Auteuil</div>
+        <div class="hotel-card-copy">Reliable, well-located, comfortable. A few minutes from the station. <strong>Does exactly what it says.</strong> Good option if you need somewhere solid without paying grand hotel prices. Breakfast is decent.</div>
+        <!-- AFFILIATE LINK: replace YOUR_AFFILIATE_ID -->
+        <a href="https://www.booking.com/hotel/ch/auteuil.html?aid=YOUR_AFFILIATE_ID" class="hotel-card-book" target="_blank" rel="noopener">Check availability →</a>
+      </div>
+      <div class="hotel-card-price">
+        <span class="hotel-card-price-label">From</span>
+        <span class="hotel-card-price-value">CHF 160</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT TO AVOID -->
+  <div class="hood-section" id="avoid">
+    <div class="hood-section-head">
+      <span class="hood-section-name">A few more things to know</span>
+    </div>
+    <p class="hood-section-vibe">Before you book</p>
+    <p class="hood-section-body"><strong>Ruby Hotels:</strong> If you want a reliably good mid-range option anywhere in the city, Ruby is worth knowing about. It's a chain, but a good one — design-led, well-located, not overpriced by Geneva standards. The <a href="https://www.ruby-hotels.com/en/hotels/geneva" target="_blank" rel="noopener" style="color:var(--ink);border-bottom:1px solid var(--rule);">Ruby Mimi in Geneva</a> is solid. Proof that "chain" and "good" aren't mutually exclusive — it's about knowing which ones.<br><br><strong>Pâquis</strong> if you don't know what you're getting into: Geneva's most international neighbourhood is also the most chaotic after dark. Not a problem if you know, but worth knowing before you book.</p>
+  </div>
+
+  <div class="disclosure">
+    Disclosure: some links on this page are affiliate links. If you book through them, HoodTip earns a small commission at no extra cost to you. We only recommend places we'd actually send a friend. Prices are approximate and change seasonally — always check current rates on the booking page.
+  </div>
+
+</div>
+
+<!-- MORE GUIDES -->
+<div class="more-guides">
+  <div class="more-guides-inner">
+    <a class="more-guide-link" href="geneva.html">
+      <span class="more-guide-label">City guide</span>
+      <span class="more-guide-name">All Geneva</span>
+      <span class="more-guide-desc">11 neighbourhoods · 18 tips</span>
+    </a>
+    <a class="more-guide-link" href="carouge.html">
+      <span class="more-guide-label">Neighbourhood</span>
+      <span class="more-guide-name">Carouge</span>
+      <span class="more-guide-desc">Saturday market, wine, oysters</span>
+    </a>
+    <a class="more-guide-link" href="eaux-vives.html">
+      <span class="more-guide-label">Neighbourhood</span>
+      <span class="more-guide-name">Eaux-Vives</span>
+      <span class="more-guide-desc">Parc La Grange, the quays, the lake</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats">
+      <span>39 tips</span><span>·</span>
+      <span>15 neighbourhoods</span><span>·</span>
+      <span>7 cities</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
