@@ -23,14 +23,11 @@
     /* ── TOP NAV ── */
     .top-nav { border-bottom: 1.5px solid var(--ink); position: fixed; top: 0; left: 0; right: 0; z-index: 300; background: var(--cream); }
     .top-nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
-    .top-nav-left { display: flex; gap: 20px; align-items: center; }
-    .top-nav-left a { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
-    .top-nav-left a:hover { color: var(--ink); }
-    .top-nav-right { display: flex; align-items: center; gap: 0; }
-    .top-nav-right a { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 14px; height: 48px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
-    .top-nav-right a:hover { color: var(--ink); }
-    .top-nav-right a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); font-weight: 600; letter-spacing: 0.14em; }
-    .top-nav-right a.cta:hover { background: var(--ink2); }
+    .top-nav-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .top-nav-logo em { font-style: italic; font-weight: 400; }
+    .top-nav-logo .dot { color: var(--red); }
+    .top-nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); text-decoration: none; padding: 0 18px; height: 48px; display: flex; align-items: center; transition: background 0.15s; }
+    .top-nav-cta:hover { background: var(--ink2); }
 
     /* ── MASTHEAD ── */
     .masthead { border-bottom: 1.5px solid var(--ink); }
@@ -40,60 +37,23 @@
     .masthead-logo .dot { color: var(--red); }
     .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: var(--muted); }
 
-    /* ── HOOD NAV — grouped by city ── */
-    .hood-nav { border-bottom: 1.5px solid var(--ink); position: sticky; top: 48px; z-index: 200; background: var(--cream); }
-    .hood-nav-inner {
-      max-width: 1400px; margin: 0 auto; padding: 0 32px;
-      display: flex; align-items: stretch; height: 40px;
-      overflow-x: auto; gap: 0;
-    }
+    /* ── CITY STRIP ── */
+    .city-strip { border-bottom: 1px solid var(--rule); position: sticky; top: 48px; z-index: 200; background: var(--cream); }
+    .city-strip-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; height: 42px; display: flex; align-items: center; gap: 0; overflow-x: auto; }
+    .city-strip-inner::-webkit-scrollbar { display: none; }
+    .city-strip-inner a { font-family: var(--cond); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 0 20px 0 0; white-space: nowrap; transition: color 0.15s; flex-shrink: 0; }
+    .city-strip-inner a.active { color: var(--ink); }
+    .city-strip-inner a:not(.active) { color: var(--muted); }
+    .city-strip-inner a:hover { color: var(--ink); }
+    .city-strip-sep { color: var(--rule); font-size: 0.7rem; padding-right: 20px; flex-shrink: 0; }
+
+    /* ── HOOD STRIP ── */
+    .hood-nav { border-bottom: 1.5px solid var(--ink); position: sticky; top: 90px; z-index: 199; background: var(--cream); }
+    .hood-nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; align-items: stretch; height: 36px; overflow-x: auto; gap: 0; }
     .hood-nav-inner::-webkit-scrollbar { display: none; }
-
-    /* City label — not a link */
-    .hood-nav-city {
-      font-family: var(--cond);
-      font-size: 0.56rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink);
-      opacity: 0.35;
-      display: flex;
-      align-items: center;
-      padding: 0 10px 0 16px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .hood-nav-city:first-child { padding-left: 0; }
-
-    /* City divider */
-    .hood-nav-div {
-      display: flex;
-      align-items: center;
-      padding: 0 4px;
-      color: var(--rule);
-      font-size: 1rem;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    /* Hood link */
-    .hood-nav-inner a {
-      font-family: var(--cond);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 0 10px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      transition: color 0.15s;
-      flex-shrink: 0;
-    }
+    .hood-nav-div { display: flex; align-items: center; padding: 0 6px; color: var(--rule); font-size: 0.8rem; flex-shrink: 0; }
+    .hood-nav-inner a { font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 10px; height: 36px; display: flex; align-items: center; white-space: nowrap; transition: color 0.15s; flex-shrink: 0; }
+    .hood-nav-inner a:first-child { padding-left: 0; }
     .hood-nav-inner a:hover { color: var(--ink); }
 
     /* ── MAIN CONTENT ── */
@@ -211,19 +171,8 @@
     .submit-btn:hover { background: var(--ink2); }
 
     /* ── MOBILE CITY STRIP ── */
-    .city-strip { display: none; border-bottom: 1px solid var(--rule); background: var(--cream); }
-    .city-strip-inner { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; height: 38px; gap: 0; overflow-x: auto; }
-    .city-strip-inner::-webkit-scrollbar { display: none; }
-    .city-strip-inner a { font-family: var(--cond); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 0 14px 0 0; white-space: nowrap; transition: color 0.15s; }
-    .city-strip-inner a.active { color: var(--ink); }
-    .city-strip-inner a:not(.active) { color: var(--muted); }
-    .city-strip-inner a:hover { color: var(--ink); }
-    .city-strip-sep { color: var(--rule); font-size: 0.7rem; padding: 0 14px 0 0; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 800px) {
-      .city-strip { display: block; }
-    }
     @media (max-width: 1100px) {
       .three-col { grid-template-columns: 1fr 1px 280px; }
       .col-divider:last-of-type, .col-right { display: none; }
@@ -232,9 +181,8 @@
     }
     @media (max-width: 800px) {
       .top-nav-inner { padding: 0 20px; }
-      .top-nav-left { display: none; }
-      .top-nav-right a:not(.cta) { display: none; }
       .masthead-inner { padding: 14px 20px 12px; }
+      .city-strip-inner { padding: 0 20px; }
       .hood-nav-inner { padding: 0 20px; }
       .content-wrap { padding: 0 20px; }
       .three-col { grid-template-columns: 1fr; }
@@ -257,18 +205,8 @@
 <!-- TOP NAV -->
 <div class="top-nav">
   <div class="top-nav-inner">
-    <div class="top-nav-left">
-      <a href="geneva.html">Geneva</a>
-      <a href="#london">London</a>
-      <a href="#istanbul">Istanbul</a>
-      <a href="#paris">Paris</a>
-      <a href="#elsewhere">Elsewhere</a>
-    </div>
-    <div class="top-nav-right">
-      <a href="carouge.html">Carouge</a>
-      <a href="yenikoy.html">Yenik&ouml;y</a>
-      <a href="#" onclick="openModal();return false;" class="cta">Leave a tip</a>
-    </div>
+    <a href="/" class="top-nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+    <a href="#" onclick="openModal();return false;" class="top-nav-cta">Leave a tip</a>
   </div>
 </div>
 
@@ -282,7 +220,7 @@
   </div>
 </div>
 
-<!-- MOBILE CITY STRIP — hidden on desktop, visible on mobile -->
+<!-- CITY STRIP -->
 <div class="city-strip">
   <div class="city-strip-inner">
     <a href="geneva.html" class="active">Geneva</a>
@@ -297,40 +235,25 @@
   </div>
 </div>
 
-<!-- HOOD NAV — grouped by city -->
+<!-- HOOD STRIP -->
 <div class="hood-nav">
   <div class="hood-nav-inner">
-
-    <span class="hood-nav-city"><a href="geneva.html" style="color:inherit;text-decoration:none;">Geneva</a></span>
     <a href="carouge.html">Carouge</a>
-    <a href="tip-bongojoe.html">Plainpalais</a>
-    <a href="tip-mulligans.html">Saint-Gervais</a>
+    <a href="plainpalais.html">Plainpalais</a>
+    <a href="saint-gervais.html">Saint-Gervais</a>
     <a href="nations.html">Nations</a>
-
     <span class="hood-nav-div">·</span>
-
-    <span class="hood-nav-city"><a href="#london" style="color:inherit;text-decoration:none;">London</a></span>
     <a href="notting-hill.html">Notting Hill</a>
     <a href="tip-karmabread.html">Hampstead</a>
-
     <span class="hood-nav-div">·</span>
-
-    <span class="hood-nav-city"><a href="#istanbul" style="color:inherit;text-decoration:none;">Istanbul</a></span>
     <a href="yenikoy.html">Yenik&ouml;y</a>
-
     <span class="hood-nav-div">·</span>
-
-    <span class="hood-nav-city"><a href="#paris" style="color:inherit;text-decoration:none;">Paris</a></span>
     <a href="tip-oceanik.html">Latin Quarter</a>
-
     <span class="hood-nav-div">·</span>
-
-    <span class="hood-nav-city"><a href="#elsewhere" style="color:inherit;text-decoration:none;">Elsewhere</a></span>
     <a href="tip-saintamour.html">Lavaux</a>
     <a href="tip-belvedere.html">Wengen</a>
     <a href="tip-lagrandeboucherie.html">New York</a>
     <a href="tip-kilwins.html">Saugatuck</a>
-
   </div>
 </div>
 
