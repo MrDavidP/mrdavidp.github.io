@@ -35,20 +35,20 @@
     .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
 
     /* CITY HEADER */
-    .city-header { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem 2.5rem; border-bottom: 1.5px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .city-title { font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
-    .city-desc { font-family: var(--serif); font-style: italic; font-size: 1.05rem; line-height: 1.75; color: var(--muted); max-width: 520px; }
-    .city-meta { display: flex; gap: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); margin-top: 2rem; }
+    .city-header { max-width: 1400px; margin: 0 auto; padding: 2rem 2rem 2rem; border-bottom: 1.5px solid var(--ink); display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: start; }
+    .city-title { font-family: var(--serif); font-size: clamp(3rem, 6vw, 5rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 1.25rem; white-space: nowrap; }
+    .city-desc { font-family: var(--sans); font-style: normal; font-size: 0.85rem; font-weight: 400; line-height: 1.7; color: var(--ink); max-width: 680px; }
+    .city-meta { display: flex; gap: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); margin-top: 1.25rem; }
     .city-stat { display: flex; flex-direction: column; gap: 0.2rem; }
     .city-stat-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-    .city-stat-value { font-family: var(--serif); font-size: 1.4rem; color: var(--ink); }
+    .city-stat-value { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); }
 
     /* MAIN SPLIT */
-    .city-body { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; border-bottom: 1.5px solid var(--ink); min-height: 680px; }
+    .city-body { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; border-bottom: 1.5px solid var(--ink); }
 
     /* MAP */
-    .map-wrap { position: relative; border-right: 1px solid var(--rule); background: #f3f0ea; min-height: 620px; display: flex; flex-direction: column; }
-    #geneva-map { flex: 1; min-height: 560px; }
+    .map-wrap { position: relative; border-right: 1px solid var(--rule); background: #f3f0ea; display: flex; flex-direction: column; }
+    #geneva-map { flex: 1; min-height: 480px; }
 
     /* Custom Leaflet pin styles */
     .hood-pin { width: 36px; height: 36px; border-radius: 50%; background: #f7f4ef; border: 2px solid #1a1816; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; color: #1a1816; cursor: pointer; transition: all 0.15s; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
@@ -72,14 +72,14 @@
     .hood-list-header { padding: 1.5rem 1.5rem 1rem; border-bottom: 1px solid var(--rule); }
     .hood-list-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 
-    .hood-entry { text-decoration: none; color: var(--ink); display: block; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--rule); transition: background 0.15s; position: relative; }
+    .hood-entry { text-decoration: none; color: var(--ink); display: block; padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--rule); transition: background 0.15s; position: relative; }
     .hood-entry:last-child { border-bottom: none; }
     .hood-entry:hover { background: rgba(26,24,22,0.025); }
-    .hood-entry-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.3rem; }
-    .hood-entry-name { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; line-height: 1.1; }
-    .hood-entry-count { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
-    .hood-entry-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .hood-entry-arrow { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); margin-top: 0.5rem; display: inline-block; transition: color 0.15s; }
+    .hood-entry-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.2rem; }
+    .hood-entry-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; line-height: 1.1; }
+    .hood-entry-count { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+    .hood-entry-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .hood-entry-arrow { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); margin-top: 0.35rem; display: inline-block; transition: color 0.15s; }
     .hood-entry:hover .hood-entry-arrow { color: var(--muted); }
 
     .hood-entry.active { background: rgba(26,24,22,0.04); border-left: 2px solid var(--ink); }
@@ -89,15 +89,15 @@
     /* TIPS BELOW */
     .tips-section { max-width: 1400px; margin: 0 auto; border-bottom: 1.5px solid var(--ink); }
     .section-head { padding: 0 2rem; }
-    .section-head-inner { display: flex; align-items: baseline; gap: 16px; padding: 24px 0 14px; border-bottom: 1px solid var(--ink); }
+    .section-head-inner { display: flex; align-items: baseline; gap: 16px; padding: 16px 0 10px; border-bottom: 1px solid var(--ink); }
     .section-head-inner h2 { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; white-space: nowrap; }
     .section-line { flex: 1; height: 1px; background: var(--rule); }
 
     .tips-by-hood { }
     .hood-tip-group { border-bottom: 1px solid var(--rule); }
     .hood-tip-group:last-child { border-bottom: none; }
-    .hood-tip-group-label { padding: 16px 2rem 0; font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rule); }
-    .tips-row { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--rule); margin-top: 12px; }
+    .hood-tip-group-label { padding: 10px 2rem 0; font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rule); }
+    .tips-row { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--rule); margin-top: 8px; }
     .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.18s; padding-bottom: 14px; }
     .tip-card:last-child { border-right: none; }
     .tip-card:hover { background: rgba(26,24,22,0.025); }
