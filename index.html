@@ -33,18 +33,67 @@
     .top-nav-right a.cta:hover { background: var(--ink2); }
 
     /* ── MASTHEAD ── */
-    .masthead { margin-top: 48px; border-bottom: 1.5px solid var(--ink); padding: 18px 32px 14px; max-width: 1400px; margin-left: auto; margin-right: auto; display: flex; flex-direction: column; align-items: center; gap: 0; }
-    .masthead-logo { font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 600; color: var(--ink); letter-spacing: 0.01em; line-height: 1; text-decoration: none; display: block; text-align: center; }
+    .masthead { border-bottom: 1.5px solid var(--ink); }
+    .masthead-inner { max-width: 1400px; margin: 0 auto; padding: 18px 32px 14px; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .masthead-logo { font-family: var(--serif); font-size: clamp(2.6rem, 5.5vw, 4.8rem); font-weight: 600; color: var(--ink); letter-spacing: 0.01em; line-height: 1; text-decoration: none; display: block; text-align: center; }
     .masthead-logo em { font-style: italic; font-weight: 400; }
     .masthead-logo .dot { color: var(--red); }
-    .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.02em; }
+    .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: var(--muted); }
 
-    /* ── HOOD NAV ── */
+    /* ── HOOD NAV — grouped by city ── */
     .hood-nav { border-bottom: 1.5px solid var(--ink); position: sticky; top: 48px; z-index: 200; background: var(--cream); }
-    .hood-nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: center; height: 40px; gap: 0; overflow-x: auto; }
+    .hood-nav-inner {
+      max-width: 1400px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: stretch; height: 40px;
+      overflow-x: auto; gap: 0;
+    }
     .hood-nav-inner::-webkit-scrollbar { display: none; }
-    .hood-nav-sep { color: var(--rule); font-size: 0.7rem; padding: 0 2px; user-select: none; }
-    .hood-nav-inner a { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 14px; height: 40px; display: flex; align-items: center; white-space: nowrap; transition: color 0.15s; }
+
+    /* City label — not a link */
+    .hood-nav-city {
+      font-family: var(--cond);
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.35;
+      display: flex;
+      align-items: center;
+      padding: 0 10px 0 16px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .hood-nav-city:first-child { padding-left: 0; }
+
+    /* City divider */
+    .hood-nav-div {
+      display: flex;
+      align-items: center;
+      padding: 0 4px;
+      color: var(--rule);
+      font-size: 1rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* Hood link */
+    .hood-nav-inner a {
+      font-family: var(--cond);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0 10px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      transition: color 0.15s;
+      flex-shrink: 0;
+    }
     .hood-nav-inner a:hover { color: var(--ink); }
 
     /* ── MAIN CONTENT ── */
@@ -83,8 +132,7 @@
     .col-mid { padding: 28px 28px; }
     .col-mid-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
     .indepth-link { text-decoration: none; color: var(--ink); display: block; }
-    .indepth-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-bottom: 14px; transition: transform 0.55s ease; overflow: hidden; }
-    .indepth-link:hover .indepth-img { transform: scale(1.03); }
+    .indepth-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-bottom: 14px; overflow: hidden; }
     .indepth-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s ease; }
     .indepth-link:hover .indepth-img img { transform: scale(1.03); }
     .indepth-cat { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
@@ -93,8 +141,6 @@
     .indepth-body { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
     .indepth-cta { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-top: 12px; display: inline-block; border-bottom: 1px solid var(--rule); padding-bottom: 2px; text-decoration: none; transition: border-color 0.15s; }
     .indepth-cta:hover { border-color: var(--ink); }
-
-    /* Second in-depth piece */
     .indepth-second { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--rule); }
 
     /* RIGHT — neighbourhood cards */
@@ -175,8 +221,8 @@
       .top-nav-inner { padding: 0 20px; }
       .top-nav-left { display: none; }
       .top-nav-right a:not(.cta) { display: none; }
-      .masthead { padding: 14px 20px 12px; }
-      .hood-nav-inner { padding: 0 20px; justify-content: flex-start; }
+      .masthead-inner { padding: 14px 20px 12px; }
+      .hood-nav-inner { padding: 0 20px; }
       .content-wrap { padding: 0 20px; }
       .three-col { grid-template-columns: 1fr; }
       .col-divider { display: none; }
@@ -214,28 +260,49 @@
 </div>
 
 <!-- MASTHEAD -->
-<div style="margin-top:48px; border-bottom: 1.5px solid var(--ink);">
-  <div style="max-width:1400px; margin:0 auto; padding: 20px 32px 16px; display:flex; flex-direction:column; align-items:center; gap:3px;">
-    <a href="/" style="font-family:var(--serif); font-size:clamp(2.6rem,5.5vw,4.8rem); font-weight:600; color:var(--ink); text-decoration:none; letter-spacing:0.01em; line-height:1;">Hood<em style="font-style:italic;font-weight:400;">Tip<span style="color:var(--red);">.</span></em></a>
-    <span style="font-family:var(--serif); font-style:italic; font-size:0.85rem; color:var(--muted);">Only the good stuff.</span>
+<div style="margin-top:48px;">
+  <div class="masthead">
+    <div class="masthead-inner">
+      <a href="/" class="masthead-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="masthead-tagline">Only the good stuff.</span>
+    </div>
   </div>
 </div>
 
-<!-- HOOD NAV -->
+<!-- HOOD NAV — grouped by city -->
 <div class="hood-nav">
   <div class="hood-nav-inner">
-    <a href="carouge.html">Carouge</a><span class="hood-nav-sep">|</span>
-    <a href="tip-bongojoe.html">Plainpalais</a><span class="hood-nav-sep">|</span>
-    <a href="tip-mulligans.html">Cornavin</a><span class="hood-nav-sep">|</span>
-    <a href="nations.html">Nations</a><span class="hood-nav-sep">|</span>
-    <a href="notting-hill.html">Notting Hill</a><span class="hood-nav-sep">|</span>
-    <a href="tip-karmabread.html">Hampstead Heath</a><span class="hood-nav-sep">|</span>
-    <a href="yenikoy.html">Yenik&ouml;y</a><span class="hood-nav-sep">|</span>
-    <a href="tip-oceanik.html">Latin Quarter</a><span class="hood-nav-sep">|</span>
-    <a href="tip-lagrandeboucherie.html">New York</a><span class="hood-nav-sep">|</span>
-    <a href="tip-saintamour.html">Lavaux</a><span class="hood-nav-sep">|</span>
-    <a href="tip-belvedere.html">Wengen</a><span class="hood-nav-sep">|</span>
+
+    <span class="hood-nav-city">Geneva</span>
+    <a href="carouge.html">Carouge</a>
+    <a href="tip-bongojoe.html">Plainpalais</a>
+    <a href="tip-mulligans.html">Saint-Gervais</a>
+    <a href="nations.html">Nations</a>
+
+    <span class="hood-nav-div">·</span>
+
+    <span class="hood-nav-city">London</span>
+    <a href="notting-hill.html">Notting Hill</a>
+    <a href="tip-karmabread.html">Hampstead</a>
+
+    <span class="hood-nav-div">·</span>
+
+    <span class="hood-nav-city">Istanbul</span>
+    <a href="yenikoy.html">Yenik&ouml;y</a>
+
+    <span class="hood-nav-div">·</span>
+
+    <span class="hood-nav-city">Paris</span>
+    <a href="tip-oceanik.html">Latin Quarter</a>
+
+    <span class="hood-nav-div">·</span>
+
+    <span class="hood-nav-city">Elsewhere</span>
+    <a href="tip-saintamour.html">Lavaux</a>
+    <a href="tip-belvedere.html">Wengen</a>
+    <a href="tip-lagrandeboucherie.html">New York</a>
     <a href="tip-kilwins.html">Saugatuck</a>
+
   </div>
 </div>
 
@@ -256,7 +323,6 @@
         <div class="feature-meta"><span>Bongo Joe</span><span class="feature-meta-dot"></span><span>Quai Ernest-Ansermet 3</span><span class="feature-meta-dot"></span><span>Open daily from noon</span></div>
       </a>
 
-      <!-- TIP LIST below feature -->
       <div class="tip-list">
         <a class="tip-list-item" href="tip-thecow.html">
           <img class="tip-list-thumb" src="IMG_3513.JPG" alt="The Cow" />
@@ -314,7 +380,7 @@
           <div class="indepth-img">
             <img src="Screenshot_2026-03-17_at_09_39_02.png" alt="Swiss Train Restaurant Car" style="width:100%;height:100%;object-fit:cover;display:block;" />
           </div>
-          <div class="indepth-cat">Travel &middot; Cornavin &middot; Geneva</div>
+          <div class="indepth-cat">Travel &middot; Saint-Gervais &middot; Geneva</div>
           <h3 class="indepth-hed" style="font-size:1.15rem;">The restaurant car almost nobody knows exists</h3>
           <p class="indepth-body">Don't book first class. Buy a standard ticket and walk to the restaurant car. White tablecloth, Alps out the window, proper food and wine at 200km/h.</p>
           <span class="indepth-cta">Read the tip &rarr;</span>
@@ -446,8 +512,8 @@
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
     <div class="footer-stats">
-      <span class="footer-stat">35 tips</span><span class="footer-sep">&middot;</span>
-      <span class="footer-stat">14 neighbourhoods</span><span class="footer-sep">&middot;</span>
+      <span class="footer-stat">39 tips</span><span class="footer-sep">&middot;</span>
+      <span class="footer-stat">15 neighbourhoods</span><span class="footer-sep">&middot;</span>
       <span class="footer-stat">7 cities</span>
     </div>
     <div class="footer-note">Write it like you're giving a friend advice the night before they leave.</div>
@@ -461,8 +527,6 @@
       <h4>Leave a HoodTip</h4>
       <button class="modal-close" onclick="closeModal()">&#x2715;</button>
     </div>
-
-    <!-- FORM STATE -->
     <div class="modal-body" id="modalForm">
       <p class="modal-sub">Positive only. Specific over general. Write it like a note to a friend going next week.</p>
       <div class="field"><label for="f-place">Place name</label><input id="f-place" name="place" type="text" placeholder="e.g. Bongo Joe" required /></div>
@@ -477,15 +541,12 @@
       <button class="submit-btn" id="submitBtn" onclick="submitTip(event)">Submit tip</button>
       <p id="formError" style="display:none;font-size:0.78rem;color:var(--red);margin-top:4px;">Something went wrong — please try again.</p>
     </div>
-
-    <!-- SUCCESS STATE -->
     <div class="modal-body" id="modalSuccess" style="display:none;text-align:center;padding:40px 24px;">
       <div style="font-family:var(--serif);font-size:2rem;margin-bottom:12px;">✓</div>
       <h4 style="font-family:var(--serif);font-size:1.2rem;font-weight:500;margin-bottom:10px;">Tip received.</h4>
       <p style="font-size:0.84rem;color:var(--muted);line-height:1.65;">Thanks — I'll take a look and reach out if I need anything else. Good stuff only.</p>
       <button class="submit-btn" style="margin-top:24px;width:auto;padding:10px 24px;" onclick="closeModal()">Close</button>
     </div>
-
   </div>
 </div>
 
@@ -514,7 +575,6 @@
     err.style.display = 'none';
     btn.textContent = 'Sending…';
     btn.disabled = true;
-
     const data = {
       place:         document.getElementById('f-place').value,
       neighbourhood: document.getElementById('f-hood').value,
@@ -523,7 +583,6 @@
       tip:           document.getElementById('f-tip').value,
       photos:        document.getElementById('f-photos').value,
     };
-
     try {
       const res = await fetch('https://formspree.io/f/mdawyane', {
         method: 'POST',
@@ -535,9 +594,7 @@
         document.getElementById('modalSuccess').style.display = 'flex';
         document.getElementById('modalSuccess').style.flexDirection = 'column';
         document.getElementById('modalSuccess').style.alignItems = 'center';
-      } else {
-        throw new Error('bad response');
-      }
+      } else { throw new Error('bad response'); }
     } catch {
       err.style.display = 'block';
       btn.textContent = 'Submit tip';

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Geneva — HoodTip</title>
-  <meta name="description" content="Geneva neighbourhood guide. Carouge, Plainpalais, Cornavin, Nations and beyond. Only the good stuff." />
+  <meta name="description" content="Geneva neighbourhood guide. Carouge, Plainpalais, Saint-Gervais, Nations and beyond. Only the good stuff." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -13,7 +13,6 @@
     :root {
       --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
       --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
-      --water: #c8dce8; --water-dark: #a8c4d8;
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans:  'Barlow', system-ui, sans-serif;
       --cond:  'Barlow Condensed', system-ui, sans-serif;
@@ -33,28 +32,28 @@
     .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
     .nav-links a:hover { color: var(--ink); }
     .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+    .nav-links a.cta:hover { background: var(--ink2); }
 
     /* CITY HEADER */
-    .city-header { max-width: 1400px; margin: 0 auto; padding: 2rem 2rem 2rem; border-bottom: 1.5px solid var(--ink); display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: start; }
-    .city-title { font-family: var(--serif); font-size: clamp(3rem, 6vw, 5rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 1.25rem; white-space: nowrap; }
-    .city-desc { font-family: var(--sans); font-style: normal; font-size: 0.85rem; font-weight: 400; line-height: 1.7; color: var(--ink); max-width: 680px; }
-    .city-meta { display: flex; gap: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); margin-top: 1.25rem; }
+    .city-header { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem; border-bottom: 1.5px solid var(--ink); display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: start; }
+    .city-title { font-family: var(--serif); font-size: clamp(3rem, 6vw, 5rem); font-weight: 400; line-height: 0.92; letter-spacing: -0.02em; margin-bottom: 1rem; white-space: nowrap; }
+    .city-desc { font-family: var(--sans); font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: var(--ink); max-width: 660px; }
+    .city-meta { display: flex; gap: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); margin-top: 1rem; }
     .city-stat { display: flex; flex-direction: column; gap: 0.2rem; }
-    .city-stat-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-    .city-stat-value { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); }
+    .city-stat-label { font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .city-stat-value { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); }
 
-    /* MAIN SPLIT */
-    .city-body { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; border-bottom: 1.5px solid var(--ink); }
+    /* MAIN SPLIT — map left, hood list right */
+    .city-body { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px; border-bottom: 1.5px solid var(--ink); }
 
     /* MAP */
     .map-wrap { position: relative; border-right: 1px solid var(--rule); background: #f3f0ea; display: flex; flex-direction: column; }
-    #geneva-map { flex: 1; min-height: 480px; }
+    #geneva-map { flex: 1; min-height: 500px; }
 
-    /* Custom Leaflet pin styles */
-    .hood-pin { width: 36px; height: 36px; border-radius: 50%; background: #f7f4ef; border: 2px solid #1a1816; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; color: #1a1816; cursor: pointer; transition: all 0.15s; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
-    .hood-pin.active { background: #1a1816; color: #f7f4ef; transform: scale(1.1); }
-    .hood-pin:hover { transform: scale(1.1); }
-    .leaflet-popup-content-wrapper { background: #f7f4ef; border: 1px solid #e0dbd3; border-radius: 3px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0; }
+    .hood-pin { width: 34px; height: 34px; border-radius: 50%; background: #f7f4ef; border: 1.5px solid #1a1816; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; color: #1a1816; cursor: pointer; transition: all 0.15s; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+    .hood-pin.active { background: #1a1816; color: #f7f4ef; transform: scale(1.12); }
+    .hood-pin:hover { transform: scale(1.08); }
+    .leaflet-popup-content-wrapper { background: #f7f4ef; border: 1px solid #e0dbd3; border-radius: 2px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 0; }
     .leaflet-popup-content { margin: 0; padding: 0; }
     .leaflet-popup-tip { background: #f7f4ef; }
     .leaflet-popup-close-button { color: #6b6560 !important; font-size: 16px !important; padding: 6px 8px !important; }
@@ -64,53 +63,84 @@
     .map-popup-desc { font-family: 'Barlow', sans-serif; font-size: 0.75rem; color: #6b6560; line-height: 1.5; margin-bottom: 10px; }
     .map-popup-link { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1816; text-decoration: none; border-bottom: 1px solid #e0dbd3; padding-bottom: 1px; }
     .map-popup-link:hover { border-color: #1a1816; }
-
-    .map-note { padding: 10px 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6560; border-top: 1px solid #e0dbd3; }
+    .map-note { padding: 9px 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6b6560; border-top: 1px solid #e0dbd3; }
 
     /* HOOD LIST */
-    .hood-list-wrap { display: flex; flex-direction: column; }
-    .hood-list-header { padding: 1.5rem 1.5rem 1rem; border-bottom: 1px solid var(--rule); }
-    .hood-list-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .hood-list-wrap { display: flex; flex-direction: column; overflow-y: auto; max-height: 560px; }
+    .hood-list-header { padding: 1rem 1.25rem 0.75rem; border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: var(--cream); z-index: 1; }
+    .hood-list-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 
-    .hood-entry { text-decoration: none; color: var(--ink); display: block; padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--rule); transition: background 0.15s; position: relative; }
+    .hood-entry { text-decoration: none; color: var(--ink); display: block; padding: 0.8rem 1.25rem; border-bottom: 1px solid var(--rule); transition: background 0.15s; position: relative; }
     .hood-entry:last-child { border-bottom: none; }
     .hood-entry:hover { background: rgba(26,24,22,0.025); }
-    .hood-entry-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.2rem; }
-    .hood-entry-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; line-height: 1.1; }
-    .hood-entry-count { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
-    .hood-entry-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .hood-entry-arrow { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); margin-top: 0.35rem; display: inline-block; transition: color 0.15s; }
-    .hood-entry:hover .hood-entry-arrow { color: var(--muted); }
+    .hood-entry.active { background: rgba(26,24,22,0.04); border-left: 2px solid var(--ink); padding-left: calc(1.25rem - 2px); }
+    .hood-entry-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.15rem; }
+    .hood-entry-num { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.1em; color: var(--rule); flex-shrink: 0; padding-right: 0.25rem; }
+    .hood-entry-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.1; }
+    .hood-entry-count { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+    .hood-entry-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-    .hood-entry.active { background: rgba(26,24,22,0.04); border-left: 2px solid var(--ink); }
-    .hood-entry-num { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--rule); line-height: 1; transition: color 0.15s; }
-    .hood-entry.active .hood-entry-num { color: var(--ink); }
-
-    /* TIPS BELOW */
+    /* TIPS SECTION */
     .tips-section { max-width: 1400px; margin: 0 auto; border-bottom: 1.5px solid var(--ink); }
     .section-head { padding: 0 2rem; }
-    .section-head-inner { display: flex; align-items: baseline; gap: 16px; padding: 16px 0 10px; border-bottom: 1px solid var(--ink); }
+    .section-head-inner { display: flex; align-items: baseline; gap: 16px; padding: 14px 0 10px; border-bottom: 1.5px solid var(--ink); }
     .section-head-inner h2 { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; white-space: nowrap; }
     .section-line { flex: 1; height: 1px; background: var(--rule); }
 
-    .tips-by-hood { }
-    .hood-tip-group { border-bottom: 1px solid var(--rule); }
-    .hood-tip-group:last-child { border-bottom: none; }
-    .hood-tip-group-label { padding: 10px 2rem 0; font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rule); }
-    .tips-row { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--rule); margin-top: 8px; }
-    .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.18s; padding-bottom: 14px; }
+    /* NEIGHBOURHOOD GROUP */
+    .hood-tip-group { border-top: 1px solid var(--ink); }
+    .hood-tip-group:first-child { border-top: none; }
+
+    .hood-tip-group-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem 2rem 0.8rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hood-tip-group-name {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .hood-tip-group-count {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hood-tip-group-link {
+      margin-left: auto;
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .hood-tip-group-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* TIP CARDS */
+    .tips-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.18s; padding-bottom: 16px; }
     .tip-card:last-child { border-right: none; }
     .tip-card:hover { background: rgba(26,24,22,0.025); }
     .tip-card-img-wrap { overflow: hidden; }
     .tip-card-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform 0.5s ease; }
     .tip-card:hover .tip-card-img { transform: scale(1.03); }
-    .tip-card-body { padding: 8px 10px 0; }
-    .tip-card-cat { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-    .tip-card-name { font-family: var(--serif); font-size: 0.9rem; font-weight: 500; line-height: 1.15; margin-bottom: 2px; }
-    .tip-card-copy { font-size: 0.7rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .tip-card-body { padding: 10px 14px 0; }
+    .tip-card-cat { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .tip-card-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.15; margin-bottom: 4px; }
+    .tip-card-copy { font-size: 0.74rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
     /* BACK */
-    .back-wrap { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+    .back-wrap { max-width: 1400px; margin: 0 auto; padding: 1.75rem 2rem; }
     .back-link { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: color 0.15s, border-color 0.15s; }
     .back-link:hover { color: var(--ink); border-color: var(--ink); }
 
@@ -123,19 +153,17 @@
     .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
 
     @media (max-width: 1000px) {
-      .city-header { grid-template-columns: 1fr; gap: 2rem; }
+      .city-header { grid-template-columns: 1fr; gap: 1.25rem; }
       .city-body { grid-template-columns: 1fr; }
       .map-wrap { border-right: none; border-bottom: 1px solid var(--rule); }
-      .tips-row { grid-template-columns: repeat(3, 1fr); }
-      .tip-card:nth-child(3n) { border-right: none; }
+      .hood-list-wrap { max-height: none; overflow-y: visible; }
     }
     @media (max-width: 640px) {
       .nav-links a:not(.cta) { display: none; }
       .nav-tagline { display: none; }
-      .city-header { padding: 2rem 1.5rem 1.5rem; }
-      .tips-row { grid-template-columns: repeat(2, 1fr); }
+      .city-header { padding: 1.25rem 1.5rem; }
+      .tips-row { grid-template-columns: 1fr 1fr; }
       .tip-card:nth-child(2n) { border-right: none; }
-      .tip-card:nth-child(3n) { border-right: 1px solid var(--rule); }
       .footer-stats { display: none; }
     }
   </style>
@@ -150,6 +178,7 @@
     </div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="carouge.html">Carouge</a></li>
       <li><a href="index.html" class="cta">Leave a tip</a></li>
     </ul>
   </div>
@@ -170,98 +199,136 @@
       </div>
       <div class="city-stat">
         <span class="city-stat-label">Tips</span>
-        <span class="city-stat-value">17</span>
+        <span class="city-stat-value">18</span>
       </div>
     </div>
   </div>
   <div>
-    <p class="city-desc">The city of refuge. Home to three major things: international organisations, banks, and watches. It attracts the people who work in those things, and also a lot of Portuguese and others who came here to live their lives — because it's a genuinely lovely place to be. The Jura mountains to the west, the French Alps to the east, Lake Geneva and two rivers all around it. Immaculately beautiful in most places, flowing water everywhere that is usually drinkable. You can get a good cortado, a sushi hand roll, some A+ natural wine, a smashburger, and a second-hand Rolex in many windows around the city. The francophone outpost of Switzerland. Clandestine political meetings next to family bicycle rides through the park. Geneva is a wonderful place to have some kids.</p>
+    <p class="city-desc">The city of refuge. Home to international organisations, banks, and watches — and the people who work in those things, plus a lot of people who came here to live their lives, because it's genuinely lovely. The Jura mountains to the west, the French Alps to the east, Lake Geneva and two rivers all around it. Immaculately beautiful, flowing water everywhere, and usually drinkable. The francophone outpost of Switzerland. Clandestine political meetings next to family bicycle rides through the park. A good place to have some kids.</p>
   </div>
 </div>
 
 <!-- MAP + HOOD LIST -->
 <div class="city-body">
 
-  <!-- LEAFLET MAP -->
   <div class="map-wrap">
     <div id="geneva-map"></div>
     <div class="map-note">Click pins to browse neighbourhoods</div>
   </div>
 
-  <!-- NEIGHBOURHOOD LIST -->
   <div class="hood-list-wrap">
     <div class="hood-list-header">
-      <div class="hood-list-label">Neighbourhoods</div>
+      <div class="hood-list-label">10 Neighbourhoods</div>
     </div>
 
     <a class="hood-entry" href="nations.html" data-hood="1">
-      <div class="hood-entry-num">1</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Nations</div><div class="hood-entry-count">3 tips</div></div>
-      <div class="hood-entry-desc">The beating heart of international Geneva. The UN, the Red Cross, half the world's NGOs. Shockingly few places to eat.</div>
-      <span class="hood-entry-arrow">Browse →</span>
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">01</span>
+          <span class="hood-entry-name">Nations</span>
+        </div>
+        <div class="hood-entry-count">3 tips</div>
+      </div>
+      <div class="hood-entry-desc">The UN, the Red Cross, half the world's NGOs — and shockingly few places to eat.</div>
     </a>
 
     <a class="hood-entry" href="tip-mulligans.html" data-hood="2">
-      <div class="hood-entry-num">2</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Saint-Gervais</div><div class="hood-entry-count">4 tips</div></div>
-      <div class="hood-entry-desc">Best Guinness in the city. The best grocery in central Geneva. And the restaurant car almost nobody knows exists.</div>
-      <span class="hood-entry-arrow">Browse →</span>
-    </a>
-
-    <a class="hood-entry" href="#paquis" data-hood="5">
-      <div class="hood-entry-num">5</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Pâquis</div><div class="hood-entry-count">Tips coming</div></div>
-      <div class="hood-entry-desc">Geneva's most international neighbourhood. Bains des Pâquis on the lake, everything open late, every language spoken.</div>
-      <span class="hood-entry-arrow">Coming soon</span>
-    </a>
-
-    <a class="hood-entry" href="#rive" data-hood="6">
-      <div class="hood-entry-num">6</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Rive</div><div class="hood-entry-count">Tips coming</div></div>
-      <div class="hood-entry-desc">The right bank. Shopping, the old covered market, and some of the better bistros in the city centre.</div>
-      <span class="hood-entry-arrow">Coming soon</span>
-    </a>
-
-    <a class="hood-entry" href="#vieilleville" data-hood="7">
-      <div class="hood-entry-num">7</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Vieille Ville</div><div class="hood-entry-count">Tips coming</div></div>
-      <div class="hood-entry-desc">The old city on the hill. Cobblestones, the Cathedral, and more tourists than locals — but worth navigating.</div>
-      <span class="hood-entry-arrow">Coming soon</span>
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">02</span>
+          <span class="hood-entry-name">Saint-Gervais</span>
+        </div>
+        <div class="hood-entry-count">4 tips</div>
+      </div>
+      <div class="hood-entry-desc">Best Guinness in the city. Best grocery in central Geneva. The restaurant car almost nobody knows exists.</div>
     </a>
 
     <a class="hood-entry" href="tip-bongojoe.html" data-hood="3">
-      <div class="hood-entry-num">3</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Plainpalais</div><div class="hood-entry-count">3 tips</div></div>
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">03</span>
+          <span class="hood-entry-name">Plainpalais</span>
+        </div>
+        <div class="hood-entry-count">3 tips</div>
+      </div>
       <div class="hood-entry-desc">A record shop turned outdoor bar on the Rhône. Freshest sushi in the city. A Japanese grocery you need to know about.</div>
-      <span class="hood-entry-arrow">Browse →</span>
-    </a>
-
-    <a class="hood-entry" href="#eauxvives" data-hood="8">
-      <div class="hood-entry-num">8</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Eaux-Vives</div><div class="hood-entry-count">1 tip</div></div>
-      <div class="hood-entry-desc">East of the lake. The Parc La Grange, the quays, and a neighbourhood that locals actually live in rather than just pass through.</div>
-      <span class="hood-entry-arrow">Coming soon</span>
-    </a>
-
-    <a class="hood-entry" href="#champel" data-hood="9">
-      <div class="hood-entry-num">9</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Champel</div><div class="hood-entry-count">Tips coming</div></div>
-      <div class="hood-entry-desc">Quiet, residential, elevated. Doctors, diplomats, good cheese shops. The HUG hospital. Unexpectedly pleasant to walk around.</div>
-      <span class="hood-entry-arrow">Coming soon</span>
-    </a>
-
-    <a class="hood-entry" href="#stjean" data-hood="10">
-      <div class="hood-entry-num">10</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">St-Jean</div><div class="hood-entry-count">Tips coming</div></div>
-      <div class="hood-entry-desc">Along the Rhône to the west. Getting more interesting — new places opening, less polished than the centre.</div>
-      <span class="hood-entry-arrow">Coming soon</span>
     </a>
 
     <a class="hood-entry" href="carouge.html" data-hood="4">
-      <div class="hood-entry-num">4</div>
-      <div class="hood-entry-top"><div class="hood-entry-name">Carouge</div><div class="hood-entry-count">4 tips</div></div>
-      <div class="hood-entry-desc">What Geneva would be if it relaxed. Saturday market, natural wine from Paul-Henri Soler, Breton oysters, the best pizza in the city.</div>
-      <span class="hood-entry-arrow">Browse →</span>
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">04</span>
+          <span class="hood-entry-name">Carouge</span>
+        </div>
+        <div class="hood-entry-count">4 tips</div>
+      </div>
+      <div class="hood-entry-desc">What Geneva would be if it relaxed. Saturday market, natural wine, oysters.</div>
+    </a>
+
+    <a class="hood-entry" href="#paquis" data-hood="5">
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">05</span>
+          <span class="hood-entry-name">Pâquis</span>
+        </div>
+        <div class="hood-entry-count" style="color:var(--rule);">Coming</div>
+      </div>
+      <div class="hood-entry-desc">Geneva's most international neighbourhood. The bains, the lake, everything open late, every language spoken.</div>
+    </a>
+
+    <a class="hood-entry" href="#rive" data-hood="6">
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">06</span>
+          <span class="hood-entry-name">Rive</span>
+        </div>
+        <div class="hood-entry-count" style="color:var(--rule);">Coming</div>
+      </div>
+      <div class="hood-entry-desc">The right bank. The old covered market, good bistros, proper city centre energy.</div>
+    </a>
+
+    <a class="hood-entry" href="#vieilleville" data-hood="7">
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">07</span>
+          <span class="hood-entry-name">Vieille Ville</span>
+        </div>
+        <div class="hood-entry-count" style="color:var(--rule);">Coming</div>
+      </div>
+      <div class="hood-entry-desc">The old city on the hill. Cobblestones, the Cathedral, the ramparts.</div>
+    </a>
+
+    <a class="hood-entry" href="#eauxvives" data-hood="8">
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">08</span>
+          <span class="hood-entry-name">Eaux-Vives</span>
+        </div>
+        <div class="hood-entry-count">2 tips</div>
+      </div>
+      <div class="hood-entry-desc">Parc La Grange, vintage posters, the quay. A neighbourhood locals actually live in.</div>
+    </a>
+
+    <a class="hood-entry" href="#champel" data-hood="9">
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">09</span>
+          <span class="hood-entry-name">Champel</span>
+        </div>
+        <div class="hood-entry-count" style="color:var(--rule);">Coming</div>
+      </div>
+      <div class="hood-entry-desc">Quiet, elevated, residential. Doctors, diplomats, good cheese shops.</div>
+    </a>
+
+    <a class="hood-entry" href="#stjean" data-hood="10">
+      <div class="hood-entry-top">
+        <div style="display:flex;align-items:baseline;gap:0.4rem;">
+          <span class="hood-entry-num">10</span>
+          <span class="hood-entry-name">St-Jean</span>
+        </div>
+        <div class="hood-entry-count" style="color:var(--rule);">Coming</div>
+      </div>
+      <div class="hood-entry-desc">Along the Rhône to the west. Getting more interesting — less polished than the centre.</div>
     </a>
 
   </div>
@@ -279,8 +346,12 @@
   <div class="tips-by-hood">
 
     <!-- Carouge -->
-    <div class="hood-tip-group">
-      <div class="hood-tip-group-label">Carouge</div>
+    <div class="hood-tip-group" id="carouge">
+      <div class="hood-tip-group-head">
+        <span class="hood-tip-group-name">Carouge</span>
+        <span class="hood-tip-group-count">4 tips</span>
+        <a href="carouge.html" class="hood-tip-group-link">All Carouge tips →</a>
+      </div>
       <div class="tips-row">
         <a class="tip-card" href="tip-paulhenri.html">
           <div class="tip-card-img-wrap"><img class="tip-card-img" src="paulhenri-wine-bottles.jpg" alt="Paul-Henri Soler" /></div>
@@ -290,7 +361,7 @@
           <div class="tip-card-img-wrap"><img class="tip-card-img" src="carouge-oyster-lady.jpg" alt="Samourai des Mers" /></div>
           <div class="tip-card-body"><div class="tip-card-cat">Seafood · Market</div><div class="tip-card-name">Samouraï des Mers</div><div class="tip-card-copy">A Frenchman drives Breton oysters to the Saturday market. Half a dozen and a muscadet.</div></div>
         </a>
-        <a class="tip-card" href="tip-paulhenri.html">
+        <a class="tip-card" href="carouge.html">
           <div class="tip-card-img-wrap"><img class="tip-card-img" src="carouge-cover.jpg" alt="Carouge market" /></div>
           <div class="tip-card-body"><div class="tip-card-cat">Market</div><div class="tip-card-name">Marché de Carouge</div><div class="tip-card-copy">Saturday 8h–14h. Wine, oysters, vegetables, flowers. Come hungry.</div></div>
         </a>
@@ -298,8 +369,12 @@
     </div>
 
     <!-- Nations -->
-    <div class="hood-tip-group">
-      <div class="hood-tip-group-label">Nations</div>
+    <div class="hood-tip-group" id="nations">
+      <div class="hood-tip-group-head">
+        <span class="hood-tip-group-name">Nations</span>
+        <span class="hood-tip-group-count">3 tips</span>
+        <a href="nations.html" class="hood-tip-group-link">All Nations tips →</a>
+      </div>
       <div class="tips-row">
         <a class="tip-card" href="tip-sagano.html">
           <div class="tip-card-img-wrap"><img class="tip-card-img" src="sushi-takeout-nations.jpg" alt="Sagano Take Away" /></div>
@@ -317,8 +392,12 @@
     </div>
 
     <!-- Plainpalais -->
-    <div class="hood-tip-group">
-      <div class="hood-tip-group-label">Plainpalais</div>
+    <div class="hood-tip-group" id="plainpalais">
+      <div class="hood-tip-group-head">
+        <span class="hood-tip-group-name">Plainpalais</span>
+        <span class="hood-tip-group-count">3 tips</span>
+        <a href="tip-bongojoe.html" class="hood-tip-group-link">Browse →</a>
+      </div>
       <div class="tips-row">
         <a class="tip-card" href="tip-bongojoe.html">
           <div class="tip-card-img-wrap"><img class="tip-card-img" src="bongojoe-yellow-table.jpg" alt="Bongo Joe" /></div>
@@ -332,8 +411,12 @@
     </div>
 
     <!-- Saint-Gervais -->
-    <div class="hood-tip-group">
-      <div class="hood-tip-group-label">Saint-Gervais</div>
+    <div class="hood-tip-group" id="saint-gervais">
+      <div class="hood-tip-group-head">
+        <span class="hood-tip-group-name">Saint-Gervais</span>
+        <span class="hood-tip-group-count">4 tips</span>
+        <a href="tip-mulligans.html" class="hood-tip-group-link">Browse →</a>
+      </div>
       <div class="tips-row">
         <a class="tip-card" href="tip-manor.html">
           <div class="tip-card-img-wrap"><img class="tip-card-img" src="manor-exterior.jpg" alt="Manor Food Hall" style="object-position:center 60%;" /></div>
@@ -344,7 +427,7 @@
           <div class="tip-card-body"><div class="tip-card-cat">Restaurant · Lunch</div><div class="tip-card-name">En Faim</div><div class="tip-card-copy">Mediterranean lunch spot. Good hummus, salads, wraps. Get the sabich.</div></div>
         </a>
         <a class="tip-card" href="tip-mulligans.html">
-          <div class="tip-card-img-wrap"><img class="tip-card-img" src="geneva-mulligans-pints.jpg" alt="Mulligans" /></div>
+          <div class="tip-card-img-wrap"><img class="tip-card-img" src="geneva-mulligans-pints.jpg" alt="Mulligan's" /></div>
           <div class="tip-card-body"><div class="tip-card-cat">Pub</div><div class="tip-card-name">Mulligan's</div><div class="tip-card-copy">Geneva's best Guinness. Unpretentious, right by the station.</div></div>
         </a>
         <a class="tip-card" href="tip-swisstrains.html">
@@ -354,45 +437,22 @@
       </div>
     </div>
 
-    <!-- Pâquis -->
-    <div class="hood-tip-group" id="paquis">
-      <div class="hood-tip-group-label">Pâquis — tips coming</div>
-      <div style="border-top:1px solid var(--rule);margin-top:8px;padding:1rem 2rem 1.25rem;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:0.85rem;">Know something good in Pâquis? Leave a tip.</div>
-    </div>
-
-    <!-- Rive -->
-    <div class="hood-tip-group" id="rive">
-      <div class="hood-tip-group-label">Rive — tips coming</div>
-      <div style="border-top:1px solid var(--rule);margin-top:8px;padding:1rem 2rem 1.25rem;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:0.85rem;">Know something good in Rive? Leave a tip.</div>
-    </div>
-
-    <!-- Vieille Ville -->
-    <div class="hood-tip-group" id="vieilleville">
-      <div class="hood-tip-group-label">Vieille Ville — tips coming</div>
-      <div style="border-top:1px solid var(--rule);margin-top:8px;padding:1rem 2rem 1.25rem;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:0.85rem;">Know something good in the old city? Leave a tip.</div>
-    </div>
-
     <!-- Eaux-Vives -->
     <div class="hood-tip-group" id="eauxvives">
-      <div class="hood-tip-group-label">Eaux-Vives</div>
+      <div class="hood-tip-group-head">
+        <span class="hood-tip-group-name">Eaux-Vives</span>
+        <span class="hood-tip-group-count">2 tips</span>
+      </div>
       <div class="tips-row">
+        <a class="tip-card" href="tip-parklagrange.html">
+          <div class="tip-card-img-wrap"><img class="tip-card-img" src="parklagrange-1.jpg" alt="Parc La Grange" style="object-position:center 40%;"/></div>
+          <div class="tip-card-body"><div class="tip-card-cat">Park</div><div class="tip-card-name">Parc La Grange</div><div class="tip-card-copy">Probably the most beautiful park in Geneva. Villa, lake, Alps. Bring food, lie in the grass.</div></div>
+        </a>
         <a class="tip-card" href="tip-galerie123.html">
           <div class="tip-card-img-wrap"><img class="tip-card-img" src="galerie123-1.jpg" alt="Galerie 1 2 3" style="object-position:center 35%;"/></div>
           <div class="tip-card-body"><div class="tip-card-cat">Shop · Art</div><div class="tip-card-name">Galerie 1 2 3</div><div class="tip-card-copy">Vintage Swiss posters. Ski, rail, sport. Browse the website first, go with a specific ask.</div></div>
         </a>
       </div>
-    </div>
-
-    <!-- Champel -->
-    <div class="hood-tip-group" id="champel">
-      <div class="hood-tip-group-label">Champel — tips coming</div>
-      <div style="border-top:1px solid var(--rule);margin-top:8px;padding:1rem 2rem 1.25rem;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:0.85rem;">Know something good in Champel? Leave a tip.</div>
-    </div>
-
-    <!-- St-Jean -->
-    <div class="hood-tip-group" id="stjean">
-      <div class="hood-tip-group-label">St-Jean — tips coming</div>
-      <div style="border-top:1px solid var(--rule);margin-top:8px;padding:1rem 2rem 1.25rem;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:0.85rem;">Know something good in St-Jean? Leave a tip.</div>
     </div>
 
   </div>
@@ -406,8 +466,8 @@
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
     <div class="footer-stats">
-      <span>35 tips</span><span>·</span>
-      <span>14 neighbourhoods</span><span>·</span>
+      <span>39 tips</span><span>·</span>
+      <span>15 neighbourhoods</span><span>·</span>
       <span>7 cities</span>
     </div>
   </div>
@@ -429,30 +489,34 @@
   }).addTo(map);
 
   var hoods = [
-    { num: '1', name: 'Nations',      desc: 'The beating heart of international Geneva. Shockingly few places to eat.', tips: '3 tips', url: 'nations.html',        lat: 46.2259, lng: 6.1394 },
-    { num: '2', name: 'Saint-Gervais', desc: "Best grocery in central Geneva. Best Guinness in the city. Right by the station.", tips: '4 tips', url: 'tip-mulligans.html', lat: 46.2096, lng: 6.1427 },
-    { num: '3', name: 'Plainpalais',  desc: 'Record shop turned outdoor bar on the Rhône. Freshest sushi in the city.', tips: '3 tips', url: 'tip-bongojoe.html',  lat: 46.1992, lng: 6.1388 },
-    { num: '4', name: 'Carouge',      desc: 'What Geneva would be if it relaxed. Saturday market, natural wine, oysters.', tips: '4 tips', url: 'carouge.html',   lat: 46.1847, lng: 6.1414, featured: true },
-    { num: '5', name: 'Pâquis',       desc: "Geneva's most international neighbourhood. The bains, the lake, everything open late.", tips: 'Tips coming', url: '#paquis',       lat: 46.2108, lng: 6.1508 },
-    { num: '6', name: 'Rive',         desc: 'The right bank. The old covered market, good bistros, proper city centre energy.',       tips: 'Tips coming', url: '#rive',         lat: 46.2018, lng: 6.1535 },
-    { num: '7', name: 'Vieille Ville',desc: 'The old city on the hill. Cobblestones, the Cathedral, the ramparts.',                  tips: 'Tips coming', url: '#vieilleville', lat: 46.2012, lng: 6.1480 },
-    { num: '8', name: 'Eaux-Vives',   desc: 'East of the lake. Vintage Swiss posters at Galerie 1 2 3.', tips: '1 tip', url: '#eauxvives', lat: 46.1988, lng: 6.1628 },
-    { num: '9', name: 'Champel',      desc: 'Quiet, elevated, residential. Doctors, diplomats, good cheese shops.',                  tips: 'Tips coming', url: '#champel',     lat: 46.1933, lng: 6.1497 },
-    { num: '10',name: 'St-Jean',      desc: 'Along the Rhône to the west. Getting more interesting — less polished than the centre.', tips: 'Tips coming', url: '#stjean',     lat: 46.1972, lng: 6.1283 }
+    { num: '1',  name: 'Nations',       desc: 'The beating heart of international Geneva. Shockingly few places to eat.',            tips: '3 tips',     url: 'nations.html',        lat: 46.2259, lng: 6.1394 },
+    { num: '2',  name: 'Saint-Gervais', desc: 'Best grocery in central Geneva. Best Guinness in the city.',                          tips: '4 tips',     url: 'tip-mulligans.html',  lat: 46.2096, lng: 6.1427 },
+    { num: '3',  name: 'Plainpalais',   desc: 'Record shop turned outdoor bar on the Rhône. Freshest sushi in the city.',            tips: '3 tips',     url: 'tip-bongojoe.html',   lat: 46.1992, lng: 6.1388 },
+    { num: '4',  name: 'Carouge',       desc: 'What Geneva would be if it relaxed. Saturday market, natural wine, oysters.',        tips: '4 tips',     url: 'carouge.html',        lat: 46.1847, lng: 6.1414, featured: true },
+    { num: '5',  name: 'Pâquis',        desc: "Geneva's most international neighbourhood. The bains, the lake, everything open late.", tips: 'Tips coming', url: '#paquis',          lat: 46.2108, lng: 6.1508 },
+    { num: '6',  name: 'Rive',          desc: 'The right bank. The old covered market, good bistros, proper city centre energy.',    tips: 'Tips coming', url: '#rive',              lat: 46.2018, lng: 6.1535 },
+    { num: '7',  name: 'Vieille Ville', desc: 'The old city on the hill. Cobblestones, the Cathedral, the ramparts.',               tips: 'Tips coming', url: '#vieilleville',      lat: 46.2012, lng: 6.1480 },
+    { num: '8',  name: 'Eaux-Vives',    desc: 'Parc La Grange, vintage posters, the quay. A neighbourhood locals actually live in.', tips: '2 tips',     url: '#eauxvives',          lat: 46.1988, lng: 6.1628 },
+    { num: '9',  name: 'Champel',       desc: 'Quiet, elevated, residential. Doctors, diplomats, good cheese shops.',               tips: 'Tips coming', url: '#champel',            lat: 46.1933, lng: 6.1497 },
+    { num: '10', name: 'St-Jean',       desc: 'Along the Rhône to the west. Getting more interesting — less polished than the centre.', tips: 'Tips coming', url: '#stjean',        lat: 46.1972, lng: 6.1283 }
   ];
 
   var markers = {};
   var pinEls = {};
 
+  // Map from hood num → tip section id for scroll-to
+  var tipSectionIds = {
+    '1': 'nations', '2': 'saint-gervais', '3': 'plainpalais',
+    '4': 'carouge', '8': 'eauxvives'
+  };
+
   function setActive(num) {
-    // Reset all pins and entries
     Object.keys(pinEls).forEach(function(k) {
       pinEls[k].classList.remove('active');
     });
     document.querySelectorAll('.hood-entry').forEach(function(el) {
       el.classList.remove('active');
     });
-    // Activate selected
     if (pinEls[num]) pinEls[num].classList.add('active');
     var entry = document.querySelector('.hood-entry[data-hood="' + num + '"]');
     if (entry) {
@@ -469,8 +533,8 @@
 
     var icon = L.divIcon({
       html: el.outerHTML,
-      iconSize: [36, 36],
-      iconAnchor: [18, 18],
+      iconSize: [34, 34],
+      iconAnchor: [17, 17],
       popupAnchor: [0, -22],
       className: ''
     });
@@ -485,26 +549,17 @@
     );
 
     var marker = L.marker([h.lat, h.lng], { icon: icon }).addTo(map).bindPopup(popup);
-
-    marker.on('click', function() {
-      setActive(h.num);
-    });
-
+    marker.on('click', function() { setActive(h.num); });
     markers[h.num] = marker;
   });
 
-  // Hood list → map highlighting
   document.querySelectorAll('.hood-entry').forEach(function(el) {
     el.addEventListener('mouseenter', function(e) {
-      e.preventDefault();
       var num = el.getAttribute('data-hood');
       setActive(num);
       if (markers[num]) {
         map.panTo(markers[num].getLatLng(), { animate: true, duration: 0.4 });
       }
-    });
-    el.addEventListener('click', function(e) {
-      // Allow normal navigation
     });
   });
 
