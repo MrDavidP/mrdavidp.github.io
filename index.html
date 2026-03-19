@@ -489,13 +489,7 @@
   </div>
 </div>
 
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
-  const _sb = supabase.createClient(
-    'https://qkqbwmeqqtocshnzcbgf.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFrcWJ3bWVxcXRvY3NobnpjYmdmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MTA5MzgsImV4cCI6MjA4OTQ4NjkzOH0.eQMozpEEe2xGvW91W1YY1v4_2ntOLxTNAKoPL3CVQOs'
-  );
-
   function openModal() {
     document.getElementById('tipModal').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -521,30 +515,33 @@
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    const hoodRaw = document.getElementById('f-hood').value;
-    const parts = hoodRaw.split(',').map(s => s.trim());
-
-    const { error } = await _sb.from('tips').insert([{
-      tip_name:      document.getElementById('f-place').value,
-      tip_body:      document.getElementById('f-tip').value,
-      neighbourhood: parts[0] || hoodRaw,
-      city:          parts[1] || '',
+    const data = {
+      place:         document.getElementById('f-place').value,
+      neighbourhood: document.getElementById('f-hood').value,
       email:         document.getElementById('f-email').value,
-      photo_url:     document.getElementById('f-photos').value,
-      status:        'pending'
-    }]);
+      category:      document.getElementById('f-cat').value,
+      tip:           document.getElementById('f-tip').value,
+      photos:        document.getElementById('f-photos').value,
+    };
 
-    if (error) {
-      console.error(error);
-      err.textContent = 'Something went wrong — ' + error.message;
+    try {
+      const res = await fetch('https://formspree.io/f/mdawyane', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('modalSuccess').style.display = 'flex';
+        document.getElementById('modalSuccess').style.flexDirection = 'column';
+        document.getElementById('modalSuccess').style.alignItems = 'center';
+      } else {
+        throw new Error('bad response');
+      }
+    } catch {
       err.style.display = 'block';
       btn.textContent = 'Submit tip';
       btn.disabled = false;
-    } else {
-      document.getElementById('modalForm').style.display = 'none';
-      document.getElementById('modalSuccess').style.display = 'flex';
-      document.getElementById('modalSuccess').style.flexDirection = 'column';
-      document.getElementById('modalSuccess').style.alignItems = 'center';
     }
   }
 </script>
