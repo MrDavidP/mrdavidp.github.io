@@ -210,7 +210,20 @@
     .submit-btn { padding: 11px; background: var(--ink); color: var(--cream); border: none; cursor: pointer; font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
     .submit-btn:hover { background: var(--ink2); }
 
+    /* ── MOBILE CITY STRIP ── */
+    .city-strip { display: none; border-bottom: 1px solid var(--rule); background: var(--cream); }
+    .city-strip-inner { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; height: 38px; gap: 0; overflow-x: auto; }
+    .city-strip-inner::-webkit-scrollbar { display: none; }
+    .city-strip-inner a { font-family: var(--cond); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 0 14px 0 0; white-space: nowrap; transition: color 0.15s; }
+    .city-strip-inner a.active { color: var(--ink); }
+    .city-strip-inner a:not(.active) { color: var(--muted); }
+    .city-strip-inner a:hover { color: var(--ink); }
+    .city-strip-sep { color: var(--rule); font-size: 0.7rem; padding: 0 14px 0 0; }
+
     /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      .city-strip { display: block; }
+    }
     @media (max-width: 1100px) {
       .three-col { grid-template-columns: 1fr 1px 280px; }
       .col-divider:last-of-type, .col-right { display: none; }
@@ -269,11 +282,26 @@
   </div>
 </div>
 
+<!-- MOBILE CITY STRIP — hidden on desktop, visible on mobile -->
+<div class="city-strip">
+  <div class="city-strip-inner">
+    <a href="geneva.html" class="active">Geneva</a>
+    <span class="city-strip-sep">·</span>
+    <a href="#london">London</a>
+    <span class="city-strip-sep">·</span>
+    <a href="#istanbul">Istanbul</a>
+    <span class="city-strip-sep">·</span>
+    <a href="#paris">Paris</a>
+    <span class="city-strip-sep">·</span>
+    <a href="#elsewhere">Elsewhere</a>
+  </div>
+</div>
+
 <!-- HOOD NAV — grouped by city -->
 <div class="hood-nav">
   <div class="hood-nav-inner">
 
-    <span class="hood-nav-city">Geneva</span>
+    <span class="hood-nav-city"><a href="geneva.html" style="color:inherit;text-decoration:none;">Geneva</a></span>
     <a href="carouge.html">Carouge</a>
     <a href="tip-bongojoe.html">Plainpalais</a>
     <a href="tip-mulligans.html">Saint-Gervais</a>
@@ -281,23 +309,23 @@
 
     <span class="hood-nav-div">·</span>
 
-    <span class="hood-nav-city">London</span>
+    <span class="hood-nav-city"><a href="#london" style="color:inherit;text-decoration:none;">London</a></span>
     <a href="notting-hill.html">Notting Hill</a>
     <a href="tip-karmabread.html">Hampstead</a>
 
     <span class="hood-nav-div">·</span>
 
-    <span class="hood-nav-city">Istanbul</span>
+    <span class="hood-nav-city"><a href="#istanbul" style="color:inherit;text-decoration:none;">Istanbul</a></span>
     <a href="yenikoy.html">Yenik&ouml;y</a>
 
     <span class="hood-nav-div">·</span>
 
-    <span class="hood-nav-city">Paris</span>
+    <span class="hood-nav-city"><a href="#paris" style="color:inherit;text-decoration:none;">Paris</a></span>
     <a href="tip-oceanik.html">Latin Quarter</a>
 
     <span class="hood-nav-div">·</span>
 
-    <span class="hood-nav-city">Elsewhere</span>
+    <span class="hood-nav-city"><a href="#elsewhere" style="color:inherit;text-decoration:none;">Elsewhere</a></span>
     <a href="tip-saintamour.html">Lavaux</a>
     <a href="tip-belvedere.html">Wengen</a>
     <a href="tip-lagrandeboucherie.html">New York</a>
