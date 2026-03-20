@@ -3,225 +3,208 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swiss Train Restaurant Car — HoodTip Cornavin Geneva</title>
-  <meta name="description" content="Don't book first class. Buy standard and walk to the restaurant car. White tablecloth, Alps out the window. Nobody seems to know this." />
+  <title>Swiss Train Restaurant Car — HoodTip</title>
+  <meta name="description" content="Don't book first class. Buy a standard ticket and walk to the restaurant car. White tablecloth, Alps out the window. Nobody seems to know this exists." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --cream: #f7f4ef; --ink: #1a1816; --muted: #6b6560; --rule: #e0dbd3; --accent: #b5322a; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Barlow', system-ui, sans-serif; --condensed: 'Barlow Condensed', system-ui, sans-serif; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 400; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 56px; background: rgba(247,244,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
-    .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
-    .nav-logo em { font-style: italic; font-weight: 400; }
-    .nav-right { display: flex; gap: 24px; align-items: center; }
-    .nav-right a { font-family: var(--condensed); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-    .nav-right a:hover { color: var(--ink); }
-    .nav-cta { background: var(--ink); color: var(--cream) !important; padding: 7px 16px; border-radius: 2px; }
-    .nav-cta:hover { background: var(--accent) !important; }
-    .breadcrumb { padding: 80px 32px 0; display: flex; gap: 8px; align-items: center; font-family: var(--condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .breadcrumb a { color: var(--muted); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--ink); }
-    .breadcrumb span { opacity: 0.4; }
-    .hero { margin: 20px 32px 0; position: relative; overflow: hidden; border-radius: 4px; height: clamp(360px, 56vw, 640px); }
-    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 50%; transition: transform 0.8s ease; }
-    .hero:hover img { transform: scale(1.015); }
-    .hero-badge { position: absolute; top: 20px; left: 20px; background: var(--accent); color: #fff; font-family: var(--condensed); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
-    .layout { max-width: 1080px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 64px; }
-    .meta-line { font-family: var(--condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .meta-line a { color: var(--accent); text-decoration: none; }
-    h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 600; line-height: 1.1; letter-spacing: 0em; margin-bottom: 8px; }
-    .tipped-line { font-size: 0.78rem; color: var(--muted); margin-bottom: 32px; }
-    .tipped-dot { display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-    .divider { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
-    .copy { font-size: 1.05rem; line-height: 1.75; color: var(--ink); max-width: 600px; }
-    .copy p + p { margin-top: 1.2em; }
-    .pull-quote { margin: 36px 0; padding: 24px 28px; border-left: 3px solid var(--accent); background: rgba(181,50,42,0.04); border-radius: 0 3px 3px 0; }
-    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.5; color: var(--ink); }
-    .photos { margin-top: 40px; }
-    .photos-label { font-family: var(--condensed); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .photo-grid img { width: 100%; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; }
-    .photo-grid img:hover { opacity: 0.88; }
-    .photo-grid .sq { aspect-ratio: 1/1; }
-    .photo-grid .tall { aspect-ratio: 3/4; }
-    .photo-grid .wide { grid-column: 1 / -1; aspect-ratio: 16/9; }
-    .sidebar { padding-top: 6px; }
-    .fact-block { border-top: 1px solid var(--rule); padding: 18px 0; }
-    .fact-block:last-of-type { border-bottom: 1px solid var(--rule); }
-    .fact-label { font-family: var(--condensed); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-    .fact-value { font-size: 0.92rem; font-weight: 400; color: var(--ink); }
-    .map-block { margin-top: 32px; border-radius: 3px; overflow: hidden; border: 1px solid var(--rule); }
-    .map-inner { background: #e8e4dc; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
-    .map-pin { font-size: 1.5rem; }
-    .map-address { font-size: 0.8rem; color: var(--muted); text-align: center; line-height: 1.4; }
-    .map-link { display: block; background: var(--ink); color: var(--cream); text-align: center; font-family: var(--condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; padding: 12px; text-decoration: none; transition: background 0.2s; }
-    .map-link:hover { background: var(--accent); }
-    .tags { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { font-family: var(--condensed); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--rule); border-radius: 2px; padding: 4px 10px; color: var(--muted); text-decoration: none; transition: all 0.2s; }
-    .tag:hover { border-color: var(--ink); color: var(--ink); }
-    .more-section { max-width: 1080px; margin: 0 auto; padding: 0 32px 80px; border-top: 1px solid var(--rule); }
-    .more-header { display: flex; justify-content: space-between; align-items: baseline; padding: 32px 0 24px; }
-    .more-header h2 { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; }
-    .more-header a { font-family: var(--condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-    .more-header a:hover { color: var(--accent); }
-    .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .tip-card { text-decoration: none; color: var(--ink); display: block; transition: transform 0.25s; }
-    .tip-card:hover { transform: translateY(-2px); }
-    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; margin-bottom: 12px; background: var(--rule); }
-    .tip-card:hover .tip-card-img { opacity: 0.85; }
-    .tip-card-cat { font-family: var(--condensed); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .tip-card-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; line-height: 1.2; margin-bottom: 4px; }
-    .tip-card-hood { font-size: 0.75rem; color: var(--muted); }
-    footer { background: var(--ink); color: var(--cream); padding: 40px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-logo { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; }
-    .footer-logo em { font-style: italic; font-weight: 400; }
-    .footer-sub { font-family: var(--condensed); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.4); margin-top: 4px; }
-    .footer-right { font-family: var(--condensed); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(247,244,239,0.4); }
-    @media (max-width: 768px) {
-      nav { padding: 0 16px; }
-      .breadcrumb { padding: 72px 16px 0; }
-      .hero { margin: 16px 16px 0; height: 56vw; min-height: 220px; }
-      .layout { grid-template-columns: 1fr; padding: 32px 16px 48px; gap: 40px; }
-      h1 { font-size: 2.2rem; }
-      .photo-grid { grid-template-columns: 1fr; }
-      .more-section { padding: 0 16px 48px; }
-      .more-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-      .more-grid .tip-card:last-child { display: none; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
     }
-    @media (max-width: 480px) {
-      .more-grid { grid-template-columns: 1fr; }
-      .more-grid .tip-card:last-child { display: block; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+    .nav-links a.cta:hover { background: var(--ink2); }
+
+    /* HERO — mobile only */
+    .hero { width: 100%; height: 75vw; max-height: 540px; overflow: hidden; position: relative; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; }
+    .hero-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(20,16,12,0.82)); }
+    .hero-caption-location { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 0.3rem; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+    .hero-caption-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.7), 0 2px 20px rgba(0,0,0,0.5); }
+
+    /* TEXT HEADER — desktop only */
+    .tip-header { border-bottom: 1.5px solid var(--ink); padding: 2.5rem 2rem 0; background: var(--cream); }
+    .tip-header-inner { max-width: 680px; margin: 0 auto; }
+    .tip-header-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .tip-header-sep { color: var(--rule); font-size: 0.5rem; }
+    .tip-header-category { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.2rem 0.65rem; border-radius: 2px; display: inline-block; margin-bottom: 0.9rem; }
+    .tip-header-name { font-family: var(--serif); font-weight: 500; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 0.75rem; color: var(--ink); }
+    .tip-header-subtitle { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); line-height: 1.45; padding-bottom: 2rem; max-width: 580px; }
+
+    .article { max-width: 680px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+    .breadcrumb { display: none; }
+    .meta-strip { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .meta-value { font-size: 0.88rem; color: var(--ink); }
+    .body p { font-size: 1.05rem; line-height: 1.8; color: var(--ink); margin-bottom: 1.4rem; font-weight: 300; }
+    .body p:last-child { margin-bottom: 0; }
+    .pull-quote { border-left: 2px solid var(--ink); padding: 0.75rem 0 0.75rem 1.75rem; margin: 2.5rem 0; }
+    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: clamp(1.4rem, 3vw, 1.75rem); line-height: 1.35; color: var(--ink); font-weight: 400; }
+
+    /* Portrait photos */
+    .img-portrait { margin: 3rem auto; max-width: 500px; }
+    .img-portrait img { width: 100%; display: block; }
+    .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 800px; }
+    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
+    /* Landscape full-bleed for photos that work wide */
+    .img-full { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 3rem 0; }
+    .img-full img { width: 100%; display: block; max-height: 480px; object-fit: cover; }
+    .img-caption { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.5rem 0 0; }
+
+    .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
+    .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .tip-box li { font-size: 0.9rem; color: var(--ink); padding-left: 1rem; position: relative; line-height: 1.55; }
+    .tip-box li::before { content: '—'; position: absolute; left: 0; color: var(--muted); font-size: 0.8rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--cond); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-top: 3.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.15rem; transition: color 0.15s, border-color 0.15s; }
+    .back-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 5rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
+
+    @media (min-width: 641px) { .hero { display: none; } }
+    @media (max-width: 640px) {
+      .tip-header { display: none; }
+      .nav-links a:not(.cta) { display: none; }
+      .nav-tagline { display: none; }
+      .article { padding: 2rem 1.25rem 2rem; }
+      .img-portrait-pair { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      .footer-stats { display: none; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="https://hoodtip.com">Hood<em>Tip.</em></a>
-  <div class="nav-right">
-    <a href="https://hoodtip.com/geneva">Geneva</a>
-    <a href="https://hoodtip.com">All tips</a>
-    <a href="#" class="nav-cta">Leave a tip</a>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="geneva.html">Geneva</a></li>
+      <li><a href="index.html" class="cta">Leave a tip</a></li>
+    </ul>
   </div>
 </nav>
 
-<div class="breadcrumb">
-  <a href="https://hoodtip.com">HoodTip</a>
-  <span>/</span>
-  <a href="https://hoodtip.com/geneva">Geneva</a>
-  <span>/</span>
-  <a href="https://hoodtip.com/#cornavin">Cornavin</a>
-  <span>/</span>
-  Swiss Train Restaurant Car
-</div>
-
+<!-- Mobile hero -->
 <div class="hero">
-  <img src="Screenshot_2026-03-17_at_09_39_02.png" alt="White tablecloth, coffee, green forest — Swiss train restaurant car, green forest out the window" />
-  <div class="hero-badge">Travel</div>
+  <img src="Screenshot_2026-03-17_at_09_39_02.png" alt="Swiss train restaurant car — white tablecloth, coffee, window" />
+  <div class="hero-caption">
+    <div class="hero-caption-location">Cornavin · Geneva · Switzerland</div>
+    <div class="hero-caption-name">Swiss Train Restaurant Car</div>
+  </div>
 </div>
 
-<div class="layout">
-  <main>
-    <div class="meta-line">
-      <a href="https://hoodtip.com/#cornavin">Cornavin</a> · Geneva
+<!-- Desktop text header -->
+<div class="tip-header">
+  <div class="tip-header-inner">
+    <div class="tip-header-eyebrow">
+      <a href="index.html" style="color:var(--muted);text-decoration:none;font-family:var(--cond);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;">HoodTip</a>
+      <span class="tip-header-sep">·</span>
+      <a href="geneva.html" style="color:var(--muted);text-decoration:none;font-family:var(--cond);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;">Geneva</a>
+      <span class="tip-header-sep">·</span>
+      <a href="cornavin.html" style="color:var(--muted);text-decoration:none;font-family:var(--cond);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;">Cornavin</a>
     </div>
-    <h1>Swiss Train Restaurant Car</h1>
-    <div class="tipped-line"><span class="tipped-dot"></span>14 people tipped this</div>
-    <hr class="divider" />
-    <div class="copy">
-      <p>Don't book first class. Buy a standard ticket and walk straight to the restaurant car. White tablecloth, proper coffee, wine if you want it, a table to yourself with the Alps or the forest going past the window.</p>
-      <p>Legitimately nicer than first class and you can sit there the whole trip. Order something, open your laptop, watch Switzerland go by. Nobody seems to know this is an option, which is why the car is usually half empty and completely calm.</p>
-      <p>The station at Cornavin has one of the great old Swiss railway murals on the wall — a hand-painted map of the whole country's train network from another era. Worth stopping to look at on the way through.</p>
-    </div>
-    <div class="pull-quote">
-      <p>"Don't book first class. Buy standard and walk to the restaurant car. Nicer, quieter, and nobody seems to know this."</p>
-    </div>
-    <div class="photos">
-      <div class="photos-label">Photos</div>
-      <div class="photo-grid">
-        <img class="wide" src="Screenshot_2026-03-17_at_09_38_28.png" alt="Laptop, wine, white tablecloth — Swiss train restaurant car" />
-        <img class="sq" src="Screenshot_2026-03-17_at_09_37_48.png" alt="Restaurant carriage sign on platform at Geneva Cornavin" />
-        <img class="sq" src="Screenshot_2026-03-17_at_09_37_21.png" alt="Vintage Swiss railway map mural at Cornavin station" />
-        
-      </div>
-    </div>
-  </main>
-
-  <aside class="sidebar">
-    <div class="fact-block">
-      <div class="fact-label">The tip</div>
-      <div class="fact-value">Buy a standard ticket. Walk to the restaurant car. Sit down.</div>
-    </div>
-    <div class="fact-block">
-      <div class="fact-label">Order</div>
-      <div class="fact-value">Coffee, or wine. Both good. The food is fine. The window is the point.</div>
-    </div>
-    <div class="fact-block">
-      <div class="fact-label">Good to know</div>
-      <div class="fact-value">You can stay the whole trip. The car is usually quiet — most people don't know it's there.</div>
-    </div>
-    <div class="fact-block">
-      <div class="fact-label">Best routes</div>
-      <div class="fact-value">Geneva → Zürich, Geneva → Bern, Geneva → Lausanne → anywhere east</div>
-    </div>
-    <div class="fact-block">
-      <div class="fact-label">Also</div>
-      <div class="fact-value">The old Swiss railway mural at Cornavin station — look up when you walk through</div>
-    </div>
-    <div class="map-block">
-      <div class="map-inner">
-        <div class="map-pin">🚉</div>
-        <div class="map-address">Gare de Cornavin<br>Place de Cornavin, 1201 Genève</div>
-      </div>
-      <a class="map-link" href="https://maps.google.com/?q=Geneva+Cornavin+Station" target="_blank" rel="noopener">Open in Maps →</a>
-    </div>
-    <div class="tags">
-      <a class="tag" href="#">Travel</a>
-      <a class="tag" href="#">Trains</a>
-      <a class="tag" href="#">Cornavin</a>
-      <a class="tag" href="#">Geneva</a>
-      <a class="tag" href="#">Switzerland</a>
-    </div>
-  </aside>
+    <div class="tip-header-category">Travel · Trains</div>
+    <div class="tip-header-name">The ultimate tip for long train rides in Switzerland</div>
+    <div class="tip-header-subtitle">Don't book first class. There's a better way.</div>
+  </div>
 </div>
 
-<section class="more-section">
-  <div class="more-header">
-    <h2>More tips in Cornavin</h2>
-    <a href="https://hoodtip.com/#cornavin">All Cornavin tips →</a>
+<div class="article">
+
+  <div class="meta-strip">
+    <div class="meta-item">
+      <span class="meta-label">Departs from</span>
+      <span class="meta-value">Gare de Cornavin, Geneva</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Best routes</span>
+      <span class="meta-value">Geneva → Zürich, Bern, Lausanne east</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Ticket</span>
+      <span class="meta-value">Standard — no upgrade needed</span>
+    </div>
+    <div class="meta-item" style="margin-left:auto;text-align:right;">
+      <span class="meta-label">Tip by</span>
+      <span class="meta-value"><a href="profile-dave.html" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);">@dave</a></span>
+    </div>
   </div>
-  <div class="more-grid">
-    <a class="tip-card" href="https://hoodtip.com/tip-mulligans">
-      <img class="tip-card-img" src="https://hoodtip.com/geneva-mulligans-dog.jpg" alt="Mulligans Irish Pub" />
-      <div class="tip-card-cat">Bar · Pub</div>
-      <div class="tip-card-name">Mulligans Irish Pub</div>
-      <div class="tip-card-hood">Cornavin · Geneva</div>
-    </a>
-    <a class="tip-card" href="https://hoodtip.com/tip-bongojoe">
-      <img class="tip-card-img" src="https://hoodtip.com/bongojoe-yellow-table.jpg" alt="Bongo Joe's" />
-      <div class="tip-card-cat">Bar</div>
-      <div class="tip-card-name">Bongo Joe's</div>
-      <div class="tip-card-hood">Plainpalais · Geneva</div>
-    </a>
-    <a class="tip-card" href="https://hoodtip.com/tip-saintamour">
-      <img class="tip-card-img" src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" />
-      <div class="tip-card-cat">Wine</div>
-      <div class="tip-card-name">Domaine Saint-Amour</div>
-      <div class="tip-card-hood">Lavaux · Vaud</div>
-    </a>
+
+  <div class="body">
+    <p>Here's a really useful tip for travelling by train in Switzerland. Don't book first class. Buy a standard ticket — but don't go to your seat. Walk straight to the restaurant car.</p>
+    <p>If you're lucky, and you usually are, a white tablecloth table awaits you with a waiter. Sit down, open your laptop, order a coffee, and stay there for the whole trip. What you spend on food and drink will probably come to around the same price as a first class ticket — but this is legitimately nicer. Proper coffee, wine if you want it, a table to yourself with the Alps or the forest going past the window.</p>
   </div>
-</section>
+
+  <div class="pull-quote">
+    <p>"Share a bottle of wine with a friend or a stranger. Watch Switzerland go by. Nobody seems to know this is an option, which is why the car is usually half empty and completely calm."</p>
+  </div>
+
+  <div class="body">
+    <p>Play a game. Watch a movie on your laptop. Have a long lunch. The restaurant car is one of the great underused pleasures of Swiss train travel — a proper dining room moving through one of the most beautiful countries in the world at 200km/h, and almost entirely to yourself.</p>
+  </div>
+
+  <div class="img-full">
+    <img src="Screenshot_2026-03-17_at_09_39_02.png" alt="Swiss train restaurant car — white tablecloth, coffee, window" style="object-position:center 50%;" />
+    <div class="img-caption">White tablecloth. Alps out the window. Standard ticket.</div>
+  </div>
+
+  <div class="img-portrait-pair">
+    <img src="Screenshot_2026-03-17_at_09_38_28.png" alt="Laptop and wine on the white tablecloth, Swiss restaurant car" style="object-position:center 50%;" />
+    <img src="Screenshot_2026-03-17_at_09_37_48.png" alt="Restaurant car sign on the platform, Cornavin Geneva" style="object-position:center 50%;" />
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-box-label">The tip</div>
+    <ul>
+      <li>Buy a standard ticket — no upgrade, no first class</li>
+      <li>Board the train, skip your seat, walk to the restaurant car</li>
+      <li>Sit down and stay. You can be there the whole journey.</li>
+      <li>Order coffee, wine, food — whatever you want. The bill roughly equals a first class upgrade anyway.</li>
+      <li>The car is usually half empty. Nobody knows this exists.</li>
+      <li>Best on longer routes: Geneva → Zürich is the classic</li>
+    </ul>
+  </div>
+
+  <a href="cornavin.html" class="back-link">← Cornavin</a>
+
+</div>
 
 <footer>
-  <div>
-    <div class="footer-logo">Hood<em>Tip.</em></div>
-    <div class="footer-sub">Only the good stuff.</div>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats">
+      <span>49 tips</span><span>·</span>
+      <span>15 neighbourhoods</span><span>·</span>
+      <span>7 cities</span>
+    </div>
   </div>
-  <div class="footer-right">© 2026 HoodTip</div>
 </footer>
 
 </body>
