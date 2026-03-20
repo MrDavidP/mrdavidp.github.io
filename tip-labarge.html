@@ -10,7 +10,8 @@
     :root{--cream:#f7f4ef;--ink:#1a1816;--ink2:#2a2925;--muted:#6b6560;--rule:#e0dbd3;--red:#b5322a;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',system-ui,sans-serif;--cond:'Barlow Condensed',system-ui,sans-serif;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;}body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;}
     nav{padding:0 2rem;border-bottom:1.5px solid var(--ink);position:sticky;top:0;z-index:100;background:var(--cream);}.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;}.logo{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--ink);text-decoration:none;}.logo em{font-style:italic;font-weight:400;}.logo .dot{color:var(--red);}.nav-tagline{font-family:var(--serif);font-style:italic;font-size:0.8rem;color:var(--muted);border-left:1px solid var(--rule);padding-left:12px;margin-left:12px;}.nav-links{display:flex;list-style:none;}.nav-links a{font-family:var(--cond);font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0 16px;height:52px;display:flex;align-items:center;border-left:1px solid var(--rule);transition:color 0.15s;}.nav-links a:hover{color:var(--ink);}.nav-links a.cta{background:var(--ink);color:var(--cream);border-left:1px solid var(--ink);}
-    .hero{width:100%;height:clamp(420px,55vw,640px);overflow:hidden;position:relative;}.hero img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;}.hero-caption{position:absolute;bottom:0;left:0;right:0;padding:2rem 2.5rem;background:linear-gradient(transparent,rgba(20,16,12,0.75));}.hero-caption-location{font-family:var(--cond);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:0.3rem;text-shadow:0 1px 6px rgba(0,0,0,0.5);}.hero-caption-name{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+    .hero{width:100%;height:75vw;max-height:540px;overflow:hidden;position:relative;}.hero img{width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block;}.hero-caption{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(20,16,12,0.82));}.hero-caption-location{font-family:var(--cond);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:0.3rem;text-shadow:0 1px 4px rgba(0,0,0,0.5);}.hero-caption-name{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,0.7),0 2px 20px rgba(0,0,0,0.5);}
+    .tip-header{border-bottom:1.5px solid var(--ink);padding:2.5rem 2rem 0;background:var(--cream);}.tip-header-inner{max-width:680px;margin:0 auto;}.tip-header-eyebrow{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;}.tip-header-sep{color:var(--rule);font-size:0.5rem;}.tip-header-category{font-family:var(--cond);font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:0.2rem 0.65rem;border-radius:2px;display:inline-block;margin-bottom:0.9rem;}.tip-header-name{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,5vw,4rem);line-height:0.95;letter-spacing:-0.02em;margin-bottom:0.75rem;color:var(--ink);}.tip-header-subtitle{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--muted);line-height:1.45;padding-bottom:2rem;max-width:580px;}
     .article{max-width:680px;margin:0 auto;padding:3.5rem 2rem 2rem;}
     .breadcrumb{font-family:var(--cond);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.75rem;display:flex;align-items:center;gap:0.5rem;}.breadcrumb a{color:var(--muted);text-decoration:none;}.breadcrumb a:hover{color:var(--ink);}.breadcrumb-sep{opacity:0.4;}
     .category{font-family:var(--cond);font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:0.2rem 0.65rem;border-radius:2px;display:inline-block;margin-bottom:1rem;}
@@ -22,25 +23,41 @@
     .img-full{width:100vw;position:relative;left:50%;transform:translateX(-50%);margin:3rem 0;}.img-full img{width:100%;display:block;max-height:580px;object-fit:cover;}.img-caption{font-family:var(--cond);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:0.6rem 2rem 0;max-width:1200px;margin:0 auto;}
     .img-pair{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:3rem 0;width:100vw;position:relative;left:50%;transform:translateX(-50%);}.img-pair img{width:100%;display:block;height:400px;object-fit:cover;}
     .img-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin:3rem 0;width:100vw;position:relative;left:50%;transform:translateX(-50%);}.img-trio img{width:100%;display:block;height:320px;object-fit:cover;}
+
+    .img-portrait-pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:3rem auto;max-width:800px;}.img-portrait-pair img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;}
+    .img-portrait{margin:3rem auto;max-width:500px;}.img-portrait img{width:100%;display:block;}
     .tip-box{background:white;border:1px solid var(--rule);padding:1.5rem 1.75rem;margin-top:3rem;}.tip-box-label{font-family:var(--cond);font-size:0.65rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}.tip-box ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}.tip-box li{font-size:0.9rem;color:var(--ink);padding-left:1rem;position:relative;line-height:1.55;}.tip-box li::before{content:'—';position:absolute;left:0;color:var(--muted);font-size:0.8rem;}
     .back-link{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--cond);font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-top:3.5rem;border-bottom:1px solid var(--rule);padding-bottom:0.15rem;transition:color 0.15s,border-color 0.15s;}.back-link:hover{color:var(--ink);border-color:var(--ink);}
     footer{border-top:2px solid var(--red);background:var(--ink);margin-top:5rem;}.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;height:60px;}.footer-logo{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--cream);}.footer-logo em{font-style:italic;font-weight:400;}.footer-logo .dot{color:var(--red);}.footer-stats{font-family:var(--cond);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,239,0.3);display:flex;gap:1rem;}
-    @media(max-width:640px){.nav-links a:not(.cta){display:none;}.nav-tagline{display:none;}.article{padding:2.5rem 1.25rem 2rem;}.img-pair,.img-trio{grid-template-columns:1fr;}.img-pair img,.img-trio img{height:260px;}.footer-stats{display:none;}}
+    @media(min-width:641px){.hero{display:none;}}
+    @media(max-width:640px){.tip-header{display:none;}.nav-links a:not(.cta){display:none;}.nav-tagline{display:none;}.article{padding:2.5rem 1.25rem 2rem;}.img-pair,.img-trio{grid-template-columns:1fr;}.img-pair img,.img-trio img{height:260px;}.img-portrait-pair{grid-template-columns:1fr 1fr;gap:0.5rem;}.footer-stats{display:none;}}
   </style>
 </head>
 <body>
 <nav><div class="nav-inner"><div style="display:flex;align-items:baseline;"><a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a><span class="nav-tagline">Only the good stuff.</span></div><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="geneva.html">Geneva</a></li><li><a href="index.html" class="cta">Leave a tip</a></li></ul></div></nav>
 
+<div class="tip-header">
+  <div class="tip-header-inner">
+    <div class="tip-header-eyebrow">
+      <a href="index.html" style="color:var(--muted);text-decoration:none;font-family:var(--cond);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;">HoodTip</a>
+      <span class="tip-header-sep">·</span>
+      <a href="geneva.html" style="color:var(--muted);text-decoration:none;font-family:var(--cond);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;">Geneva</a>
+      <span class="tip-header-sep">·</span>
+      <span style="color:var(--muted);font-family:var(--cond);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;">Saint-Gervais</span>
+    </div>
+    <div class="tip-header-category">Bar · Swimming · Summer only</div>
+    <div class="tip-header-name">La Barge</div>
+    <div class="tip-header-subtitle">A little river bar on the Rhône. Jump in, come back out, drink a cold beer.</div>
+  </div>
+</div>
+
 <div class="hero">
-  <img src="barge-swimming-me.jpg" alt="Swimming in the Rhône at La Barge, Geneva" style="object-position:center 40%;" />
+  <img src="barge-water-example.jpg" alt="The turquoise Rhône at La Barge, Geneva" style="object-position:center 50%;" />
   <div class="hero-caption"><div class="hero-caption-location">Saint-Gervais · Geneva · Switzerland</div><div class="hero-caption-name">La Barge</div></div>
 </div>
 
 <div class="article">
-  <div class="breadcrumb"><a href="index.html">HoodTip</a><span class="breadcrumb-sep">·</span><a href="geneva.html">Geneva</a><span class="breadcrumb-sep">·</span><span>Saint-Gervais</span></div>
-  <span class="category">Bar · Swimming · Summer only</span>
-  <h1>La Barge</h1>
-  <p class="subtitle">A little river bar on the Rhône. Open summer only. Jump in, come back out, drink a cold beer. Pure bliss.</p>
+
   <div class="meta-strip">
     <div class="meta-item"><span class="meta-label">Address</span><span class="meta-value">Prom. des Lavandières, 1204 Geneva</span></div>
     <div class="meta-item"><span class="meta-label">When</span><span class="meta-value">Summer only — roughly June to September</span></div>
@@ -63,10 +80,13 @@
     <p>Further down at Jonction gets chaotic in peak summer hours — too crowded, too much going on. La Barge is calmer. Leave work slightly early, you're there in 15 minutes from most of central Geneva, you jump in, you drink a beer. That's it. Pure bliss.</p>
   </div>
 
-  <div class="img-trio">
-    <img src="barge-plastic-cup.jpg" alt="Cold beer in a plastic cup at La Barge, Rhône view" style="object-position:center 50%;" />
-    <img src="barge-wide-swan.jpg" alt="La Barge river bar from across the Rhône, with swan" style="object-position:center 40%;" />
-    <img src="barge-feet-water.jpg" alt="Feet in the Rhône at La Barge, Geneva" style="object-position:center 40%;" />
+  <div class="img-portrait-pair">
+    <img src="barge-plastic-cup.jpg" alt="Cold beer in a plastic cup at La Barge, Rhône view" />
+    <img src="barge-feet-water.jpg" alt="Feet in the Rhône at La Barge, Geneva" />
+  </div>
+  <div class="img-portrait" style="margin-top:0;">
+    <img src="barge-swimming-me.jpg" alt="Swimming in the Rhône at La Barge, Geneva" />
+    <div class="img-caption" style="padding:0.5rem 0 0;">The Rhône under the bridge. Cold, fast, clean.</div>
   </div>
 
   <div class="tip-box">
