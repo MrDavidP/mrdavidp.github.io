@@ -35,7 +35,7 @@
     .masthead-logo { font-family: var(--serif); font-size: clamp(2.6rem, 5.5vw, 4.8rem); font-weight: 600; color: var(--ink); letter-spacing: 0.01em; line-height: 1; text-decoration: none; display: block; text-align: center; }
     .masthead-logo em { font-style: italic; font-weight: 400; }
     .masthead-logo .dot { color: var(--red); }
-    .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: var(--muted); }
+    .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: 1.1rem; font-weight: 500; color: var(--ink); letter-spacing: 0.01em; }
 
     /* CITY STRIP */
     .city-strip { border-bottom: 1px solid var(--rule); position: sticky; top: 48px; z-index: 200; background: var(--cream); }
@@ -196,6 +196,29 @@
     .submit-btn { padding: 11px; background: var(--ink); color: var(--cream); border: none; cursor: pointer; font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
     .submit-btn:hover { background: var(--ink2); }
 
+    /* ── PROFILES SECTION ── */
+    .profiles-section { border-bottom: 1.5px solid var(--ink); }
+    .profiles-grid { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); }
+    .profile-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); padding: 1.5rem 1.5rem 1.75rem; display: flex; flex-direction: column; transition: background 0.18s; }
+    .profile-card:last-child { border-right: none; }
+    .profile-card:hover { background: rgba(26,24,22,0.025); }
+    .profile-card-top { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem; }
+    .profile-card-photo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; border: 1px solid var(--rule); }
+    .profile-card-identity { display: flex; flex-direction: column; gap: 0.1rem; }
+    .profile-card-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; line-height: 1; }
+    .profile-card-handle { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .profile-card-bio { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.85rem; }
+    .profile-card-stats { display: flex; gap: 1.25rem; }
+    .profile-card-stat { display: flex; flex-direction: column; gap: 0.1rem; }
+    .profile-card-stat-value { font-family: var(--serif); font-size: 1.1rem; line-height: 1; color: var(--ink); }
+    .profile-card-stat-label { font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .profile-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid var(--rule); }
+    .profile-card-tag { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.15rem 0.5rem; }
+    .profile-card-cta { text-decoration: none; color: var(--muted); border-right: 1px solid var(--rule); padding: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; transition: background 0.15s, color 0.15s; border: 1.5px dashed var(--rule); margin: 1.5rem; }
+    .profile-card-cta:hover { border-color: var(--ink); color: var(--ink); background: rgba(26,24,22,0.025); }
+    .profile-card-cta-icon { font-family: var(--serif); font-size: 1.6rem; line-height: 1; }
+    .profile-card-cta-text { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; line-height: 1.6; }
+
     /* RESPONSIVE */
     @media (max-width: 1100px) {
       .hood-grid { grid-template-columns: repeat(3, 1fr); }
@@ -229,6 +252,9 @@
       .tip-col:nth-child(n+3) { border-top: 1px solid var(--rule); }
       .cta-row { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
       .cta-right-row { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .profiles-grid { grid-template-columns: 1fr 1fr; padding-left: 20px; padding-right: 20px; }
+      .profiles-grid .profile-card:nth-child(2n) { border-right: none; }
+      .profiles-grid .profile-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
       .footer-inner { padding: 0 20px; }
       .footer-stats, .footer-note { display: none; }
     }
@@ -478,6 +504,72 @@
     </div>
   </div>
 
+</div>
+
+<!-- PROFILES SECTION — outside editorial-wrap, full width -->
+<div class="profiles-section">
+  <div class="section-label-inner">
+    <span class="section-label-text">Contributors</span>
+    <div class="section-label-line"></div>
+    <a href="profile-dave.html" class="section-label-link">See all profiles →</a>
+  </div>
+  <div class="profiles-grid">
+
+    <!-- Dave -->
+    <a class="profile-card" href="profile-dave.html">
+      <div class="profile-card-top">
+        <img class="profile-card-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
+        <div class="profile-card-identity">
+          <span class="profile-card-name">Dave</span>
+          <span class="profile-card-handle">@dave</span>
+        </div>
+      </div>
+      <div class="profile-card-bio">Meeting people. Making videos. Building HoodTip.</div>
+      <div class="profile-card-stats">
+        <div class="profile-card-stat">
+          <span class="profile-card-stat-value">41</span>
+          <span class="profile-card-stat-label">Tips</span>
+        </div>
+        <div class="profile-card-stat">
+          <span class="profile-card-stat-value">7</span>
+          <span class="profile-card-stat-label">Cities</span>
+        </div>
+        <div class="profile-card-stat">
+          <span class="profile-card-stat-value">Geneva</span>
+          <span class="profile-card-stat-label">Based in</span>
+        </div>
+      </div>
+      <div class="profile-card-tags">
+        <span class="profile-card-tag">Natural wine</span>
+        <span class="profile-card-tag">Proper pubs</span>
+        <span class="profile-card-tag">Waterfront bars</span>
+        <span class="profile-card-tag">Good fish</span>
+        <span class="profile-card-tag">Saturday markets</span>
+      </div>
+    </a>
+
+    <!-- Placeholder 2 -->
+    <a class="profile-card-cta" href="index.html" onclick="openModal();return false;">
+      <span class="profile-card-cta-icon">+</span>
+      <span class="profile-card-cta-text">Know somewhere well?<br>Build your profile.</span>
+    </a>
+
+    <!-- Placeholder 3 -->
+    <a class="profile-card-cta" href="index.html" onclick="openModal();return false;">
+      <span class="profile-card-cta-icon">+</span>
+      <span class="profile-card-cta-text">Know somewhere well?<br>Build your profile.</span>
+    </a>
+
+    <!-- Placeholder 4 -->
+    <a class="profile-card-cta" href="index.html" onclick="openModal();return false;">
+      <span class="profile-card-cta-icon">+</span>
+      <span class="profile-card-cta-text">Know somewhere well?<br>Build your profile.</span>
+    </a>
+
+  </div>
+</div>
+
+<div class="editorial-wrap">
   <div class="cta-wrap" style="padding:0;">
     <div class="cta-row">
       <div class="cta-hed">Know something <em>good?</em></div>
