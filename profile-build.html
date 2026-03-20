@@ -307,9 +307,9 @@
 
     <div class="field-group">
       <div class="field">
-        <label for="f-photo-upload">Profile photo (optional)</label>
-        <input type="file" id="f-photo-upload" accept="image/*" style="padding:8px 0;border:none;background:none;cursor:pointer;" />
-        <span class="field-hint">JPG or PNG. A headshot or anything that feels like you.</span>
+        <label for="f-photo-link">Profile photo (optional)</label>
+        <input type="text" id="f-photo-link" placeholder="Link to a photo — Google Photos, iCloud, Dropbox, anywhere" />
+        <span class="field-hint">Open your photos app, share any photo, copy the link. Takes 30 seconds. If you skip it we'll use your initial.</span>
       </div>
       <div class="field">
         <label for="f-anything-else">Anything else?</label>
@@ -435,26 +435,25 @@
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    const form = new FormData();
-    form.append('type', 'PROFILE_BUILD');
-    form.append('name', document.getElementById('f-name').value);
-    form.append('handle', document.getElementById('f-handle').value);
-    form.append('bio', document.getElementById('f-bio').value);
-    form.append('based_in', document.getElementById('f-based').value);
-    form.append('email', document.getElementById('f-email').value);
-    form.append('cities', document.getElementById('f-cities-text').value);
-    form.append('taste_tags', Array.from(selectedTags).join(', '));
-    form.append('tips', JSON.stringify(collectTips()));
-    form.append('notes', document.getElementById('f-anything-else').value);
-
-    const photoFile = document.getElementById('f-photo-upload').files[0];
-    if (photoFile) form.append('photo', photoFile, photoFile.name);
+    const data = {
+      type: 'PROFILE_BUILD',
+      name: document.getElementById('f-name').value,
+      handle: document.getElementById('f-handle').value,
+      bio: document.getElementById('f-bio').value,
+      based_in: document.getElementById('f-based').value,
+      email: document.getElementById('f-email').value,
+      cities: document.getElementById('f-cities-text').value,
+      taste_tags: Array.from(selectedTags).join(', '),
+      tips: JSON.stringify(collectTips()),
+      photo_link: document.getElementById('f-photo-link').value,
+      notes: document.getElementById('f-anything-else').value
+    };
 
     try {
       const res = await fetch('https://formspree.io/f/mdawyane', {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: form
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
       });
       if (res.ok) {
         document.querySelector('.form-wrap').style.display = 'none';
