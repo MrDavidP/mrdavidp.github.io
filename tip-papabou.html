@@ -67,6 +67,11 @@
 
     .img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
     .img-pair img { width: 100%; display: block; height: 400px; object-fit: cover; }
+    /* Portrait photos — centered, natural height, not full-bleed */
+    .img-portrait { margin: 3rem auto; max-width: 500px; }
+    .img-portrait img { width: 100%; display: block; }
+    .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 800px; }
+    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
 
     .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
     .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
@@ -161,12 +166,12 @@
     <p>"The fries are Swiss potatoes. The wine is natural. In Geneva this still counts as progressive."</p>
   </div>
 
-  <div class="img-full">
-    <img src="papabou-burger-inside.jpg" alt="Papabou smashburger close-up — brioche bun, cheese, bacon" style="object-position: center 45%;" />
-    <div class="img-caption">Brioche bun, smashed patty, bacon situation. Swiss potatoes in the back.</div>
+  <div class="img-portrait">
+    <img src="papabou-burger-inside.jpg" alt="Papabou smashburger close-up — brioche bun, cheese, bacon" />
+    <div class="img-caption" style="padding:0.5rem 0 0;">Brioche bun, smashed patty, bacon situation.</div>
   </div>
 
-  <div class="img-pair">
+  <div class="img-portrait-pair">
     <img src="papabour-burger-fries.jpg" alt="Papabou burger and fries on the terrace, Plainpalais" style="object-position: center 40%;" />
     <img src="papabou-burger-wine.jpg" alt="Papabou — burger and rosé outside, summer" style="object-position: center 35%;" />
   </div>
