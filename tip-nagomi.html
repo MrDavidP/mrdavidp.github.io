@@ -70,6 +70,13 @@
 
     .img-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
     .img-trio img { width: 100%; display: block; height: 340px; object-fit: cover; }
+    /* Portrait photos — constrained, not full-bleed */
+    .img-portrait { margin: 3rem auto; max-width: 500px; }
+    .img-portrait img { width: 100%; display: block; }
+    .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 800px; }
+    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
+    .img-portrait-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 960px; }
+    .img-portrait-trio img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
 
     .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
     .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
@@ -94,6 +101,7 @@
       .img-pair, .img-trio { grid-template-columns: 1fr; }
       .img-pair img { height: 280px; }
       .img-trio img { height: 240px; }
+      .img-portrait-pair, .img-portrait-trio { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
       .footer-stats { display: none; }
     }
   </style>
@@ -161,9 +169,9 @@
     <p>I'm not a sushi expert. I mix my wasabi and soy sauce when eating supermarket sushi. But even for sushi normies, you can tell this is something above average. The fish is fresher than it has any right to be in a landlocked Swiss city. The rice is properly seasoned. The chef has clearly been doing this for a long time.</p>
   </div>
 
-  <div class="img-full">
-    <img src="nagomi-1.jpg" alt="Sushi platter at Nagomi — nigiri and maki at the counter" style="object-position: center 50%;" />
-    <div class="img-caption">The counter at Nagomi. He's been doing this a long time.</div>
+  <div class="img-portrait">
+    <img src="nagomi-1.jpg" alt="Sushi platter at Nagomi — nigiri and maki at the counter" />
+    <div class="img-caption" style="padding:0.5rem 0 0;">The counter at Nagomi. He's been doing this a long time.</div>
   </div>
 
   <div class="body">
@@ -174,9 +182,9 @@
     <p>"Sit at the bar. Cold sake. The uni if they have it. You are briefly in Tokyo."</p>
   </div>
 
-  <div class="img-pair">
-    <img src="nagomi-uni.jpg" alt="Uni nigiri at Nagomi, Geneva — cold sake alongside" style="object-position: center 50%;" />
-    <img src="nagomi-3.jpg" alt="Nigiri close-up at Nagomi — prawn, tuna, crab maki" style="object-position: center 45%;" />
+  <div class="img-portrait-pair">
+    <img src="nagomi-uni.jpg" alt="Uni nigiri at Nagomi, Geneva — cold sake alongside" />
+    <img src="nagomi-3.jpg" alt="Nigiri close-up at Nagomi — prawn, tuna, crab maki" />
   </div>
 
   <div class="body">
@@ -184,10 +192,10 @@
     <p>One more thing: next door, the chef's son runs a tempura place. I haven't been but I'd be surprised if it's not good.</p>
   </div>
 
-  <div class="img-trio">
-    <img src="nagomi-2.jpg" alt="Eel nigiri at Nagomi, glazed and perfectly made" style="object-position: center 50%;" />
-    <img src="nagomi-4.jpg" alt="Sake bottle and uni at Nagomi counter, Geneva" style="object-position: center 50%;" />
-    <img src="nagomi-5.jpg" alt="The chef working at Nagomi — seen through the glass" style="object-position: center 30%;" />
+  <div class="img-portrait-trio">
+    <img src="nagomi-2.jpg" alt="Eel nigiri at Nagomi, glazed and perfectly made" />
+    <img src="nagomi-4.jpg" alt="Sake bottle and uni at Nagomi counter, Geneva" />
+    <img src="nagomi-5.jpg" alt="The chef working at Nagomi — seen through the glass" />
   </div>
 
   <div class="tip-box">
