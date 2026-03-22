@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>London — HoodTip City Guide</title>
+  <meta name="description" content="HoodTip's guide to London. Notting Hill, Hampstead and beyond — tips from people who actually know." />
+  <meta property="og:title" content="London — HoodTip City Guide" />
+  <meta property="og:image" content="https://hoodtip.com/IMG_6278.JPG" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--cream:#f7f4ef;--ink:#1a1816;--ink2:#2a2925;--muted:#6b6560;--rule:#e0dbd3;--red:#b5322a;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',system-ui,sans-serif;--cond:'Barlow Condensed',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;}
+    nav{padding:0 2rem;border-bottom:1.5px solid var(--ink);position:sticky;top:0;z-index:100;background:var(--cream);}
+    .nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;}
+    .logo{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--ink);text-decoration:none;}.logo em{font-style:italic;font-weight:400;}.logo .dot{color:var(--red);}
+    .nav-tag{font-family:var(--serif);font-style:italic;font-size:0.8rem;color:var(--muted);border-left:1px solid var(--rule);padding-left:12px;margin-left:12px;}
+    .nav-links{display:flex;list-style:none;}
+    .nav-links a{font-family:var(--cond);font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0 16px;height:52px;display:flex;align-items:center;border-left:1px solid var(--rule);transition:color 0.15s;}
+    .nav-links a:hover{color:var(--ink);}.nav-links a.cta{background:var(--ink);color:var(--cream);}.nav-links a.cta:hover{background:var(--ink2);}
+    .city-strip{border-bottom:1px solid var(--rule);}
+    .city-strip-inner{max-width:1400px;margin:0 auto;padding:0 2rem;height:38px;display:flex;align-items:center;overflow-x:auto;}
+    .city-strip-inner::-webkit-scrollbar{display:none;}
+    .city-link{font-family:var(--cond);font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;padding:0 20px 0 0;white-space:nowrap;color:var(--muted);transition:color 0.15s;}
+    .city-link.active{color:var(--ink);}.city-link:hover{color:var(--ink);}
+    .city-sep{color:var(--rule);padding-right:20px;font-size:0.65rem;}
+    .city-hero{width:100%;height:clamp(280px,38vw,440px);overflow:hidden;position:relative;}
+    .city-hero img{width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block;}
+    .city-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,10,0.78) 0%,rgba(15,12,10,0.2) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem 3rem;}
+    .city-hero-eyebrow{font-family:var(--cond);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.4rem;}
+    .city-hero-title{font-family:var(--serif);font-size:clamp(3rem,7vw,6rem);font-weight:400;color:#fff;line-height:0.9;letter-spacing:-0.02em;margin-bottom:0.6rem;text-shadow:0 2px 20px rgba(0,0,0,0.4);}
+    .city-hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(0.9rem,1.6vw,1.15rem);color:rgba(255,255,255,0.85);text-shadow:0 1px 8px rgba(0,0,0,0.5);max-width:500px;}
+    .intro-band{border-bottom:1.5px solid var(--ink);}
+    .intro-band-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:180px 1fr 180px;}
+    .intro-stat-block{padding:2rem 2rem 2rem 0;display:flex;flex-direction:column;gap:1.5rem;border-right:1px solid var(--rule);}
+    .intro-stat{display:flex;flex-direction:column;gap:0.15rem;}
+    .intro-stat-label{font-family:var(--cond);font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
+    .intro-stat-value{font-family:var(--serif);font-size:1rem;color:var(--ink);}
+    .intro-body{padding:2rem 2.5rem;}
+    .intro-body p{font-size:0.95rem;line-height:1.8;color:var(--ink);font-weight:300;margin-bottom:1rem;}
+    .intro-body p:last-child{margin-bottom:0;}
+    .intro-links{padding:2rem 0 2rem 2rem;display:flex;flex-direction:column;gap:0.75rem;border-left:1px solid var(--rule);}
+    .intro-link{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color 0.15s,border-color 0.15s;display:inline-block;}
+    .intro-link:hover{color:var(--ink);border-color:var(--ink);}
+    .section-label{border-bottom:1px solid var(--rule);}
+    .section-label-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1rem;height:42px;}
+    .section-label-text{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+    .section-label-line{flex:1;height:1px;background:var(--rule);}
+    .hood-index{border-bottom:1.5px solid var(--ink);}
+    .hood-index-inner{max-width:1400px;margin:0 auto;}
+    .hood-row{display:grid;grid-template-columns:48px 160px 1fr 120px;align-items:center;gap:1.5rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background 0.15s;padding:1.1rem 2rem;min-height:58px;}
+    .hood-row:last-child{border-bottom:none;}.hood-row:hover{background:rgba(26,24,22,0.025);}
+    .hood-num{font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;color:var(--muted);}
+    .hood-name{font-family:var(--serif);font-size:1.15rem;font-weight:500;line-height:1;}
+    .hood-desc{font-size:0.78rem;color:var(--muted);line-height:1.45;}
+    .hood-count{font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-align:right;}
+    .tips-section{border-bottom:1.5px solid var(--ink);}
+    .tips-inner{max-width:1400px;margin:0 auto;}
+    .hood-group{border-bottom:1px solid var(--rule);}
+    .hood-group:last-child{border-bottom:none;}
+    .hood-group-header{padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:44px;border-bottom:1px solid var(--rule);}
+    .hood-group-name{font-family:var(--serif);font-size:1rem;font-weight:500;}
+    .hood-group-link{font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:color 0.15s,border-color 0.15s;}
+    .hood-group-link:hover{color:var(--ink);border-color:var(--ink);}
+    .tip-row{display:grid;grid-template-columns:72px 1fr 60px;align-items:center;gap:1.25rem;padding:0.85rem 2rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background 0.15s;}
+    .tip-row:last-child{border-bottom:none;}.tip-row:hover{background:rgba(26,24,22,0.025);}
+    .tip-row-thumb{width:72px;height:54px;object-fit:cover;display:block;flex-shrink:0;}
+    .tip-row-cat{font-family:var(--cond);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;}
+    .tip-row-name{font-family:var(--serif);font-size:0.98rem;font-weight:500;line-height:1.2;margin-bottom:0.2rem;}
+    .tip-row-copy{font-size:0.74rem;color:var(--muted);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+    .tip-row-arrow{font-family:var(--cond);font-size:0.58rem;color:var(--muted);letter-spacing:0.1em;text-align:right;}
+    .back-wrap{max-width:1400px;margin:0 auto;padding:2rem;}
+    .back-link{font-family:var(--cond);font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color 0.15s;}
+    .back-link:hover{color:var(--ink);}
+    footer{border-top:2px solid var(--red);background:var(--ink);}
+    .footer-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+    .footer-logo{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--cream);}.footer-logo em{font-style:italic;font-weight:400;}.footer-logo .dot{color:var(--red);}
+    .footer-stats{font-family:var(--cond);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,239,0.3);display:flex;gap:1rem;}
+    @media(max-width:900px){.intro-band-inner{grid-template-columns:1fr;}.intro-stat-block{border-right:none;border-bottom:1px solid var(--rule);flex-direction:row;flex-wrap:wrap;gap:1.5rem;padding:1.5rem 0;}.intro-links{border-left:none;border-top:1px solid var(--rule);padding:1.5rem 0 0;flex-direction:row;}.intro-body{padding:1.5rem 0;}.hood-row{grid-template-columns:32px 1fr 80px;}.hood-desc{display:none;}}
+    @media(max-width:600px){nav,.city-strip-inner,.intro-band-inner,.back-wrap{padding-left:1.25rem;padding-right:1.25rem;}.hood-row,.tip-row,.hood-group-header,.section-label-inner{padding-left:1.25rem;padding-right:1.25rem;}.footer-inner{padding:0 1.25rem;}.footer-stats{display:none;}.nav-links a:not(.cta){display:none;}.nav-tag{display:none;}.city-hero-overlay{padding:1.5rem;}.tip-row{grid-template-columns:56px 1fr;}.tip-row-arrow{display:none;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tag">Only the good stuff.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" class="cta">Leave a tip</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="city-strip">
+  <div class="city-strip-inner">
+    <a href="geneva.html" class="city-link">Geneva</a>
+    <span class="city-sep">·</span>
+    <a href="london.html" class="city-link active">London</a>
+    <span class="city-sep">·</span>
+    <a href="istanbul.html" class="city-link">Istanbul</a>
+    <span class="city-sep">·</span>
+    <a href="index.html" class="city-link">Elsewhere</a>
+  </div>
+</div>
+
+<div class="city-hero">
+  <img src="IMG_6278.JPG" alt="Portobello Road, Notting Hill, London" />
+  <div class="city-hero-overlay">
+    <div class="city-hero-eyebrow">HoodTip · England</div>
+    <div class="city-hero-title">London</div>
+    <div class="city-hero-sub">Properly good pubs, Britain's oldest cinema, the best challah in the city. West London at its best.</div>
+  </div>
+</div>
+
+<div class="intro-band">
+  <div class="intro-band-inner">
+    <div class="intro-stat-block">
+      <div class="intro-stat"><span class="intro-stat-label">Country</span><span class="intro-stat-value">England</span></div>
+      <div class="intro-stat"><span class="intro-stat-label">Neighbourhoods</span><span class="intro-stat-value">2</span></div>
+      <div class="intro-stat"><span class="intro-stat-label">Tips</span><span class="intro-stat-value">4</span></div>
+      <div class="intro-stat"><span class="intro-stat-label">Language</span><span class="intro-stat-value">English</span></div>
+    </div>
+    <div class="intro-body">
+      <p>London is inexhaustible and slightly overwhelming, which is why neighbourhood-level guidance matters more here than almost anywhere. The city rewards specificity — knowing the right pub on the right street is the difference between a great evening and a forgettable one.</p>
+      <p>These tips are concentrated in West London, which is where I know it best. Notting Hill for a long weekend. Hampstead for a Sunday morning.</p>
+    </div>
+    <div class="intro-links">
+      <a href="notting-hill.html" class="intro-link">Notting Hill guide →</a>
+      <a href="profile-dave.html" class="intro-link">Dave's London picks →</a>
+    </div>
+  </div>
+</div>
+
+<div class="section-label">
+  <div class="section-label-inner">
+    <span class="section-label-text">Neighbourhoods</span>
+    <div class="section-label-line"></div>
+  </div>
+</div>
+
+<div class="hood-index">
+  <div class="hood-index-inner">
+    <a class="hood-row" href="notting-hill.html"><span class="hood-num">01</span><span class="hood-name">Notting Hill</span><span class="hood-desc">A proper pub with oysters, Britain's oldest cinema, a rooftop hotel under £200.</span><span class="hood-count">3 tips &rarr;</span></a>
+    <a class="hood-row" href="tip-karmabread.html"><span class="hood-num">02</span><span class="hood-name">Hampstead</span><span class="hood-desc">One tip. The best challah in London. Worth the trip up the hill.</span><span class="hood-count">1 tip &rarr;</span></a>
+  </div>
+</div>
+
+<div class="section-label">
+  <div class="section-label-inner">
+    <span class="section-label-text">All London tips</span>
+    <div class="section-label-line"></div>
+  </div>
+</div>
+
+<div class="tips-section">
+  <div class="tips-inner">
+
+    <div class="hood-group">
+      <div class="hood-group-header"><span class="hood-group-name">Notting Hill</span><a href="notting-hill.html" class="hood-group-link">Full guide →</a></div>
+      <a class="tip-row" href="tip-thecow.html"><img class="tip-row-thumb" src="IMG_3513.JPG" alt="The Cow" /><div class="tip-row-body"><div class="tip-row-cat">Pub · Bar</div><div class="tip-row-name">The Cow</div><div class="tip-row-copy">Best Guinness in west London. Order oysters with it at the bar.</div></div><span class="tip-row-arrow">Read →</span></a>
+      <a class="tip-row" href="tip-electriccinema.html"><img class="tip-row-thumb" src="682384E6-2714-486C-A716-4757245349A1.jpg" alt="Electric Cinema" /><div class="tip-row-body"><div class="tip-row-cat">Cinema</div><div class="tip-row-name">Electric Cinema</div><div class="tip-row-copy">Britain's oldest working cinema. Leather sofas, footstools. Book in advance — the good seats go.</div></div><span class="tip-row-arrow">Read →</span></a>
+      <a class="tip-row" href="tip-rubyzoe.html"><img class="tip-row-thumb" src="Screenshot_2026-03-17_at_12_13_20.png" alt="Ruby Zoë" /><div class="tip-row-body"><div class="tip-row-cat">Hotel</div><div class="tip-row-name">Ruby Zoë</div><div class="tip-row-copy">Rooftop bar, well-designed rooms, under £200. For a Notting Hill address, remarkable.</div></div><span class="tip-row-arrow">Read →</span></a>
+    </div>
+
+    <div class="hood-group">
+      <div class="hood-group-header"><span class="hood-group-name">Hampstead</span><span style="font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">1 tip</span></div>
+      <a class="tip-row" href="tip-karmabread.html"><img class="tip-row-thumb" src="karmabread-challah.jpg" alt="Karma Bread" /><div class="tip-row-body"><div class="tip-row-cat">Bakery</div><div class="tip-row-name">Karma Bread</div><div class="tip-row-copy">The best challah in London. Go on a Friday. Take it home.</div></div><span class="tip-row-arrow">Read →</span></a>
+    </div>
+
+  </div>
+</div>
+
+<div class="back-wrap">
+  <a href="index.html" class="back-link">← All cities</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats"><span>49 tips</span><span>·</span><span>15 neighbourhoods</span><span>·</span><span>7 cities</span></div>
+  </div>
+</footer>
+</body>
+</html>
