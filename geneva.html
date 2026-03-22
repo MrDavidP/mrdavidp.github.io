@@ -306,9 +306,10 @@
 </footer>
 
 
+
 <script>
 (function() {
-  function drawGenevaMap() {
+  function drawMap() {
     const canvas = document.getElementById('gva-map');
     if (!canvas) return;
     const dpr = window.devicePixelRatio || 1;
@@ -321,138 +322,139 @@
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
-    const cream = '#f7f4ef';
-    const ink = '#1a1816';
-    const muted = '#6b6560';
-    const rule = '#e0dbd3';
-    const red = '#b5322a';
-    const waterFill = '#daeaf2';
-    const waterStroke = '#b8d4e3';
+    // Bounding box
+    const minLng = 6.08, maxLng = 6.225;
+    const minLat = 46.168, maxLat = 46.265;
+
+    function x(lng) { return (lng - minLng) / (maxLng - minLng) * W; }
+    function y(lat) { return (maxLat - lat) / (maxLat - minLat) * H; }
+    function pt(lng, lat) { return [x(lng), y(lat)]; }
+
+    const cream = '#f7f4ef', ink = '#1a1816', muted = '#6b6560';
+    const rule = '#e0dbd3', red = '#b5322a';
+    const waterFill = '#d4e8f2', waterStroke = '#a8cfe0';
 
     // Background
     ctx.fillStyle = cream;
     ctx.fillRect(0, 0, W, H);
 
-    // Lac Léman — gentle crescent shape
+    // Lac Léman — western portion, real shape
     ctx.beginPath();
-    ctx.moveTo(W*0.45, H*0.82);
-    ctx.bezierCurveTo(W*0.55, H*0.72, W*0.85, H*0.68, W*0.98, H*0.78);
-    ctx.bezierCurveTo(W*0.95, H*0.96, W*0.55, H*0.98, W*0.45, H*0.82);
+    ctx.moveTo(...pt(6.155, 46.207)); // Rhône exit, north
+    ctx.bezierCurveTo(...pt(6.162, 46.216), ...pt(6.175, 46.218), ...pt(6.200, 46.214));
+    ctx.bezierCurveTo(...pt(6.215, 46.210), ...pt(6.225, 46.204), ...pt(6.225, 46.196));
+    ctx.bezierCurveTo(...pt(6.225, 46.188), ...pt(6.210, 46.180), ...pt(6.192, 46.178));
+    ctx.bezierCurveTo(...pt(6.175, 46.176), ...pt(6.160, 46.183), ...pt(6.155, 46.195));
+    ctx.closePath();
     ctx.fillStyle = waterFill;
     ctx.fill();
     ctx.strokeStyle = waterStroke;
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    // Rhône — heading west from lake exit
+    // Rhône — exits lake westward
     ctx.beginPath();
-    ctx.moveTo(W*0.48, H*0.76);
-    ctx.bezierCurveTo(W*0.38, H*0.68, W*0.22, H*0.60, W*0.0, H*0.56);
+    ctx.moveTo(...pt(6.155, 46.207));
+    ctx.bezierCurveTo(...pt(6.148, 46.210), ...pt(6.138, 46.208), ...pt(6.128, 46.204));
+    ctx.bezierCurveTo(...pt(6.115, 46.200), ...pt(6.100, 46.197), ...pt(6.082, 46.192));
+    ctx.strokeStyle = waterStroke;
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Rhône north bank fill to show width
+    ctx.beginPath();
+    ctx.moveTo(...pt(6.155, 46.210));
+    ctx.bezierCurveTo(...pt(6.145, 46.212), ...pt(6.130, 46.209), ...pt(6.115, 46.204));
+    ctx.bezierCurveTo(...pt(6.100, 46.200), ...pt(6.085, 46.196), ...pt(6.082, 46.195));
+    ctx.lineTo(...pt(6.082, 46.192));
+    ctx.bezierCurveTo(...pt(6.085, 46.190), ...pt(6.100, 46.194), ...pt(6.115, 46.198));
+    ctx.bezierCurveTo(...pt(6.130, 46.202), ...pt(6.145, 46.207), ...pt(6.155, 46.207));
+    ctx.closePath();
+    ctx.fillStyle = waterFill;
+    ctx.fill();
+
+    // Arve — joins Rhône from south at Jonction
+    ctx.beginPath();
+    ctx.moveTo(...pt(6.145, 46.172));
+    ctx.bezierCurveTo(...pt(6.140, 46.180), ...pt(6.133, 46.190), ...pt(6.128, 46.196));
     ctx.strokeStyle = waterStroke;
     ctx.lineWidth = 3;
     ctx.lineCap = 'round';
     ctx.stroke();
 
-    // Arve joining from south
-    ctx.beginPath();
-    ctx.moveTo(W*0.38, H*0.99);
-    ctx.bezierCurveTo(W*0.37, H*0.88, W*0.36, H*0.80, W*0.34, H*0.72);
-    ctx.strokeStyle = waterStroke;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Water label
+    // Water labels
     ctx.save();
-    ctx.font = 'italic 12px Georgia, serif';
+    ctx.font = 'italic 11px Georgia, serif';
+    ctx.fillStyle = '#6fa3be';
+    ctx.fillText('Lac Léman', x(6.178), y(46.196));
     ctx.fillStyle = '#8ab5cc';
-    ctx.fillText('Lac Léman', W*0.65, H*0.84);
+    ctx.font = 'italic 9px Georgia, serif';
+    ctx.fillText('Rhône', x(6.108), y(46.206));
+    ctx.fillText('Arve', x(6.148), y(46.183));
     ctx.restore();
 
-    // Neighbourhoods: [name, x, y, url, count, active]
+    // Neighbourhoods [name, lng, lat, url, count, live]
     const hoods = [
-      ['Nations',       0.28, 0.22, 'nations.html',      '3 tips', true],
-      ['Cornavin',      0.44, 0.34, 'cornavin.html',     '1 tip',  true],
-      ['Saint-Gervais', 0.50, 0.44, 'saint-gervais.html','5 tips', true],
-      ['Pâquis',        0.60, 0.38, 'paquis.html',       '2 tips', true],
-      ['Vieille Ville', 0.52, 0.54, null,                '1 tip',  false],
-      ['Rive',          0.60, 0.52, null,                 '2 tips', false],
-      ['Plainpalais',   0.44, 0.62, 'plainpalais.html',  '4 tips', true],
-      ['Eaux-Vives',    0.68, 0.60, 'eaux-vives.html',   '3 tips', true],
-      ['Carouge',       0.36, 0.78, 'carouge.html',      '4 tips', true],
-      ['Champel',       0.54, 0.74, null,                 'Soon',   false],
-      ['St-Jean',       0.22, 0.54, null,                 'Soon',   false],
+      ['Nations',       6.140, 46.228, 'nations.html',       '3 tips', true],
+      ['Cornavin',      6.142, 46.210, 'cornavin.html',      '1 tip',  true],
+      ['Saint-Gervais', 6.147, 46.207, 'saint-gervais.html', '5 tips', true],
+      ['Pâquis',        6.157, 46.212, 'paquis.html',        '2 tips', true],
+      ['Vieille Ville', 6.150, 46.200, null,                 '1 tip',  false],
+      ['Rive',          6.156, 46.202, null,                 '2 tips', false],
+      ['Plainpalais',   6.138, 46.195, 'plainpalais.html',   '4 tips', true],
+      ['Eaux-Vives',    6.166, 46.200, 'eaux-vives.html',    '3 tips', true],
+      ['Carouge',       6.138, 46.184, 'carouge.html',       '4 tips', true],
+      ['Champel',       6.152, 46.188, null,                 'Soon',   false],
+      ['St-Jean',       6.113, 46.205, null,                 'Soon',   false],
     ];
 
-    hoods.forEach(([name, px, py, url, count, active]) => {
-      const x = px * W;
-      const y = py * H;
+    hoods.forEach(([name, lng, lat, url, count, live]) => {
+      const cx = x(lng), cy = y(lat);
       const soon = count === 'Soon';
 
-      // Connector line from dot to label if needed — skip, keep clean
-
-      // Dot
       ctx.beginPath();
-      ctx.arc(x, y, active ? 4.5 : 3, 0, Math.PI * 2);
-      ctx.fillStyle = soon ? rule : (active ? red : '#aaa');
+      ctx.arc(cx, cy, live ? 5 : 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = soon ? '#ccc' : (live ? red : '#999');
       ctx.fill();
-      if (active) {
+      if (live) {
         ctx.strokeStyle = cream;
         ctx.lineWidth = 1.5;
         ctx.stroke();
       }
 
-      // Name
       ctx.save();
-      ctx.font = `${active ? '600' : '400'} 10px 'Barlow Condensed', sans-serif`;
-      ctx.fillStyle = soon ? '#ccc' : (active ? ink : muted);
-      ctx.fillText(name.toUpperCase(), x + 8, y + 3);
-      ctx.restore();
-
-      // Count
+      ctx.font = (live ? '600' : '400') + ' 10px "Barlow Condensed", sans-serif';
+      ctx.fillStyle = soon ? '#bbb' : (live ? ink : muted);
+      ctx.fillText(name.toUpperCase(), cx + 8, cy + 3);
       if (!soon) {
-        ctx.save();
-        ctx.font = '9px Barlow, sans-serif';
+        ctx.font = '300 9px Barlow, sans-serif';
         ctx.fillStyle = muted;
-        ctx.fillText(count, x + 8, y + 13);
-        ctx.restore();
+        ctx.fillText(count, cx + 8, cy + 13);
       }
+      ctx.restore();
     });
 
-    // Subtle border inside canvas
     ctx.strokeStyle = rule;
     ctx.lineWidth = 1;
-    ctx.strokeRect(0.5, 0.5, W-1, H-1);
+    ctx.strokeRect(0.5, 0.5, W - 1, H - 1);
 
-    // Click + hover
-    canvas.addEventListener('click', function(e) {
-      const r = canvas.getBoundingClientRect();
-      const mx = (e.clientX - r.left);
-      const my = (e.clientY - r.top);
-      hoods.forEach(([name, px, py, url]) => {
-        if (!url) return;
-        const dx = mx - px*W, dy = my - py*H;
-        if (Math.sqrt(dx*dx+dy*dy) < 18) window.location.href = url;
-      });
-    });
-    canvas.addEventListener('mousemove', function(e) {
+    // Interactions
+    canvas.addEventListener('click', e => {
       const r = canvas.getBoundingClientRect();
       const mx = e.clientX - r.left, my = e.clientY - r.top;
-      let hit = false;
-      hoods.forEach(([n,px,py,url]) => {
+      hoods.forEach(([n, lng, lat, url]) => {
         if (!url) return;
-        const dx = mx-px*W, dy = my-py*H;
-        if (Math.sqrt(dx*dx+dy*dy) < 18) hit = true;
+        if (Math.hypot(mx - x(lng), my - y(lat)) < 20) window.location.href = url;
       });
-      canvas.style.cursor = hit ? 'pointer' : 'default';
+    });
+    canvas.addEventListener('mousemove', e => {
+      const r = canvas.getBoundingClientRect();
+      const mx = e.clientX - r.left, my = e.clientY - r.top;
+      canvas.style.cursor = hoods.some(([n, lng, lat, url]) => url && Math.hypot(mx - x(lng), my - y(lat)) < 20) ? 'pointer' : 'default';
     });
   }
-
-  // Wait for fonts
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(drawGenevaMap);
-  } else {
-    window.addEventListener('load', drawGenevaMap);
-  }
+  document.fonts ? document.fonts.ready.then(drawMap) : window.addEventListener('load', drawMap);
 })();
 </script>
 </body>

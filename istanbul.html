@@ -207,9 +207,10 @@
   </div>
 </footer>
 
+
 <script>
 (function() {
-  function drawIstanbulMap() {
+  function drawMap() {
     const canvas = document.getElementById('ist-map');
     if (!canvas) return;
     const dpr = window.devicePixelRatio || 1;
@@ -222,19 +223,36 @@
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
+    const minLng = 28.88, maxLng = 29.14;
+    const minLat = 40.97, maxLat = 41.13;
+
+    function x(lng) { return (lng - minLng) / (maxLng - minLng) * W; }
+    function y(lat) { return (maxLat - lat) / (maxLat - minLat) * H; }
+
     const cream = '#f7f4ef', ink = '#1a1816', muted = '#6b6560';
     const rule = '#e0dbd3', red = '#b5322a';
-    const waterFill = '#daeaf2', waterStroke = '#b8d4e3';
+    const waterFill = '#d4e8f2', waterStroke = '#a8cfe0';
 
     ctx.fillStyle = cream;
     ctx.fillRect(0, 0, W, H);
 
-    // Bosphorus strait — vertical band
+    // Bosphorus — European (west) shore
+    const bosphEuro = [
+      [29.022, 41.130], [29.024, 41.110], [29.028, 41.090],
+      [29.032, 41.070], [29.030, 41.050], [29.025, 41.030],
+      [29.018, 41.010], [29.015, 40.990], [29.018, 40.970]
+    ];
+    // Asian (east) shore — ~2-3km east
+    const bosphAsian = [
+      [29.018, 40.970], [29.025, 40.990], [29.030, 41.010],
+      [29.038, 41.030], [29.042, 41.050], [29.048, 41.070],
+      [29.046, 41.090], [29.042, 41.110], [29.040, 41.130]
+    ];
+
     ctx.beginPath();
-    ctx.moveTo(W*0.52, 0);
-    ctx.bezierCurveTo(W*0.48, H*0.3, W*0.54, H*0.6, W*0.50, H);
-    ctx.lineTo(W*0.62, H);
-    ctx.bezierCurveTo(W*0.66, H*0.6, W*0.60, H*0.3, W*0.64, 0);
+    ctx.moveTo(x(bosphEuro[0][0]), y(bosphEuro[0][1]));
+    bosphEuro.forEach(([lng, lat]) => ctx.lineTo(x(lng), y(lat)));
+    bosphAsian.forEach(([lng, lat]) => ctx.lineTo(x(lng), y(lat)));
     ctx.closePath();
     ctx.fillStyle = waterFill;
     ctx.fill();
@@ -242,39 +260,51 @@
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    // Bosphorus label
+    // Bosphorus label (rotated)
     ctx.save();
+    ctx.translate(x(29.034), y(41.055));
+    ctx.rotate(-Math.PI / 2.2);
     ctx.font = 'italic 10px Georgia, serif';
-    ctx.fillStyle = '#8ab5cc';
-    ctx.translate(W*0.585, H*0.5);
-    ctx.rotate(-Math.PI/2);
-    ctx.fillText('Bosphorus', -30, 4);
+    ctx.fillStyle = '#6fa3be';
+    ctx.fillText('Bosphorus', -28, 3);
     ctx.restore();
 
-    // Golden Horn
+    // Golden Horn — curves west from Bosphorus
     ctx.beginPath();
-    ctx.moveTo(W*0.52, H*0.48);
-    ctx.bezierCurveTo(W*0.4, H*0.46, W*0.2, H*0.42, W*0.05, H*0.44);
+    ctx.moveTo(x(29.026), y(41.030));
+    ctx.bezierCurveTo(x(29.010), y(41.033), x(28.978), y(41.034), x(28.952), y(41.032));
+    ctx.bezierCurveTo(x(28.930), y(41.030), x(28.910), y(41.026), x(28.892), y(41.022));
     ctx.strokeStyle = waterStroke;
     ctx.lineWidth = 5;
     ctx.lineCap = 'round';
     ctx.stroke();
 
-    // Golden Horn label
+    // Golden Horn south bank (fill to show width)
+    ctx.beginPath();
+    ctx.moveTo(x(29.026), y(41.027));
+    ctx.bezierCurveTo(x(29.010), y(41.028), x(28.978), y(41.028), x(28.952), y(41.026));
+    ctx.bezierCurveTo(x(28.930), y(41.024), x(28.910), y(41.021), x(28.892), y(41.018));
+    ctx.lineTo(x(28.892), y(41.022));
+    ctx.bezierCurveTo(x(28.910), y(41.026), x(28.930), y(41.030), x(28.952), y(41.032));
+    ctx.bezierCurveTo(x(28.978), y(41.034), x(29.010), y(41.033), x(29.026), y(41.030));
+    ctx.fillStyle = waterFill;
+    ctx.fill();
+
+    // Labels
     ctx.save();
-    ctx.font = 'italic 10px Georgia, serif';
+    ctx.font = 'italic 9px Georgia, serif';
     ctx.fillStyle = '#8ab5cc';
-    ctx.fillText('Golden Horn', W*0.18, H*0.40);
+    ctx.fillText('Golden Horn', x(28.945), y(41.038));
     ctx.restore();
 
     const hoods = [
-      ['Yeniköy', 0.70, 0.25, 'yenikoy.html', '5 tips', true],
+      ['Yeniköy', 29.063, 41.103, 'yenikoy.html', '5 tips', true],
     ];
 
-    hoods.forEach(([name, px, py, url, count, active]) => {
-      const x = px * W, y = py * H;
+    hoods.forEach(([name, lng, lat, url, count]) => {
+      const cx = x(lng), cy = y(lat);
       ctx.beginPath();
-      ctx.arc(x, y, 4.5, 0, Math.PI * 2);
+      ctx.arc(cx, cy, 5, 0, Math.PI * 2);
       ctx.fillStyle = red;
       ctx.fill();
       ctx.strokeStyle = cream;
@@ -283,37 +313,30 @@
       ctx.save();
       ctx.font = '600 10px "Barlow Condensed", sans-serif';
       ctx.fillStyle = ink;
-      ctx.fillText(name.toUpperCase(), x + 8, y + 3);
-      ctx.restore();
-      ctx.save();
-      ctx.font = '9px Barlow, sans-serif';
+      ctx.fillText(name.toUpperCase(), cx - 58, cy + 3);
+      ctx.font = '300 9px Barlow, sans-serif';
       ctx.fillStyle = muted;
-      ctx.fillText(count, x + 8, y + 13);
+      ctx.fillText(count, cx - 58, cy + 13);
       ctx.restore();
     });
 
     ctx.strokeStyle = rule;
     ctx.lineWidth = 1;
-    ctx.strokeRect(0.5, 0.5, W-1, H-1);
+    ctx.strokeRect(0.5, 0.5, W - 1, H - 1);
 
-    canvas.addEventListener('click', function(e) {
+    canvas.addEventListener('click', e => {
       const r = canvas.getBoundingClientRect();
-      const mx = e.clientX-r.left, my = e.clientY-r.top;
-      hoods.forEach(([n,px,py,url]) => {
-        const dx=mx-px*W, dy=my-py*H;
-        if(Math.sqrt(dx*dx+dy*dy)<18) window.location.href=url;
+      const mx = e.clientX - r.left, my = e.clientY - r.top;
+      hoods.forEach(([n, lng, lat, url]) => {
+        if (Math.hypot(mx - x(lng), my - y(lat)) < 20) window.location.href = url;
       });
     });
-    canvas.addEventListener('mousemove', function(e) {
+    canvas.addEventListener('mousemove', e => {
       const r = canvas.getBoundingClientRect();
-      const mx=e.clientX-r.left, my=e.clientY-r.top;
-      let hit=false;
-      hoods.forEach(([n,px,py,url]) => { const dx=mx-px*W,dy=my-py*H; if(Math.sqrt(dx*dx+dy*dy)<18) hit=true; });
-      canvas.style.cursor = hit ? 'pointer' : 'default';
+      canvas.style.cursor = hoods.some(([n, lng, lat]) => Math.hypot(e.clientX - r.left - x(lng), e.clientY - r.top - y(lat)) < 20) ? 'pointer' : 'default';
     });
   }
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(drawIstanbulMap); }
-  else { window.addEventListener('load', drawIstanbulMap); }
+  document.fonts ? document.fonts.ready.then(drawMap) : window.addEventListener('load', drawMap);
 })();
 </script>
 </body>
