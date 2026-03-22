@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bijouterie Grégoire — Geneva | HoodTip</title>
+  <meta name="description" content="NOMOS watches in a Vieille Ville stone building. Ring the bell. Geneva tip by @paddy.">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HL9EJDL2YS');
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f7f4ef;
+      --ink: #1a1816;
+      --muted: #6b6560;
+      --rule: #e0dbd3;
+      --red: #b5322a;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 56px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      width: 100%;
+      height: 70vh;
+      max-height: 680px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(26,24,22,0.45) 100%);
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      padding: 1.5rem 2rem 0;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--ink); }
+
+    .breadcrumb span { margin: 0 0.4em; }
+
+    /* ARTICLE */
+    .article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 0;
+    }
+
+    .category-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .category-label::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .place-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 2rem;
+    }
+
+    .body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.72;
+      color: var(--ink);
+    }
+
+    .body-text p + p {
+      margin-top: 1.4em;
+    }
+
+    .body-text em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left: 2px solid var(--red);
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      margin: 2.5rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    /* DETAILS BLOCK */
+    .details-block {
+      margin: 2.5rem 0;
+      padding: 1.75rem;
+      border: 1px solid var(--rule);
+      background: white;
+    }
+
+    .details-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem 2rem;
+    }
+
+    .detail-item {}
+
+    .detail-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .detail-value {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* PHOTO GRID */
+    .photo-section {
+      max-width: 960px;
+      margin: 3rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .photo-section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .photo-grid .photo-wide {
+      grid-column: span 2;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-grid .photo-wide img {
+      height: 380px;
+    }
+
+    .photo-caption {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    /* ATTRIBUTION */
+    .attribution {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .attribution-rule {
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 1.5rem;
+    }
+
+    .attribution-inner {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .attribution-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+    }
+
+    .attribution-text {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .attribution-text a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .attribution-text a:hover { text-decoration: underline; }
+
+    /* BACK LINK */
+    .back-section {
+      max-width: 720px;
+      margin: 3rem auto 0;
+      padding: 0 2rem 4rem;
+    }
+
+    .back-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--ink); }
+
+    .back-link::before {
+      content: '←';
+      font-style: normal;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .footer-note {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero { height: 55vw; max-height: 320px; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid .photo-wide { grid-column: span 1; }
+      .photo-grid .photo-wide img { height: 260px; }
+      .details-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.4rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">HoodTip</a>
+    <ul class="nav-links">
+      <li><a href="geneva.html">Geneva</a></li>
+      <li><a href="london.html">London</a></li>
+      <li><a href="istanbul.html">Istanbul</a></li>
+      <li><a href="profile-build.html">Leave a tip</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <img src="nomos-6.jpg" alt="Bijouterie Grégoire exterior, 8 Rue de la Cité, Geneva">
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="index.html">HoodTip</a>
+    <span>→</span>
+    <a href="geneva.html">Geneva</a>
+    <span>→</span>
+    Bijouterie Grégoire
+  </div>
+
+  <article class="article">
+
+    <div class="category-label">Watches &nbsp;·&nbsp; Vieille Ville</div>
+
+    <h1>Bijouterie Grégoire</h1>
+    <div class="place-sub">8 Rue de la Cité &nbsp;·&nbsp; Vieille Ville, Geneva</div>
+
+    <div class="rule"></div>
+
+    <div class="body-text">
+      <p>Geneva's watch trade runs largely on ceremony and reputation — heritage brands behind marble counters, staff whose job is not to inform you but to awe you. Bijouterie Grégoire is something else entirely. Ring the bell at number 8 Rue de la Cité, just below the cathedral, and what awaits is one of the city's most focused NOMOS destinations.</p>
+
+      <p>The German watchmaker's work is displayed here as it deserves to be: on clean timber blocks, in a room quiet enough to actually think. The selection covers the full range — from the pared-back Tangente and its classically Bauhaus face, to the Autobahn Neomatik, which manages to make an energy-reserve display look genuinely elegant. Prices visible, no pressure implied.</p>
+    </div>
+
+    <blockquote class="pull-quote">
+      NOMOS makes the most honest watches in the world. Bijouterie Grégoire is the most honest place to buy them.
+    </blockquote>
+
+    <div class="body-text">
+      <p>The shop is closed on Mondays and operates by appointment outside of regular hours — the bell on the door is the point. That slight friction is a feature. The people inside want to talk about watches; they're not waiting for you to stop.</p>
+
+      <p>One watch worth asking about specifically: the <em>Autobahn Neomatik Weltzeit</em> — the red arc on white dial version is eye-catching even through the glass. They'll let you try it on.</p>
+    </div>
+
+    <div class="details-block">
+      <div class="details-title">The essentials</div>
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-label">Address</div>
+          <div class="detail-value">8 Rue de la Cité<br>Vieille Ville, Geneva</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Hours</div>
+          <div class="detail-value">Tue–Fri 11h00–18h30<br>Sat 11h00–17h30</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Entry</div>
+          <div class="detail-value">Ring bell (Sonnez SVP)</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Nearest landmark</div>
+          <div class="detail-value">Cathédrale Saint-Pierre, 2 min walk</div>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- PHOTO GRID -->
+  <div class="photo-section">
+    <div class="photo-section-label">Photos by @paddy</div>
+    <div class="photo-grid">
+
+      <div class="photo-wide">
+        <img src="nomos-1.jpg" alt="Rue de la Cité leading toward Saint-Pierre Cathedral, Vieille Ville Geneva">
+        <div class="photo-caption">Rue de la Cité — the shop is at number 8, a two-minute walk from the cathedral</div>
+      </div>
+
+      <div>
+        <img src="nomos-2.jpg" alt="NOMOS watch display at Bijouterie Grégoire">
+        <div class="photo-caption">The NOMOS display case — timber blocks, clean intervals, no clutter</div>
+      </div>
+
+      <div>
+        <img src="nomos-7.jpg" alt="Bijouterie Grégoire shop window signage">
+        <div class="photo-caption">Hours on glass. Ring the bell.</div>
+      </div>
+
+      <div>
+        <img src="nomos-3.jpg" alt="NOMOS Autobahn Neomatik close-up">
+        <div class="photo-caption">The Autobahn Neomatik — the red arc energy reserve is worth seeing in person</div>
+      </div>
+
+      <div>
+        <img src="nomos-4.jpg" alt="NOMOS Metro and Orion models on display">
+        <div class="photo-caption">Metro Datum and Orion Neomatik alongside a classic Tangente</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ATTRIBUTION -->
+  <div class="attribution">
+    <div class="attribution-rule"></div>
+    <div class="attribution-inner">
+      <img src="Paddy-profile-pic.jpg" alt="Paddy Eisenstein" class="attribution-avatar">
+      <div class="attribution-text">
+        Tipped by <a href="profile-paddy.html">@paddy</a> — Patrick Eisenstein. Geneva-based. Knows his watches.
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK -->
+  <div class="back-section">
+    <a href="geneva.html" class="back-link">Back to Geneva</a>
+  </div>
+
+  <footer>
+    <a href="index.html" class="footer-logo">HoodTip</a>
+    <span class="footer-note">Real tips from real people</span>
+  </footer>
+
+</body>
+</html>
