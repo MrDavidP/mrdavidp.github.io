@@ -70,6 +70,8 @@
 
     .img-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
     .img-trio img { width: 100%; display: block; height: 340px; object-fit: cover; }
+    .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 800px; }
+    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
 
     .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
     .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
@@ -95,9 +97,21 @@
       .img-pair img { height: 280px; }
       .img-trio { grid-template-columns: 1fr 1fr; }
       .img-trio img { height: 220px; }
+      .img-portrait-pair { gap: 0.5rem; }
       .footer-stats { display: none; }
     }
   </style>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HoodTip" />
+  <meta property="og:title" content="The luxury watch you can actually buy in Geneva" />
+  <meta property="og:description" content="You can't walk into Rolex and buy a Rolex. JLC you can. Walk in, buy a watch, leave with it." />
+  <meta property="og:image" content="https://hoodtip.com/jlc_river.jpg" />
+  <meta property="og:url" content="https://hoodtip.com/tip-jlc.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@hoodtip" />
+  <meta name="twitter:title" content="The luxury watch you can actually buy in Geneva" />
+  <meta name="twitter:description" content="You can't walk into Rolex and buy a Rolex. JLC you can. Walk in, buy a watch, leave with it." />
+  <meta name="twitter:image" content="https://hoodtip.com/jlc_river.jpg" />
 </head>
 <body>
 
@@ -177,10 +191,14 @@
     <p>The store is full of the most beautiful watches you'll ever see. If you're in Geneva and want to buy a serious Swiss watch — and actually leave with it — this is the place to go.</p>
   </div>
 
-  <div class="img-trio">
-    <img src="jlc_exterior.jpg" alt="Jaeger-LeCoultre boutique exterior, Rue du Rhône 56, Geneva" style="object-position: center 50%;" />
-    <img src="jlc_inside_my_watch.jpg" alt="The watch being presented on the JLC tray, Geneva boutique" style="object-position: center 40%;" />
-    <img src="jlc_inside_watch_guts.jpg" alt="JLC watch movement displayed in boutique, Calibre 924" style="object-position: center 50%;" />
+  <div class="img-full">
+    <img src="jlc_exterior.jpg" alt="Jaeger-LeCoultre boutique exterior, Rue du Rhône 56, Geneva" style="object-position:center 50%;" />
+    <div class="img-caption">Rue du Rhône 56. Walk in.</div>
+  </div>
+
+  <div class="img-portrait-pair">
+    <img src="jlc_inside_my_watch.jpg" alt="The watch on the JLC presentation tray, Geneva boutique" />
+    <img src="jlc_inside_watch_guts.jpg" alt="JLC watch movement — Calibre 924, displayed in boutique" />
   </div>
 
   <div class="tip-box">
