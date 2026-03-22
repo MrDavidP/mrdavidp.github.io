@@ -3,21 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geneva — HoodTip City Guide</title>
-  <meta name="description" content="HoodTip's guide to Geneva. 11 neighbourhoods, 49 tips from people who actually live here." />
-  <meta property="og:title" content="Geneva — HoodTip City Guide" />
-  <meta property="og:description" content="11 neighbourhoods, 49 tips from people who actually live here." />
-  <meta property="og:image" content="https://hoodtip.com/geneva-hero.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <!-- Google tag (gtag.js) -->
+  <title>Geneva — HoodTip</title>
+  <meta name="description" content="HoodTip's guide to Geneva. 11 neighbourhoods, tips from people who actually live here." />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    :root { --cream:#f7f4ef;--ink:#1a1816;--ink2:#2a2925;--muted:#6b6560;--rule:#e0dbd3;--red:#b5322a;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',system-ui,sans-serif;--cond:'Barlow Condensed',system-ui,sans-serif; }
+    :root{--cream:#f7f4ef;--ink:#1a1816;--ink2:#2a2925;--muted:#6b6560;--rule:#e0dbd3;--red:#b5322a;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',system-ui,sans-serif;--cond:'Barlow Condensed',system-ui,sans-serif;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
     body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;}
     nav{padding:0 2rem;border-bottom:1.5px solid var(--ink);position:sticky;top:0;z-index:100;background:var(--cream);}
     .nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;}
@@ -26,99 +22,76 @@
     .nav-tag{font-family:var(--serif);font-style:italic;font-size:0.8rem;color:var(--muted);border-left:1px solid var(--rule);padding-left:12px;margin-left:12px;}
     .nav-links{display:flex;list-style:none;}
     .nav-links a{font-family:var(--cond);font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0 16px;height:52px;display:flex;align-items:center;border-left:1px solid var(--rule);transition:color 0.15s;}
-    .nav-links a:hover{color:var(--ink);}.nav-links a.cta{background:var(--ink);color:var(--cream);}.nav-links a.cta:hover{background:var(--ink2);}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-links a.cta{background:var(--ink);color:var(--cream);}
+    .nav-links a.cta:hover{background:var(--ink2);}
     .city-strip{border-bottom:1px solid var(--rule);}
     .city-strip-inner{max-width:1400px;margin:0 auto;padding:0 2rem;height:38px;display:flex;align-items:center;overflow-x:auto;}
     .city-strip-inner::-webkit-scrollbar{display:none;}
     .city-link{font-family:var(--cond);font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;padding:0 20px 0 0;white-space:nowrap;color:var(--muted);transition:color 0.15s;}
     .city-link.active{color:var(--ink);}.city-link:hover{color:var(--ink);}
     .city-sep{color:var(--rule);padding-right:20px;font-size:0.65rem;}
-    .city-hero{width:100%;height:clamp(280px,38vw,440px);overflow:hidden;position:relative;}
+    .city-hero{width:100%;height:clamp(280px,38vw,480px);overflow:hidden;position:relative;}
     .city-hero img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;}
-    .city-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,10,0.78) 0%,rgba(15,12,10,0.2) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem 3rem;}
-    .city-hero-eyebrow{font-family:var(--cond);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.4rem;}
-    .city-hero-title{font-family:var(--serif);font-size:clamp(3rem,7vw,6rem);font-weight:400;color:#fff;line-height:0.9;letter-spacing:-0.02em;margin-bottom:0.6rem;text-shadow:0 2px 20px rgba(0,0,0,0.4);}
-    .city-hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(0.9rem,1.6vw,1.15rem);color:rgba(255,255,255,0.85);text-shadow:0 1px 8px rgba(0,0,0,0.5);max-width:500px;}
+    .city-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,10,0.82) 0%,rgba(15,12,10,0.15) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem 3rem;}
+    .city-hero-eyebrow{font-family:var(--cond);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.5rem;}
+    .city-hero-title{font-family:var(--serif);font-size:clamp(3rem,7vw,6rem);font-weight:400;color:#fff;line-height:0.9;letter-spacing:-0.02em;margin-bottom:0.7rem;}
+    .city-hero-sub{font-family:var(--serif);font-style:italic;font-size:clamp(0.9rem,1.6vw,1.15rem);color:rgba(255,255,255,0.8);max-width:520px;}
     .intro-band{border-bottom:1.5px solid var(--ink);}
-    .intro-band-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:180px 1fr 180px;}
-    .intro-stat-block{padding:2rem 2rem 2rem 0;display:flex;flex-direction:column;gap:1.5rem;border-right:1px solid var(--rule);}
-    .intro-stat{display:flex;flex-direction:column;gap:0.15rem;}
-    .intro-stat-label{font-family:var(--cond);font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
-    .intro-stat-value{font-family:var(--serif);font-size:1rem;color:var(--ink);}
-    .intro-body{padding:2rem 2.5rem;}
-    .intro-body p{font-family:var(--serif);font-size:1.2rem;line-height:1.75;color:var(--ink);font-weight:400;margin-bottom:1.1rem;letter-spacing:0.005em;}
+    .intro-band-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:200px 1fr;}
+    .intro-stats{padding:2rem 2rem 2rem 0;display:flex;flex-direction:column;gap:1.5rem;border-right:1px solid var(--rule);}
+    .intro-stat{display:flex;flex-direction:column;gap:0.1rem;}
+    .intro-stat-label{font-family:var(--cond);font-size:0.56rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
+    .intro-stat-value{font-family:var(--serif);font-size:1.05rem;color:var(--ink);}
+    .intro-body{padding:2rem 0 2rem 2.5rem;}
+    .intro-body p{font-family:var(--serif);font-size:1.18rem;line-height:1.78;color:var(--ink);font-weight:400;margin-bottom:1rem;}
     .intro-body p:last-child{margin-bottom:0;}
-    .intro-links{padding:2rem 0 2rem 2rem;display:flex;flex-direction:column;gap:0.75rem;border-left:1px solid var(--rule);}
-    .intro-link{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color 0.15s,border-color 0.15s;display:inline-block;}
-    .intro-link:hover{color:var(--ink);border-color:var(--ink);}
-
-    /* MAP SPLIT */
-    .map-section{border-bottom:1.5px solid var(--ink);}
-    .map-split{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;}
-    .map-frame{border-right:1px solid var(--rule);overflow:hidden;}
-    .map-frame iframe{width:100%;height:380px;display:block;border:none;filter:grayscale(0.2);}
-    .map-hood-list{padding:0;}
-    .map-hood-item{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:1rem;padding:0.95rem 2rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background 0.15s;}
-    .map-hood-item:last-child{border-bottom:none;}
-    .map-hood-item:hover{background:rgba(26,24,22,0.025);}
-    .map-hood-item.coming{opacity:0.38;pointer-events:none;}
-    .map-num{font-family:var(--cond);font-size:0.55rem;letter-spacing:0.1em;color:var(--muted);}
-    .map-name{font-family:var(--serif);font-size:1.05rem;font-weight:500;}
-    .map-count{font-family:var(--cond);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
-    .section-label{border-bottom:1px solid var(--rule);}
-    .section-label-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1rem;height:42px;}
-    .section-label-text{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
-    .section-label-line{flex:1;height:1px;background:var(--rule);}
-    .hood-index{border-bottom:1.5px solid var(--ink);}
-    .hood-index-inner{max-width:1400px;margin:0 auto;}
-    .hood-row{display:grid;grid-template-columns:48px 160px 1fr 120px;align-items:center;gap:1.5rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background 0.15s;padding:1.1rem 2rem;min-height:58px;}
-    .hood-row:last-child{border-bottom:none;}
-    .hood-row:hover{background:rgba(26,24,22,0.025);}
-    .hood-row.coming{opacity:0.38;pointer-events:none;}
-    .hood-num{font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;color:var(--muted);}
-    .hood-name{font-family:var(--serif);font-size:1.15rem;font-weight:500;line-height:1;}
-    .hood-desc{font-size:0.78rem;color:var(--muted);line-height:1.45;}
-    .hood-count{font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-align:right;}
+    .hood-dir{border-bottom:1.5px solid var(--ink);}
+    .section-header{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1.5rem;height:48px;border-bottom:1px solid var(--rule);}
+    .section-header-label{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);}
+    .section-header-line{flex:1;height:1px;background:var(--rule);}
+    .hood-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+    .hood-card{text-decoration:none;color:var(--ink);padding:1.5rem 1.75rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:0.5rem;transition:background 0.15s;min-height:130px;}
+    .hood-card:nth-child(4n){border-right:none;}
+    .hood-card:hover{background:rgba(26,24,22,0.025);}
+    .hood-card.coming{opacity:0.38;pointer-events:none;cursor:default;}
+    .hood-card-num{font-family:var(--cond);font-size:0.54rem;letter-spacing:0.14em;color:var(--muted);}
+    .hood-card-name{font-family:var(--serif);font-size:1.25rem;font-weight:500;line-height:1.1;}
+    .hood-card-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;flex:1;}
+    .hood-card-count{font-family:var(--cond);font-size:0.54rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-top:0.25rem;}
     .tips-section{border-bottom:1.5px solid var(--ink);}
     .tips-inner{max-width:1400px;margin:0 auto;}
-    .hood-group{border-bottom:1px solid var(--rule);}
+    .hood-group{border-bottom:1.5px solid var(--ink);}
     .hood-group:last-child{border-bottom:none;}
-    .hood-group-header{padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:44px;border-bottom:1px solid var(--rule);}
-    .hood-group-name{font-family:var(--serif);font-size:1rem;font-weight:500;}
+    .hood-group-head{padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);}
+    .hood-group-name{font-family:var(--serif);font-size:1.4rem;font-weight:400;line-height:1;}
+    .hood-group-meta{display:flex;align-items:center;gap:1.5rem;}
+    .hood-group-count{font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
     .hood-group-link{font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:color 0.15s,border-color 0.15s;}
     .hood-group-link:hover{color:var(--ink);border-color:var(--ink);}
-    .tip-row{display:grid;grid-template-columns:72px 1fr 60px;align-items:center;gap:1.25rem;padding:0.85rem 2rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background 0.15s;}
-    .tip-row:last-child{border-bottom:none;}
-    .tip-row:hover{background:rgba(26,24,22,0.025);}
-    .tip-row-thumb{width:72px;height:54px;object-fit:cover;display:block;flex-shrink:0;}
-    .tip-row-cat{font-family:var(--cond);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;}
-    .tip-row-name{font-family:var(--serif);font-size:0.98rem;font-weight:500;line-height:1.2;margin-bottom:0.2rem;}
-    .tip-row-copy{font-size:0.74rem;color:var(--muted);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-    .tip-row-arrow{font-family:var(--cond);font-size:0.58rem;color:var(--muted);letter-spacing:0.1em;text-align:right;}
+    .tip-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
+    .tip-card{text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);display:block;transition:background 0.18s;padding-bottom:18px;}
+    .tip-card:last-child{border-right:none;}
+    .tip-card:hover{background:rgba(26,24,22,0.025);}
+    .tip-card-img-wrap{overflow:hidden;}
+    .tip-card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.5s ease;}
+    .tip-card:hover .tip-card-img{transform:scale(1.03);}
+    .tip-card-body{padding:11px 16px 0;}
+    .tip-card-cat{font-family:var(--cond);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+    .tip-card-name{font-family:var(--serif);font-size:1.05rem;font-weight:500;line-height:1.15;margin-bottom:4px;}
+    .tip-card-copy{font-size:0.74rem;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
     .back-wrap{max-width:1400px;margin:0 auto;padding:2rem;}
-    .back-link{font-family:var(--cond);font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color 0.15s;}
+    .back-link{font-family:var(--cond);font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .back-link::before{content:'← ';}
     .back-link:hover{color:var(--ink);}
     footer{border-top:2px solid var(--red);background:var(--ink);}
     .footer-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
     .footer-logo{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--cream);}
     .footer-logo em{font-style:italic;font-weight:400;}.footer-logo .dot{color:var(--red);}
     .footer-stats{font-family:var(--cond);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,239,0.3);display:flex;gap:1rem;}
-    @media(max-width:900px){.map-split{grid-template-columns:1fr;}.map-frame{border-right:none;border-bottom:1px solid var(--rule);}.map-frame iframe{height:280px;}
-      .intro-band-inner{grid-template-columns:1fr;}
-      .intro-stat-block{border-right:none;border-bottom:1px solid var(--rule);flex-direction:row;flex-wrap:wrap;gap:1.5rem;padding:1.5rem 0;}
-      .intro-links{border-left:none;border-top:1px solid var(--rule);padding:1.5rem 0 0;flex-direction:row;}
-      .intro-body{padding:1.5rem 0;}
-      .hood-row{grid-template-columns:32px 1fr 80px;}
-      .hood-desc{display:none;}
-    }
-    @media(max-width:600px){
-      nav,.city-strip-inner,.intro-band-inner,.back-wrap{padding-left:1.25rem;padding-right:1.25rem;}
-      .hood-row,.tip-row,.hood-group-header,.section-label-inner{padding-left:1.25rem;padding-right:1.25rem;}
-      .footer-inner{padding:0 1.25rem;}.footer-stats{display:none;}
-      .nav-links a:not(.cta){display:none;}.nav-tag{display:none;}
-      .city-hero-overlay{padding:1.5rem;}
-      .tip-row{grid-template-columns:56px 1fr;}.tip-row-arrow{display:none;}
-    }
+    @media(max-width:1100px){.hood-grid{grid-template-columns:repeat(3,1fr);}.hood-card:nth-child(4n){border-right:1px solid var(--rule);}.hood-card:nth-child(3n){border-right:none;}}
+    @media(max-width:800px){.intro-band-inner{grid-template-columns:1fr;}.intro-stats{border-right:none;border-bottom:1px solid var(--rule);flex-direction:row;flex-wrap:wrap;gap:1.5rem;padding:1.25rem 0;}.intro-body{padding:1.5rem 0;}.hood-grid{grid-template-columns:repeat(2,1fr);}.hood-card:nth-child(3n){border-right:1px solid var(--rule);}.hood-card:nth-child(2n){border-right:none;}}
+    @media(max-width:600px){nav,.back-wrap,.intro-band-inner{padding-left:1.25rem;padding-right:1.25rem;}.section-header,.hood-group-head{padding-left:1.25rem;padding-right:1.25rem;}.city-hero-overlay{padding:1.5rem;}.nav-links a:not(.cta){display:none;}.nav-tag{display:none;}.footer-stats{display:none;}.tip-cards{grid-template-columns:1fr 1fr;}.tip-card:nth-child(2n){border-right:none;}}
   </style>
 </head>
 <body>
@@ -131,6 +104,8 @@
     </div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="london.html">London</a></li>
+      <li><a href="istanbul.html">Istanbul</a></li>
       <li><a href="index.html" class="cta">Leave a tip</a></li>
     </ul>
   </div>
@@ -138,325 +113,154 @@
 
 <div class="city-strip">
   <div class="city-strip-inner">
-    <a href="geneva.html" class="city-link active">Geneva</a>
+    <a class="city-link active" href="geneva.html">Geneva</a>
     <span class="city-sep">·</span>
-    <a href="london.html" class="city-link">London</a>
+    <a class="city-link" href="london.html">London</a>
     <span class="city-sep">·</span>
-    <a href="istanbul.html" class="city-link">Istanbul</a>
-    <span class="city-sep">·</span>
-    <a href="index.html" class="city-link">Elsewhere</a>
+    <a class="city-link" href="istanbul.html">Istanbul</a>
   </div>
 </div>
 
 <div class="city-hero">
-  <img src="geneva-hero.jpg" alt="Geneva — lake, Ferris wheel, mountains" style="object-position:center 50%;" />
+  <img src="geneva-hero.jpg" alt="Geneva" />
   <div class="city-hero-overlay">
-    <div class="city-hero-eyebrow">HoodTip · Switzerland</div>
+    <div class="city-hero-eyebrow">Switzerland</div>
     <div class="city-hero-title">Geneva</div>
-    <div class="city-hero-sub">The city of refuge.</div>
+    <div class="city-hero-sub">The city of refuge. Alps in the distance, vineyards, a lake, and rivers.</div>
   </div>
 </div>
 
 <div class="intro-band">
   <div class="intro-band-inner">
-    <div class="intro-stat-block">
-      <div class="intro-stat"><span class="intro-stat-label">Country</span><span class="intro-stat-value">Switzerland</span></div>
+    <div class="intro-stats">
+      <div class="intro-stat"><span class="intro-stat-label">Tips</span><span class="intro-stat-value">26</span></div>
       <div class="intro-stat"><span class="intro-stat-label">Neighbourhoods</span><span class="intro-stat-value">11</span></div>
-      <div class="intro-stat"><span class="intro-stat-label">Tips</span><span class="intro-stat-value">49</span></div>
+      <div class="intro-stat"><span class="intro-stat-label">Country</span><span class="intro-stat-value">Switzerland</span></div>
       <div class="intro-stat"><span class="intro-stat-label">Language</span><span class="intro-stat-value">French</span></div>
     </div>
     <div class="intro-body">
-      <p>Home to international organisations, banks, and watches — and the people behind them. The French Alps in the distance, vineyards, a lake, two rivers. Switzerland's francophone outpost feels quietly utopian. A good place to raise kids.</p>
-      <p>The city is compact and walkable. Most of what's worth knowing sits within a few neighbourhoods. Start with Carouge on a Saturday morning.</p>
-    </div>
-    <div class="intro-links">
-      <a href="where-to-stay-geneva.html" class="intro-link">Where to stay →</a>
-      <a href="profile-dave.html" class="intro-link">Dave's Geneva picks →</a>
+      <p>Home to international organisations, banks, and watches — and the people behind them. The French Alps in the distance, vineyards, a lake, rivers. Switzerland's francophone outpost feels quietly utopian.</p>
+      <p>Also home to many Portuguese and other Europeans who came to build their lives here, because it's genuinely a lovely place to be. A good place to raise kids.</p>
     </div>
   </div>
 </div>
 
-<!-- MAP + HOOD LIST -->
-<div class="map-section">
-  <div class="map-split">
-    <div class="map-frame">
-      <canvas id="gva-map" style="width:100%;height:380px;display:block;cursor:pointer;"></canvas>
-    </div>
-    <div class="map-hood-list">
-      <a class="map-hood-item" href="carouge.html"><span class="map-num">01</span><span class="map-name">Carouge</span><span class="map-count">4 tips →</span></a>
-      <a class="map-hood-item" href="saint-gervais.html"><span class="map-num">02</span><span class="map-name">Saint-Gervais</span><span class="map-count">5 tips →</span></a>
-      <a class="map-hood-item" href="plainpalais.html"><span class="map-num">03</span><span class="map-name">Plainpalais</span><span class="map-count">4 tips →</span></a>
-      <a class="map-hood-item" href="paquis.html"><span class="map-num">04</span><span class="map-name">Pâquis</span><span class="map-count">2 tips →</span></a>
-      <a class="map-hood-item" href="eaux-vives.html"><span class="map-num">05</span><span class="map-name">Eaux-Vives</span><span class="map-count">3 tips →</span></a>
-      <a class="map-hood-item" href="nations.html"><span class="map-num">06</span><span class="map-name">Nations</span><span class="map-count">3 tips →</span></a>
-      <a class="map-hood-item" href="cornavin.html"><span class="map-num">07</span><span class="map-name">Cornavin</span><span class="map-count">1 tip →</span></a>
-      <div class="map-hood-item"><span class="map-num">08</span><span class="map-name">Rive</span><span class="map-count">2 tips</span></div>
-      <div class="map-hood-item"><span class="map-num">09</span><span class="map-name">Vieille Ville</span><span class="map-count">1 tip</span></div>
-      <div class="map-hood-item coming"><span class="map-num">10</span><span class="map-name">Champel</span><span class="map-count">Coming</span></div>
-      <div class="map-hood-item coming"><span class="map-num">11</span><span class="map-name">St-Jean</span><span class="map-count">Coming</span></div>
-    </div>
+<div class="hood-dir">
+  <div class="section-header">
+    <span class="section-header-label">11 Neighbourhoods</span>
+    <div class="section-header-line"></div>
   </div>
-</div>
-
-<div class="section-label">
-  <div class="section-label-inner">
-    <span class="section-label-text">Neighbourhoods</span>
-    <div class="section-label-line"></div>
-  </div>
-</div>
-
-<div class="hood-index">
-  <div class="hood-index-inner">
-    <a class="hood-row" href="carouge.html"><span class="hood-num">01</span><span class="hood-name">Carouge</span><span class="hood-desc">Saturday market, natural wine, the most relaxed neighbourhood in Geneva.</span><span class="hood-count">4 tips &rarr;</span></a>
-    <a class="hood-row" href="saint-gervais.html"><span class="hood-num">02</span><span class="hood-name">Saint-Gervais</span><span class="hood-desc">Best grocery, best pub, Bongo Joe on the Rhône, La Barge in summer.</span><span class="hood-count">5 tips &rarr;</span></a>
-    <a class="hood-row" href="plainpalais.html"><span class="hood-num">03</span><span class="hood-name">Plainpalais</span><span class="hood-desc">Smashburgers, natural wine, pizza under CHF 15, Victoria Hall.</span><span class="hood-count">4 tips &rarr;</span></a>
-    <a class="hood-row" href="paquis.html"><span class="hood-num">04</span><span class="hood-name">Pâquis</span><span class="hood-desc">The bains on the lake, the best sushi in the city.</span><span class="hood-count">2 tips &rarr;</span></a>
-    <a class="hood-row" href="eaux-vives.html"><span class="hood-num">05</span><span class="hood-name">Eaux-Vives</span><span class="hood-desc">Parc La Grange, vintage posters, Café Chou. A neighbourhood locals actually live in.</span><span class="hood-count">3 tips &rarr;</span></a>
-    <a class="hood-row" href="nations.html"><span class="hood-num">06</span><span class="hood-name">Nations</span><span class="hood-desc">The UN, the Red Cross — and a few surprisingly good lunch spots.</span><span class="hood-count">3 tips &rarr;</span></a>
-    <a class="hood-row" href="cornavin.html"><span class="hood-num">07</span><span class="hood-name">Cornavin</span><span class="hood-desc">The main station. One tip worth knowing before you board.</span><span class="hood-count">1 tip &rarr;</span></a>
-    <div class="hood-row"><span class="hood-num">08</span><span class="hood-name">Rive</span><span class="hood-desc">JLC on Rue du Rhône. Ottolenghi at the Mandarin. Proper city centre.</span><span class="hood-count">2 tips</span></div>
-    <div class="hood-row"><span class="hood-num">09</span><span class="hood-name">Vieille Ville</span><span class="hood-desc">The old town. A great library in Bastions park and a watch shop worth knowing about.</span><span class="hood-count">2 tips</span></div>
-    <div class="hood-row coming"><span class="hood-num">10</span><span class="hood-name">Champel</span><span class="hood-desc">Quiet, elevated, residential. Doctors, diplomats, good cheese shops.</span><span class="hood-count">Coming</span></div>
-    <div class="hood-row coming"><span class="hood-num">11</span><span class="hood-name">St-Jean</span><span class="hood-desc">Along the Rhône to the west. Getting more interesting.</span><span class="hood-count">Coming</span></div>
-  </div>
-</div>
-
-<div class="section-label">
-  <div class="section-label-inner">
-    <span class="section-label-text">All Geneva tips</span>
-    <div class="section-label-line"></div>
+  <div class="hood-grid">
+    <a class="hood-card" href="#carouge"><span class="hood-card-num">01</span><span class="hood-card-name">Carouge</span><span class="hood-card-desc">What Geneva would be if it relaxed. Saturday market, natural wine, oysters.</span><span class="hood-card-count">4 tips</span></a>
+    <a class="hood-card" href="#saint-gervais"><span class="hood-card-num">02</span><span class="hood-card-name">Saint-Gervais</span><span class="hood-card-desc">Best Guinness. Best grocery. Bongo Joe. La Barge. Five reasons to stay.</span><span class="hood-card-count">5 tips</span></a>
+    <a class="hood-card" href="#plainpalais"><span class="hood-card-num">03</span><span class="hood-card-name">Plainpalais</span><span class="hood-card-desc">The big red plain. Sushi, smashburgers, pizza, and Victoria Hall.</span><span class="hood-card-count">4 tips</span></a>
+    <a class="hood-card" href="#paquis"><span class="hood-card-num">04</span><span class="hood-card-name">Pâquis</span><span class="hood-card-desc">Geneva's most international neighbourhood. The bains, the lake, everything open late.</span><span class="hood-card-count">2 tips</span></a>
+    <a class="hood-card" href="#eaux-vives"><span class="hood-card-num">05</span><span class="hood-card-name">Eaux-Vives</span><span class="hood-card-desc">Parc La Grange, vintage posters, the quay. A neighbourhood locals actually live in.</span><span class="hood-card-count">3 tips</span></a>
+    <a class="hood-card" href="#nations"><span class="hood-card-num">06</span><span class="hood-card-name">Nations</span><span class="hood-card-desc">The UN, the Red Cross, half the world's NGOs — and shockingly few places to eat.</span><span class="hood-card-count">3 tips</span></a>
+    <a class="hood-card" href="#rive"><span class="hood-card-num">07</span><span class="hood-card-name">Rive</span><span class="hood-card-desc">JLC on Rue du Rhône. Ottolenghi at the Mandarin. Proper city centre.</span><span class="hood-card-count">2 tips</span></a>
+    <a class="hood-card" href="#vieille-ville"><span class="hood-card-num">08</span><span class="hood-card-name">Vieille Ville</span><span class="hood-card-desc">The old town. The library in Bastions park. NOMOS watches on Rue de la Cité.</span><span class="hood-card-count">2 tips</span></a>
+    <a class="hood-card" href="#cornavin"><span class="hood-card-num">09</span><span class="hood-card-name">Cornavin</span><span class="hood-card-desc">The main station. One tip worth knowing before you board.</span><span class="hood-card-count">1 tip</span></a>
+    <div class="hood-card coming"><span class="hood-card-num">10</span><span class="hood-card-name">Champel</span><span class="hood-card-desc">Quiet, elevated, residential. Doctors, diplomats, good cheese shops.</span><span class="hood-card-count">Coming soon</span></div>
+    <div class="hood-card coming"><span class="hood-card-num">11</span><span class="hood-card-name">St-Jean</span><span class="hood-card-desc">Along the Rhône to the west. Getting more interesting.</span><span class="hood-card-count">Coming soon</span></div>
   </div>
 </div>
 
 <div class="tips-section">
   <div class="tips-inner">
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Carouge</span><a href="carouge.html" class="hood-group-link">All tips →</a></div>
-      <a class="tip-row" href="tip-paulhenri.html"><img class="tip-row-thumb" src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler" /><div class="tip-row-body"><div class="tip-row-cat">Wine · Market</div><div class="tip-row-name">Paul-Henri Soler</div><div class="tip-row-copy">The best wine in Geneva, maybe the world. CHF 17. Saturday market. Get there before noon.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-samourai.html"><img class="tip-row-thumb" src="carouge-oyster-lady.jpg" alt="Samouraï des Mers" /><div class="tip-row-body"><div class="tip-row-cat">Seafood · Market</div><div class="tip-row-name">Samouraï des Mers</div><div class="tip-row-copy">A Frenchman drives Breton oysters to the Saturday market. Half a dozen and a muscadet.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="carouge.html"><img class="tip-row-thumb" src="carouge-cover.jpg" alt="Marché de Carouge" /><div class="tip-row-body"><div class="tip-row-cat">Market</div><div class="tip-row-name">Marché de Carouge</div><div class="tip-row-copy">Saturday 8h–14h. Wine, oysters, vegetables, flowers. Come hungry.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="carouge">
+      <div class="hood-group-head"><span class="hood-group-name">Carouge</span><div class="hood-group-meta"><span class="hood-group-count">4 tips</span><a class="hood-group-link" href="carouge.html">All Carouge tips →</a></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-paulhenri.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="paulhenri-wine-bottles.jpg" alt="Paul-Henri Soler" /></div><div class="tip-card-body"><div class="tip-card-cat">Wine · Market</div><div class="tip-card-name">Paul-Henri Soler</div><div class="tip-card-copy">The best wine in Geneva, maybe Switzerland, maybe the world. Get there before noon.</div></div></a>
+        <a class="tip-card" href="tip-samourai.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="carouge-oyster-lady.jpg" alt="Samouraï des Mers" /></div><div class="tip-card-body"><div class="tip-card-cat">Seafood · Market</div><div class="tip-card-name">Samouraï des Mers</div><div class="tip-card-copy">A Frenchman drives Breton oysters to the Saturday market. Half a dozen and a muscadet.</div></div></a>
+        <a class="tip-card" href="carouge.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="carouge-cover.jpg" alt="Marché de Carouge" style="object-position:center 60%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Market</div><div class="tip-card-name">Marché de Carouge</div><div class="tip-card-copy">Saturday 8h–14h. Wine, oysters, vegetables, flowers. Come hungry.</div></div></a>
+        <a class="tip-card" href="carouge.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="carouge-wine-bottles.jpg" alt="Carouge" style="object-position:center 50%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Neighbourhood guide</div><div class="tip-card-name">Explore Carouge</div><div class="tip-card-copy">All four tips — the market, the wine, the vibe.</div></div></a>
+      </div>
     </div>
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Saint-Gervais</span><a href="saint-gervais.html" class="hood-group-link">All tips →</a></div>
-      <a class="tip-row" href="tip-bongojoe.html"><img class="tip-row-thumb" src="bongojoe-yellow-table.jpg" alt="Bongo Joe" /><div class="tip-row-body"><div class="tip-row-cat">Bar · Record Shop</div><div class="tip-row-name">Bongo Joe</div><div class="tip-row-copy">Record shop turned outdoor bar on the Rhône. Cold local white, ask for the nuts.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-labarge.html"><img class="tip-row-thumb" src="barge-water-example.jpg" alt="La Barge" /><div class="tip-row-body"><div class="tip-row-cat">Bar · Swimming · Summer</div><div class="tip-row-name">La Barge</div><div class="tip-row-copy">Jump in the Rhône, come back out, drink a shockingly cold beer. Summer only.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-manor.html"><img class="tip-row-thumb" src="manor-exterior.jpg" alt="Manor Food Hall" /><div class="tip-row-body"><div class="tip-row-cat">Food Hall · Grocery</div><div class="tip-row-name">Manor Food Hall</div><div class="tip-row-copy">Best grocery in central Geneva. Fishmonger gets fera from the lake.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-mulligans.html"><img class="tip-row-thumb" src="geneva-mulligans-pints.jpg" alt="Mulligan's" /><div class="tip-row-body"><div class="tip-row-cat">Pub</div><div class="tip-row-name">Mulligan's</div><div class="tip-row-copy">Geneva's best Guinness. Unpretentious, right by the station.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-enfaim.html"><img class="tip-row-thumb" src="enfaim-sabich.jpg" alt="En Faim" /><div class="tip-row-body"><div class="tip-row-cat">Restaurant · Lunch</div><div class="tip-row-name">En Faim</div><div class="tip-row-copy">Mediterranean lunch spot. Get the sabich.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="saint-gervais">
+      <div class="hood-group-head"><span class="hood-group-name">Saint-Gervais</span><div class="hood-group-meta"><span class="hood-group-count">5 tips</span><a class="hood-group-link" href="saint-gervais.html">All Saint-Gervais tips →</a></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-bongojoe.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="bongojoe-yellow-table.jpg" alt="Bongo Joe" /></div><div class="tip-card-body"><div class="tip-card-cat">Bar · Record Shop</div><div class="tip-card-name">Bongo Joe</div><div class="tip-card-copy">Record shop turned outdoor bar on the Rhône. Cold local white, ask for the nuts.</div></div></a>
+        <a class="tip-card" href="tip-labarge.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="barge-water-example.jpg" alt="La Barge" style="object-position:center 40%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Bar · Swimming · Summer</div><div class="tip-card-name">La Barge</div><div class="tip-card-copy">Jump in the Rhône, come back out, drink a shockingly cold beer. Summer only.</div></div></a>
+        <a class="tip-card" href="tip-manor.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="manor-exterior.jpg" alt="Manor Food Hall" /></div><div class="tip-card-body"><div class="tip-card-cat">Food Hall · Grocery</div><div class="tip-card-name">Manor Food Hall</div><div class="tip-card-copy">Best grocery in central Geneva. Fishmonger gets fera from the lake.</div></div></a>
+        <a class="tip-card" href="tip-mulligans.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="geneva-mulligans-pints.jpg" alt="Mulligan's" /></div><div class="tip-card-body"><div class="tip-card-cat">Pub</div><div class="tip-card-name">Mulligan's</div><div class="tip-card-copy">Geneva's best Guinness. Unpretentious, right by the station.</div></div></a>
+        <a class="tip-card" href="tip-enfaim.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="enfaim-sabich.jpg" alt="En Faim" /></div><div class="tip-card-body"><div class="tip-card-cat">Restaurant · Lunch</div><div class="tip-card-name">En Faim</div><div class="tip-card-copy">Mediterranean lunch spot. Get the sabich.</div></div></a>
+      </div>
     </div>
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Plainpalais</span><a href="plainpalais.html" class="hood-group-link">All tips →</a></div>
-      <a class="tip-row" href="tip-papabou.html"><img class="tip-row-thumb" src="papabou-burger-wine.jpg" alt="Papabou" /><div class="tip-row-body"><div class="tip-row-cat">Burger · Natural Wine</div><div class="tip-row-name">Papabou</div><div class="tip-row-copy">Smashburgers and natural wine. Swiss potato fries.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-tanuki.html"><img class="tip-row-thumb" src="tanuki-on-table.jpg" alt="Tanuki" /><div class="tip-row-body"><div class="tip-row-cat">Japanese · Sushi</div><div class="tip-row-name">Tanuki</div><div class="tip-row-copy">Freshest sushi in Geneva. Small, unpretentious, excellent.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-pignata.html"><img class="tip-row-thumb" src="pignata-pizza-athome.jpg" alt="La Pignata" /><div class="tip-row-body"><div class="tip-row-cat">Pizza</div><div class="tip-row-name">La Pignata</div><div class="tip-row-copy">Good pizza for good prices. Margherita under CHF 15.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-victoriahall.html"><img class="tip-row-thumb" src="victoria-hall-wide.jpg" alt="Victoria Hall" /><div class="tip-row-body"><div class="tip-row-cat">Concert Hall</div><div class="tip-row-name">Victoria Hall</div><div class="tip-row-copy">One of the most beautiful concert halls in Europe. Walk in and the ceiling will stop you.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="plainpalais">
+      <div class="hood-group-head"><span class="hood-group-name">Plainpalais</span><div class="hood-group-meta"><span class="hood-group-count">4 tips</span><a class="hood-group-link" href="plainpalais.html">All Plainpalais tips →</a></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-victoriahall.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="victoria-hall-wide.jpg" alt="Victoria Hall" style="object-position:center 35%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Concert Hall</div><div class="tip-card-name">Victoria Hall</div><div class="tip-card-copy">One of the most beautiful concert halls in Europe. Walk in and the ceiling will stop you.</div></div></a>
+        <a class="tip-card" href="tip-papabou.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="papabou-burger-wine.jpg" alt="Papabou" style="object-position:center 40%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Burger · Natural Wine</div><div class="tip-card-name">Papabou</div><div class="tip-card-copy">Smashburgers and natural wine. Swiss potato fries.</div></div></a>
+        <a class="tip-card" href="tip-tanuki.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="tanuki-on-table.jpg" alt="Tanuki" /></div><div class="tip-card-body"><div class="tip-card-cat">Japanese · Sushi</div><div class="tip-card-name">Tanuki</div><div class="tip-card-copy">Freshest sushi in Geneva. Small, unpretentious, excellent.</div></div></a>
+        <a class="tip-card" href="tip-pignata.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="pignata-pizza-athome.jpg" alt="La Pignata" /></div><div class="tip-card-body"><div class="tip-card-cat">Pizza</div><div class="tip-card-name">La Pignata</div><div class="tip-card-copy">Good pizza for good prices. Margherita under CHF 15.</div></div></a>
+      </div>
     </div>
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Pâquis</span><a href="paquis.html" class="hood-group-link">All tips →</a></div>
-      <a class="tip-row" href="tip-baindespaquis.html"><img class="tip-row-thumb" src="baindespaquis-sunset.jpg" alt="Bains des Pâquis" /><div class="tip-row-body"><div class="tip-row-cat">Swimming · Lake · Bar</div><div class="tip-row-name">Bains des Pâquis</div><div class="tip-row-copy">70s vibes on Lac Léman. Cold rosé on the jetty, jump off the board, Alps behind you.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-nagomi.html"><img class="tip-row-thumb" src="nagomi-chef.jpg" alt="Nagomi" /><div class="tip-row-body"><div class="tip-row-cat">Sushi · Restaurant</div><div class="tip-row-name">Nagomi</div><div class="tip-row-copy">The best sushi in Geneva. Sit at the bar, order the uni, drink cold sake.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="paquis">
+      <div class="hood-group-head"><span class="hood-group-name">Pâquis</span><div class="hood-group-meta"><span class="hood-group-count">2 tips</span><a class="hood-group-link" href="paquis.html">All Pâquis tips →</a></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-baindespaquis.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="baindespaquis-sunset.jpg" alt="Bains des Pâquis" style="object-position:center 40%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Swimming · Lake · Bar</div><div class="tip-card-name">Bains des Pâquis</div><div class="tip-card-copy">Cold rosé on the jetty, jump off the board, Alps behind you. A Geneva institution.</div></div></a>
+        <a class="tip-card" href="tip-nagomi.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="nagomi-chef.jpg" alt="Nagomi" style="object-position:center 20%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Sushi · Restaurant</div><div class="tip-card-name">Nagomi</div><div class="tip-card-copy">The best sushi in Geneva. Sit at the bar, order the uni. You are briefly in Tokyo.</div></div></a>
+      </div>
     </div>
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Eaux-Vives</span><a href="eaux-vives.html" class="hood-group-link">All tips →</a></div>
-      <a class="tip-row" href="tip-parklagrange.html"><img class="tip-row-thumb" src="parklagrange-1.jpg" alt="Parc La Grange" /><div class="tip-row-body"><div class="tip-row-cat">Park</div><div class="tip-row-name">Parc La Grange</div><div class="tip-row-copy">Probably the most beautiful park in Geneva. Villa, lake, Alps. Bring food.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-galerie123.html"><img class="tip-row-thumb" src="galerie123-1.jpg" alt="Galerie 1 2 3" /><div class="tip-row-body"><div class="tip-row-cat">Shop · Art</div><div class="tip-row-name">Galerie 1 2 3</div><div class="tip-row-copy">Vintage Swiss posters. Ski, rail, sport. Browse the website first, go with a specific ask.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-chou.html"><img class="tip-row-thumb" src="eauxvives-chou.jpg" alt="Café Chou" /><div class="tip-row-body"><div class="tip-row-cat">Café</div><div class="tip-row-name">Café Chou</div><div class="tip-row-copy">Named after the little dough ball they make. Good coffee. Right on the main street.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="eaux-vives">
+      <div class="hood-group-head"><span class="hood-group-name">Eaux-Vives</span><div class="hood-group-meta"><span class="hood-group-count">3 tips</span><a class="hood-group-link" href="eaux-vives.html">All Eaux-Vives tips →</a></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-parklagrange.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="parklagrange-1.jpg" alt="Parc La Grange" /></div><div class="tip-card-body"><div class="tip-card-cat">Park</div><div class="tip-card-name">Parc La Grange</div><div class="tip-card-copy">Probably the most beautiful park in Geneva. Villa, lake, Alps. Bring food.</div></div></a>
+        <a class="tip-card" href="tip-galerie123.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="galerie123-1.jpg" alt="Galerie 1 2 3" /></div><div class="tip-card-body"><div class="tip-card-cat">Shop · Art</div><div class="tip-card-name">Galerie 1 2 3</div><div class="tip-card-copy">Vintage Swiss posters. Ski, rail, sport. Browse the website first.</div></div></a>
+        <a class="tip-card" href="tip-chou.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="eauxvives-chou.jpg" alt="Café Chou" /></div><div class="tip-card-body"><div class="tip-card-cat">Café · Pâtisserie</div><div class="tip-card-name">Café Chou</div><div class="tip-card-copy">Named after the little dough ball they make. Good coffee.</div></div></a>
+      </div>
     </div>
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Nations</span><a href="nations.html" class="hood-group-link">All tips →</a></div>
-      <a class="tip-row" href="tip-sagano.html"><img class="tip-row-thumb" src="sushi-takeout-nations.jpg" alt="Sagano" /><div class="tip-row-body"><div class="tip-row-cat">Sushi · Takeaway</div><div class="tip-row-name">Sagano Take Away</div><div class="tip-row-copy">Made in the legit Japanese restaurant next door. Take it to the park.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-merigonde.html"><img class="tip-row-thumb" src="Screenshot_2026-03-17_at_09_33_28.png" alt="Mérigonde" /><div class="tip-row-body"><div class="tip-row-cat">Boulangerie · Sandwich</div><div class="tip-row-name">Mérigonde</div><div class="tip-row-copy">Get the roast beef sandwich. Take it to Parc Vermont. Under CHF 10.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-empanadas.html"><img class="tip-row-thumb" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Empanadas Factory" /><div class="tip-row-body"><div class="tip-row-cat">Restaurant</div><div class="tip-row-name">Empanadas Factory</div><div class="tip-row-copy">Ask for the sauce picante. Take it to the park.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="nations">
+      <div class="hood-group-head"><span class="hood-group-name">Nations</span><div class="hood-group-meta"><span class="hood-group-count">3 tips</span><a class="hood-group-link" href="nations.html">All Nations tips →</a></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-sagano.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="sushi-takeout-nations.jpg" alt="Sagano" /></div><div class="tip-card-body"><div class="tip-card-cat">Sushi · Takeaway</div><div class="tip-card-name">Sagano Take Away</div><div class="tip-card-copy">Made in the legit Japanese restaurant next door. Take it to the park.</div></div></a>
+        <a class="tip-card" href="tip-merigonde.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="Screenshot_2026-03-17_at_09_33_28.png" alt="Mérigonde" /></div><div class="tip-card-body"><div class="tip-card-cat">Boulangerie · Sandwich</div><div class="tip-card-name">Mérigonde</div><div class="tip-card-copy">Get the roast beef sandwich. Take it to Parc Vermont. Under CHF 10.</div></div></a>
+        <a class="tip-card" href="tip-empanadas.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Empanadas Factory" /></div><div class="tip-card-body"><div class="tip-card-cat">Restaurant</div><div class="tip-card-name">Empanadas Factory</div><div class="tip-card-copy">Ask for the sauce picante. Take it to the park.</div></div></a>
+      </div>
     </div>
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Cornavin</span><a href="cornavin.html" class="hood-group-link">All tips →</a></div>
-      <a class="tip-row" href="tip-swisstrains.html"><img class="tip-row-thumb" src="Screenshot_2026-03-17_at_09_39_02.png" alt="Swiss Trains" /><div class="tip-row-body"><div class="tip-row-cat">Travel · Trains</div><div class="tip-row-name">The ultimate tip for long train rides in Switzerland</div><div class="tip-row-copy">Don't book first class. Walk to the restaurant car. White tablecloth, Alps out the window.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="rive">
+      <div class="hood-group-head"><span class="hood-group-name">Rive</span><div class="hood-group-meta"><span class="hood-group-count">2 tips</span></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-jlc.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="jlc_river.jpg" alt="Jaeger-LeCoultre" style="object-position:center 40%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Watch · Boutique</div><div class="tip-card-name">Jaeger-LeCoultre</div><div class="tip-card-copy">You can't buy a Rolex in Geneva. JLC you can. Walk in, buy a watch, leave with it.</div></div></a>
+        <a class="tip-card" href="tip-ottolenghi.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="ottolenghi-exterior-mandarin.jpg" alt="Ottolenghi" style="object-position:center 50%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Restaurant · Breakfast</div><div class="tip-card-name">Ottolenghi Geneva</div><div class="tip-card-copy">Out of all the places in the world, Ottolenghi opened here. The check must have been good.</div></div></a>
+      </div>
     </div>
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Rive</span><span style="font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">2 tips</span></div>
-      <a class="tip-row" href="tip-jlc.html"><img class="tip-row-thumb" src="jlc_river.jpg" alt="Jaeger-LeCoultre" /><div class="tip-row-body"><div class="tip-row-cat">Watch · Boutique</div><div class="tip-row-name">Jaeger-LeCoultre</div><div class="tip-row-copy">You can't buy a Rolex in Geneva. JLC you can. Walk in, buy a watch, leave with it.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-ottolenghi.html"><img class="tip-row-thumb" src="ottolenghi-eggs.jpg" alt="Ottolenghi" /><div class="tip-row-body"><div class="tip-row-cat">Restaurant</div><div class="tip-row-name">Ottolenghi Geneva</div><div class="tip-row-copy">Out of all the places in the world, Ottolenghi opened here. The check must have been good.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="vieille-ville">
+      <div class="hood-group-head"><span class="hood-group-name">Vieille Ville</span><div class="hood-group-meta"><span class="hood-group-count">2 tips</span></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-bijougregoire.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="nomos-6.jpg" alt="Bijouterie Grégoire" style="object-position:center 40%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Watches · Boutique</div><div class="tip-card-name">Bijouterie Grégoire</div><div class="tip-card-copy">The best NOMOS destination in Geneva. Ring the bell at 8 Rue de la Cité.</div></div></a>
+        <a class="tip-card" href="tip-bibliotheque.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="bastions-park-view.jpg" alt="Bibliothèque de Genève" /></div><div class="tip-card-body"><div class="tip-card-cat">Library · Free</div><div class="tip-card-name">Bibliothèque de Genève</div><div class="tip-card-copy">Free, open to everyone, right in Bastions park. One of the best laptop spots in the city.</div></div></a>
+      </div>
     </div>
 
-    <div class="hood-group">
-      <div class="hood-group-header"><span class="hood-group-name">Vieille Ville</span><span style="font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">2 tips</span></div>
-      <a class="tip-row" href="tip-bibliotheque.html"><img class="tip-row-thumb" src="bastions-park-view.jpg" alt="Bibliothèque de Genève" /><div class="tip-row-body"><div class="tip-row-cat">Library · Free</div><div class="tip-row-name">Bibliothèque de Genève</div><div class="tip-row-copy">Free, open to everyone, right in Bastions park. One of the best laptop spots in the city.</div></div><span class="tip-row-arrow">Read →</span></a>
-      <a class="tip-row" href="tip-bijougrégoire.html"><img class="tip-row-thumb" src="carouge-cover.jpg" alt="Bijouterie Grégoire" style="object-position:center 50%;" /><div class="tip-row-body"><div class="tip-row-cat">Watch Shop · <em>tip by @paddy</em></div><div class="tip-row-name">Bijouterie Grégoire</div><div class="tip-row-copy">The one Geneva store with NOMOS watches on site. Beautiful side street in the old city.</div></div><span class="tip-row-arrow">Read →</span></a>
+    <div class="hood-group" id="cornavin">
+      <div class="hood-group-head"><span class="hood-group-name">Cornavin</span><div class="hood-group-meta"><span class="hood-group-count">1 tip</span><a class="hood-group-link" href="cornavin.html">All Cornavin tips →</a></div></div>
+      <div class="tip-cards">
+        <a class="tip-card" href="tip-swisstrains.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="Screenshot_2026-03-17_at_09_39_02.png" alt="Swiss Train Restaurant Car" /></div><div class="tip-card-body"><div class="tip-card-cat">Travel · Trains</div><div class="tip-card-name">The Swiss Train Restaurant Car</div><div class="tip-card-copy">White tablecloth, Alps out the window. Nobody seems to know this exists.</div></div></a>
+      </div>
     </div>
 
   </div>
 </div>
 
 <div class="back-wrap">
-  <a href="index.html" class="back-link">← All cities</a>
+  <a href="index.html" class="back-link">All cities</a>
 </div>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
-    <div class="footer-stats"><span>49 tips</span><span>·</span><span>15 neighbourhoods</span><span>·</span><span>7 cities</span></div>
+    <div class="footer-stats"><span>26 tips</span><span>·</span><span>11 neighbourhoods</span><span>·</span><span>Geneva</span></div>
   </div>
 </footer>
 
-
-
-<script>
-(function() {
-  function drawMap() {
-    const canvas = document.getElementById('gva-map');
-    if (!canvas) return;
-    const dpr = window.devicePixelRatio || 1;
-    const W = canvas.parentElement.offsetWidth || 640;
-    const H = 380;
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    canvas.style.width = W + 'px';
-    canvas.style.height = H + 'px';
-    const ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-
-    // Bounding box
-    const minLng = 6.08, maxLng = 6.225;
-    const minLat = 46.168, maxLat = 46.265;
-
-    function x(lng) { return (lng - minLng) / (maxLng - minLng) * W; }
-    function y(lat) { return (maxLat - lat) / (maxLat - minLat) * H; }
-    function pt(lng, lat) { return [x(lng), y(lat)]; }
-
-    const cream = '#f7f4ef', ink = '#1a1816', muted = '#6b6560';
-    const rule = '#e0dbd3', red = '#b5322a';
-    const waterFill = '#d4e8f2', waterStroke = '#a8cfe0';
-
-    // Background
-    ctx.fillStyle = cream;
-    ctx.fillRect(0, 0, W, H);
-
-    // Lac Léman — western portion, real shape
-    ctx.beginPath();
-    ctx.moveTo(...pt(6.155, 46.207)); // Rhône exit, north
-    ctx.bezierCurveTo(...pt(6.162, 46.216), ...pt(6.175, 46.218), ...pt(6.200, 46.214));
-    ctx.bezierCurveTo(...pt(6.215, 46.210), ...pt(6.225, 46.204), ...pt(6.225, 46.196));
-    ctx.bezierCurveTo(...pt(6.225, 46.188), ...pt(6.210, 46.180), ...pt(6.192, 46.178));
-    ctx.bezierCurveTo(...pt(6.175, 46.176), ...pt(6.160, 46.183), ...pt(6.155, 46.195));
-    ctx.closePath();
-    ctx.fillStyle = waterFill;
-    ctx.fill();
-    ctx.strokeStyle = waterStroke;
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    // Rhône — exits lake westward
-    ctx.beginPath();
-    ctx.moveTo(...pt(6.155, 46.207));
-    ctx.bezierCurveTo(...pt(6.148, 46.210), ...pt(6.138, 46.208), ...pt(6.128, 46.204));
-    ctx.bezierCurveTo(...pt(6.115, 46.200), ...pt(6.100, 46.197), ...pt(6.082, 46.192));
-    ctx.strokeStyle = waterStroke;
-    ctx.lineWidth = 5;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-
-    // Rhône north bank fill to show width
-    ctx.beginPath();
-    ctx.moveTo(...pt(6.155, 46.210));
-    ctx.bezierCurveTo(...pt(6.145, 46.212), ...pt(6.130, 46.209), ...pt(6.115, 46.204));
-    ctx.bezierCurveTo(...pt(6.100, 46.200), ...pt(6.085, 46.196), ...pt(6.082, 46.195));
-    ctx.lineTo(...pt(6.082, 46.192));
-    ctx.bezierCurveTo(...pt(6.085, 46.190), ...pt(6.100, 46.194), ...pt(6.115, 46.198));
-    ctx.bezierCurveTo(...pt(6.130, 46.202), ...pt(6.145, 46.207), ...pt(6.155, 46.207));
-    ctx.closePath();
-    ctx.fillStyle = waterFill;
-    ctx.fill();
-
-    // Arve — joins Rhône from south at Jonction
-    ctx.beginPath();
-    ctx.moveTo(...pt(6.145, 46.172));
-    ctx.bezierCurveTo(...pt(6.140, 46.180), ...pt(6.133, 46.190), ...pt(6.128, 46.196));
-    ctx.strokeStyle = waterStroke;
-    ctx.lineWidth = 3;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-
-    // Water labels
-    ctx.save();
-    ctx.font = 'italic 11px Georgia, serif';
-    ctx.fillStyle = '#6fa3be';
-    ctx.fillText('Lac Léman', x(6.178), y(46.196));
-    ctx.fillStyle = '#8ab5cc';
-    ctx.font = 'italic 9px Georgia, serif';
-    ctx.fillText('Rhône', x(6.108), y(46.206));
-    ctx.fillText('Arve', x(6.148), y(46.183));
-    ctx.restore();
-
-    // Neighbourhoods [name, lng, lat, url, count, live]
-    const hoods = [
-      ['Nations',       6.140, 46.228, 'nations.html',       '3 tips', true],
-      ['Cornavin',      6.142, 46.210, 'cornavin.html',      '1 tip',  true],
-      ['Saint-Gervais', 6.147, 46.207, 'saint-gervais.html', '5 tips', true],
-      ['Pâquis',        6.157, 46.212, 'paquis.html',        '2 tips', true],
-      ['Vieille Ville', 6.150, 46.200, null,                 '1 tip',  false],
-      ['Rive',          6.156, 46.202, null,                 '2 tips', false],
-      ['Plainpalais',   6.138, 46.195, 'plainpalais.html',   '4 tips', true],
-      ['Eaux-Vives',    6.166, 46.200, 'eaux-vives.html',    '3 tips', true],
-      ['Carouge',       6.138, 46.184, 'carouge.html',       '4 tips', true],
-      ['Champel',       6.152, 46.188, null,                 'Soon',   false],
-      ['St-Jean',       6.113, 46.205, null,                 'Soon',   false],
-    ];
-
-    hoods.forEach(([name, lng, lat, url, count, live]) => {
-      const cx = x(lng), cy = y(lat);
-      const soon = count === 'Soon';
-
-      ctx.beginPath();
-      ctx.arc(cx, cy, live ? 5 : 3.5, 0, Math.PI * 2);
-      ctx.fillStyle = soon ? '#ccc' : (live ? red : '#999');
-      ctx.fill();
-      if (live) {
-        ctx.strokeStyle = cream;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-      }
-
-      ctx.save();
-      ctx.font = (live ? '600' : '400') + ' 10px "Barlow Condensed", sans-serif';
-      ctx.fillStyle = soon ? '#bbb' : (live ? ink : muted);
-      ctx.fillText(name.toUpperCase(), cx + 8, cy + 3);
-      if (!soon) {
-        ctx.font = '300 9px Barlow, sans-serif';
-        ctx.fillStyle = muted;
-        ctx.fillText(count, cx + 8, cy + 13);
-      }
-      ctx.restore();
-    });
-
-    ctx.strokeStyle = rule;
-    ctx.lineWidth = 1;
-    ctx.strokeRect(0.5, 0.5, W - 1, H - 1);
-
-    // Interactions
-    canvas.addEventListener('click', e => {
-      const r = canvas.getBoundingClientRect();
-      const mx = e.clientX - r.left, my = e.clientY - r.top;
-      hoods.forEach(([n, lng, lat, url]) => {
-        if (!url) return;
-        if (Math.hypot(mx - x(lng), my - y(lat)) < 20) window.location.href = url;
-      });
-    });
-    canvas.addEventListener('mousemove', e => {
-      const r = canvas.getBoundingClientRect();
-      const mx = e.clientX - r.left, my = e.clientY - r.top;
-      canvas.style.cursor = hoods.some(([n, lng, lat, url]) => url && Math.hypot(mx - x(lng), my - y(lat)) < 20) ? 'pointer' : 'default';
-    });
-  }
-  document.fonts ? document.fonts.ready.then(drawMap) : window.addEventListener('load', drawMap);
-})();
-</script>
 </body>
 </html>
