@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build your profile — HoodTip</title>
-  <meta name="description" content="Know somewhere well? Build your HoodTip profile. Your tips, your neighbourhoods, your taste." />
+  <title>Leave a tip — HoodTip</title>
+  <meta name="description" content="Every tip on HoodTip is attributed to a real person. Create your profile and leave your first tip." />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -13,323 +16,337 @@
       --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
       --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
       --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans:  'Barlow', system-ui, sans-serif;
-      --cond:  'Barlow Condensed', system-ui, sans-serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
 
-    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); background: var(--cream); }
+    .nav-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
     .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
     .logo em { font-style: italic; font-weight: 400; }
     .logo .dot { color: var(--red); }
-    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-back { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-back:hover { color: var(--ink); }
 
     /* PAGE HEADER */
-    .page-header { border-bottom: 1.5px solid var(--ink); padding: 3rem 2rem 2.5rem; text-align: center; }
-    .page-header-eyebrow { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
-    .page-header-hed { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
+    .page-header { border-bottom: 1.5px solid var(--ink); padding: 2.5rem 2rem; max-width: 860px; margin: 0 auto; width: 100%; }
+    .page-header-eyebrow { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+    .page-header-hed { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.05; margin-bottom: 0.5rem; }
     .page-header-hed em { font-style: italic; }
-    .page-header-sub { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.5; }
+    .page-header-sub { font-size: 0.88rem; color: var(--muted); line-height: 1.65; max-width: 480px; }
 
-    /* STEPS INDICATOR */
+    /* STEPS */
     .steps-bar { border-bottom: 1px solid var(--rule); }
-    .steps-inner { max-width: 640px; margin: 0 auto; padding: 0 2rem; display: flex; height: 44px; align-items: center; gap: 0; }
-    .step-item { display: flex; align-items: center; gap: 0.5rem; flex: 1; cursor: pointer; opacity: 0.4; transition: opacity 0.2s; }
+    .steps-inner { max-width: 860px; margin: 0 auto; padding: 0 2rem; display: flex; height: 44px; align-items: center; gap: 0; }
+    .step-item { display: flex; align-items: center; gap: 0.5rem; flex: 1; opacity: 0.35; transition: opacity 0.2s; }
     .step-item.active { opacity: 1; }
-    .step-item.done { opacity: 0.65; }
+    .step-item.done { opacity: 0.6; }
     .step-num { font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.14em; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .step-item.active .step-num { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .step-item.active .step-num { background: var(--ink); color: var(--cream); }
     .step-item.done .step-num { background: var(--muted); color: var(--cream); border-color: var(--muted); }
-    .step-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
-    .step-divider { width: 24px; height: 1px; background: var(--rule); flex-shrink: 0; margin: 0 0.25rem; }
+    .step-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .step-div { width: 20px; height: 1px; background: var(--rule); flex-shrink: 0; margin: 0 0.5rem; }
 
-    /* FORM AREA */
-    .form-wrap { max-width: 640px; margin: 0 auto; padding: 3rem 2rem 4rem; }
-
-    .step-panel { display: none; }
+    /* FORM */
+    .form-wrap { max-width: 860px; margin: 0 auto; padding: 0 2rem; flex: 1; }
+    .step-panel { display: none; padding: 2.5rem 0 3rem; }
     .step-panel.active { display: block; }
 
-    .step-intro { margin-bottom: 2rem; }
-    .step-intro-num { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
-    .step-intro-hed { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; line-height: 1.1; margin-bottom: 0.4rem; }
-    .step-intro-sub { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+    .step-intro { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+    .step-intro-num { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
+    .step-intro-hed { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.3rem; }
+    .step-intro-sub { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
 
-    .field-group { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem; }
-    .field { display: flex; flex-direction: column; gap: 0.35rem; }
-    .field label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    /* Two-col layout for step 1 */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .field-group { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 2rem; }
+    .field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .field label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
     .field input, .field textarea, .field select {
       background: white; border: 1px solid var(--rule); padding: 11px 14px;
       font-family: var(--sans); font-size: 0.9rem; color: var(--ink);
       outline: none; border-radius: 0; width: 100%; transition: border-color 0.15s;
     }
     .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--ink); }
-    .field textarea { resize: vertical; min-height: 80px; }
-    .field-hint { font-size: 0.72rem; color: var(--muted); line-height: 1.5; margin-top: 0.25rem; }
+    .field textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+    .field-hint { font-size: 0.7rem; color: var(--muted); line-height: 1.5; margin-top: 0.2rem; font-style: italic; }
 
-    /* TAG SELECTOR */
-    .tag-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-    .tag-option { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--rule); padding: 0.3rem 0.85rem; cursor: pointer; color: var(--muted); transition: all 0.15s; user-select: none; }
-    .tag-option:hover { border-color: var(--ink); color: var(--ink); }
-    .tag-option.selected { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    /* Tags */
+    .tag-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+    .tag-opt { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--rule); padding: 0.25rem 0.8rem; cursor: pointer; color: var(--muted); transition: all 0.12s; user-select: none; }
+    .tag-opt:hover { border-color: var(--ink); color: var(--ink); }
+    .tag-opt.on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
-    /* CITY CHECKBOXES */
-    .city-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.5rem; }
-    .city-option { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.6rem 0.85rem; border: 1px solid var(--rule); transition: all 0.15s; }
-    .city-option:hover { border-color: var(--ink); }
-    .city-option.selected { border-color: var(--ink); background: rgba(26,24,22,0.03); }
-    .city-option input { display: none; }
-    .city-option-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 500; }
-    .city-option-check { width: 14px; height: 14px; border: 1px solid var(--rule); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-left: auto; }
-    .city-option.selected .city-option-check { background: var(--ink); border-color: var(--ink); }
-    .city-option.selected .city-option-check::after { content: ''; display: block; width: 6px; height: 4px; border-left: 1.5px solid white; border-bottom: 1.5px solid white; transform: rotate(-45deg) translateY(-1px); }
+    /* Already have profile */
+    .already-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; border-bottom: 1px solid var(--rule); padding-bottom: 1px; transition: color 0.15s; background: none; border-top: none; border-left: none; border-right: none; margin-top: 0.25rem; }
+    .already-link:hover { color: var(--ink); }
 
-    /* TIP ENTRY */
-    .tip-entry { border: 1px solid var(--rule); padding: 1.25rem; margin-bottom: 0.75rem; position: relative; }
-    .tip-entry-num { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
-    .tip-entry .field { margin-bottom: 0.75rem; }
-    .tip-entry .field:last-child { margin-bottom: 0; }
-    .add-tip-btn { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1.5px dashed var(--rule); padding: 0.75rem; width: 100%; background: none; cursor: pointer; transition: color 0.15s, border-color 0.15s; margin-top: 0.5rem; }
-    .add-tip-btn:hover { color: var(--ink); border-color: var(--ink); }
+    /* Returning user panel */
+    .returning-panel { display: none; padding: 1.5rem; background: white; border: 1px solid var(--rule); margin-top: 1.5rem; }
+    .returning-panel.show { display: block; }
+    .returning-panel p { font-size: 0.84rem; color: var(--muted); margin-bottom: 1rem; }
 
-    /* BUTTONS */
-    .btn-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
-    .btn-back { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
-    .btn-back:hover { color: var(--ink); }
-    .btn-next { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); border: none; cursor: pointer; padding: 12px 28px; transition: background 0.15s; }
-    .btn-next:hover { background: var(--ink2); }
-    .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    /* SUCCESS */
-    .success-panel { display: none; text-align: center; padding: 4rem 2rem; max-width: 480px; margin: 0 auto; }
-    .success-panel.active { display: block; }
-    .success-icon { font-family: var(--serif); font-size: 3rem; margin-bottom: 1rem; color: var(--ink); }
-    .success-hed { font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 0.75rem; }
-    .success-body { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
-    .success-back { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
-
-    /* PREVIEW CARD — shows as you fill in step 1 */
-    .preview-wrap { border-top: 1.5px solid var(--ink); background: var(--cream); }
-    .preview-inner { max-width: 640px; margin: 0 auto; padding: 1.5rem 2rem; }
-    .preview-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
-    .preview-card { border: 1px solid var(--rule); padding: 1.25rem; background: white; display: flex; flex-direction: column; gap: 0.75rem; max-width: 280px; }
-    .preview-card-top { display: flex; align-items: center; gap: 0.75rem; }
-    .preview-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--rule); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.1rem; color: var(--muted); }
+    /* Preview card */
+    .preview-card { border: 1px solid var(--rule); padding: 1.25rem; background: white; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .preview-label { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
+    .preview-top { display: flex; align-items: center; gap: 0.75rem; }
+    .preview-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--rule); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1rem; color: var(--muted); }
     .preview-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; line-height: 1; }
     .preview-handle { font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .preview-bio { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); }
+    .preview-bio { font-family: var(--serif); font-style: italic; font-size: 0.84rem; color: var(--muted); }
 
-    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 0; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    /* Buttons */
+    .btn-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+    .btn-back { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
+    .btn-back:hover { color: var(--ink); }
+    .btn-next { font-family: var(--cond); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); border: none; cursor: pointer; padding: 13px 28px; transition: background 0.15s; }
+    .btn-next:hover { background: var(--ink2); }
+    .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
+    .error-msg { font-size: 0.76rem; color: var(--red); margin-top: 0.5rem; display: none; }
+
+    /* Success */
+    .success-panel { display: none; text-align: center; padding: 4rem 2rem; max-width: 500px; margin: 0 auto; }
+    .success-panel.show { display: block; }
+    .success-icon { font-family: var(--serif); font-size: 3rem; margin-bottom: 1rem; }
+    .success-hed { font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 0.75rem; }
+    .success-body { font-size: 0.88rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .success-back { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+
+    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: auto; }
+    .footer-inner { max-width: 860px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; height: 52px; }
     .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
     .footer-logo em { font-style: italic; font-weight: 400; }
     .footer-logo .dot { color: var(--red); }
 
-    @media (max-width: 600px) {
-      .nav-tagline { display: none; }
-      .form-wrap { padding: 2rem 1.25rem 3rem; }
-      .city-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 640px) {
+      .two-col { grid-template-columns: 1fr; gap: 0; }
+      .page-header, .form-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .steps-inner { padding-left: 1.25rem; padding-right: 1.25rem; }
       .step-label { display: none; }
+      .nav-inner { padding: 0 1.25rem; }
+      .footer-inner { padding: 0 1.25rem; }
     }
   </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HL9EJDL2YS');
-</script>
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <div style="display:flex;align-items:baseline;">
-      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
-      <span class="nav-tagline">Only the good stuff.</span>
-    </div>
+    <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+    <a href="index.html" class="nav-back">← Back to HoodTip</a>
   </div>
 </nav>
 
 <div class="page-header">
   <div class="page-header-eyebrow">HoodTip · Contributors</div>
-  <h1 class="page-header-hed">Build your <em>taste profile</em></h1>
-  <p class="page-header-sub">Your tips, your neighbourhoods, your recommendations. We'll build your profile page and have it live within 48 hours.</p>
+  <h1 class="page-header-hed">Tips have <em>names on them.</em></h1>
+  <p class="page-header-sub">Every tip on HoodTip is attributed to a real person. Set up your contributor profile first — takes two minutes — then leave your tip.</p>
 </div>
 
 <div class="steps-bar">
   <div class="steps-inner">
-    <div class="step-item active" id="step-ind-1" onclick="goToStep(1)">
-      <span class="step-num">1</span>
-      <span class="step-label">About you</span>
+    <div class="step-item active" id="si-1">
+      <span class="step-num">1</span><span class="step-label">Your profile</span>
     </div>
-    <div class="step-divider"></div>
-    <div class="step-item" id="step-ind-2" onclick="goToStep(2)">
-      <span class="step-num">2</span>
-      <span class="step-label">Your taste</span>
+    <div class="step-div"></div>
+    <div class="step-item" id="si-2">
+      <span class="step-num">2</span><span class="step-label">Your tip</span>
     </div>
-    <div class="step-divider"></div>
-    <div class="step-item" id="step-ind-3" onclick="goToStep(3)">
-      <span class="step-num">3</span>
-      <span class="step-label">Your tips</span>
-    </div>
-    <div class="step-divider"></div>
-    <div class="step-item" id="step-ind-4" onclick="goToStep(4)">
-      <span class="step-num">4</span>
-      <span class="step-label">Submit</span>
+    <div class="step-div"></div>
+    <div class="step-item" id="si-3">
+      <span class="step-num">3</span><span class="step-label">Submit</span>
     </div>
   </div>
 </div>
 
 <div class="form-wrap">
 
-  <!-- STEP 1: ABOUT YOU -->
+  <!-- STEP 1: PROFILE -->
   <div class="step-panel active" id="step-1">
     <div class="step-intro">
-      <div class="step-intro-num">Step 1 of 4</div>
+      <div class="step-intro-num">Step 1 of 3</div>
       <div class="step-intro-hed">Who are you?</div>
-      <div class="step-intro-sub">The basics. This becomes the byline on your profile — keep it honest and short.</div>
+      <div class="step-intro-sub">This becomes your byline. Keep it honest and short. Your tips will be published under your name.</div>
     </div>
-    <div class="field-group">
-      <div class="field">
-        <label for="f-name">Your name</label>
-        <input type="text" id="f-name" placeholder="e.g. Sarah" oninput="updatePreview()" />
+
+    <div class="two-col">
+      <div class="field-group">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input type="text" id="f-name" placeholder="e.g. Sarah" oninput="updatePreview()" />
+        </div>
+        <div class="field">
+          <label for="f-handle">Handle</label>
+          <input type="text" id="f-handle" placeholder="@sarah" oninput="updatePreview()" />
+          <span class="field-hint">This appears on your tips and profile page.</span>
+        </div>
+        <div class="field">
+          <label for="f-email">Your email</label>
+          <input type="email" id="f-email" placeholder="you@example.com" />
+          <span class="field-hint">So we can send you a link when your profile goes live.</span>
+        </div>
+        <div class="field">
+          <label for="f-based">Based in</label>
+          <input type="text" id="f-based" placeholder="e.g. Geneva, Istanbul, London..." />
+        </div>
       </div>
-      <div class="field">
-        <label for="f-handle">Handle</label>
-        <input type="text" id="f-handle" placeholder="e.g. @sarah" oninput="updatePreview()" />
-        <span class="field-hint">This is how you appear on tips and your profile page.</span>
-      </div>
-      <div class="field">
-        <label for="f-bio">One-line bio</label>
-        <input type="text" id="f-bio" placeholder="e.g. Architect. Lives in Istanbul. Drinks a lot of tea." oninput="updatePreview()" />
-        <span class="field-hint">Three words to three sentences. Anything that tells someone who you are.</span>
-      </div>
-      <div class="field">
-        <label for="f-based">Based in</label>
-        <input type="text" id="f-based" placeholder="e.g. Istanbul" />
-      </div>
-      <div class="field">
-        <label for="f-email">Your email</label>
-        <input type="email" id="f-email" placeholder="you@example.com" />
-        <span class="field-hint">So we can send you a link when your profile is live. Not shared publicly.</span>
+      <div class="field-group">
+        <div class="field">
+          <label for="f-bio">One-line bio</label>
+          <input type="text" id="f-bio" placeholder="e.g. Architect. Lives in Istanbul. Drinks a lot of tea." oninput="updatePreview()" />
+          <span class="field-hint">Three words or three sentences — whatever fits.</span>
+        </div>
+        <div class="field">
+          <label for="f-photo">Profile photo (optional)</label>
+          <input type="text" id="f-photo" placeholder="Link from Google Photos, iCloud..." />
+          <span class="field-hint">Share a photo from your camera roll, paste the link.</span>
+        </div>
+        <div class="field">
+          <label>Your taste — pick any that apply</label>
+          <div class="tag-grid" id="tag-grid">
+            <span class="tag-opt" onclick="toggleTag(this)">Natural wine</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Proper pubs</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Good fish</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Waterfront bars</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Saturday markets</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Coffee</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Hotels worth it</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Long lunches</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Swimming</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Bookshops</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Late nights</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Bakeries</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Live music</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Parks</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Architecture</span>
+            <span class="tag-opt" onclick="toggleTag(this)">Street food</span>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Preview -->
+    <div class="preview-card">
+      <div class="preview-label">Your contributor card — preview</div>
+      <div class="preview-top">
+        <div class="preview-avatar" id="prev-avatar">?</div>
+        <div>
+          <div class="preview-name" id="prev-name">Your name</div>
+          <div class="preview-handle" id="prev-handle">@handle</div>
+        </div>
+      </div>
+      <div class="preview-bio" id="prev-bio">Your bio appears here.</div>
+    </div>
+
+    <!-- Already have profile -->
+    <div style="margin-bottom:1.5rem;">
+      <button class="already-link" onclick="toggleReturning()">Already a contributor? Skip to leaving a tip →</button>
+      <div class="returning-panel" id="returning-panel">
+        <p>Enter your handle and we'll attach your tip to your existing profile.</p>
+        <div class="field" style="max-width:280px;">
+          <label>Your handle</label>
+          <input type="text" id="f-returning-handle" placeholder="@yourhandle" />
+        </div>
+      </div>
+    </div>
+
     <div class="btn-row">
       <span></span>
-      <button class="btn-next" onclick="goToStep(2)">Next: Your taste →</button>
+      <button class="btn-next" onclick="goStep(2)">Next: Your tip →</button>
     </div>
+    <p class="error-msg" id="err-1">Please fill in your name, handle and email.</p>
   </div>
 
-  <!-- STEP 2: TASTE TAGS -->
+  <!-- STEP 2: THE TIP -->
   <div class="step-panel" id="step-2">
     <div class="step-intro">
-      <div class="step-intro-num">Step 2 of 4</div>
-      <div class="step-intro-hed">What do you like?</div>
-      <div class="step-intro-sub">Choose the tags that appear on your profile. These help people understand your taste before they read a single tip.</div>
+      <div class="step-intro-num">Step 2 of 3</div>
+      <div class="step-intro-hed">What do you know?</div>
+      <div class="step-intro-sub">Positive only. Specific over general. Write it like a note to a friend going next week.</div>
     </div>
+
     <div class="field-group">
-      <div class="field">
-        <label>Your taste — pick as many as apply</label>
-        <div class="tag-grid" id="tag-grid">
-          <span class="tag-option" onclick="toggleTag(this)">Natural wine</span>
-          <span class="tag-option" onclick="toggleTag(this)">Proper pubs</span>
-          <span class="tag-option" onclick="toggleTag(this)">Good fish</span>
-          <span class="tag-option" onclick="toggleTag(this)">Waterfront bars</span>
-          <span class="tag-option" onclick="toggleTag(this)">Saturday markets</span>
-          <span class="tag-option" onclick="toggleTag(this)">Neighbourhood spots</span>
-          <span class="tag-option" onclick="toggleTag(this)">Sitting outside</span>
-          <span class="tag-option" onclick="toggleTag(this)">Hotels worth it</span>
-          <span class="tag-option" onclick="toggleTag(this)">Coffee</span>
-          <span class="tag-option" onclick="toggleTag(this)">Bookshops</span>
-          <span class="tag-option" onclick="toggleTag(this)">Live music</span>
-          <span class="tag-option" onclick="toggleTag(this)">Swimming</span>
-          <span class="tag-option" onclick="toggleTag(this)">Street food</span>
-          <span class="tag-option" onclick="toggleTag(this)">Long lunches</span>
-          <span class="tag-option" onclick="toggleTag(this)">Markets</span>
-          <span class="tag-option" onclick="toggleTag(this)">Parks</span>
-          <span class="tag-option" onclick="toggleTag(this)">Architecture</span>
-          <span class="tag-option" onclick="toggleTag(this)">Art</span>
-          <span class="tag-option" onclick="toggleTag(this)">Late nights</span>
-          <span class="tag-option" onclick="toggleTag(this)">Bakeries</span>
+      <div class="two-col">
+        <div class="field">
+          <label for="f-place">Place name</label>
+          <input type="text" id="f-place" placeholder="e.g. Bongo Joe" />
+        </div>
+        <div class="field">
+          <label for="f-hood">Neighbourhood &amp; City</label>
+          <input type="text" id="f-hood" placeholder="e.g. Saint-Gervais, Geneva" />
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label for="f-cat">Category</label>
+          <select id="f-cat">
+            <option value="">Select one</option>
+            <option>Bar</option>
+            <option>Restaurant</option>
+            <option>Coffee</option>
+            <option>Wine</option>
+            <option>Market</option>
+            <option>Hotel</option>
+            <option>Travel</option>
+            <option>Cinema</option>
+            <option>Swimming</option>
+            <option>Park</option>
+            <option>Shop</option>
+            <option>Experience</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-tip-photo">Photo link (optional)</label>
+          <input type="text" id="f-tip-photo" placeholder="Link to a photo..." />
         </div>
       </div>
       <div class="field">
-        <label for="f-cities-text">Cities you know well</label>
-        <input type="text" id="f-cities-text" placeholder="e.g. Istanbul, London, New York" />
-        <span class="field-hint">Just type them — wherever you have tips worth sharing.</span>
+        <label for="f-tip">Your tip</label>
+        <textarea id="f-tip" style="min-height:110px;" placeholder="What to order, when to go, what to know. The specific thing that makes it worth knowing about."></textarea>
       </div>
     </div>
+
     <div class="btn-row">
-      <button class="btn-back" onclick="goToStep(1)">← Back</button>
-      <button class="btn-next" onclick="goToStep(3)">Next: Your tips →</button>
+      <button class="btn-back" onclick="goStep(1)">← Back</button>
+      <button class="btn-next" onclick="goStep(3)">Next: Review →</button>
     </div>
+    <p class="error-msg" id="err-2">Please fill in the place, neighbourhood, and your tip.</p>
   </div>
 
-  <!-- STEP 3: TIPS -->
+  <!-- STEP 3: REVIEW + SUBMIT -->
   <div class="step-panel" id="step-3">
     <div class="step-intro">
-      <div class="step-intro-num">Step 3 of 4</div>
-      <div class="step-intro-hed">Your tips</div>
-      <div class="step-intro-sub">Add up to five tips to start. Be specific — the neighbourhood, what to order, why it's worth knowing. You can always add more later.</div>
-    </div>
-    <div id="tips-container">
-      <div class="tip-entry" id="tip-1">
-        <div class="tip-entry-num">Tip 1</div>
-        <div class="field"><label>Place name</label><input type="text" placeholder="e.g. Bongo Joe" /></div>
-        <div class="field"><label>Neighbourhood &amp; City</label><input type="text" placeholder="e.g. Saint-Gervais, Geneva" /></div>
-        <div class="field"><label>Category</label><input type="text" placeholder="e.g. Bar, Restaurant, Hotel, Park..." /></div>
-        <div class="field"><label>Your tip</label><textarea placeholder="What to order, when to go, what to know. Write it like a note to a friend going next week."></textarea></div>
-      </div>
-    </div>
-    <button class="add-tip-btn" onclick="addTip()" id="add-tip-btn">+ Add another tip</button>
-    <div class="btn-row" style="margin-top:1.5rem;">
-      <button class="btn-back" onclick="goToStep(2)">← Back</button>
-      <button class="btn-next" onclick="goToStep(4)">Next: Review →</button>
-    </div>
-  </div>
-
-  <!-- STEP 4: REVIEW + SUBMIT -->
-  <div class="step-panel" id="step-4">
-    <div class="step-intro">
-      <div class="step-intro-num">Step 4 of 4</div>
-      <div class="step-intro-hed">Ready to submit?</div>
-      <div class="step-intro-sub">We'll build your profile page and have it live within 48 hours. We'll email you the link when it's ready.</div>
+      <div class="step-intro-num">Step 3 of 3</div>
+      <div class="step-intro-hed">Ready?</div>
+      <div class="step-intro-sub">We'll review it, build your profile page, and email you the link within 48 hours.</div>
     </div>
 
     <div id="review-block" style="border:1px solid var(--rule);padding:1.5rem;margin-bottom:2rem;background:white;">
-      <div style="font-family:var(--cond);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Your profile preview</div>
-      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
-        <div style="width:40px;height:40px;border-radius:50%;background:var(--rule);flex-shrink:0;display:flex;align-items:center;justify-content:center;" id="review-avatar">?</div>
+      <div style="font-family:var(--cond);font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Summary</div>
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--rule);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;color:var(--muted);" id="rev-avatar">?</div>
         <div>
-          <div style="font-family:var(--serif);font-size:1.1rem;font-weight:500;" id="review-name">—</div>
-          <div style="font-family:var(--cond);font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);" id="review-handle">—</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;" id="rev-name">—</div>
+          <div style="font-family:var(--cond);font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);" id="rev-handle">—</div>
         </div>
       </div>
-      <div style="font-family:var(--serif);font-style:italic;font-size:0.88rem;color:var(--muted);margin-bottom:1rem;" id="review-bio">—</div>
-      <div style="font-family:var(--cond);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);" id="review-cities">—</div>
-    </div>
-
-    <div class="field-group">
-      <div class="field">
-        <label for="f-photo-link">Profile photo (optional)</label>
-        <input type="text" id="f-photo-link" placeholder="Link to a photo — Google Photos, iCloud, Dropbox, anywhere" />
-        <span class="field-hint">Open your photos app, share any photo, copy the link. Takes 30 seconds. If you skip it we'll use your initial.</span>
-      </div>
-      <div class="field">
-        <label for="f-anything-else">Anything else?</label>
-        <textarea id="f-anything-else" placeholder="Other cities, tips you couldn't fit, anything you want us to know..."></textarea>
+      <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.75rem;" id="rev-bio">—</div>
+      <div style="border-top:1px solid var(--rule);padding-top:0.75rem;margin-top:0.75rem;">
+        <div style="font-family:var(--cond);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;">Tip</div>
+        <div style="font-family:var(--serif);font-size:1rem;font-weight:500;" id="rev-place">—</div>
+        <div style="font-family:var(--cond);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;" id="rev-hood">—</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;" id="rev-tip">—</div>
       </div>
     </div>
 
     <div class="btn-row">
-      <button class="btn-back" onclick="goToStep(3)">← Back</button>
-      <button class="btn-next" id="submit-btn" onclick="submitProfile(event)">Send my profile →</button>
+      <button class="btn-back" onclick="goStep(2)">← Back</button>
+      <button class="btn-next" id="submit-btn" onclick="submitAll(event)">Submit →</button>
     </div>
-    <p id="submit-error" style="display:none;font-size:0.78rem;color:var(--red);margin-top:0.75rem;">Something went wrong — please try again.</p>
+    <p class="error-msg" id="err-3">Something went wrong — please try again.</p>
   </div>
 
 </div>
@@ -337,8 +354,8 @@
 <!-- SUCCESS -->
 <div class="success-panel" id="success-panel">
   <div class="success-icon">✓</div>
-  <div class="success-hed">Profile received.</div>
-  <div class="success-body">We'll build your profile page and send you the link within 48 hours. In the meantime, keep adding to your notes — every tip you pass forward is an act of generosity to the next person who ends up there.</div>
+  <div class="success-hed">Tip received.</div>
+  <div class="success-body">We'll review it, build your profile, and email you the link within 48 hours. Your name on it. Your tip on the map.</div>
   <a href="index.html" class="success-back">← Back to HoodTip</a>
 </div>
 
@@ -349,112 +366,117 @@
 </footer>
 
 <script>
-  let currentStep = 1;
-  let tipCount = 1;
-  const selectedTags = new Set();
+  const tags = new Set();
+  let returning = false;
 
-  function goToStep(n) {
-    // Update panels
-    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-    const panel = document.getElementById('step-' + n);
-    if (panel) panel.classList.add('active');
+  function toggleTag(el) {
+    el.classList.toggle('on');
+    el.classList.contains('on') ? tags.add(el.textContent) : tags.delete(el.textContent);
+  }
 
-    // Update indicators
-    document.querySelectorAll('.step-item').forEach((el, i) => {
-      el.classList.remove('active', 'done');
-      if (i + 1 === n) el.classList.add('active');
-      else if (i + 1 < n) el.classList.add('done');
-    });
-
-    // If going to step 4, populate review
-    if (n === 4) populateReview();
-
-    currentStep = n;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  function toggleReturning() {
+    returning = !returning;
+    document.getElementById('returning-panel').classList.toggle('show', returning);
   }
 
   function updatePreview() {
-    // no-op — review handled at step 4
-  }
-
-  function toggleTag(el) {
-    el.classList.toggle('selected');
-    if (el.classList.contains('selected')) {
-      selectedTags.add(el.textContent);
-    } else {
-      selectedTags.delete(el.textContent);
-    }
-  }
-
-  function addTip() {
-    if (tipCount >= 5) {
-      document.getElementById('add-tip-btn').style.display = 'none';
-      return;
-    }
-    tipCount++;
-    const container = document.getElementById('tips-container');
-    const div = document.createElement('div');
-    div.className = 'tip-entry';
-    div.id = 'tip-' + tipCount;
-    div.innerHTML = `
-      <div class="tip-entry-num">Tip ${tipCount}</div>
-      <div class="field"><label>Place name</label><input type="text" placeholder="e.g. Bongo Joe" /></div>
-      <div class="field"><label>Neighbourhood &amp; City</label><input type="text" placeholder="e.g. Saint-Gervais, Geneva" /></div>
-      <div class="field"><label>Category</label><input type="text" placeholder="e.g. Bar, Restaurant, Hotel, Park..." /></div>
-      <div class="field"><label>Your tip</label><textarea placeholder="What to order, when to go, what to know."></textarea></div>
-    `;
-    container.appendChild(div);
-    if (tipCount >= 5) document.getElementById('add-tip-btn').style.display = 'none';
+    const name = document.getElementById('f-name').value || 'Your name';
+    const handle = document.getElementById('f-handle').value || '@handle';
+    const bio = document.getElementById('f-bio').value || 'Your bio appears here.';
+    document.getElementById('prev-name').textContent = name;
+    document.getElementById('prev-handle').textContent = handle;
+    document.getElementById('prev-bio').textContent = bio;
+    document.getElementById('prev-avatar').textContent = name.charAt(0).toUpperCase() || '?';
   }
 
   function populateReview() {
-    const name = document.getElementById('f-name').value || '—';
-    const handle = document.getElementById('f-handle').value || '—';
-    const bio = document.getElementById('f-bio').value || '—';
-    const cities = document.getElementById('f-cities-text').value || '—';
-    document.getElementById('review-name').textContent = name;
-    document.getElementById('review-handle').textContent = handle;
-    document.getElementById('review-bio').textContent = bio;
-    document.getElementById('review-cities').textContent = cities;
-    document.getElementById('review-avatar').textContent = name.charAt(0).toUpperCase() || '?';
+    const name = returning
+      ? document.getElementById('f-returning-handle').value
+      : document.getElementById('f-name').value;
+    const handle = returning
+      ? document.getElementById('f-returning-handle').value
+      : document.getElementById('f-handle').value;
+    const bio = document.getElementById('f-bio').value;
+
+    document.getElementById('rev-name').textContent = name || '—';
+    document.getElementById('rev-handle').textContent = handle || '—';
+    document.getElementById('rev-bio').textContent = bio || '—';
+    document.getElementById('rev-avatar').textContent = (name || '?').charAt(0).toUpperCase();
+    document.getElementById('rev-place').textContent = document.getElementById('f-place').value || '—';
+    document.getElementById('rev-hood').textContent = document.getElementById('f-hood').value || '—';
+    document.getElementById('rev-tip').textContent = document.getElementById('f-tip').value || '—';
   }
 
-  function collectTips() {
-    const tips = [];
-    for (let i = 1; i <= tipCount; i++) {
-      const el = document.getElementById('tip-' + i);
-      if (!el) continue;
-      const inputs = el.querySelectorAll('input, textarea');
-      tips.push({
-        place: inputs[0]?.value || '',
-        neighbourhood: inputs[1]?.value || '',
-        category: inputs[2]?.value || '',
-        tip: inputs[3]?.value || ''
-      });
+  function goStep(n) {
+    // Validate
+    if (n === 2) {
+      const err = document.getElementById('err-1');
+      if (!returning) {
+        const name = document.getElementById('f-name').value.trim();
+        const handle = document.getElementById('f-handle').value.trim();
+        const email = document.getElementById('f-email').value.trim();
+        if (!name || !handle || !email) { err.style.display = 'block'; return; }
+      } else {
+        if (!document.getElementById('f-returning-handle').value.trim()) {
+          err.style.display = 'block'; err.textContent = 'Please enter your handle.'; return;
+        }
+      }
+      err.style.display = 'none';
     }
-    return tips.filter(t => t.place);
+    if (n === 3) {
+      const place = document.getElementById('f-place').value.trim();
+      const tip = document.getElementById('f-tip').value.trim();
+      const err = document.getElementById('err-2');
+      if (!place || !tip) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      populateReview();
+    }
+
+    // Update panels
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('step-' + n).classList.add('active');
+
+    // Update indicators
+    [1,2,3].forEach(i => {
+      const el = document.getElementById('si-' + i);
+      el.classList.remove('active','done');
+      if (i === n) el.classList.add('active');
+      else if (i < n) el.classList.add('done');
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  async function submitProfile(e) {
+  async function submitAll(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
-    const err = document.getElementById('submit-error');
+    const err = document.getElementById('err-3');
     err.style.display = 'none';
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    const data = {
-      type: 'PROFILE_BUILD',
+    const data = returning ? {
+      type: 'RETURNING_TIP',
+      handle: document.getElementById('f-returning-handle').value,
+      place: document.getElementById('f-place').value,
+      neighbourhood: document.getElementById('f-hood').value,
+      category: document.getElementById('f-cat').value,
+      tip: document.getElementById('f-tip').value,
+      photo: document.getElementById('f-tip-photo').value,
+    } : {
+      type: 'NEW_CONTRIBUTOR_TIP',
       name: document.getElementById('f-name').value,
       handle: document.getElementById('f-handle').value,
-      bio: document.getElementById('f-bio').value,
-      based_in: document.getElementById('f-based').value,
       email: document.getElementById('f-email').value,
-      cities: document.getElementById('f-cities-text').value,
-      taste_tags: Array.from(selectedTags).join(', '),
-      tips: JSON.stringify(collectTips()),
-      photo_link: document.getElementById('f-photo-link').value,
-      notes: document.getElementById('f-anything-else').value
+      based_in: document.getElementById('f-based').value,
+      bio: document.getElementById('f-bio').value,
+      photo: document.getElementById('f-photo').value,
+      taste_tags: Array.from(tags).join(', '),
+      place: document.getElementById('f-place').value,
+      neighbourhood: document.getElementById('f-hood').value,
+      category: document.getElementById('f-cat').value,
+      tip: document.getElementById('f-tip').value,
+      tip_photo: document.getElementById('f-tip-photo').value,
     };
 
     try {
@@ -466,12 +488,13 @@
       if (res.ok) {
         document.querySelector('.form-wrap').style.display = 'none';
         document.querySelector('.steps-bar').style.display = 'none';
-        document.getElementById('success-panel').classList.add('active');
+        document.querySelector('.page-header').style.display = 'none';
+        document.getElementById('success-panel').classList.add('show');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else throw new Error('bad');
+      } else throw new Error();
     } catch {
       err.style.display = 'block';
-      btn.textContent = 'Send my profile →';
+      btn.textContent = 'Submit →';
       btn.disabled = false;
     }
   }
