@@ -49,6 +49,17 @@
     .intro-links{padding:2rem 0 2rem 2rem;display:flex;flex-direction:column;gap:0.75rem;border-left:1px solid var(--rule);}
     .intro-link{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color 0.15s,border-color 0.15s;display:inline-block;}
     .intro-link:hover{color:var(--ink);border-color:var(--ink);}
+
+    .map-section{border-bottom:1.5px solid var(--ink);}
+    .map-split{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;}
+    .map-frame{border-right:1px solid var(--rule);overflow:hidden;background:var(--cream);}
+    .map-hood-list{padding:0;}
+    .map-hood-item{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:1rem;padding:0.95rem 2rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background 0.15s;}
+    .map-hood-item:last-child{border-bottom:none;}
+    .map-hood-item:hover{background:rgba(26,24,22,0.025);}
+    .map-num{font-family:var(--cond);font-size:0.55rem;letter-spacing:0.1em;color:var(--muted);}
+    .map-name{font-family:var(--serif);font-size:1.05rem;font-weight:500;}
+    .map-count{font-family:var(--cond);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
     .section-label{border-bottom:1px solid var(--rule);}
     .section-label-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1rem;height:42px;}
     .section-label-text{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
@@ -83,7 +94,8 @@
     .footer-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
     .footer-logo{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--cream);}.footer-logo em{font-style:italic;font-weight:400;}.footer-logo .dot{color:var(--red);}
     .footer-stats{font-family:var(--cond);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,239,0.3);display:flex;gap:1rem;}
-    @media(max-width:900px){.intro-band-inner{grid-template-columns:1fr;}.intro-stat-block{border-right:none;border-bottom:1px solid var(--rule);flex-direction:row;flex-wrap:wrap;gap:1.5rem;padding:1.5rem 0;}.intro-links{border-left:none;border-top:1px solid var(--rule);padding:1.5rem 0 0;flex-direction:row;}.intro-body{padding:1.5rem 0;}.hood-row{grid-template-columns:32px 1fr 80px;}.hood-desc{display:none;}}
+    @media(max-width:900px){.map-split{grid-template-columns:1fr;}.map-frame{border-right:none;border-bottom:1px solid var(--rule);}
+    .intro-band-inner{grid-template-columns:1fr;}.intro-stat-block{border-right:none;border-bottom:1px solid var(--rule);flex-direction:row;flex-wrap:wrap;gap:1.5rem;padding:1.5rem 0;}.intro-links{border-left:none;border-top:1px solid var(--rule);padding:1.5rem 0 0;flex-direction:row;}.intro-body{padding:1.5rem 0;}.hood-row{grid-template-columns:32px 1fr 80px;}.hood-desc{display:none;}}
     @media(max-width:600px){nav,.city-strip-inner,.intro-band-inner,.back-wrap{padding-left:1.25rem;padding-right:1.25rem;}.hood-row,.tip-row,.hood-group-header,.section-label-inner{padding-left:1.25rem;padding-right:1.25rem;}.footer-inner{padding:0 1.25rem;}.footer-stats{display:none;}.nav-links a:not(.cta){display:none;}.nav-tag{display:none;}.city-hero-overlay{padding:1.5rem;}.tip-row{grid-template-columns:56px 1fr;}.tip-row-arrow{display:none;}}
   </style>
 </head>
@@ -142,6 +154,18 @@
   </div>
 </div>
 
+<div class="map-section">
+  <div class="map-split">
+    <div class="map-frame">
+      <canvas id="ldn-map" style="width:100%;height:280px;display:block;cursor:pointer;"></canvas>
+    </div>
+    <div class="map-hood-list">
+      <a class="map-hood-item" href="notting-hill.html"><span class="map-num">01</span><span class="map-name">Notting Hill</span><span class="map-count">3 tips →</span></a>
+      <a class="map-hood-item" href="tip-karmabread.html"><span class="map-num">02</span><span class="map-name">Hampstead</span><span class="map-count">1 tip →</span></a>
+    </div>
+  </div>
+</div>
+
 <div class="section-label">
   <div class="section-label-inner">
     <span class="section-label-text">Neighbourhoods</span>
@@ -191,5 +215,100 @@
     <div class="footer-stats"><span>49 tips</span><span>·</span><span>15 neighbourhoods</span><span>·</span><span>7 cities</span></div>
   </div>
 </footer>
+
+<script>
+(function() {
+  function drawLondonMap() {
+    const canvas = document.getElementById('ldn-map');
+    if (!canvas) return;
+    const dpr = window.devicePixelRatio || 1;
+    const W = canvas.parentElement.offsetWidth || 640;
+    const H = 280;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+
+    const cream = '#f7f4ef', ink = '#1a1816', muted = '#6b6560';
+    const rule = '#e0dbd3', red = '#b5322a';
+    const waterFill = '#daeaf2', waterStroke = '#b8d4e3';
+
+    ctx.fillStyle = cream;
+    ctx.fillRect(0, 0, W, H);
+
+    // Thames — sweeping curve across the middle
+    ctx.beginPath();
+    ctx.moveTo(0, H*0.72);
+    ctx.bezierCurveTo(W*0.2, H*0.68, W*0.4, H*0.62, W*0.55, H*0.58);
+    ctx.bezierCurveTo(W*0.7, H*0.54, W*0.85, H*0.56, W, H*0.52);
+    ctx.lineTo(W, H*0.66);
+    ctx.bezierCurveTo(W*0.85, H*0.70, W*0.7, H*0.68, W*0.55, H*0.72);
+    ctx.bezierCurveTo(W*0.4, H*0.76, W*0.2, H*0.82, 0, H*0.86);
+    ctx.closePath();
+    ctx.fillStyle = waterFill;
+    ctx.fill();
+    ctx.strokeStyle = waterStroke;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Thames label
+    ctx.save();
+    ctx.font = 'italic 11px Georgia, serif';
+    ctx.fillStyle = '#8ab5cc';
+    ctx.fillText('River Thames', W*0.38, H*0.67);
+    ctx.restore();
+
+    const hoods = [
+      ['Notting Hill', 0.18, 0.38, 'notting-hill.html', '3 tips', true],
+      ['Hampstead',    0.28, 0.18, 'tip-karmabread.html','1 tip',  true],
+    ];
+
+    hoods.forEach(([name, px, py, url, count, active]) => {
+      const x = px * W, y = py * H;
+      ctx.beginPath();
+      ctx.arc(x, y, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = red;
+      ctx.fill();
+      ctx.strokeStyle = cream;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.save();
+      ctx.font = '600 10px "Barlow Condensed", sans-serif';
+      ctx.fillStyle = ink;
+      ctx.fillText(name.toUpperCase(), x + 8, y + 3);
+      ctx.restore();
+      ctx.save();
+      ctx.font = '9px Barlow, sans-serif';
+      ctx.fillStyle = muted;
+      ctx.fillText(count, x + 8, y + 13);
+      ctx.restore();
+    });
+
+    ctx.strokeStyle = rule;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(0.5, 0.5, W-1, H-1);
+
+    canvas.addEventListener('click', function(e) {
+      const r = canvas.getBoundingClientRect();
+      const mx = e.clientX - r.left, my = e.clientY - r.top;
+      hoods.forEach(([n,px,py,url]) => {
+        const dx = mx-px*W, dy = my-py*H;
+        if (Math.sqrt(dx*dx+dy*dy) < 18) window.location.href = url;
+      });
+    });
+    canvas.addEventListener('mousemove', function(e) {
+      const r = canvas.getBoundingClientRect();
+      const mx = e.clientX-r.left, my = e.clientY-r.top;
+      let hit = false;
+      hoods.forEach(([n,px,py,url]) => { const dx=mx-px*W,dy=my-py*H; if(Math.sqrt(dx*dx+dy*dy)<18) hit=true; });
+      canvas.style.cursor = hit ? 'pointer' : 'default';
+    });
+  }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(drawLondonMap); }
+  else { window.addEventListener('load', drawLondonMap); }
+})();
+</script>
 </body>
 </html>
