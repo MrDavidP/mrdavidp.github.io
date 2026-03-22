@@ -69,6 +69,12 @@
 
     .img-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
     .img-trio img { width: 100%; display: block; height: 340px; object-fit: cover; }
+    .img-portrait { margin: 3rem auto; max-width: 500px; }
+    .img-portrait img { width: 100%; display: block; }
+    .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 800px; }
+    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
+    .img-portrait-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 960px; }
+    .img-portrait-trio img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
 
     .season-note { background: white; border: 1px solid var(--rule); border-left: 2px solid var(--ink); padding: 1.25rem 1.5rem; margin: 2.5rem 0; }
     .season-note-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
@@ -97,9 +103,21 @@
       .img-pair, .img-trio { grid-template-columns: 1fr; }
       .img-pair img { height: 280px; }
       .img-trio img { height: 240px; }
+      .img-portrait-pair, .img-portrait-trio { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
       .footer-stats { display: none; }
     }
   </style>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HoodTip" />
+  <meta property="og:title" content="Bains des Pâquis — 70s vibes on Lac Léman" />
+  <meta property="og:description" content="The jetty that juts into the lake. Cold rosé, jump off the board, Alps right there. Geneva institution since 1932." />
+  <meta property="og:image" content="https://hoodtip.com/baindespaquis-sunset.jpg" />
+  <meta property="og:url" content="https://hoodtip.com/tip-baindespaquis.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@hoodtip" />
+  <meta name="twitter:title" content="Bains des Pâquis — 70s vibes on Lac Léman" />
+  <meta name="twitter:description" content="The jetty that juts into the lake. Cold rosé, jump off the board, Alps right there. Geneva institution since 1932." />
+  <meta name="twitter:image" content="https://hoodtip.com/baindespaquis-sunset.jpg" />
 </head>
 <body>
 
@@ -164,9 +182,9 @@
     <p>The Bains des Pâquis is a Geneva institution in the truest sense — not a tourist trap dressed up as one, but the real thing. A floating bathing complex on the lake, opened in 1932, with a proper seventies vintage feel that's completely authentic. The diving board. The wooden jetties. The hammam that's been running for decades. The bar with cold rosé and a Greek salad that is, genuinely, a good Greek salad.</p>
   </div>
 
-  <div class="img-full">
-    <img src="baindespaquis-jump.jpg" alt="Diver in mid-air off the high board at Bains des Pâquis, Geneva" style="object-position: center 30%;" />
-    <div class="img-caption">Quai du Mont-Blanc. The board has been here since 1932.</div>
+  <div class="img-portrait">
+    <img src="baindespaquis-jump.jpg" alt="Diver in mid-air off the high board at Bains des Pâquis, Geneva" />
+    <div class="img-caption" style="padding:0.5rem 0 0;">Quai du Mont-Blanc. The board has been here since 1932.</div>
   </div>
 
   <div class="body">
@@ -178,9 +196,9 @@
     <div class="img-caption">Mediterranean colour. Alpine backdrop. Geneva does this quietly.</div>
   </div>
 
-  <div class="img-full">
-    <img src="baindespaquis-swimmer.jpg" alt="Swimmer about to enter Lake Geneva at Bains des Pâquis" style="object-position: center 60%;" />
-    <div class="img-caption">Every morning. Every season.</div>
+  <div class="img-portrait">
+    <img src="baindespaquis-swimmer.jpg" alt="Swimmer about to enter Lake Geneva at Bains des Pâquis" />
+    <div class="img-caption" style="padding:0.5rem 0 0;">Every morning. Every season.</div>
   </div>
 
   <div class="pull-quote">
@@ -192,9 +210,9 @@
     <p>The sauna and hammam facility is part of the same complex — open year-round, been there forever. I've never done it but I intend to, which might be the most honest thing I can say about it.</p>
   </div>
 
-  <div class="img-pair">
-    <img src="baindespaquis-jump-2.jpg" alt="High dive at Bains des Pâquis — the jump sequence" style="object-position: center 35%;" />
-    <img src="baindespaquis-sign.jpg" alt="Bains des Pâquis entrance sign, Pâquis Geneva" style="object-position: center 50%;" />
+  <div class="img-portrait-pair">
+    <img src="baindespaquis-jump-2.jpg" alt="High dive at Bains des Pâquis — the jump sequence" />
+    <img src="baindespaquis-sign.jpg" alt="Bains des Pâquis entrance sign, Pâquis Geneva" />
   </div>
 
   <div class="season-note">
@@ -202,10 +220,10 @@
     <p>Old ladies go in with little caps and gloves through the cold months. The latest I've jumped in was December 31st — a wonderful way to end the year, highly recommended. I tried February once and it was genuinely too cold for me, but the regulars were fine. If that's you, you'll love it here year-round.</p>
   </div>
 
-  <div class="img-trio">
-    <img src="baindespaquis-winter-swim-1.jpg" alt="Winter swimming at Bains des Pâquis — wading in" style="object-position: center 40%;" />
-    <img src="baindespaquis-winter-swim-2.jpg" alt="Winter swimming at Bains des Pâquis — the plunge" style="object-position: center 40%;" />
-    <img src="baindespaquis-winter-swim-3.jpg" alt="Winter swimming at Bains des Pâquis — coming out" style="object-position: center 40%;" />
+  <div class="img-portrait-trio">
+    <img src="baindespaquis-winter-swim-1.jpg" alt="Winter swimming at Bains des Pâquis — wading in" />
+    <img src="baindespaquis-winter-swim-2.jpg" alt="Winter swimming at Bains des Pâquis — the plunge" />
+    <img src="baindespaquis-winter-swim-3.jpg" alt="Winter swimming at Bains des Pâquis — coming out" />
   </div>
 
   <div class="body">
