@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Write a tip — HoodTip</title>
+  <meta name="description" content="Submit a photo and a few lines. We turn it into a beautiful travel article with your byline." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); background: var(--cream); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tag { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+
+    /* PAGE HEADER */
+    .page-header { border-bottom: 1.5px solid var(--ink); padding: 3rem 2rem 2.5rem; text-align: center; }
+    .page-header-eyebrow { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .page-header-hed { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 400; line-height: 1.05; margin-bottom: 0.75rem; }
+    .page-header-hed em { font-style: italic; }
+    .page-header-sub { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--muted); max-width: 460px; margin: 0 auto; line-height: 1.55; }
+
+    /* LAYOUT — two panels */
+    .main-layout { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 420px 1fr; min-height: calc(100vh - 200px); }
+    .form-panel { border-right: 1.5px solid var(--ink); padding: 2.5rem 2rem; }
+    .preview-panel { padding: 2.5rem 3rem; position: relative; }
+
+    /* FORM */
+    .form-section-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+    .field-group { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+    .field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .field label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .field input, .field textarea, .field select {
+      background: white; border: 1px solid var(--rule); padding: 10px 12px;
+      font-family: var(--sans); font-size: 0.88rem; color: var(--ink);
+      outline: none; border-radius: 0; width: 100%; transition: border-color 0.15s;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--ink); }
+    .field textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+    .field-hint { font-size: 0.7rem; color: var(--muted); line-height: 1.5; margin-top: 0.2rem; font-style: italic; }
+
+    .generate-btn {
+      width: 100%; background: var(--ink); color: var(--cream);
+      border: none; cursor: pointer; font-family: var(--cond);
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; padding: 14px; transition: background 0.15s;
+      margin-top: 0.5rem;
+    }
+    .generate-btn:hover { background: var(--ink2); }
+    .generate-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* PREVIEW STATE */
+    .preview-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; gap: 1rem; text-align: center; opacity: 0.4; }
+    .preview-empty-icon { font-family: var(--serif); font-size: 3rem; line-height: 1; }
+    .preview-empty-text { font-family: var(--serif); font-style: italic; font-size: 1.1rem; }
+
+    .loading-state { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; gap: 1.5rem; text-align: center; }
+    .loading-state.active { display: flex; }
+    .loading-spinner { width: 32px; height: 32px; border: 2px solid var(--rule); border-top-color: var(--ink); border-radius: 50%; animation: spin 0.9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--muted); }
+    .loading-subtext { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); opacity: 0.6; }
+
+    /* ARTICLE PREVIEW */
+    .article-preview { display: none; }
+    .article-preview.active { display: block; }
+
+    .article-preview-label { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .article-preview-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    /* The article itself */
+    .article-frame { border: 1px solid var(--rule); background: white; }
+    .article-frame-header { padding: 2rem 2.5rem 1.5rem; border-bottom: 1px solid var(--rule); }
+    .af-eyebrow { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+    .af-eyebrow-dot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; }
+    .af-category { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.2rem 0.6rem; border-radius: 2px; display: inline-block; margin-bottom: 0.75rem; }
+    .af-headline { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+    .af-headline em { font-style: italic; font-weight: 400; }
+    .af-subtitle { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--muted); line-height: 1.5; margin-bottom: 1.25rem; }
+    .af-byline { display: flex; align-items: center; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+    .af-byline-photo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: var(--rule); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1rem; color: var(--muted); }
+    .af-byline-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 500; line-height: 1; }
+    .af-byline-handle { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .article-frame-body { padding: 2rem 2.5rem; }
+
+    /* Hero image */
+    .af-hero { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; margin-bottom: 2rem; }
+    .af-hero-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--rule); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
+    .af-hero-placeholder span { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+    .af-body p { font-size: 0.95rem; line-height: 1.8; color: var(--ink); margin-bottom: 1.2rem; font-weight: 300; }
+    .af-body p:last-child { margin-bottom: 0; }
+    .af-pull-quote { border-left: 2px solid var(--ink); padding: 0.6rem 0 0.6rem 1.25rem; margin: 1.75rem 0; }
+    .af-pull-quote p { font-family: var(--serif); font-style: italic; font-size: 1.3rem; line-height: 1.3; color: var(--ink); font-weight: 400; }
+
+    /* Photo pair */
+    .af-photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 1.75rem 0; }
+    .af-photo-pair img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+    .af-photo-pair-placeholder { background: var(--rule); aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
+    .af-photo-pair-placeholder span { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: center; padding: 1rem; }
+
+    .af-tip-box { background: var(--cream); border: 1px solid var(--rule); padding: 1.25rem 1.5rem; margin-top: 1.75rem; }
+    .af-tip-box-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.65rem; }
+    .af-tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .af-tip-box li { font-size: 0.82rem; color: var(--ink); padding-left: 1rem; position: relative; line-height: 1.5; }
+    .af-tip-box li::before { content: '—'; position: absolute; left: 0; color: var(--muted); font-size: 0.75rem; }
+
+    /* Action row after generation */
+    .action-row { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+    .action-btn { flex: 1; font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px; border: none; cursor: pointer; transition: background 0.15s; }
+    .action-btn-primary { background: var(--ink); color: var(--cream); }
+    .action-btn-primary:hover { background: var(--ink2); }
+    .action-btn-secondary { background: white; color: var(--ink); border: 1px solid var(--rule); }
+    .action-btn-secondary:hover { border-color: var(--ink); }
+
+    /* Error */
+    .error-msg { font-size: 0.78rem; color: var(--red); margin-top: 0.75rem; display: none; }
+
+    footer { border-top: 2px solid var(--red); background: var(--ink); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; height: 56px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+
+    @media (max-width: 900px) {
+      .main-layout { grid-template-columns: 1fr; }
+      .form-panel { border-right: none; border-bottom: 1.5px solid var(--ink); }
+      .preview-panel { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      .page-header { padding: 2rem 1.25rem; }
+      .form-panel { padding: 2rem 1.25rem; }
+      .article-frame-header, .article-frame-body { padding: 1.5rem; }
+      .nav-tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tag">Only the good stuff.</span>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-eyebrow">HoodTip · Write</div>
+  <h1 class="page-header-hed">Your tip. <em>Your byline.</em></h1>
+  <p class="page-header-sub">A few lines and a photo. We turn it into a beautiful article you can share — written in your voice, with your name on it.</p>
+</div>
+
+<div class="main-layout">
+
+  <!-- LEFT: FORM -->
+  <div class="form-panel">
+
+    <div class="form-section-label">About you</div>
+    <div class="field-group">
+      <div class="field">
+        <label for="f-author">Your name</label>
+        <input type="text" id="f-author" placeholder="e.g. Sarah" />
+      </div>
+      <div class="field">
+        <label for="f-handle">Handle</label>
+        <input type="text" id="f-handle" placeholder="@sarah" />
+      </div>
+    </div>
+
+    <div class="form-section-label">The place</div>
+    <div class="field-group">
+      <div class="field">
+        <label for="f-place">Place name</label>
+        <input type="text" id="f-place" placeholder="e.g. Bongo Joe" />
+      </div>
+      <div class="field">
+        <label for="f-hood">Neighbourhood &amp; City</label>
+        <input type="text" id="f-hood" placeholder="e.g. Saint-Gervais, Geneva" />
+      </div>
+      <div class="field">
+        <label for="f-category">Category</label>
+        <select id="f-category">
+          <option value="">Select one</option>
+          <option>Bar</option>
+          <option>Restaurant</option>
+          <option>Coffee</option>
+          <option>Wine</option>
+          <option>Market</option>
+          <option>Hotel</option>
+          <option>Travel</option>
+          <option>Cinema</option>
+          <option>Swimming</option>
+          <option>Vineyard</option>
+          <option>Watch</option>
+          <option>Experience</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-photo1">Main photo link</label>
+        <input type="text" id="f-photo1" placeholder="Google Photos, iCloud, Dropbox link..." />
+        <span class="field-hint">Share any photo from your camera roll, paste the link.</span>
+      </div>
+      <div class="field">
+        <label for="f-photo2">Second photo (optional)</label>
+        <input type="text" id="f-photo2" placeholder="Another photo link..." />
+      </div>
+    </div>
+
+    <div class="form-section-label">Your notes</div>
+    <div class="field-group">
+      <div class="field">
+        <label for="f-raw">What do you want to say?</label>
+        <textarea id="f-raw" style="min-height:120px;" placeholder="Write it however it comes out — messy, first draft, doesn't matter. What should someone order? What did you notice that others miss? Why is this place worth knowing about?"></textarea>
+        <span class="field-hint">The rougher the better. We keep your voice — we just make it look beautiful.</span>
+      </div>
+      <div class="field">
+        <label for="f-order">What to order / do</label>
+        <input type="text" id="f-order" placeholder="e.g. the uni, cold sake, sit at the bar" />
+      </div>
+      <div class="field">
+        <label for="f-secret">What most people miss</label>
+        <input type="text" id="f-secret" placeholder="e.g. the barrel tables outside, get there before noon..." />
+      </div>
+    </div>
+
+    <button class="generate-btn" id="generate-btn" onclick="generateArticle()">
+      Generate my article →
+    </button>
+    <div class="error-msg" id="error-msg">Something went wrong — please try again.</div>
+
+  </div>
+
+  <!-- RIGHT: PREVIEW -->
+  <div class="preview-panel">
+
+    <!-- Empty state -->
+    <div class="preview-empty" id="preview-empty">
+      <div class="preview-empty-icon">✦</div>
+      <div class="preview-empty-text">Your article will appear here.</div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading-state" id="loading-state">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Writing your article...</div>
+      <div class="loading-subtext">Keeping your voice. Making it beautiful.</div>
+    </div>
+
+    <!-- Article preview -->
+    <div class="article-preview" id="article-preview">
+      <div class="article-preview-label">Preview</div>
+
+      <div class="article-frame" id="article-frame">
+        <div class="article-frame-header">
+          <div class="af-eyebrow" id="af-eyebrow">
+            HoodTip <span class="af-eyebrow-dot"></span>
+            <span id="af-hood-eyebrow">—</span>
+          </div>
+          <div class="af-category" id="af-category">—</div>
+          <div class="af-headline" id="af-headline">—</div>
+          <div class="af-subtitle" id="af-subtitle">—</div>
+          <div class="af-byline">
+            <div class="af-byline-photo" id="af-byline-photo">?</div>
+            <div>
+              <div class="af-byline-name" id="af-byline-name">—</div>
+              <div class="af-byline-handle" id="af-byline-handle">—</div>
+            </div>
+          </div>
+        </div>
+        <div class="article-frame-body">
+          <!-- Hero image or placeholder -->
+          <div id="af-hero-wrap">
+            <div class="af-hero-placeholder">
+              <span>Your photo will appear here</span>
+            </div>
+          </div>
+
+          <div class="af-body" id="af-body-1"></div>
+
+          <div class="af-pull-quote" id="af-pull-quote">
+            <p id="af-pull-quote-text">—</p>
+          </div>
+
+          <!-- Photo pair or second photo -->
+          <div id="af-photo-2-wrap"></div>
+
+          <div class="af-body" id="af-body-2"></div>
+
+          <div class="af-tip-box">
+            <div class="af-tip-box-label">The tip</div>
+            <ul id="af-tip-list"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn action-btn-primary" onclick="submitArticle()">Submit for publishing →</button>
+        <button class="action-btn action-btn-secondary" onclick="regenerate()">Regenerate</button>
+      </div>
+      <div class="error-msg" id="submit-error"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+  </div>
+</footer>
+
+<!-- SUBMIT SUCCESS OVERLAY -->
+<div id="success-overlay" style="display:none;position:fixed;inset:0;background:rgba(26,24,22,0.85);z-index:200;align-items:center;justify-content:center;">
+  <div style="background:var(--cream);max-width:460px;width:100%;margin:1.5rem;padding:3rem 2.5rem;text-align:center;">
+    <div style="font-family:var(--serif);font-size:2.5rem;margin-bottom:1rem;">✓</div>
+    <div style="font-family:var(--serif);font-size:1.6rem;font-weight:400;margin-bottom:0.75rem;">Article received.</div>
+    <p style="font-size:0.88rem;color:var(--muted);line-height:1.75;margin-bottom:2rem;">We'll review it, add your page to HoodTip, and send you the link within 48 hours. Your name on it, your voice in it.</p>
+    <a href="index.html" style="font-family:var(--cond);font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:12px 28px;text-decoration:none;display:inline-block;">Back to HoodTip</a>
+  </div>
+</div>
+
+<script>
+  let lastGenerated = null;
+
+  const SYSTEM_PROMPT = `You are the editorial voice of HoodTip — a neighbourhood-first tips platform. Your job is to take someone's raw notes about a place they love and turn them into a short, beautiful travel article in their voice.
+
+Rules:
+- Keep their jokes, their specific details, their personality. You are editing and elevating, not rewriting.
+- Positive only. No complaints, no ratings, no negativity.
+- Short and specific beats long and general. Aim for 3-4 paragraphs total.
+- Write like a note to a smart friend, not a travel brochure.
+- The pull quote should be a single memorable sentence — ideally something the person actually said or implied.
+- The tip box is 4-6 bullet points, ultra specific, actionable.
+
+Respond ONLY with a valid JSON object, no markdown backticks, no preamble. Structure:
+{
+  "headline": "The headline — can use italics markers like *word* for italic parts",
+  "subtitle": "The italic deck line under the headline",
+  "category_label": "Category · Neighbourhood · City",
+  "pull_quote": "One great sentence for the pull quote",
+  "body_1": "First 1-2 paragraphs of the article body",
+  "body_2": "Final paragraph — can be short, lands the tip",
+  "tip_items": ["bullet 1", "bullet 2", "bullet 3", "bullet 4", "bullet 5"]
+}`;
+
+  async function generateArticle() {
+    const author = document.getElementById('f-author').value.trim();
+    const handle = document.getElementById('f-handle').value.trim();
+    const place = document.getElementById('f-place').value.trim();
+    const hood = document.getElementById('f-hood').value.trim();
+    const category = document.getElementById('f-category').value;
+    const raw = document.getElementById('f-raw').value.trim();
+    const order = document.getElementById('f-order').value.trim();
+    const secret = document.getElementById('f-secret').value.trim();
+    const photo1 = document.getElementById('f-photo1').value.trim();
+    const photo2 = document.getElementById('f-photo2').value.trim();
+
+    if (!place || !hood || !raw) {
+      document.getElementById('error-msg').style.display = 'block';
+      document.getElementById('error-msg').textContent = 'Please fill in at least the place, neighbourhood, and your notes.';
+      return;
+    }
+
+    document.getElementById('error-msg').style.display = 'none';
+    document.getElementById('generate-btn').disabled = true;
+    document.getElementById('preview-empty').style.display = 'none';
+    document.getElementById('article-preview').classList.remove('active');
+    document.getElementById('loading-state').classList.add('active');
+
+    const userMessage = `Place: ${place}
+Neighbourhood & City: ${hood}
+Category: ${category || 'not specified'}
+Author: ${author || 'anonymous'}
+
+Their raw notes:
+${raw}
+
+What to order/do: ${order || 'not specified'}
+What most people miss: ${secret || 'not specified'}`;
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: [{ role: 'user', content: userMessage }]
+        })
+      });
+
+      const data = await res.json();
+      const text = data.content[0].text;
+      const clean = text.replace(/```json|```/g, '').trim();
+      const article = JSON.parse(clean);
+
+      lastGenerated = { article, author, handle, place, hood, category, photo1, photo2, raw, order, secret };
+      renderArticle(article, author, handle, hood, category, photo1, photo2);
+
+    } catch (err) {
+      document.getElementById('loading-state').classList.remove('active');
+      document.getElementById('preview-empty').style.display = 'flex';
+      document.getElementById('error-msg').style.display = 'block';
+      document.getElementById('error-msg').textContent = 'Something went wrong generating the article. Please try again.';
+    }
+
+    document.getElementById('generate-btn').disabled = false;
+  }
+
+  function renderArticle(article, author, handle, hood, category, photo1, photo2) {
+    document.getElementById('loading-state').classList.remove('active');
+
+    // Eyebrow
+    document.getElementById('af-hood-eyebrow').textContent = hood || '—';
+
+    // Category
+    document.getElementById('af-category').textContent = article.category_label || (category + ' · ' + hood);
+
+    // Headline — handle *italic* markers
+    const hlEl = document.getElementById('af-headline');
+    hlEl.innerHTML = (article.headline || '').replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+    // Subtitle
+    document.getElementById('af-subtitle').textContent = article.subtitle || '';
+
+    // Byline
+    document.getElementById('af-byline-name').textContent = author || 'Anonymous';
+    document.getElementById('af-byline-handle').textContent = handle || '';
+    document.getElementById('af-byline-photo').textContent = (author || '?').charAt(0).toUpperCase();
+
+    // Hero
+    const heroWrap = document.getElementById('af-hero-wrap');
+    if (photo1) {
+      heroWrap.innerHTML = `<img class="af-hero" src="${photo1}" alt="${article.headline}" onerror="this.parentElement.innerHTML='<div class=\\'af-hero-placeholder\\'><span>Photo link — image will show when live</span></div>'" />`;
+    } else {
+      heroWrap.innerHTML = `<div class="af-hero-placeholder"><span>Add a photo link to see it here</span></div>`;
+    }
+
+    // Body 1
+    const body1El = document.getElementById('af-body-1');
+    body1El.innerHTML = (article.body_1 || '').split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('');
+
+    // Pull quote
+    document.getElementById('af-pull-quote-text').textContent = article.pull_quote || '';
+
+    // Photo 2
+    const photo2Wrap = document.getElementById('af-photo-2-wrap');
+    if (photo2) {
+      photo2Wrap.innerHTML = `
+        <div class="af-photo-pair">
+          <img src="${photo1 || ''}" alt="photo 1" onerror="this.style.display='none'" style="aspect-ratio:3/4;object-fit:cover;width:100%;" />
+          <img src="${photo2}" alt="photo 2" onerror="this.style.display='none'" style="aspect-ratio:3/4;object-fit:cover;width:100%;" />
+        </div>`;
+    } else {
+      photo2Wrap.innerHTML = '';
+    }
+
+    // Body 2
+    const body2El = document.getElementById('af-body-2');
+    body2El.innerHTML = (article.body_2 || '').split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('');
+
+    // Tip items
+    const tipList = document.getElementById('af-tip-list');
+    tipList.innerHTML = (article.tip_items || []).map(item => `<li>${item}</li>`).join('');
+
+    document.getElementById('article-preview').classList.add('active');
+
+    // Scroll preview into view on mobile
+    if (window.innerWidth < 900) {
+      document.getElementById('article-preview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function regenerate() {
+    document.getElementById('article-preview').classList.remove('active');
+    document.getElementById('preview-empty').style.display = 'flex';
+    generateArticle();
+  }
+
+  async function submitArticle() {
+    if (!lastGenerated) return;
+    const btn = document.querySelector('.action-btn-primary');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const payload = {
+      type: 'ARTICLE_SUBMIT',
+      ...lastGenerated,
+      generated_article: JSON.stringify(lastGenerated.article)
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/mdawyane', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        document.getElementById('success-overlay').style.display = 'flex';
+      } else throw new Error();
+    } catch {
+      const err = document.getElementById('submit-error');
+      err.style.display = 'block';
+      err.textContent = 'Something went wrong submitting — please try again.';
+      btn.textContent = 'Submit for publishing →';
+      btn.disabled = false;
+    }
+  }
+
+  // Close success overlay on click outside
+  document.getElementById('success-overlay').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+</script>
+</body>
+</html>
