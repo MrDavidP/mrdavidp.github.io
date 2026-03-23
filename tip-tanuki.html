@@ -108,6 +108,14 @@
     .img-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
     .img-trio img { width: 100%; display: block; height: 320px; object-fit: cover; }
 
+    /* PORTRAIT IMAGE — for vertical/phone photos, shown in full */
+    .img-portrait-wrap { display: flex; justify-content: center; gap: 2px; margin: 3rem 0; }
+    .img-portrait-wrap img { display: block; max-height: 680px; width: auto; max-width: 100%; object-fit: contain; flex: 0 1 auto; }
+    /* Two portrait images side by side */
+    .img-portrait-pair { display: flex; justify-content: center; gap: 2px; margin: 3rem 0; overflow: hidden; }
+    .img-portrait-pair img { display: block; height: 620px; width: 50%; object-fit: cover; object-position: center; flex-shrink: 0; }
+    .img-portrait-caption { font-family: var(--cond); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.7rem 0 0; text-align: center; margin-top: -2.5rem; margin-bottom: 3rem; }
+
     /* SECTION DIVIDER */
     .section-divider { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0; }
     .section-divider-line { flex: 1; height: 1px; background: var(--rule); }
@@ -197,7 +205,7 @@
 
 <!-- HERO — the sake-and-sushi-at-home shot sets the mood immediately -->
 <div class="hero">
-  <img src="Screenshot_2026-03-17_at_08_57_24.png" alt="Sake and sushi from Tanuki, Plainpalais Geneva" style="object-position: center 55%;" />
+  <img src="Screenshot_2026-03-17_at_08_56_54.png" alt="Tanuki large sushi platter, Plainpalais Geneva" style="object-position: center 40%;" />
   <div class="hero-overlay"></div>
   <div class="hero-caption">
     <div class="hero-caption-location">Plainpalais · Geneva · Switzerland</div>
@@ -278,7 +286,7 @@
 
   <!-- THE PLATTER — full width, the centrepiece -->
   <div class="img-full">
-    <img src="Screenshot_2026-03-17_at_08_56_54.png" alt="Tanuki large sushi platter — Sushi MATSU, CHF 110" style="object-position: center 40%; max-height: 580px;" />
+    <img src="Screenshot_2026-03-17_at_08_59_08.png" alt="Tanuki large sushi platter — Sushi MATSU, CHF 110" style="object-position: center 40%; max-height: 580px;" />
     <div class="img-caption">The large platter. Sushi MATSU — CHF 110. Worth every franc.</div>
   </div>
 
@@ -286,11 +294,12 @@
     <p>One thing to know: they sell out. Don't leave it too late in the evening, especially on a Friday. The second service starts at 17:00 — if you want the full selection, go early in that window. The eel and the sea urchin (oursin, CHF 9 a piece) go first.</p>
   </div>
 
-  <!-- THE MOVE — at home with candles -->
-  <div class="img-full">
-    <img src="tanuki-on-table.jpg" alt="Tanuki sushi spread at home with candles and sake, Geneva" style="object-position: center 30%; max-height: 640px;" />
-    <div class="img-caption">Plated at home. Sake cold. This is what Friday evening looks like.</div>
+  <!-- THE MOVE — portrait pair: sake bottle + plated at home -->
+  <div class="img-portrait-pair">
+    <img src="Screenshot_2026-03-17_at_08_57_24.png" alt="Sake bottle and sushi from Tanuki at home, Geneva" style="object-position: center 40%;" />
+    <img src="tanuki-on-table.jpg" alt="Tanuki sushi plated at home with candles, Geneva" style="object-position: center 30%;" />
   </div>
+  <div class="img-portrait-caption">Stop at Uchitomi for sake on the way home. The rest takes care of itself.</div>
 
   <div class="section-divider">
     <div class="section-divider-line"></div>
