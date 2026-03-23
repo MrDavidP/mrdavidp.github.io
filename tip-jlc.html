@@ -179,6 +179,19 @@
     </div>
   </div>
 
+  <!-- MAPS + SHARE -->
+  <div style="display:flex;gap:0.5rem;margin:-1rem 0 2.5rem;">
+    <a href="https://maps.google.com/?q=Jaeger-LeCoultre+Rue+du+Rhone+56+Geneva" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.45rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:0.64rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:0.65rem 1rem;text-decoration:none;">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Open in Maps
+    </a>
+    <button onclick="(async()=>{if(navigator.share){try{await navigator.share({title:document.title,url:location.href})}catch(e){}}else{try{await navigator.clipboard.writeText(location.href);const t=document.getElementById('ht-toast');t.style.opacity='1';setTimeout(()=>t.style.opacity='0',2000)}catch(e){}}})()" style="display:inline-flex;align-items:center;gap:0.45rem;background:transparent;color:var(--muted);font-family:var(--cond);font-size:0.64rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:0.65rem 1rem;border:1px solid var(--rule);cursor:pointer;">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share tip
+    </button>
+  </div>
+  <div id="ht-toast" style="position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.65rem 1.25rem;opacity:0;transition:opacity 0.2s;pointer-events:none;z-index:999;">Link copied</div>
+
   <div class="body">
     <p>Something I didn't know, as someone who isn't really a watch guy: you can't walk into the Rolex store in Geneva and buy a Rolex. Not that I could afford one, but still — you're standing in Geneva, cash in hand, and they'll put you on a waitlist. Same for Patek Philippe and most of the elite brands. They manufacture scarcity deliberately, driving up perceived importance through relationships and queues. It's a whole game. It feels like that scene in <em>The 40-Year-Old Virgin</em> where Jonah Hill is standing in the store asking if he can just give them money and take the boots. But no. Online only. Sir.</p>
     <p>There are a few places in Geneva where you can walk in, buy an excellent Swiss watch, and leave wearing it. Jaeger-LeCoultre — just call it JLC, I can't pronounce it either — is one of them. They're known in the industry as the watchmaker's watchmaker: a brand that serious watch people respect deeply, one that supplies movements to many of the other great 'maisons'. Less famous than Rolex. More respected by the people who know.</p>
@@ -222,6 +235,15 @@
 
   <a href="geneva.html" class="back-link">← Geneva</a>
 
+  <!-- POST CTA -->
+  <div style="border:1.5px solid var(--ink);padding:1.75rem 2rem;margin:3rem 0 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
+    <div>
+      <div style="font-family:var(--serif);font-size:1.4rem;font-weight:400;line-height:1.2;margin-bottom:0.35rem;">Know somewhere <em>good?</em></div>
+      <p style="font-size:0.78rem;color:var(--muted);line-height:1.65;">A photo, a place, two sentences. We turn it into a proper article with your name on it. Positive only. Specific over general.</p>
+    </div>
+    <a href="index.html" style="display:inline-block;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.75rem 1.25rem;text-decoration:none;white-space:nowrap;flex-shrink:0;">Leave a HoodTip &rarr;</a>
+  </div>
+
 </div>
 
 <footer>
@@ -235,14 +257,5 @@
   </div>
 </footer>
 
-
-  <!-- LEAVE A TIP CTA -->
-  <div style="border:1.5px solid #1a1816;padding:1.75rem 2rem;margin:3rem 0 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-    <div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;font-weight:400;line-height:1.2;margin-bottom:0.35rem;">Know somewhere <em>good?</em></div>
-      <p style="font-size:0.78rem;color:#6b6560;line-height:1.65;">A photo, a place, two sentences. We turn it into a proper article with your name on it. Positive only. Specific over general.</p>
-    </div>
-    <a href="https://hoodtip.com" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.75rem 1.25rem;text-decoration:none;white-space:nowrap;flex-shrink:0;">Leave a HoodTip &rarr;</a>
-  </div>
 </body>
 </html>
