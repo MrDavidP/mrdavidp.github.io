@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HoodTip Photo Layout System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; max-width: 720px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+    h1 { font-family: var(--serif); font-size: 2rem; font-weight: 500; margin-bottom: 0.5rem; }
+    h2 { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin: 3rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+    p { font-size: 1rem; line-height: 1.8; margin-bottom: 1.2rem; }
+    code { font-family: monospace; font-size: 0.82rem; background: rgba(0,0,0,0.05); padding: 2px 5px; }
+    pre { background: var(--ink); color: var(--cream); padding: 1.25rem 1.5rem; font-size: 0.78rem; line-height: 1.7; margin: 1rem 0 2rem; overflow-x: auto; }
+
+    /* ═══════════════════════════════════════════
+       HOODTIP PHOTO LAYOUT SYSTEM — COPY THIS CSS
+       INTO EVERY TIP PAGE
+    ═══════════════════════════════════════════ */
+
+    /* 1. FULL-BLEED LANDSCAPE — spans full viewport width */
+    .img-full {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 3rem 0;
+    }
+    .img-full img {
+      width: 100%;
+      display: block;
+      max-height: 580px;
+      object-fit: cover;
+    }
+
+    /* 2. LANDSCAPE PAIR — two landscape photos side by side, full bleed */
+    .img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin: 3rem 0;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .img-pair img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    /* 3. PORTRAIT PAIR — two portrait photos at natural ratio, full bleed */
+    .img-portrait-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin: 3rem 0;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .img-portrait-pair img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3/4;   /* ← KEY: natural portrait ratio, not forced height */
+      object-fit: cover;
+    }
+
+    /* 4. PORTRAIT SINGLE — one portrait, centered, constrained width */
+    .img-portrait-single {
+      margin: 3rem auto;
+      max-width: 460px;
+    }
+    .img-portrait-single img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    /* 5. TRIO — three landscape photos, full bleed */
+    .img-trio {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin: 3rem 0;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .img-trio img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    /* 6. FLOAT RIGHT — magazine style, image floats right, text wraps left */
+    .img-float-right {
+      float: right;
+      width: 42%;
+      margin: 0.25rem 0 1.5rem 2rem;
+      clear: right;
+    }
+    .img-float-right img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .img-float-right.portrait img { aspect-ratio: 3/4; }
+    .img-float-right.landscape img { aspect-ratio: 4/3; }
+
+    /* 7. FLOAT LEFT — magazine style, image floats left, text wraps right */
+    .img-float-left {
+      float: left;
+      width: 42%;
+      margin: 0.25rem 2rem 1.5rem 0;
+      clear: left;
+    }
+    .img-float-left img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .img-float-left.portrait img { aspect-ratio: 3/4; }
+    .img-float-left.landscape img { aspect-ratio: 4/3; }
+
+    /* 8. CLEARFIX — use after any float section */
+    .cf::after { content: ''; display: table; clear: both; }
+
+    /* 9. CAPTION — works under any image type */
+    .img-caption {
+      font-family: var(--cond);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.6rem 0 0;
+    }
+    /* Caption for full-bleed images needs padding offset */
+    .img-full .img-caption,
+    .img-pair .img-caption,
+    .img-portrait-pair .img-caption,
+    .img-trio .img-caption {
+      padding: 0.65rem 2rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* MOBILE */
+    @media (max-width: 680px) {
+      .img-pair { grid-template-columns: 1fr; }
+      .img-pair img { aspect-ratio: 4/3; max-height: 280px; }
+      .img-portrait-pair { grid-template-columns: 1fr 1fr; }
+      .img-portrait-pair img { aspect-ratio: 1/1; } /* square on mobile */
+      .img-trio { grid-template-columns: 1fr 1fr; }
+      .img-float-right, .img-float-left {
+        float: none;
+        width: 100%;
+        margin: 0 0 1.5rem 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<h1>HoodTip Photo Layout System</h1>
+<p style="color:var(--muted);font-family:var(--serif);font-style:italic;">Reference guide and copy-paste CSS for all tip pages.</p>
+
+<h2>The philosophy</h2>
+<p>Photos should enhance the writing, not just sit between paragraphs. The layout system has two modes: <strong>editorial blocks</strong> (full-bleed images that punctuate the article) and <strong>magazine floats</strong> (images that sit beside text so reading and looking happen simultaneously).</p>
+<p>The main fix over the old system: <strong>portrait photos now use <code>aspect-ratio: 3/4</code></strong> instead of a fixed pixel height. This means they display at their natural proportions and don't look awkwardly cropped.</p>
+
+<h2>1. Full-bleed landscape — <code>.img-full</code></h2>
+<p>Use for hero-quality single images that deserve the full width. The image breaks out of the article column and spans the full viewport.</p>
+<pre>&lt;div class="img-full"&gt;
+  &lt;img src="photo.jpg" alt="Description" style="object-position: center 40%;" /&gt;
+  &lt;div class="img-caption"&gt;Optional caption text&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h2>2. Landscape pair — <code>.img-pair</code></h2>
+<p>Two landscape photos side by side, full bleed. Use 4/3 aspect ratio (enforced). Good for before/after, two angles of the same scene, interior + exterior.</p>
+<pre>&lt;div class="img-pair"&gt;
+  &lt;img src="photo-a.jpg" alt="..." /&gt;
+  &lt;img src="photo-b.jpg" alt="..." /&gt;
+&lt;/div&gt;</pre>
+
+<h2>3. Portrait pair — <code>.img-portrait-pair</code></h2>
+<p>Two portrait (phone) photos side by side at natural 3/4 ratio. <strong>This is the main fix</strong> — no more forced heights that distort vertical photos.</p>
+<pre>&lt;div class="img-portrait-pair"&gt;
+  &lt;img src="portrait-a.jpg" alt="..." /&gt;
+  &lt;img src="portrait-b.jpg" alt="..." /&gt;
+&lt;/div&gt;</pre>
+
+<h2>4. Portrait single — <code>.img-portrait-single</code></h2>
+<p>One portrait photo, centred in the article column at natural ratio. Max-width 460px. Use when a single vertical photo deserves its own moment.</p>
+<pre>&lt;div class="img-portrait-single"&gt;
+  &lt;img src="portrait.jpg" alt="..." /&gt;
+  &lt;div class="img-caption"&gt;Caption&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h2>5. Trio — <code>.img-trio</code></h2>
+<p>Three landscape photos across full bleed. Good for neighbourhood/atmosphere shots where none individually deserves a hero treatment.</p>
+<pre>&lt;div class="img-trio"&gt;
+  &lt;img src="a.jpg" alt="..." /&gt;
+  &lt;img src="b.jpg" alt="..." /&gt;
+  &lt;img src="c.jpg" alt="..." /&gt;
+&lt;/div&gt;</pre>
+
+<h2>6 & 7. Magazine floats — <code>.img-float-right</code> / <code>.img-float-left</code></h2>
+<p>The magazine treatment. The image floats beside the text so reading and looking happen at the same time. Add class <code>portrait</code> or <code>landscape</code> to set the aspect ratio. Always close with <code>.cf</code> (clearfix) on the containing element.</p>
+<pre>&lt;!-- Float right with portrait photo --&gt;
+&lt;div class="cf"&gt;
+  &lt;figure class="img-float-right portrait"&gt;
+    &lt;img src="portrait.jpg" alt="..." /&gt;
+    &lt;figcaption class="img-caption"&gt;Caption&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  &lt;p&gt;Text wraps around the image. Write two or three
+  paragraphs here — enough for the eye to travel between
+  the image and the words naturally.&lt;/p&gt;
+  &lt;p&gt;Second paragraph. The float continues until you run
+  out of text or hit the clearfix.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Float left with landscape photo --&gt;
+&lt;div class="cf"&gt;
+  &lt;figure class="img-float-left landscape"&gt;
+    &lt;img src="landscape.jpg" alt="..." /&gt;
+  &lt;/figure&gt;
+  &lt;p&gt;Text to the right of the image.&lt;/p&gt;
+&lt;/div&gt;</pre>
+
+<h2>Recommended sequences for a full tip page</h2>
+<p><strong>Restaurant/food tip:</strong> hero landscape → 2 paragraphs → float-right portrait → 1 paragraph → pull quote → full-bleed detail shot → portrait pair → tip box</p>
+<p><strong>Hotel/experience tip:</strong> hero landscape → 1 paragraph → float-left portrait (room/detail) → 1–2 paragraphs → full-bleed view shot → landscape pair (exterior + interior) → tip box</p>
+<p><strong>Short tip (coffee, bar, quick find):</strong> hero → 1 paragraph → portrait single or float → pull quote → tip box. Keep it tight.</p>
+
+<h2>Rules</h2>
+<p>— Never use a fixed pixel height (<code>height: 580px</code>) on portrait images — always use <code>aspect-ratio</code><br>
+— Always add <code>object-position</code> inline to control crop (e.g. <code>style="object-position: center 30%"</code>)<br>
+— Float sections need at least 2 paragraphs of text alongside — otherwise just use a portrait-single<br>
+— On mobile, floats collapse to full width automatically<br>
+— Captions are optional but add character — keep them to one line, sentence case</p>
+
+</body>
+</html>
