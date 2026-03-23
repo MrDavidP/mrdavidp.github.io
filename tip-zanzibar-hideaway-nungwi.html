@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Riu Palace Zanzibar – Nungwi, Zanzibar | HoodTip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── DESIGN TOKENS ────────────────────────────────────── */
+    :root {
+      --cream:  #f7f4ef;
+      --ink:    #1a1816;
+      --red:    #b5322a;
+      --muted:  #6b6560;
+      --rule:   #e0dbd3;
+      --max:    780px;
+    }
+
+    /* ── RESET / BASE ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+
+    /* ── PHOTO LAYOUT SYSTEM ──────────────────────────────── */
+    .img-full {
+      width: 100%;
+      margin: 2rem 0;
+    }
+    .img-full img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin: 2rem 0;
+    }
+    .img-pair img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      width: 100%;
+    }
+    .img-portrait-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin: 2rem 0;
+    }
+    .img-portrait-pair img {
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      width: 100%;
+    }
+    .img-portrait-single {
+      margin: 2rem auto;
+      max-width: 480px;
+    }
+    .img-portrait-single img {
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      width: 100%;
+    }
+    .img-trio {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin: 2rem 0;
+    }
+    .img-trio img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      width: 100%;
+    }
+    .cf::after { content: ''; display: table; clear: both; }
+    .img-float-right {
+      float: right;
+      margin: 0 0 1.5rem 2rem;
+      width: 44%;
+    }
+    .img-float-right.portrait img {
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+    .img-float-left {
+      float: left;
+      margin: 0 2rem 1.5rem 0;
+      width: 44%;
+    }
+    .img-float-left.portrait img {
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    /* ── FULL-BLEED STRIP ─────────────────────────────────── */
+    .bleed {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 3rem 0;
+    }
+    .bleed img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    /* ── SITE HEADER ──────────────────────────────────────── */
+    .site-header {
+      border-bottom: 1px solid var(--rule);
+      padding: 0 1.5rem;
+    }
+    .site-header__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .site-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .site-logo span { color: var(--red); }
+    .site-nav { display: flex; gap: 2rem; }
+    .site-nav a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .site-nav a:hover { color: var(--ink); }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: 70vh;
+      min-height: 420px;
+      max-height: 680px;
+      object-fit: cover;
+      object-position: center 55%;
+      display: block;
+    }
+
+    /* ── ARTICLE WRAPPER ──────────────────────────────────── */
+    .article {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* ── BREADCRUMB ───────────────────────────────────────── */
+    .breadcrumb {
+      margin: 1.5rem 0 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .breadcrumb a { color: var(--muted); }
+    .breadcrumb a:hover { color: var(--red); }
+    .breadcrumb span { margin: 0 .4em; }
+
+    /* ── CATEGORY TAGS ────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-bottom: 1.2rem;
+    }
+    .tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid var(--red);
+      padding: .2rem .55rem;
+      border-radius: 2px;
+    }
+
+    /* ── HEADLINE ─────────────────────────────────────────── */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: .6rem;
+      letter-spacing: -.01em;
+    }
+    .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+    }
+
+    /* ── FIND STRIP ───────────────────────────────────────── */
+    .find-strip {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 0;
+      margin-bottom: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 1rem 2rem;
+    }
+    .find-strip__item {
+      display: flex;
+      flex-direction: column;
+      gap: .15rem;
+    }
+    .find-strip__label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .find-strip__value {
+      font-size: .88rem;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .find-strip__actions {
+      margin-left: auto;
+      display: flex;
+      gap: .6rem;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .45rem .9rem;
+      border-radius: 2px;
+      cursor: pointer;
+      border: none;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .8; }
+    .btn-primary { background: var(--ink); color: var(--cream); }
+    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* ── BODY COPY ────────────────────────────────────────── */
+    .body-copy p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+      color: var(--ink);
+    }
+    .body-copy p:last-child { margin-bottom: 0; }
+
+    /* ── PULL QUOTE ───────────────────────────────────────── */
+    .pull-quote {
+      border-left: 3px solid var(--red);
+      padding: 1rem 0 1rem 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    /* ── TIP BOX ──────────────────────────────────────────── */
+    .tip-box {
+      background: white;
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--red);
+      padding: 1.5rem 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .tip-box__heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: .7rem;
+    }
+    .tip-box p {
+      font-size: .95rem;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+    .tip-box p + p { margin-top: .6rem; }
+
+    /* ── CTA BANNER ───────────────────────────────────────── */
+    .cta-banner {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 2rem;
+      text-align: center;
+      margin: 3rem 0 0;
+    }
+    .cta-banner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: .4rem;
+    }
+    .cta-banner p {
+      font-size: .85rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+    .cta-banner .btn-primary {
+      background: var(--red);
+      color: white;
+    }
+
+    /* ── MORE TIPS GRID ───────────────────────────────────── */
+    .more-tips {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+    .more-tips__heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      padding-bottom: .6rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .tip-card { display: block; }
+    .tip-card__img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      margin-bottom: .7rem;
+    }
+    .tip-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .tip-card:hover .tip-card__img img { transform: scale(1.04); }
+    .tip-card__city {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: .2rem;
+    }
+    .tip-card__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 1.5rem;
+    }
+    .site-footer__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .site-footer p {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .site-nav { display: none; }
+      .find-strip__actions { margin-left: 0; width: 100%; }
+      .img-float-right, .img-float-left { float: none; width: 100%; margin: 1.5rem 0; }
+      .img-pair, .img-portrait-pair { grid-template-columns: 1fr; }
+      .img-trio { grid-template-columns: 1fr 1fr; }
+      .tips-grid { grid-template-columns: 1fr 1fr; }
+      .tips-grid .tip-card:last-child { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-logo">Hood<span>Tip</span></a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="#">Cities</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="zanzibar-beach-hero.JPG" alt="Turquoise waters and white sand beach at Nungwi, Zanzibar" />
+  </div>
+
+  <!-- ARTICLE -->
+  <article class="article">
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="#">East Africa</a>
+      <span>›</span>
+      <a href="#">Zanzibar</a>
+      <span>›</span>
+      Nungwi
+    </nav>
+
+    <!-- TAGS -->
+    <div class="tags">
+      <span class="tag">Hotel</span>
+      <span class="tag">Beach</span>
+      <span class="tag">East Africa</span>
+      <span class="tag">Tanzania</span>
+    </div>
+
+    <!-- HEADLINE -->
+    <h1>Hotel Riu Palace Zanzibar</h1>
+    <p class="subtitle">Birthplace of Freddie Mercury. Turquoise Indian Ocean. Two nights that felt like a week.</p>
+
+    <!-- FIND STRIP -->
+    <div class="find-strip">
+      <div class="find-strip__item">
+        <span class="find-strip__label">Address</span>
+        <span class="find-strip__value">Nungwi Rd, Nungwi, North Coast, Zanzibar 73107, Tanzania</span>
+      </div>
+      <div class="find-strip__item">
+        <span class="find-strip__label">Best for</span>
+        <span class="find-strip__value">Beach days, Indian Ocean swimming, unwinding</span>
+      </div>
+      <div class="find-strip__item">
+        <span class="find-strip__label">Tip by</span>
+        <span class="find-strip__value"><a href="profile-dave.html">Dave</a></span>
+      </div>
+      <div class="find-strip__actions">
+        <a class="btn btn-primary" href="https://maps.google.com/?q=Nungwi+Rd,+Nungwi,+North+Coast+Zanzibar+73107,+Tanzania" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Maps
+        </a>
+        <button class="btn btn-outline" onclick="navigator.share ? navigator.share({title: document.title, url: location.href}) : navigator.clipboard.writeText(location.href)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          Share
+        </button>
+      </div>
+    </div>
+
+    <!-- BODY COPY -->
+    <div class="body-copy">
+
+      <div class="cf">
+        <div class="img-float-right portrait">
+          <img src="zanzibar-me.JPG" alt="Standing in the warm shallows at Nungwi with traditional dhows moored behind" />
+        </div>
+        <p>Zanzibar. Say it out loud and it already sounds like a place that shouldn't quite be real — a spice island off the coast of Tanzania, steeped in Swahili culture, Arab trading history, and yes, also the birthplace of Freddie Mercury. For most people it stays on the bucket list forever. If you have a chance to go, go.</p>
+        <p>I was lucky enough to end up here almost by accident. We had a few down days tagged onto a work trip to Tanzania and someone said, well, Zanzibar is right there. We booked two nights at what was then called the Hideaway of Nungwi Resort & Spa — now rebranded as Hotel Riu Palace Zanzibar — in the fishing village of Nungwi at the island's northern tip. Some of the best two nights of any trip I can remember.</p>
+      </div>
+
+      <div class="img-pair">
+        <img src="zanzibar-loungers.JPG" alt="Infinity pool with rattan loungers, thatched beach umbrellas and turquoise Indian Ocean" />
+        <img src="zanzibar-bar.JPG" alt="Thatched beach bar with a bartender preparing drinks, electric blue ocean framed beyond" />
+      </div>
+
+      <p>The hotel sits on a clifftop above the beach, and the drop from the infinity pool down to the white sand is genuinely one of those views that stops your internal monologue cold. The water in this part of the world is a shade of turquoise that feels almost implausible — not the dirty grey-blue of the Atlantic, but something closer to a Caribbean postcard, except warmer and calmer. You just walk in. No waves to fight. The sea floor is soft and the water is as warm as a bath.</p>
+
+      <p>We spent most of our time between the beach bar and the Indian Ocean. The bar sits under a massive thatched roof right on the cliff edge — cold Kilimanjaro beers, a proper spirits set-up, and that view. The bartenders were great: unhurried, friendly, clearly proud of the spot they were working in.</p>
+
+      <div class="cf">
+        <div class="img-float-left portrait">
+          <img src="zanzibar-freddie.JPG" alt="Freddie Mercury photo card on a beach bar in Zanzibar, his birthplace" />
+        </div>
+        <p>No visit to Zanzibar is complete without acknowledging the island's most famous son. Farrokh Bulsara was born in Stone Town in 1946 — he became Freddie Mercury, and the place knows it. You'll see his face on menus, on walls, in bars. Our beach bar had a little Freddie card propped up by the bottles. Felt right.</p>
+        <p>Stone Town is worth a day if you can swing it — the old city is a UNESCO World Heritage Site and genuinely atmospheric. But Nungwi itself has its own thing going on: a real fishing village at one end, resorts like this one at the other, and beautiful wide beaches in between. Walk far enough and the resort energy drops away entirely.</p>
+      </div>
+
+    </div>
+
+    <!-- PULL QUOTE -->
+    <div class="pull-quote">
+      <p>"Some of the best two nights of any trip I can remember. Lock it down and just go."</p>
+    </div>
+
+    <!-- FULL BLEED -->
+    <div class="bleed">
+      <img src="zanzibar-beach-dusk.JPG" alt="Silhouette of a lone figure walking on the beach at dusk, dhow boats on the horizon, Zanzibar" />
+    </div>
+
+    <!-- BODY COPY CONTINUED -->
+    <div class="body-copy">
+
+      <p>The resort was beautifully kept — manicured lawns, Moorish archways, bougainvillea everywhere — with a relaxed, slightly old-world elegance that suited the island perfectly. The grounds feel generous without being overwhelming, and since Riu took it over it's probably only improved. Evening at the pool, lights reflected in the water, absolute silence except for the ocean below: that image stays with you.</p>
+
+      <div class="img-portrait-pair">
+        <img src="zanzibar-bougenvilla.JPG" alt="Path lined with vivid magenta bougainvillea leading down to the infinity pool and ocean" />
+        <img src="zanzibar-dude-glasses.JPG" alt="Local with a huge smile and reflective sunglasses, beach and turquoise sea reflected in the lenses" />
+      </div>
+
+      <p>The people we met along the beach were effortlessly warm. Nungwi is a real working community — fishing boats come in in the morning, the market sets up, life carries on — and that groundedness gives the whole stay a texture that a pure resort destination can't manufacture. One afternoon a local took our photo and had us all in stitches before we'd exchanged more than four words.</p>
+
+    </div>
+
+    <!-- SAMAKI IMAGE + TIP BOX -->
+    <div class="img-portrait-single">
+      <img src="zanzibar-fish-swahili.JPG" alt="Chalk drawing of a fish on wood with the word 'Samaki' — fish in Swahili" />
+    </div>
+
+    <!-- TIP BOX -->
+    <div class="tip-box">
+      <div class="tip-box__heading">The Tip</div>
+      <p>The hotel I stayed at was called <strong>Hideaway of Nungwi Resort &amp; Spa</strong> when I visited — it's now been rebranded as <strong>Hotel Riu Palace Zanzibar</strong>, same location, same stretch of clifftop. From what I can see it's only gotten better under Riu. If you're in Tanzania and have even two spare days, this is where to spend them.</p>
+      <p>Bonus tip within the tip: <em>Samaki</em> means fish in Swahili. Worth knowing when you're trying to order dinner.</p>
+    </div>
+
+    <!-- MORE IMAGES -->
+    <div class="img-trio">
+      <img src="zanzibar-hotel-night.JPG" alt="Hotel lit up at night, Moorish archways reflected in the illuminated pool" />
+      <img src="zanzibar-beach.JPG" alt="Wild turquoise ocean framed by lush vegetation and white sand, Zanzibar" />
+      <img src="zanzibar-lizard.JPG" alt="Lizard basking on terracotta steps in the hotel gardens" />
+    </div>
+
+    <div class="img-pair">
+      <img src="zanizbar-beach-shadow.JPG" alt="Long shadow of a photographer cast across white sand, dhow boats moored in the turquoise channel" />
+      <img src="zanzbiar-old-hotel-coaster.JPG" alt="Coaster from the Hideaway of Nungwi Resort & Spa, Zanzibar — the hotel's original name" />
+    </div>
+
+  </article>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h3>Know somewhere good in Zanzibar?</h3>
+    <p>We're always looking for tips from people who've actually been there.</p>
+    <a class="btn btn-primary" href="#">Submit a Tip</a>
+  </div>
+
+  <!-- MORE TIPS -->
+  <section class="more-tips">
+    <div class="more-tips__heading">More tips from East Africa &amp; beyond</div>
+    <div class="tips-grid">
+
+      <a href="tip-kigali-marriott.html" class="tip-card">
+        <div class="tip-card__img">
+          <img src="kigali-marriott-hero.jpg" alt="Kigali Marriott Hotel" />
+        </div>
+        <div class="tip-card__city">Kigali</div>
+        <div class="tip-card__name">Kigali Marriott Hotel</div>
+      </a>
+
+      <a href="tip-lebalafon.html" class="tip-card">
+        <div class="tip-card__img">
+          <img src="lebalafon-hero.jpg" alt="Le Balafon, Senegal" />
+        </div>
+        <div class="tip-card__city">Senegal</div>
+        <div class="tip-card__name">Le Balafon</div>
+      </a>
+
+      <a href="tip-glencarlou.html" class="tip-card">
+        <div class="tip-card__img">
+          <img src="glencarlou-hero.jpg" alt="Glen Carlou, Cape Town" />
+        </div>
+        <div class="tip-card__city">Cape Town</div>
+        <div class="tip-card__name">Glen Carlou</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>© 2025 HoodTip. Tips from people who've actually been there.</p>
+      <p><a href="index.html">hoodtip.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
