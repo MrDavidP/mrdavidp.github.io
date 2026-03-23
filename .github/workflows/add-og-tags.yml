@@ -1,0 +1,21 @@
+name: Add OG Tags to all HTML files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  add-og-tags:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run OG tag script
+        run: python3 add-og-tags.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add *.html
+          git diff --staged --quiet || git commit -m "Add OG/social meta tags to all HTML files"
+          git push
