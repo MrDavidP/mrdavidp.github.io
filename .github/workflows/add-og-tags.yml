@@ -3,11 +3,14 @@ name: Add OG Tags to all HTML files
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   add-og-tags:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Run OG tag script
         run: python3 add-og-tags.py
