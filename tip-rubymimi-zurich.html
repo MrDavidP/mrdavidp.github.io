@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruby Mimi – Zürich, Switzerland | HoodTip</title>
+  <!-- OG / SOCIAL META -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="HoodTip" />
+  <meta property="og:title" content="Ruby Mimi, Zürich — HoodTip" />
+  <meta property="og:description" content="Book here and stop wasting time looking at hotels online. Nice room, good price, walking distance from everywhere." />
+  <meta property="og:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/rubymimi-zurich-room.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://hoodtip.com/tip-rubymimi-zurich.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ruby Mimi, Zürich — HoodTip" />
+  <meta name="twitter:description" content="Book here and stop wasting time looking at hotels online. Nice room, good price, walking distance from everywhere." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/rubymimi-zurich-room.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream:  #f7f4ef;
+      --ink:    #1a1816;
+      --ink2:   #2a2925;
+      --red:    #b5322a;
+      --muted:  #6b6560;
+      --rule:   #e0dbd3;
+      --max:    780px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body { background: var(--cream); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+
+    /* PHOTO LAYOUT */
+    .img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 2rem 0; }
+    .img-pair img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
+    .img-portrait-single { margin: 2rem auto; max-width: 420px; }
+    .img-portrait-single img { aspect-ratio: 3/4; object-fit: cover; width: 100%; }
+    .bleed { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 3rem 0; }
+    .bleed img { width: 100%; max-height: 480px; object-fit: cover; }
+
+    /* NAV */
+    .site-header { border-bottom: 1px solid var(--rule); padding: 0 1.5rem; }
+    .site-header__inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .site-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.25rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+    .site-logo span { color: var(--red); }
+    .site-nav { display: flex; gap: 2rem; }
+    .site-nav a { font-family: 'Barlow Condensed', sans-serif; font-size: .8rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .site-nav a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero { width: 100%; overflow: hidden; }
+    .hero img { width: 100%; height: 65vh; min-height: 380px; max-height: 600px; object-fit: cover; object-position: center 40%; display: block; }
+
+    /* ARTICLE */
+    .article { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    /* BREADCRUMB */
+    .breadcrumb { margin: 1.5rem 0 1rem; font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .breadcrumb a { color: var(--muted); }
+    .breadcrumb a:hover { color: var(--red); }
+    .breadcrumb span { margin: 0 .4em; }
+
+    /* TAGS */
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
+    .tag { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: .2rem .55rem; border-radius: 2px; }
+
+    /* HEADLINE */
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; line-height: 1.1; margin-bottom: .6rem; letter-spacing: -.01em; }
+    .subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--muted); margin-bottom: 1.8rem; line-height: 1.5; }
+
+    /* FIND STRIP */
+    .find-strip { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1rem 0; margin-bottom: 2.2rem; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1rem 2rem; }
+    .find-strip__item { display: flex; flex-direction: column; gap: .15rem; }
+    .find-strip__label { font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .find-strip__value { font-size: .88rem; color: var(--ink); font-weight: 400; }
+    .find-strip__actions { margin-left: auto; display: flex; gap: .6rem; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: .4rem; font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: .45rem .9rem; border-radius: 2px; cursor: pointer; border: none; transition: opacity .15s; }
+    .btn:hover { opacity: .8; }
+    .btn-primary { background: var(--ink); color: var(--cream); }
+    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* BODY COPY */
+    .body-copy p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.4rem; }
+    .body-copy p:last-child { margin-bottom: 0; }
+
+    /* PULL QUOTE */
+    .pull-quote { border-left: 3px solid var(--red); padding: 1rem 0 1rem 1.5rem; margin: 2.5rem 0; }
+    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-style: italic; font-weight: 400; line-height: 1.4; }
+
+    /* TIP BOX */
+    .tip-box { background: white; border: 1px solid var(--rule); border-top: 3px solid var(--red); padding: 1.5rem 1.8rem; margin: 2.5rem 0; }
+    .tip-box__heading { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--red); margin-bottom: .7rem; }
+    .tip-box p { font-size: .95rem; line-height: 1.7; }
+    .tip-box p + p { margin-top: .6rem; }
+
+    /* CTA */
+    .cta-banner { background: var(--ink); color: var(--cream); padding: 2rem; text-align: center; margin: 3rem 0 0; }
+    .cta-banner h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: .4rem; }
+    .cta-banner p { font-size: .85rem; color: #aaa; margin-bottom: 1rem; }
+    .cta-banner .btn-primary { background: var(--red); color: white; }
+
+    /* MORE TIPS */
+    .more-tips { max-width: var(--max); margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+    .more-tips__heading { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; padding-bottom: .6rem; border-bottom: 1px solid var(--rule); }
+    .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .tip-card { display: block; }
+    .tip-card__img { aspect-ratio: 4/3; overflow: hidden; margin-bottom: .7rem; }
+    .tip-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .tip-card:hover .tip-card__img img { transform: scale(1.04); }
+    .tip-card__city { font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin-bottom: .2rem; }
+    .tip-card__name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; line-height: 1.3; }
+
+    /* FOOTER */
+    .site-footer { border-top: 1px solid var(--rule); padding: 2rem 1.5rem; }
+    .site-footer__inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .site-footer p { font-size: .75rem; color: var(--muted); }
+
+    @media (max-width: 640px) {
+      .site-nav { display: none; }
+      .find-strip__actions { margin-left: 0; width: 100%; }
+      .img-pair { grid-template-columns: 1fr; }
+      .tips-grid { grid-template-columns: 1fr 1fr; }
+      .tips-grid .tip-card:last-child { display: none; }
+    }
+  </style>
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-logo">Hood<span>Tip</span></a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="profile-dave.html">Dave</a>
+        <a href="profile-build.html">Leave a tip</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="rubymimi-zurich-room.jpg" alt="Ruby Mimi Zürich — room with shell-back sofas, white brick wall, warm wood panelling" />
+  </div>
+
+  <!-- ARTICLE -->
+  <article class="article">
+
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="#">Switzerland</a>
+      <span>›</span>
+      Zürich
+    </nav>
+
+    <div class="tags">
+      <span class="tag">Hotel</span>
+      <span class="tag">Zürich</span>
+      <span class="tag">Switzerland</span>
+    </div>
+
+    <h1>Ruby Mimi</h1>
+    <p class="subtitle">Nice room, good price, walking distance from everywhere. Stop overthinking it.</p>
+
+    <div class="find-strip">
+      <div class="find-strip__item">
+        <span class="find-strip__label">Address</span>
+        <span class="find-strip__value">Beatenpl. 4, 8001 Zürich</span>
+      </div>
+      <div class="find-strip__item">
+        <span class="find-strip__label">Best for</span>
+        <span class="find-strip__value">A solid Zürich base without the nonsense</span>
+      </div>
+      <div class="find-strip__item">
+        <span class="find-strip__label">Tip by</span>
+        <span class="find-strip__value"><a href="profile-dave.html">Dave</a></span>
+      </div>
+      <div class="find-strip__actions">
+        <a class="btn btn-primary" href="https://maps.google.com/?q=Ruby+Mimi+Hotel+Zürich+Beatenplatz+4" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Maps
+        </a>
+        <button class="btn btn-outline" onclick="navigator.share ? navigator.share({title: document.title, url: location.href}) : navigator.clipboard.writeText(location.href)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          Share
+        </button>
+      </div>
+    </div>
+
+    <!-- BODY COPY -->
+    <div class="body-copy">
+      <p>Ruby is a chain — but the good kind, the kind that figured something out and is quietly rolling it out across European cities while everyone else is still arguing about boutique versus business. The Mimi is their Zürich property, right on Beatenplatz, a short walk from the main train station and, from there, basically everywhere else you'd want to be.</p>
+      <p>The room was one step up from standard — small balcony, a good speaker, thoughtful details. Not the most expensive option, not the cheapest. The kind of room where you walk in and immediately feel like you don't need to upgrade. The design is considered without being showy: white brick, warm wood panelling, furniture with a bit of character.</p>
+    </div>
+
+    <!-- PULL QUOTE -->
+    <div class="pull-quote">
+      <p>"Book here and stop wasting time looking at hotels online."</p>
+    </div>
+
+    <!-- NOTEPAD IMAGE -->
+    <div class="img-portrait-single">
+      <img src="rubymimi-zurich-notepad.jpg" alt="Ruby Mimi branded notepad covered in biro doodles — the kind of hotel that gives you a notepad worth doodling on" />
+    </div>
+
+    <!-- TIP BOX -->
+    <div class="tip-box">
+      <div class="tip-box__heading">The Tip</div>
+      <p><strong>Ruby Mimi Zürich</strong>, Beatenpl. 4. Book a step up from the base room if you can — the balcony is worth it. They also have a Ruby in Munich, Vienna, London and a few other cities, all operating on the same logic. Once you've stayed in one you'll just book Ruby by default.</p>
+      <p>Not sponsored. Just a good hotel at a price that doesn't require a justification conversation with yourself.</p>
+    </div>
+
+  </article>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <h3>Know a good hotel in Zürich?</h3>
+    <p>We're always looking for tips from people who've actually stayed there.</p>
+    <a class="btn btn-primary" href="profile-build.html">Leave a tip</a>
+  </div>
+
+  <!-- MORE TIPS -->
+  <section class="more-tips">
+    <div class="more-tips__heading">More tips from Switzerland &amp; beyond</div>
+    <div class="tips-grid">
+
+      <a href="tip-belvedere.html" class="tip-card">
+        <div class="tip-card__img">
+          <img src="wengen-belvedere-pool-snow.jpg" alt="Grand Hotel Belvedere, Wengen" />
+        </div>
+        <div class="tip-card__city">Wengen · Switzerland</div>
+        <div class="tip-card__name">Grand Hotel Belvedere</div>
+      </a>
+
+      <a href="tip-leverrevole.html" class="tip-card">
+        <div class="tip-card__img">
+          <img src="Leverrevole-parisian-color.jpg" alt="Le Verre Volé, Paris" />
+        </div>
+        <div class="tip-card__city">Paris</div>
+        <div class="tip-card__name">Le Verre Volé</div>
+      </a>
+
+      <a href="tip-latitude-15-lusaka.html" class="tip-card">
+        <div class="tip-card__img">
+          <img src="Latitude-15.JPG" alt="Latitude 15, Lusaka" />
+        </div>
+        <div class="tip-card__city">Lusaka</div>
+        <div class="tip-card__name">Latitude 15</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>© 2025 HoodTip. Tips from people who've actually been there.</p>
+      <p><a href="index.html">hoodtip.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
