@@ -3,146 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leave a tip — HoodTip</title>
-  <!-- OG / SOCIAL META -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Build your HoodTip profile — share the good stuff" />
-  <meta property="og:description" content="Not a follower count. Not a star rating. Just the places you actually know, filed by neighbourhood, written for the next person who ends up there." />
-  <meta property="og:image" content="https://hoodtip.com/baindespaquis-sunset.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="800" />
+  <title>Build your HoodTip profile — share the good stuff</title>
+  <meta property="og:title" content="Build your HoodTip profile" />
+  <meta property="og:description" content="Tips have names on them. Add yours." />
   <meta property="og:url" content="https://hoodtip.com/profile-build.html" />
-  <!-- TWITTER / X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Build your HoodTip profile — share the good stuff" />
-  <meta name="twitter:description" content="Not a follower count. Not a star rating. Just the places you actually know, filed by neighbourhood, written for the next person who ends up there." />
-  <meta name="twitter:image" content="https://hoodtip.com/baindespaquis-sunset.jpg" />
-  <meta name="description" content="Every tip on HoodTip is attributed to a real person. Create your profile and leave your first tip." />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Cloudinary Upload Widget -->
+  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
   <style>
     :root {
       --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
       --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
       --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Barlow', system-ui, sans-serif;
-      --cond: 'Barlow Condensed', system-ui, sans-serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
+      --max: 560px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; min-height: 100vh; }
 
+    /* NAV */
     nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); background: var(--cream); }
-    .nav-inner { max-width: 860px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
     .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
     .logo em { font-style: italic; font-weight: 400; }
     .logo .dot { color: var(--red); }
-    .nav-back { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-back { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
     .nav-back:hover { color: var(--ink); }
 
     /* PAGE HEADER */
-    .page-header { border-bottom: 1.5px solid var(--ink); padding: 2.5rem 2rem; max-width: 860px; margin: 0 auto; width: 100%; }
-    .page-header-eyebrow { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
-    .page-header-hed { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.05; margin-bottom: 0.5rem; }
+    .page-header { border-bottom: 1.5px solid var(--ink); padding: 3rem 2rem 2.5rem; text-align: center; }
+    .page-header-kicker { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .page-header-hed { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; line-height: 1.1; margin-bottom: 0.75rem; }
     .page-header-hed em { font-style: italic; }
-    .page-header-sub { font-size: 0.88rem; color: var(--muted); line-height: 1.65; max-width: 480px; }
+    .page-header-deck { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.6; }
 
-    /* STEPS */
-    .steps-bar { border-bottom: 1px solid var(--rule); }
-    .steps-inner { max-width: 860px; margin: 0 auto; padding: 0 2rem; display: flex; height: 44px; align-items: center; gap: 0; }
-    .step-item { display: flex; align-items: center; gap: 0.5rem; flex: 1; opacity: 0.35; transition: opacity 0.2s; }
-    .step-item.active { opacity: 1; }
-    .step-item.done { opacity: 0.6; }
-    .step-num { font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.14em; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--ink); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .step-item.active .step-num { background: var(--ink); color: var(--cream); }
-    .step-item.done .step-num { background: var(--muted); color: var(--cream); border-color: var(--muted); }
-    .step-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; }
-    .step-div { width: 20px; height: 1px; background: var(--rule); flex-shrink: 0; margin: 0 0.5rem; }
+    /* STEPS INDICATOR */
+    .steps-bar { border-bottom: 1px solid var(--rule); padding: 0 2rem; }
+    .steps-bar-inner { max-width: var(--max); margin: 0 auto; display: flex; height: 44px; align-items: center; gap: 0; }
+    .step-pill { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; flex: 1; }
+    .step-pill.active { color: var(--ink); }
+    .step-pill.done { color: var(--red); }
+    .step-num { width: 20px; height: 20px; border-radius: 50%; border: 1px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; flex-shrink: 0; }
+    .step-pill.done .step-num { background: var(--red); border-color: var(--red); color: white; }
+    .step-pill.done .step-num::after { content: '✓'; }
+    .step-pill.done .step-num span { display: none; }
+    .step-divider { width: 24px; height: 1px; background: var(--rule); flex-shrink: 0; }
 
-    /* FORM */
-    .form-wrap { max-width: 860px; margin: 0 auto; padding: 0 2rem; flex: 1; }
-    .step-panel { display: none; padding: 2.5rem 0 3rem; }
+    /* FORM WRAPPER */
+    .form-wrap { max-width: var(--max); margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+
+    /* STEP PANELS */
+    .step-panel { display: none; }
     .step-panel.active { display: block; }
 
-    .step-intro { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
-    .step-intro-num { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
-    .step-intro-hed { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.3rem; }
-    .step-intro-sub { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+    .step-label { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .step-hed { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; line-height: 1.1; margin-bottom: 0.4rem; }
+    .step-deck { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.5; }
 
-    /* Two-col layout for step 1 */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .field-group { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 2rem; }
-    .field { display: flex; flex-direction: column; gap: 0.3rem; }
-    .field label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    .field input, .field textarea, .field select {
-      background: white; border: 1px solid var(--rule); padding: 11px 14px;
+    /* FIELDS */
+    .field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 1.1rem; }
+    .field label { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .field input, .field select, .field textarea {
+      background: white; border: 1px solid var(--rule); padding: 10px 12px;
       font-family: var(--sans); font-size: 0.9rem; color: var(--ink);
-      outline: none; border-radius: 0; width: 100%; transition: border-color 0.15s;
+      outline: none; border-radius: 0; width: 100%;
+      transition: border-color 0.15s;
     }
-    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--ink); }
-    .field textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
-    .field-hint { font-size: 0.7rem; color: var(--muted); line-height: 1.5; margin-top: 0.2rem; font-style: italic; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink); }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .field-hint { font-size: 0.72rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
 
-    /* Tags */
-    .tag-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
-    .tag-opt { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--rule); padding: 0.25rem 0.8rem; cursor: pointer; color: var(--muted); transition: all 0.12s; user-select: none; }
-    .tag-opt:hover { border-color: var(--ink); color: var(--ink); }
-    .tag-opt.on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    /* PHOTO UPLOAD COMPONENT */
+    .upload-zone {
+      border: 1.5px dashed var(--rule);
+      background: white;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      position: relative;
+    }
+    .upload-zone:hover { border-color: var(--ink); background: rgba(26,24,22,0.02); }
+    .upload-zone-icon { font-size: 1.6rem; margin-bottom: 0.4rem; line-height: 1; }
+    .upload-zone-text { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
+    .upload-zone-sub { font-size: 0.72rem; color: var(--muted); }
 
-    /* Already have profile */
-    .already-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; border-bottom: 1px solid var(--rule); padding-bottom: 1px; transition: color 0.15s; background: none; border-top: none; border-left: none; border-right: none; margin-top: 0.25rem; }
-    .already-link:hover { color: var(--ink); }
+    /* PHOTO PREVIEWS */
+    .photo-previews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 0.75rem; }
+    .photo-preview { position: relative; aspect-ratio: 1; overflow: hidden; }
+    .photo-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-preview-remove {
+      position: absolute; top: 4px; right: 4px;
+      background: rgba(26,24,22,0.75); color: white;
+      border: none; width: 20px; height: 20px; border-radius: 50%;
+      font-size: 0.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      line-height: 1;
+    }
+    .photo-count { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
 
-    /* Returning user panel */
-    .returning-panel { display: none; padding: 1.5rem; background: white; border: 1px solid var(--rule); margin-top: 1.5rem; }
-    .returning-panel.show { display: block; }
-    .returning-panel p { font-size: 0.84rem; color: var(--muted); margin-bottom: 1rem; }
+    /* AVATAR PREVIEW */
+    .avatar-upload-row { display: flex; align-items: center; gap: 1rem; }
+    .avatar-preview { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule); background: var(--rule); flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .avatar-preview img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .avatar-preview-placeholder { font-family: var(--serif); font-size: 1.4rem; color: var(--muted); }
+    .avatar-upload-btn {
+      font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      background: transparent; border: 1px solid var(--ink); color: var(--ink);
+      padding: 8px 16px; cursor: pointer; transition: background 0.15s, color 0.15s;
+    }
+    .avatar-upload-btn:hover { background: var(--ink); color: var(--cream); }
 
-    /* Preview card */
-    .preview-card { border: 1px solid var(--rule); padding: 1.25rem; background: white; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
-    .preview-label { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
-    .preview-top { display: flex; align-items: center; gap: 0.75rem; }
-    .preview-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--rule); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1rem; color: var(--muted); }
-    .preview-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; line-height: 1; }
-    .preview-handle { font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .preview-bio { font-family: var(--serif); font-style: italic; font-size: 0.84rem; color: var(--muted); }
+    /* TASTE TAGS */
+    .taste-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+    .taste-opt { display: none; }
+    .taste-opt + label {
+      font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); border: 1px solid var(--rule); padding: 0.25rem 0.65rem;
+      cursor: pointer; transition: all 0.15s; user-select: none;
+    }
+    .taste-opt:checked + label { border-color: var(--ink); color: var(--ink); background: rgba(26,24,22,0.05); }
 
-    /* Buttons */
-    .btn-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
-    .btn-back { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
-    .btn-back:hover { color: var(--ink); }
-    .btn-next { font-family: var(--cond); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); border: none; cursor: pointer; padding: 13px 28px; transition: background 0.15s; }
+    /* PROFILE CARD PREVIEW */
+    .card-preview { border: 1px solid var(--rule); padding: 1.25rem; background: white; margin: 1.75rem 0; }
+    .card-preview-label { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .card-preview-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+    .card-preview-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); background: var(--rule); overflow: hidden; flex-shrink: 0; }
+    .card-preview-photo img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .card-preview-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; }
+    .card-preview-handle { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .card-preview-bio { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); }
+
+    /* DIVIDER */
+    .field-divider { height: 1px; background: var(--rule); margin: 1.75rem 0; }
+
+    /* RETURNING USER */
+    .returning-toggle { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; cursor: pointer; display: inline-block; margin-top: 0.5rem; }
+    .returning-toggle:hover { color: var(--ink); border-color: var(--ink); }
+    .returning-panel { display: none; margin-top: 1rem; padding: 1rem; border: 1px solid var(--rule); background: white; }
+    .returning-panel.open { display: block; }
+
+    /* BUTTONS */
+    .btn-row { display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; }
+    .btn-next {
+      background: var(--ink); color: var(--cream);
+      font-family: var(--cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      border: none; padding: 13px 28px; cursor: pointer; transition: background 0.15s;
+    }
     .btn-next:hover { background: var(--ink2); }
-    .btn-next:disabled { opacity: 0.4; cursor: not-allowed; }
-    .error-msg { font-size: 0.76rem; color: var(--red); margin-top: 0.5rem; display: none; }
+    .btn-back {
+      background: transparent; color: var(--muted);
+      font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      border: none; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+    }
+    .btn-back:hover { color: var(--ink); }
+    .btn-submit {
+      background: var(--red); color: white;
+      font-family: var(--cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      border: none; padding: 13px 28px; cursor: pointer; transition: background 0.15s;
+    }
+    .btn-submit:hover { background: #9e2a23; }
 
-    /* Success */
-    .success-panel { display: none; text-align: center; padding: 4rem 2rem; max-width: 500px; margin: 0 auto; }
-    .success-panel.show { display: block; }
+    /* REVIEW SUMMARY */
+    .review-block { background: white; border: 1px solid var(--rule); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .review-block-label { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
+    .review-row { display: flex; gap: 1rem; padding: 0.35rem 0; border-bottom: 1px solid var(--rule); font-size: 0.85rem; }
+    .review-row:last-child { border-bottom: none; }
+    .review-key { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); width: 100px; flex-shrink: 0; padding-top: 2px; }
+    .review-val { color: var(--ink); line-height: 1.5; }
+    .review-photos { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 0.5rem; }
+    .review-photo { width: 56px; height: 56px; object-fit: cover; }
+
+    /* ERROR */
+    .form-error { font-size: 0.78rem; color: var(--red); margin-top: 0.5rem; display: none; }
+
+    /* SUCCESS */
+    .success-panel { display: none; text-align: center; padding: 4rem 2rem; }
+    .success-panel.active { display: block; }
     .success-icon { font-family: var(--serif); font-size: 3rem; margin-bottom: 1rem; }
     .success-hed { font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 0.75rem; }
-    .success-body { font-size: 0.88rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
-    .success-back { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+    .success-body { font-size: 0.9rem; color: var(--muted); line-height: 1.75; max-width: 380px; margin: 0 auto 1.5rem; }
 
-    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: auto; }
-    .footer-inner { max-width: 860px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; height: 52px; }
+    /* FOOTER */
+    footer { border-top: 2px solid var(--red); background: var(--ink); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
     .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
     .footer-logo em { font-style: italic; font-weight: 400; }
     .footer-logo .dot { color: var(--red); }
 
-    @media (max-width: 640px) {
-      .two-col { grid-template-columns: 1fr; gap: 0; }
-      .page-header, .form-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .steps-inner { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .step-label { display: none; }
-      .nav-inner { padding: 0 1.25rem; }
-      .footer-inner { padding: 0 1.25rem; }
+    @media (max-width: 600px) {
+      .form-wrap { padding: 2rem 1.25rem 4rem; }
+      .page-header { padding: 2rem 1.25rem; }
     }
   </style>
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
 </head>
 <body>
 
@@ -153,225 +213,231 @@
   </div>
 </nav>
 
+<!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="page-header-eyebrow">HoodTip · Contributors</div>
+  <div class="page-header-kicker">HoodTip · Contributors</div>
   <h1 class="page-header-hed">Tips have <em>names on them.</em></h1>
-  <p class="page-header-sub">Every tip on HoodTip is attributed to a real person with their own profile page. Your tip gets its own page too — a proper article, shareable, with your byline on it.</p>
+  <p class="page-header-deck">Every tip is attributed to a real person with their own profile page. Your tip gets its own article too — shareable, with your byline on it.</p>
 </div>
 
+<!-- STEPS BAR -->
 <div class="steps-bar">
-  <div class="steps-inner">
-    <div class="step-item active" id="si-1">
-      <span class="step-num">1</span><span class="step-label">Your profile</span>
+  <div class="steps-bar-inner">
+    <div class="step-pill active" id="pill-1">
+      <div class="step-num"><span>1</span></div>
+      Your profile
     </div>
-    <div class="step-div"></div>
-    <div class="step-item" id="si-2">
-      <span class="step-num">2</span><span class="step-label">Your tip</span>
+    <div class="step-divider"></div>
+    <div class="step-pill" id="pill-2">
+      <div class="step-num"><span>2</span></div>
+      Your tip
     </div>
-    <div class="step-div"></div>
-    <div class="step-item" id="si-3">
-      <span class="step-num">3</span><span class="step-label">Submit</span>
+    <div class="step-divider"></div>
+    <div class="step-pill" id="pill-3">
+      <div class="step-num"><span>3</span></div>
+      Submit
     </div>
   </div>
 </div>
 
+<!-- FORM -->
 <div class="form-wrap">
 
-  <!-- STEP 1: PROFILE -->
+  <!-- ── STEP 1: PROFILE ─────────────────────────────────── -->
   <div class="step-panel active" id="step-1">
-    <div class="step-intro">
-      <div class="step-intro-num">Step 1 of 3</div>
-      <div class="step-intro-hed">Who are you?</div>
-      <div class="step-intro-sub">This becomes your byline. Keep it honest and short. Your tips will be published under your name.</div>
+    <div class="step-label">Step 1 of 3</div>
+    <h2 class="step-hed">Who are you?</h2>
+    <p class="step-deck">This becomes your byline. Keep it honest and short.</p>
+
+    <div class="field">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" placeholder="e.g. Caroline" autocomplete="given-name" />
     </div>
 
-    <div class="two-col">
-      <div class="field-group">
-        <div class="field">
-          <label for="f-name">Your name</label>
-          <input type="text" id="f-name" placeholder="e.g. Sarah" oninput="updatePreview()" />
+    <div class="field">
+      <label for="f-handle">Handle</label>
+      <input id="f-handle" type="text" placeholder="e.g. caroline" />
+      <div class="field-hint">Appears on your tips and profile. Lowercase, no spaces.</div>
+    </div>
+
+    <div class="field">
+      <label for="f-email">Your email</label>
+      <input id="f-email" type="email" placeholder="you@example.com" autocomplete="email" />
+      <div class="field-hint">So we can send you a link when your profile goes live.</div>
+    </div>
+
+    <div class="field">
+      <label for="f-city">Based in</label>
+      <input id="f-city" type="text" placeholder="e.g. Paris, London, Kigali" />
+    </div>
+
+    <div class="field">
+      <label for="f-bio">One-line bio</label>
+      <input id="f-bio" type="text" placeholder="e.g. Eats well. Travels often. Based in Geneva." />
+    </div>
+
+    <!-- PROFILE PHOTO -->
+    <div class="field">
+      <label>Profile photo <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional)</span></label>
+      <div class="avatar-upload-row">
+        <div class="avatar-preview" id="avatar-preview">
+          <img id="avatar-img" src="" alt="" />
+          <span class="avatar-preview-placeholder" id="avatar-placeholder">?</span>
         </div>
-        <div class="field">
-          <label for="f-handle">Handle</label>
-          <input type="text" id="f-handle" placeholder="@sarah" oninput="updatePreview()" />
-          <span class="field-hint">This appears on your tips and profile page.</span>
-        </div>
-        <div class="field">
-          <label for="f-email">Your email</label>
-          <input type="email" id="f-email" placeholder="you@example.com" />
-          <span class="field-hint">So we can send you a link when your profile goes live.</span>
-        </div>
-        <div class="field">
-          <label for="f-based">Based in</label>
-          <input type="text" id="f-based" placeholder="e.g. Geneva, Istanbul, London..." />
-        </div>
+        <button type="button" class="avatar-upload-btn" id="avatar-upload-btn">
+          Upload photo
+        </button>
+        <span id="avatar-upload-status" style="font-size:0.75rem;color:var(--muted);display:none;">Uploading…</span>
       </div>
-      <div class="field-group">
-        <div class="field">
-          <label for="f-bio">One-line bio</label>
-          <input type="text" id="f-bio" placeholder="e.g. Architect. Lives in Istanbul. Drinks a lot of tea." oninput="updatePreview()" />
-          <span class="field-hint">Three words or three sentences — whatever fits.</span>
-        </div>
-        <div class="field">
-          <label for="f-photo">Profile photo (optional)</label>
-          <input type="text" id="f-photo" placeholder="Link from Google Photos, iCloud..." />
-          <span class="field-hint">Share a photo from your camera roll, paste the link.</span>
-        </div>
-        <div class="field">
-          <label>Your taste — pick any that apply</label>
-          <div class="tag-grid" id="tag-grid">
-            <span class="tag-opt" onclick="toggleTag(this)">Natural wine</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Proper pubs</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Good fish</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Waterfront bars</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Saturday markets</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Coffee</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Hotels worth it</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Long lunches</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Swimming</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Bookshops</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Late nights</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Bakeries</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Live music</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Parks</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Architecture</span>
-            <span class="tag-opt" onclick="toggleTag(this)">Street food</span>
-          </div>
-        </div>
+      <div class="field-hint">Pick from your camera roll. Square crops best.</div>
+    </div>
+
+    <!-- TASTE TAGS -->
+    <div class="field">
+      <label>Your taste — pick any that apply</label>
+      <div class="taste-grid">
+        <input class="taste-opt" type="checkbox" id="t-wine" name="taste" value="Natural wine"><label for="t-wine">Natural wine</label>
+        <input class="taste-opt" type="checkbox" id="t-pubs" name="taste" value="Proper pubs"><label for="t-pubs">Proper pubs</label>
+        <input class="taste-opt" type="checkbox" id="t-fish" name="taste" value="Good fish"><label for="t-fish">Good fish</label>
+        <input class="taste-opt" type="checkbox" id="t-water" name="taste" value="Waterfront bars"><label for="t-water">Waterfront bars</label>
+        <input class="taste-opt" type="checkbox" id="t-market" name="taste" value="Saturday markets"><label for="t-market">Saturday markets</label>
+        <input class="taste-opt" type="checkbox" id="t-coffee" name="taste" value="Coffee"><label for="t-coffee">Coffee</label>
+        <input class="taste-opt" type="checkbox" id="t-hotel" name="taste" value="Hotels worth it"><label for="t-hotel">Hotels worth it</label>
+        <input class="taste-opt" type="checkbox" id="t-lunch" name="taste" value="Long lunches"><label for="t-lunch">Long lunches</label>
+        <input class="taste-opt" type="checkbox" id="t-swim" name="taste" value="Swimming"><label for="t-swim">Swimming</label>
+        <input class="taste-opt" type="checkbox" id="t-books" name="taste" value="Bookshops"><label for="t-books">Bookshops</label>
+        <input class="taste-opt" type="checkbox" id="t-late" name="taste" value="Late nights"><label for="t-late">Late nights</label>
+        <input class="taste-opt" type="checkbox" id="t-bake" name="taste" value="Bakeries"><label for="t-bake">Bakeries</label>
+        <input class="taste-opt" type="checkbox" id="t-music" name="taste" value="Live music"><label for="t-music">Live music</label>
+        <input class="taste-opt" type="checkbox" id="t-parks" name="taste" value="Parks"><label for="t-parks">Parks</label>
+        <input class="taste-opt" type="checkbox" id="t-arch" name="taste" value="Architecture"><label for="t-arch">Architecture</label>
+        <input class="taste-opt" type="checkbox" id="t-street" name="taste" value="Street food"><label for="t-street">Street food</label>
       </div>
     </div>
 
-    <!-- Preview -->
-    <div class="preview-card">
-      <div class="preview-label">Your contributor card — preview</div>
-      <div class="preview-top">
-        <div class="preview-avatar" id="prev-avatar">?</div>
+    <!-- PROFILE CARD PREVIEW -->
+    <div class="card-preview">
+      <div class="card-preview-label">Your contributor card — preview</div>
+      <div class="card-preview-top">
+        <div class="card-preview-photo" id="card-photo-wrap">
+          <img id="card-photo-img" src="" alt="" />
+        </div>
         <div>
-          <div class="preview-name" id="prev-name">Your name</div>
-          <div class="preview-handle" id="prev-handle">@handle</div>
+          <div class="card-preview-name" id="card-name">Your name</div>
+          <div class="card-preview-handle" id="card-handle">@handle</div>
         </div>
       </div>
-      <div class="preview-bio" id="prev-bio">Your bio appears here.</div>
+      <div class="card-preview-bio" id="card-bio">Your bio appears here.</div>
     </div>
 
-    <!-- Already have profile -->
-    <div style="margin-bottom:1.5rem;">
-      <button class="already-link" onclick="toggleReturning()">Already a contributor? Skip to leaving a tip →</button>
-      <div class="returning-panel" id="returning-panel">
-        <p>Enter your handle and we'll attach your tip to your existing profile.</p>
-        <div class="field" style="max-width:280px;">
-          <label>Your handle</label>
-          <input type="text" id="f-returning-handle" placeholder="@yourhandle" />
-        </div>
+    <!-- RETURNING USER -->
+    <div class="field-divider"></div>
+    <span class="returning-toggle" id="returning-toggle">Already a contributor? Skip to leaving a tip →</span>
+    <div class="returning-panel" id="returning-panel">
+      <div class="field" style="margin-bottom:0.5rem;">
+        <label for="f-returning-handle">Your handle</label>
+        <input id="f-returning-handle" type="text" placeholder="e.g. caroline" />
       </div>
+      <div class="field-hint">Enter your handle and we'll attach your tip to your existing profile.</div>
     </div>
 
+    <div id="step1-error" class="form-error">Please fill in your name, handle and email.</div>
     <div class="btn-row">
       <span></span>
       <button class="btn-next" onclick="goStep(2)">Next: Your tip →</button>
     </div>
-    <p class="error-msg" id="err-1">Please fill in your name, handle and email.</p>
   </div>
 
-  <!-- STEP 2: THE TIP -->
+  <!-- ── STEP 2: TIP ──────────────────────────────────────── -->
   <div class="step-panel" id="step-2">
-    <div class="step-intro">
-      <div class="step-intro-num">Step 2 of 3</div>
-      <div class="step-intro-hed">What do you know?</div>
-      <div class="step-intro-sub">Positive only. Specific over general. Write it like a note to a friend going next week.</div>
+    <div class="step-label">Step 2 of 3</div>
+    <h2 class="step-hed">What do you know?</h2>
+    <p class="step-deck">Positive only. Specific over general. Write it like a note to a friend going next week.</p>
+
+    <div class="field">
+      <label for="f-place">Place name</label>
+      <input id="f-place" type="text" placeholder="e.g. Bongo Joe" />
     </div>
 
-    <div class="field-group">
-      <div class="two-col">
-        <div class="field">
-          <label for="f-place">Place name</label>
-          <input type="text" id="f-place" placeholder="e.g. Bongo Joe" />
-        </div>
-        <div class="field">
-          <label for="f-hood">Neighbourhood &amp; City</label>
-          <input type="text" id="f-hood" placeholder="e.g. Saint-Gervais, Geneva" />
-        </div>
-      </div>
-      <div class="two-col">
-        <div class="field">
-          <label for="f-cat">Category</label>
-          <select id="f-cat">
-            <option value="">Select one</option>
-            <option>Bar</option>
-            <option>Restaurant</option>
-            <option>Coffee</option>
-            <option>Wine</option>
-            <option>Market</option>
-            <option>Hotel</option>
-            <option>Travel</option>
-            <option>Cinema</option>
-            <option>Swimming</option>
-            <option>Park</option>
-            <option>Shop</option>
-            <option>Experience</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-tip-photo">Photo link (optional)</label>
-          <input type="text" id="f-tip-photo" placeholder="Link to a photo..." />
-        </div>
-      </div>
-      <div class="field">
-        <label for="f-tip">Your tip</label>
-        <textarea id="f-tip" style="min-height:110px;" placeholder="What to order, when to go, what to know. The specific thing that makes it worth knowing about."></textarea>
-      </div>
+    <div class="field">
+      <label for="f-hood">Neighbourhood &amp; City</label>
+      <input id="f-hood" type="text" placeholder="e.g. Plainpalais, Geneva" />
     </div>
 
+    <div class="field">
+      <label for="f-cat">Category</label>
+      <select id="f-cat">
+        <option value="">Select one</option>
+        <option>Bar</option><option>Restaurant</option><option>Coffee</option>
+        <option>Wine</option><option>Market</option><option>Hotel</option>
+        <option>Travel</option><option>Cinema</option><option>Swimming</option>
+        <option>Park</option><option>Shop</option><option>Experience</option><option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="f-tip">Your tip</label>
+      <textarea id="f-tip" placeholder="What to order, when to go, what to know. Be specific. A few lines is plenty."></textarea>
+    </div>
+
+    <!-- TIP PHOTOS -->
+    <div class="field">
+      <label>Photos <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional but great)</span></label>
+      <div class="upload-zone" id="tip-upload-zone" onclick="openTipUpload()">
+        <div class="upload-zone-icon">📷</div>
+        <div class="upload-zone-text">Tap to add photos</div>
+        <div class="upload-zone-sub">Pick from your camera roll or drag files here</div>
+      </div>
+      <div class="photo-previews" id="tip-photo-previews"></div>
+      <div class="photo-count" id="tip-photo-count" style="display:none;"></div>
+    </div>
+
+    <div id="step2-error" class="form-error">Please fill in the place, neighbourhood, and your tip.</div>
     <div class="btn-row">
       <button class="btn-back" onclick="goStep(1)">← Back</button>
       <button class="btn-next" onclick="goStep(3)">Next: Review →</button>
     </div>
-    <p class="error-msg" id="err-2">Please fill in the place, neighbourhood, and your tip.</p>
   </div>
 
-  <!-- STEP 3: REVIEW + SUBMIT -->
+  <!-- ── STEP 3: REVIEW ───────────────────────────────────── -->
   <div class="step-panel" id="step-3">
-    <div class="step-intro">
-      <div class="step-intro-num">Step 3 of 3</div>
-      <div class="step-intro-hed">Ready?</div>
-      <div class="step-intro-sub">We'll review it, build your profile page, and email you the link within 48 hours.</div>
+    <div class="step-label">Step 3 of 3</div>
+    <h2 class="step-hed">Ready?</h2>
+    <p class="step-deck">We'll review it, build your profile, and email you the link within 48 hours.</p>
+
+    <div class="review-block">
+      <div class="review-block-label">Your profile</div>
+      <div class="review-row"><div class="review-key">Name</div><div class="review-val" id="rv-name">—</div></div>
+      <div class="review-row"><div class="review-key">Handle</div><div class="review-val" id="rv-handle">—</div></div>
+      <div class="review-row"><div class="review-key">Based in</div><div class="review-val" id="rv-city">—</div></div>
+      <div class="review-row"><div class="review-key">Bio</div><div class="review-val" id="rv-bio">—</div></div>
     </div>
 
-    <div id="review-block" style="border:1px solid var(--rule);padding:1.5rem;margin-bottom:2rem;background:white;">
-      <div style="font-family:var(--cond);font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Summary</div>
-      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-        <div style="width:36px;height:36px;border-radius:50%;background:var(--rule);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1rem;color:var(--muted);" id="rev-avatar">?</div>
-        <div>
-          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;" id="rev-name">—</div>
-          <div style="font-family:var(--cond);font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);" id="rev-handle">—</div>
-        </div>
-      </div>
-      <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.75rem;" id="rev-bio">—</div>
-      <div style="border-top:1px solid var(--rule);padding-top:0.75rem;margin-top:0.75rem;">
-        <div style="font-family:var(--cond);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;">Tip</div>
-        <div style="font-family:var(--serif);font-size:1rem;font-weight:500;" id="rev-place">—</div>
-        <div style="font-family:var(--cond);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;" id="rev-hood">—</div>
-        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;" id="rev-tip">—</div>
-      </div>
+    <div class="review-block">
+      <div class="review-block-label">Your tip</div>
+      <div class="review-row"><div class="review-key">Place</div><div class="review-val" id="rv-place">—</div></div>
+      <div class="review-row"><div class="review-key">Location</div><div class="review-val" id="rv-hood">—</div></div>
+      <div class="review-row"><div class="review-key">Category</div><div class="review-val" id="rv-cat">—</div></div>
+      <div class="review-row"><div class="review-key">Tip</div><div class="review-val" id="rv-tip">—</div></div>
+      <div class="review-photos" id="rv-photos"></div>
     </div>
 
+    <p id="step3-error" class="form-error">Something went wrong — please try again.</p>
     <div class="btn-row">
       <button class="btn-back" onclick="goStep(2)">← Back</button>
-      <button class="btn-next" id="submit-btn" onclick="submitAll(event)">Submit →</button>
+      <button class="btn-submit" id="submit-btn" onclick="submitForm()">Submit →</button>
     </div>
-    <p class="error-msg" id="err-3">Something went wrong — please try again.</p>
   </div>
 
-</div>
+  <!-- ── SUCCESS ──────────────────────────────────────────── -->
+  <div class="success-panel" id="success-panel">
+    <div class="success-icon">✓</div>
+    <h2 class="success-hed">Tip received.</h2>
+    <p class="success-body">We'll review it, build your profile, and publish your tip as its own article — with your byline on it. You'll get the links by email within 48 hours.</p>
+    <a href="index.html" style="font-family:var(--cond);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:underline;text-underline-offset:3px;">← Back to HoodTip</a>
+  </div>
 
-<!-- SUCCESS -->
-<div class="success-panel" id="success-panel">
-  <div class="success-icon">✓</div>
-  <div class="success-hed">Tip received.</div>
-  <div class="success-body">We'll review it, build your profile, and publish your tip as its own article — with your byline on it. You'll get the links by email within 48 hours.</div>
-  <a href="index.html" class="success-back">← Back to HoodTip</a>
-</div>
+</div><!-- /form-wrap -->
 
 <footer>
   <div class="footer-inner">
@@ -380,117 +446,214 @@
 </footer>
 
 <script>
-  const tags = new Set();
-  let returning = false;
+  // ─────────────────────────────────────────────────────────
+  // CLOUDINARY CONFIG — fill in your values after signup
+  // ─────────────────────────────────────────────────────────
+  const CL_CLOUD   = 'dq9newmhl';
+  const CL_PRESET  = 'jykjigyw';
 
-  function toggleTag(el) {
-    el.classList.toggle('on');
-    el.classList.contains('on') ? tags.add(el.textContent) : tags.delete(el.textContent);
-  }
+  // ─────────────────────────────────────────────────────────
+  // STATE
+  // ─────────────────────────────────────────────────────────
+  let avatarUrl = '';
+  let tipPhotoUrls = [];
 
-  function toggleReturning() {
-    returning = !returning;
-    document.getElementById('returning-panel').classList.toggle('show', returning);
-  }
-
-  function updatePreview() {
-    const name = document.getElementById('f-name').value || 'Your name';
-    const handle = document.getElementById('f-handle').value || '@handle';
-    const bio = document.getElementById('f-bio').value || 'Your bio appears here.';
-    document.getElementById('prev-name').textContent = name;
-    document.getElementById('prev-handle').textContent = handle;
-    document.getElementById('prev-bio').textContent = bio;
-    document.getElementById('prev-avatar').textContent = name.charAt(0).toUpperCase() || '?';
-  }
-
-  function populateReview() {
-    const name = returning
-      ? document.getElementById('f-returning-handle').value
-      : document.getElementById('f-name').value;
-    const handle = returning
-      ? document.getElementById('f-returning-handle').value
-      : document.getElementById('f-handle').value;
-    const bio = document.getElementById('f-bio').value;
-
-    document.getElementById('rev-name').textContent = name || '—';
-    document.getElementById('rev-handle').textContent = handle || '—';
-    document.getElementById('rev-bio').textContent = bio || '—';
-    document.getElementById('rev-avatar').textContent = (name || '?').charAt(0).toUpperCase();
-    document.getElementById('rev-place').textContent = document.getElementById('f-place').value || '—';
-    document.getElementById('rev-hood').textContent = document.getElementById('f-hood').value || '—';
-    document.getElementById('rev-tip').textContent = document.getElementById('f-tip').value || '—';
-  }
-
-  function goStep(n) {
-    // Validate
-    if (n === 2) {
-      const err = document.getElementById('err-1');
-      if (!returning) {
-        const name = document.getElementById('f-name').value.trim();
-        const handle = document.getElementById('f-handle').value.trim();
-        const email = document.getElementById('f-email').value.trim();
-        if (!name || !handle || !email) { err.style.display = 'block'; return; }
-      } else {
-        if (!document.getElementById('f-returning-handle').value.trim()) {
-          err.style.display = 'block'; err.textContent = 'Please enter your handle.'; return;
-        }
+  // ─────────────────────────────────────────────────────────
+  // AVATAR UPLOAD
+  // ─────────────────────────────────────────────────────────
+  document.getElementById('avatar-upload-btn').addEventListener('click', function() {
+    const status = document.getElementById('avatar-upload-status');
+    cloudinary.openUploadWidget({
+      cloudName: CL_CLOUD,
+      uploadPreset: CL_PRESET,
+      sources: ['local', 'camera', 'url'],
+      multiple: false,
+      cropping: true,
+      croppingAspectRatio: 1,
+      showSkipCropButton: false,
+      maxFileSize: 10000000,
+      clientAllowedFormats: ['jpg','jpeg','png','webp','heic'],
+      styles: { palette: { window: '#f7f4ef', tabIcon: '#1a1816', link: '#b5322a', action: '#1a1816', inactiveTabIcon: '#6b6560', error: '#b5322a', textDark: '#1a1816', textLight: '#f7f4ef', menuIcons: '#6b6560', windowBorder: '#e0dbd3' } }
+    }, function(error, result) {
+      if (result && result.event === 'success') {
+        avatarUrl = result.info.secure_url;
+        // Show preview
+        const img = document.getElementById('avatar-img');
+        img.src = avatarUrl;
+        img.style.display = 'block';
+        document.getElementById('avatar-placeholder').style.display = 'none';
+        // Update card preview
+        const cardImg = document.getElementById('card-photo-img');
+        cardImg.src = avatarUrl;
+        cardImg.style.display = 'block';
+        status.style.display = 'none';
       }
-      err.style.display = 'none';
+      if (result && result.event === 'upload-added') {
+        status.textContent = 'Uploading…';
+        status.style.display = 'inline';
+      }
+    });
+  });
+
+  // ─────────────────────────────────────────────────────────
+  // TIP PHOTO UPLOAD
+  // ─────────────────────────────────────────────────────────
+  function openTipUpload() {
+    cloudinary.openUploadWidget({
+      cloudName: CL_CLOUD,
+      uploadPreset: CL_PRESET,
+      sources: ['local', 'camera', 'url'],
+      multiple: true,
+      maxFiles: 12,
+      maxFileSize: 20000000,
+      clientAllowedFormats: ['jpg','jpeg','png','webp','heic'],
+      styles: { palette: { window: '#f7f4ef', tabIcon: '#1a1816', link: '#b5322a', action: '#1a1816', inactiveTabIcon: '#6b6560', error: '#b5322a', textDark: '#1a1816', textLight: '#f7f4ef', menuIcons: '#6b6560', windowBorder: '#e0dbd3' } }
+    }, function(error, result) {
+      if (result && result.event === 'success') {
+        tipPhotoUrls.push(result.info.secure_url);
+        renderTipPreviews();
+      }
+    });
+  }
+
+  function renderTipPreviews() {
+    const grid = document.getElementById('tip-photo-previews');
+    const count = document.getElementById('tip-photo-count');
+    grid.innerHTML = '';
+    tipPhotoUrls.forEach(function(url, i) {
+      const wrap = document.createElement('div');
+      wrap.className = 'photo-preview';
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = '';
+      const btn = document.createElement('button');
+      btn.className = 'photo-preview-remove';
+      btn.innerHTML = '✕';
+      btn.onclick = function(e) { e.stopPropagation(); tipPhotoUrls.splice(i, 1); renderTipPreviews(); };
+      wrap.appendChild(img);
+      wrap.appendChild(btn);
+      grid.appendChild(wrap);
+    });
+    if (tipPhotoUrls.length > 0) {
+      count.style.display = 'block';
+      count.textContent = tipPhotoUrls.length + ' photo' + (tipPhotoUrls.length > 1 ? 's' : '') + ' added';
+      document.getElementById('tip-upload-zone').style.display = 'none';
+    } else {
+      count.style.display = 'none';
+      document.getElementById('tip-upload-zone').style.display = 'block';
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────
+  // LIVE PREVIEW
+  // ─────────────────────────────────────────────────────────
+  document.getElementById('f-name').addEventListener('input', function() {
+    document.getElementById('card-name').textContent = this.value || 'Your name';
+  });
+  document.getElementById('f-handle').addEventListener('input', function() {
+    const v = this.value.toLowerCase().replace(/\s/g,'');
+    this.value = v;
+    document.getElementById('card-handle').textContent = v ? '@' + v : '@handle';
+  });
+  document.getElementById('f-bio').addEventListener('input', function() {
+    document.getElementById('card-bio').textContent = this.value || 'Your bio appears here.';
+  });
+
+  // ─────────────────────────────────────────────────────────
+  // STEP NAVIGATION
+  // ─────────────────────────────────────────────────────────
+  function goStep(n) {
+    // Validate before advancing
+    if (n === 2) {
+      const name = document.getElementById('f-name').value.trim();
+      const handle = document.getElementById('f-handle').value.trim();
+      const email = document.getElementById('f-email').value.trim();
+      if (!name || !handle || !email) {
+        document.getElementById('step1-error').style.display = 'block';
+        return;
+      }
+      document.getElementById('step1-error').style.display = 'none';
     }
     if (n === 3) {
       const place = document.getElementById('f-place').value.trim();
+      const hood = document.getElementById('f-hood').value.trim();
       const tip = document.getElementById('f-tip').value.trim();
-      const err = document.getElementById('err-2');
-      if (!place || !tip) { err.style.display = 'block'; return; }
-      err.style.display = 'none';
+      if (!place || !hood || !tip) {
+        document.getElementById('step2-error').style.display = 'block';
+        return;
+      }
+      document.getElementById('step2-error').style.display = 'none';
       populateReview();
     }
 
-    // Update panels
-    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('step-' + n).classList.add('active');
-
-    // Update indicators
-    [1,2,3].forEach(i => {
-      const el = document.getElementById('si-' + i);
-      el.classList.remove('active','done');
-      if (i === n) el.classList.add('active');
-      else if (i < n) el.classList.add('done');
+    // Hide all panels
+    document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.step-pill').forEach(function(p, i) {
+      p.classList.remove('active');
+      if (i + 1 < n) p.classList.add('done'); else p.classList.remove('done');
     });
 
+    document.getElementById('step-' + n).classList.add('active');
+    document.getElementById('pill-' + n).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  async function submitAll(e) {
-    e.preventDefault();
+  function populateReview() {
+    document.getElementById('rv-name').textContent    = document.getElementById('f-name').value;
+    document.getElementById('rv-handle').textContent  = '@' + document.getElementById('f-handle').value;
+    document.getElementById('rv-city').textContent    = document.getElementById('f-city').value || '—';
+    document.getElementById('rv-bio').textContent     = document.getElementById('f-bio').value || '—';
+    document.getElementById('rv-place').textContent   = document.getElementById('f-place').value;
+    document.getElementById('rv-hood').textContent    = document.getElementById('f-hood').value;
+    document.getElementById('rv-cat').textContent     = document.getElementById('f-cat').value || '—';
+    document.getElementById('rv-tip').textContent     = document.getElementById('f-tip').value;
+
+    const photosWrap = document.getElementById('rv-photos');
+    photosWrap.innerHTML = '';
+    tipPhotoUrls.forEach(function(url) {
+      const img = document.createElement('img');
+      img.src = url;
+      img.className = 'review-photo';
+      img.alt = '';
+      photosWrap.appendChild(img);
+    });
+  }
+
+  // ─────────────────────────────────────────────────────────
+  // RETURNING USER TOGGLE
+  // ─────────────────────────────────────────────────────────
+  document.getElementById('returning-toggle').addEventListener('click', function() {
+    document.getElementById('returning-panel').classList.toggle('open');
+  });
+
+  // ─────────────────────────────────────────────────────────
+  // SUBMIT
+  // ─────────────────────────────────────────────────────────
+  async function submitForm() {
     const btn = document.getElementById('submit-btn');
-    const err = document.getElementById('err-3');
+    const err = document.getElementById('step3-error');
     err.style.display = 'none';
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    const data = returning ? {
-      type: 'RETURNING_TIP',
-      handle: document.getElementById('f-returning-handle').value,
-      place: document.getElementById('f-place').value,
+    // Collect taste tags
+    const tastes = Array.from(document.querySelectorAll('.taste-opt:checked')).map(function(el) { return el.value; });
+
+    const data = {
+      // Profile
+      name:     document.getElementById('f-name').value,
+      handle:   document.getElementById('f-handle').value,
+      email:    document.getElementById('f-email').value,
+      city:     document.getElementById('f-city').value,
+      bio:      document.getElementById('f-bio').value,
+      avatar:   avatarUrl,
+      tastes:   tastes.join(', '),
+      // Tip
+      place:       document.getElementById('f-place').value,
       neighbourhood: document.getElementById('f-hood').value,
-      category: document.getElementById('f-cat').value,
-      tip: document.getElementById('f-tip').value,
-      photo: document.getElementById('f-tip-photo').value,
-    } : {
-      type: 'NEW_CONTRIBUTOR_TIP',
-      name: document.getElementById('f-name').value,
-      handle: document.getElementById('f-handle').value,
-      email: document.getElementById('f-email').value,
-      based_in: document.getElementById('f-based').value,
-      bio: document.getElementById('f-bio').value,
-      photo: document.getElementById('f-photo').value,
-      taste_tags: Array.from(tags).join(', '),
-      place: document.getElementById('f-place').value,
-      neighbourhood: document.getElementById('f-hood').value,
-      category: document.getElementById('f-cat').value,
-      tip: document.getElementById('f-tip').value,
-      tip_photo: document.getElementById('f-tip-photo').value,
+      category:    document.getElementById('f-cat').value,
+      tip:         document.getElementById('f-tip').value,
+      photos:      tipPhotoUrls.join('\n'),
     };
 
     try {
@@ -500,13 +663,13 @@
         body: JSON.stringify(data)
       });
       if (res.ok) {
-        document.querySelector('.form-wrap').style.display = 'none';
-        document.querySelector('.steps-bar').style.display = 'none';
-        document.querySelector('.page-header').style.display = 'none';
-        document.getElementById('success-panel').classList.add('show');
+        document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
+        document.getElementById('success-panel').classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else throw new Error();
-    } catch {
+      } else {
+        throw new Error('bad');
+      }
+    } catch(e) {
       err.style.display = 'block';
       btn.textContent = 'Submit →';
       btn.disabled = false;
