@@ -49,7 +49,7 @@
     .masthead-logo { font-family: var(--serif); font-size: clamp(2.6rem, 5.5vw, 4.8rem); font-weight: 600; color: var(--ink); letter-spacing: 0.01em; line-height: 1; text-decoration: none; display: block; text-align: center; }
     .masthead-logo em { font-style: italic; font-weight: 400; }
     .masthead-logo .dot { color: var(--red); }
-    .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: 1.1rem; font-weight: 500; color: var(--ink); letter-spacing: 0.01em; }
+    .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; color: var(--ink); letter-spacing: 0.01em; }
 
     /* CITY STRIP */
     .city-strip { border-bottom: 1px solid var(--rule); position: sticky; top: 48px; z-index: 200; background: var(--cream); }
@@ -125,10 +125,9 @@
 
     /* MANIFESTO BAND */
     .manifesto { border-bottom: 1.5px solid var(--ink); background: var(--cream); }
-    .manifesto-outer { max-width: 1400px; margin: 0 auto; padding: 1rem 32px; }
-    .manifesto-inner { border-left: 4px solid var(--red); padding-left: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 44px; }
-    .manifesto-text { font-family: var(--serif); font-style: italic; font-size: clamp(0.9rem, 1.4vw, 1.1rem); color: var(--muted); line-height: 1.4; }
-    .manifesto-text strong { font-style: normal; font-weight: 500; color: var(--ink); }
+    .manifesto-outer { max-width: 1400px; margin: 0 auto; padding: 1.25rem 32px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .manifesto-text { font-family: var(--serif); font-size: clamp(0.95rem, 1.4vw, 1.1rem); color: var(--muted); line-height: 1.5; font-style: italic; }
+    .manifesto-text strong { font-style: normal; font-weight: 600; color: var(--ink); }
     .manifesto-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: #e6a817; color: var(--ink); text-decoration: none; padding: 0 22px; height: 40px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
     .manifesto-cta:hover { background: #d4980f; }
 
@@ -275,8 +274,7 @@
     }
     @media (max-width: 800px) {
       .top-nav-inner, .masthead-inner, .editorial-wrap, .cta-wrap { padding-left: 20px; padding-right: 20px; }
-      .manifesto-outer { padding-left: 20px; padding-right: 20px; }
-      .manifesto-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .manifesto-outer { padding-left: 20px; padding-right: 20px; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
       .profiles-header { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 0.75rem; }
       .city-strip-inner, .hood-strip-inner { padding-left: 20px; padding-right: 20px; }
       .section-label-inner { padding-left: 20px; padding-right: 20px; }
@@ -340,12 +338,10 @@
 <!-- MANIFESTO BAND -->
 <div class="manifesto">
   <div class="manifesto-outer">
-    <div class="manifesto-inner">
-      <div class="manifesto-text">
-        <strong>The recommendation you'd get from your most well-traveled friend.</strong> Tips from real people, attributed, positive-only — filed by city, organised by taste.
-      </div>
-      <a href="profile-build.html" class="manifesto-cta">Build your profile →</a>
+    <div class="manifesto-text">
+      <strong>The recommendation you'd get from your most well-traveled friend.</strong> Or the person who just knows the best sandwich place in their neighbourhood. Tips from real people, attributed, positive-only — filed by city, organised by taste.
     </div>
+    <a href="profile-build.html" class="manifesto-cta">Build your profile →</a>
   </div>
 </div>
 
