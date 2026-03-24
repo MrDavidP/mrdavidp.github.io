@@ -115,6 +115,29 @@
     .indepth-second { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
     .col-right { padding: 24px 0 24px 28px; }
     .col-right-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+
+    /* PROFILE SPOTLIGHT (right col) */
+    .profile-spot { display: block; text-decoration: none; color: var(--ink); transition: opacity 0.15s; }
+    .profile-spot:hover { opacity: 0.8; }
+    .profile-spot-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .profile-spot-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid var(--rule); flex-shrink: 0; }
+    .profile-spot-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; line-height: 1; }
+    .profile-spot-handle { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .profile-spot-bio { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+    .profile-spot-stats { display: flex; gap: 1.25rem; margin-bottom: 0.75rem; }
+    .profile-spot-stat { display: flex; flex-direction: column; gap: 1px; }
+    .profile-spot-val { font-family: var(--serif); font-size: 1.05rem; line-height: 1; }
+    .profile-spot-lbl { font-family: var(--cond); font-size: 0.48rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .profile-spot-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.85rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--rule); }
+    .profile-spot-tag { font-family: var(--cond); font-size: 0.48rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.12rem 0.4rem; }
+    .profile-spot-cta { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+    .profile-spot-divider { height: 1.5px; background: var(--rule); margin: 1.25rem 0; }
+    .profile-spot-build { display: block; text-decoration: none; color: var(--ink); padding: 1rem; background: var(--ink); transition: opacity 0.15s; }
+    .profile-spot-build:hover { opacity: 0.9; }
+    .profile-spot-build-label { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,244,239,0.5); margin-bottom: 0.4rem; }
+    .profile-spot-build-hed { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 0.85rem; }
+    .profile-spot-build-hed em { font-style: italic; }
+    .profile-spot-build-btn { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: #e6a817; }
     .hood-cards { display: flex; flex-direction: column; gap: 1px; }
     .hood-card-mini { text-decoration: none; display: block; position: relative; overflow: hidden; }
     .hood-card-mini img { width: 100%; height: 90px; object-fit: cover; display: block; transition: transform 0.5s ease; }
@@ -128,6 +151,7 @@
     .manifesto-outer { max-width: 1400px; margin: 0 auto; padding: 1.25rem 32px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
     .manifesto-text { font-family: var(--serif); font-size: clamp(0.95rem, 1.4vw, 1.1rem); color: var(--muted); line-height: 1.5; font-style: italic; }
     .manifesto-text strong { font-style: normal; font-weight: 600; color: var(--ink); }
+    .manifesto-text .sub { display: block; font-style: italic; color: var(--muted); font-size: clamp(0.88rem, 1.2vw, 1rem); margin-top: 0.15rem; }
     .manifesto-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: #e6a817; color: var(--ink); text-decoration: none; padding: 0 22px; height: 40px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
     .manifesto-cta:hover { background: #d4980f; }
 
@@ -339,7 +363,8 @@
 <div class="manifesto">
   <div class="manifesto-outer">
     <div class="manifesto-text">
-      <strong>The recommendation you'd get from your most well-traveled friend.</strong> Or the person who just knows the best sandwich place in their neighbourhood. Tips from real people, attributed, positive-only — filed by city, organised by taste.
+      <strong>The recommendation you'd get from your most well-travelled friend.</strong>
+      <span class="sub">Write about stuff you liked. We'll do the rest.</span>
     </div>
     <a href="profile-build.html" class="manifesto-cta">Build your profile →</a>
   </div>
@@ -459,25 +484,34 @@
     <div class="col-divider"></div>
 
     <div class="col-right">
-      <div class="col-right-label">More neighbourhoods</div>
-      <div class="hood-cards">
-        <a class="hood-card-mini" href="paquis.html">
-          <img src="paquis-hero-2.jpg" alt="Pâquis" style="object-position:center 40%;" />
-          <div class="hood-card-mini-overlay"><div class="hood-card-mini-name">Pâquis</div><div class="hood-card-mini-meta"><span>Geneva</span><span>2 tips</span></div></div>
-        </a>
-        <a class="hood-card-mini" href="yenikoy.html">
-          <img src="photo-arnavutkoy-restaurant.jpg" alt="Yeniköy" style="object-position:center 50%;" />
-          <div class="hood-card-mini-overlay"><div class="hood-card-mini-name">Yeniköy</div><div class="hood-card-mini-meta"><span>Istanbul</span><span>3 tips</span></div></div>
-        </a>
-        <a class="hood-card-mini" href="nations.html">
-          <img src="Nations-chair.jpg" alt="Nations" style="object-position:center 35%;" />
-          <div class="hood-card-mini-overlay"><div class="hood-card-mini-name">Nations</div><div class="hood-card-mini-meta"><span>Geneva</span><span>3 tips</span></div></div>
-        </a>
-        <a class="hood-card-mini" href="notting-hill.html">
-          <img src="IMG_6278.JPG" alt="Notting Hill" style="object-position:center 55%;" />
-          <div class="hood-card-mini-overlay"><div class="hood-card-mini-name">Notting Hill</div><div class="hood-card-mini-meta"><span>London</span><span>3 tips</span></div></div>
-        </a>
-      </div>
+      <div class="col-right-label">Featured contributor</div>
+      <a href="profile-dave.html" class="profile-spot">
+        <div class="profile-spot-top">
+          <img class="profile-spot-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
+          <div>
+            <div class="profile-spot-name">Dave</div>
+            <div class="profile-spot-handle">@dave · Geneva</div>
+          </div>
+        </div>
+        <div class="profile-spot-bio">Meeting people. Making videos. Building HoodTip.</div>
+        <div class="profile-spot-stats">
+          <div class="profile-spot-stat"><span class="profile-spot-val">62</span><span class="profile-spot-lbl">Tips</span></div>
+          <div class="profile-spot-stat"><span class="profile-spot-val">17</span><span class="profile-spot-lbl">Cities</span></div>
+        </div>
+        <div class="profile-spot-tags">
+          <span class="profile-spot-tag">Natural wine</span>
+          <span class="profile-spot-tag">Proper pubs</span>
+          <span class="profile-spot-tag">Waterfront bars</span>
+          <span class="profile-spot-tag">Good fish</span>
+        </div>
+        <span class="profile-spot-cta">View taste profile →</span>
+      </a>
+      <div class="profile-spot-divider"></div>
+      <a href="profile-build.html" class="profile-spot-build">
+        <div class="profile-spot-build-label">Add yours</div>
+        <div class="profile-spot-build-hed">Write about stuff you liked.<br><em>We'll do the rest.</em></div>
+        <div class="profile-spot-build-btn">Build your profile →</div>
+      </a>
     </div>
 
   </div>
@@ -488,7 +522,7 @@
   <div class="profiles-header">
     <div>
       <div class="profiles-header-hed">Tips have <em>names on them.</em></div>
-      <div class="profiles-header-sub">Every tip is attributed to a real person with a taste profile you can browse. Not algorithms. Not anonymous reviews. People whose judgement you can evaluate.</div>
+      <div class="profiles-header-sub">Every tip has a name on it. Browse a full taste profile before you trust the recommendation.</div>
     </div>
     <a href="profile-build.html" class="profiles-header-btn">Build your profile →</a>
   </div>
@@ -539,15 +573,15 @@
       <div class="profile-card-build-top">
         <div class="profile-card-build-label">Join HoodTip</div>
         <div class="profile-card-build-hed">Your trips deserve a <em>permanent home.</em></div>
-        <div class="profile-card-build-body">Your phone is full of places worth remembering. File them here — by city, by neighbourhood, under your name. A taste profile that helps the next person who ends up there.</div>
+        <div class="profile-card-build-body">Write about stuff you liked. We turn it into a proper article with your name on it — filed by city, under your taste profile.</div>
       </div>
       <div class="profile-card-build-btn">Build your profile →</div>
     </a>
     <a class="profile-card-build" href="profile-build.html">
       <div class="profile-card-build-top">
         <div class="profile-card-build-label">How it works</div>
-        <div class="profile-card-build-hed">Three steps. <em>Your byline on it.</em></div>
-        <div class="profile-card-build-body">Tell us who you are and what you like. Add a tip — place name, neighbourhood, a few lines. We turn it into a proper article with your name on it and send you the link.</div>
+        <div class="profile-card-build-hed">A few lines. <em>Your byline on it.</em></div>
+        <div class="profile-card-build-body">Tell us who you are. Add a tip — place, neighbourhood, what to order. We build the article and send you the link.</div>
       </div>
       <div class="profile-card-build-btn">Leave a tip →</div>
     </a>
@@ -700,7 +734,7 @@
     <div class="footer-stats">
       <span class="footer-stat">62 tips</span><span class="footer-sep">&middot;</span>
       <span class="footer-stat">16 neighbourhoods</span><span class="footer-sep">&middot;</span>
-      <span class="footer-stat">16 cities</span>
+      <span class="footer-stat">17 cities</span>
     </div>
     <div class="footer-note">If you didn't like it, don't waste your time writing about it.</div>
   </div>
