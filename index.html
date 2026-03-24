@@ -51,18 +51,8 @@
     .masthead-logo .dot { color: var(--red); }
     .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; color: var(--ink); letter-spacing: 0.01em; }
 
-    /* CITY STRIP */
-    .city-strip { border-bottom: 1px solid var(--rule); position: sticky; top: 48px; z-index: 200; background: var(--cream); }
-    .city-strip-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; height: 40px; display: flex; align-items: center; overflow-x: auto; }
-    .city-strip-inner::-webkit-scrollbar { display: none; }
-    .city-strip-inner a { font-family: var(--cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; padding: 0 20px 0 0; white-space: nowrap; transition: color 0.15s; flex-shrink: 0; }
-    .city-strip-inner a.active { color: var(--ink); }
-    .city-strip-inner a:not(.active) { color: var(--muted); }
-    .city-strip-inner a:hover { color: var(--ink); }
-    .city-strip-sep { color: var(--rule); padding-right: 20px; font-size: 0.7rem; flex-shrink: 0; }
-
     /* HOOD STRIP */
-    .hood-strip { border-bottom: 1.5px solid var(--ink); position: sticky; top: 88px; z-index: 199; background: var(--cream); }
+    .hood-strip { border-bottom: 1.5px solid var(--ink); position: sticky; top: 48px; z-index: 199; background: var(--cream); }
     .hood-strip-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; height: 34px; overflow-x: auto; }
     .hood-strip-inner::-webkit-scrollbar { display: none; }
     .hood-strip-inner a { font-family: var(--cond); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 14px 0 0; height: 34px; display: flex; align-items: center; white-space: nowrap; transition: color 0.15s; flex-shrink: 0; }
@@ -323,7 +313,7 @@
       .top-nav-inner, .masthead-inner, .editorial-wrap, .cta-wrap { padding-left: 20px; padding-right: 20px; }
       .manifesto-outer { padding-left: 20px; padding-right: 20px; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
       .profiles-header { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 0.75rem; }
-      .city-strip-inner, .hood-strip-inner { padding-left: 20px; padding-right: 20px; }
+      .hood-strip-inner { padding-left: 20px; padding-right: 20px; }
       .section-label-inner { padding-left: 20px; padding-right: 20px; }
       .geneva-header { padding-left: 20px; padding-right: 20px; flex-wrap: wrap; gap: 0.5rem; }
       .profiles-pitch { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 0.75rem; }
@@ -389,36 +379,6 @@
       <span class="sub">Write about stuff you liked. We'll do the rest.</span>
     </div>
     <a href="profile-build.html" class="manifesto-cta">Build your profile →</a>
-  </div>
-</div>
-
-<div class="city-strip">
-  <div class="city-strip-inner">
-    <a href="geneva.html" class="active">Geneva</a>
-    <span class="city-strip-sep">·</span>
-    <a href="london.html">London</a>
-    <span class="city-strip-sep">·</span>
-    <a href="istanbul.html">Istanbul</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#paris">Paris</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#kigali">Kigali</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#capetown">Cape Town</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#senegal">Senegal</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#zanzibar">Zanzibar</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#lusaka">Lusaka</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#zurich">Zürich</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#subotica">Subotica</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#nouakchott">Nouakchott</a>
-    <span class="city-strip-sep">·</span>
-    <a href="#elsewhere">Elsewhere</a>
   </div>
 </div>
 
