@@ -138,6 +138,13 @@
     .profile-spot-build-hed { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 0.85rem; }
     .profile-spot-build-hed em { font-style: italic; }
     .profile-spot-build-btn { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: #e6a817; }
+    /* cream ghost CTA in right col */
+    .profile-spot-ghost-cta { display: block; text-decoration: none; color: var(--ink); border: 1.5px dashed var(--rule); padding: 1rem; transition: border-color 0.15s, background 0.15s; }
+    .profile-spot-ghost-cta:hover { border-color: var(--ink); background: rgba(26,24,22,0.025); }
+    .profile-spot-ghost-avatar { width: 36px; height: 36px; border-radius: 50%; border: 1.5px dashed var(--rule); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; font-size: 1.1rem; color: var(--rule); font-weight: 300; }
+    .profile-spot-ghost-hed { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 0.75rem; }
+    .profile-spot-ghost-hed em { font-style: italic; }
+    .profile-spot-ghost-btn { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--rule); padding-bottom: 1px; display: inline-block; }
     .hood-cards { display: flex; flex-direction: column; gap: 1px; }
     .hood-card-mini { text-decoration: none; display: block; position: relative; overflow: hidden; }
     .hood-card-mini img { width: 100%; height: 90px; object-fit: cover; display: block; transition: transform 0.5s ease; }
@@ -163,7 +170,7 @@
     .profiles-header-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-top: 0.3rem; max-width: 520px; }
     .profiles-header-btn { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); text-decoration: none; padding: 0 22px; height: 40px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
     .profiles-header-btn:hover { background: var(--ink2); }
-    .profiles-grid { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .profiles-grid { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); }
     .profile-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); padding: 1.5rem 1.5rem 1.75rem; display: flex; flex-direction: column; transition: background 0.18s; }
     .profile-card:last-child { border-right: none; }
     .profile-card:hover { background: rgba(26,24,22,0.025); }
@@ -188,6 +195,22 @@
     .profile-card-build-hed em { font-style: italic; }
     .profile-card-build-body { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
     .profile-card-build-btn { display: inline-block; margin-top: 1.25rem; font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 8px 16px; align-self: flex-start; }
+
+    /* GHOST PROFILE CARD */
+    .profile-card-ghost { text-decoration: none; color: var(--ink); border-right: none; padding: 1.5rem; display: flex; flex-direction: column; transition: background 0.18s; border: 1.5px dashed var(--rule); margin: -1px; }
+    .profile-card-ghost:hover { background: rgba(26,24,22,0.025); border-color: var(--ink); }
+    .profile-card-ghost-avatar { width: 48px; height: 48px; border-radius: 50%; border: 1.5px dashed var(--rule); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .profile-card-ghost-avatar-plus { font-size: 1.2rem; color: var(--rule); font-weight: 300; line-height: 1; }
+    .profile-card-ghost-top { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem; }
+    .profile-card-ghost-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--rule); font-style: italic; }
+    .profile-card-ghost-handle { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rule); }
+    .profile-card-ghost-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
+    .profile-card-ghost-hed { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
+    .profile-card-ghost-hed em { font-style: italic; }
+    .profile-card-ghost-body { font-size: 0.75rem; color: var(--muted); line-height: 1.65; margin-bottom: auto; }
+    .profile-card-ghost-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.85rem 0; padding-top: 0.85rem; border-top: 1px dashed var(--rule); }
+    .profile-card-ghost-tag { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); border: 1px dashed var(--rule); padding: 0.15rem 0.5rem; }
+    .profile-card-ghost-btn { display: inline-block; margin-top: 1rem; font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 8px 16px; align-self: flex-start; }
 
 
     /* HIGHLIGHT STRIP */
@@ -306,9 +329,8 @@
       .profiles-pitch { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 0.75rem; }
       .profiles-grid { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr 1fr; }
       .profiles-grid .profile-card:nth-child(2n) { border-right: none; }
-      .profiles-grid .profile-card-build:nth-child(2n) { border-right: none; }
+      .profiles-grid .profile-card-ghost { border-right: none; grid-column: 1 / -1; }
       .profiles-grid .profile-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
-      .profiles-grid .profile-card-build:nth-child(n+3) { border-top: 1px solid var(--rule); }
       .hood-grid { grid-template-columns: repeat(2, 1fr); }
       .hood-grid-card:nth-child(2n) { border-right: none; }
       .hood-grid-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
@@ -484,7 +506,7 @@
     <div class="col-divider"></div>
 
     <div class="col-right">
-      <div class="col-right-label">Featured contributor</div>
+      <div class="col-right-label">Contributors</div>
       <a href="profile-dave.html" class="profile-spot">
         <div class="profile-spot-top">
           <img class="profile-spot-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
@@ -507,10 +529,31 @@
         <span class="profile-spot-cta">View taste profile →</span>
       </a>
       <div class="profile-spot-divider"></div>
-      <a href="profile-build.html" class="profile-spot-build">
-        <div class="profile-spot-build-label">Add yours</div>
-        <div class="profile-spot-build-hed">Write about stuff you liked.<br><em>We'll do the rest.</em></div>
-        <div class="profile-spot-build-btn">Build your profile →</div>
+      <a href="profile-paddy.html" class="profile-spot">
+        <div class="profile-spot-top">
+          <img class="profile-spot-photo" src="Paddy-profile-pic.jpg" alt="Patrick" style="object-position:center 15%;" />
+          <div>
+            <div class="profile-spot-name">Patrick</div>
+            <div class="profile-spot-handle">@paddy · Geneva</div>
+          </div>
+        </div>
+        <div class="profile-spot-bio">Spends more time looking at watch movements than is strictly healthy.</div>
+        <div class="profile-spot-stats">
+          <div class="profile-spot-stat"><span class="profile-spot-val">1</span><span class="profile-spot-lbl">Tips</span></div>
+          <div class="profile-spot-stat"><span class="profile-spot-val">1</span><span class="profile-spot-lbl">City</span></div>
+        </div>
+        <div class="profile-spot-tags">
+          <span class="profile-spot-tag">Watches</span>
+          <span class="profile-spot-tag">Horology</span>
+          <span class="profile-spot-tag">Vieille Ville</span>
+        </div>
+        <span class="profile-spot-cta">View taste profile →</span>
+      </a>
+      <div class="profile-spot-divider"></div>
+      <a href="profile-build.html" class="profile-spot-ghost-cta">
+        <div class="profile-spot-ghost-avatar"><span>+</span></div>
+        <div class="profile-spot-ghost-hed">Write about stuff you liked.<br><em>We'll do the rest.</em></div>
+        <div class="profile-spot-ghost-btn">Build your profile →</div>
       </a>
     </div>
 
@@ -538,7 +581,7 @@
       <div class="profile-card-bio">Meeting people. Making videos. Building HoodTip.</div>
       <div class="profile-card-stats">
         <div class="profile-card-stat"><span class="profile-card-stat-value">62</span><span class="profile-card-stat-label">Tips</span></div>
-        <div class="profile-card-stat"><span class="profile-card-stat-value">16</span><span class="profile-card-stat-label">Cities</span></div>
+        <div class="profile-card-stat"><span class="profile-card-stat-value">17</span><span class="profile-card-stat-label">Cities</span></div>
         <div class="profile-card-stat"><span class="profile-card-stat-value">Geneva</span><span class="profile-card-stat-label">Based in</span></div>
       </div>
       <div class="profile-card-tags">
@@ -569,21 +612,23 @@
         <span class="profile-card-tag">Horology</span>
       </div>
     </a>
-    <a class="profile-card-build" href="profile-build.html">
-      <div class="profile-card-build-top">
-        <div class="profile-card-build-label">Join HoodTip</div>
-        <div class="profile-card-build-hed">Your trips deserve a <em>permanent home.</em></div>
-        <div class="profile-card-build-body">Write about stuff you liked. We turn it into a proper article with your name on it — filed by city, under your taste profile.</div>
+    <a class="profile-card-ghost" href="profile-build.html">
+      <div class="profile-card-ghost-top">
+        <div class="profile-card-ghost-avatar"><span class="profile-card-ghost-avatar-plus">+</span></div>
+        <div>
+          <div class="profile-card-ghost-name">Your name here</div>
+          <div class="profile-card-ghost-handle">@yourhandle</div>
+        </div>
       </div>
-      <div class="profile-card-build-btn">Build your profile →</div>
-    </a>
-    <a class="profile-card-build" href="profile-build.html">
-      <div class="profile-card-build-top">
-        <div class="profile-card-build-label">How it works</div>
-        <div class="profile-card-build-hed">A few lines. <em>Your byline on it.</em></div>
-        <div class="profile-card-build-body">Tell us who you are. Add a tip — place, neighbourhood, what to order. We build the article and send you the link.</div>
+      <div class="profile-card-ghost-label">Join HoodTip</div>
+      <div class="profile-card-ghost-hed">Your trips deserve a <em>permanent home.</em></div>
+      <div class="profile-card-ghost-body">Write about stuff you liked. We turn it into a proper article with your name on it — filed by city, under your taste profile.</div>
+      <div class="profile-card-ghost-tags">
+        <span class="profile-card-ghost-tag">Your city</span>
+        <span class="profile-card-ghost-tag">Your taste</span>
+        <span class="profile-card-ghost-tag">Your name on it</span>
       </div>
-      <div class="profile-card-build-btn">Leave a tip →</div>
+      <div class="profile-card-ghost-btn">Build your profile →</div>
     </a>
   </div>
 </div>
