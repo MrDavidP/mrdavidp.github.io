@@ -3,330 +3,512 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grand Hotel Belvedere – Wengen, Switzerland | HoodTip</title>
-  <!-- OG / SOCIAL META -->
+  <title>Grand Hotel Belvedere, Wengen — HoodTip</title>
+
+  <!-- SEO META -->
+  <meta name="description" content="The Grand Hotel Belvedere in Wengen is the best mountain hotel in Switzerland you haven't booked yet. Newly renovated, Tyler Brûlé-adjacent, and the wagyu bresaola will stop you cold." />
+  <meta name="keywords" content="Grand Hotel Belvedere Wengen, Wengen hotel, Bernese Oberland hotel, Switzerland alpine hotel, Wengernalpbahn, Jungfrau region hotel, car-free village Switzerland" />
+
+  <!-- OG / SOCIAL -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Grand Hotel Belvedere, Wengen — HoodTip" />
-  <meta property="og:description" content="Tyler Brûlé renovation. Wagyu bresaola that will shock you. A cocktail guy who summers at Scorpios. Outdoor pool in the snow. Stop searching and just go." />
-  <meta property="og:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/grand-belvedere-room-view-2.jpg" />
+  <meta property="og:title" content="Grand Hotel Belvedere, Wengen · HoodTip" />
+  <meta property="og:description" content="Go to Wengen. Stay at the Belvedere. Stop searching." />
+  <meta property="og:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/grand-belvedere-spa-outside.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://hoodtip.com/tip-belvedere.html" />
+
+  <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Grand Hotel Belvedere, Wengen — HoodTip" />
-  <meta name="twitter:description" content="Tyler Brûlé renovation. Wagyu bresaola that will shock you. A cocktail guy who summers at Scorpios. Outdoor pool in the snow. Stop searching and just go." />
-  <meta name="twitter:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/grand-belvedere-room-view-2.jpg" />
+  <meta name="twitter:title" content="Grand Hotel Belvedere, Wengen · HoodTip" />
+  <meta name="twitter:description" content="Go to Wengen. Stay at the Belvedere. Stop searching." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/grand-belvedere-spa-outside.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --cream:  #f7f4ef;
-      --ink:    #1a1816;
-      --ink2:   #2a2925;
-      --red:    #b5322a;
-      --muted:  #6b6560;
-      --rule:   #e0dbd3;
-      --max:    780px;
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
+      --article-width: 720px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
-    body { background: var(--cream); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; width: 100%; height: auto; }
-
-    /* PHOTO LAYOUT */
-    .img-full { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 3rem 0; }
-    .img-full img { width: 100%; display: block; height: auto; }
-    .img-landscape { margin: 2.5rem 0; }
-    .img-landscape img { width: 100%; display: block; height: auto; }
-    .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 2.5rem 0; }
-    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: center top; }
-    .img-portrait-single { margin: 2.5rem auto; max-width: 420px; }
-    .img-portrait-single img { width: 100%; display: block; height: auto; }
-    .img-caption { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.5rem 0 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
     /* NAV */
-    .site-header { border-bottom: 1px solid var(--rule); padding: 0 1.5rem; }
-    .site-header__inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    .site-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.25rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
-    .site-logo span { color: var(--red); }
-    .site-nav { display: flex; gap: 2rem; }
-    .site-nav a { font-family: 'Barlow Condensed', sans-serif; font-size: .8rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-    .site-nav a:hover { color: var(--ink); }
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+    .nav-links a.cta:hover { background: var(--ink2); }
 
-    /* HERO */
-    .hero { width: 100%; overflow: hidden; }
-    .hero img { width: 100%; height: 70vh; min-height: 420px; max-height: 680px; object-fit: cover; object-position: center 35%; display: block; }
+    /* TIP HEADER */
+    .tip-header { border-bottom: 1.5px solid var(--ink); padding: 2.5rem 2rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .tip-breadcrumb { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; gap: 0.5rem; align-items: center; }
+    .tip-breadcrumb a { color: var(--muted); text-decoration: none; }
+    .tip-breadcrumb a:hover { color: var(--ink); }
+    .tip-breadcrumb span { color: var(--rule); }
+    .tip-kicker { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+    .tip-headline { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 820px; }
+    .tip-headline em { font-style: italic; }
+    .tip-dek { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--muted); line-height: 1.55; max-width: 620px; margin-bottom: 1.5rem; }
+    .tip-meta { display: flex; gap: 0; border-top: 1px solid var(--rule); padding-top: 1rem; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
+    .tip-meta-item { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .tip-meta-item strong { color: var(--ink); font-weight: 500; }
+    .tip-meta-sep { color: var(--rule); }
+    .tip-byline { display: flex; align-items: center; gap: 0.6rem; }
+    .tip-byline-photo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid var(--rule); }
+    .tip-byline-name { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .tip-byline-name a { color: var(--ink); text-decoration: none; font-weight: 500; }
 
-    /* ARTICLE */
-    .article { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem 4rem; }
+    /* ARTICLE BODY */
+    .tip-body { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .tip-body-inner { max-width: var(--article-width); margin: 0 auto; padding: 2rem 0 3rem; }
 
-    /* BREADCRUMB */
-    .breadcrumb { margin: 1.5rem 0 1rem; font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-    .breadcrumb a { color: var(--muted); }
-    .breadcrumb a:hover { color: var(--red); }
-    .breadcrumb span { margin: 0 .4em; }
+    p { font-size: 1.05rem; line-height: 1.8; color: var(--ink); margin-bottom: 1.4rem; }
+    p:last-child { margin-bottom: 0; }
 
-    /* TAGS */
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
-    .tag { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: .2rem .55rem; border-radius: 2px; }
-
-    /* HEADLINE */
-    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; line-height: 1.1; margin-bottom: .6rem; letter-spacing: -.01em; }
-    .subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--muted); margin-bottom: 1.8rem; line-height: 1.5; }
-
-    /* FIND STRIP */
-    .find-strip { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1rem 0; margin-bottom: 2.2rem; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1rem 2rem; }
-    .find-strip__item { display: flex; flex-direction: column; gap: .15rem; }
-    .find-strip__label { font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-    .find-strip__value { font-size: .88rem; color: var(--ink); font-weight: 400; }
-    .find-strip__actions { margin-left: auto; display: flex; gap: .6rem; align-items: center; }
-    .btn { display: inline-flex; align-items: center; gap: .4rem; font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: .45rem .9rem; border-radius: 2px; cursor: pointer; border: none; transition: opacity .15s; }
-    .btn:hover { opacity: .8; }
-    .btn-primary { background: var(--ink); color: var(--cream); }
-    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-    .btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-    /* BODY COPY */
-    .body-copy p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.4rem; }
-    .body-copy p:last-child { margin-bottom: 0; }
+    .drop-cap::first-letter {
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      font-weight: 600;
+      line-height: 0.8;
+      float: left;
+      margin-right: 0.08em;
+      margin-top: 0.05em;
+      color: var(--ink);
+    }
 
     /* PULL QUOTE */
-    .pull-quote { border-left: 3px solid var(--red); padding: 1rem 0 1rem 1.5rem; margin: 2.5rem 0; }
-    .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-style: italic; font-weight: 400; line-height: 1.4; }
+    .pull-quote {
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.5rem 0;
+      margin: 2.5rem 0;
+    }
+    .pull-quote p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.55rem;
+      line-height: 1.3;
+      color: var(--ink);
+      margin: 0;
+    }
+    .pull-quote cite {
+      display: block;
+      font-family: var(--cond);
+      font-style: normal;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
 
-    /* TIP BOX */
-    .tip-box { background: white; border: 1px solid var(--rule); border-top: 3px solid var(--red); padding: 1.5rem 1.8rem; margin: 2.5rem 0; }
-    .tip-box__heading { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--red); margin-bottom: .7rem; }
-    .tip-box p { font-size: .95rem; line-height: 1.7; }
-    .tip-box p + p { margin-top: .6rem; }
+    /* SECTION LABEL */
+    .section-label {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+      margin-top: 2.5rem;
+      display: block;
+    }
 
-    /* CTA */
-    .cta-banner { background: var(--ink); color: var(--cream); padding: 2rem; text-align: center; margin: 3rem 0 0; }
-    .cta-banner h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: .4rem; }
-    .cta-banner p { font-size: .85rem; color: #aaa; margin-bottom: 1rem; }
-    .cta-banner .btn-primary { background: var(--red); color: white; }
+    /* FACT BOX */
+    .fact-box {
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--ink);
+      padding: 1.25rem 1.5rem;
+      margin: 2.5rem 0;
+      background: rgba(224,219,211,0.2);
+    }
+    .fact-box-title {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .fact-box p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .fact-box p:last-child { margin-bottom: 0; }
+    .fact-box strong { color: var(--ink); font-weight: 500; }
 
-    /* MORE TIPS */
-    .more-tips { max-width: var(--max); margin: 0 auto; padding: 3rem 1.5rem 4rem; }
-    .more-tips__heading { font-family: 'Barlow Condensed', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; padding-bottom: .6rem; border-bottom: 1px solid var(--rule); }
-    .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .tip-card { display: block; }
-    .tip-card__img { aspect-ratio: 4/3; overflow: hidden; margin-bottom: .7rem; }
-    .tip-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
-    .tip-card:hover .tip-card__img img { transform: scale(1.04); }
-    .tip-card__city { font-family: 'Barlow Condensed', sans-serif; font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin-bottom: .2rem; }
-    .tip-card__name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; line-height: 1.3; }
+    /* IMAGES */
+    .img-full-wrap {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .img-full { width: 100%; height: auto; display: block; }
+
+    .img-landscape-wrap { margin: 2rem 0; }
+    .img-landscape { width: 100%; height: auto; display: block; }
+
+    .img-portrait-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: 2rem 0;
+    }
+    .img-portrait-pair img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-portrait-single-wrap {
+      max-width: 420px;
+      margin: 2rem auto;
+    }
+    .img-portrait-single { width: 100%; height: auto; display: block; }
+
+    .img-caption {
+      font-family: var(--cond);
+      font-size: 0.56rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.5rem 0 0;
+    }
+
+    /* DETAILS STRIP */
+    .tip-details {
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .tip-details-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+    .tip-detail { }
+    .tip-detail-label {
+      font-family: var(--cond);
+      font-size: 0.52rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.4);
+      margin-bottom: 0.25rem;
+    }
+    .tip-detail-value {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--cream);
+      line-height: 1.4;
+    }
+
+    /* BOTTOM CTA */
+    .tip-cta { border-bottom: 1.5px solid var(--ink); }
+    .tip-cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .tip-cta-text {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .tip-cta-text em { font-style: italic; }
+    .tip-cta-btn {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--cond);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .tip-cta-btn:hover { background: var(--ink2); }
 
     /* FOOTER */
-    .site-footer { border-top: 1px solid var(--rule); padding: 2rem 1.5rem; }
-    .site-footer__inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .site-footer p { font-size: .75rem; color: var(--muted); }
+    footer { border-top: 2px solid var(--red); background: var(--ink); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
 
     @media (max-width: 640px) {
-      .site-nav { display: none; }
-      .find-strip__actions { margin-left: 0; width: 100%; }
+      .nav-links a:not(.cta) { display: none; }
+      .nav-tagline { display: none; }
+      .tip-headline { font-size: 2rem; }
       .img-portrait-pair { grid-template-columns: 1fr; }
-      .tips-grid { grid-template-columns: 1fr 1fr; }
-      .tips-grid .tip-card:last-child { display: none; }
+      .img-portrait-pair img { aspect-ratio: 4/3; }
+      .footer-stats { display: none; }
     }
   </style>
-<!-- Google tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HL9EJDL2YS');
+  </script>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a href="index.html" class="site-logo">Hood<span>Tip</span></a>
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="profile-dave.html">Dave</a>
-        <a href="profile-build.html">Leave a tip</a>
-      </nav>
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <div class="hero">
-    <img src="grand-belvedere-room-view-2.jpg" alt="View from a Grand Hotel Belvedere room balcony — ornate iron railing, snow-covered Alps, Lauterbrunnen valley below" />
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile-dave.html">Dave</a></li>
+      <li><a href="profile-build.html" class="cta">Leave a tip</a></li>
+    </ul>
   </div>
+</nav>
 
-  <!-- ARTICLE -->
-  <article class="article">
-
-    <nav class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <a href="#">Switzerland</a>
-      <span>›</span>
-      Wengen
-    </nav>
-
-    <div class="tags">
-      <span class="tag">Hotel</span>
-      <span class="tag">Spa</span>
-      <span class="tag">Alps</span>
-      <span class="tag">Wengen</span>
+<!-- TIP HEADER -->
+<div style="border-bottom: 1.5px solid var(--ink);">
+  <div class="tip-header">
+    <div class="tip-breadcrumb">
+      <a href="index.html">HoodTip</a>
+      <span>/</span>
+      <a href="profile-dave.html">Dave</a>
+      <span>/</span>
+      Wengen, Switzerland
     </div>
-
-    <h1>Grand Hotel Belvedere</h1>
-    <p class="subtitle">Stop searching. If you want this kind of trip, just go here.</p>
-
-    <div class="find-strip">
-      <div class="find-strip__item">
-        <span class="find-strip__label">Address</span>
-        <span class="find-strip__value">Galliweidli, 3823 Wengen, Switzerland</span>
+    <div class="tip-kicker">Hotel · Spa · Restaurant · Wengen, Switzerland</div>
+    <h1 class="tip-headline">Go to Wengen. Stay at the Belvedere.<br><em>Stop searching.</em></h1>
+    <p class="tip-dek">A newly renovated grand hotel in a car-free Swiss alpine village you reach by cog railway. The wagyu bresaola will stop you cold. The outdoor pool in the snow will finish the job.</p>
+    <div class="tip-meta">
+      <div class="tip-byline">
+        <img class="tip-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
+        <span class="tip-byline-name">Tip by <a href="profile-dave.html">Dave</a></span>
       </div>
-      <div class="find-strip__item">
-        <span class="find-strip__label">Best for</span>
-        <span class="find-strip__value">Hotel, spa, food, cocktails, the Alps</span>
-      </div>
-      <div class="find-strip__item">
-        <span class="find-strip__label">Tip by</span>
-        <span class="find-strip__value"><a href="profile-dave.html">Dave</a></span>
-      </div>
-      <div class="find-strip__actions">
-        <a class="btn btn-primary" href="https://maps.google.com/?q=Grand+Hotel+Belvedere+Wengen+Switzerland" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          Maps
-        </a>
-        <button class="btn btn-outline" onclick="navigator.share ? navigator.share({title: document.title, url: location.href}) : navigator.clipboard.writeText(location.href)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
-          Share
-        </button>
-      </div>
+      <span class="tip-meta-sep">·</span>
+      <div class="tip-meta-item"><strong>Grand Hotel Belvedere</strong></div>
+      <span class="tip-meta-sep">·</span>
+      <div class="tip-meta-item">Galliweidli, 3823 Wengen BE</div>
+      <span class="tip-meta-sep">·</span>
+      <div class="tip-meta-item">Bernese Oberland · Switzerland</div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO IMAGE: train up -->
+<div class="img-full-wrap">
+  <img class="img-full" src="grand-belvedere-train-up.jpg" alt="Wengernalpbahn cog railway to Wengen, Bernese Oberland" />
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="tip-body">
+  <div class="tip-body-inner">
+
+    <span class="section-label">Getting there</span>
+    <p class="drop-cap">The first thing Wengen does is remove your car. You park it in Lauterbrunnen, in the valley floor at around 800 metres, and then you board the Wengernalpbahn — a cog railway that has been running since 1893 — and it lifts you up through forest and snow to the village at 1,274 metres. No cars in Wengen. No through traffic. The streets are quiet and the air is different. That 20-minute train ride is not just the transfer. It's the beginning of the separation from real life, and it works.</p>
+
+    <p>The Belvedere sends a small electric vehicle to the station to collect you. It is slightly Wes Anderson in character, which is correct and good. By the time you arrive at the hotel, something has already shifted.</p>
+
+    <div class="fact-box">
+      <div class="fact-box-title">Getting to Wengen</div>
+      <p><strong>By train from Geneva:</strong> Intercity to Interlaken Ost, then Berner Oberland Bahn to Lauterbrunnen, then the Wengernalpbahn cog railway direct to Wengen. Total journey around 2.5 hours.</p>
+      <p><strong>By car:</strong> Drive to Lauterbrunnen. Leave your car in the covered car park at the station. You won't need it again until you leave.</p>
+      <p><strong>The Wengernalpbahn:</strong> Opened 1893. It's a metre-gauge rack railway — the cog engages the track on the steep sections. The same line continues up to Kleine Scheidegg at 2,061m, where you can connect to the Jungfraubahn, the highest railway station in Europe at 3,454m.</p>
     </div>
 
-    <!-- BODY COPY -->
-    <div class="body-copy">
-      <p>Wengen is a classic Swiss alpine resort town near Interlaken in the Berner Oberland. The thing about getting there is that you park your car in the village below and take a cog railway up. This sounds like an inconvenience but it isn't — it's the beginning of the separation process from real life to actual vacation. The ride is beautiful and just something so perfectly Swiss about the whole thing. Then the hotel sends a small car to collect you at the station, which is exactly the right kind of detail for a place like this.</p>
+    <!-- Portrait pair: outside-2 + hotel-outside -->
+    <div class="img-portrait-pair">
+      <img src="grand-belvedere-outside-2.jpg" alt="Grand Hotel Belvedere exterior, Wengen, snowing" style="object-position: center 40%;" />
+      <img src="grand-belvedere-hotel-outside.jpg" alt="Grand Hotel Belvedere exterior from pool, winter" style="object-position: center 30%;" />
+    </div>
+    <div class="img-caption">The hotel exterior. Green shutters, Belle Époque bones, a new concrete spa wing hiding around back.</div>
+
+    <span class="section-label">The hotel</span>
+    <p>The Grand Hotel Belvedere is old — it has the arched windows, the carved wood balconies, the ornamental ironwork that belongs to a certain era of Swiss alpine grandeur. But it has been recently renovated, and the hand of Tyler Brûlé is somehow in the mix. You can feel it in the details: the thoughtful wallpaper in the bar, the way the spaces are edited rather than stuffed, the sense that someone with genuine taste has been through here and made decisions. It doesn't feel like a heritage property that has been preserved in aspic. It feels like somewhere that knows what it is.</p>
+
+    <!-- Lobby view landscape -->
+    <div class="img-landscape-wrap">
+      <img class="img-landscape" src="grand-belvedere-lobby-view.jpg" alt="Grand Hotel Belvedere lobby sitting room, arched window, mountain view" />
+      <div class="img-caption">Two chairs. A small table. A bottle of wine. The Jungfrau through the window.</div>
     </div>
 
-    <!-- TRAIN RIDE UP -->
-    <div class="img-landscape">
-      <img src="grand-belvedere-train-up.jpg" alt="View from the cog railway up to Wengen — snow-covered Alps and valley visible through the window" />
-      <div class="img-caption">The ride up. Part of the point.</div>
-    </div>
+    <span class="section-label">The food</span>
+    <p>Switzerland is not the place you come for the food. It is a bread, cheese, and keep-it-moving kind of country. Even the best restaurants here often don't quite land that certain thing — you know what I mean — and my expectations are always calibrated accordingly.</p>
 
-    <div class="body-copy">
-      <p>The hotel was recently renovated and Tyler Brûlé was somehow involved. The taste and attention to detail is unmistakably Brûlé — the bar wallpaper, the lobby furniture, the way everything sits together. It feels considered without being fussy.</p>
-      <p>We sat in the lobby while our room was being prepared. I ordered a beer and the wagyu bresaola. Say it out loud: <em>wagyu bresaola</em>. Switzerland is not known for its food. It's a bread, cheese, and keep it moving kind of country. Even the best restaurants here don't usually hit that certain spot. My expectations are always low. When that wagyu bresaola hit my tongue I was genuinely in shock. It was so good, and every meal afterwards was excellent. This is a huge thing in the Helvetic Confederation. I would eat all your meals here — maybe one night out for pizza just to see the town — but otherwise, stay.</p>
-    </div>
+    <p>So when we arrived and sat in the lobby while the room was being prepared, I ordered a beer and the wagyu bresaola without much expectation. Say it out loud: wagyu bresaola. When it arrived and I put it in my mouth I genuinely stopped talking mid-sentence. Thin-sliced cured wagyu, soft and fatty and deeply savoury in a way that is just not what you expect to happen to you in Switzerland. I thought about it for the rest of the stay. Every meal that followed was excellent. This is a significant statement in the Helvetic Confederation. Eat all your meals at the hotel. Maybe one dinner out in the village for pizza, just to walk around. But come back here for everything else.</p>
 
-    <!-- HOTEL EXTERIOR -->
-    <div class="img-landscape">
-      <img src="grand-belvedere-outside-2.jpg" alt="Grand Hotel Belvedere facade in falling snow — yellow render, green shutters, surrounded by snowy firs" />
+    <!-- Portrait pair: bar + smoky negroni -->
+    <div class="img-portrait-pair">
+      <img src="grand-belvedere-bar.jpg" alt="Grand Hotel Belvedere bar, chandelier, dark floral wallpaper" style="object-position: center 30%;" />
+      <img src="grand-belvedere-smoky-negroni.jpg" alt="Smoky negroni at Grand Hotel Belvedere Wengen" style="object-position: center 40%;" />
     </div>
+    <div class="img-caption">The bar. The cocktail. Both earned.</div>
 
-    <!-- PULL QUOTE -->
+    <span class="section-label">The bar</span>
+    <p>The bar is properly beautiful. Dark floral wallpaper, a chandelier, good stools, a long mirror. The cocktail guy is Greek — he works at Scorpios in Mykonos in the summer, and he is very good at his job. The smoky negroni arrives in a small decanter and a glass with a large cube. It costs 22 CHF. Pay the money. Enjoy the cocktail. This is not the place to be thinking about the exchange rate.</p>
+
+    <p>The sommelier is also Greek, friendly, and serious about wine. He pours from Switzerland and from Germany, and the German bottle he opened for us was so good that we ordered a case to be sent home. I didn't expect to leave Wengen with a case of German wine. It happened.</p>
+
     <div class="pull-quote">
-      <p>"My expectations for Swiss food are always low. When that wagyu bresaola hit my tongue, I was in shock."</p>
+      <p>"The cocktail guy works at Scorpios in Mykonos in the summer. The smoky negroni costs 22 CHF. Pay the money."</p>
+      <cite>— Dave</cite>
     </div>
 
-    <!-- LOBBY VIEW -->
-    <div class="img-landscape">
-      <img src="grand-belvedere-lobby-view.jpg" alt="The Grand Hotel Belvedere lobby — two armchairs facing an arched window, Alps and snowy village beyond, wine on the table" />
+    <!-- Portrait single: snow wine -->
+    <div class="img-portrait-single-wrap">
+      <img class="img-portrait-single" src="grand-belvedere-snow-wine.jpg" alt="Outside the Belvedere in the snow with a wine glass at night" />
+      <div class="img-caption">Outside. Night. Snow. Wine. The correct sequence of events.</div>
     </div>
 
-    <div class="body-copy">
-      <p>The sommelier is a friendly Greek guy offering excellent wines from Switzerland and some stuff from Germany that was so good we ordered a case to take home. The cocktail guy is also Greek — he works at Scorpios Mykonos in the summer — and makes an excellent 22 CHF cocktail. Pay the money. Enjoy the cocktail. The smoky Negroni in particular.</p>
-    </div>
+    <span class="section-label">The rooms</span>
+    <p>The rooms look out over the village and the valley. On a clear day you are looking directly at the Jungfrau — 4,158 metres of it — with the church steeple of Wengen in the foreground and the Lauterbrunnen valley dropping away below. On a cloudy day, snow-covered pine trees disappear into white. Both versions are fine.</p>
 
-    <!-- BAR + NEGRONI -->
+    <!-- Portrait pair: room views -->
     <div class="img-portrait-pair">
-      <img src="grand-belvedere-bar.jpg" alt="The Grand Hotel Belvedere bar — crystal chandelier, floral wallpaper, mirrored back bar stacked with bottles" style="object-position: center 20%;" />
-      <img src="grand-belvedere-smoky-negroni.jpg" alt="A smoky Negroni served in a rocks glass with a large ice cube and a small decanter on a wooden board" style="object-position: center 40%;" />
+      <img src="grand-belvedere-room-view.jpg" alt="Grand Hotel Belvedere room balcony view, Lauterbrunnen valley, ornate ironwork" style="object-position: center 40%;" />
+      <img src="grand-belvedere-room-view-4.jpg" alt="Wengen village and Jungfrau from Grand Hotel Belvedere" style="object-position: center 30%;" />
+    </div>
+    <div class="img-caption">The balcony railing. The Jungfrau. The Lauterbrunnen valley at 800m below.</div>
+
+    <!-- Landscape: room view 2 (village in snow) -->
+    <div class="img-landscape-wrap">
+      <img class="img-landscape" src="grand-belvedere-room-view-2.jpg" alt="Wengen village rooftops in snow, view from Belvedere hotel room" />
+      <div class="img-caption">From the room window. Wengen in the morning after overnight snow.</div>
     </div>
 
-    <div class="body-copy">
-      <p>I'm not a big ski guy, but this place has everything you need. You just take the little train further up the mountain and can ski all the way back down to Wengen if you want. As for the spa: I'm a huge sauna and steam guy and both were excellent — very hot, clean, proper. Cold plunge, pool, nice showers. My wife, who is a picky customer for these things, gave the massage an A+.</p>
-      <p>You can absolutely come here, skip the skiing entirely, spa, eat, drink, and leave completely happy.</p>
+    <span class="section-label">The spa</span>
+    <p>I am not a big skiing person, but this place has all you need. You take a small train further up the mountain from the village and can ski all the way back down to Wengen if you want. I watched other people do this and felt satisfied on their behalf.</p>
+
+    <p>What I am is a sauna and steam person, and both were excellent — very hot, clean, the way they are supposed to be. Cold plunge, nice showers, pool. The spa wing is new concrete brutalism attached to the 19th-century hotel exterior, and the contrast is correct. My wife gave the massage an A+, and she is a picky customer for these things.</p>
+
+    <!-- Landscape: outdoor pool in snow -->
+    <div class="img-landscape-wrap">
+      <img class="img-landscape" src="grand-belvedere-spa-outside.jpg" alt="Outdoor heated pool at Grand Hotel Belvedere in winter snow, Wengen Switzerland" />
+      <div class="img-caption">The outdoor pool. Heated. Outside. In the snow. This is the correct use of a Wednesday afternoon.</div>
     </div>
 
-    <!-- SPA OUTSIDE — full bleed -->
-    <div class="img-full">
-      <img src="grand-belvedere-spa-outside.jpg" alt="A woman swimming in the outdoor heated pool at the Grand Hotel Belvedere — snow-covered trees all around, steam rising from the water" />
-      <div class="img-caption" style="max-width: var(--max); margin: 0 auto; padding: 0.5rem 1.5rem 0;">The outdoor pool. In the snow.</div>
-    </div>
-
-    <!-- SPA INTERIOR + SPA EXTERIOR PAIR -->
+    <!-- Portrait pair: spa inside -->
     <div class="img-portrait-pair">
-      <img src="grand-belvedere-spa-inside-2.jpg" alt="The indoor pool at Grand Hotel Belvedere spa — raw concrete architecture, turquoise water, light from glass panels" style="object-position: center 50%;" />
-      <img src="grand-belvedere-spa-outside-2.jpg" alt="Exterior view of the Grand Hotel Belvedere spa — brutalist concrete structure next to the historic Belle Époque hotel building" style="object-position: center 50%;" />
+      <img src="grand-belvedere-spa-inside.jpg" alt="Grand Hotel Belvedere spa indoor pool, raw concrete architecture" style="object-position: center 50%;" />
+      <img src="grand-belvedere-spa-inside-2.jpg" alt="Grand Hotel Belvedere indoor thermal pool concrete spa" style="object-position: center 40%;" />
+    </div>
+    <div class="img-caption">Indoor pool. The spa wing is all raw poured concrete — no heritage pastiche. Just brutalism and warm water.</div>
+
+    <!-- Landscape: outdoor pool from water level -->
+    <div class="img-landscape-wrap">
+      <img class="img-landscape" src="grand-belvedere-spa-outside-2.jpg" alt="Grand Hotel Belvedere outdoor pool architecture, concrete spa wing and hotel facade winter" />
     </div>
 
-    <!-- SNOW WINE + ART PAIR -->
-    <div class="img-portrait-pair">
-      <img src="grand-belvedere-snow-wine.jpg" alt="Standing outside the Grand Hotel Belvedere at night with a glass of wine, snow on the trees, warm light from the hotel above" style="object-position: center 30%;" />
-      <img src="grand-belvedere-art.jpg" alt="A framed Alpine oil painting hanging in the Grand Hotel Belvedere — chalet, stream, mountain peaks" style="object-position: center 50%;" />
+    <span class="section-label">The art</span>
+    <p>On the walls: original alpine oil paintings, framed in pale wood. Small landscapes, mountain huts, streams over rocks. Not reproductions. The kind of thing you look at properly, which is unusual in hotels.</p>
+
+    <!-- Portrait single: art -->
+    <div class="img-portrait-single-wrap">
+      <img class="img-portrait-single" src="grand-belvedere-art.jpg" alt="Original alpine oil painting on wall at Grand Hotel Belvedere Wengen" />
+      <div class="img-caption">Original oil. The kind of thing you actually look at.</div>
     </div>
 
-    <!-- VILLAGE BELOW -->
-    <div class="img-landscape">
-      <img src="grand-belvedere-village-at-bottom.jpg" alt="Wengen village below, church spire, wooden chalets in snow, the Jungfrau massif filling the horizon" />
+    <div class="pull-quote">
+      <p>"You can come here, skip the skiing, use the spa, eat well, drink well, and leave very happy. Switzerland just got harder to leave."</p>
+      <cite>— Dave</cite>
     </div>
 
-    <!-- TIP BOX -->
-    <div class="tip-box">
-      <div class="tip-box__heading">The Tip</div>
-      <p><strong>Grand Hotel Belvedere</strong>, Wengen. Recently renovated, Tyler Brûlé involved. Park your car in Lauterbrunnen and take the train up — the separation from real life is part of the experience. Eat all your meals here. Ask the Greek sommelier what he's excited about. Order the smoky Negroni and pay the 22 CHF without flinching.</p>
-      <p>You can skip the skiing entirely and still leave completely satisfied. Spa, food, wine, mountains. That's the whole thing.</p>
-    </div>
+    <span class="section-label">The verdict</span>
+    <p>Tyler Brûlé was involved in this renovation in some capacity and the taste and attention to detail is unmistakably his — which is to say that someone has thought about what a grand alpine hotel should actually feel like to stay in, rather than just how it should photograph. It photographs well too, for what it's worth.</p>
 
-  </article>
+    <p>You can come here and skip the skiing entirely. Use the spa. Eat the wagyu bresaola. Sit in the lobby with a glass of something good and look at the mountains through an arched window. That is a complete holiday. Book it, go there, and stop wasting your time looking at other options.</p>
 
-  <!-- CTA -->
-  <div class="cta-banner">
-    <h3>Know a great hotel in the Alps?</h3>
-    <p>We're always looking for tips from people who've actually stayed there.</p>
-    <a class="btn btn-primary" href="profile-build.html">Leave a tip</a>
   </div>
+</div>
 
-  <!-- MORE TIPS -->
-  <section class="more-tips">
-    <div class="more-tips__heading">More tips from Switzerland &amp; beyond</div>
-    <div class="tips-grid">
-
-      <a href="tip-rubymimi-zurich.html" class="tip-card">
-        <div class="tip-card__img">
-          <img src="rubymimi-zurich-room.jpg" alt="Ruby Mimi, Zürich" />
-        </div>
-        <div class="tip-card__city">Zürich · Switzerland</div>
-        <div class="tip-card__name">Ruby Mimi</div>
-      </a>
-
-      <a href="tip-swisstrains.html" class="tip-card">
-        <div class="tip-card__img">
-          <img src="swiss-train-restaurant-car-white-table-cloth.jpg" alt="Swiss Train Restaurant Car" />
-        </div>
-        <div class="tip-card__city">Switzerland</div>
-        <div class="tip-card__name">The Train Restaurant Car</div>
-      </a>
-
-      <a href="tip-saintamour.html" class="tip-card">
-        <div class="tip-card__img">
-          <img src="saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" />
-        </div>
-        <div class="tip-card__city">Lavaux · Vaud</div>
-        <div class="tip-card__name">Domaine Saint-Amour</div>
-      </a>
-
+<!-- DETAILS STRIP -->
+<div class="tip-details">
+  <div class="tip-details-inner">
+    <div class="tip-detail">
+      <div class="tip-detail-label">Where</div>
+      <div class="tip-detail-value">Galliweidli, 3823 Wengen BE, Switzerland</div>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <p>© 2025 HoodTip. Tips from people who've actually been there.</p>
-      <p><a href="index.html">hoodtip.com</a></p>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Getting there</div>
+      <div class="tip-detail-value">Train to Lauterbrunnen, then Wengernalpbahn cog railway. Hotel picks you up at the station.</div>
     </div>
-  </footer>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Category</div>
+      <div class="tip-detail-value">Hotel · Spa · Restaurant · Bar</div>
+    </div>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Don't miss</div>
+      <div class="tip-detail-value">Wagyu bresaola. Smoky negroni. Outdoor pool in the snow.</div>
+    </div>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Altitude</div>
+      <div class="tip-detail-value">1,274m · Jungfrau (4,158m) visible from rooms</div>
+    </div>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Tip from</div>
+      <div class="tip-detail-value">Dave · HoodTip</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="tip-cta">
+  <div class="tip-cta-inner">
+    <div class="tip-cta-text">Know somewhere this good?<br><em>Put your name on it.</em></div>
+    <a href="profile-build.html" class="tip-cta-btn">Leave a HoodTip →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats">
+      <span>62 tips</span><span>·</span>
+      <span>16 neighbourhoods</span><span>·</span>
+      <span>17 cities</span>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
