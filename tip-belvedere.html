@@ -199,6 +199,19 @@
       padding: 0.5rem 0 0;
     }
 
+    /* INLINE FIGURE — photo beside pull quote */
+    .split-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin: 2.5rem 0;
+    }
+    .split-row .pull-quote { margin: 0; }
+    .split-row .split-img { width: 100%; height: auto; display: block; }
+    .split-row .split-img-wrap { display: flex; flex-direction: column; gap: 0.5rem; }
+    @media (max-width: 640px) { .split-row { grid-template-columns: 1fr; } }
+
     /* DETAILS STRIP */
     .tip-details {
       border-top: 1.5px solid var(--ink);
@@ -345,124 +358,122 @@
   <div class="tip-body-inner">
 
     <span class="section-label">Getting there</span>
-    <p class="drop-cap">The first thing Wengen does is remove you, from your car. You park it in Lauterbrunnen, in the valley floor at around 800 metres, and then you board the Wengernalpbahn — a cog railway that has been running since 1893 — and it lifts you up through forest and snow to the village at 1,274 metres. No cars in Wengen. No through traffic. The streets are quiet and the air is different. That 20-minute train ride is not just the transfer. It's the beginning of the separation from real life, and it works.</p>
+    <p class="drop-cap">The first thing Wengen does is remove you, from your car. Park in Lauterbrunnen at 800 metres. Board the Wengernalpbahn — running since 1893 — and ride up through forest and snow to the village at 1,274 metres. No cars. No traffic. The streets are quiet. Twenty minutes on a cog railway and something has already shifted.</p>
 
-    <p>The Belvedere sends a small electric vehicle to the station to collect you. It is slightly Wes Anderson in character, which is correct and good. By the time you arrive at the hotel, something has already shifted.</p>
+    <p>The Belvedere sends a small electric vehicle to collect you at the station. Slightly Wes Anderson. By the time you arrive, you've forgotten whatever you were stressed about.</p>
 
     <div class="fact-box">
-      <div class="fact-box-title">Getting to Wengen</div>
-      <p><strong>By train from Geneva:</strong> Intercity to Interlaken Ost, then Berner Oberland Bahn to Lauterbrunnen, then the Wengernalpbahn cog railway direct to Wengen. Total journey around 2.5 hours.</p>
-      <p><strong>By car:</strong> Drive to Lauterbrunnen. Leave your car in the covered car park at the station. You won't need it again until you leave.</p>
-      <p><strong>The Wengernalpbahn:</strong> Opened 1893. It's a metre-gauge rack railway — the cog engages the track on the steep sections. The same line continues up to Kleine Scheidegg at 2,061m, where you can connect to the Jungfraubahn, the highest railway station in Europe at 3,454m.</p>
+      <div class="fact-box-title">Getting there</div>
+      <p><strong>From Geneva:</strong> Intercity to Interlaken Ost, Berner Oberland Bahn to Lauterbrunnen, Wengernalpbahn to Wengen. About 2.5 hours. Leave the car at Lauterbrunnen station.</p>
+      <p><strong>The line:</strong> Opened 1893. Continues up to Kleine Scheidegg at 2,061m, connecting to the Jungfraubahn — the highest railway station in Europe at 3,454m.</p>
     </div>
 
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-outside-2.jpg" alt="Grand Hotel Belvedere exterior, Wengen, snowing" style="object-position: center 40%;" />
-    </div>
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-hotel-outside.jpg" alt="Grand Hotel Belvedere exterior from pool, winter" style="object-position: center 30%;" />
-      <div class="img-caption">The hotel exterior. Green shutters, Belle Époque bones, a new concrete spa wing hiding around back.</div>
+    <!-- Split: exterior photo + hotel description -->
+    <div class="split-row">
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-outside-2.jpg" alt="Grand Hotel Belvedere exterior, Wengen, snowing" />
+        <div class="img-caption">Green shutters. Belle Époque bones. Concrete spa wing around back.</div>
+      </div>
+      <div>
+        <span class="section-label">The hotel</span>
+        <p>Old bones, smart renovation. Arched windows, carved balconies, ornamental ironwork. Tyler Brûlé was involved in some capacity and you can feel it — the wallpaper in the bar, the way the spaces are edited rather than stuffed. It doesn't feel preserved. It feels like somewhere that knows what it is.</p>
+      </div>
     </div>
 
-    <span class="section-label">The hotel</span>
-    <p>The Grand Hotel Belvedere is old — it has the arched windows, the carved wood balconies, the ornamental ironwork that belongs to a certain era of Swiss alpine grandeur. But it has been recently renovated, and the hand of Tyler Brûlé is somehow in the mix. You can feel it in the details: the thoughtful wallpaper in the bar, the way the spaces are edited rather than stuffed, the sense that someone with genuine taste has been through here and made decisions. It doesn't feel like a heritage property that has been preserved in aspic. It feels like somewhere that knows what it is.</p>
-
-    <!-- Lobby view landscape -->
     <div class="img-landscape-wrap">
       <img class="img-landscape" src="grand-belvedere-lobby-view.jpg" alt="Grand Hotel Belvedere lobby sitting room, arched window, mountain view" />
-      <div class="img-caption">Two chairs. A small table. A bottle of wine. The Jungfrau through the window.</div>
+      <div class="img-caption">Two chairs. A bottle. The Jungfrau through the window.</div>
     </div>
 
-    <span class="section-label">The food</span>
-    <p>Switzerland is not the place you come for the food. It is a bread, cheese, and keep-it-moving kind of country. Even the best restaurants here often don't quite land that certain thing — you know what I mean — and my expectations are always calibrated accordingly.</p>
-
-    <p>So when we arrived and sat in the lobby while the room was being prepared, I ordered a beer and the wagyu bresaola without much expectation. Say it out loud: wagyu bresaola. When it arrived and I put it in my mouth I genuinely stopped talking mid-sentence. Thin-sliced cured wagyu, soft and fatty and deeply savoury in a way that is just not what you expect to happen to you in Switzerland. I thought about it for the rest of the stay. Every meal that followed was excellent. This is a significant statement in the Helvetic Confederation. Eat all your meals at the hotel. Maybe one dinner out in the village for pizza, just to walk around. But come back here for everything else.</p>
-
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-bar.jpg" alt="Grand Hotel Belvedere bar, chandelier, dark floral wallpaper" style="object-position: center 30%;" />
-      <div class="img-caption">The bar. Dark floral wallpaper, a chandelier, good stools.</div>
-    </div>
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-smoky-negroni.jpg" alt="Smoky negroni at Grand Hotel Belvedere Wengen" style="object-position: center 40%;" />
-      <div class="img-caption">The smoky negroni. 22 CHF. Worth it.</div>
-    </div>
-
-    <span class="section-label">The bar</span>
-    <p>The bar is properly beautiful. Dark floral wallpaper, a chandelier, good stools, a long mirror. The cocktail guy is Greek — he works at Scorpios in Mykonos in the summer, and he is very good at his job. The smoky negroni arrives in a small decanter and a glass with a large cube. It costs 22 CHF. Pay the money. Enjoy the cocktail. This is not the place to be thinking about the exchange rate.</p>
-
-    <p>The sommelier is also Greek, friendly, and serious about wine. He pours from Switzerland and from Germany, and the German bottle he opened for us was so good that we ordered a case to be sent home. I didn't expect to leave Wengen with a case of German wine. It happened.</p>
-
-    <div class="pull-quote">
-      <p>"The cocktail guy works at Scorpios in Mykonos in the summer. The smoky negroni costs 22 CHF. Pay the money."</p>
-      <cite>— Dave</cite>
+    <!-- Split: food section with bar photo -->
+    <div class="split-row">
+      <div>
+        <span class="section-label">The food</span>
+        <p>Switzerland is not a food country. It is bread, cheese, keep moving. My expectations were low. Then the wagyu bresaola arrived.</p>
+        <p>I stopped talking mid-sentence. Thin-sliced, soft, fatty, deeply savoury. I thought about it for the rest of the trip. Every meal after was excellent. Eat here. Maybe one pizza in the village to walk around. Come back for everything else.</p>
+      </div>
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-bar.jpg" alt="Grand Hotel Belvedere bar, chandelier, dark floral wallpaper" />
+        <div class="img-caption">The bar. Dark floral wallpaper, chandelier, long mirror.</div>
+      </div>
     </div>
 
-    <!-- Snow wine -->
-    <div class="img-portrait-single-wrap">
-      <img class="img-portrait-single" src="grand-belvedere-snow-wine.jpg" alt="Outside the Belvedere in the snow with a wine glass at night" />
-      <div class="img-caption">Outside at night with a glass of wine. It's cold enough that the snow works as a cooler. Use it.</div>
+    <!-- Split: negroni photo + bar copy -->
+    <div class="split-row">
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-smoky-negroni.jpg" alt="Smoky negroni at Grand Hotel Belvedere Wengen" />
+        <div class="img-caption">22 CHF. Worth it.</div>
+      </div>
+      <div class="pull-quote">
+        <p>"The cocktail guy works Scorpios in Mykonos in summer. Smoky negroni, small decanter, large cube. 22 CHF. Pay the money."</p>
+        <cite>— Dave</cite>
+      </div>
+    </div>
+
+    <p>The sommelier is also Greek, serious about wine. He poured from Germany and the bottle was so good we ordered a case sent home. Didn't expect to leave Wengen with German wine. It happened.</p>
+
+    <!-- Split: snow wine photo + caption as pull quote -->
+    <div class="split-row">
+      <div class="pull-quote">
+        <p>"The dessert wine was a bit strong. Adding fresh snow helped."</p>
+        <cite>— Dave</cite>
+      </div>
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-snow-wine.jpg" alt="Outside the Belvedere at night, wine glass in hand, adding snow" />
+      </div>
     </div>
 
     <span class="section-label">The rooms</span>
-    <p>The rooms look out over the village and the valley. On a clear day you are looking directly at the Jungfrau — 4,158 metres of it — with the church steeple of Wengen in the foreground and the Lauterbrunnen valley dropping away below. On a cloudy day, snow-covered pine trees disappear into white. Both versions are fine.</p>
+    <p>The rooms face the valley. Clear day: Jungfrau at 4,158 metres, the church steeple of Wengen, the Lauterbrunnen valley below. Cloudy day: snow-covered pines disappearing into white. Both are fine.</p>
 
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-room-view.jpg" alt="Grand Hotel Belvedere room balcony view, Lauterbrunnen valley, ornate ironwork" style="object-position: center 40%;" />
-      <div class="img-caption">The balcony railing. The Lauterbrunnen valley at 800m below.</div>
-    </div>
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-room-view-4.jpg" alt="Wengen village and Jungfrau from Grand Hotel Belvedere" style="object-position: center 30%;" />
-      <div class="img-caption">The Jungfrau, 4,158m, from the room.</div>
-    </div>
-
-    <!-- Landscape: room view 2 (village in snow) -->
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-room-view-2.jpg" alt="Wengen village rooftops in snow, view from Belvedere hotel room" />
-      <div class="img-caption">From the room window. Wengen in the morning after overnight snow.</div>
+    <!-- Split: room view + village view -->
+    <div class="split-row">
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-room-view.jpg" alt="Balcony view, Lauterbrunnen valley" style="object-position: center 40%;" />
+        <div class="img-caption">The balcony. Valley at 800m below.</div>
+      </div>
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-room-view-4.jpg" alt="Wengen village and Jungfrau from room" />
+        <div class="img-caption">The Jungfrau, 4,158m.</div>
+      </div>
     </div>
 
+    <div class="img-landscape-wrap">
+      <img class="img-landscape" src="grand-belvedere-room-view-2.jpg" alt="Wengen village rooftops in snow from hotel room" />
+      <div class="img-caption">Wengen after overnight snow.</div>
+    </div>
+
+    <!-- Spa section -->
     <span class="section-label">The spa</span>
-    <p>I am not a big skiing person, but this place has all you need. You take a small train further up the mountain from the village and can ski all the way back down to Wengen if you want. I watched other people do this and felt satisfied on their behalf.</p>
+    <p>Not a skiing person. There's a small train further up the mountain, you can ski back down to the village. I watched others do it. The spa is where I was. Sauna and steam both excellent — very hot, clean. Cold plunge, good showers, pool. The spa wing is new poured concrete bolted to the 19th-century hotel, and the contrast works. My wife rated the massage A+. She is a picky judge.</p>
 
-    <p>What I am is a sauna and steam person, and both were excellent — very hot, clean, the way they are supposed to be. Cold plunge, nice showers, pool. The spa wing is new concrete brutalism attached to the 19th-century hotel exterior, and the contrast is correct. My wife gave the massage an A+, and she is a picky customer for these things.</p>
-
-    <!-- Landscape: outdoor pool in snow -->
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-spa-outside.jpg" alt="Outdoor heated pool at Grand Hotel Belvedere in winter snow, Wengen Switzerland" />
-      <div class="img-caption">The outdoor pool. Heated. Outside. In the snow. This is the correct use of a Wednesday afternoon.</div>
+    <!-- Split: outdoor pool + indoor pool -->
+    <div class="split-row">
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-spa-outside.jpg" alt="Outdoor heated pool in winter snow" />
+        <div class="img-caption">Heated. Outside. In the snow.</div>
+      </div>
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-spa-inside-2.jpg" alt="Indoor thermal pool, raw concrete" />
+        <div class="img-caption">Indoor pool. Brutalism and warm water.</div>
+      </div>
     </div>
 
     <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-spa-inside.jpg" alt="Grand Hotel Belvedere spa indoor pool, raw concrete architecture" style="object-position: center 50%;" />
-    </div>
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-spa-inside-2.jpg" alt="Grand Hotel Belvedere indoor thermal pool concrete spa" style="object-position: center 40%;" />
-      <div class="img-caption">Indoor pool. Raw poured concrete throughout — no heritage pastiche. Just brutalism and warm water.</div>
+      <img class="img-landscape" src="grand-belvedere-spa-outside-2.jpg" alt="Outdoor pool architecture, spa wing and hotel" />
     </div>
 
-    <!-- Landscape: outdoor pool from water level -->
-    <div class="img-landscape-wrap">
-      <img class="img-landscape" src="grand-belvedere-spa-outside-2.jpg" alt="Grand Hotel Belvedere outdoor pool architecture, concrete spa wing and hotel facade winter" />
+    <!-- Split: art + verdict -->
+    <div class="split-row">
+      <div class="split-img-wrap">
+        <img class="split-img" src="grand-belvedere-art.jpg" alt="Original alpine oil painting, Grand Hotel Belvedere" />
+        <div class="img-caption">Original oil. You actually look at it.</div>
+      </div>
+      <div>
+        <span class="section-label">The verdict</span>
+        <p>Someone with real taste came through here and made decisions. Skip the skiing. Use the spa. Eat the wagyu bresaola. Sit in the lobby with a glass of something and look at the mountains. That's a complete holiday. Book it.</p>
+      </div>
     </div>
-
-    <span class="section-label">The art</span>
-    <p>On the walls: original alpine oil paintings, framed in pale wood. Small landscapes, mountain huts, streams over rocks. Not reproductions. The kind of thing you look at properly, which is unusual in hotels.</p>
-
-    <!-- Portrait single: art -->
-    <div class="img-portrait-single-wrap">
-      <img class="img-portrait-single" src="grand-belvedere-art.jpg" alt="Original alpine oil painting on wall at Grand Hotel Belvedere Wengen" />
-      <div class="img-caption">Original oil. The kind of thing you actually look at.</div>
-    </div>
-
-    <div class="pull-quote">
-      <p>"You can come here, skip the skiing, use the spa, eat well, drink well, and leave very happy. Switzerland just got harder to leave."</p>
-      <cite>— Dave</cite>
-    </div>
-
-    <span class="section-label">The verdict</span>
-    <p>Tyler Brûlé was involved in this renovation in some capacity and the taste and attention to detail is unmistakably his — which is to say that someone has thought about what a grand alpine hotel should actually feel like to stay in, rather than just how it should photograph. It photographs well too, for what it's worth.</p>
-
-    <p>You can come here and skip the skiing entirely. Use the spa. Eat the wagyu bresaola. Sit in the lobby with a glass of something good and look at the mountains through an arched window. That is a complete holiday. Book it, go there, and stop wasting your time looking at other options.</p>
 
   </div>
 </div>
@@ -497,11 +508,51 @@
   </div>
 </div>
 
+<!-- MORE TIPS -->
+<div style="border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+    <div style="display:flex;align-items:baseline;gap:16px;padding:1.25rem 0 1rem;border-bottom:1px solid var(--rule);">
+      <span style="font-family:var(--cond);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);">More tips</span>
+      <div style="flex:1;height:1px;background:var(--rule);"></div>
+      <a href="profile-dave.html" style="font-family:var(--cond);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;">All tips →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);">
+      <a href="tip-swisstrains.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="swiss-train-restaurant.jpg" alt="Swiss train restaurant car" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Travel · Switzerland</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Swiss Train Restaurant Car</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Get a regular ticket. Upgrade yourself to the restaurant car.</div>
+        </div>
+      </a>
+      <a href="tip-saintamour.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wine · Lavaux · Vaud</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Domaine Saint-Amour</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Honour system rosé in a UNESCO vineyard.</div>
+        </div>
+      </a>
+      <a href="tip-rubymimi-zurich.html" style="text-decoration:none;color:var(--ink);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="rubymimi-zurich-room.jpg" alt="Ruby Mimi Zürich" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 40%;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Hotel · Zürich</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Ruby Mimi</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Book here and stop looking at hotels online.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- BOTTOM CTA -->
-<div class="tip-cta">
-  <div class="tip-cta-inner">
-    <div class="tip-cta-text">Know somewhere this good?<br><em>Put your name on it.</em></div>
-    <a href="profile-build.html" class="tip-cta-btn">Leave a HoodTip →</a>
+<div style="border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
+    </div>
+    <a href="profile-build.html" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
   </div>
 </div>
 
@@ -509,9 +560,9 @@
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
     <div class="footer-stats">
-      <span>62 tips</span><span>·</span>
+      <span>63 tips</span><span>·</span>
       <span>16 neighbourhoods</span><span>·</span>
-      <span>17 cities</span>
+      <span>18 cities</span>
     </div>
   </div>
 </footer>
