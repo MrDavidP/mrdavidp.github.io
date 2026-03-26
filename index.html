@@ -410,24 +410,24 @@
     <div class="col-main">
       <div class="feature-label">Worth knowing</div>
 
-      <a class="feature-link" href="tip-baindespaquis.html" style="display:block;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--rule);">
+      <a class="feature-link" id="feature-1" href="tip-swisstrains.html" style="display:block;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--rule);">
         <div class="feature-img-wrap">
-          <img class="feature-img" src="baindespaquis-sunset.jpg" alt="Bains des Pâquis" style="object-position:center 40%;" />
+          <img class="feature-img" id="feature-1-img" src="swiss-train-restaurant.jpg" alt="Swiss train restaurant car" style="object-position:center 50%;" />
         </div>
-        <div class="feature-cat">Swimming &middot; Pâquis &middot; Geneva</div>
-        <h2 class="feature-hed" style="font-size:clamp(1.3rem,2.2vw,1.8rem);">Bains des Pâquis. <em>70s vibes on Lac Léman.</em></h2>
-        <p class="feature-deck">Cold rosé on the jetty, jump off the board, Alps right there. Geneva institution since 1932. Everyone knows about it, not enough people go.</p>
-        <div class="feature-meta"><span>Bains des Pâquis</span><span class="feature-meta-dot"></span><span>Quai du Mont-Blanc 30</span></div>
+        <div class="feature-cat" id="feature-1-cat">Travel &middot; Switzerland</div>
+        <h2 class="feature-hed" id="feature-1-hed" style="font-size:clamp(1.3rem,2.2vw,1.8rem);">Get a regular ticket. <em>Upgrade yourself to the restaurant car.</em></h2>
+        <p class="feature-deck" id="feature-1-deck">The Swiss train restaurant car is one of the great underused pleasures of living here. White tablecloth, Alps outside, cold beer. Nobody knows about it.</p>
+        <div class="feature-meta" id="feature-1-meta"><span>Swiss Federal Railways</span><span class="feature-meta-dot"></span><span>Any intercity train</span></div>
       </a>
 
-      <a class="feature-link" href="tip-arnavutkoy.html" style="display:block;">
+      <a class="feature-link" id="feature-2" href="tip-arnavutkoy.html" style="display:block;">
         <div class="feature-img-wrap">
-          <img class="feature-img" src="photo-arnavutkoy-restaurant.jpg" alt="Arnavutköy Restaurant" style="object-position:center 50%;" />
+          <img class="feature-img" id="feature-2-img" src="photo-arnavutkoy-restaurant.jpg" alt="Arnavutköy Restaurant" style="object-position:center 50%;" />
         </div>
-        <div class="feature-cat">Restaurant &middot; Yeniköy &middot; Istanbul</div>
-        <h2 class="feature-hed" style="font-size:clamp(1.3rem,2.2vw,1.8rem);">Raki-balık on the Bosphorus. <em>The holy grail.</em></h2>
-        <p class="feature-deck">Sit outside, order the salad first, drink raki slowly. One of those meals that makes you understand why people love Istanbul.</p>
-        <div class="feature-meta"><span>Arnavutköy Restaurant</span><span class="feature-meta-dot"></span><span>Yeniköy &middot; Istanbul</span></div>
+        <div class="feature-cat" id="feature-2-cat">Restaurant &middot; Yeniköy &middot; Istanbul</div>
+        <h2 class="feature-hed" id="feature-2-hed" style="font-size:clamp(1.3rem,2.2vw,1.8rem);">Raki-balık on the Bosphorus. <em>The holy grail.</em></h2>
+        <p class="feature-deck" id="feature-2-deck">Sit outside, order the salad first, drink raki slowly. One of those meals that makes you understand why people love Istanbul.</p>
+        <div class="feature-meta" id="feature-2-meta"><span>Arnavutköy Restaurant</span><span class="feature-meta-dot"></span><span>Yeniköy &middot; Istanbul</span></div>
       </a>
     </div>
 
@@ -477,8 +477,8 @@
         </div>
         <div class="profile-spot-bio">Meeting people. Making videos. Building HoodTip.</div>
         <div class="profile-spot-stats">
-          <div class="profile-spot-stat"><span class="profile-spot-val">62</span><span class="profile-spot-lbl">Tips</span></div>
-          <div class="profile-spot-stat"><span class="profile-spot-val">17</span><span class="profile-spot-lbl">Cities</span></div>
+          <div class="profile-spot-stat"><span class="profile-spot-val">63</span><span class="profile-spot-lbl">Tips</span></div>
+          <div class="profile-spot-stat"><span class="profile-spot-val">18</span><span class="profile-spot-lbl">Cities</span></div>
         </div>
         <div class="profile-spot-tags">
           <span class="profile-spot-tag">Natural wine</span>
@@ -782,6 +782,40 @@
       else throw new Error('bad');
     } catch {err.style.display='block';btn.textContent='Submit tip';btn.disabled=false;}
   }
+</script>
+<script>
+// Feature shuffle — rotates editorial picks on every page load
+var features = [
+  { url:'tip-swisstrains.html', img:'swiss-train-restaurant.jpg', pos:'center 50%', cat:'Travel · Switzerland', hed:'Get a regular ticket. <em>Upgrade yourself to the restaurant car.</em>', deck:'The Swiss train restaurant car is one of the great underused pleasures of living here. White tablecloth, Alps outside, cold beer.', meta:'Swiss Federal Railways · Any intercity train' },
+  { url:'tip-baindespaquis.html', img:'baindespaquis-sunset.jpg', pos:'center 40%', cat:'Swimming · Pâquis · Geneva', hed:'Bains des Pâquis. <em>70s vibes on Lac Léman.</em>', deck:'Cold rosé on the jetty, jump off the board, Alps right there. Geneva institution since 1932.', meta:'Bains des Pâquis · Quai du Mont-Blanc 30' },
+  { url:'tip-belvedere.html', img:'wengen-belvedere-pool-snow.jpg', pos:'center 40%', cat:'Hotel · Wengen · Switzerland', hed:'Go to Wengen. Stay at the Belvedere. <em>Stop searching.</em>', deck:'Outdoor pool in the snow. Reach it by cog railway. The wagyu bresaola will stop you cold.', meta:'Grand Hotel Belvedere · Wengen' },
+  { url:'tip-leverrevole.html', img:'leverrevole-wine-bottle.jpg', pos:'center 50%', cat:'Wine Bar · Paris 10th', hed:'Canal Saint-Martin\'s original <em>natural wine bar.</em>', deck:'Go for wine, stay for wine, eat something good while you\'re there. One of the originals.', meta:'Le Verre Volé · 67 Rue de Lancry, Paris' },
+  { url:'tip-saintamour.html', img:'saintamour-lavaux-lake.jpg', pos:'center 50%', cat:'Wine · Lavaux · Vaud', hed:'Honour system rosé <em>in a UNESCO vineyard.</em>', deck:'Leave cash, take a bottle, sit on the patio with the lake below and the Alps across the water.', meta:'Domaine Saint-Amour · Lavaux' },
+  { url:'tip-arnavutkoy.html', img:'photo-arnavutkoy-restaurant.jpg', pos:'center 50%', cat:'Restaurant · Yeniköy · Istanbul', hed:'Raki-balık on the Bosphorus. <em>The holy grail.</em>', deck:'Sit outside, order the salad first, drink raki slowly. One of those meals that makes you understand why people love Istanbul.', meta:'Arnavutköy Restaurant · Yeniköy' }
+];
+
+function shuffle(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  }
+  return arr;
+}
+
+var picked = shuffle(features.slice()).slice(0, 2);
+
+['1','2'].forEach(function(n, i) {
+  var f = picked[i];
+  var a = document.getElementById('feature-' + n);
+  if (!a) return;
+  a.href = f.url;
+  document.getElementById('feature-' + n + '-img').src = f.img;
+  document.getElementById('feature-' + n + '-img').style.objectPosition = f.pos;
+  document.getElementById('feature-' + n + '-cat').textContent = f.cat;
+  document.getElementById('feature-' + n + '-hed').innerHTML = f.hed;
+  a.querySelector('.feature-deck').textContent = f.deck;
+  document.getElementById('feature-' + n + '-meta').innerHTML = f.meta;
+});
 </script>
 </body>
 </html>
