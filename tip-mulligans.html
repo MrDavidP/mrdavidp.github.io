@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mulligans Irish Pub — HoodTip Cornavin Geneva</title>
+  <title>Best Guinness in Geneva — Mulligans Irish Pub, Cornavin · HoodTip</title>
   <!-- OG / SOCIAL META -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Mulligans Irish Pub — Geneva's best pint of Guinness" />
+  <meta property="og:title" content="Best Guinness in Geneva — Mulligans Irish Pub" />
   <meta property="og:description" content="Get salt and vinegar crisps with it. Outside feels like a proper city for an hour. Which in Geneva is rarer than you'd think." />
-  <meta property="og:image" content="https://hoodtip.com/geneva-mulligans-dog.jpg" />
+  <meta property="og:image" content="https://hoodtip.com/mulligans-exterior-2.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
   <meta property="og:url" content="https://hoodtip.com/tip-mulligans.html" />
   <!-- TWITTER / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mulligans Irish Pub — Geneva's best pint of Guinness" />
+  <meta name="twitter:title" content="Best Guinness in Geneva — Mulligans Irish Pub" />
   <meta name="twitter:description" content="Get salt and vinegar crisps with it. Outside feels like a proper city for an hour. Which in Geneva is rarer than you'd think." />
-  <meta name="twitter:image" content="https://hoodtip.com/geneva-mulligans-dog.jpg" />
-  <meta name="description" content="Geneva's best pint of Guinness. Get salt and vinegar crisps. Outside feels like a proper city for an hour. Cornavin, Geneva." />
+  <meta name="twitter:image" content="https://hoodtip.com/mulligans-exterior-2.jpg" />
+  <meta name="description" content="The best pint of Guinness in Geneva. Mulligans Irish Pub on Rue De-Grenus, Cornavin — outdoor tables, real foot traffic, dog friendly. Get the salt and vinegar crisps." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -39,8 +39,8 @@
     .breadcrumb a { color: var(--muted); text-decoration: none; }
     .breadcrumb a:hover { color: var(--ink); }
     .breadcrumb span { opacity: 0.4; }
-    .hero { margin: 20px 32px 0; position: relative; overflow: hidden; border-radius: 4px; height: clamp(360px, 56vw, 640px); }
-    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 35%; transition: transform 0.8s ease; }
+    .hero { margin: 20px 32px 0; position: relative; overflow: hidden; border-radius: 4px; }
+    .hero img { width: 100%; height: auto; display: block; transition: transform 0.8s ease; }
     .hero:hover img { transform: scale(1.015); }
     .hero-badge { position: absolute; top: 20px; left: 20px; background: var(--accent); color: #fff; font-family: var(--condensed); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
     .layout { max-width: 1080px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 64px; }
@@ -57,11 +57,12 @@
     .photos { margin-top: 40px; }
     .photos-label { font-family: var(--condensed); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
     .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .photo-grid img { width: 100%; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; }
+    .photo-grid img { width: 100%; border-radius: 3px; display: block; transition: opacity 0.3s; }
     .photo-grid img:hover { opacity: 0.88; }
-    .photo-grid .sq { aspect-ratio: 1/1; }
-    .photo-grid .tall { aspect-ratio: 3/4; }
-    .photo-grid .wide { grid-column: 1 / -1; aspect-ratio: 16/9; }
+    .photo-grid .sq { aspect-ratio: 1/1; object-fit: cover; }
+    .photo-grid .tall { aspect-ratio: 3/4; object-fit: cover; }
+    .photo-grid .wide { grid-column: 1 / -1; height: auto; }
+    .photo-grid .full { grid-column: 1 / -1; height: auto; }
     .sidebar { padding-top: 6px; }
     .fact-block { border-top: 1px solid var(--rule); padding: 18px 0; }
     .fact-block:last-of-type { border-bottom: 1px solid var(--rule); }
@@ -97,7 +98,7 @@
     @media (max-width: 768px) {
       nav { padding: 0 16px; }
       .breadcrumb { padding: 72px 16px 0; }
-      .hero { margin: 16px 16px 0; height: 56vw; min-height: 220px; }
+      .hero { margin: 16px 16px 0; }
       .layout { grid-template-columns: 1fr; padding: 32px 16px 48px; gap: 40px; }
       h1 { font-size: 2.2rem; }
       .photo-grid { grid-template-columns: 1fr; }
@@ -111,6 +112,38 @@
       .more-grid .tip-card:last-child { display: block; }
     }
   </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HL9EJDL2YS');
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Best Guinness in Geneva — Mulligans Irish Pub, Cornavin",
+  "description": "The best pint of Guinness in Geneva. Mulligans Irish Pub on Rue De-Grenus, Cornavin — outdoor tables, real foot traffic, dog friendly.",
+  "author": { "@type": "Person", "name": "Dave" },
+  "publisher": { "@type": "Organization", "name": "HoodTip", "url": "https://hoodtip.com" },
+  "url": "https://hoodtip.com/tip-mulligans.html",
+  "image": "https://hoodtip.com/mulligans-exterior-2.jpg",
+  "about": {
+    "@type": "BarOrPub",
+    "name": "Mulligans Irish Pub",
+    "servesCuisine": "Irish",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rue De-Grenus 14",
+      "addressLocality": "Geneva",
+      "postalCode": "1201",
+      "addressCountry": "CH"
+    }
+  }
+}
+</script>
 </head>
 <body>
 
@@ -134,7 +167,7 @@
 </div>
 
 <div class="hero">
-  <img src="geneva-mulligans-dog.jpg" alt="Man laughing with golden retriever outside Mulligans pub at dusk, Geneva" />
+  <img src="mulligans-exterior-2.jpg" alt="Mulligans Irish Pub Geneva exterior — Rue De-Grenus, Cornavin" />
   <div class="hero-badge">Bar · Pub</div>
 </div>
 
@@ -157,9 +190,11 @@
     <div class="photos">
       <div class="photos-label">Photos</div>
       <div class="photo-grid">
-        <img class="tall" src="geneva-mulligans-dog.jpg" alt="Man and golden retriever outside Mulligans at dusk, Guinness on table" />
-        <img class="tall" src="geneva-mulligans-pints.jpg" alt="Three Guinness pints on steel table, Geneva street behind" />
-        <img class="wide" src="geneva-mulligans-exterior.jpg" alt="Welcome to Mulligans Irish Pub — full shopfront, Cornavin Geneva" />
+        <img class="tall" src="mulligans-three-pints.jpg" alt="Three Guinness pints lined up at Mulligans bar, Geneva" />
+        <img class="tall" src="geneva-mulligans-pints.jpg" alt="Guinness pints on steel table outside Mulligans, Geneva street" />
+        <img class="full" src="mulligans-exterior-2.jpg" alt="Mulligans Irish Pub frontage, Cornavin Geneva" />
+        <img class="full" src="geneva-mulligans-dog.jpg" alt="Man and golden retriever outside Mulligans at dusk, Guinness on table" />
+        <img class="full" src="geneva-mulligans-exterior.jpg" alt="Welcome to Mulligans Irish Pub — full shopfront, Cornavin Geneva" />
       </div>
     </div>
   </main>
@@ -206,7 +241,7 @@
   </div>
   <div class="more-grid">
     <a class="tip-card" href="https://hoodtip.com/tip-swisstrains">
-      <img class="tip-card-img" src="Screenshot_2026-03-17_at_09_38_28.png" alt="Swiss train restaurant car" />
+    <img class="tip-card-img" src="swiss-train-restaurant-car-white-table-cloth.jpg" alt="Swiss train restaurant car" />
       <div class="tip-card-cat">Travel</div>
       <div class="tip-card-name">Swiss Train Restaurant Car</div>
       <div class="tip-card-hood">Cornavin · Geneva</div>
@@ -218,7 +253,7 @@
       <div class="tip-card-hood">Plainpalais · Geneva</div>
     </a>
     <a class="tip-card" href="https://hoodtip.com/tip-tanuki">
-      <img class="tip-card-img" src="Screenshot_2026-03-17_at_08_56_54.png" alt="Tanuki sushi" />
+    <img class="tip-card-img" src="tanuki-exterior.jpg" alt="Tanuki sushi Geneva" />
       <div class="tip-card-cat">Sushi · Takeaway</div>
       <div class="tip-card-name">Tanuki</div>
       <div class="tip-card-hood">Plainpalais · Geneva</div>
@@ -244,10 +279,5 @@
 </footer>
 
 
-  <!-- LEAVE A TIP CTA -->
-  <div style="border:1.5px solid #1a1816;padding:1.75rem 2rem;margin:3rem 0 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-    
-    <a href="https://hoodtip.com" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.75rem 1.25rem;text-decoration:none;white-space:nowrap;flex-shrink:0;">Leave a HoodTip &rarr;</a>
-  </div>
 </body>
 </html>
