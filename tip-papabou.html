@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Papabou — Plainpalais, Geneva · HoodTip</title>
-  <meta name="description" content="Smashburgers and natural wine in Plainpalais. Local Swiss ingredients, good fries, and the kind of place that makes Geneva feel more like itself." />
+  <title>Best smash burger in Geneva — Papabou, Plainpalais · HoodTip</title>
+  <meta name="description" content="Papabou in Plainpalais — smashburgers, Swiss potato fries and natural wine. Everything local, everything good. The original, not the chain next door." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -33,11 +33,16 @@
     .nav-links a.cta:hover { background: var(--ink2); }
 
     /* HERO — mobile only */
-    .hero { width: 100%; height: 75vw; max-height: 540px; overflow: hidden; position: relative; }
-    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+    .hero { width: 100%; overflow: hidden; position: relative; }
+    .hero img { width: 100%; height: auto; display: block; }
     .hero-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem 1.5rem; background: linear-gradient(transparent, rgba(20,16,12,0.82)); }
     .hero-caption-location { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 0.3rem; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
     .hero-caption-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.7), 0 2px 20px rgba(0,0,0,0.5); }
+
+    /* Full-width landscape image */
+    .img-full { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 3rem 0; }
+    .img-full img { width: 100%; height: auto; display: block; }
+    .img-caption { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.5rem 0 0; }
 
     /* TEXT HEADER — desktop only */
     .tip-header { border-bottom: 1.5px solid var(--ink); padding: 2.5rem 2rem 0; background: var(--cream); }
@@ -61,9 +66,9 @@
 
     /* Portrait photos */
     .img-portrait { margin: 3rem auto; max-width: 500px; }
-    .img-portrait img { width: 100%; display: block; }
+    .img-portrait img { width: 100%; height: auto; display: block; }
     .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 800px; }
-    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
+    .img-portrait-pair img { width: 100%; height: auto; display: block; }
     .img-caption { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.5rem 0 0; }
 
     .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
@@ -85,9 +90,10 @@
     @media (min-width: 641px) {
       .hero { display: none; }
     }
-    /* Mobile: hide text header, show hero */
+    /* Mobile: hide text header and desktop exterior, show hero */
     @media (max-width: 640px) {
       .tip-header { display: none; }
+      .img-full { display: none; }
       .nav-links a:not(.cta) { display: none; }
       .nav-tagline { display: none; }
       .article { padding: 2rem 1.25rem 2rem; }
@@ -95,17 +101,17 @@
       .footer-stats { display: none; }
     }
   </style>
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Smashburgers and natural wine in Geneva" />
-  <meta property="og:description" content="Papabou, Plainpalais. Smashburger, Swiss potato fries, cold natural wine. Having this in Geneva is genuinely comforting." />
-  <meta property="og:image" content="https://hoodtip.com/papabou-burger-wine.jpg" />
+  <meta property="og:title" content="Best smash burger in Geneva — Papabou, Plainpalais" />
+  <meta property="og:description" content="Smashburgers, Swiss potato fries and natural wine in Plainpalais. Everything local. The original, not the chain next door." />
+  <meta property="og:image" content="https://hoodtip.com/papabou-exterior-wide.jpg" />
   <meta property="og:url" content="https://hoodtip.com/tip-papabou.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@hoodtip" />
-  <meta name="twitter:title" content="Smashburgers and natural wine in Geneva" />
-  <meta name="twitter:description" content="Papabou, Plainpalais. Smashburger, Swiss potato fries, cold natural wine. Having this in Geneva is genuinely comforting." />
-  <meta name="twitter:image" content="https://hoodtip.com/papabou-burger-wine.jpg" />
+  <meta name="twitter:title" content="Best smash burger in Geneva — Papabou, Plainpalais" />
+  <meta name="twitter:description" content="Smashburgers, Swiss potato fries and natural wine in Plainpalais. Everything local. The original, not the chain next door." />
+  <meta name="twitter:image" content="https://hoodtip.com/papabou-exterior-wide.jpg" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
 <script>
@@ -113,6 +119,30 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-HL9EJDL2YS');
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Best smash burger in Geneva — Papabou, Plainpalais",
+  "description": "Papabou in Plainpalais — smashburgers, Swiss potato fries and natural wine. Everything local, everything good.",
+  "author": { "@type": "Person", "name": "Dave" },
+  "publisher": { "@type": "Organization", "name": "HoodTip", "url": "https://hoodtip.com" },
+  "url": "https://hoodtip.com/tip-papabou.html",
+  "image": "https://hoodtip.com/papabou-exterior-wide.jpg",
+  "about": {
+    "@type": "Restaurant",
+    "name": "Papabou",
+    "servesCuisine": "Burgers, Natural Wine",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avenue Henri-Dunant 12",
+      "addressLocality": "Geneva",
+      "postalCode": "1205",
+      "addressCountry": "CH"
+    }
+  }
+}
 </script>
 </head>
 <body>
@@ -132,7 +162,7 @@
 </nav>
 
 <div class="hero">
-  <img src="papabou-burger-wine.jpg" alt="Papabou smashburger with rosé, Plainpalais Geneva" />
+  <img src="papabou-exterior-wide.jpg" alt="Papabou smash burger Geneva — Plainpalais exterior, Avenue Henri-Dunant" />
   <div class="hero-caption">
     <div class="hero-caption-location">Plainpalais · Geneva · Switzerland</div>
     <div class="hero-caption-name">Papabou</div>
@@ -149,9 +179,15 @@
       <a href="plainpalais.html" style="color:var(--muted);text-decoration:none;font-family:var(--cond);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;">Plainpalais</a>
     </div>
     <div class="tip-header-category">Burger · Natural Wine</div>
-    <div class="tip-header-name">Papabou</div>
+    <h1 class="tip-header-name">Papabou</h1>
     <div class="tip-header-subtitle">Smashburgers and natural wine. This might sound unremarkable if you're from LA or New York. In Geneva it's genuinely comforting.</div>
   </div>
+</div>
+
+<!-- Full-width exterior on desktop -->
+<div class="img-full" style="margin-top:0;">
+  <img src="papabou-exterior-wide.jpg" alt="Papabou Geneva exterior — Avenue Henri-Dunant, Plainpalais" />
+  <div class="img-caption" style="padding:0.6rem 2rem 0;max-width:1200px;margin:0 auto;">Papabou. And yes, Pretty Patty is right next door.</div>
 </div>
 
 <div class="article">
@@ -192,8 +228,8 @@
   </div>
 
   <div class="img-portrait-pair">
-    <img src="papabour-burger-fries.jpg" alt="Papabou burger and fries on the terrace, Plainpalais" style="object-position: center 40%;" />
-    <img src="papabou-burger-wine.jpg" alt="Papabou — burger and rosé outside, summer" style="object-position: center 35%;" />
+    <img src="papabour-burger-fries.jpg" alt="Papabou burger and fries, Plainpalais Geneva" />
+    <img src="papabou-burger-wine.jpg" alt="Papabou burger and rosé outside, summer" />
   </div>
 
   <div class="tip-box">
@@ -210,6 +246,59 @@
 
 </div>
 
+<!-- MORE TIPS -->
+<div style="border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+    <div style="display:flex;align-items:baseline;gap:16px;padding:1.25rem 0 1rem;border-bottom:1px solid var(--rule);">
+      <span style="font-family:var(--cond);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);">More tips</span>
+      <div style="flex:1;height:1px;background:var(--rule);"></div>
+      <a href="profile-dave.html" style="font-family:var(--cond);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;">All tips →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);">
+      <a href="tip-bongojoe.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="bongojoe-yellow-table.jpg" alt="Bongo Joe Geneva" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Bar · Plainpalais · Geneva</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Bongo Joe</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">A record shop that became Geneva's best outdoor bar.</div>
+        </div>
+      </a>
+      <a href="tip-paulhenri.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wine · Carouge · Geneva</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Paul-Henri Soler</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">The best natural wine in Geneva. CHF 17. Get there before noon.</div>
+        </div>
+      </a>
+      <a href="tip-labarge.html" style="text-decoration:none;color:var(--ink);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="barge-water-example.jpg" alt="La Barje Geneva" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Bar · Swimming · Geneva</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">La Barje des Lavandières</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Jump in the Rhône, drink a cold beer. Summer only.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div style="border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:1.75rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div style="display:flex;flex-direction:column;gap:0.4rem;">
+      <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Location</div>
+      <div style="font-family:var(--serif);font-size:1.1rem;font-weight:500;">Papabou, Plainpalais</div>
+      <div style="font-family:var(--cond);font-size:0.62rem;color:var(--muted);letter-spacing:0.08em;">Avenue Henri-Dunant 12, 1205 Geneva · The original, not Pretty Patty next door</div>
+    </div>
+    <a href="https://maps.google.com/?q=Papabou+Avenue+Henri-Dunant+12+Geneva" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:10px 18px;text-decoration:none;flex-shrink:0;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Get directions →
+    </a>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
 <div style="border-bottom:1.5px solid var(--ink);">
   <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
     <div>
@@ -219,6 +308,7 @@
     <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
   </div>
 </div>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
@@ -229,12 +319,5 @@
     </div>
   </div>
 </footer>
-
-
-  <!-- LEAVE A TIP CTA -->
-  <div style="border:1.5px solid #1a1816;padding:1.75rem 2rem;margin:3rem 0 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-    
-    <a href="https://hoodtip.com" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.75rem 1.25rem;text-decoration:none;white-space:nowrap;flex-shrink:0;">Leave a HoodTip &rarr;</a>
-  </div>
 </body>
 </html>
