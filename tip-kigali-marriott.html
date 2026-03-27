@@ -132,7 +132,7 @@
 
   <a href="index.html" class="back-link">← All tips</a>
 
-  <div class="post-cta"><div><div class="post-cta-hed">Know somewhere <em>good?</em></div><p class="post-cta-body">A photo, a place, two sentences. We turn it into a proper article with your name on it. Positive only. Specific over general.</p></div><a href="index.html" class="post-cta-btn">Leave a HoodTip &rarr;</a></div>
+  <div class="post-cta"><a href="index.html" class="post-cta-btn">Leave a HoodTip &rarr;</a></div>
 
   <div class="more-tips">
     <div class="more-tips-label">More from Kigali</div>
@@ -144,6 +144,15 @@
   </div>
 </div>
 
+<div style="border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
+    </div>
+    <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+  </div>
+</div>
 <footer><div class="footer-inner"><div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div><div class="footer-note">If you didn't like it, don't waste your time writing about it.</div></div></footer>
 <div class="share-toast" id="shareToast">Link copied</div>
 <script>async function shareThis(){const url=window.location.href;if(navigator.share){try{await navigator.share({title:document.title,url});}catch(e){}}else{try{await navigator.clipboard.writeText(url);const t=document.getElementById("shareToast");t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200);}catch(e){}}}</script>
