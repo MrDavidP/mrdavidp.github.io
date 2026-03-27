@@ -145,12 +145,35 @@
 
     /* MANIFESTO BAND */
     .manifesto { border-bottom: 1.5px solid var(--ink); background: var(--cream); }
-    .manifesto-outer { max-width: 1400px; margin: 0 auto; padding: 1.25rem 32px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-    .manifesto-text { font-family: var(--serif); font-size: clamp(0.95rem, 1.4vw, 1.1rem); color: var(--muted); line-height: 1.5; font-style: italic; }
-    .manifesto-text strong { font-style: normal; font-weight: 600; color: var(--ink); }
-    .manifesto-text .sub { display: block; font-style: italic; color: var(--muted); font-size: clamp(0.88rem, 1.2vw, 1rem); margin-top: 0.15rem; }
-    .manifesto-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: #e6a817; color: var(--ink); text-decoration: none; padding: 0 22px; height: 40px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
+    .manifesto-outer { max-width: 1400px; margin: 0 auto; padding: 2.5rem 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .manifesto-left {}
+    .manifesto-eyebrow { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+    .manifesto-headline { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 400; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
+    .manifesto-headline em { font-style: italic; }
+    .manifesto-sub { font-size: 0.95rem; color: var(--muted); line-height: 1.7; max-width: 440px; margin-bottom: 1.5rem; }
+    .manifesto-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: #e6a817; color: var(--ink); text-decoration: none; padding: 12px 24px; display: inline-flex; align-items: center; white-space: nowrap; transition: background 0.15s; }
     .manifesto-cta:hover { background: #d4980f; }
+    .manifesto-steps { display: flex; gap: 1.5rem; margin-top: 1.25rem; }
+    .manifesto-step { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.4rem; }
+    .manifesto-step-num { font-family: var(--serif); font-size: 1rem; color: var(--ink); font-weight: 600; }
+    /* Profile preview card */
+    .manifesto-card { border: 1.5px solid var(--ink); background: var(--cream); text-decoration: none; color: var(--ink); display: block; transition: transform 0.2s; }
+    .manifesto-card:hover { transform: translateY(-2px); }
+    .manifesto-card-top { padding: 1.25rem 1.5rem 1rem; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 1rem; }
+    .manifesto-card-photo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid var(--rule); flex-shrink: 0; }
+    .manifesto-card-name { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; line-height: 1.1; }
+    .manifesto-card-handle { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .manifesto-card-stats { padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--rule); display: flex; gap: 2rem; }
+    .manifesto-card-stat { display: flex; flex-direction: column; gap: 1px; }
+    .manifesto-card-val { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; line-height: 1; color: var(--ink); }
+    .manifesto-card-lbl { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .manifesto-card-tags { padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .manifesto-card-tag { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--rule); padding: 3px 9px; color: var(--muted); }
+    .manifesto-card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+    .manifesto-card-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .manifesto-card-footer { padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .manifesto-card-footer-text { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .manifesto-card-footer-cta { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
 
     /* PROFILES — upgraded */
     .profiles-section { border-bottom: 1.5px solid var(--ink); }
@@ -311,7 +334,8 @@
     }
     @media (max-width: 800px) {
       .top-nav-inner, .masthead-inner, .editorial-wrap, .cta-wrap { padding-left: 20px; padding-right: 20px; }
-      .manifesto-outer { padding-left: 20px; padding-right: 20px; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .manifesto-outer { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 2rem; }
+      .manifesto-card { display: none; }
       .profiles-header { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 0.75rem; }
       .hood-strip-inner { padding-left: 20px; padding-right: 20px; }
       .section-label-inner { padding-left: 20px; padding-right: 20px; }
@@ -374,11 +398,49 @@
 <!-- MANIFESTO BAND -->
 <div class="manifesto">
   <div class="manifesto-outer">
-    <div class="manifesto-text">
-      <strong>The recommendation you'd get from your most well-travelled friend.</strong>
-      <span class="sub">Write a few lines, add some photos — we turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</span>
+    <div class="manifesto-left">
+      <div class="manifesto-eyebrow">For people who actually know</div>
+      <h2 class="manifesto-headline">Your permanent record of<br><em>the good stuff.</em></h2>
+      <p class="manifesto-sub">Write a few lines about a place you love. Add some photos. We turn it into a proper article with your name on it. Next time someone asks for a recommendation, you'll have a link.</p>
+      <a href="profile-build.html" class="manifesto-cta">Build your profile →</a>
+      <div class="manifesto-steps">
+        <div class="manifesto-step"><span class="manifesto-step-num">1</span> Write a few lines</div>
+        <div class="manifesto-step"><span class="manifesto-step-num">2</span> Add photos</div>
+        <div class="manifesto-step"><span class="manifesto-step-num">3</span> Get your link</div>
+      </div>
     </div>
-    <a href="profile-build.html" class="manifesto-cta">Build your profile →</a>
+    <a href="profile-dave.html" class="manifesto-card">
+      <div class="manifesto-card-top">
+        <img class="manifesto-card-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
+        <div>
+          <div class="manifesto-card-name">Dave</div>
+          <div class="manifesto-card-handle">@dave · Geneva · HoodTip contributor</div>
+        </div>
+      </div>
+      <div class="manifesto-card-stats">
+        <div class="manifesto-card-stat"><span class="manifesto-card-val">63</span><span class="manifesto-card-lbl">Tips</span></div>
+        <div class="manifesto-card-stat"><span class="manifesto-card-val">18</span><span class="manifesto-card-lbl">Cities</span></div>
+        <div class="manifesto-card-stat"><span class="manifesto-card-val">16</span><span class="manifesto-card-lbl">Neighbourhoods</span></div>
+      </div>
+      <div class="manifesto-card-tags">
+        <span class="manifesto-card-tag">Natural wine</span>
+        <span class="manifesto-card-tag">Proper pubs</span>
+        <span class="manifesto-card-tag">Waterfront bars</span>
+        <span class="manifesto-card-tag">Good fish</span>
+        <span class="manifesto-card-tag">Saturday markets</span>
+        <span class="manifesto-card-tag">Hotels worth it</span>
+      </div>
+      <div class="manifesto-card-grid">
+        <img src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler wine" />
+        <img src="nagomi-chef.jpg" alt="Nagomi sushi" />
+        <img src="baindespaquis-sunset.jpg" alt="Bains des Pâquis" />
+        <img src="grand-belvedere-spa-outside.jpg" alt="Belvedere spa" />
+      </div>
+      <div class="manifesto-card-footer">
+        <span class="manifesto-card-footer-text">This could be your profile</span>
+        <span class="manifesto-card-footer-cta">See how it works →</span>
+      </div>
+    </a>
   </div>
 </div>
 
