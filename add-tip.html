@@ -146,6 +146,16 @@
 <footer><div class="footer-inner"><div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div></div></footer>
 
 <script>
+  // Pre-fill handle from URL param e.g. add-tip.html?handle=foodfiend
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var h = params.get('handle');
+    if (h) {
+      var handleField = document.querySelector('input[name="handle"]');
+      if (handleField) handleField.value = '@' + h.replace(/^@/, '');
+    }
+  })();
+
   // Check for ?thanks=1 in URL (Formspree redirect fallback)
   if (window.location.search.includes('thanks=1')) {
     document.getElementById('formWrap').classList.add('hidden');
