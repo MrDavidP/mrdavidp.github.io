@@ -565,14 +565,29 @@
   function goStep(n) {
     // Validate before advancing
     if (n === 2) {
-      const name = document.getElementById('f-name').value.trim();
-      const handle = document.getElementById('f-handle').value.trim();
-      const email = document.getElementById('f-email').value.trim();
-      if (!name || !handle || !email) {
-        document.getElementById('step1-error').style.display = 'block';
-        return;
+      const isReturning = document.getElementById('returning-panel').classList.contains('open');
+      if (isReturning) {
+        // Returning contributor — only need their handle
+        const returningHandle = document.getElementById('f-returning-handle').value.trim();
+        if (!returningHandle) {
+          document.getElementById('step1-error').textContent = 'Please enter your handle.';
+          document.getElementById('step1-error').style.display = 'block';
+          return;
+        }
+        // Copy handle into the main handle field so the rest of the form works
+        document.getElementById('f-handle').value = returningHandle;
+        document.getElementById('step1-error').style.display = 'none';
+      } else {
+        const name = document.getElementById('f-name').value.trim();
+        const handle = document.getElementById('f-handle').value.trim();
+        const email = document.getElementById('f-email').value.trim();
+        if (!name || !handle || !email) {
+          document.getElementById('step1-error').textContent = 'Please fill in your name, handle and email.';
+          document.getElementById('step1-error').style.display = 'block';
+          return;
+        }
+        document.getElementById('step1-error').style.display = 'none';
       }
-      document.getElementById('step1-error').style.display = 'none';
     }
     if (n === 3) {
       const place = document.getElementById('f-place').value.trim();
