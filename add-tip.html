@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave another tip — HoodTip</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--cream:#f7f4ef;--ink:#1a1816;--ink2:#2a2925;--muted:#6b6560;--rule:#e0dbd3;--red:#b5322a;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',system-ui,sans-serif;--cond:'Barlow Condensed',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;}body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;}
+    nav{padding:0 2rem;border-bottom:1.5px solid var(--ink);position:sticky;top:0;z-index:100;background:var(--cream);}.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;}.logo{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--ink);text-decoration:none;}.logo em{font-style:italic;font-weight:400;}.logo .dot{color:var(--red);}.nav-tagline{font-family:var(--serif);font-style:italic;font-size:0.8rem;color:var(--muted);border-left:1px solid var(--rule);padding-left:12px;margin-left:12px;}.nav-links{display:flex;list-style:none;}.nav-links a{font-family:var(--cond);font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:0 16px;height:52px;display:flex;align-items:center;border-left:1px solid var(--rule);transition:color 0.15s;}.nav-links a:hover{color:var(--ink);}
+
+    .page-wrap{max-width:600px;margin:0 auto;padding:4rem 2rem 6rem;}
+
+    /* HEADER */
+    .page-kicker{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.75rem;}
+    .page-title{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.2rem);font-weight:400;line-height:1.05;margin-bottom:0.75rem;}
+    .page-sub{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--rule);}
+
+    /* FORM */
+    .form-section{margin-bottom:2.5rem;}
+    .form-section-label{font-family:var(--cond);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:block;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);}
+    .field{margin-bottom:1.5rem;}
+    .field label{font-family:var(--cond);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:0.4rem;}
+    .field label span{color:var(--muted);font-weight:300;text-transform:none;letter-spacing:0;}
+    .field input,.field textarea,.field select{width:100%;background:white;border:1px solid var(--rule);padding:0.75rem 1rem;font-family:var(--sans);font-size:0.9rem;font-weight:300;color:var(--ink);line-height:1.5;outline:none;border-radius:0;-webkit-appearance:none;transition:border-color 0.15s;}
+    .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ink);}
+    .field textarea{resize:vertical;min-height:140px;}
+    .field-hint{font-family:var(--cond);font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:0.35rem;}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+
+    /* PHOTO INSTRUCTION */
+    .photo-box{border:1px dashed var(--rule);padding:1.5rem;text-align:center;background:rgba(224,219,211,0.15);}
+    .photo-box-title{font-family:var(--cond);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
+    .photo-box p{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+    .photo-box a{color:var(--ink);font-weight:400;}
+
+    /* SUBMIT */
+    .submit-btn{width:100%;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;padding:16px 24px;border:none;cursor:pointer;transition:background 0.15s;margin-top:2rem;}
+    .submit-btn:hover{background:var(--ink2);}
+    .submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
+
+    /* CONFIRMATION */
+    .confirmation{display:none;text-align:center;padding:4rem 0;}
+    .confirmation.visible{display:block;}
+    .confirmation-check{font-size:2.5rem;margin-bottom:1.5rem;}
+    .confirmation-title{font-family:var(--serif);font-size:2.2rem;font-weight:400;margin-bottom:1rem;}
+    .confirmation-sub{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--muted);line-height:1.6;margin-bottom:2rem;max-width:420px;margin-left:auto;margin-right:auto;}
+    .confirmation-profile{display:inline-block;font-family:var(--cond);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:12px 22px;text-decoration:none;margin-top:1rem;}
+    .form-wrap{transition:opacity 0.3s;}
+    .form-wrap.hidden{display:none;}
+
+    footer{border-top:2px solid var(--red);background:var(--ink);margin-top:5rem;}.footer-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}.footer-logo{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--cream);}.footer-logo em{font-style:italic;font-weight:400;}.footer-logo .dot{color:var(--red);}
+
+    @media(max-width:640px){.nav-links{display:none;}.nav-tagline{display:none;}.field-row{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav><div class="nav-inner"><div style="display:flex;align-items:baseline;"><a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a><span class="nav-tagline">Only the good stuff.</span></div><ul class="nav-links"><li><a href="index.html">Home</a></li></ul></div></nav>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="page-kicker">Returning contributor</div>
+  <h1 class="page-title">Leave another tip.</h1>
+  <p class="page-sub">Fill this in and we'll add it to your profile. Usually live within 24 hours.</p>
+
+  <!-- FORM -->
+  <div class="form-wrap" id="formWrap">
+    <form id="tipForm">
+      <!-- Hidden fields for Formspree -->
+      <input type="hidden" name="_subject" value="New HoodTip submission" />
+      <input type="hidden" name="_next" value="https://hoodtip.com/add-tip.html?thanks=1" />
+      <input type="text" name="_gotcha" style="display:none" />
+
+      <div class="form-section">
+        <span class="form-section-label">About you</span>
+        <div class="field-row">
+          <div class="field">
+            <label>Your handle <span>— e.g. @foodfiend</span></label>
+            <input type="text" name="handle" placeholder="@handle" required />
+          </div>
+          <div class="field">
+            <label>Your name</label>
+            <input type="text" name="name" placeholder="First name" required />
+          </div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="so we can let you know when it's live" required />
+        </div>
+      </div>
+
+      <div class="form-section">
+        <span class="form-section-label">The tip</span>
+        <div class="field">
+          <label>Place name</label>
+          <input type="text" name="place" placeholder="Restaurant, bar, hotel, etc." required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>City</label>
+            <input type="text" name="city" placeholder="Tel Aviv, Geneva..." required />
+          </div>
+          <div class="field">
+            <label>Neighbourhood <span>— optional</span></label>
+            <input type="text" name="neighbourhood" placeholder="Sarona, Plainpalais..." />
+          </div>
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <input type="text" name="category" placeholder="Restaurant, coffee, hotel, bar..." />
+        </div>
+        <div class="field">
+          <label>Your tip <span>— write how you'd text it to a friend</span></label>
+          <textarea name="tip" placeholder="What makes it good? What should people order? What do most people miss? The more specific the better." required></textarea>
+          <div class="field-hint">Don't worry about polish — we'll shape it.</div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <span class="form-section-label">Photos</span>
+        <div class="photo-box">
+          <div class="photo-box-title">Send photos separately</div>
+          <p>After submitting, email your photos to <a href="mailto:hoodtip@gmail.com">hoodtip@gmail.com</a> with your handle in the subject line. 3–6 photos is ideal. Any format is fine.</p>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Submit tip →</button>
+    </form>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <div class="confirmation" id="confirmation">
+    <div class="confirmation-check">✦</div>
+    <h2 class="confirmation-title">Tip received.</h2>
+    <p class="confirmation-sub">We've got it. Your tip will be live on your profile within 24 hours — we'll drop you an email when it's up.</p>
+    <p class="confirmation-sub" style="font-size:0.9rem;margin-top:0;">Don't forget to send your photos to <a href="mailto:hoodtip@gmail.com" style="color:var(--ink);">hoodtip@gmail.com</a> with your handle in the subject.</p>
+    <a href="index.html" class="confirmation-profile">Back to HoodTip →</a>
+  </div>
+
+</div>
+
+<footer><div class="footer-inner"><div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div></div></footer>
+
+<script>
+  // Check for ?thanks=1 in URL (Formspree redirect fallback)
+  if (window.location.search.includes('thanks=1')) {
+    document.getElementById('formWrap').classList.add('hidden');
+    document.getElementById('confirmation').classList.add('visible');
+  }
+
+  // AJAX submission for better UX (no page redirect)
+  document.getElementById('tipForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    var formData = new FormData(this);
+
+    // REPLACE YOUR_FORMSPREE_ID with your actual Formspree form ID
+    fetch('https://formspree.io/f/mdawyane', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        document.getElementById('formWrap').classList.add('hidden');
+        document.getElementById('confirmation').classList.add('visible');
+        window.scrollTo(0, 0);
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Submit tip →';
+        alert('Something went wrong — try emailing hoodtip@gmail.com directly.');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Submit tip →';
+      alert('Something went wrong — try emailing hoodtip@gmail.com directly.');
+    });
+  });
+</script>
+
+</body>
+</html>
