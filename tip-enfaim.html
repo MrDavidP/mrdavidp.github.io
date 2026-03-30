@@ -84,6 +84,9 @@
     .img-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
     .img-trio img { width: 100%; display: block; height: 320px; object-fit: cover; }
 
+    .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
+    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
+
     .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
     .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
     .tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
@@ -170,11 +173,11 @@
 
   <div class="body">
     <p>Excellent Mediterranean-style lunch spot. The food is fresh, properly made, and the kind of thing that's surprisingly hard to find well-executed in this part of the city. Good hummus, solid salads, a chicken wrap that actually works.</p>
-    <p>The thing worth ordering specifically is the sabich — originally an Iraqi Jewish dish, fried aubergine and hard-boiled egg in a pita with tahini, pickles and zhug. This isn't a holy-moly world-class sabich, but it's a very good one by Geneva standards, which is already saying something.</p>
+    <p>The thing worth ordering specifically is the sabich — originally an Iraqi Jewish dish, fried aubergine and hard-boiled egg in a pita with tahini, pickles and zhug. This isn't Sabich Tcernokofksy, but it's a very good one by Geneva standards, which is already saying something.</p>
   </div>
 
   <div class="pull-quote">
-    <p>"Not a holy moly sabich. But for Geneva — still nice."</p>
+    <p>"Not Sabich Tcernokofksy. But for Geneva — still nice."</p>
   </div>
 
   <div class="img-full">
@@ -186,10 +189,14 @@
     <p>The fridge by the door has pre-made salads and houmous bowls to grab on the way out if you're in a rush. The menu covers breakfast through lunch — bircher muesli and avocado toast in the morning, wraps and houmous bowls and a plat chaud du jour from midday. The vegan houmous bowl is genuinely good if that's your thing.</p>
   </div>
 
-  <div class="img-trio">
+  <div class="img-portrait-pair">
     <img src="enfaim-salad.jpg" alt="Goat cheese salad from En Faim" style="object-position: center 40%;"/>
     <img src="enfaim-veganbowl.jpg" alt="Vegan houmous bowl at En Faim" style="object-position: center 50%;"/>
+  </div>
+
+  <div class="img-full">
     <img src="Enfaim-hummus.jpg" alt="House-made houmous at En Faim" style="object-position: center 50%;"/>
+    <div class="img-caption">The hummus. Made in-house. Buy a tub from the fridge on the way out.</div>
   </div>
 
   <div class="img-pair">
@@ -212,31 +219,78 @@
 
 </div>
 
+<!-- MORE TIPS -->
+<div style="border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+    <div style="display:flex;align-items:baseline;gap:16px;padding:1.25rem 0 1rem;border-bottom:1px solid var(--rule);">
+      <span style="font-family:var(--cond);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);">More Geneva tips</span>
+      <div style="flex:1;height:1px;background:var(--rule);"></div>
+      <a href="profile-dave.html" style="font-family:var(--cond);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;">All tips →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);">
+      <a href="tip-nagomi.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="nagomi-chef.jpg" alt="Nagomi Geneva" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 20%;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Sushi · Restaurant · Pâquis</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Nagomi</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">The best sushi in Geneva. Sit at the bar. You are briefly in Tokyo.</div>
+        </div>
+      </a>
+      <a href="tip-manor.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="manor-exterior.jpg" alt="Manor Food Hall Geneva" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 60%;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Food Hall · Saint-Gervais</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Manor Food Hall</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Best grocery in central Geneva. The fishmonger gets fera from the lake.</div>
+        </div>
+      </a>
+      <a href="tip-mulligans.html" style="text-decoration:none;color:var(--ink);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="geneva-mulligans-pints.jpg" alt="Mulligan's Geneva" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Pub · Saint-Gervais</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Mulligan's</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Geneva's best Guinness. Unpretentious, right by the station.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div style="border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:1.75rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div style="display:flex;flex-direction:column;gap:0.4rem;">
+      <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Location</div>
+      <div style="font-family:var(--serif);font-size:1.1rem;font-weight:500;">En Faim · Rue Kléberg 12, Saint-Gervais, Geneva</div>
+      <div style="font-family:var(--cond);font-size:0.62rem;color:var(--muted);letter-spacing:0.08em;">Lunch only. Get the sabich. Buy hummus from the fridge on the way out.</div>
+    </div>
+    <a href="https://maps.google.com/?q=En+Faim+Rue+Kleberg+12+Geneva" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:10px 18px;text-decoration:none;flex-shrink:0;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Get directions →
+    </a>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
 <div style="border-bottom:1.5px solid var(--ink);">
   <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
     <div>
       <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
-      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks for a rec, you'll have a link.</p>
     </div>
-    <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+    <a href="profile-build.html" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
   </div>
 </div>
+
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
     <div class="footer-stats">
-      <span>63 tips</span><span>·</span>
-      <span>16 neighbourhoods</span><span>·</span>
-      <span>18 cities</span>
+      <span>70 tips</span><span>·</span>
+      <span>22 cities</span>
     </div>
   </div>
 </footer>
 
-
-  <!-- LEAVE A TIP CTA -->
-  <div style="border:1.5px solid #1a1816;padding:1.75rem 2rem;margin:3rem 0 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-    
-    <a href="https://hoodtip.com" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.75rem 1.25rem;text-decoration:none;white-space:nowrap;flex-shrink:0;">Leave a HoodTip &rarr;</a>
-  </div>
 </body>
 </html>
