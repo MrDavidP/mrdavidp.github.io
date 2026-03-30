@@ -40,7 +40,7 @@
     .page-header-kicker { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
     .page-header-hed { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; line-height: 1.1; margin-bottom: 0.75rem; }
     .page-header-hed em { font-style: italic; }
-    .page-header-deck { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.6; }
+    .page-header-deck { font-family: var(--sans); font-size: 1rem; font-weight: 400; color: var(--ink); max-width: 440px; margin: 0 auto; line-height: 1.7; }
 
     /* STEPS INDICATOR */
     .steps-bar { border-bottom: 1px solid var(--rule); padding: 0 2rem; }
@@ -217,7 +217,8 @@
 <div class="page-header">
   <div class="page-header-kicker">HoodTip · Contributors</div>
   <h1 class="page-header-hed">Your permanent record<br>of <em>the good stuff.</em></h1>
-  <p class="page-header-deck">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
+  <p class="page-header-deck">Tell us about somewhere you'd actually recommend. Add a photo or two. We turn it into a proper travel article with your name on it — so next time someone asks for a rec, you have a link.</p>
+  <p style="margin-top:1rem;font-family:var(--sans);font-size:0.88rem;font-weight:400;color:var(--muted);">See what it looks like: <a href="profile-dave.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:500;">Dave's profile →</a></p>
 </div>
 
 <!-- STEPS BAR -->
@@ -225,12 +226,12 @@
   <div class="steps-bar-inner">
     <div class="step-pill active" id="pill-1">
       <div class="step-num"><span>1</span></div>
-      Your profile
+      Your tip
     </div>
     <div class="step-divider"></div>
     <div class="step-pill" id="pill-2">
       <div class="step-num"><span>2</span></div>
-      Your tip
+      About you
     </div>
     <div class="step-divider"></div>
     <div class="step-pill" id="pill-3">
@@ -243,11 +244,78 @@
 <!-- FORM -->
 <div class="form-wrap">
 
-  <!-- ── STEP 1: PROFILE ─────────────────────────────────── -->
+  <!-- ── RETURNING CONTRIBUTOR ──────────────────────────────── -->
+  <div style="background:white;border:1px solid var(--rule);border-left:3px solid var(--ink);padding:1rem 1.25rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:var(--cond);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;">Already contributed?</div>
+      <div style="font-family:var(--serif);font-size:0.95rem;color:var(--ink);">Add another tip to your existing profile</div>
+    </div>
+    <button type="button" onclick="document.getElementById('returning-panel').classList.toggle('open');this.textContent=document.getElementById('returning-panel').classList.contains('open')?'Cancel':'Add a tip →'" style="font-family:var(--cond);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--ink);color:var(--cream);border:none;padding:9px 18px;cursor:pointer;flex-shrink:0;">Add a tip →</button>
+  </div>
+  <div class="returning-panel" id="returning-panel" style="margin-top:-1.5rem;margin-bottom:2rem;">
+    <div class="field" style="margin-bottom:0.75rem;">
+      <label for="f-returning-handle">Your handle</label>
+      <input id="f-returning-handle" type="text" placeholder="e.g. caroline" />
+      <div class="field-hint">The @handle from your existing HoodTip profile. Then fill in your tip below and submit.</div>
+    </div>
+  </div>
+
+  <!-- ── STEP 1: TIP ─────────────────────────────────────────── -->
   <div class="step-panel active" id="step-1">
     <div class="step-label">Step 1 of 3</div>
+    <h2 class="step-hed">Where should we go?</h2>
+    <p class="step-deck">Positive only. Specific over general. Write it like a note to a friend going next week.</p>
+
+    <div class="field">
+      <label for="f-place">Place name</label>
+      <input id="f-place" type="text" placeholder="e.g. El Xampanyet" />
+    </div>
+
+    <div class="field">
+      <label for="f-hood">Neighbourhood &amp; City</label>
+      <input id="f-hood" type="text" placeholder="e.g. El Born, Barcelona" />
+    </div>
+
+    <div class="field">
+      <label for="f-cat">Category</label>
+      <select id="f-cat">
+        <option value="">Select one</option>
+        <option>Bar</option><option>Restaurant</option><option>Coffee</option>
+        <option>Wine</option><option>Market</option><option>Hotel</option>
+        <option>Travel</option><option>Cinema</option><option>Swimming</option>
+        <option>Park</option><option>Shop</option><option>Experience</option><option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="f-tip">Your tip</label>
+      <textarea id="f-tip" placeholder="What to order, when to go, what to know. Be specific. A few lines is plenty."></textarea>
+    </div>
+
+    <!-- TIP PHOTOS -->
+    <div class="field">
+      <label>Photos <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional but great)</span></label>
+      <div class="upload-zone" id="tip-upload-zone" onclick="openTipUpload()">
+        <div class="upload-zone-icon">📷</div>
+        <div class="upload-zone-text">Tap to add photos</div>
+        <div class="upload-zone-sub">Pick from your camera roll or drag files here</div>
+      </div>
+      <div class="photo-previews" id="tip-photo-previews"></div>
+      <div class="photo-count" id="tip-photo-count" style="display:none;"></div>
+    </div>
+
+    <div id="step1-error" class="form-error">Please fill in the place, neighbourhood, and your tip.</div>
+    <div class="btn-row">
+      <span></span>
+      <button class="btn-next" onclick="goStep(2)">Next: About you →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: PROFILE ────────────────────────────────────── -->
+  <div class="step-panel" id="step-2">
+    <div class="step-label">Step 2 of 3</div>
     <h2 class="step-hed">Who are you?</h2>
-    <p class="step-deck">This becomes your byline. Keep it honest and short.</p>
+    <p class="step-deck">This becomes your byline. Your name goes on the article — that's the whole point.</p>
 
     <div class="field">
       <label for="f-name">Your name</label>
@@ -255,24 +323,26 @@
     </div>
 
     <div class="field">
-      <label for="f-handle">Handle</label>
+      <label for="f-handle">Username</label>
       <input id="f-handle" type="text" placeholder="e.g. caroline" />
-      <div class="field-hint">Appears on your tips and profile. Lowercase, no spaces.</div>
+      <div class="field-hint">Your @username on HoodTip. Lowercase, no spaces. You'll use this if you add more tips later.</div>
     </div>
 
     <div class="field">
       <label for="f-email">Your email</label>
       <input id="f-email" type="email" placeholder="you@example.com" autocomplete="email" />
-      <div class="field-hint">So we can send you a link when your profile goes live.</div>
+      <div class="field-hint">We'll send you the link when your profile goes live. Nothing else.</div>
     </div>
 
+    <div class="field-divider"></div>
+
     <div class="field">
-      <label for="f-city">Based in</label>
+      <label for="f-city">Based in <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional)</span></label>
       <input id="f-city" type="text" placeholder="e.g. Paris, London, Kigali" />
     </div>
 
     <div class="field">
-      <label for="f-bio">One-line bio</label>
+      <label for="f-bio">One-line bio <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional)</span></label>
       <input id="f-bio" type="text" placeholder="e.g. Eats well. Travels often. Based in Geneva." />
     </div>
 
@@ -284,17 +354,15 @@
           <img id="avatar-img" src="" alt="" />
           <span class="avatar-preview-placeholder" id="avatar-placeholder">?</span>
         </div>
-        <button type="button" class="avatar-upload-btn" id="avatar-upload-btn">
-          Upload photo
-        </button>
+        <button type="button" class="avatar-upload-btn" id="avatar-upload-btn">Upload photo</button>
         <span id="avatar-upload-status" style="font-size:0.75rem;color:var(--muted);display:none;">Uploading…</span>
       </div>
-      <div class="field-hint">Pick from your camera roll. Square crops best.</div>
+      <div class="field-hint">Square crops best.</div>
     </div>
 
     <!-- TASTE TAGS -->
     <div class="field">
-      <label>Your taste — pick any that apply</label>
+      <label>Your taste <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional — pick any that apply)</span></label>
       <div class="taste-grid">
         <input class="taste-opt" type="checkbox" id="t-wine" name="taste" value="Natural wine"><label for="t-wine">Natural wine</label>
         <input class="taste-opt" type="checkbox" id="t-pubs" name="taste" value="Proper pubs"><label for="t-pubs">Proper pubs</label>
@@ -330,88 +398,18 @@
       <div class="card-preview-bio" id="card-bio">Your bio appears here.</div>
     </div>
 
-    <!-- RETURNING USER -->
-    <div class="field-divider"></div>
-    <span class="returning-toggle" id="returning-toggle">Already a contributor? Skip to leaving a tip →</span>
-    <div class="returning-panel" id="returning-panel">
-      <div class="field" style="margin-bottom:0.5rem;">
-        <label for="f-returning-handle">Your handle</label>
-        <input id="f-returning-handle" type="text" placeholder="e.g. caroline" />
-      </div>
-      <div class="field-hint">Enter your handle and we'll attach your tip to your existing profile.</div>
-    </div>
-
-    <div id="step1-error" class="form-error">Please fill in your name, handle and email.</div>
-    <div class="btn-row">
-      <span></span>
-      <button class="btn-next" onclick="goStep(2)">Next: Your tip →</button>
-    </div>
-  </div>
-
-  <!-- ── STEP 2: TIP ──────────────────────────────────────── -->
-  <div class="step-panel" id="step-2">
-    <div class="step-label">Step 2 of 3</div>
-    <h2 class="step-hed">What do you know?</h2>
-    <p class="step-deck">Positive only. Specific over general. Write it like a note to a friend going next week.</p>
-
-    <div class="field">
-      <label for="f-place">Place name</label>
-      <input id="f-place" type="text" placeholder="e.g. Bongo Joe" />
-    </div>
-
-    <div class="field">
-      <label for="f-hood">Neighbourhood &amp; City</label>
-      <input id="f-hood" type="text" placeholder="e.g. Plainpalais, Geneva" />
-    </div>
-
-    <div class="field">
-      <label for="f-cat">Category</label>
-      <select id="f-cat">
-        <option value="">Select one</option>
-        <option>Bar</option><option>Restaurant</option><option>Coffee</option>
-        <option>Wine</option><option>Market</option><option>Hotel</option>
-        <option>Travel</option><option>Cinema</option><option>Swimming</option>
-        <option>Park</option><option>Shop</option><option>Experience</option><option>Other</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="f-tip">Your tip</label>
-      <textarea id="f-tip" placeholder="What to order, when to go, what to know. Be specific. A few lines is plenty."></textarea>
-    </div>
-
-    <!-- TIP PHOTOS -->
-    <div class="field">
-      <label>Photos <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional but great)</span></label>
-      <div class="upload-zone" id="tip-upload-zone" onclick="openTipUpload()">
-        <div class="upload-zone-icon">📷</div>
-        <div class="upload-zone-text">Tap to add photos</div>
-        <div class="upload-zone-sub">Pick from your camera roll or drag files here</div>
-      </div>
-      <div class="photo-previews" id="tip-photo-previews"></div>
-      <div class="photo-count" id="tip-photo-count" style="display:none;"></div>
-    </div>
-
-    <div id="step2-error" class="form-error">Please fill in the place, neighbourhood, and your tip.</div>
+    <div id="step2-error" class="form-error">Please fill in your name, username and email.</div>
     <div class="btn-row">
       <button class="btn-back" onclick="goStep(1)">← Back</button>
       <button class="btn-next" onclick="goStep(3)">Next: Review →</button>
     </div>
   </div>
 
-  <!-- ── STEP 3: REVIEW ───────────────────────────────────── -->
+  <!-- ── STEP 3: REVIEW ───────────────────────────────────────── -->
   <div class="step-panel" id="step-3">
     <div class="step-label">Step 3 of 3</div>
     <h2 class="step-hed">Ready?</h2>
     <p class="step-deck">We'll review it, build your profile, and email you the link within 48 hours.</p>
-
-    <div class="review-block">
-      <div class="review-block-label">Your profile</div>
-      <div class="review-row"><div class="review-key">Name</div><div class="review-val" id="rv-name">—</div></div>
-      <div class="review-row"><div class="review-key">Handle</div><div class="review-val" id="rv-handle">—</div></div>
-      <div class="review-row"><div class="review-key">Based in</div><div class="review-val" id="rv-city">—</div></div>
-      <div class="review-row"><div class="review-key">Bio</div><div class="review-val" id="rv-bio">—</div></div>
-    </div>
 
     <div class="review-block">
       <div class="review-block-label">Your tip</div>
@@ -422,6 +420,14 @@
       <div class="review-photos" id="rv-photos"></div>
     </div>
 
+    <div class="review-block">
+      <div class="review-block-label">Your profile</div>
+      <div class="review-row"><div class="review-key">Name</div><div class="review-val" id="rv-name">—</div></div>
+      <div class="review-row"><div class="review-key">Username</div><div class="review-val" id="rv-handle">—</div></div>
+      <div class="review-row"><div class="review-key">Based in</div><div class="review-val" id="rv-city">—</div></div>
+      <div class="review-row"><div class="review-key">Bio</div><div class="review-val" id="rv-bio">—</div></div>
+    </div>
+
     <p id="step3-error" class="form-error">Something went wrong — please try again.</p>
     <div class="btn-row">
       <button class="btn-back" onclick="goStep(2)">← Back</button>
@@ -429,11 +435,11 @@
     </div>
   </div>
 
-  <!-- ── SUCCESS ──────────────────────────────────────────── -->
+  <!-- ── SUCCESS ──────────────────────────────────────────────── -->
   <div class="success-panel" id="success-panel">
     <div class="success-icon">✓</div>
-    <h2 class="success-hed">Tip received.</h2>
-    <p class="success-body">We'll review it, build your profile, and publish your tip as its own article — with your byline on it. You'll get the links by email within 48 hours.</p>
+    <h2 class="success-hed">Got it. Nice one.</h2>
+    <p class="success-body">We'll build your profile and turn your tip into a proper article with your byline on it. You'll get both links by email within 48 hours.<br><br>Next time someone asks you for a recommendation, you'll have something to send them.</p>
     <a href="index.html" style="font-family:var(--cond);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:underline;text-underline-offset:3px;">← Back to HoodTip</a>
   </div>
 
@@ -565,39 +571,40 @@
   function goStep(n) {
     // Validate before advancing
     if (n === 2) {
+      // Leaving step 1 (tip) — validate tip fields
+      const place = document.getElementById('f-place').value.trim();
+      const hood = document.getElementById('f-hood').value.trim();
+      const tip = document.getElementById('f-tip').value.trim();
+      if (!place || !hood || !tip) {
+        document.getElementById('step1-error').textContent = 'Please fill in the place, neighbourhood, and your tip.';
+        document.getElementById('step1-error').style.display = 'block';
+        return;
+      }
+      document.getElementById('step1-error').style.display = 'none';
+    }
+    if (n === 3) {
+      // Leaving step 2 (profile) — check returning or new
       const isReturning = document.getElementById('returning-panel').classList.contains('open');
       if (isReturning) {
-        // Returning contributor — only need their handle
         const returningHandle = document.getElementById('f-returning-handle').value.trim();
         if (!returningHandle) {
-          document.getElementById('step1-error').textContent = 'Please enter your handle.';
-          document.getElementById('step1-error').style.display = 'block';
+          document.getElementById('step2-error').textContent = 'Please enter your handle.';
+          document.getElementById('step2-error').style.display = 'block';
           return;
         }
-        // Copy handle into the main handle field so the rest of the form works
         document.getElementById('f-handle').value = returningHandle;
-        document.getElementById('step1-error').style.display = 'none';
+        document.getElementById('step2-error').style.display = 'none';
       } else {
         const name = document.getElementById('f-name').value.trim();
         const handle = document.getElementById('f-handle').value.trim();
         const email = document.getElementById('f-email').value.trim();
         if (!name || !handle || !email) {
-          document.getElementById('step1-error').textContent = 'Please fill in your name, handle and email.';
-          document.getElementById('step1-error').style.display = 'block';
+          document.getElementById('step2-error').textContent = 'Please fill in your name, username and email.';
+          document.getElementById('step2-error').style.display = 'block';
           return;
         }
-        document.getElementById('step1-error').style.display = 'none';
+        document.getElementById('step2-error').style.display = 'none';
       }
-    }
-    if (n === 3) {
-      const place = document.getElementById('f-place').value.trim();
-      const hood = document.getElementById('f-hood').value.trim();
-      const tip = document.getElementById('f-tip').value.trim();
-      if (!place || !hood || !tip) {
-        document.getElementById('step2-error').style.display = 'block';
-        return;
-      }
-      document.getElementById('step2-error').style.display = 'none';
       populateReview();
     }
 
