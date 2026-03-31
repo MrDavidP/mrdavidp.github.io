@@ -24,7 +24,7 @@
     .img-pair{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:3rem 0;width:100vw;position:relative;left:50%;transform:translateX(-50%);}.img-pair img{width:100%;display:block;height:400px;object-fit:cover;}
     .img-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin:3rem 0;width:100vw;position:relative;left:50%;transform:translateX(-50%);}.img-trio img{width:100%;display:block;height:320px;object-fit:cover;}
 
-    .img-portrait-pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:3rem auto;max-width:800px;}.img-portrait-pair img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;}
+    .img-portrait-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:3rem auto;max-width:900px;}.img-portrait-pair img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;}
     .img-portrait{margin:3rem auto;max-width:500px;}.img-portrait img{width:100%;display:block;}
     .tip-box{background:white;border:1px solid var(--rule);padding:1.5rem 1.75rem;margin-top:3rem;}.tip-box-label{font-family:var(--cond);font-size:0.65rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}.tip-box ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}.tip-box li{font-size:0.9rem;color:var(--ink);padding-left:1rem;position:relative;line-height:1.55;}.tip-box li::before{content:'—';position:absolute;left:0;color:var(--muted);font-size:0.8rem;}
     .back-link{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--cond);font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-top:3.5rem;border-bottom:1px solid var(--rule);padding-bottom:0.15rem;transition:color 0.15s,border-color 0.15s;}.back-link:hover{color:var(--ink);border-color:var(--ink);}
@@ -120,8 +120,8 @@
   <div class="pull-quote"><p>"Leave work a bit early. You're at La Barge in 15 minutes. You jump in the water, then drink a cold beer, and you say: this is the greatest city in the world."</p></div>
 
   <div class="img-full">
-    <img src="barge-water-example.jpg" alt="The turquoise Rhône at La Barge, Geneva" style="object-position:center 50%;" />
-    <div class="img-caption">The Rhône. Fast, cold, impossibly clear.</div>
+    <img src="lebarge-wide-swan.jpg" alt="La Barge des Lavandières from across the Rhône, Geneva" style="object-position:center 50%;" />
+    <div class="img-caption">La Barge from across the Rhône. Colourful, low-key, exactly what it is.</div>
   </div>
 
   <div class="body">
@@ -130,6 +130,7 @@
 
   <div class="img-portrait-pair">
     <img src="barge-plastic-cup.jpg" alt="Cold beer in a plastic cup at La Barge, Rhône view" />
+    <img src="lebarge-stairway-to-water.jpg" alt="Steps into the turquoise Rhône at La Barge, Geneva" />
     <img src="barge-feet-water.jpg" alt="Feet in the Rhône at La Barge, Geneva" />
   </div>
   <div class="img-portrait" style="margin-top:0;">
@@ -208,14 +209,13 @@
       <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
       <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
     </div>
-    <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+    <a href="profile-build.html" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
   </div>
 </div>
 
 <footer><div class="footer-inner"><div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div><div class="footer-stats">
-      <span>63 tips</span><span>·</span>
-      <span>16 neighbourhoods</span><span>·</span>
-      <span>18 cities</span>
+      <span>70 tips</span><span>·</span>
+      <span>22 cities</span>
     </div></div></footer>
 </body>
 </html>
