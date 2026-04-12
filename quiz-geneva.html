@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Which Geneva Neighbourhood Do You Belong In? — HoodTip</title>
+  <meta name="description" content="Carouge or Champel? Pâquis or Vieille Ville? Seven questions to find out which Geneva neighbourhood fits you." />
+  <meta property="og:title" content="Which Geneva Neighbourhood Do You Belong In?" />
+  <meta property="og:description" content="Carouge or Champel? Pâquis or Vieille Ville? Take the quiz." />
+  <meta property="og:image" content="https://hoodtip.com/carouge-cover.jpg" />
+  <meta property="og:url" content="https://hoodtip.com/quiz-geneva.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-back { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-back:hover { color: var(--ink); }
+    .quiz-wrap { max-width: 680px; margin: 0 auto; padding: 0 2rem 4rem; }
+    .quiz-header { padding: 3rem 0 2.5rem; border-bottom: 1.5px solid var(--ink); margin-bottom: 2.5rem; }
+    .quiz-kicker { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+    .quiz-title { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .quiz-title em { font-style: italic; }
+    .quiz-subtitle { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--muted); line-height: 1.55; }
+    .progress-wrap { margin-bottom: 2.5rem; }
+    .progress-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; display: flex; justify-content: space-between; }
+    .progress-bar { height: 2px; background: var(--rule); }
+    .progress-fill { height: 100%; background: var(--ink); transition: width 0.4s ease; }
+    .question-block { display: none; animation: fadeIn 0.3s ease; }
+    .question-block.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .question-num { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .question-text { font-family: var(--serif); font-size: clamp(1.35rem, 3vw, 1.8rem); font-weight: 400; line-height: 1.2; margin-bottom: 2rem; }
+    .options { display: flex; flex-direction: column; gap: 0.6rem; }
+    .option { display: flex; align-items: flex-start; gap: 1rem; padding: 0.85rem 1.25rem; border: 1px solid var(--rule); background: white; cursor: pointer; transition: all 0.15s; text-align: left; width: 100%; font-family: var(--sans); }
+    .option:hover, .option.selected { border-color: var(--ink); background: var(--ink); color: var(--cream); }
+    .option:hover .option-letter, .option.selected .option-letter { border-color: rgba(247,244,239,0.3); color: rgba(247,244,239,0.5); }
+    .option-letter { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; font-weight: 600; border: 1px solid var(--rule); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--muted); margin-top: 1px; transition: all 0.15s; }
+    .option-text { font-size: 0.92rem; line-height: 1.5; font-weight: 300; }
+    #result { display: none; }
+    #result.visible { display: block; animation: fadeIn 0.5s ease; }
+    .result-eyebrow { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+    .result-name { font-family: var(--serif); font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .result-tagline { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); line-height: 1.5; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+    .result-body { font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem; }
+    .result-body p { margin-bottom: 1.2rem; }
+    .result-body p:last-child { margin-bottom: 0; }
+    .result-traits { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .trait { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.75rem; border: 1px solid var(--ink); color: var(--ink); }
+    .result-cta-wrap { border-top: 1.5px solid var(--ink); padding-top: 2rem; margin-top: 2rem; }
+    .result-cta-label { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .result-cta-hed { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .result-cta-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.65; }
+    .result-btn { display: inline-block; background: var(--ink); color: var(--cream); font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 11px 22px; text-decoration: none; margin-right: 1rem; margin-bottom: 0.75rem; transition: background 0.15s; }
+    .result-btn:hover { background: var(--ink2); }
+    .result-btn.secondary { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+    .result-btn.secondary:hover { background: var(--ink); color: var(--cream); }
+    .share-row { margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .share-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .share-btn { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--rule); background: white; cursor: pointer; color: var(--ink); transition: all 0.15s; }
+    .share-btn:hover { border-color: var(--ink); background: var(--ink); color: var(--cream); }
+    .retake-btn { display: inline-block; margin-top: 2rem; font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); cursor: pointer; border-bottom: 1px solid var(--rule); padding-bottom: 1px; background: none; border-top: none; border-left: none; border-right: none; transition: color 0.15s; }
+    .retake-btn:hover { color: var(--ink); }
+    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 4rem; }
+    .footer-inner { max-width: 720px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-tag { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); }
+    @media (max-width: 600px) { .quiz-wrap { padding: 0 1.25rem 3rem; } .quiz-header { padding: 2rem 0 2rem; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+    <a href="geneva.html" class="nav-back">Geneva guide →</a>
+  </div>
+</nav>
+
+<div class="quiz-wrap">
+
+  <div class="quiz-header" id="quiz-header">
+    <div class="quiz-kicker">HoodTip Quiz · Geneva</div>
+    <h1 class="quiz-title">Which Geneva neighbourhood<br><em>do you belong in?</em></h1>
+    <p class="quiz-subtitle">Seven neighbourhoods. Seven questions. We'll tell you where to live.</p>
+  </div>
+
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-label">
+      <span id="progress-text">Question 1 of 7</span>
+      <span id="progress-pct">14%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:14%"></div></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="question-block active" id="q1">
+    <div class="question-num">Question 1 of 7</div>
+    <div class="question-text">Saturday morning. You're in Geneva. Where are you?</div>
+    <div class="options">
+      <button class="option" onclick="answer(1,'a')"><span class="option-letter">A</span><span class="option-text">The market in Carouge. Oysters by 10am, wine by 10:30.</span></button>
+      <button class="option" onclick="answer(1,'b')"><span class="option-letter">B</span><span class="option-text">Walking along the Rhône. Coffee. No particular plan.</span></button>
+      <button class="option" onclick="answer(1,'c')"><span class="option-letter">C</span><span class="option-text">Bains des Pâquis. Cold water, hot tea, half the city already there.</span></button>
+      <button class="option" onclick="answer(1,'d')"><span class="option-letter">D</span><span class="option-text">Parc La Grange with food from Manor. Reading something I've been putting off.</span></button>
+      <button class="option" onclick="answer(1,'e')"><span class="option-letter">E</span><span class="option-text">Wandering Plainpalais, seeing if there's anything good at the flea market.</span></button>
+      <button class="option" onclick="answer(1,'f')"><span class="option-letter">F</span><span class="option-text">The Bastions. A bench. A book. The cathedral bells at half past.</span></button>
+      <button class="option" onclick="answer(1,'g')"><span class="option-letter">G</span><span class="option-text">Quiet streets, good coffee, home before noon. The afternoon is mine.</span></button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-block" id="q2">
+    <div class="question-num">Question 2 of 7</div>
+    <div class="question-text">How do you feel about Geneva being expensive?</div>
+    <div class="options">
+      <button class="option" onclick="answer(2,'a')"><span class="option-letter">A</span><span class="option-text">Made my peace with it. The Saturday market makes it worthwhile.</span></button>
+      <button class="option" onclick="answer(2,'b')"><span class="option-letter">B</span><span class="option-text">I go to France for groceries. Problem mostly solved.</span></button>
+      <button class="option" onclick="answer(2,'c')"><span class="option-letter">C</span><span class="option-text">The lake is free. The parks are free. You find the things that aren't.</span></button>
+      <button class="option" onclick="answer(2,'d')"><span class="option-letter">D</span><span class="option-text">Fine by me. It keeps the energy quiet, which is what I want.</span></button>
+      <button class="option" onclick="answer(2,'e')"><span class="option-letter">E</span><span class="option-text">The museums are free on the first Sunday. I've learned to use the city well.</span></button>
+      <button class="option" onclick="answer(2,'f')"><span class="option-letter">F</span><span class="option-text">The best things in the old town cost nothing. You just have to know where to look.</span></button>
+      <button class="option" onclick="answer(2,'g')"><span class="option-letter">G</span><span class="option-text">The salary reflects it. I stopped thinking about it a long time ago.</span></button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question-block" id="q3">
+    <div class="question-num">Question 3 of 7</div>
+    <div class="question-text">What do you want from a Friday evening?</div>
+    <div class="options">
+      <button class="option" onclick="answer(3,'a')"><span class="option-letter">A</span><span class="option-text">Natural wine, good food, a table outside if the weather holds</span></button>
+      <button class="option" onclick="answer(3,'b')"><span class="option-letter">B</span><span class="option-text">Cold beer, outside, by water. The simpler the better.</span></button>
+      <button class="option" onclick="answer(3,'c')"><span class="option-letter">C</span><span class="option-text">Somewhere that's been there forever and doesn't need to advertise</span></button>
+      <button class="option" onclick="answer(3,'d')"><span class="option-letter">D</span><span class="option-text">A quiet dinner, good company, no rush, home at a reasonable hour</span></button>
+      <button class="option" onclick="answer(3,'e')"><span class="option-letter">E</span><span class="option-text">Somewhere cheap and good. The two are not mutually exclusive in this city.</span></button>
+      <button class="option" onclick="answer(3,'f')"><span class="option-letter">F</span><span class="option-text">An evening walk through the old town when the tourists have gone home</span></button>
+      <button class="option" onclick="answer(3,'g')"><span class="option-letter">G</span><span class="option-text">A proper dinner at home. I cook well and I know it.</span></button>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-block" id="q4">
+    <div class="question-num">Question 4 of 7</div>
+    <div class="question-text">A free afternoon in winter. What do you do with it?</div>
+    <div class="options">
+      <button class="option" onclick="answer(4,'a')"><span class="option-letter">A</span><span class="option-text">Wander Carouge. Find something good. Take my time about it.</span></button>
+      <button class="option" onclick="answer(4,'b')"><span class="option-letter">B</span><span class="option-text">The Rhône embankment, even in the cold. I like it better when it's quiet.</span></button>
+      <button class="option" onclick="answer(4,'c')"><span class="option-letter">C</span><span class="option-text">A café in Pâquis, a book, nowhere to be. The grisaille doesn't bother me.</span></button>
+      <button class="option" onclick="answer(4,'d')"><span class="option-letter">D</span><span class="option-text">Parc La Grange, even in grey weather. It's still beautiful.</span></button>
+      <button class="option" onclick="answer(4,'e')"><span class="option-letter">E</span><span class="option-text">The Musée d'Art et d'Histoire. Free, beautiful, reliably empty on weekdays.</span></button>
+      <button class="option" onclick="answer(4,'f')"><span class="option-letter">F</span><span class="option-text">The old town in winter fog. The cobblestones, the cathedral, nobody around.</span></button>
+      <button class="option" onclick="answer(4,'g')"><span class="option-letter">G</span><span class="option-text">Reading at home. A long one. I've been saving it for exactly this kind of afternoon.</span></button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-block" id="q5">
+    <div class="question-num">Question 5 of 7</div>
+    <div class="question-text">Which description of Geneva sounds most like yours?</div>
+    <div class="options">
+      <button class="option" onclick="answer(5,'a')"><span class="option-letter">A</span><span class="option-text">"Small enough to feel like a village. Big enough not to be one."</span></button>
+      <button class="option" onclick="answer(5,'b')"><span class="option-letter">B</span><span class="option-text">"The city makes more sense once you stop fighting it."</span></button>
+      <button class="option" onclick="answer(5,'c')"><span class="option-letter">C</span><span class="option-text">"The most international city in the world, and nobody talks about it."</span></button>
+      <button class="option" onclick="answer(5,'d')"><span class="option-letter">D</span><span class="option-text">"Once you find your part of it, you stop wanting to leave."</span></button>
+      <button class="option" onclick="answer(5,'e')"><span class="option-letter">E</span><span class="option-text">"It's more interesting than it looks. You have to earn that information."</span></button>
+      <button class="option" onclick="answer(5,'f')"><span class="option-letter">F</span><span class="option-text">"Most people visit and miss the whole thing. The real city is older than they realise."</span></button>
+      <button class="option" onclick="answer(5,'g')"><span class="option-letter">G</span><span class="option-text">"It rewards you for taking it seriously."</span></button>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question-block" id="q6">
+    <div class="question-num">Question 6 of 7</div>
+    <div class="question-text">Your neighbours. What's your relationship with them?</div>
+    <div class="options">
+      <button class="option" onclick="answer(6,'a')"><span class="option-letter">A</span><span class="option-text">Warm. We nod. Sometimes more than that.</span></button>
+      <button class="option" onclick="answer(6,'b')"><span class="option-letter">B</span><span class="option-text">I know the regulars at Bongo Joe better than I know my neighbours, honestly.</span></button>
+      <button class="option" onclick="answer(6,'c')"><span class="option-letter">C</span><span class="option-text">I have no idea where they're from. That's the point of this neighbourhood.</span></button>
+      <button class="option" onclick="answer(6,'d')"><span class="option-letter">D</span><span class="option-text">We've been here long enough to share the good cafés and agree on the bad ones.</span></button>
+      <button class="option" onclick="answer(6,'e')"><span class="option-letter">E</span><span class="option-text">Students, artists, locals. Mixed. I like it that way.</span></button>
+      <button class="option" onclick="answer(6,'f')"><span class="option-letter">F</span><span class="option-text">We share a staircase that's been there since the 1700s. That's a kind of relationship.</span></button>
+      <button class="option" onclick="answer(6,'g')"><span class="option-letter">G</span><span class="option-text">Polite. Respectful. We both understand the value of privacy.</span></button>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question-block" id="q7">
+    <div class="question-num">Question 7 of 7</div>
+    <div class="question-text">Someone's visiting Geneva for the first time. What do you tell them?</div>
+    <div class="options">
+      <button class="option" onclick="answer(7,'a')"><span class="option-letter">A</span><span class="option-text">"Go to Carouge on a Saturday. Arrive hungry."</span></button>
+      <button class="option" onclick="answer(7,'b')"><span class="option-letter">B</span><span class="option-text">"Walk along the Rhône at sunset. Bongo Joe if it's summer."</span></button>
+      <button class="option" onclick="answer(7,'c')"><span class="option-letter">C</span><span class="option-text">"Bains des Pâquis. Go early. It's not what you expect."</span></button>
+      <button class="option" onclick="answer(7,'d')"><span class="option-letter">D</span><span class="option-text">"Parc La Grange. Bring a book. Don't be in a hurry."</span></button>
+      <button class="option" onclick="answer(7,'e')"><span class="option-letter">E</span><span class="option-text">"Skip the Jet d'Eau. The city shows itself slowly if you let it."</span></button>
+      <button class="option" onclick="answer(7,'f')"><span class="option-letter">F</span><span class="option-text">"Go to the old town at 7am before anyone else gets there."</span></button>
+      <button class="option" onclick="answer(7,'g')"><span class="option-letter">G</span><span class="option-text">"Take the bus up to Champel. Have a walk. Come back for lunch."</span></button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result">
+    <div class="result-eyebrow">Your neighbourhood is</div>
+    <div class="result-name" id="result-name"></div>
+    <div class="result-tagline" id="result-tagline"></div>
+    <div class="result-body" id="result-body"></div>
+    <div class="result-traits" id="result-traits"></div>
+    <div class="result-cta-wrap" id="result-cta"></div>
+    <div class="share-row">
+      <span class="share-label">Share your result:</span>
+      <button class="share-btn" onclick="shareResult()">Copy link</button>
+      <button class="share-btn" onclick="shareTwitter()">Post to X</button>
+    </div>
+    <br />
+    <button class="retake-btn" onclick="retake()">Retake the quiz</button>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-tag">Only the good stuff.</div>
+  </div>
+</footer>
+
+<script>
+  const scores = { a:0, b:0, c:0, d:0, e:0, f:0, g:0 };
+  let currentQ = 1;
+  const totalQ = 7;
+
+  const results = {
+    a: {
+      name: 'Carouge',
+      tagline: 'You know what you like, and you like it on a Saturday morning with something good to drink.',
+      body: '<p>Carouge is Geneva\'s best neighbourhood, and you\'ve found your way to it. Italian architecture, cobbled streets, a Saturday market that turns into a social occasion without trying to. The kind of place that looks like it was designed for people who appreciate things but don\'t need to perform that appreciation.</p><p>You have taste without being precious about it. You know the wine seller by name. You\'ve been to the market enough times to have a route — which stall to hit first, when to arrive, when to leave.</p><p>People who move to Geneva get told to go to Carouge. You figured it out yourself, or someone told you and you trusted them immediately. It amounts to the same thing.</p>',
+      traits: ['Market regular', 'Knows the wine seller', 'Saturday ritual', 'Oysters before noon', 'Doesn\'t perform taste'],
+      hoodLink: 'carouge.html',
+      hoodLabel: 'See all Carouge tips →'
+    },
+    b: {
+      name: 'Saint-Gervais',
+      tagline: 'You want the city to feel alive. You\'ve found the part where it does.',
+      body: '<p>Saint-Gervais is the neighbourhood closest to the station with the most going on — record shops that turn into bars, a floating bar on the Rhône in summer, the best Guinness in the city down a side street. You found your people here, which may or may not have been intentional.</p><p>You\'re not looking for polish. You\'re looking for something that feels real, that has energy without needing to announce it. Bongo Joe in summer: cold white wine, the Rhône moving fast behind you, someone putting on a record you half-recognise. That\'s your version of a good evening.</p><p>You like where you live. Not in a smug way — in the quiet way of someone who stopped looking.</p>',
+      traits: ['Bongo Joe regular', 'Rhône swimmer', 'Best Guinness finder', 'Not looking for polish', 'Stopped searching'],
+      hoodLink: 'saint-gervais.html',
+      hoodLabel: 'See all Saint-Gervais tips →'
+    },
+    c: {
+      name: 'Pâquis',
+      tagline: 'You like Geneva more interesting than it gets credit for. You\'re right.',
+      body: '<p>Pâquis is Geneva\'s most international neighbourhood — which in Geneva, the most international city in the world, means something. The bains at sunset, the lake a few minutes away, the restaurants that have no reason to advertise because the locals already know.</p><p>You\'re comfortable with variety. You like the fact that your neighbourhood doesn\'t have a single character — that it shifts depending on the hour, the season, who\'s walking past. You\'d rather have that than somewhere that tells you how to feel about it.</p><p>The best sushi in Geneva is here. You know this. You mention it selectively.</p>',
+      traits: ['Bains des Pâquis person', 'International by default', 'Late nights', 'Best sushi knowledge', 'Lake swimmer'],
+      hoodLink: 'paquis.html',
+      hoodLabel: 'See all Pâquis tips →'
+    },
+    d: {
+      name: 'Eaux-Vives',
+      tagline: 'You found the part of Geneva that belongs to the people who live there.',
+      body: '<p>Eaux-Vives is where locals live — proper locals, not the expat rotation. The quay, Parc La Grange, vintage Swiss poster shops, the kind of café where nobody is on a laptop because the regulars have other things to do with their time.</p><p>You\'re settled in a way that took a while to arrive at. The lake is ten minutes away. The park is beautiful in every season. You have a bench you\'d call yours if pressed. You\'ve stopped needing your neighbourhood to be interesting and started needing it to be good, which is a different thing and a better one.</p><p>You live well, quietly, without making much of it.</p>',
+      traits: ['Parc La Grange regular', 'Vintage poster collector', 'Long-term resident', 'Lake nearby', 'Quietly settled'],
+      hoodLink: 'eaux-vives.html',
+      hoodLabel: 'See all Eaux-Vives tips →'
+    },
+    e: {
+      name: 'Plainpalais',
+      tagline: 'You want the city to work for you, not the other way around.',
+      body: '<p>Plainpalais is central, practical, and less polished than the rest of Geneva — in a way that suits you. Students, artists, the big red plain that becomes a market, becomes a flea market, becomes a gathering place depending on the day. Victoria Hall around the corner, which you\'ve been to enough times to have a favourite seat.</p><p>You\'re not precious about where you live. You want good coffee, a decent option for dinner, and a neighbourhood that doesn\'t require a performance. Plainpalais gives you this without asking much in return.</p><p>The people happiest in Geneva are the ones who stopped waiting for it to become somewhere else. You made that adjustment early.</p>',
+      traits: ['Victoria Hall regular', 'Not precious about it', 'Good coffee priority', 'Practical over picturesque', 'Made the adjustment'],
+      hoodLink: 'plainpalais.html',
+      hoodLabel: 'See all Plainpalais tips →'
+    },
+    f: {
+      name: 'Vieille Ville',
+      tagline: 'You like the city with its history still visible. Most people walk past it.',
+      body: '<p>The old town is Geneva before Geneva became what it is now — cobblestones worn smooth, the cathedral at the top of the hill, staircases that haven\'t changed since Calvin was here causing trouble. Most visitors see it and take a photo. You see it and want to live inside it.</p><p>You\'re drawn to places that have survived long enough to accumulate character. The Bibliothèque de Genève in Bastions park is free and beautiful and has the best laptop spots in the city. NOMOS watches on Rue de la Cité for when you want to buy something that will outlast you.</p><p>You have a quiet interest in how things are made — buildings, books, watches, arguments. You like that this neighbourhood gives you something to look at while you think.</p>',
+      traits: ['Bastions park regular', 'Interested in how things are made', 'Early morning walker', 'Cathedral at the top', 'History still visible'],
+      hoodLink: 'vieille-ville.html',
+      hoodLabel: 'See Vieille Ville tips →'
+    },
+    g: {
+      name: 'Champel',
+      tagline: 'You\'ve been here long enough to stop needing to explain yourself.',
+      body: '<p>Champel is elevated — literally, sitting above the rest of the city — and the people who live there tend to have a certain settled quality that comes from having made a decision about their life and then stopped questioning it. Doctors, diplomats, families who\'ve been in Geneva for two generations. Good cheese shops. Quiet streets.</p><p>You\'re not trying to be cool. You\'re not particularly interested in being discovered. You have a routine that works and a neighbourhood that supports it. There is a particular kind of confidence that comes from not needing to impress anyone, and Champel has it.</p><p>You know what a good week looks like, and you protect it carefully.</p>',
+      traits: ['Settled', 'Elevated', 'Routine that works', 'Not trying to be cool', 'Good cheese knowledge'],
+      hoodLink: 'geneva.html',
+      hoodLabel: 'Explore the full Geneva guide →'
+    }
+  };
+
+  function answer(qNum, letter) {
+    scores[letter]++;
+    document.getElementById('q' + qNum).querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
+    setTimeout(() => {
+      document.getElementById('q' + qNum).classList.remove('active');
+      if (qNum < totalQ) {
+        currentQ = qNum + 1;
+        document.getElementById('q' + currentQ).classList.add('active');
+        updateProgress(currentQ);
+      } else {
+        showResult();
+      }
+    }, 280);
+  }
+
+  function updateProgress(q) {
+    const pct = Math.round((q / totalQ) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = 'Question ' + q + ' of ' + totalQ;
+    document.getElementById('progress-pct').textContent = pct + '%';
+  }
+
+  function showResult() {
+    document.getElementById('progress-wrap').style.display = 'none';
+    const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+    const r = results[winner];
+    document.getElementById('result-name').textContent = r.name;
+    document.getElementById('result-tagline').textContent = r.tagline;
+    document.getElementById('result-body').innerHTML = r.body;
+    document.getElementById('result-traits').innerHTML = r.traits.map(t => '<span class="trait">' + t + '</span>').join('');
+    document.getElementById('result-cta').innerHTML =
+      '<div class="result-cta-label">Now go there</div>' +
+      '<div class="result-cta-hed">The best of ' + r.name + ', on HoodTip</div>' +
+      '<div class="result-cta-sub">Tips from people who live here. Where to eat, drink, and spend time — with names attached.</div>' +
+      '<a href="' + r.hoodLink + '" class="result-btn">' + r.hoodLabel + '</a>' +
+      '<a href="geneva.html" class="result-btn secondary">Full Geneva guide →</a>';
+    document.getElementById('result').classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('quiz-header').innerHTML =
+      '<div class="quiz-kicker">HoodTip Quiz · Your result</div>' +
+      '<h1 class="quiz-title">You belong in <em>' + r.name + '.</em></h1>';
+  }
+
+  function retake() {
+    Object.keys(scores).forEach(k => scores[k] = 0);
+    currentQ = 1;
+    document.querySelectorAll('.question-block').forEach(b => b.classList.remove('active'));
+    document.getElementById('q1').classList.add('active');
+    document.getElementById('result').classList.remove('visible');
+    document.getElementById('progress-wrap').style.display = 'block';
+    updateProgress(1);
+    document.getElementById('quiz-header').innerHTML =
+      '<div class="quiz-kicker">HoodTip Quiz · Geneva</div>' +
+      '<h1 class="quiz-title">Which Geneva neighbourhood<br><em>do you belong in?</em></h1>' +
+      '<p class="quiz-subtitle">Seven neighbourhoods. Seven questions. We\'ll tell you where to live.</p>';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function shareResult() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = event.target;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy link', 2000);
+    });
+  }
+
+  function shareTwitter() {
+    const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+    const name = results[winner] ? results[winner].name : 'somewhere unexpected';
+    const text = encodeURIComponent('I belong in ' + name + '. Which Geneva neighbourhood are you? hoodtip.com/quiz-geneva.html');
+    window.open('https://twitter.com/intent/tweet?text=' + text, '_blank');
+  }
+</script>
+
+</body>
+</html>

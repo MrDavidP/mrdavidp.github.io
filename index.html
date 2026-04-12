@@ -271,6 +271,22 @@
     .planning-link-label { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
     .planning-link-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 500; line-height: 1.2; margin-top: 0.15rem; }
 
+    /* QUIZ STRIP */
+    .quiz-strip { border-bottom: 1.5px solid var(--ink); }
+    .quiz-strip-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    .quiz-strip-header { display: flex; align-items: center; gap: 1.5rem; height: 44px; border-bottom: 1px solid var(--rule); }
+    .quiz-strip-label { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .quiz-strip-line { flex: 1; height: 1px; background: var(--rule); }
+    .quiz-cards { display: grid; grid-template-columns: 1fr 1fr; }
+    .quiz-card { text-decoration: none; color: var(--ink); padding: 2rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.75rem; transition: background 0.15s; }
+    .quiz-card:last-child { border-right: none; }
+    .quiz-card:hover { background: rgba(26,24,22,0.025); }
+    .quiz-card-city { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); }
+    .quiz-card-hed { font-family: var(--serif); font-size: clamp(1.2rem, 2vw, 1.65rem); font-weight: 400; line-height: 1.15; }
+    .quiz-card-hed em { font-style: italic; }
+    .quiz-card-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .quiz-card-cta { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px; align-self: flex-start; margin-top: 0.5rem; }
+
     /* RECENTLY ADDED */
     .tips-section { border-bottom: 1.5px solid var(--ink); }
     .tips-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--rule); }
@@ -361,8 +377,9 @@
       .col-divider { display: none; }
       .col-main { padding: 20px 0; }
       .col-mid, .col-right { display: none; }
-      .tips-grid { grid-template-columns: repeat(2, 1fr); }
-      .tips-grid .tip-col:last-child { display: block; }
+      .quiz-cards { grid-template-columns: 1fr; }
+      .quiz-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .quiz-card:last-child { border-bottom: none; }
       .tip-col:nth-child(2n) { border-right: none; }
       .tip-col:nth-child(n+3) { border-top: 1px solid var(--rule); }
       .highlight-grid { grid-template-columns: 1fr 1fr; }
@@ -659,6 +676,30 @@
       <div class="tip-col-img-wrap"><img class="tip-col-img" src="artmuseum-geneva-giant-ball.jpg" alt="Musée d'Art et d'Histoire Geneva" style="object-position:center 50%;" /></div>
       <div class="tip-col-body"><div class="tip-col-cat">Museum · Free · Geneva</div><div class="tip-col-name">Musée d'Art et d'Histoire</div><div class="tip-col-hood">Vieille Ville · Geneva</div><div class="tip-col-copy">Free. A Picasso, a Chagall, a giant cow, a bubble you can sit inside, and a beautiful café in the basement.</div></div>
     </a>
+  </div>
+</div>
+
+<!-- QUIZ STRIP -->
+<div class="quiz-strip">
+  <div class="quiz-strip-inner">
+    <div class="quiz-strip-header">
+      <span class="quiz-strip-label">Find your neighbourhood</span>
+      <div class="quiz-strip-line"></div>
+    </div>
+    <div class="quiz-cards">
+      <a class="quiz-card" href="quiz-geneva.html">
+        <div class="quiz-card-city">Quiz · Geneva</div>
+        <div class="quiz-card-hed">Which Geneva neighbourhood<br><em>do you belong in?</em></div>
+        <div class="quiz-card-sub">Carouge or Champel? Pâquis or Vieille Ville? Seven questions across seven neighbourhoods.</div>
+        <span class="quiz-card-cta">Take the quiz →</span>
+      </a>
+      <a class="quiz-card" href="quiz-london.html">
+        <div class="quiz-card-city">Quiz · London</div>
+        <div class="quiz-card-hed">Which London neighbourhood<br><em>do you belong in?</em></div>
+        <div class="quiz-card-sub">Notting Hill or Peckham? Hampstead or Shoreditch? Find out where you actually fit.</div>
+        <span class="quiz-card-cta">Take the quiz →</span>
+      </a>
+    </div>
   </div>
 </div>
 
