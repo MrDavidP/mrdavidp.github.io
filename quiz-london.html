@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Which London Neighbourhood Do You Actually Belong In? — HoodTip</title>
+  <meta name="description" content="Are you Notting Hill or Peckham? Hampstead or Shoreditch? Take the quiz and find out which London neighbourhood matches your personality." />
+  <meta property="og:title" content="Which London Neighbourhood Do You Actually Belong In?" />
+  <meta property="og:description" content="Are you Notting Hill or Peckham? Take the quiz." />
+  <meta property="og:image" content="https://hoodtip.com/IMG_6278.JPG" />
+  <meta property="og:url" content="https://hoodtip.com/quiz-london.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f7f4ef;
+      --ink: #1a1816;
+      --ink2: #2a2925;
+      --muted: #6b6560;
+      --rule: #e0dbd3;
+      --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      padding: 0 2rem;
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-back {
+      font-family: var(--cond);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: var(--ink); }
+
+    /* WRAPPER */
+    .quiz-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* HEADER */
+    .quiz-header {
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1.5px solid var(--ink);
+      margin-bottom: 2.5rem;
+    }
+    .quiz-kicker {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+    .quiz-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .quiz-title em { font-style: italic; }
+    .quiz-subtitle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* PROGRESS */
+    .progress-wrap {
+      margin-bottom: 2.5rem;
+    }
+    .progress-label {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .progress-bar {
+      height: 2px;
+      background: var(--rule);
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--ink);
+      transition: width 0.4s ease;
+    }
+
+    /* QUESTION */
+    .question-block {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .question-block.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-num {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .question-text {
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    /* OPTIONS */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--rule);
+      background: white;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: left;
+      width: 100%;
+      font-family: var(--sans);
+    }
+    .option:hover {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .option:hover .option-letter { border-color: rgba(247,244,239,0.4); color: rgba(247,244,239,0.6); }
+    .option.selected {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .option.selected .option-letter { border-color: rgba(247,244,239,0.4); color: rgba(247,244,239,0.6); }
+    .option-letter {
+      font-family: var(--cond);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      border: 1px solid var(--rule);
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--muted);
+      margin-top: 1px;
+      transition: all 0.15s;
+    }
+    .option-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* RESULT */
+    #result { display: none; }
+    #result.visible {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    .result-eyebrow {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+    .result-name {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .result-tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .result-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+    .result-body p { margin-bottom: 1.2rem; }
+    .result-body p:last-child { margin-bottom: 0; }
+
+    .result-traits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .trait {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+    }
+
+    .result-cta-wrap {
+      border-top: 1.5px solid var(--ink);
+      padding-top: 2rem;
+      margin-top: 2rem;
+    }
+    .result-cta-label {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .result-cta-hed {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .result-cta-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.65;
+    }
+    .result-btn {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--cond);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      text-decoration: none;
+      margin-right: 1rem;
+      margin-bottom: 0.75rem;
+      transition: background 0.15s;
+    }
+    .result-btn:hover { background: var(--ink2); }
+    .result-btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+    }
+    .result-btn.secondary:hover { background: var(--ink); color: var(--cream); }
+
+    .share-row {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .share-label {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .share-btn {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--rule);
+      background: white;
+      cursor: pointer;
+      color: var(--ink);
+      transition: all 0.15s;
+    }
+    .share-btn:hover { border-color: var(--ink); background: var(--ink); color: var(--cream); }
+
+    .retake-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      transition: color 0.15s;
+    }
+    .retake-btn:hover { color: var(--ink); }
+
+    /* FOOTER */
+    footer {
+      border-top: 2px solid var(--red);
+      background: var(--ink);
+      margin-top: 4rem;
+    }
+    .footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--cream);
+    }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-tag {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.3);
+    }
+
+    @media (max-width: 600px) {
+      .quiz-wrap { padding: 0 1.25rem 3rem; }
+      .quiz-header { padding: 2rem 0 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+    <a href="london.html" class="nav-back">London guide →</a>
+  </div>
+</nav>
+
+<div class="quiz-wrap">
+
+  <div class="quiz-header" id="quiz-header">
+    <div class="quiz-kicker">HoodTip Quiz · London</div>
+    <h1 class="quiz-title">Which London neighbourhood do you <em>actually</em> belong in?</h1>
+    <p class="quiz-subtitle">Not where you think you should live. Where you actually belong. Seven questions to find out.</p>
+  </div>
+
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-label">
+      <span id="progress-text">Question 1 of 7</span>
+      <span id="progress-pct">14%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:14%"></div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="question-block active" id="q1">
+    <div class="question-num">Question 1 of 7</div>
+    <div class="question-text">It's Saturday morning. What are you actually doing?</div>
+    <div class="options">
+      <button class="option" onclick="answer(1,'a')"><span class="option-letter">A</span><span class="option-text">Farmers market, buying things I don't strictly need but feel good about</span></button>
+      <button class="option" onclick="answer(1,'b')"><span class="option-letter">B</span><span class="option-text">Still in bed. The afternoon is the morning, effectively.</span></button>
+      <button class="option" onclick="answer(1,'c')"><span class="option-letter">C</span><span class="option-text">Walking on the Heath with a coffee, feeling quietly superior</span></button>
+      <button class="option" onclick="answer(1,'d')"><span class="option-letter">D</span><span class="option-text">Some sort of brunch situation that I told myself would be quick</span></button>
+      <button class="option" onclick="answer(1,'e')"><span class="option-letter">E</span><span class="option-text">Charity shop, vinyl, maybe a gallery. No agenda.</span></button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-block" id="q2">
+    <div class="question-num">Question 2 of 7</div>
+    <div class="question-text">How do you feel about tourists in your neighbourhood?</div>
+    <div class="options">
+      <button class="option" onclick="answer(2,'a')"><span class="option-letter">A</span><span class="option-text">They're fine. I was one once. We all have to start somewhere.</span></button>
+      <button class="option" onclick="answer(2,'b')"><span class="option-letter">B</span><span class="option-text">Complicated. I need them to go away but also I want the good restaurants they bring.</span></button>
+      <button class="option" onclick="answer(2,'c')"><span class="option-letter">C</span><span class="option-text">There aren't many tourists in my neighbourhood, which is the point.</span></button>
+      <button class="option" onclick="answer(2,'d')"><span class="option-letter">D</span><span class="option-text">I've made peace with it. The area wouldn't be the same without them.</span></button>
+      <button class="option" onclick="answer(2,'e')"><span class="option-letter">E</span><span class="option-text">I'm basically the tourist now. The locals have moved out.</span></button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question-block" id="q3">
+    <div class="question-num">Question 3 of 7</div>
+    <div class="question-text">What does your ideal Friday night look like?</div>
+    <div class="options">
+      <button class="option" onclick="answer(3,'a')"><span class="option-letter">A</span><span class="option-text">Natural wine, small plates, people-watching from a pavement table</span></button>
+      <button class="option" onclick="answer(3,'b')"><span class="option-letter">B</span><span class="option-text">A pub that feels like it hasn't changed since 1987. Ideally one with a dog.</span></button>
+      <button class="option" onclick="answer(3,'c')"><span class="option-letter">C</span><span class="option-text">Dinner party at someone's house. Nice wine. Good conversation. Home by midnight.</span></button>
+      <button class="option" onclick="answer(3,'d')"><span class="option-letter">D</span><span class="option-text">That new place everyone's been talking about — booked it three weeks ago</span></button>
+      <button class="option" onclick="answer(3,'e')"><span class="option-letter">E</span><span class="option-text">Genuinely anything could happen and that's what I like about it</span></button>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-block" id="q4">
+    <div class="question-num">Question 4 of 7</div>
+    <div class="question-text">Pick your coffee order and be honest about it.</div>
+    <div class="options">
+      <button class="option" onclick="answer(4,'a')"><span class="option-letter">A</span><span class="option-text">Flat white, but I'm happy to switch to whatever the barista recommends</span></button>
+      <button class="option" onclick="answer(4,'b')"><span class="option-letter">B</span><span class="option-text">Builder's tea, no discussion</span></button>
+      <button class="option" onclick="answer(4,'c')"><span class="option-letter">C</span><span class="option-text">Long black from a specific origin, consumed slowly while reading something proper</span></button>
+      <button class="option" onclick="answer(4,'d')"><span class="option-letter">D</span><span class="option-text">Oat milk latte, large, obviously</span></button>
+      <button class="option" onclick="answer(4,'e')"><span class="option-letter">E</span><span class="option-text">Whatever they're doing that's interesting. Smoked? Fermented? Sure.</span></button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-block" id="q5">
+    <div class="question-num">Question 5 of 7</div>
+    <div class="question-text">Your relationship with your neighbours is best described as:</div>
+    <div class="options">
+      <button class="option" onclick="answer(5,'a')"><span class="option-letter">A</span><span class="option-text">Warm nodding acquaintances. Occasionally I bring them soup.</span></button>
+      <button class="option" onclick="answer(5,'b')"><span class="option-letter">B</span><span class="option-text">I know their names, their dog's name, and their business. This is how it should be.</span></button>
+      <button class="option" onclick="answer(5,'c')"><span class="option-letter">C</span><span class="option-text">Polite. Respectful. We both understand the value of privacy.</span></button>
+      <button class="option" onclick="answer(5,'d')"><span class="option-letter">D</span><span class="option-text">I have no idea who they are. We all moved in at the same time.</span></button>
+      <button class="option" onclick="answer(5,'e')"><span class="option-letter">E</span><span class="option-text">I've been here long enough to remember when this building was something else entirely.</span></button>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question-block" id="q6">
+    <div class="question-num">Question 6 of 7</div>
+    <div class="question-text">How do you actually feel about the term "up and coming"?</div>
+    <div class="options">
+      <button class="option" onclick="answer(6,'a')"><span class="option-letter">A</span><span class="option-text">It's a compliment, I think? Or a warning. Possibly both.</span></button>
+      <button class="option" onclick="answer(6,'b')"><span class="option-letter">B</span><span class="option-text">It stopped applying to my area about 15 years ago. We arrived.</span></button>
+      <button class="option" onclick="answer(6,'c')"><span class="option-letter">C</span><span class="option-text">I don't need up and coming. I need established and excellent.</span></button>
+      <button class="option" onclick="answer(6,'d')"><span class="option-letter">D</span><span class="option-text">I got in early. I try not to be smug about it.</span></button>
+      <button class="option" onclick="answer(6,'e')"><span class="option-letter">E</span><span class="option-text">It's a signal to go before the rents double.</span></button>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question-block" id="q7">
+    <div class="question-num">Question 7 of 7</div>
+    <div class="question-text">What do you actually want from a neighbourhood, if you're honest?</div>
+    <div class="options">
+      <button class="option" onclick="answer(7,'a')"><span class="option-letter">A</span><span class="option-text">A great local. A good park. The feeling that I could stay forever.</span></button>
+      <button class="option" onclick="answer(7,'b')"><span class="option-letter">B</span><span class="option-text">To feel like an adult who made good decisions. Ideally with a garden.</span></button>
+      <button class="option" onclick="answer(7,'c')"><span class="option-letter">C</span><span class="option-text">Quiet streets, old trees, and the city accessible but ignorable</span></button>
+      <button class="option" onclick="answer(7,'d')"><span class="option-letter">D</span><span class="option-text">The best restaurants within walking distance and a flat I'm slightly embarrassed about liking</span></button>
+      <button class="option" onclick="answer(7,'e')"><span class="option-letter">E</span><span class="option-text">Energy. Strangeness. The sense that something is always happening nearby.</span></button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result">
+    <div class="result-eyebrow">Your neighbourhood is</div>
+    <div class="result-name" id="result-name"></div>
+    <div class="result-tagline" id="result-tagline"></div>
+    <div class="result-body" id="result-body"></div>
+    <div class="result-traits" id="result-traits"></div>
+
+    <div class="result-cta-wrap" id="result-cta"></div>
+
+    <div class="share-row">
+      <span class="share-label">Share your result:</span>
+      <button class="share-btn" onclick="shareResult()">Copy link</button>
+      <button class="share-btn" onclick="shareTwitter()">Post to X</button>
+    </div>
+
+    <br />
+    <button class="retake-btn" onclick="retake()">Retake the quiz</button>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-tag">Only the good stuff.</div>
+  </div>
+</footer>
+
+<script>
+  const scores = { a: 0, b: 0, c: 0, d: 0, e: 0 };
+  let currentQ = 1;
+  const totalQ = 7;
+
+  const results = {
+    a: {
+      name: 'Notting Hill',
+      tagline: 'You have taste, you know it, and you\'ve made peace with that.',
+      body: `<p>You're not flashy about it. But there's a particular kind of person who ends up in Notting Hill — someone who wants the market on a Saturday, a proper pub with a garden, and a high street that still has a butcher on it. That person is you.</p><p>You appreciate beautiful things without needing to perform it. You'd rather have one really good bottle of wine than six mediocre ones. You've been described as intimidating, which you find baffling because you're genuinely quite warm once people relax.</p><p>The Portobello Road is your natural habitat. You've learned to avoid it between 11am and 3pm on weekends. You know which stall has the actually good vintage, and which ones are for tourists. You keep this information to yourself.</p>`,
+      traits: ['Market Saturday', 'Good wine, not much of it', 'Has a favourite butcher', 'Warm but selective', 'Knows which pub'],
+      hoodLink: 'notting-hill.html',
+      hoodLabel: 'See Notting Hill tips on HoodTip'
+    },
+    b: {
+      name: 'Hampstead',
+      tagline: 'You want the city. You just don\'t want it quite so close.',
+      body: `<p>The Heath is non-negotiable for you. You need to be able to walk out of your door and, within ten minutes, feel like you\'ve left the city. But then come back. That combination of wild and civilised — you\'ve found it in Hampstead and you\'re not leaving.</p><p>You read actual books. You have opinions about the Sunday paper. You\'ve been to the same café enough times that the person behind the counter knows what you\'re having. You find this satisfying in a way you don\'t entirely know how to explain to people who grew up elsewhere.</p><p>People describe you as "sorted". You find this mildly offensive. You\'re not sorted, you\'ve just figured out what matters to you and prioritised accordingly.</p>`,
+      traits: ['Heath walker', 'Sunday papers person', 'Regular somewhere', 'Prefers quiet', 'Reads before sleep'],
+      hoodLink: 'tip-karmabread.html',
+      hoodLabel: 'See Hampstead tips on HoodTip'
+    },
+    c: {
+      name: 'Chelsea',
+      tagline: 'You like things done properly. This is not a flaw.',
+      body: `<p>There's a version of Chelsea that's about showing off, and that's not you. Your Chelsea is quieter than that — the side streets, the good restaurants that have been there for 20 years, the King's Road on a Tuesday when it belongs to the people who actually live there.</p><p>You have standards. You apply them consistently. You don't need to justify them. You've learned that most things worth having require a bit of effort and advance booking, and you've made your peace with that.</p><p>You're the person who knows about the small gallery that opened on the side street. You have a consistent relationship with quality that other people find either admirable or exhausting, depending on whether you're buying or they are.</p>`,
+      traits: ['Advance booker', 'Consistent standards', 'The side streets', 'Quality over novelty', 'Has a tailor'],
+      hoodLink: 'index.html',
+      hoodLabel: 'Browse all London tips on HoodTip'
+    },
+    d: {
+      name: 'Shoreditch',
+      tagline: 'You\'re here for the energy, and the energy is still real.',
+      body: `<p>Yes, everyone says Shoreditch isn't what it was. But you\'ve noticed that the people who say this are usually doing fine, eating at good restaurants, and going to decent bars — so perhaps what it was isn\'t entirely gone, it\'s just shifted.</p><p>You move fast. You try things early and tell people about them. You have opinions about restaurants that haven\'t opened yet. This makes you useful to your friends, who have learned to ask you first before booking anything.</p><p>You\'re genuinely curious about new things, which means you end up at a lot of things that aren't quite right. You consider this a reasonable price to pay for occasionally being somewhere extraordinary.</p>`,
+      traits: ['Early adopter', 'Good restaurant radar', 'Moves fast', 'Genuinely curious', 'Strong opinions'],
+      hoodLink: 'index.html',
+      hoodLabel: 'Browse all London tips on HoodTip'
+    },
+    e: {
+      name: 'Peckham',
+      tagline: 'You found a place that hasn\'t been ruined yet and you\'re not telling anyone.',
+      body: `<p>You have a nose for the real thing. You ended up in Peckham before it became the thing to say, or maybe you got there just as it was happening, or maybe you're still waiting for it to arrive — it doesn't particularly matter, because you're not there for the narrative, you're there because it's genuinely good.</p><p>You're independent in the way that matters — you don't follow recommendations, you make them. Your friends text you when they need to know somewhere. You take this seriously without taking yourself too seriously.</p><p>The roof bar. The record shop with no sign. The Nigerian restaurant where nobody asks if you have a reservation because the concept doesn't apply. You know where these are and you protect the information carefully.</p>`,
+      traits: ['Independent thinker', 'Real over polished', 'The people\'s recommendation', 'Was there first', 'Protective of good things'],
+      hoodLink: 'index.html',
+      hoodLabel: 'Browse all London tips on HoodTip'
+    }
+  };
+
+  function answer(qNum, letter) {
+    scores[letter]++;
+    const block = document.getElementById('q' + qNum);
+    block.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
+
+    setTimeout(() => {
+      block.classList.remove('active');
+      if (qNum < totalQ) {
+        currentQ = qNum + 1;
+        document.getElementById('q' + currentQ).classList.add('active');
+        updateProgress(currentQ);
+      } else {
+        showResult();
+      }
+    }, 280);
+  }
+
+  function updateProgress(q) {
+    const pct = Math.round((q / totalQ) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = 'Question ' + q + ' of ' + totalQ;
+    document.getElementById('progress-pct').textContent = pct + '%';
+  }
+
+  function showResult() {
+    document.getElementById('progress-wrap').style.display = 'none';
+
+    const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+    const r = results[winner];
+
+    document.getElementById('result-name').textContent = r.name;
+    document.getElementById('result-tagline').textContent = r.tagline;
+    document.getElementById('result-body').innerHTML = r.body;
+
+    const traitsEl = document.getElementById('result-traits');
+    traitsEl.innerHTML = r.traits.map(t => `<span class="trait">${t}</span>`).join('');
+
+    document.getElementById('result-cta').innerHTML = `
+      <div class="result-cta-label">Now go there</div>
+      <div class="result-cta-hed">The best of ${r.name} on HoodTip</div>
+      <div class="result-cta-sub">Real tips from people who actually know the neighbourhood. Where to eat, drink, and spend time — with names attached.</div>
+      <a href="${r.hoodLink}" class="result-btn">${r.hoodLabel}</a>
+      <a href="index.html" class="result-btn secondary">Browse all tips →</a>
+    `;
+
+    document.getElementById('result').classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('quiz-header').innerHTML = `
+      <div class="quiz-kicker">HoodTip Quiz · Your result</div>
+      <h1 class="quiz-title">You belong in <em>${r.name}.</em></h1>
+    `;
+  }
+
+  function retake() {
+    Object.keys(scores).forEach(k => scores[k] = 0);
+    currentQ = 1;
+    document.querySelectorAll('.question-block').forEach(b => b.classList.remove('active'));
+    document.getElementById('q1').classList.add('active');
+    document.getElementById('result').classList.remove('visible');
+    document.getElementById('progress-wrap').style.display = 'block';
+    updateProgress(1);
+    document.getElementById('quiz-header').innerHTML = `
+      <div class="quiz-kicker">HoodTip Quiz · London</div>
+      <h1 class="quiz-title">Which London neighbourhood do you <em>actually</em> belong in?</h1>
+      <p class="quiz-subtitle">Not where you think you should live. Where you actually belong. Seven questions to find out.</p>
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function shareResult() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = event.target;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy link', 2000);
+    });
+  }
+
+  function shareTwitter() {
+    const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+    const name = results[winner]?.name || 'somewhere surprising';
+    const text = encodeURIComponent(`I belong in ${name}, apparently. Take the quiz → hoodtip.com/quiz-london.html`);
+    window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
