@@ -37,9 +37,11 @@
     /* NAV */
     .top-nav { border-bottom: 1.5px solid var(--ink); position: fixed; top: 0; left: 0; right: 0; z-index: 300; background: var(--cream); }
     .top-nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 32px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
-    .top-nav-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .top-nav-logo-wrap { display: flex; align-items: baseline; gap: 0; }
+    .top-nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
     .top-nav-logo em { font-style: italic; font-weight: 400; }
     .top-nav-logo .dot { color: var(--red); }
+    .top-nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.75rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; white-space: nowrap; letter-spacing: 0.01em; }
     .top-nav-links { display: flex; list-style: none; }
     .top-nav-links a { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 48px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
     .top-nav-links a:hover { color: var(--ink); }
@@ -206,6 +208,7 @@
     }
     @media (max-width: 800px) {
       .top-nav-links li:not(:last-child) { display: none; }
+      .top-nav-tagline { display: none; }
       .concept-inner { grid-template-columns: 1fr; }
       .concept-item { border-right: none; border-bottom: 1px solid var(--rule); padding: 1.25rem; }
       .hood-grid { grid-template-columns: repeat(2, 1fr); }
@@ -235,7 +238,10 @@
 <!-- NAV -->
 <div class="top-nav">
   <div class="top-nav-inner">
-    <a href="/" class="top-nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+    <div class="top-nav-logo-wrap">
+      <a href="/" class="top-nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="top-nav-tagline">Only the good stuff.</span>
+    </div>
     <ul class="top-nav-links">
       <li><a href="profile-build.html" class="top-nav-cta">Leave a tip</a></li>
     </ul>
