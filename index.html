@@ -5,301 +5,169 @@
   <link rel="canonical" href="https://hoodtip.com/" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HoodTip — Only the good stuff</title>
-  <!-- OG / SOCIAL META -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="HoodTip" />
   <meta property="og:title" content="HoodTip — Only the good stuff" />
   <meta property="og:description" content="Neighbourhood tips from people who actually know. Specific, positive, useful. Geneva, London, Istanbul and beyond." />
   <meta property="og:image" content="https://hoodtip.com/baindespaquis-sunset.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="800" />
-  <meta property="og:url" content="https://hoodtip.com/index.html" />
-  <!-- TWITTER / X -->
+  <meta property="og:url" content="https://hoodtip.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="HoodTip — Only the good stuff" />
-  <meta name="twitter:description" content="Neighbourhood tips from people who actually know. Specific, positive, useful. Geneva, London, Istanbul and beyond." />
+  <meta name="twitter:description" content="Neighbourhood tips from people who actually know. Specific, positive, useful." />
   <meta name="twitter:image" content="https://hoodtip.com/baindespaquis-sunset.jpg" />
   <meta name="description" content="Neighbourhood tips from people who actually know. Specific, positive, useful. Geneva, London, Istanbul and beyond." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
       --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
       --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans:  'Barlow', system-ui, sans-serif;
-      --cond:  'Barlow Condensed', system-ui, sans-serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
+      --max: 1400px;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
     /* NAV */
     .top-nav { border-bottom: 1.5px solid var(--ink); position: fixed; top: 0; left: 0; right: 0; z-index: 300; background: var(--cream); }
-    .top-nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
+    .top-nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 32px; height: 48px; display: flex; align-items: center; justify-content: space-between; }
     .top-nav-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
     .top-nav-logo em { font-style: italic; font-weight: 400; }
     .top-nav-logo .dot { color: var(--red); }
-    .top-nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); text-decoration: none; padding: 0 18px; height: 48px; display: flex; align-items: center; transition: background 0.15s; }
-    .top-nav-cta:hover { background: var(--ink2); }
+    .top-nav-links { display: flex; list-style: none; }
+    .top-nav-links a { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 48px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .top-nav-links a:hover { color: var(--ink); }
+    .top-nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream) !important; border-left: 1px solid var(--ink) !important; text-decoration: none; padding: 0 18px; height: 48px; display: flex; align-items: center; transition: background 0.15s; }
+    .top-nav-cta:hover { background: var(--ink2) !important; }
 
-    /* MASTHEAD */
-    .masthead { margin-top: 48px; border-bottom: 1.5px solid var(--ink); }
-    .masthead-top-rule { height: 2px; background: var(--red); }
-    .masthead-inner { max-width: 1400px; margin: 0 auto; padding: 18px 32px 14px; display: flex; flex-direction: column; align-items: center; }
-    .masthead-logo { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1; text-decoration: none; display: block; text-align: center; }
-    .masthead-logo em { font-style: italic; font-weight: 400; }
-    .masthead-logo .dot { color: var(--red); }
-    .masthead-tagline-row { display: flex; align-items: center; gap: 14px; width: 100%; max-width: 500px; margin-top: 10px; }
-    .masthead-tagline-rule { flex: 1; height: 1px; background: var(--rule); }
-    .masthead-tagline { font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 1.6vw, 1.25rem); color: var(--ink); letter-spacing: 0.01em; white-space: nowrap; font-weight: 500; }
-    .masthead-stats { margin-top: 10px; font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); display: flex; gap: 10px; align-items: center; }
-    .masthead-stats-sep { color: var(--rule); }
+    /* HERO */
+    .hero { margin-top: 48px; position: relative; width: 100%; height: clamp(480px, 70vh, 780px); overflow: hidden; border-bottom: 1.5px solid var(--ink); }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; display: block; transition: opacity 0.6s ease; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.88) 0%, rgba(15,12,10,0.3) 50%, rgba(15,12,10,0.05) 100%); }
+    .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 3.5rem 4rem; max-width: var(--max); margin: 0 auto; }
+    .hero-site-label { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.75rem; }
+    .hero-hed { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4.8rem); font-weight: 400; color: #fff; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 800px; }
+    .hero-hed em { font-style: italic; }
+    .hero-meta { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .hero-location { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .hero-location span { color: rgba(255,255,255,0.35); padding: 0 0.4rem; }
+    .hero-read { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.9); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 1px; transition: border-color 0.15s; }
+    .hero-read:hover { border-color: rgba(255,255,255,0.9); }
+    .hero-dots { position: absolute; bottom: 2rem; right: 4rem; display: flex; gap: 6px; }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: background 0.2s; border: none; }
+    .hero-dot.active { background: rgba(255,255,255,0.85); }
+
+    /* CONCEPT STRIP */
+    .concept-strip { border-bottom: 1.5px solid var(--ink); }
+    .concept-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
+    .concept-item { padding: 1.5rem 2rem; border-right: 1px solid var(--rule); }
+    .concept-item:last-child { border-right: none; }
+    .concept-num { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--rule); line-height: 1; margin-bottom: 0.5rem; }
+    .concept-hed { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; margin-bottom: 0.35rem; }
+    .concept-hed em { font-style: italic; font-weight: 400; }
+    .concept-body { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
 
     /* HOOD STRIP */
-    .hood-strip { border-bottom: 1.5px solid var(--ink); position: sticky; top: 48px; z-index: 199; background: var(--cream); }
-    .hood-strip-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; height: 34px; overflow-x: auto; }
+    .hood-strip { border-bottom: 1px solid var(--rule); position: sticky; top: 48px; z-index: 199; background: var(--cream); }
+    .hood-strip-inner { max-width: var(--max); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; height: 34px; overflow-x: auto; }
     .hood-strip-inner::-webkit-scrollbar { display: none; }
     .hood-strip-inner a { font-family: var(--cond); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 14px 0 0; height: 34px; display: flex; align-items: center; white-space: nowrap; transition: color 0.15s; flex-shrink: 0; }
     .hood-strip-inner a:hover { color: var(--ink); }
     .hood-strip-div { color: var(--rule); padding-right: 14px; font-size: 0.7rem; flex-shrink: 0; }
 
-    /* SECTION LABEL */
-    .section-label-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; align-items: baseline; gap: 16px; padding-top: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
-    .section-label-text { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; white-space: nowrap; }
-    .section-label-line { flex: 1; height: 1px; background: var(--rule); }
-    .section-label-link { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
-    .section-label-link:hover { color: var(--ink); border-color: var(--ink); }
+    /* SECTION HEADER */
+    .sec-head { max-width: var(--max); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; gap: 1.5rem; height: 46px; border-bottom: 1px solid var(--rule); }
+    .sec-label { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .sec-line { flex: 1; height: 1px; background: var(--rule); }
+    .sec-link { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; white-space: nowrap; transition: color 0.15s; }
+    .sec-link:hover { color: var(--ink); border-color: var(--ink); }
 
-    /* EDITORIAL 3-COL */
-    .editorial-wrap { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
-    .three-col { display: grid; grid-template-columns: 1fr 1px 300px 1px 240px; gap: 0; border-bottom: 1.5px solid var(--ink); }
-    .col-divider { background: var(--rule); }
-    .col-main { padding: 24px 32px 24px 0; }
-    .feature-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
-    .feature-img-wrap { overflow: hidden; margin-bottom: 16px; }
-    .feature-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 0.55s ease; }
-    .feature-link:hover .feature-img { transform: scale(1.02); }
-    .feature-link { text-decoration: none; color: var(--ink); display: block; }
-    .feature-cat { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-    .feature-hed { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2.2rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 10px; }
-    .feature-hed em { font-style: italic; font-weight: 400; }
-    .feature-deck { font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 540px; }
-    .feature-meta { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rule); margin-top: 12px; display: flex; align-items: center; gap: 10px; }
-    .feature-meta-dot { width: 3px; height: 3px; background: var(--rule); border-radius: 50%; }
-    .tip-list { margin-top: 20px; border-top: 1px solid var(--rule); }
-    .tip-list-item { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); transition: opacity 0.15s; }
-    .tip-list-item:last-child { border-bottom: none; }
-    .tip-list-item:hover { opacity: 0.65; }
-    .tip-list-thumb { width: 68px; height: 52px; object-fit: cover; flex-shrink: 0; display: block; }
-    .tip-list-body { flex: 1; }
-    .tip-list-cat { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-    .tip-list-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 500; line-height: 1.2; margin-bottom: 2px; }
-    .tip-list-copy { font-size: 0.74rem; color: var(--muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .col-mid { padding: 24px 28px; }
-    .col-mid-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
-    .indepth-link { text-decoration: none; color: var(--ink); display: block; }
-    .indepth-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; margin-bottom: 12px; }
-    .indepth-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s ease; }
-    .indepth-link:hover .indepth-img img { transform: scale(1.03); }
-    .indepth-cat { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-    .indepth-hed { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; line-height: 1.15; margin-bottom: 7px; }
-    .indepth-hed em { font-style: italic; font-weight: 400; }
-    .indepth-body { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
-    .indepth-cta { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-top: 10px; display: inline-block; border-bottom: 1px solid var(--rule); padding-bottom: 2px; text-decoration: none; }
-    .indepth-second { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
-    .col-right { padding: 24px 0 24px 28px; }
-    .col-right-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
-
-    /* PROFILE SPOTLIGHT (right col) */
-    .profile-spot { display: block; text-decoration: none; color: var(--ink); transition: opacity 0.15s; }
-    .profile-spot:hover { opacity: 0.8; }
-    .profile-spot-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
-    .profile-spot-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid var(--rule); flex-shrink: 0; }
-    .profile-spot-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; line-height: 1; }
-    .profile-spot-handle { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
-    .profile-spot-bio { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
-    .profile-spot-stats { display: flex; gap: 1.25rem; margin-bottom: 0.75rem; }
-    .profile-spot-stat { display: flex; flex-direction: column; gap: 1px; }
-    .profile-spot-val { font-family: var(--serif); font-size: 1.05rem; line-height: 1; }
-    .profile-spot-lbl { font-family: var(--cond); font-size: 0.48rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .profile-spot-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.85rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--rule); }
-    .profile-spot-tag { font-family: var(--cond); font-size: 0.48rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.12rem 0.4rem; }
-    .profile-spot-cta { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
-    .profile-spot-divider { height: 1.5px; background: var(--rule); margin: 1.25rem 0; }
-    .profile-spot-build { display: block; text-decoration: none; color: var(--ink); padding: 1rem; background: var(--ink); transition: opacity 0.15s; }
-    .profile-spot-build:hover { opacity: 0.9; }
-    .profile-spot-build-label { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,244,239,0.5); margin-bottom: 0.4rem; }
-    .profile-spot-build-hed { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--cream); line-height: 1.25; margin-bottom: 0.85rem; }
-    .profile-spot-build-hed em { font-style: italic; }
-    .profile-spot-build-btn { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: #e6a817; }
-    /* cream ghost CTA in right col */
-    .profile-spot-ghost-cta { display: block; text-decoration: none; color: var(--ink); border: 1.5px dashed var(--rule); padding: 1rem; transition: border-color 0.15s, background 0.15s; }
-    .profile-spot-ghost-cta:hover { border-color: var(--ink); background: rgba(26,24,22,0.025); }
-    .profile-spot-ghost-avatar { width: 36px; height: 36px; border-radius: 50%; border: 1.5px dashed var(--rule); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; font-size: 1.1rem; color: var(--rule); font-weight: 300; }
-    .profile-spot-ghost-hed { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 0.75rem; }
-    .profile-spot-ghost-hed em { font-style: italic; }
-    .profile-spot-ghost-btn { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--rule); padding-bottom: 1px; display: inline-block; }
-    .hood-cards { display: flex; flex-direction: column; gap: 1px; }
-    .hood-card-mini { text-decoration: none; display: block; position: relative; overflow: hidden; }
-    .hood-card-mini img { width: 100%; height: 90px; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .hood-card-mini:hover img { transform: scale(1.04); }
-    .hood-card-mini-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.75) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 7px 12px; }
-    .hood-card-mini-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: #fff; line-height: 1; }
-    .hood-card-mini-meta { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 2px; display: flex; justify-content: space-between; }
-
-    /* MANIFESTO BAND */
-    .manifesto { border-bottom: 1.5px solid var(--ink); background: var(--cream); }
-    .manifesto-outer { max-width: 1400px; margin: 0 auto; padding: 2.5rem 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .manifesto-left {}
-    .manifesto-eyebrow { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
-    .manifesto-headline { font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 400; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
-    .manifesto-headline em { font-style: italic; }
-    .manifesto-sub { font-size: 0.95rem; color: var(--muted); line-height: 1.7; max-width: 440px; margin-bottom: 1.5rem; }
-    .manifesto-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: #e6a817; color: var(--ink); text-decoration: none; padding: 12px 24px; display: inline-flex; align-items: center; white-space: nowrap; transition: background 0.15s; }
-    .manifesto-cta:hover { background: #d4980f; }
-    .manifesto-steps { display: flex; gap: 1.5rem; margin-top: 1.25rem; }
-    .manifesto-step { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.4rem; }
-    .manifesto-step-num { font-family: var(--serif); font-size: 1rem; color: var(--ink); font-weight: 600; }
-    /* Profile preview card */
-    .manifesto-card { border: 1.5px solid var(--ink); background: var(--cream); text-decoration: none; color: var(--ink); display: block; transition: transform 0.2s; }
-    .manifesto-card:hover { transform: translateY(-2px); }
-    .manifesto-card-top { padding: 1.25rem 1.5rem 1rem; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 1rem; }
-    .manifesto-card-photo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid var(--rule); flex-shrink: 0; }
-    .manifesto-card-name { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; line-height: 1.1; }
-    .manifesto-card-handle { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
-    .manifesto-card-stats { padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--rule); display: flex; gap: 2rem; }
-    .manifesto-card-stat { display: flex; flex-direction: column; gap: 1px; }
-    .manifesto-card-val { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; line-height: 1; color: var(--ink); }
-    .manifesto-card-lbl { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    .manifesto-card-tags { padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .manifesto-card-tag { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--rule); padding: 3px 9px; color: var(--muted); }
-    .manifesto-card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
-    .manifesto-card-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
-    .manifesto-card-footer { padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-    .manifesto-card-footer-text { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .manifesto-card-footer-cta { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
-
-    /* PROFILES — upgraded */
-    .profiles-section { border-bottom: 1.5px solid var(--ink); }
-    .profiles-header { max-width: 1400px; margin: 0 auto; padding: 1.5rem 32px 1.25rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; border-bottom: 1px solid var(--rule); }
-    .profiles-header-hed { font-family: var(--serif); font-size: clamp(1.4rem, 2.4vw, 2rem); font-weight: 400; line-height: 1.15; }
-    .profiles-header-hed em { font-style: italic; }
-    .profiles-header-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-top: 0.3rem; max-width: 520px; }
-    .profiles-header-btn { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); text-decoration: none; padding: 0 22px; height: 40px; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
-    .profiles-header-btn:hover { background: var(--ink2); }
-    .profiles-grid { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); }
-    .profile-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); padding: 1.5rem 1.5rem 1.75rem; display: flex; flex-direction: column; transition: background 0.18s; }
-    .profile-card:last-child { border-right: none; }
-    .profile-card:hover { background: rgba(26,24,22,0.025); }
-    .profile-card-top { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem; }
-    .profile-card-photo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; border: 1px solid var(--rule); }
-    .profile-card-identity { display: flex; flex-direction: column; gap: 0.1rem; }
-    .profile-card-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; line-height: 1; }
-    .profile-card-handle { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .profile-card-bio { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.85rem; }
-    .profile-card-stats { display: flex; gap: 1.25rem; }
-    .profile-card-stat { display: flex; flex-direction: column; gap: 0.1rem; }
-    .profile-card-stat-value { font-family: var(--serif); font-size: 1.1rem; line-height: 1; color: var(--ink); }
-    .profile-card-stat-label { font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .profile-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid var(--rule); }
-    .profile-card-tag { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.15rem 0.5rem; }
-    .profile-card-build { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.18s; background: var(--cream); }
-    .profile-card-build:last-child { border-right: none; }
-    .profile-card-build:hover { background: rgba(26,24,22,0.03); }
-    .profile-card-build-top { margin-bottom: auto; }
-    .profile-card-build-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
-    .profile-card-build-hed { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
-    .profile-card-build-hed em { font-style: italic; }
-    .profile-card-build-body { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
-    .profile-card-build-btn { display: inline-block; margin-top: 1.25rem; font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 8px 16px; align-self: flex-start; }
-
-    /* GHOST PROFILE CARD */
-    .profile-card-ghost { text-decoration: none; color: var(--ink); border-right: none; padding: 1.5rem; display: flex; flex-direction: column; transition: background 0.18s; border: 1.5px dashed var(--rule); margin: -1px; }
-    .profile-card-ghost:hover { background: rgba(26,24,22,0.025); border-color: var(--ink); }
-    .profile-card-ghost-avatar { width: 48px; height: 48px; border-radius: 50%; border: 1.5px dashed var(--rule); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .profile-card-ghost-avatar-plus { font-size: 1.2rem; color: var(--rule); font-weight: 300; line-height: 1; }
-    .profile-card-ghost-top { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem; }
-    .profile-card-ghost-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--rule); font-style: italic; }
-    .profile-card-ghost-handle { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rule); }
-    .profile-card-ghost-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
-    .profile-card-ghost-hed { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
-    .profile-card-ghost-hed em { font-style: italic; }
-    .profile-card-ghost-body { font-size: 0.75rem; color: var(--muted); line-height: 1.65; margin-bottom: auto; }
-    .profile-card-ghost-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.85rem 0; padding-top: 0.85rem; border-top: 1px dashed var(--rule); }
-    .profile-card-ghost-tag { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rule); border: 1px dashed var(--rule); padding: 0.15rem 0.5rem; }
-    .profile-card-ghost-btn { display: inline-block; margin-top: 1rem; font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 8px 16px; align-self: flex-start; }
-
-
-    /* HIGHLIGHT STRIP */
-    .highlight-strip { border-bottom: 1.5px solid var(--ink); }
-    .highlight-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
-    .highlight-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.18s; padding-bottom: 20px; }
-    .highlight-card:last-child { border-right: none; }
-    .highlight-card:hover { background: rgba(26,24,22,0.025); }
-    .highlight-img-wrap { overflow: hidden; }
-    .highlight-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .highlight-card:hover .highlight-img { transform: scale(1.03); }
-    .highlight-body { padding: 12px 16px 0; }
-    .highlight-cat { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .highlight-hed { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; line-height: 1.2; margin-bottom: 5px; letter-spacing: -0.01em; }
-    .highlight-hed em { font-style: italic; font-weight: 400; }
-    .highlight-hood { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-
-    /* GENEVA BLOCK */
-    .geneva-block { border-bottom: 1.5px solid var(--ink); }
-    .geneva-header { max-width: 1400px; margin: 0 auto; padding: 1.25rem 32px 1rem; display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; }
-    .geneva-header-left { display: flex; align-items: baseline; gap: 1rem; }
-    .geneva-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 400; line-height: 1; }
-    .geneva-subtitle { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--muted); }
-    .geneva-header-links { display: flex; gap: 1.5rem; flex-shrink: 0; }
-    .geneva-header-link { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
-    .geneva-header-link:hover, .geneva-header-link.primary { color: var(--ink); border-color: var(--ink); }
-    .hood-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--rule); }
-    .hood-grid-card { text-decoration: none; color: var(--ink); position: relative; overflow: hidden; border-right: 1px solid var(--rule); display: block; }
-    .hood-grid-card:last-child { border-right: none; }
-    .hood-grid-card img { width: 100%; height: 140px; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .hood-grid-card:hover img { transform: scale(1.04); }
-    .hood-grid-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 10px 12px; }
-    .hood-grid-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: #fff; line-height: 1.1; }
-    .hood-grid-count { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 2px; }
-    .planning-strip { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); }
-    .planning-link { text-decoration: none; color: var(--ink); padding: 1rem 1.5rem; border-right: 1px solid var(--rule); display: flex; align-items: center; gap: 1rem; transition: background 0.18s; }
-    .planning-link:last-child { border-right: none; }
-    .planning-link:hover { background: rgba(26,24,22,0.025); }
-    .planning-link-icon { font-family: var(--serif); font-size: 1.3rem; color: var(--muted); flex-shrink: 0; line-height: 1; }
-    .planning-link-label { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    .planning-link-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 500; line-height: 1.2; margin-top: 0.15rem; }
-
-    /* RECENTLY ADDED */
+    /* TIPS MAGAZINE GRID */
     .tips-section { border-bottom: 1.5px solid var(--ink); }
-    .tips-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--rule); }
-    .tip-col { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); padding-bottom: 20px; transition: background 0.18s; display: block; }
-    .tip-col:last-child { border-right: none; }
-    .tip-col:hover { background: rgba(26,24,22,0.025); }
-    .tip-col-img-wrap { overflow: hidden; }
-    .tip-col-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .tip-col:hover .tip-col-img { transform: scale(1.04); }
-    .tip-col-body { padding: 10px 14px 0; }
-    .tip-col-cat { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
-    .tip-col-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; line-height: 1.15; margin-bottom: 2px; }
-    .tip-col-hood { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-    .tip-col-copy { font-size: 0.74rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .tips-magazine { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; }
+    .tip-hero { grid-row: 1 / 3; border-right: 1px solid var(--rule); text-decoration: none; color: var(--ink); display: block; overflow: hidden; transition: background 0.18s; }
+    .tip-hero:hover { background: rgba(26,24,22,0.02); }
+    .tip-hero-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; transition: transform 0.55s ease; }
+    .tip-hero:hover .tip-hero-img { transform: scale(1.02); }
+    .tip-hero-body { padding: 1.5rem 1.75rem 2rem; }
+    .tip-hero-cat { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .tip-hero-hed { font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2.4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
+    .tip-hero-hed em { font-style: italic; }
+    .tip-hero-deck { font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 480px; }
+    .tip-sm { text-decoration: none; color: var(--ink); display: block; border-bottom: 1px solid var(--rule); padding: 1.25rem 1.5rem; transition: background 0.18s; overflow: hidden; }
+    .tip-sm:last-child { border-bottom: none; }
+    .tip-sm:hover { background: rgba(26,24,22,0.025); }
+    .tip-sm-img-wrap { overflow: hidden; margin-bottom: 0.85rem; }
+    .tip-sm-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.55s ease; }
+    .tip-sm:hover .tip-sm-img { transform: scale(1.03); }
+    .tip-sm-cat { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .tip-sm-hed { font-family: var(--serif); font-size: 1rem; font-weight: 500; line-height: 1.2; margin-bottom: 0.3rem; }
+    .tip-sm-hed em { font-style: italic; font-weight: 400; }
+    .tip-sm-copy { font-size: 0.74rem; color: var(--muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .tip-col-b { border-left: 1px solid var(--rule); }
 
-    /* CTA */
-    .cta-wrap { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
-    .cta-row { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; border-top: 1.5px solid var(--ink); gap: 2rem; }
-    .cta-hed { font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; line-height: 1.1; }
-    .cta-hed em { font-style: italic; }
-    .cta-right-row { display: flex; align-items: center; gap: 1.5rem; }
-    .cta-body { font-size: 0.8rem; color: var(--muted); line-height: 1.65; max-width: 260px; }
-    .cta-btn { display: inline-block; background: var(--ink); color: var(--cream); font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 11px 22px; text-decoration: none; white-space: nowrap; }
-    .cta-btn:hover { background: var(--ink2); }
+    /* NEIGHBOURHOODS */
+    .hoods-section { border-bottom: 1.5px solid var(--ink); }
+    .hood-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); }
+    .hood-card { position: relative; overflow: hidden; border-right: 1px solid var(--rule); aspect-ratio: 2/3; text-decoration: none; display: block; }
+    .hood-card:last-child { border-right: none; }
+    .hood-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+    .hood-card:hover img { transform: scale(1.05); }
+    .hood-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.75) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; }
+    .hood-card-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: #fff; line-height: 1.1; margin-bottom: 0.2rem; }
+    .hood-card-city { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+    /* QUIZ STRIP */
+    .quiz-strip { border-bottom: 1.5px solid var(--ink); }
+    .quiz-strip-inner { max-width: var(--max); margin: 0 auto; }
+    .quiz-cards { display: grid; grid-template-columns: 1fr 1fr; }
+    .quiz-card { text-decoration: none; color: var(--ink); padding: 2rem 2.5rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.6rem; transition: background 0.15s; }
+    .quiz-card:last-child { border-right: none; }
+    .quiz-card:hover { background: rgba(26,24,22,0.025); }
+    .quiz-card-city { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); }
+    .quiz-card-hed { font-family: var(--serif); font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 400; line-height: 1.15; }
+    .quiz-card-hed em { font-style: italic; }
+    .quiz-card-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .quiz-card-cta { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px; align-self: flex-start; margin-top: 0.25rem; }
+
+    /* CONTRIBUTE BAND */
+    .contribute { border-bottom: 1.5px solid var(--ink); background: var(--ink); color: var(--cream); }
+    .contribute-inner { max-width: var(--max); margin: 0 auto; padding: 3.5rem 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .contribute-hed { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.1; margin-bottom: 1rem; }
+    .contribute-hed em { font-style: italic; }
+    .contribute-body { font-size: 0.9rem; color: rgba(247,244,239,0.65); line-height: 1.75; margin-bottom: 1.75rem; max-width: 420px; }
+    .contribute-steps { display: flex; gap: 2rem; margin-bottom: 2rem; }
+    .contribute-step { display: flex; flex-direction: column; gap: 0.2rem; }
+    .contribute-step-num { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; color: rgba(247,244,239,0.2); line-height: 1; }
+    .contribute-step-label { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,244,239,0.55); }
+    .contribute-btn { display: inline-block; background: var(--red); color: var(--cream); font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 13px 26px; text-decoration: none; transition: opacity 0.15s; }
+    .contribute-btn:hover { opacity: 0.85; }
+    .contribute-card { border: 1px solid rgba(247,244,239,0.12); }
+    .contribute-card-top { padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(247,244,239,0.08); display: flex; align-items: center; gap: 1rem; }
+    .contribute-card-photo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid rgba(247,244,239,0.15); flex-shrink: 0; }
+    .contribute-card-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--cream); }
+    .contribute-card-handle { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,244,239,0.4); margin-top: 2px; }
+    .contribute-card-stats { padding: 0.85rem 1.5rem; border-bottom: 1px solid rgba(247,244,239,0.08); display: flex; gap: 2rem; }
+    .contribute-card-stat { display: flex; flex-direction: column; gap: 2px; }
+    .contribute-card-val { font-family: var(--serif); font-size: 1.4rem; color: var(--cream); line-height: 1; }
+    .contribute-card-lbl { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,244,239,0.35); }
+    .contribute-card-tags { padding: 0.85rem 1.5rem; border-bottom: 1px solid rgba(247,244,239,0.08); display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .contribute-card-tag { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(247,244,239,0.15); padding: 3px 8px; color: rgba(247,244,239,0.5); }
+    .contribute-card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+    .contribute-card-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    .contribute-card-footer { padding: 0.85rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .contribute-card-footer-text { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); }
+    .contribute-card-footer-cta { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.6); border-bottom: 1px solid rgba(247,244,239,0.25); padding-bottom: 1px; }
 
     /* FOOTER */
     footer { background: var(--ink); border-top: 2px solid var(--red); }
-    .footer-inner { max-width: 1400px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; gap: 2rem; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 58px; gap: 2rem; }
     .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
     .footer-logo em { font-style: italic; font-weight: 400; }
     .footer-logo .dot { color: var(--red); }
@@ -328,97 +196,98 @@
     /* RESPONSIVE */
     @media (max-width: 1100px) {
       .hood-grid { grid-template-columns: repeat(3, 1fr); }
-      .hood-grid-card:nth-child(3n) { border-right: none; }
-      .hood-grid-card:nth-child(n+4) { border-top: 1px solid var(--rule); }
-      .three-col { grid-template-columns: 1fr 1px 280px; }
-      .col-divider:last-of-type, .col-right { display: none; }
-      .tips-grid { grid-template-columns: repeat(4, 1fr); }
-      .tips-grid .tip-col:last-child { display: none; }
-      .highlight-grid { grid-template-columns: repeat(2, 1fr); }
-      .highlight-card:nth-child(2n) { border-right: none; }
-      .highlight-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
+      .hood-card { aspect-ratio: 3/4; }
+      .hood-card:nth-child(3n) { border-right: none; }
+      .hood-card:nth-child(n+4) { border-top: 1px solid var(--rule); }
+      .tips-magazine { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .tip-hero { grid-row: auto; grid-column: 1 / -1; border-right: none; border-bottom: 1px solid var(--rule); }
+      .tip-hero-img { aspect-ratio: 16/9; }
+      .contribute-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     }
     @media (max-width: 800px) {
-      .top-nav-inner, .masthead-inner, .editorial-wrap, .cta-wrap { padding-left: 20px; padding-right: 20px; }
-      .manifesto-outer { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 2rem; }
-      .profiles-header { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 0.75rem; }
-      .hood-strip-inner { padding-left: 20px; padding-right: 20px; }
-      .section-label-inner { padding-left: 20px; padding-right: 20px; }
-      .geneva-header { padding-left: 20px; padding-right: 20px; flex-wrap: wrap; gap: 0.5rem; }
-      .profiles-pitch { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr; gap: 0.75rem; }
-      .profiles-grid { padding-left: 20px; padding-right: 20px; grid-template-columns: 1fr 1fr; }
-      .profiles-grid .profile-card:nth-child(2n) { border-right: none; }
-      .profiles-grid .profile-card-ghost { border-right: none; grid-column: 1 / -1; }
-      .profiles-grid .profile-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
+      .top-nav-links li:not(:last-child) { display: none; }
+      .concept-inner { grid-template-columns: 1fr; }
+      .concept-item { border-right: none; border-bottom: 1px solid var(--rule); padding: 1.25rem; }
       .hood-grid { grid-template-columns: repeat(2, 1fr); }
-      .hood-grid-card:nth-child(2n) { border-right: none; }
-      .hood-grid-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
-      .hood-grid-card:nth-child(3n) { border-right: 1px solid var(--rule); }
-      .hood-grid-card:nth-child(4n) { border-right: none; }
-      .planning-strip { grid-template-columns: 1fr; }
-      .planning-link { border-right: none; border-bottom: 1px solid var(--rule); }
-      .planning-link:last-child { border-bottom: none; }
-      .three-col { grid-template-columns: 1fr; }
-      .col-divider { display: none; }
-      .col-main { padding: 20px 0; }
-      .col-mid, .col-right { display: none; }
-      .tips-grid { grid-template-columns: repeat(2, 1fr); }
-      .tips-grid .tip-col:last-child { display: block; }
-      .tip-col:nth-child(2n) { border-right: none; }
-      .tip-col:nth-child(n+3) { border-top: 1px solid var(--rule); }
-      .highlight-grid { grid-template-columns: 1fr 1fr; }
-      .highlight-card:nth-child(2n) { border-right: none; }
-      .highlight-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
-      .cta-row { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
-      .cta-right-row { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
-      .footer-inner { padding: 0 20px; }
+      .hood-card:nth-child(2n) { border-right: none; }
+      .hood-card:nth-child(3n) { border-right: 1px solid var(--rule); }
+      .hood-card:nth-child(n+3) { border-top: 1px solid var(--rule); }
+      .tips-magazine { grid-template-columns: 1fr; }
+      .tip-col-b { border-left: none; border-top: 1px solid var(--rule); }
+      .tip-sm { border-bottom: 1px solid var(--rule); }
+      .quiz-cards { grid-template-columns: 1fr; }
+      .quiz-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .quiz-card:last-child { border-bottom: none; }
+      .hero-content { padding: 2rem; }
       .footer-stats, .footer-note { display: none; }
     }
+    @media (max-width: 600px) {
+      .top-nav-inner { padding: 0 20px; }
+      .hero-dots { right: 20px; }
+      .sec-head, .hood-strip-inner { padding-left: 20px; padding-right: 20px; }
+      .contribute-inner { padding: 2rem 20px; }
+      .footer-inner { padding: 0 20px; }
+    }
   </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HL9EJDL2YS');
-</script>
 </head>
 <body>
 
+<!-- NAV -->
 <div class="top-nav">
   <div class="top-nav-inner">
     <a href="/" class="top-nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
-    <a href="profile-build.html" class="top-nav-cta">Leave a tip</a>
+    <ul class="top-nav-links">
+      <li><a href="geneva.html">Geneva</a></li>
+      <li><a href="profile-dave.html">Dave</a></li>
+      <li><a href="profile-build.html" class="top-nav-cta">Leave a tip</a></li>
+    </ul>
   </div>
 </div>
 
-<div class="masthead">
-  <div class="masthead-top-rule"></div>
-  <div class="masthead-inner">
-    <a href="/" class="masthead-logo">Hood<em>Tip<span class="dot">.</span></em></a>
-    <div class="masthead-tagline-row">
-      <div class="masthead-tagline-rule"></div>
-      <span class="masthead-tagline">Only the good stuff.</span>
-      <div class="masthead-tagline-rule"></div>
+<!-- HERO — rotating tip, full bleed -->
+<div class="hero">
+  <img class="hero-img" id="hero-img" src="baindespaquis-sunset.jpg" alt="HoodTip" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-site-label">HoodTip · Insider tips from people who live there</div>
+    <h1 class="hero-hed" id="hero-hed">Bains des Pâquis. <em>Don't skip it because it's easy to find.</em></h1>
+    <div class="hero-meta">
+      <div class="hero-location" id="hero-location">Swimming <span>·</span> Pâquis <span>·</span> Geneva</div>
+      <a class="hero-read" id="hero-read" href="tip-baindespaquis.html">Read the tip →</a>
     </div>
-    <div class="masthead-stats">
-      <span>70 tips</span>
-      <span class="masthead-stats-sep">·</span>
-      <span>22 cities</span>
-      <span class="masthead-stats-sep">·</span>
-      <span>Know somewhere good?</span>
+  </div>
+  <div class="hero-dots" id="hero-dots"></div>
+</div>
+
+<!-- CONCEPT STRIP -->
+<div class="concept-strip">
+  <div class="concept-inner">
+    <div class="concept-item">
+      <div class="concept-num">01</div>
+      <div class="concept-hed">Real people, <em>real places</em></div>
+      <div class="concept-body">Every tip has a name attached. Not a username, not a star rating — a person who was there and wants you to know about it.</div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-num">02</div>
+      <div class="concept-hed">Positive only.</div>
+      <div class="concept-body">If you didn't love it, don't write about it. HoodTip is the recommendation you'd get from your most well-travelled friend — not a review.</div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-num">03</div>
+      <div class="concept-hed">Your name on it. <em>Your link.</em></div>
+      <div class="concept-body">Write a few lines. Add photos. We turn it into a proper article. Next time someone asks for a rec, you'll have a link.</div>
     </div>
   </div>
 </div>
 
+<!-- NEIGHBOURHOOD STRIP -->
 <div class="hood-strip">
   <div class="hood-strip-inner">
     <a href="carouge.html">Carouge</a>
     <a href="plainpalais.html">Plainpalais</a>
     <a href="saint-gervais.html">Saint-Gervais</a>
-    <a href="nations.html">Nations</a>
     <a href="eaux-vives.html">Eaux-Vives</a>
+    <a href="nations.html">Nations</a>
     <span class="hood-strip-div">·</span>
     <a href="notting-hill.html">Notting Hill</a>
     <a href="tip-karmabread.html">Hampstead</a>
@@ -428,285 +297,166 @@
     <a href="tip-saintamour.html">Lavaux</a>
     <a href="tip-belvedere.html">Wengen</a>
     <a href="tip-lagrandeboucherie.html">New York</a>
+    <a href="tip-xampanyet-barcelona.html">Barcelona</a>
   </div>
 </div>
 
-<!-- ① EDITORIAL — first thing you see -->
+<!-- TIPS MAGAZINE GRID -->
+<div class="tips-section">
+  <div class="sec-head">
+    <span class="sec-label">Good tips</span>
+    <div class="sec-line"></div>
+    <a href="profile-dave.html" class="sec-link">All tips →</a>
+  </div>
+  <div class="tips-magazine">
 
-<div class="editorial-wrap">
-  <div class="three-col">
+    <!-- Hero tip — left, tall -->
+    <a class="tip-hero" href="tip-nagomi.html">
+      <img class="tip-hero-img" src="nagomi-chef.jpg" alt="Nagomi" style="object-position:center 20%;" />
+      <div class="tip-hero-body">
+        <div class="tip-hero-cat">Sushi · Pâquis · Geneva</div>
+        <h2 class="tip-hero-hed">The best sushi in Geneva. <em>You are briefly in Tokyo.</em></h2>
+        <p class="tip-hero-deck">Sit at the bar, order the uni if they have it, drink cold sake. The chef has been doing this a long time. It shows.</p>
+      </div>
+    </a>
 
-    <!-- LEFT COL — two stacked worth-knowing cards -->
-    <div class="col-main">
-      <div class="feature-label">Featured</div>
-
-      <a class="feature-link" id="feature-1" href="tip-swisstrains.html" style="display:block;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--rule);">
-        <div class="feature-img-wrap">
-          <img class="feature-img" id="feature-1-img" src="swiss-train-restaurant-car-white-table-cloth.jpg" alt="Swiss train restaurant car" style="object-position:center 50%;" />
-        </div>
-        <div class="feature-cat" id="feature-1-cat">Travel &middot; Switzerland</div>
-        <h2 class="feature-hed" id="feature-1-hed" style="font-size:clamp(1.3rem,2.2vw,1.8rem);">Get a regular ticket. <em>Upgrade yourself to the restaurant car.</em></h2>
-        <p class="feature-deck" id="feature-1-deck">The Swiss train restaurant car is one of the great underused pleasures of living here. White tablecloth, Alps outside, cold beer. Nobody knows about it.</p>
-        <div class="feature-meta" id="feature-1-meta"><span>Swiss Federal Railways</span><span class="feature-meta-dot"></span><span>Any intercity train</span></div>
+    <!-- Right column top -->
+    <div>
+      <a class="tip-sm" href="tip-labarge.html">
+        <div class="tip-sm-img-wrap"><img class="tip-sm-img" src="lebarge-wide-swan.jpg" alt="La Barge" style="object-position:center 50%;" /></div>
+        <div class="tip-sm-cat">Bar · Swimming · Saint-Gervais · Geneva</div>
+        <div class="tip-sm-hed">Jump in the Rhône. <em>Drink a cold beer.</em></div>
+        <div class="tip-sm-copy">Leave work early. You're at La Barge in 15 minutes. That's it. Pure bliss.</div>
       </a>
-
-      <a class="feature-link" id="feature-2" href="tip-arnavutkoy.html" style="display:block;">
-        <div class="feature-img-wrap">
-          <img class="feature-img" id="feature-2-img" src="photo-arnavutkoy-restaurant.jpg" alt="Arnavutköy Restaurant" style="object-position:center 50%;" />
-        </div>
-        <div class="feature-cat" id="feature-2-cat">Restaurant &middot; Yeniköy &middot; Istanbul</div>
-        <h2 class="feature-hed" id="feature-2-hed" style="font-size:clamp(1.3rem,2.2vw,1.8rem);">Raki-balık on the Bosphorus. <em>The holy grail.</em></h2>
-        <p class="feature-deck" id="feature-2-deck">Sit outside, order the salad first, drink raki slowly. One of those meals that makes you understand why people love Istanbul.</p>
-        <div class="feature-meta" id="feature-2-meta"><span>Arnavutköy Restaurant</span><span class="feature-meta-dot"></span><span>Yeniköy &middot; Istanbul</span></div>
+      <a class="tip-sm" href="tip-xampanyet-barcelona.html">
+        <div class="tip-sm-img-wrap"><img class="tip-sm-img" src="Xampanyet-cava.jpg" alt="El Xampanyet" style="object-position:center 40%;" /></div>
+        <div class="tip-sm-cat">Bar · El Born · Barcelona</div>
+        <div class="tip-sm-hed">House cava, one-litre bottle. <em>Anchovies in oil.</em></div>
+        <div class="tip-sm-copy">Stand at the bar. This is what you came for.</div>
       </a>
     </div>
 
-    <div class="col-divider"></div>
-
-    <!-- IN DEPTH — unchanged, photos already on all three -->
-    <div class="col-mid">
-      <div class="col-mid-label">In depth</div>
-      <a class="indepth-link" href="tip-nagomi.html">
-        <div class="indepth-img"><img src="nagomi-chef.jpg" alt="Nagomi" style="object-position:center 20%;" /></div>
-        <div class="indepth-cat">Sushi &middot; Pâquis &middot; Geneva</div>
-        <h2 class="indepth-hed">The best sushi in Geneva. <em>You are briefly in Tokyo.</em></h2>
-        <p class="indepth-body">Sit at the bar, order the uni if they have it, drink cold sake. The chef has been doing this a long time. It shows.</p>
-        <span class="indepth-cta">Read the full tip &rarr;</span>
+    <!-- Right column bottom -->
+    <div class="tip-col-b">
+      <a class="tip-sm" href="tip-belvedere.html">
+        <div class="tip-sm-img-wrap"><img class="tip-sm-img" src="grand-belvedere-spa-outside.jpg" alt="Belvedere" style="object-position:center 40%;" /></div>
+        <div class="tip-sm-cat">Hotel · Wengen · Switzerland</div>
+        <div class="tip-sm-hed">Go to Wengen. <em>Stay at the Belvedere.</em></div>
+        <div class="tip-sm-copy">Car-free village, cog railway, outdoor pool in the snow.</div>
       </a>
-      <div class="indepth-second">
-        <a class="indepth-link" href="tip-jlc.html">
-          <div class="indepth-img"><img src="jlc_river.jpg" alt="Jaeger-LeCoultre" style="object-position:center 40%;" /></div>
-          <div class="indepth-cat">Watch &middot; Rive &middot; Geneva</div>
-          <h3 class="indepth-hed" style="font-size:1.05rem;">The luxury watch you can <em>actually buy</em> in Geneva</h3>
-          <p class="indepth-body">Jaeger-LeCoultre on Rue du Rhône. Walk in, buy a watch, leave with it. The watchmaker's watchmaker.</p>
-          <span class="indepth-cta">Read the tip &rarr;</span>
-        </a>
-      </div>
-      <div class="indepth-second">
-        <a class="indepth-link" href="tip-paulhenri.html">
-          <div class="indepth-img"><img src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler" style="object-position:center 60%;" /></div>
-          <div class="indepth-cat">Wine &middot; Carouge &middot; Geneva</div>
-          <h3 class="indepth-hed" style="font-size:1.05rem;">The best wine in Geneva, <em>maybe the world</em></h3>
-          <p class="indepth-body">Paul-Henri Soler at the Saturday market. CHF 17. Free tastings. Get there before noon.</p>
-          <span class="indepth-cta">Read the tip &rarr;</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="col-divider"></div>
-
-    <div class="col-right">
-      <div class="col-right-label">Contributors</div>
-      <a href="profile-dave.html" class="profile-spot">
-        <div class="profile-spot-top">
-          <img class="profile-spot-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
-          <div>
-            <div class="profile-spot-name">Dave</div>
-            <div class="profile-spot-handle">@dave · Geneva</div>
-          </div>
-        </div>
-        <div class="profile-spot-bio">Meeting people. Making videos. Building HoodTip.</div>
-        <div class="profile-spot-stats">
-          <div class="profile-spot-stat"><span class="profile-spot-val">70</span><span class="profile-spot-lbl">Tips</span></div>
-          <div class="profile-spot-stat"><span class="profile-spot-val">22</span><span class="profile-spot-lbl">Cities</span></div>
-        </div>
-        <div class="profile-spot-tags">
-          <span class="profile-spot-tag">Natural wine</span>
-          <span class="profile-spot-tag">Proper pubs</span>
-          <span class="profile-spot-tag">Waterfront bars</span>
-          <span class="profile-spot-tag">Good fish</span>
-        </div>
-        <span class="profile-spot-cta">View taste profile →</span>
-      </a>
-      <div class="profile-spot-divider"></div>
-      <a href="profile-foodfiend.html" class="profile-spot">
-        <div class="profile-spot-top">
-          <div style="width:48px;height:48px;border-radius:50%;background:var(--rule);border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.3rem;color:var(--muted);flex-shrink:0;">C</div>
-          <div>
-            <div class="profile-spot-name">Claude</div>
-            <div class="profile-spot-handle">@foodfiend · Tel Aviv</div>
-          </div>
-        </div>
-        <div class="profile-spot-bio">If it contains coriander/cilantro it's an automatic one star and that's just for the look.</div>
-        <div class="profile-spot-stats">
-          <div class="profile-spot-stat"><span class="profile-spot-val">1</span><span class="profile-spot-lbl">Tips</span></div>
-          <div class="profile-spot-stat"><span class="profile-spot-val">1</span><span class="profile-spot-lbl">City</span></div>
-        </div>
-        <div class="profile-spot-tags">
-          <span class="profile-spot-tag">Good fish</span>
-          <span class="profile-spot-tag">Saturday markets</span>
-          <span class="profile-spot-tag">Long lunches</span>
-          <span class="profile-spot-tag">Street food</span>
-        </div>
-        <span class="profile-spot-cta">View taste profile →</span>
-      </a>
-      <div class="profile-spot-divider"></div>
-      <a href="profile-build.html" class="profile-spot-ghost-cta">
-        <div class="profile-spot-ghost-avatar"><span>+</span></div>
-        <div class="profile-spot-ghost-hed">Write about stuff you liked.<br><em>We'll do the rest.</em></div>
-        <div class="profile-spot-ghost-btn">Build your profile →</div>
+      <a class="tip-sm" href="tip-arnavutkoy.html">
+        <div class="tip-sm-img-wrap"><img class="tip-sm-img" src="photo-arnavutkoy-restaurant.jpg" alt="Arnavutköy" style="object-position:center 50%;" /></div>
+        <div class="tip-sm-cat">Restaurant · Yeniköy · Istanbul</div>
+        <div class="tip-sm-hed">Raki-balık on the Bosphorus. <em>The holy grail.</em></div>
+        <div class="tip-sm-copy">Sit outside, order the salad first, drink raki slowly.</div>
       </a>
     </div>
 
   </div>
 </div>
 
-<!-- ③ HIGHLIGHT STRIP — 4 tips, editorial headlines -->
-<div class="section-label-inner">
-  <span class="section-label-text">Worth knowing</span>
-  <div class="section-label-line"></div>
-</div>
-<div class="highlight-strip">
-  <div class="highlight-grid">
-    <a class="highlight-card" href="tip-victoriahall.html">
-      <div class="highlight-img-wrap"><img class="highlight-img" src="victoria-hall-wide.jpg" alt="Victoria Hall" style="object-position:center 35%;" /></div>
-      <div class="highlight-body">
-        <div class="highlight-cat">Concert Hall &middot; Plainpalais &middot; Geneva</div>
-        <div class="highlight-hed">Walk in and <em>the ceiling will stop you</em></div>
-        <div class="highlight-hood">Victoria Hall</div>
-      </div>
-    </a>
-    <a class="highlight-card" href="tip-baindespaquis.html">
-      <div class="highlight-img-wrap"><img class="highlight-img" src="baindespaquis-sunset.jpg" alt="Bains des Pâquis" style="object-position:center 40%;" /></div>
-      <div class="highlight-body">
-        <div class="highlight-cat">Swimming &middot; Pâquis &middot; Geneva</div>
-        <div class="highlight-hed">Don't skip it <em>because it's easy to find</em></div>
-        <div class="highlight-hood">Bains des Pâquis</div>
-      </div>
-    </a>
-    <a class="highlight-card" href="tip-saintamour.html">
-      <div class="highlight-img-wrap"><img class="highlight-img" src="saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" style="object-position:center 50%;" /></div>
-      <div class="highlight-body">
-        <div class="highlight-cat">Wine &middot; Lavaux &middot; Vaud</div>
-        <div class="highlight-hed">The best place to actually sit in Lavaux <em>and drink wine</em></div>
-        <div class="highlight-hood">Domaine Saint-Amour</div>
-      </div>
-    </a>
-    <a class="highlight-card" href="tip-pero.html">
-      <div class="highlight-img-wrap"><img class="highlight-img" src="IMG_7505.JPG" alt="Pero" style="object-position:center 50%;" /></div>
-      <div class="highlight-body">
-        <div class="highlight-cat">Bar &middot; Yeniköy &middot; Istanbul</div>
-        <div class="highlight-hed">Arrive for one drink. <em>Leave hours later.</em></div>
-        <div class="highlight-hood">Pero</div>
-      </div>
-    </a>
-  </div>
-</div>
-
-<!-- ④ NEIGHBOURHOODS -->
-<div class="geneva-block">
-  <div class="geneva-header">
-    <div class="geneva-header-left">
-      <span class="geneva-title">Neighbourhoods</span>
-      <span class="geneva-subtitle">16 neighbourhoods &middot; 22 cities</span>
-    </div>
-    <div class="geneva-header-links">
-      <a href="geneva.html" class="geneva-header-link primary">Geneva city guide &rarr;</a>
-    </div>
+<!-- NEIGHBOURHOODS -->
+<div class="hoods-section">
+  <div class="sec-head">
+    <span class="sec-label">Neighbourhoods</span>
+    <div class="sec-line"></div>
+    <a href="geneva.html" class="sec-link">Geneva city guide →</a>
   </div>
   <div class="hood-grid">
-    <a class="hood-grid-card" href="carouge.html">
+    <a class="hood-card" href="carouge.html">
       <img src="carouge-cover.jpg" alt="Carouge" style="object-position:center 55%;" />
-      <div class="hood-grid-overlay"><div class="hood-grid-name">Carouge</div><div class="hood-grid-count">Geneva · 4 tips</div></div>
+      <div class="hood-card-overlay"><div class="hood-card-name">Carouge</div><div class="hood-card-city">Geneva · 4 tips</div></div>
     </a>
-    <a class="hood-grid-card" href="saint-gervais.html">
+    <a class="hood-card" href="saint-gervais.html">
       <img src="saintgervais-hero-3.jpg" alt="Saint-Gervais" style="object-position:center 40%;" />
-      <div class="hood-grid-overlay"><div class="hood-grid-name">Saint-Gervais</div><div class="hood-grid-count">Geneva · 5 tips</div></div>
+      <div class="hood-card-overlay"><div class="hood-card-name">Saint-Gervais</div><div class="hood-card-city">Geneva · 5 tips</div></div>
     </a>
-    <a class="hood-grid-card" href="plainpalais.html">
+    <a class="hood-card" href="plainpalais.html">
       <img src="plainpalais-hero-3.jpg" alt="Plainpalais" style="object-position:center 40%;" />
-      <div class="hood-grid-overlay"><div class="hood-grid-name">Plainpalais</div><div class="hood-grid-count">Geneva · 4 tips</div></div>
+      <div class="hood-card-overlay"><div class="hood-card-name">Plainpalais</div><div class="hood-card-city">Geneva · 4 tips</div></div>
     </a>
-    <a class="hood-grid-card" href="notting-hill.html">
+    <a class="hood-card" href="notting-hill.html">
       <img src="IMG_6278.JPG" alt="Notting Hill" style="object-position:center 55%;" />
-      <div class="hood-grid-overlay"><div class="hood-grid-name">Notting Hill</div><div class="hood-grid-count">London · 3 tips</div></div>
+      <div class="hood-card-overlay"><div class="hood-card-name">Notting Hill</div><div class="hood-card-city">London · 3 tips</div></div>
     </a>
-    <a class="hood-grid-card" href="yenikoy.html">
+    <a class="hood-card" href="yenikoy.html">
       <img src="photo-arnavutkoy-restaurant.jpg" alt="Yeniköy" style="object-position:center 50%;" />
-      <div class="hood-grid-overlay"><div class="hood-grid-name">Yeniköy</div><div class="hood-grid-count">Istanbul · 3 tips</div></div>
+      <div class="hood-card-overlay"><div class="hood-card-name">Yeniköy</div><div class="hood-card-city">Istanbul · 3 tips</div></div>
     </a>
-    <a class="hood-grid-card" href="nations.html">
-      <img src="Nations-chair.jpg" alt="Nations" style="object-position:center 35%;" />
-      <div class="hood-grid-overlay"><div class="hood-grid-name">Nations</div><div class="hood-grid-count">Geneva · 3 tips</div></div>
-    </a>
-  </div>
-</div>
-
-<!-- ⑤ RECENTLY ADDED -->
-<div class="tips-section">
-  <div class="section-label-inner" style="padding-left:0;padding-right:0;">
-    <span class="section-label-text">Recently added</span>
-    <div class="section-label-line"></div>
-    <a href="profile-dave.html" class="section-label-link">All tips &rarr;</a>
-  </div>
-  <div class="tips-grid">
-    <a class="tip-col" href="tip-xampanyet-barcelona.html">
-      <div class="tip-col-img-wrap"><img class="tip-col-img" src="Xampanyet-cava.jpg" alt="El Xampanyet Barcelona" style="object-position:center 40%;" /></div>
-      <div class="tip-col-body"><div class="tip-col-cat">Bar · Cava · El Born · Barcelona</div><div class="tip-col-name">El Xampanyet</div><div class="tip-col-hood">El Born · Barcelona</div><div class="tip-col-copy">House cava in a one-litre bottle. Anchovies in olive oil. Stand at the bar. This is what you came for.</div></div>
-    </a>
-    <a class="tip-col" href="tip-pano-photography.html">
-      <div class="tip-col-img-wrap"><img class="tip-col-img" src="pano-photography-london-long-street.jpg" alt="iPhone panorama photography London W11" style="object-position:center 50%;" /></div>
-      <div class="tip-col-body"><div class="tip-col-cat">Photography · iPhone · London</div><div class="tip-col-name">iPhone Panorama, The Wrong Way</div><div class="tip-col-hood">W11 · Notting Hill</div><div class="tip-col-copy">Move the phone wrong and the camera bends reality. No app, no editing.</div></div>
-    </a>
-    <a class="tip-col" href="tip-belvedere.html">
-      <div class="tip-col-img-wrap"><img class="tip-col-img" src="grand-belvedere-spa-outside.jpg" alt="Grand Hotel Belvedere Wengen" style="object-position:center 40%;" /></div>
-      <div class="tip-col-body"><div class="tip-col-cat">Hotel · Wengen · Switzerland</div><div class="tip-col-name">Grand Hotel Belvedere</div><div class="tip-col-hood">Wengen · Bernese Oberland</div><div class="tip-col-copy">Go to Wengen. Stay at the Belvedere. Stop searching.</div></div>
-    </a>
-    <a class="tip-col" href="tip-ohmartine-eauxvives.html">
-      <div class="tip-col-img-wrap"><img class="tip-col-img" src="ohmartine-eauxvives-exterior.jpg" alt="Oh Martine! Eaux-Vives Geneva" style="object-position:center 50%;" /></div>
-      <div class="tip-col-body"><div class="tip-col-cat">Coffee · Café · Geneva</div><div class="tip-col-name">Oh Martine!</div><div class="tip-col-hood">Eaux-Vives · Geneva</div><div class="tip-col-copy">Specialty coffee, solid cortado, great hot chocolate. The kind of café Geneva needed.</div></div>
-    </a>
-    <a class="tip-col" href="tip-artmuseum-geneva.html">
-      <div class="tip-col-img-wrap"><img class="tip-col-img" src="artmuseum-geneva-giant-ball.jpg" alt="Musée d'Art et d'Histoire Geneva" style="object-position:center 50%;" /></div>
-      <div class="tip-col-body"><div class="tip-col-cat">Museum · Free · Geneva</div><div class="tip-col-name">Musée d'Art et d'Histoire</div><div class="tip-col-hood">Vieille Ville · Geneva</div><div class="tip-col-copy">Free. A Picasso, a Chagall, a giant cow, a bubble you can sit inside, and a beautiful café in the basement.</div></div>
+    <a class="hood-card" href="eaux-vives.html">
+      <img src="parklagrange-1.jpg" alt="Eaux-Vives" style="object-position:center 50%;" />
+      <div class="hood-card-overlay"><div class="hood-card-name">Eaux-Vives</div><div class="hood-card-city">Geneva · 3 tips</div></div>
     </a>
   </div>
 </div>
 
-<!-- MANIFESTO BAND -->
-<div class="manifesto">
-  <div class="manifesto-outer">
-    <div class="manifesto-left">
-      <div class="manifesto-eyebrow">The recommendation layer</div>
-      <h2 class="manifesto-headline">Your permanent record of<br><em>the good stuff.</em></h2>
-      <p class="manifesto-sub">Write a few lines about a place you love. Add some photos. We turn it into a proper article with your name on it. Next time someone asks for a rec, you'll have a link.</p>
-      <a href="profile-build.html" class="manifesto-cta">Build your profile →</a>
-      <div class="manifesto-steps">
-        <div class="manifesto-step"><span class="manifesto-step-num">1</span> Write a few lines</div>
-        <div class="manifesto-step"><span class="manifesto-step-num">2</span> Add photos</div>
-        <div class="manifesto-step"><span class="manifesto-step-num">3</span> Get your link</div>
-      </div>
+<!-- QUIZ STRIP -->
+<div class="quiz-strip">
+  <div class="quiz-strip-inner">
+    <div class="sec-head">
+      <span class="sec-label">Find your neighbourhood</span>
+      <div class="sec-line"></div>
     </div>
-    <a href="profile-dave.html" class="manifesto-card">
-      <div class="manifesto-card-top">
-        <img class="manifesto-card-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
+    <div class="quiz-cards">
+      <a class="quiz-card" href="quiz-geneva.html">
+        <div class="quiz-card-city">Quiz · Geneva</div>
+        <div class="quiz-card-hed">Which Geneva neighbourhood<br><em>do you belong in?</em></div>
+        <div class="quiz-card-sub">Carouge or Champel? Pâquis or Vieille Ville? Seven questions across seven neighbourhoods.</div>
+        <span class="quiz-card-cta">Take the quiz →</span>
+      </a>
+      <a class="quiz-card" href="quiz-london.html">
+        <div class="quiz-card-city">Quiz · London</div>
+        <div class="quiz-card-hed">Which London neighbourhood<br><em>do you belong in?</em></div>
+        <div class="quiz-card-sub">Notting Hill or Peckham? Hampstead or Shoreditch? Find out where you fit.</div>
+        <span class="quiz-card-cta">Take the quiz →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTRIBUTE BAND -->
+<div class="contribute">
+  <div class="contribute-inner">
+    <div>
+      <h2 class="contribute-hed">Know somewhere good?<br><em>Put your name on it.</em></h2>
+      <p class="contribute-body">Write a few lines about a place you love. Add some photos. We turn it into a proper article with your name on it. Next time someone asks for a recommendation, you'll have a link.</p>
+      <div class="contribute-steps">
+        <div class="contribute-step"><div class="contribute-step-num">1</div><div class="contribute-step-label">Write a few lines</div></div>
+        <div class="contribute-step"><div class="contribute-step-num">2</div><div class="contribute-step-label">Add photos</div></div>
+        <div class="contribute-step"><div class="contribute-step-num">3</div><div class="contribute-step-label">Get your link</div></div>
+      </div>
+      <a href="profile-build.html" class="contribute-btn">Build your profile →</a>
+    </div>
+    <a href="profile-dave.html" class="contribute-card">
+      <div class="contribute-card-top">
+        <img class="contribute-card-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
         <div>
-          <div class="manifesto-card-name">Dave</div>
-          <div class="manifesto-card-handle">@dave · Geneva · HoodTip contributor</div>
+          <div class="contribute-card-name">Dave</div>
+          <div class="contribute-card-handle">@dave · Geneva · HoodTip contributor</div>
         </div>
       </div>
-      <div class="manifesto-card-stats">
-        <div class="manifesto-card-stat"><span class="manifesto-card-val">70</span><span class="manifesto-card-lbl">Tips</span></div>
-        <div class="manifesto-card-stat"><span class="manifesto-card-val">22</span><span class="manifesto-card-lbl">Cities</span></div>
-        <div class="manifesto-card-stat"><span class="manifesto-card-val">16</span><span class="manifesto-card-lbl">Neighbourhoods</span></div>
+      <div class="contribute-card-stats">
+        <div class="contribute-card-stat"><span class="contribute-card-val">70</span><span class="contribute-card-lbl">Tips</span></div>
+        <div class="contribute-card-stat"><span class="contribute-card-val">22</span><span class="contribute-card-lbl">Cities</span></div>
+        <div class="contribute-card-stat"><span class="contribute-card-val">16</span><span class="contribute-card-lbl">Neighbourhoods</span></div>
       </div>
-      <div class="manifesto-card-tags">
-        <span class="manifesto-card-tag">Natural wine</span>
-        <span class="manifesto-card-tag">Proper pubs</span>
-        <span class="manifesto-card-tag">Waterfront bars</span>
-        <span class="manifesto-card-tag">Good fish</span>
-        <span class="manifesto-card-tag">Saturday markets</span>
-        <span class="manifesto-card-tag">Hotels worth it</span>
+      <div class="contribute-card-tags">
+        <span class="contribute-card-tag">Natural wine</span>
+        <span class="contribute-card-tag">Proper pubs</span>
+        <span class="contribute-card-tag">Waterfront bars</span>
+        <span class="contribute-card-tag">Good fish</span>
+        <span class="contribute-card-tag">Saturday markets</span>
+        <span class="contribute-card-tag">Hotels worth it</span>
       </div>
-      <div class="manifesto-card-grid">
-        <img src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler wine" />
-        <img src="nagomi-chef.jpg" alt="Nagomi sushi" />
+      <div class="contribute-card-grid">
+        <img src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler" />
+        <img src="nagomi-chef.jpg" alt="Nagomi" />
         <img src="baindespaquis-sunset.jpg" alt="Bains des Pâquis" />
-        <img src="grand-belvedere-spa-outside.jpg" alt="Belvedere spa" />
+        <img src="grand-belvedere-spa-outside.jpg" alt="Belvedere" />
       </div>
-      <div class="manifesto-card-footer">
-        <span class="manifesto-card-footer-text">This could be your profile</span>
-        <span class="manifesto-card-footer-cta">See how it works →</span>
+      <div class="contribute-card-footer">
+        <span class="contribute-card-footer-text">This could be your profile</span>
+        <span class="contribute-card-footer-cta">See how it works →</span>
       </div>
     </a>
   </div>
@@ -716,14 +466,15 @@
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
     <div class="footer-stats">
-      <span class="footer-stat">70 tips</span><span class="footer-sep">&middot;</span>
-      <span class="footer-stat">16 neighbourhoods</span><span class="footer-sep">&middot;</span>
+      <span class="footer-stat">70 tips</span><span class="footer-sep">·</span>
+      <span class="footer-stat">16 neighbourhoods</span><span class="footer-sep">·</span>
       <span class="footer-stat">22 cities</span>
     </div>
     <div class="footer-note">If you didn't like it, don't waste your time writing about it.</div>
   </div>
 </footer>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="tipModal">
   <div class="modal">
     <div class="modal-header"><h4>Leave a HoodTip</h4><button class="modal-close" onclick="closeModal()">&#x2715;</button></div>
@@ -753,49 +504,49 @@
   document.getElementById('tipModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
   async function submitTip(e) {
     e.preventDefault();
-    const btn=document.getElementById('submitBtn'),err=document.getElementById('formError');
+    var btn=document.getElementById('submitBtn'),err=document.getElementById('formError');
     err.style.display='none'; btn.textContent='Sending…'; btn.disabled=true;
-    const data={place:document.getElementById('f-place').value,neighbourhood:document.getElementById('f-hood').value,email:document.getElementById('f-email').value,category:document.getElementById('f-cat').value,tip:document.getElementById('f-tip').value,photos:document.getElementById('f-photos').value};
+    var data={place:document.getElementById('f-place').value,neighbourhood:document.getElementById('f-hood').value,email:document.getElementById('f-email').value,category:document.getElementById('f-cat').value,tip:document.getElementById('f-tip').value,photos:document.getElementById('f-photos').value};
     try {
-      const res=await fetch('https://formspree.io/f/mdawyane',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+      var res=await fetch('https://formspree.io/f/mdawyane',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
       if(res.ok){document.getElementById('modalForm').style.display='none';document.getElementById('modalSuccess').style.display='flex';document.getElementById('modalSuccess').style.flexDirection='column';document.getElementById('modalSuccess').style.alignItems='center';}
       else throw new Error('bad');
-    } catch {err.style.display='block';btn.textContent='Submit tip';btn.disabled=false;}
+    } catch(e){err.style.display='block';btn.textContent='Submit tip';btn.disabled=false;}
   }
 </script>
 <script>
-// Feature shuffle — rotates editorial picks on every page load
-var features = [
-  { url:'tip-swisstrains.html', img:'swiss-train-restaurant-car-white-table-cloth.jpg', pos:'center 50%', cat:'Travel · Switzerland', hed:'Get a regular ticket. <em>Upgrade yourself to the restaurant car.</em>', deck:'The Swiss train restaurant car is one of the great underused pleasures of living here. White tablecloth, Alps outside, cold beer.', meta:'Swiss Federal Railways · Any intercity train' },
-  { url:'tip-baindespaquis.html', img:'baindespaquis-sunset.jpg', pos:'center 40%', cat:'Swimming · Pâquis · Geneva', hed:'Bains des Pâquis. <em>70s vibes on Lac Léman.</em>', deck:'Cold rosé on the jetty, jump off the board, Alps right there. Geneva institution since 1932.', meta:'Bains des Pâquis · Quai du Mont-Blanc 30' },
-  { url:'tip-belvedere.html', img:'grand-belvedere-spa-outside.jpg', pos:'center 40%', cat:'Hotel · Wengen · Switzerland', hed:'Go to Wengen. Stay at the Belvedere. <em>Stop searching.</em>', deck:'Outdoor pool in the snow. Reach it by cog railway. The wagyu bresaola will stop you cold.', meta:'Grand Hotel Belvedere · Wengen' },
-  { url:'tip-artmuseum-geneva.html', img:'artmuseum-geneva-giant-ball.jpg', pos:'center 50%', cat:'Museum · Free · Geneva', hed:'Free. A Picasso, a Chagall, <em>and a giant cow.</em>', deck:'The Musée d\'Art et d\'Histoire is free, open to everyone, and has a beautiful café in the basement. Most people walk past it.', meta:'Musée d\'Art et d\'Histoire · Rue Charles-Galland 2' },
-  { url:'tip-saintamour.html', img:'saintamour-lavaux-lake.jpg', pos:'center 50%', cat:'Wine · Lavaux · Vaud', hed:'The best place to actually sit in Lavaux <em>and drink wine.</em>', deck:'Leave cash, take a bottle. The honour system. The patio looks straight down to the lake with the Alps across the water.', meta:'Domaine Saint-Amour · Lavaux' },
-  { url:'tip-arnavutkoy.html', img:'photo-arnavutkoy-restaurant.jpg', pos:'center 50%', cat:'Restaurant · Yeniköy · Istanbul', hed:'Raki-balık on the Bosphorus. <em>The holy grail.</em>', deck:'Sit outside, order the salad first, drink raki slowly. One of those meals that makes you understand why people love Istanbul.', meta:'Arnavutköy Restaurant · Yeniköy' }
+// Hero rotation
+var heroes = [
+  { img:'baindespaquis-sunset.jpg', pos:'center 40%', hed:'Bains des Pâquis. <em>Don\'t skip it because it\'s easy to find.</em>', loc:'Swimming · Pâquis · Geneva', url:'tip-baindespaquis.html' },
+  { img:'photo-arnavutkoy-restaurant.jpg', pos:'center 50%', hed:'Raki-balık on the Bosphorus. <em>The holy grail.</em>', loc:'Restaurant · Yeniköy · Istanbul', url:'tip-arnavutkoy.html' },
+  { img:'grand-belvedere-spa-outside.jpg', pos:'center 40%', hed:'Go to Wengen. Stay at the Belvedere. <em>Stop searching.</em>', loc:'Hotel · Wengen · Switzerland', url:'tip-belvedere.html' },
+  { img:'saintamour-lavaux-lake.jpg', pos:'center 50%', hed:'The best place to sit in Lavaux <em>and drink wine.</em>', loc:'Wine · Lavaux · Vaud', url:'tip-saintamour.html' },
+  { img:'carouge-cover.jpg', pos:'center 55%', hed:'Saturday market in Carouge. <em>Arrive hungry.</em>', loc:'Market · Carouge · Geneva', url:'carouge.html' }
 ];
-
-function shuffle(arr) {
-  for (var i = arr.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
-  }
-  return arr;
-}
-
-var picked = shuffle(features.slice()).slice(0, 2);
-
-['1','2'].forEach(function(n, i) {
-  var f = picked[i];
-  var a = document.getElementById('feature-' + n);
-  if (!a) return;
-  a.href = f.url;
-  document.getElementById('feature-' + n + '-img').src = f.img;
-  document.getElementById('feature-' + n + '-img').style.objectPosition = f.pos;
-  document.getElementById('feature-' + n + '-cat').textContent = f.cat;
-  document.getElementById('feature-' + n + '-hed').innerHTML = f.hed;
-  a.querySelector('.feature-deck').textContent = f.deck;
-  document.getElementById('feature-' + n + '-meta').innerHTML = f.meta;
+var current = 0;
+var dotsEl = document.getElementById('hero-dots');
+heroes.forEach(function(h, i) {
+  var d = document.createElement('button');
+  d.className = 'hero-dot' + (i === 0 ? ' active' : '');
+  d.onclick = function() { setHero(i); };
+  dotsEl.appendChild(d);
 });
+function setHero(i) {
+  current = i;
+  var h = heroes[i];
+  var img = document.getElementById('hero-img');
+  img.style.opacity = '0';
+  setTimeout(function() {
+    img.src = h.img;
+    img.style.objectPosition = h.pos;
+    document.getElementById('hero-hed').innerHTML = h.hed;
+    document.getElementById('hero-location').innerHTML = h.loc.replace(/·/g, '<span>·</span>');
+    document.getElementById('hero-read').href = h.url;
+    img.style.opacity = '1';
+  }, 300);
+  document.querySelectorAll('.hero-dot').forEach(function(d, j) { d.classList.toggle('active', j === i); });
+}
+setInterval(function() { setHero((current + 1) % heroes.length); }, 6000);
 </script>
 </body>
 </html>
