@@ -4,80 +4,76 @@
   <!-- Core pages -->
   <url><loc>https://hoodtip.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://hoodtip.com/geneva.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/where-to-stay-geneva.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://hoodtip.com/profile-dave.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hoodtip.com/profile-foodfiend.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hoodtip.com/profile-build.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hoodtip.com/profile-foodfiend.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/profile-build.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- Geneva neighbourhoods -->
-  <url><loc>https://hoodtip.com/carouge.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hoodtip.com/plainpalais.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hoodtip.com/saint-gervais.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hoodtip.com/nations.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hoodtip.com/eaux-vives.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hoodtip.com/paquis.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hoodtip.com/cornavin.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Quizzes -->
+  <url><loc>https://hoodtip.com/quiz-geneva.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hoodtip.com/quiz-london.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- London neighbourhoods -->
-  <url><loc>https://hoodtip.com/notting-hill.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Geneva neighbourhood guides -->
+  <url><loc>https://hoodtip.com/carouge.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hoodtip.com/plainpalais.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hoodtip.com/saint-gervais.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hoodtip.com/eaux-vives.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hoodtip.com/nations.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/paquis.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/cornavin.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
-  <!-- Istanbul neighbourhoods -->
-  <url><loc>https://hoodtip.com/yenikoy.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- London neighbourhood guides -->
+  <url><loc>https://hoodtip.com/notting-hill.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hoodtip.com/london.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Istanbul neighbourhood guides -->
+  <url><loc>https://hoodtip.com/yenikoy.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/istanbul.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
   <!-- Geneva tips -->
-  <url><loc>https://hoodtip.com/tip-jlc.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-nagomi.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-paulhenri.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-labarge.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-baindespaquis.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-bongojoe.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-victoriahall.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-papabou.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-pignata.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-chou.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-ottolenghi.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-bibliotheque.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-manor.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-enfaim.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-tanuki.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-pero.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-ohmartine-eauxvives.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-artmuseum-geneva.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://hoodtip.com/tip-bongojoe.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-labarge.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-nagomi.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-paulhenri.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-baindespaquis.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-victoriahall.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-enfaim.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-manor.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-mulligans.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-papabou.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-tanuki.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-pignata.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-parklagrange.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-galerie123.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-chou.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-sagano.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-merigonde.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-empanadas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-ottolenghi.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-bijougregoire.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-bibliotheque.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-samourai.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-artmuseum-geneva.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-ohmartine-eauxvives.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-jlc.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Switzerland tips -->
-  <url><loc>https://hoodtip.com/tip-belvedere.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-saintamour.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-swisstrains.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-thecow.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-rubymimi-zurich.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-kunsthalle-bern.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://hoodtip.com/tip-belvedere.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-swisstrains.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-saintamour.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-rubymimi-zurich.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- London tips -->
-  <url><loc>https://hoodtip.com/tip-mulligans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-electriccinema.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-rubyzoe.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-karmabread.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-
-  <!-- Paris tips -->
-  <url><loc>https://hoodtip.com/tip-leverrevole.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-lagrandeboucherie.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://hoodtip.com/tip-karmabread.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-pano-photography.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Istanbul tips -->
-  <url><loc>https://hoodtip.com/tip-arnavutkoy.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-karakoy.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://hoodtip.com/tip-arnavutkoy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hoodtip.com/tip-pero.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- Athens tips -->
-  <url><loc>https://hoodtip.com/tip-cinema-riviera-athens.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <!-- New York tips -->
+  <url><loc>https://hoodtip.com/tip-lagrandeboucherie.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- Tel Aviv tips -->
-  <url><loc>https://hoodtip.com/tip-claro.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-
-  <!-- Africa tips -->
-  <url><loc>https://hoodtip.com/tip-soultane-nouakchott.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-oceanik.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hoodtip.com/tip-latitude-15-lusaka.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-
-  <!-- Serbia tips -->
-  <url><loc>https://hoodtip.com/tip-bates-subotica.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <!-- Barcelona tips -->
+  <url><loc>https://hoodtip.com/tip-xampanyet-barcelona.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
 </urlset>
