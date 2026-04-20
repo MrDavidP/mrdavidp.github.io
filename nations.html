@@ -3,25 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nations — Geneva · HoodTip</title>
-  <!-- OG / SOCIAL META -->
+  <title>Nations Geneva — Food, Tips & UN Area Guide · HoodTip</title>
+
+  <!-- SEO META -->
+  <meta name="description" content="Nations Geneva neighborhood guide — where to eat near the UN, best restaurants, and local tips. From Bolivian empanadas to fresh sushi takeaway." />
+  <meta name="keywords" content="Nations Geneva, UN area Geneva, where to eat Nations, food near United Nations, Nations neighborhood guide, best restaurants Nations Geneva" />
+
+  <!-- OG / SOCIAL -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Nations — Geneva · HoodTip" />
-  <meta property="og:description" content="The beating heart of international Geneva. Shockingly few places to eat. Here are the ones worth knowing." />
-  <meta property="og:image" content="https://hoodtip.com/Nations-chair.jpg" />
+  <meta property="og:title" content="Nations Geneva — The Ultimate UN Area Guide · HoodTip" />
+  <meta property="og:description" content="Your complete guide to Nations Geneva — where to eat near the UN, local tips, and the best food spots in the neighborhood." />
+  <meta property="og:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/sandwich-nations.jpg" />
   <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="800" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://hoodtip.com/nations.html" />
-  <!-- TWITTER / X -->
+
+  <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nations — Geneva · HoodTip" />
-  <meta name="twitter:description" content="The beating heart of international Geneva. Shockingly few places to eat. Here are the ones worth knowing." />
-  <meta name="twitter:image" content="https://hoodtip.com/Nations-chair.jpg" />
-  <meta name="description" content="The beating heart of international Geneva. Shockingly few places to eat. Here are the ones worth knowing." />
+  <meta name="twitter:title" content="Nations Geneva — UN Area Food Guide · HoodTip" />
+  <meta name="twitter:description" content="Complete guide to eating well near the UN in Geneva. All under CHF 25." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/sandwich-nations.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
@@ -29,109 +36,96 @@
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans:  'Barlow', system-ui, sans-serif;
       --cond:  'Barlow Condensed', system-ui, sans-serif;
+      --max: 1200px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
     body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
+    /* NAV */
     nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
-    .nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
-    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
+    .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
     .logo em { font-style: italic; font-weight: 400; }
     .logo .dot { color: var(--red); }
     .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
-    .nav-links { display: flex; gap: 0; list-style: none; }
+    .nav-links { display: flex; list-style: none; }
     .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
     .nav-links a:hover { color: var(--ink); }
     .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
     .nav-links a.cta:hover { background: var(--ink2); }
 
-    .hero { width: 100%; height: clamp(360px, 48vw, 540px); overflow: hidden; position: relative; }
-    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.82) 0%, rgba(15,12,10,0.35) 50%, rgba(15,12,10,0.05) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem 3.5rem; }
-    .hero-eyebrow { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-shadow: 0 1px 4px rgba(0,0,0,0.5); margin-bottom: 0.5rem; }
-    .hero-title { font-family: var(--serif); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.01em; color: #fff; margin-bottom: 0.75rem; }
-    .hero-subtitle { font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(255,255,255,0.92); max-width: 480px; line-height: 1.5; text-shadow: 0 1px 8px rgba(0,0,0,0.7), 0 2px 20px rgba(0,0,0,0.5); }
+    /* HERO */
+    .hero { padding: 3rem 2rem; max-width: var(--max); margin: 0 auto; border-bottom: 1.5px solid var(--ink); }
+    .hero-breadcrumb { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; gap: 0.5rem; align-items: center; }
+    .hero-breadcrumb a { color: var(--muted); text-decoration: none; }
+    .hero-breadcrumb a:hover { color: var(--ink); }
+    .hero-breadcrumb span { color: var(--rule); }
+    .hero-kicker { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+    .hero-headline { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 720px; }
+    .hero-headline em { font-style: italic; }
+    .hero-dek { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--muted); line-height: 1.55; max-width: 560px; margin-bottom: 2rem; }
 
-    .intro-wrap { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; border-bottom: 1px solid var(--ink); }
-    .intro-meta { padding: 2.5rem 2rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 1.75rem; }
-    .intro-stat { display: flex; flex-direction: column; gap: 0.2rem; }
-    .intro-stat-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-    .intro-stat-value { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
-    .intro-body { padding: 2.5rem 3rem; }
-    .intro-body p { font-size: 1.0rem; line-height: 1.8; color: var(--ink); font-weight: 300; margin-bottom: 1.1rem; max-width: 620px; }
-    .intro-body p:last-child { margin-bottom: 0; }
+    /* CTA BANNER */
+    .cta-banner { background: var(--red); color: white; padding: 1.5rem 2rem; margin-bottom: 0; }
+    .cta-banner-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .cta-banner-text { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; }
+    .cta-banner-text em { font-style: italic; }
+    .cta-banner-btn { display: inline-block; background: white; color: var(--red); font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 11px 22px; text-decoration: none; font-weight: 500; transition: background 0.15s; }
+    .cta-banner-btn:hover { background: var(--cream); }
 
-    .section-head { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
-    .section-head-inner { display: flex; align-items: baseline; gap: 16px; padding: 24px 0 14px; border-bottom: 1px solid var(--ink); }
-    .section-head-inner h2 { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 400; white-space: nowrap; }
-    .section-line { flex: 1; height: 1px; background: var(--rule); }
+    /* SECTION HEADERS */
+    .section { padding: 3rem 2rem; max-width: var(--max); margin: 0 auto; border-bottom: 1.5px solid var(--ink); }
+    .section-header { margin-bottom: 2.5rem; }
+    .section-title { font-family: var(--serif); font-size: 2rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .section-subtitle { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--muted); line-height: 1.55; }
 
-    .tips-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--ink); }
-    .tip-card { text-decoration: none; color: var(--ink); border-right: 1px solid var(--rule); display: block; transition: background 0.2s; padding-bottom: 24px; }
+    /* TIP GRID */
+    .tip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0; }
+    .tip-card { border-right: 1px solid var(--rule); padding: 1.5rem; text-decoration: none; color: var(--ink); display: block; transition: background 0.15s; }
+    .tip-card:hover { background: rgba(181,50,42,0.02); }
     .tip-card:last-child { border-right: none; }
-    .tip-card:hover { background: rgba(0,0,0,0.015); }
-    .tip-card-img-wrap { overflow: hidden; }
-    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
-    .tip-card:hover .tip-card-img { transform: scale(1.03); }
-    .tip-card-body { padding: 14px 20px 0; }
-    .tip-card-cat { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .tip-card-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; line-height: 1.15; margin-bottom: 6px; }
-    .tip-card-copy { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
-    .tip-card-cta { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--rule); padding-bottom: 2px; display: inline-block; transition: color 0.15s, border-color 0.15s; }
-    .tip-card:hover .tip-card-cta { color: var(--ink); border-color: var(--ink); }
+    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; margin-bottom: 1rem; border: 1px solid var(--rule); }
+    .tip-card-category { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .tip-card-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; margin-bottom: 0.3rem; line-height: 1.2; }
+    .tip-card-location { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .tip-card-copy { font-size: 0.9rem; line-height: 1.6; color: var(--ink); }
 
-    /* placeholder card */
-    .tip-card.placeholder { opacity: 0.4; pointer-events: none; }
-    .tip-placeholder-img { width: 100%; aspect-ratio: 4/3; background: #ece9e3; display: flex; align-items: center; justify-content: center; }
-    .tip-placeholder-img span { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #b5b0a8; }
+    /* FOOD GUIDE SECTION */
+    .guide-section { background: rgba(181,50,42,0.03); border: 1px solid var(--rule); padding: 2rem; margin-bottom: 3rem; }
+    .guide-header { display: flex; justify-content: space-between; align-items: start; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .guide-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .guide-description { font-size: 1rem; line-height: 1.7; color: var(--muted); max-width: 480px; }
+    .guide-btn { display: inline-block; background: var(--ink); color: var(--cream); font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 11px 22px; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
+    .guide-btn:hover { background: var(--ink2); }
 
-    .more-section { max-width: 1400px; margin: 0 auto; border-bottom: 1px solid var(--ink); }
-    .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .more-link { text-decoration: none; color: var(--ink); padding: 1.75rem 2rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 0.25rem; transition: background 0.2s; }
-    .more-link:last-child { border-right: none; }
-    .more-link:hover { background: rgba(0,0,0,0.015); }
-    .more-link-label { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    .more-link-name { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; }
-    .more-link-count { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
-
-    .back-wrap { max-width: 1400px; margin: 0 auto; padding: 2rem; }
-    .back-link { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: color 0.15s, border-color 0.15s; }
-    .back-link:hover { color: var(--ink); border-color: var(--ink); }
-
+    /* FOOTER */
     footer { border-top: 2px solid var(--red); background: var(--ink); }
-    .footer-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
     .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
     .footer-logo em { font-style: italic; font-weight: 400; }
     .footer-logo .dot { color: var(--red); }
     .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
 
-    @media (max-width: 900px) {
-      .intro-wrap { grid-template-columns: 1fr; }
-      .intro-meta { border-right: none; border-bottom: 1px solid var(--rule); flex-direction: row; flex-wrap: wrap; padding: 1.5rem; }
-      .intro-body { padding: 1.75rem 1.5rem; }
-      .tips-grid { grid-template-columns: 1fr 1fr; }
-      .tips-grid .tip-card:nth-child(2n) { border-right: none; }
-      .more-grid { grid-template-columns: 1fr; }
-      .more-link { border-right: none; border-bottom: 1px solid var(--rule); }
-      .hero-overlay { padding: 2rem 1.5rem; }
+    @media (max-width: 640px) {
+      .nav-links a:not(.cta) { display: none; }
       .nav-tagline { display: none; }
+      .tip-grid { grid-template-columns: 1fr; }
+      .tip-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .tip-card:last-child { border-bottom: none; }
+      .guide-header { flex-direction: column; align-items: start; }
       .footer-stats { display: none; }
     }
-    @media (max-width: 560px) {
-      .nav-links a:not(.cta) { display: none; }
-      .tips-grid { grid-template-columns: 1fr; }
-      .tip-card { border-right: none; border-bottom: 1px solid var(--rule); }
-    }
   </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HL9EJDL2YS');
-</script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HL9EJDL2YS');
+  </script>
 </head>
 <body>
 
@@ -143,126 +137,99 @@
     </div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="carouge.html">Carouge</a></li>
+      <li><a href="profile-dave.html">Dave</a></li>
       <li><a href="profile-build.html" class="cta">Leave a tip</a></li>
     </ul>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <img src="Nations-chair.jpg" alt="UN Nations Geneva — flags and broken chair sculpture at sunrise" />
-  <div class="hero-overlay">
-    <div class="hero-eyebrow">Geneva · Switzerland · HoodTip</div>
-    <div class="hero-title">Nations</div>
-    <div class="hero-subtitle">The beating heart of international Geneva. Shockingly few places to eat.</div>
+  <div class="hero-breadcrumb">
+    <a href="index.html">HoodTip</a>
+    <span>/</span>
+    <a href="geneva.html">Geneva</a>
+    <span>/</span>
+    Nations
+  </div>
+  <div class="hero-kicker">Neighborhood Guide · Nations · Geneva, Switzerland</div>
+  <h1 class="hero-headline">Nations<br><em>Food near the UN.</em></h1>
+  <p class="hero-dek">The diplomatic quarter has evolved. From Bolivian empanadas to Japanese sushi takeaway, here's where to eat well near the United Nations — all under CHF 25.</p>
+</div>
+
+<!-- FOOD GUIDE CTA -->
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <div class="cta-banner-text">Complete guide to eating well near the UN.<br><em>All under CHF 25.</em></div>
+    <a href="best-restaurants-nations-geneva.html" class="cta-banner-btn">Read the guide →</a>
   </div>
 </div>
 
-<div class="intro-wrap">
-  <div class="intro-meta">
-    <div class="intro-stat">
-      <span class="intro-stat-label">City</span>
-      <span class="intro-stat-value">Geneva, Switzerland</span>
-    </div>
-    <div class="intro-stat">
-      <span class="intro-stat-label">Tips</span>
-      <span class="intro-stat-value">3</span>
-    </div>
-    <div class="intro-stat">
-      <span class="intro-stat-label">Getting there</span>
-      <span class="intro-stat-value">Tram 15 or bus 8 from the centre</span>
-    </div>
+<!-- TIPS SECTION -->
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">More tips in Nations</h2>
+    <p class="section-subtitle">The essential spots in Geneva's international quarter.</p>
   </div>
-  <div class="intro-body">
-    <p>The beating heart of international Geneva — the UN, the Red Cross, half the world's NGOs, all within a few blocks. Surprisingly few places to eat.</p>
-    <p>That's changing slowly. These are the ones worth knowing about.</p>
-  </div>
-</div>
-
-<div class="section-head">
-  <div class="section-head-inner">
-    <h2>Tips in Nations</h2>
-    <div class="section-line"></div>
-  </div>
-</div>
-
-<div class="tips-grid">
-
-  <a class="tip-card" href="tip-empanadas.html">
-    <div class="tip-card-img-wrap">
-      <img class="tip-card-img" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Empanadas Factory" />
-    </div>
-    <div class="tip-card-body">
-      <div class="tip-card-cat">Restaurant · Takeaway</div>
-      <div class="tip-card-name">Empanadas Factory</div>
-      <div class="tip-card-copy">Ask for the sauce picante. Take it to the park. That's the move.</div>
-      <span class="tip-card-cta">Read the tip →</span>
-    </div>
-  </a>
-
-  <a class="tip-card" href="tip-merigonde.html">
-    <div class="tip-card-img-wrap">
-      <img class="tip-card-img" src="Screenshot_2026-03-17_at_09_33_28.png" alt="Mérigonde" />
-    </div>
-    <div class="tip-card-body">
-      <div class="tip-card-cat">Sandwich · Takeaway</div>
-      <div class="tip-card-name">Mérigonde</div>
-      <div class="tip-card-copy">The Salvadoran sandwich. Take it to the Parc de l'Ariana and eat it in the sun.</div>
-      <span class="tip-card-cta">Read the tip →</span>
-    </div>
-  </a>
-
-  <a class="tip-card" href="tip-sagano.html">
-    <div class="tip-card-img-wrap">
-      <img class="tip-card-img" src="sushi-takeout-nations.jpg" alt="Sagano Take Away" />
-    </div>
-    <div class="tip-card-body">
-      <div class="tip-card-cat">Sushi · Takeaway</div>
-      <div class="tip-card-name">Sagano Take Away</div>
-      <div class="tip-card-copy">Made in the legit Japanese restaurant next door. Sushi, poke bowls, dumplings. Take it to the park.</div>
-      <span class="tip-card-cta">Read the tip →</span>
-    </div>
-  </a>
-
-</div>
-
-<div class="section-head">
-  <div class="section-head-inner">
-    <h2>More in Geneva</h2>
-    <div class="section-line"></div>
-  </div>
-</div>
-<div class="more-section">
-  <div class="more-grid">
-    <a class="more-link" href="carouge.html">
-      <span class="more-link-label">Neighbourhood</span>
-      <span class="more-link-name">Carouge</span>
-      <span class="more-link-count">4 tips — Saturday market, wine, oysters</span>
+  
+  <div class="tip-grid">
+    <a class="tip-card" href="tip-merigonde.html">
+      <img class="tip-card-img" src="sandwich-nations.jpg" alt="Mérigonde sandwich eaten in Parc Vermont" style="object-position: center 50%;" />
+      <div class="tip-card-category">Boulangerie · Sandwich</div>
+      <div class="tip-card-title">Mérigonde</div>
+      <div class="tip-card-location">Nations · Geneva</div>
+      <div class="tip-card-copy">Roast beef sandwich, under CHF 10, take it to the park. Cross the street to Parc Vermont and eat in the sun.</div>
     </a>
-    <a class="more-link" href="tip-bongojoe.html">
-      <span class="more-link-label">Neighbourhood</span>
-      <span class="more-link-name">Plainpalais</span>
-      <span class="more-link-count">3 tips — Bongo Joe, sushi, Japanese grocery</span>
+    
+    <a class="tip-card" href="tip-empanadas.html">
+      <img class="tip-card-img" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Empanadas Factory interior" style="object-position: center 50%;" />
+      <div class="tip-card-category">Bolivian · Restaurant</div>
+      <div class="tip-card-title">Empanadas Factory</div>
+      <div class="tip-card-location">Nations · Geneva</div>
+      <div class="tip-card-copy">Get the Beef Boliviano. Ask for the sauce picante. Steak and egg on rice with fries, under CHF 25.</div>
     </a>
-    <a class="more-link" href="tip-mulligans.html">
-      <span class="more-link-label">Neighbourhood</span>
-      <span class="more-link-name">Cornavin</span>
-      <span class="more-link-count">2 tips — Best Guinness, train restaurant car</span>
+    
+    <a class="tip-card" href="tip-sagano.html">
+      <img class="tip-card-img" src="sushi-takeout-nations.jpg" alt="Sagano sushi eaten in the park" style="object-position: center 50%;" />
+      <div class="tip-card-category">Sushi · Takeaway</div>
+      <div class="tip-card-title">Sagano Take Away</div>
+      <div class="tip-card-location">Nations · Geneva</div>
+      <div class="tip-card-copy">Top notch sushi takeaway. Made in the legit Japanese restaurant next door. Take it to Parc Vermont.</div>
     </a>
   </div>
 </div>
 
-<div class="back-wrap">
-  <a href="index.html" class="back-link">← All neighbourhoods</a>
+<!-- COMPREHENSIVE GUIDE SECTION -->
+<div class="section">
+  <div class="guide-section">
+    <div class="guide-header">
+      <div>
+        <h3 class="guide-title">Best Places to Eat Near Nations Geneva</h3>
+        <p class="guide-description">Your complete UN area food guide — why Nations was a food desert, what changed, and where to eat now. The Parc Vermont strategy explained.</p>
+      </div>
+      <a href="best-restaurants-nations-geneva.html" class="guide-btn">Read the full guide →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTRIBUTOR CTA -->
+<div style="border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:var(--max);margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
+    </div>
+    <a href="profile-build.html" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+  </div>
 </div>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
     <div class="footer-stats">
-      <span>62 tips</span><span>·</span>
+      <span>74 tips</span><span>·</span>
       <span>16 neighbourhoods</span><span>·</span>
-      <span>17 cities</span>
+      <span>22 cities</span>
     </div>
   </div>
 </footer>
