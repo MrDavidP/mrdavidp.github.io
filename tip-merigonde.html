@@ -72,7 +72,12 @@
     .body p:last-child { margin-bottom: 0; }
 
     .img-contained { margin: 2.5rem 0; }
+    .img-contained a { display: block; transition: transform 0.2s ease, opacity 0.2s ease; }
+    .img-contained a:hover { transform: scale(1.02); opacity: 0.9; cursor: zoom-in; }
     .img-contained img { width: 100%; display: block; }
+
+    .hero a { display: block; transition: transform 0.2s ease, opacity 0.2s ease; }
+    .hero a:hover { transform: scale(1.01); opacity: 0.9; cursor: zoom-in; }
     .img-caption { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 0.6rem; display: block; }
 
     .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
@@ -116,7 +121,9 @@
 </nav>
 
 <div class="hero">
-  <img src="Screenshot_2026-03-17_at_09_33_28.png" alt="Mérigonde interior — CHOCOLAT wall, Geneva Nations" />
+  <a href="Screenshot_2026-03-17_at_09_33_28.png" target="_blank" rel="noopener">
+    <img src="Screenshot_2026-03-17_at_09_33_28.png" alt="Mérigonde interior — CHOCOLAT wall, Geneva Nations" />
+  </a>
   <div class="hero-caption">
     <div class="hero-caption-location">Nations · Geneva · Switzerland</div>
     <div class="hero-caption-name">Mérigonde</div>
@@ -168,7 +175,9 @@
   </div>
 
   <div class="img-contained">
-    <img src="sandwich-nations.jpg" alt="Roast beef sandwich from Mérigonde, eaten in Parc Vermont, Geneva Nations" />
+    <a href="sandwich-nations.jpg" target="_blank" rel="noopener">
+      <img src="sandwich-nations.jpg" alt="Roast beef sandwich from Mérigonde, eaten in Parc Vermont, Geneva Nations" />
+    </a>
     <span class="img-caption">Parc Vermont. That's the move.</span>
   </div>
 
