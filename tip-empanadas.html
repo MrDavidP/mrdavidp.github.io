@@ -56,11 +56,12 @@
     .pull-quote p { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.5; color: var(--ink); }
     .photos { margin-top: 40px; }
     .photos-label { font-family: var(--condensed); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-    .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .photo-grid img { width: 100%; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; }
-    .photo-grid img:hover { opacity: 0.88; }
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+    .photo-grid a { display: block; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; }
+    .photo-grid a:hover { transform: scale(1.02); opacity: 0.9; cursor: zoom-in; }
+    .photo-grid img { width: 100%; object-fit: cover; border-radius: 3px; border: 1px solid var(--rule); display: block; }
     .photo-grid .sq { aspect-ratio: 1/1; }
-    .photo-grid .wide { grid-column: 1 / -1; aspect-ratio: 16/9; }
+    .photo-grid .wide { aspect-ratio: 4/3; }
     .photo-grid .tall { aspect-ratio: 3/4; }
     .sidebar { padding-top: 6px; }
     .fact-block { border-top: 1px solid var(--rule); padding: 18px 0; }
@@ -100,7 +101,7 @@
       .hero { margin: 16px 16px 0; height: 56vw; min-height: 220px; }
       .layout { grid-template-columns: 1fr; padding: 32px 16px 48px; gap: 40px; }
       h1 { font-size: 2.2rem; }
-      .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
       .more-section { padding: 0 16px 48px; }
       .more-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
       .more-grid .tip-card:last-child { display: none; }
@@ -148,7 +149,7 @@
     <hr class="divider" />
     <div class="copy">
       <p>If you work near the UN you already know the problem — there is almost nothing good to eat in this neighbourhood unless you're a senior diplomat with two hours and an expense account. Empanadas Factory is one of the exceptions.</p>
-      <p>Grab empanadas on the way out if you're in a rush. But if you have 25 francs and want to sit down and eat something properly, get the Beef Boliviano — steak and egg on rice with fries, the whole thing. Décor is full Saved by the Bell. It works.</p>
+      <p>Grab empanadas on the way out if you're in a rush. But if you have 25 francs and want to sit down and eat something properly, get the Beef Boliviano — steak and egg on rice with fries, the whole thing. The soup is excellent too — proper Bolivian chicken and vegetable broth. Décor is full Saved by the Bell. It works.</p>
       <p>The real move is the sauce picante — a little orange salsa they make in house. You have to ask for it.</p>
     </div>
     <div class="pull-quote">
@@ -157,9 +158,18 @@
     <div class="photos">
       <div class="photos-label">Photos</div>
       <div class="photo-grid">
-        <img class="wide" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Beef Boliviano — steak, egg, rice, fries" />
-        <img class="sq" src="Screenshot_2026-03-17_at_09_22_48.png" alt="Sauce picante in terracotta bowl" />
-        <img class="sq" src="Screenshot_2026-03-17_at_09_24_15.png" alt="Empanadas Factory exterior, Nations Geneva" />
+        <a href="Screenshot_2026-03-17_at_09_24_22.png" target="_blank" rel="noopener">
+          <img class="wide" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Beef Boliviano — steak, egg, rice, fries" />
+        </a>
+        <a href="empanadas-factory-soup.jpg" target="_blank" rel="noopener">
+          <img class="wide" src="empanadas-factory-soup.jpg" alt="Bolivian soup — chicken, vegetables, herbs" />
+        </a>
+        <a href="Screenshot_2026-03-17_at_09_22_48.png" target="_blank" rel="noopener">
+          <img class="sq" src="Screenshot_2026-03-17_at_09_22_48.png" alt="Sauce picante in terracotta bowl" />
+        </a>
+        <a href="Screenshot_2026-03-17_at_09_24_15.png" target="_blank" rel="noopener">
+          <img class="sq" src="Screenshot_2026-03-17_at_09_24_15.png" alt="Empanadas Factory exterior, Nations Geneva" />
+        </a>
       </div>
     </div>
   </main>
