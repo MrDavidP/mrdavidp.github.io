@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>London Pubs & Bars Guide — Best Local Spots | HoodTip</title>
+
+  <!-- SEO META -->
+  <meta name="description" content="London pub guide from locals — best pubs, wine bars, and drinking spots across Southwark, Borough, and central London. Beyond the tourist traps." />
+  <meta name="keywords" content="London pubs guide, best pubs London, London wine bars, London bars, Borough pubs, Southwark pubs, London pub crawl, local pubs London, hidden bars London" />
+
+  <!-- OG / SOCIAL -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="HoodTip" />
+  <meta property="og:title" content="London Pubs & Bars Guide — Local Spots Beyond the Tourist Traps" />
+  <meta property="og:description" content="The best pubs and bars in London from locals who know where to drink. Borough, Southwark, and hidden gems." />
+  <meta property="og:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/anchor-bankside-exterior.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://hoodtip.com/london-pubs-guide.html" />
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="London Pubs Guide — Best Local Spots" />
+  <meta name="twitter:description" content="The best pubs and bars in London from locals who know where to drink." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/anchor-bankside-exterior.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
+      --max: 1200px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
+    .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+    .nav-links a.cta:hover { background: var(--ink2); }
+
+    /* HERO */
+    .hero { padding: 3rem 2rem; max-width: var(--max); margin: 0 auto; border-bottom: 1.5px solid var(--ink); }
+    .hero-breadcrumb { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; gap: 0.5rem; align-items: center; }
+    .hero-breadcrumb a { color: var(--muted); text-decoration: none; }
+    .hero-breadcrumb a:hover { color: var(--ink); }
+    .hero-breadcrumb span { color: var(--rule); }
+    .hero-kicker { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+    .hero-headline { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 820px; }
+    .hero-headline em { font-style: italic; }
+    .hero-dek { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--muted); line-height: 1.55; max-width: 620px; margin-bottom: 2rem; }
+
+    /* INTRO */
+    .intro { max-width: 720px; margin: 0 auto; padding: 0 2rem 3rem; }
+    .intro p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.4rem; }
+    .intro p:last-child { margin-bottom: 0; }
+
+    /* NEIGHBORHOOD SECTIONS */
+    .neighborhood { padding: 2.5rem 2rem; max-width: var(--max); margin: 0 auto; border-bottom: 1px solid var(--rule); }
+    .neighborhood:last-child { border-bottom: 1.5px solid var(--ink); }
+    .neighborhood-header { margin-bottom: 2rem; }
+    .neighborhood-title { font-family: var(--serif); font-size: 1.8rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .neighborhood-subtitle { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--muted); line-height: 1.55; max-width: 480px; }
+
+    /* TIP GRID */
+    .tip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; }
+    .tip-card { border-right: 1px solid var(--rule); padding: 1.25rem; text-decoration: none; color: var(--ink); display: block; transition: background 0.15s; }
+    .tip-card:hover { background: rgba(181,50,42,0.02); }
+    .tip-card:last-child { border-right: none; }
+    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; margin-bottom: 0.75rem; border: 1px solid var(--rule); }
+    .tip-card-category { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 0.25rem; }
+    .tip-card-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; margin-bottom: 0.25rem; line-height: 1.2; }
+    .tip-card-location { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .tip-card-copy { font-size: 0.85rem; line-height: 1.6; color: var(--ink); }
+
+    /* FOOTER */
+    footer { border-top: 2px solid var(--red); background: var(--ink); }
+    .footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.cta) { display: none; }
+      .nav-tagline { display: none; }
+      .tip-grid { grid-template-columns: 1fr; }
+      .tip-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .tip-card:last-child { border-bottom: none; }
+      .footer-stats { display: none; }
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HL9EJDL2YS');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="geneva-guide.html">Geneva</a></li>
+      <li><a href="profile-dave.html">Dave</a></li>
+      <li><a href="profile-build.html" class="cta">Leave a tip</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-breadcrumb">
+    <a href="index.html">HoodTip</a>
+    <span>/</span>
+    London Guide
+  </div>
+  <div class="hero-kicker">Pub Guide · London · United Kingdom</div>
+  <h1 class="hero-headline">London Pubs & Bars<br><em>Local spots beyond the tourist traps.</em></h1>
+  <p class="hero-dek">The best pubs, wine bars, and drinking spots in London from locals who know where to go. Borough Market to Bankside, proper pubs and hidden gems.</p>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <p>London has more pubs than any city on earth — over 3,500 at last count. The challenge isn't finding a pub, it's finding the right pub. The one where locals drink, where the beer is properly kept, where you can actually have a conversation.</p>
+  
+  <p>Avoid the gastropub chains and tourist magnets around Westminster and Covent Garden. The best drinking in London happens in neighborhoods where people live and work — Borough Market for food and wine, Bankside for river views, Southwark for proper locals' pubs.</p>
+  
+  <p>Here's where to drink in London when you want to drink like a local.</p>
+</div>
+
+<!-- BOROUGH & SOUTHWARK SECTION -->
+<div class="neighborhood" id="borough">
+  <div class="neighborhood-header">
+    <h2 class="neighborhood-title">Borough & Southwark</h2>
+    <p class="neighborhood-subtitle">The food and drink heart of South London — from centuries-old pubs to modern wine bars.</p>
+  </div>
+  
+  <div class="tip-grid">
+    <a class="tip-card" href="tip-anchor-bankside.html">
+      <img class="tip-card-img" src="anchor-bankside-exterior.jpg" alt="Anchor Bankside pub London" style="object-position: center 50%;" />
+      <div class="tip-card-category">Pub · Historic</div>
+      <div class="tip-card-title">The Anchor Bankside</div>
+      <div class="tip-card-location">Bankside, SE1</div>
+      <div class="tip-card-copy">17th century riverside pub with Thames views. Tourist magnet that's actually worth it.</div>
+    </a>
+    
+    <a class="tip-card" href="tip-george-southwark.html">
+      <img class="tip-card-img" src="george-southwark-courtyard.jpg" alt="George Inn Southwark London" style="object-position: center 50%;" />
+      <div class="tip-card-category">Pub · Historic</div>
+      <div class="tip-card-title">The George Inn</div>
+      <div class="tip-card-location">Southwark, SE1</div>
+      <div class="tip-card-copy">London's last surviving galleried coaching inn. National Trust-owned, utterly unique.</div>
+    </a>
+    
+    <a class="tip-card" href="tip-monmouth-coffee.html">
+      <img class="tip-card-img" src="monmouth-coffee-exterior.jpg" alt="Monmouth Coffee Borough Market London" style="object-position: center 50%;" />
+      <div class="tip-card-category">Coffee · Borough Market</div>
+      <div class="tip-card-title">Monmouth Coffee</div>
+      <div class="tip-card-location">Borough Market, SE1</div>
+      <div class="tip-card-copy">London's best coffee roaster. Get it at source in Borough Market.</div>
+    </a>
+  </div>
+</div>
+
+<!-- BANKSIDE & WATERLOO SECTION -->
+<div class="neighborhood" id="bankside">
+  <div class="neighborhood-header">
+    <h2 class="neighborhood-title">Bankside & Waterloo</h2>
+    <p class="neighborhood-subtitle">River views and proper pubs between London Bridge and the South Bank.</p>
+  </div>
+  
+  <div class="tip-grid">
+    <a class="tip-card" href="tip-founders-arms.html">
+      <img class="tip-card-img" src="founders-arms-exterior.jpg" alt="Founders Arms pub Bankside London" style="object-position: center 50%;" />
+      <div class="tip-card-category">Pub · River Views</div>
+      <div class="tip-card-title">The Founders Arms</div>
+      <div class="tip-card-location">Bankside, SE1</div>
+      <div class="tip-card-copy">Best Thames views of any pub in London. Watch the city from the water's edge.</div>
+    </a>
+    
+    <a class="tip-card" href="tip-blackfriars-pub.html">
+      <img class="tip-card-img" src="blackfriars-pub-interior.jpg" alt="Blackfriars pub London" style="object-position: center 50%;" />
+      <div class="tip-card-category">Pub · Art Nouveau</div>
+      <div class="tip-card-title">The Blackfriars</div>
+      <div class="tip-card-location">Blackfriars, EC4</div>
+      <div class="tip-card-copy">Stunning Art Nouveau interior. Bronze friezes of jolly monks line the walls.</div>
+    </a>
+  </div>
+</div>
+
+<!-- WINE BARS & MODERN SECTION -->
+<div class="neighborhood" id="wine-bars">
+  <div class="neighborhood-header">
+    <h2 class="neighborhood-title">Wine Bars & Modern Spots</h2>
+    <p class="neighborhood-subtitle">London's evolving drinking scene — natural wine, craft beer, and new takes on old traditions.</p>
+  </div>
+  
+  <div class="tip-grid">
+    <a class="tip-card" href="tip-champagne-charlies.html">
+      <img class="tip-card-img" src="champagne-charlies-bar.jpg" alt="Champagne Charlies wine bar London" style="object-position: center 50%;" />
+      <div class="tip-card-category">Wine Bar · Champagne</div>
+      <div class="tip-card-title">Champagne Charlies</div>
+      <div class="tip-card-location">Charing Cross, WC2</div>
+      <div class="tip-card-copy">Proper champagne bar in a Victorian railway arch. Oysters and bubbles.</div>
+    </a>
+  </div>
+</div>
+
+<!-- PUB CRAWL SECTION -->
+<div class="neighborhood" id="pub-crawl">
+  <div class="neighborhood-header">
+    <h2 class="neighborhood-title">The Perfect London Pub Crawl</h2>
+    <p class="neighborhood-subtitle">A walking route connecting the best pubs from London Bridge to Blackfriars.</p>
+  </div>
+  
+  <div style="background: rgba(181,50,42,0.03); border: 1px solid var(--rule); padding: 2rem; margin-bottom: 2rem;">
+    <div style="font-family: var(--serif); font-size: 1.3rem; font-weight: 500; margin-bottom: 1rem;">Borough to Blackfriars Walking Route</div>
+    <div style="font-size: 0.95rem; line-height: 1.7; color: var(--ink);">
+      <p style="margin-bottom: 1rem;"><strong>1. Start at The George Inn</strong> — Historic coaching inn, perfect for afternoon pints</p>
+      <p style="margin-bottom: 1rem;"><strong>2. Walk to Borough Market</strong> — Monmouth Coffee for fuel, browse the stalls</p>
+      <p style="margin-bottom: 1rem;"><strong>3. Continue to The Anchor Bankside</strong> — Thames views and river atmosphere</p>
+      <p style="margin-bottom: 1rem;"><strong>4. Cross Millennium Bridge</strong> — Walk past St Paul's to Blackfriars</p>
+      <p><strong>5. Finish at The Blackfriars</strong> — Art Nouveau interior, proper London pub finale</p>
+    </div>
+    <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted);">
+      <strong>Distance:</strong> 2.5 miles walking · <strong>Duration:</strong> 3-4 hours with stops · <strong>Best time:</strong> Saturday afternoon
+    </div>
+  </div>
+</div>
+
+<!-- CONTRIBUTOR CTA -->
+<div style="border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:var(--max);margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
+    </div>
+    <a href="profile-build.html" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats">
+      <span>74 tips</span><span>·</span>
+      <span>16 neighbourhoods</span><span>·</span>
+      <span>22 cities</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
