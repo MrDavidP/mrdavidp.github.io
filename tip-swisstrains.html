@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hood Tip — Switzerland — HoodTip</title>
-  <meta name="description" content="Swiss trains have a restaurant car with white tablecloths, proper service and Alps out the window. Standard ticket. Nobody seems to know this exists." />
+  <title>The Swiss restaurant car — Switzerland — HoodTip</title>
+  <meta name="description" content="Skip first class on Swiss SBB trains. Buy the regular ticket and walk straight to the restaurant car. White tablecloth, real glass, Alps out the window — and after a coffee you've spent first-class money." />
 
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Hood Tip · HoodTip" />
-  <meta property="og:description" content="White tablecloth, wine, Alps out the window. The car is usually half empty because nobody knows this exists." />
+  <meta property="og:title" content="The Swiss restaurant car · HoodTip" />
+  <meta property="og:description" content="Skip first class. Buy the regular ticket and walk straight to the restaurant car. After a coffee you've spent first-class money — and had a much better trip." />
   <meta property="og:image" content="https://hoodtip.com/swiss-train-restaurant-car-white-table-cloth.jpg" />
   <meta property="og:url" content="https://hoodtip.com/tip-swisstrains.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Hood Tip · HoodTip" />
-  <meta name="twitter:description" content="White tablecloth, wine, Alps out the window. The car is usually half empty because nobody knows this exists." />
+  <meta name="twitter:title" content="The Swiss restaurant car · HoodTip" />
+  <meta name="twitter:description" content="Skip first class. Buy the regular ticket and walk straight to the restaurant car. After a coffee you've spent first-class money — and had a much better trip." />
   <meta name="twitter:image" content="https://hoodtip.com/swiss-train-restaurant-car-white-table-cloth.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -365,8 +365,8 @@
 
     /* ------ RESPONSIVE ------ */
     @media (max-width: 960px) {
-      .postcard { grid-template-columns: 1fr; min-height: 0; }
-      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; }
+      .postcard { display: flex; flex-direction: column; grid-template-columns: 1fr; min-height: 0; flex: 0 0 auto; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; flex: 0 0 auto; }
       .pc-image-caption { display: none; }
       .pc-nav { width: 36px; height: 36px; }
       .pc-nav.prev { left: 0.75rem; }
@@ -422,9 +422,6 @@
       <div class="pc-slide"><img src="Screenshot_2026-03-17_at_09_38_28.png" alt="Laptop open, glass of rosé, restaurant car" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
       <div class="pc-slide"><img src="Screenshot_2026-03-17_at_09_37_48.png" alt="Restaurant car sign on the train platform" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
       <div class="pc-slide"><img src="swiss-train-restaurant-car-game.jpg" alt="Noughts and crosses on a receipt" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="wengen-belvedere-pool-snow.jpg" alt="Grand Hotel Belvedere" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="baindespaquis-sunset.jpg" alt="Bains des Pâquis" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
     </div>
 
     <!-- Overlay: breadcrumb + category badge -->
@@ -432,7 +429,7 @@
       <div class="pc-breadcrumb">
         <a href="index.html">HoodTip</a><span>/</span>Switzerland
       </div>
-      <span class="pc-badge">Tip</span>
+      <span class="pc-badge">Travel</span>
     </div>
 
     <!-- Caption (bottom left on desktop) -->
@@ -451,8 +448,8 @@
 
     <!-- Dots + counter -->
     <div class="pc-counter" id="pcDots">
-      <button class="pc-dot active" aria-label="Photo 1"></button><button class="pc-dot" aria-label="Photo 2"></button><button class="pc-dot" aria-label="Photo 3"></button><button class="pc-dot" aria-label="Photo 4"></button><button class="pc-dot" aria-label="Photo 5"></button><button class="pc-dot" aria-label="Photo 6"></button><button class="pc-dot" aria-label="Photo 7"></button><button class="pc-dot" aria-label="Photo 8"></button><button class="pc-dot" aria-label="Photo 9"></button>
-      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 9</span>
+      <button class="pc-dot active" aria-label="Photo 1"></button><button class="pc-dot" aria-label="Photo 2"></button><button class="pc-dot" aria-label="Photo 3"></button><button class="pc-dot" aria-label="Photo 4"></button><button class="pc-dot" aria-label="Photo 5"></button><button class="pc-dot" aria-label="Photo 6"></button>
+      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 6</span>
     </div>
   </div>
 
@@ -462,24 +459,24 @@
     <div class="pc-content">
       <div class="pc-location"><span>/</span>Switzerland</div>
 
-      <h1 class="pc-title">Hood Tip</h1>
+      <h1 class="pc-title long">Skip first class. <em>Take the restaurant car.</em></h1>
 
       <div class="pc-callout">
-        <p class="pc-callout-text">Share a bottle with a friend or a stranger. Watch Switzerland go by. Nobody seems to know this exists, which is why the car is usually half empty.</p>
+        <p class="pc-callout-text">Buy the regular ticket and walk straight to the restaurant car. White tablecloth, real glass, Alps out the window. After a coffee or a glass of wine you've spent first-class money — and had a much better trip.</p>
       </div>
 
       <div class="pc-facts">
         <div class="pc-fact">
           <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Hood%20Tip%20Switzerland" target="_blank" rel="noopener">Switzerland</a></span>
+          <span class="pc-fact-value">SBB intercity trains</span>
         </div>
         <div class="pc-fact">
           <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value"><em>A good time</em></span>
+          <span class="pc-fact-value"><em>Long routes — Geneva ↔ Zürich, anything 2hr+</em></span>
         </div>
         <div class="pc-fact">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>Watch Switzerland go by</em></span>
+          <span class="pc-fact-value"><em>Regular ticket. Walk past first class. Order the wine.</em></span>
         </div>
       </div>
     </div>
@@ -495,7 +492,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
           Copy link
         </button>
-        <a class="pc-share-btn primary" href="https://wa.me/?text=Hood%20Tip%20%E2%80%94%20https%3A//hoodtip.com/tip-swisstrains.html" target="_blank" rel="noopener">
+        <a class="pc-share-btn primary" href="https://wa.me/?text=Skip%20first%20class%20on%20Swiss%20trains.%20Take%20the%20restaurant%20car.%20%E2%80%94%20https%3A//hoodtip.com/tip-swisstrains.html" target="_blank" rel="noopener">
           Share →
         </a>
       </div>
