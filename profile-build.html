@@ -1177,8 +1177,9 @@
             <span class="line"></span>
           </div>
           <div class="field full">
-            <label class="field-label" for="f-where">Where exactly</label>
-            <input type="text" id="f-where" name="where" placeholder="Address, metro stop, or 'next to the church'" />
+            <label class="field-label" for="f-where">The address</label>
+            <div class="field-hint">Full street address. "Barcelona" isn't useful to the person you're sending this link to — give them somewhere to actually walk to.</div>
+            <input type="text" id="f-where" name="where" placeholder="e.g. Carrer de Montcada 22, El Born, Barcelona" />
           </div>
           <div class="form-row">
             <div class="field">
@@ -1258,8 +1259,8 @@
 
             <div class="postcard-facts">
               <div class="postcard-fact">
-                <div class="postcard-fact-label">Where</div>
-                <div class="postcard-fact-value empty" id="previewWhere">The address goes here.</div>
+                <div class="postcard-fact-label">Address</div>
+                <div class="postcard-fact-value empty" id="previewWhere">A real street address.</div>
               </div>
               <div class="postcard-fact">
                 <div class="postcard-fact-label">Best for</div>
@@ -1422,7 +1423,7 @@
     category: 'Category',
     breadcrumb: 'Neighbourhood, city',
     quote: `"One line you'd text a friend about this place."`,
-    where: 'The address goes here.',
+    where: 'A real street address.',
     bestfor: 'What they come for.',
     move: 'The play when you arrive.',
   };
