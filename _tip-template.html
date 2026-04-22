@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Le Soultane — Mauritania — HoodTip</title>
-  <meta name="description" content="Grilled fish on the beach in Mauritania. See the ocean, see some camels. Get a blue headwrap from the market first." />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{META_DESC}}" />
 
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Le Soultane · HoodTip" />
-  <meta property="og:description" content="Grilled fish on the beach in Mauritania. See the ocean, see some camels. Get a blue headwrap from the market first." />
-  <meta property="og:image" content="https://hoodtip.com/soultane-camel-2.jpg" />
-  <meta property="og:url" content="https://hoodtip.com/tip-soultane-nouakchott.html" />
+  <meta property="og:title" content="{{OG_TITLE}}" />
+  <meta property="og:description" content="{{OG_DESC}}" />
+  <meta property="og:image" content="https://hoodtip.com/{{HERO_IMAGE}}" />
+  <meta property="og:url" content="https://hoodtip.com/{{SLUG}}.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Le Soultane · HoodTip" />
-  <meta name="twitter:description" content="Grilled fish on the beach in Mauritania. See the ocean, see some camels. Get a blue headwrap from the market first." />
-  <meta name="twitter:image" content="https://hoodtip.com/soultane-camel-2.jpg" />
+  <meta name="twitter:title" content="{{OG_TITLE}}" />
+  <meta name="twitter:description" content="{{OG_DESC}}" />
+  <meta name="twitter:image" content="https://hoodtip.com/{{HERO_IMAGE}}" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -414,30 +414,22 @@
 <div class="postcard">
 
   <!-- CAROUSEL -->
-  <div class="pc-image many-photos" id="pcImage">
+  <div class="pc-image{{SINGLE_CLASS}}" id="pcImage">
     <div class="pc-track" id="pcTrack">
-      <div class="pc-slide"><img src="soultane-camel-2.jpg" alt="A camel on the beach at Nouakchott, two children silhouetted at the water&#x27;s edge behind it" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="soultane-horses.jpg" alt="Two riders on white horses galloping along the Atlantic beach at Nouakchott" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="soultane-camel-footprints.jpg" alt="Footprints in the sand on the long empty beach at Nouakchott, lone figure walking in the distance" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="soultane-mauritania-juice.jpg" alt="Hibiscus juice at Le Soultane, a fisherman silhouetted against the silver ocean behind" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="soultane-fish-2.jpg" alt="Grilled fish with rice and chips at Le Soultane, the ocean visible through the beach shack behind" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="soultane-scarf-shop.jpg" alt="Trying on a traditional blue Mauritanian headwrap in the market in Nouakchott" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="lefbalafon-view.JPG" alt="Le Balafon, Senegal" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="zanzibar-beach-hero.JPG" alt="Hotel Riu Palace Zanzibar" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="Latitude-15.JPG" alt="Latitude 15, Lusaka" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      {{SLIDES}}
     </div>
 
     <!-- Overlay: breadcrumb + category badge -->
     <div class="pc-image-overlay">
       <div class="pc-breadcrumb">
-        <a href="index.html">HoodTip</a><span>/</span>Mauritania
+        <a href="index.html">HoodTip</a>{{BREADCRUMB_MIDDLE}}{{BREADCRUMB_LAST_WRAPPED}}
       </div>
-      <span class="pc-badge">Tip</span>
+      <span class="pc-badge">{{BADGE}}</span>
     </div>
 
     <!-- Caption (bottom left on desktop) -->
     <div class="pc-image-caption">
-      <div class="pc-image-cap-text">Grilled fish on the Atlantic in Mauritania. Camels on the beach. Worth it.</div>
+      <div class="pc-image-cap-text">{{CAPTION}}</div>
       <div class="pc-image-credit">Photo · Dave</div>
     </div>
 
@@ -451,8 +443,8 @@
 
     <!-- Dots + counter -->
     <div class="pc-counter" id="pcDots">
-      <button class="pc-dot active" aria-label="Photo 1"></button><button class="pc-dot" aria-label="Photo 2"></button><button class="pc-dot" aria-label="Photo 3"></button><button class="pc-dot" aria-label="Photo 4"></button><button class="pc-dot" aria-label="Photo 5"></button><button class="pc-dot" aria-label="Photo 6"></button><button class="pc-dot" aria-label="Photo 7"></button><button class="pc-dot" aria-label="Photo 8"></button><button class="pc-dot" aria-label="Photo 9"></button>
-      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 9</span>
+      {{DOTS}}
+      <span class="pc-counter-text"><b id="pcCurrent">1</b> / {{TOTAL}}</span>
     </div>
   </div>
 
@@ -460,26 +452,26 @@
   <div class="pc-body">
 
     <div class="pc-content">
-      <div class="pc-location"><span>/</span>Mauritania</div>
+      <div class="pc-location">{{LOCATION_LINE}}</div>
 
-      <h1 class="pc-title">Le Soultane</h1>
+      <h1 class="pc-title{{TITLE_CLASS}}">{{TITLE}}</h1>
 
       <div class="pc-callout">
-        <p class="pc-callout-text">Camels, horses, grilled fish, the Atlantic. I don&#x27;t know how else to explain Mauritania but this is a start.</p>
+        <p class="pc-callout-text">{{PULL_QUOTE}}</p>
       </div>
 
       <div class="pc-facts">
         <div class="pc-fact">
           <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Le%20Soultane%20Mauritania" target="_blank" rel="noopener">Mauritania</a></span>
+          <span class="pc-fact-value">{{FACT_WHERE}}</span>
         </div>
         <div class="pc-fact">
           <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value"><em>A good time</em></span>
+          <span class="pc-fact-value">{{FACT_BESTFOR}}</span>
         </div>
         <div class="pc-fact">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>Camels, horses, grilled fish, the Atlantic</em></span>
+          <span class="pc-fact-value">{{FACT_MOVE}}</span>
         </div>
       </div>
     </div>
@@ -495,7 +487,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
           Copy link
         </button>
-        <a class="pc-share-btn primary" href="https://wa.me/?text=Le%20Soultane%20%E2%80%94%20https%3A//hoodtip.com/tip-soultane-nouakchott.html" target="_blank" rel="noopener">
+        <a class="pc-share-btn primary" href="https://wa.me/?text={{SHARE_TEXT}}" target="_blank" rel="noopener">
           Share →
         </a>
       </div>

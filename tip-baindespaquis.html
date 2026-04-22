@@ -3,306 +3,584 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bains des Pâquis Geneva — Lake swimming, sauna, fondue · HoodTip</title>
-  <meta name="description" content="Don't skip it because it's easy to find. Bains des Pâquis is a Geneva institution — lake swimming, cold rosé, fondue, sauna, and the Alps behind it all. One of the best places in the city." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
-      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans:  'Barlow', system-ui, sans-serif;
-      --cond:  'Barlow Condensed', system-ui, sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  <title>Bains des Pâquis — Geneva — HoodTip</title>
+  <meta name="description" content="Don&#x27;t skip it because it&#x27;s easy to find. Bains des Pâquis is a Geneva institution — lake swimming, cold rosé, fondue, sauna, and the Alps behind it all. One of the best p" />
 
-    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
-    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
-    .logo em { font-style: italic; font-weight: 400; }
-    .logo .dot { color: var(--red); }
-    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
-    .nav-links { display: flex; list-style: none; }
-    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
-
-    .hero { width: 100%; height: clamp(420px, 58vw, 680px); overflow: hidden; position: relative; }
-    .hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
-    .hero-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 2.5rem; background: linear-gradient(transparent, rgba(20,16,12,0.82)); }
-    .hero-caption-location { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 0.3rem; text-shadow: 0 1px 6px rgba(0,0,0,0.6); }
-    .hero-caption-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
-
-    .article { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 2rem; }
-
-    .breadcrumb { font-family: var(--cond); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.5rem; }
-    .breadcrumb a { color: var(--muted); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--ink); }
-    .breadcrumb-sep { opacity: 0.4; }
-
-    .category { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); padding: 0.2rem 0.65rem; border-radius: 2px; display: inline-block; margin-bottom: 1rem; }
-
-    h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-    .subtitle { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); line-height: 1.45; margin-bottom: 2.5rem; }
-
-    .meta-strip { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem; }
-    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
-    .meta-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
-    .meta-value { font-size: 0.88rem; color: var(--ink); }
-
-    .body p { font-family: var(--serif); font-size: 1.18rem; line-height: 1.78; color: var(--ink); margin-bottom: 1.4rem; font-weight: 400; letter-spacing: 0.005em; }
-    .body p:last-child { margin-bottom: 0; }
-
-    .pull-quote { border-left: 2px solid var(--ink); padding: 0.75rem 0 0.75rem 1.75rem; margin: 2.5rem 0; }
-    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: clamp(1.4rem, 3vw, 1.75rem); line-height: 1.35; color: var(--ink); font-weight: 400; }
-
-    .img-full { width: 100vw; position: relative; left: 50%; transform: translateX(-50%); margin: 3rem 0; }
-    .img-full img { width: 100%; display: block; max-height: 600px; object-fit: cover; }
-    .img-caption { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.6rem 2rem 0; max-width: 1200px; margin: 0 auto; }
-
-    .img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
-    .img-pair img { width: 100%; display: block; height: 420px; object-fit: cover; }
-
-    .img-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin: 3rem 0; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
-    .img-trio img { width: 100%; display: block; height: 340px; object-fit: cover; }
-    .img-portrait { margin: 3rem auto; max-width: 500px; }
-    .img-portrait img { width: 100%; display: block; }
-    .img-portrait-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 800px; }
-    .img-portrait-pair img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
-    .img-portrait-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 3rem auto; max-width: 960px; }
-    .img-portrait-trio img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
-
-    .season-note { background: white; border: 1px solid var(--rule); border-left: 2px solid var(--ink); padding: 1.25rem 1.5rem; margin: 2.5rem 0; }
-    .season-note-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
-    .season-note p { font-size: 0.9rem; line-height: 1.65; color: var(--ink); }
-
-    .tip-box { background: white; border: 1px solid var(--rule); padding: 1.5rem 1.75rem; margin-top: 3rem; }
-    .tip-box-label { font-family: var(--cond); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
-    .tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-    .tip-box li { font-size: 0.9rem; color: var(--ink); padding-left: 1rem; position: relative; line-height: 1.55; }
-    .tip-box li::before { content: '—'; position: absolute; left: 0; color: var(--muted); font-size: 0.8rem; }
-
-    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--cond); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-top: 3.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.15rem; transition: color 0.15s, border-color 0.15s; }
-    .back-link:hover { color: var(--ink); border-color: var(--ink); }
-
-    footer { border-top: 2px solid var(--red); background: var(--ink); margin-top: 5rem; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
-    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
-    .footer-logo em { font-style: italic; font-weight: 400; }
-    .footer-logo .dot { color: var(--red); }
-    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
-
-    @media (max-width: 640px) {
-      .nav-links a:not(.cta) { display: none; }
-      .nav-tagline { display: none; }
-      .article { padding: 2.5rem 1.25rem 2rem; }
-      .img-pair, .img-trio { grid-template-columns: 1fr; }
-      .img-pair img { height: 280px; }
-      .img-trio img { height: 240px; }
-      .img-portrait-pair, .img-portrait-trio { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-      .footer-stats { display: none; }
-    }
-  </style>
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Bains des Pâquis — 70s vibes on Lac Léman" />
+  <meta property="og:title" content="Bains des Pâquis · HoodTip" />
   <meta property="og:description" content="The jetty that juts into the lake. Cold rosé, jump off the board, Alps right there. Geneva institution since 1932." />
   <meta property="og:image" content="https://hoodtip.com/baindespaquis-sunset.jpg" />
   <meta property="og:url" content="https://hoodtip.com/tip-baindespaquis.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@hoodtip" />
-  <meta name="twitter:title" content="Bains des Pâquis — 70s vibes on Lac Léman" />
+  <meta name="twitter:title" content="Bains des Pâquis · HoodTip" />
   <meta name="twitter:description" content="The jetty that juts into the lake. Cold rosé, jump off the board, Alps right there. Geneva institution since 1932." />
   <meta name="twitter:image" content="https://hoodtip.com/baindespaquis-sunset.jpg" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HL9EJDL2YS');
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Bains des Pâquis Geneva — Lake swimming, sauna, fondue",
-  "description": "Don't skip it because it's easy to find. Bains des Pâquis is a Geneva institution — lake swimming, cold rosé, fondue, sauna, and the Alps behind it all.",
-  "author": { "@type": "Person", "name": "Dave" },
-  "publisher": { "@type": "Organization", "name": "HoodTip", "url": "https://hoodtip.com" },
-  "url": "https://hoodtip.com/tip-baindespaquis.html",
-  "image": "https://hoodtip.com/baindespaquis-sunset.jpg",
-  "about": {
-    "@type": "LocalBusiness",
-    "name": "Bains des Pâquis",
-    "description": "Geneva lakeside institution with swimming, sauna, fondue and rosé in the Pâquis neighbourhood",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Pâquis, Geneva",
-      "addressCountry": "CH"
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+
+  <style>
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f7f4ef;
+      --cream2: #efeae1;
+      --ink: #1a1816;
+      --ink2: #2a2925;
+      --muted: #6b6560;
+      --muted2: #8a8378;
+      --rule: #d9d2c6;
+      --rule-soft: #e8e2d6;
+      --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
     }
-  }
-}
-</script>
+    html, body { height: 100%; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body::before {
+      content:''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
+      background-size: 3px 3px; opacity: 0.5; mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ------ NAV ------ */
+    .nav { border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: baseline; gap: 12px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-logo .dot { color: var(--red); }
+    .nav-tag { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; }
+    .nav-right { display: flex; align-items: stretch; height: 54px; }
+    .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 0 22px; display: flex; align-items: center; border-left: 1px solid var(--ink); transition: background 0.15s; }
+    .nav-cta:hover { background: var(--red); }
+
+    /* ------ POSTCARD ------ */
+    .postcard {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: calc(100vh - 54px - 46px);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ------ CAROUSEL (left side) ------ */
+    .pc-image {
+      position: relative;
+      overflow: hidden;
+      border-right: 1.5px solid var(--ink);
+      background: linear-gradient(135deg, #1f1d1b 0%, #2a2925 50%, #3a2a26 100%);
+    }
+    .pc-track {
+      position: absolute; inset: 0;
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .pc-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .pc-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      pointer-events: none;
+    }
+    .pc-slide-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 5rem; color: rgba(247,244,239,0.15);
+      pointer-events: none;
+    }
+
+    /* Overlay (breadcrumb top, caption/counter bottom) */
+    .pc-image-overlay {
+      position: absolute; top: 0; left: 0; right: 0; padding: 1.5rem 1.75rem;
+      background: linear-gradient(to bottom, rgba(15,12,10,0.55) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-overlay a, .pc-image-overlay button { pointer-events: auto; }
+    .pc-breadcrumb {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(247,244,239,0.75);
+    }
+    .pc-breadcrumb a { color: rgba(247,244,239,0.75); transition: color 0.15s; }
+    .pc-breadcrumb a:hover { color: #fff; }
+    .pc-breadcrumb span { color: rgba(247,244,239,0.35); padding: 0 0.35rem; }
+    .pc-badge {
+      font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--cream); background: var(--red); padding: 5px 9px;
+    }
+
+    .pc-image-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.75rem;
+      background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-cap-text {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(255,255,255,0.85);
+      max-width: 420px; line-height: 1.4;
+    }
+    .pc-image-credit {
+      font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+
+    /* Carousel arrows */
+    .pc-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(15,12,10,0.45); backdrop-filter: blur(8px);
+      border: 1px solid rgba(247,244,239,0.25);
+      color: var(--cream); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 4;
+      transition: all 0.2s;
+    }
+    .pc-nav:hover { background: var(--red); border-color: var(--red); }
+    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav.prev { left: 1.25rem; }
+    .pc-nav.next { right: 1.25rem; }
+    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+
+    /* Counter + dots */
+    .pc-counter {
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; align-items: center;
+      z-index: 4;
+      padding: 6px 12px;
+      background: rgba(15,12,10,0.35); backdrop-filter: blur(8px);
+      border-radius: 100px;
+    }
+    .pc-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(247,244,239,0.4);
+      border: none; cursor: pointer; padding: 0;
+      transition: all 0.2s;
+    }
+    .pc-dot.active { background: var(--cream); width: 18px; border-radius: 3px; }
+    .pc-dot:hover { background: rgba(247,244,239,0.8); }
+
+    /* Hide individual dots when there are too many; show just counter */
+    .pc-image.many-photos .pc-dot { display: none; }
+    .pc-image.many-photos .pc-counter-text { position: static; transform: none; }
+    .pc-image.many-photos .pc-counter {
+      padding: 5px 12px;
+    }
+
+    .pc-counter-text {
+      font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.7);
+    }
+    .pc-counter-text b { color: var(--cream); font-weight: 500; }
+
+    /* Hide carousel controls when only one photo */
+    .pc-image.single .pc-nav,
+    .pc-image.single .pc-counter,
+    .pc-image.single .pc-counter-text { display: none; }
+
+    /* ------ BODY SIDE ------ */
+    .pc-body {
+      padding: 3rem 3.25rem 2.25rem;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .pc-content {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-bottom: 1rem;
+    }
+    .pc-location {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    .pc-location span { color: var(--rule); padding: 0 0.4rem; }
+    .pc-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .pc-title em { font-style: italic; font-weight: 400; }
+    .pc-title.long { font-size: clamp(1.7rem, 2.6vw, 2.4rem); line-height: 1.05; }
+    .pc-title.xlong { font-size: clamp(1.45rem, 2.2vw, 2rem); line-height: 1.1; }
+
+    /* Callout */
+    .pc-callout {
+      position: relative;
+      padding: 1.75rem 0 1.75rem 1.75rem;
+      margin: 0.25rem 0 2rem;
+      border-left: 3px solid var(--red);
+      background: linear-gradient(to right, rgba(181,50,42,0.04) 0%, transparent 100%);
+    }
+    .pc-callout::before {
+      content: '"';
+      position: absolute;
+      top: -0.4rem;
+      left: 0.95rem;
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      color: var(--red);
+      opacity: 0.15;
+      line-height: 1;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .pc-callout-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      line-height: 1.25;
+      color: var(--ink);
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    .pc-callout-text b { font-weight: 600; font-style: normal; color: var(--red); }
+
+    /* 3-Fact strip */
+    .pc-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .pc-fact {
+      padding: 1rem 1.25rem 1rem 0;
+      border-right: 1px solid var(--rule-soft);
+      display: flex; flex-direction: column; gap: 0.3rem;
+      min-width: 0;
+    }
+    .pc-fact:first-child { padding-left: 0; }
+    .pc-fact:last-child { border-right: none; padding-right: 0; padding-left: 1.25rem; }
+    .pc-fact:nth-child(2) { padding-left: 1.25rem; }
+    .pc-fact-label {
+      font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pc-fact-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.25;
+      word-wrap: break-word;
+    }
+    .pc-fact-value a { color: var(--ink); border-bottom: 1px solid var(--rule); transition: border-color 0.15s; }
+    .pc-fact-value a:hover { border-color: var(--red); }
+    .pc-fact-value em { font-style: italic; font-weight: 400; color: var(--muted); font-size: 0.92rem; }
+
+    /* Byline + share */
+    .pc-foot {
+      margin-top: auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .pc-byline { display: flex; align-items: center; gap: 0.7rem; }
+    .pc-byline-photo {
+      width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule);
+    }
+    .pc-byline-text {
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+      line-height: 1.4;
+    }
+    .pc-byline-text b {
+      display: block; font-family: var(--serif); font-size: 0.95rem; color: var(--ink);
+      font-weight: 500; text-transform: none; font-style: italic; letter-spacing: 0;
+    }
+
+    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+    .pc-share-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink); background: var(--cream); border: 1px solid var(--ink);
+      padding: 9px 14px; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pc-share-btn:hover { background: var(--ink); color: var(--cream); }
+    .pc-share-btn svg { width: 12px; height: 12px; }
+    .pc-share-btn.primary { background: var(--ink); color: var(--cream); }
+    .pc-share-btn.primary:hover { background: var(--red); border-color: var(--red); }
+    .pc-share-toast {
+      position: absolute; right: 0; bottom: calc(100% + 8px);
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--ink); color: var(--cream); padding: 6px 10px; opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .pc-share-toast.show { opacity: 1; }
+
+    /* ------ FOOTER STRIP ------ */
+    .foot-strip {
+      background: var(--ink); color: var(--cream);
+      border-top: 2px solid var(--red);
+      position: relative; z-index: 2;
+    }
+    .foot-strip-inner {
+      max-width: 1360px; margin: 0 auto; padding: 0 32px;
+      height: 46px;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .foot-note {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(247,244,239,0.65);
+    }
+    .foot-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
+    .foot-cta {
+      font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.85);
+      border-bottom: 1px solid rgba(247,244,239,0.3);
+      padding-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .foot-cta:hover { color: var(--cream); border-color: var(--red); }
+
+    /* ------ RESPONSIVE ------ */
+    @media (max-width: 960px) {
+      .postcard { grid-template-columns: 1fr; min-height: 0; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; }
+      .pc-image-caption { display: none; }
+      .pc-nav { width: 36px; height: 36px; }
+      .pc-nav.prev { left: 0.75rem; }
+      .pc-nav.next { right: 0.75rem; }
+      .pc-body { padding: 2rem 1.5rem 1.5rem; }
+      .pc-title { font-size: 2rem; }
+      .pc-facts { grid-template-columns: 1fr; }
+      .pc-fact { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 0.9rem 0; }
+      .pc-fact:first-child { padding-top: 0.5rem; }
+      .pc-fact:last-child { border-bottom: none; padding-bottom: 0.5rem; padding-left: 0; }
+      .pc-fact:nth-child(2) { padding-left: 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-tag, .nav-link { display: none; }
+      .nav-inner { padding: 0 18px; }
+      .pc-image-overlay { padding: 1rem 1.25rem; }
+      .pc-body { padding: 1.5rem 1.25rem 1.5rem; }
+      .pc-title { font-size: 1.8rem; }
+      .pc-callout { padding: 1.25rem 0 1.25rem 1.25rem; margin: 0 0 1.5rem; }
+      .pc-callout-text { font-size: 1.2rem; }
+      .foot-strip-inner { padding: 0 18px; }
+      .foot-note { font-size: 0.72rem; }
+      .foot-cta { font-size: 0.56rem; }
+      .pc-share-btn { padding: 8px 11px; font-size: 0.6rem; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
+<!-- NAV -->
+<div class="nav">
   <div class="nav-inner">
-    <div style="display:flex;align-items:baseline;">
-      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
-      <span class="nav-tagline">Only the good stuff.</span>
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tag">Only the good stuff.</span>
     </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="geneva.html">Geneva</a></li>
-      <li><a href="index.html" class="cta">Leave a tip</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="hero">
-  <img src="baindespaquis-sunset.jpg" alt="Bains des Pâquis at sunset, Geneva — diving board silhouette against the lake" />
-  <div class="hero-caption">
-    <div class="hero-caption-location">Pâquis · Geneva · Switzerland</div>
-    <div class="hero-caption-name">Bains des Pâquis</div>
+    <div class="nav-right">
+      <a href="profile-dave.html" class="nav-link">Dave</a>
+      <a href="profile-build.html" class="nav-cta">Leave a tip →</a>
+    </div>
   </div>
 </div>
 
-<div class="article">
+<!-- POSTCARD -->
+<div class="postcard">
 
-  <div class="breadcrumb">
-    <a href="index.html">HoodTip</a>
-    <span class="breadcrumb-sep">·</span>
-    <a href="geneva.html">Geneva</a>
-    <span class="breadcrumb-sep">·</span>
-    <span>Pâquis</span>
-  </div>
-
-  <span class="category">Swimming · Lake · Bar</span>
-
-  <h1>Bains des Pâquis</h1>
-  <p class="subtitle">70s vibes on Lac Léman.</p>
-
-  <div class="meta-strip">
-    <div class="meta-item">
-      <span class="meta-label">Address</span>
-      <span class="meta-value">Quai du Mont-Blanc 30, 1201 Geneva</span>
+  <!-- CAROUSEL -->
+  <div class="pc-image many-photos" id="pcImage">
+    <div class="pc-track" id="pcTrack">
+      <div class="pc-slide"><img src="baindespaquis-sunset.jpg" alt="Bains des Pâquis at sunset, Geneva — diving board silhouette against the lake" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="baindespaquis-jump.jpg" alt="Diver in mid-air off the high board at Bains des Pâquis, Geneva" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="baindespaquis-water.jpg" alt="Lake Geneva water from Bains des Pâquis — turquoise, the Alps in the distance" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="baindespaquis-swimmer.jpg" alt="Swimmer about to enter Lake Geneva at Bains des Pâquis" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="baindespaquis-jump-2.jpg" alt="High dive at Bains des Pâquis — the jump sequence" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="baindespaquis-sign.jpg" alt="Bains des Pâquis entrance sign, Pâquis Geneva" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="baindespaquis-winter-swim-1.jpg" alt="Winter swimming at Bains des Pâquis — wading in" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="baindespaquis-winter-swim-2.jpg" alt="Winter swimming at Bains des Pâquis — the plunge" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="baindespaquis-winter-swim-3.jpg" alt="Winter swimming at Bains des Pâquis — coming out" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
     </div>
-    <div class="meta-item">
-      <span class="meta-label">Neighbourhood</span>
-      <span class="meta-value">Pâquis</span>
+
+    <!-- Overlay: breadcrumb + category badge -->
+    <div class="pc-image-overlay">
+      <div class="pc-breadcrumb">
+        <a href="index.html">HoodTip</a><span>/</span><a href="index.html">Geneva</a><span>/</span>Pâquis
+      </div>
+      <span class="pc-badge">Swimming</span>
     </div>
-    <div class="meta-item">
-      <span class="meta-label">Best for</span>
-      <span class="meta-value">Swimming, cold rosé, doing nothing well</span>
+
+    <!-- Caption (bottom left on desktop) -->
+    <div class="pc-image-caption">
+      <div class="pc-image-cap-text">70s vibes on Lac Léman.</div>
+      <div class="pc-image-credit">Photo · Dave</div>
     </div>
-    <div class="meta-item" style="margin-left:auto;text-align:right;">
-      <span class="meta-label">Tip by</span>
-      <span class="meta-value"><a href="profile-dave.html" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);">@dave</a></span>
+
+    <!-- Carousel nav -->
+    <button class="pc-nav prev" id="pcPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="pc-nav next" id="pcNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Dots + counter -->
+    <div class="pc-counter" id="pcDots">
+      <button class="pc-dot active" aria-label="Photo 1"></button><button class="pc-dot" aria-label="Photo 2"></button><button class="pc-dot" aria-label="Photo 3"></button><button class="pc-dot" aria-label="Photo 4"></button><button class="pc-dot" aria-label="Photo 5"></button><button class="pc-dot" aria-label="Photo 6"></button><button class="pc-dot" aria-label="Photo 7"></button><button class="pc-dot" aria-label="Photo 8"></button><button class="pc-dot" aria-label="Photo 9"></button>
+      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 9</span>
     </div>
   </div>
 
-  <div class="body">
-    <p>When I first moved to Geneva I assumed this was the kind of place you skip — too easy to find, on every tourist map, probably not where the locals actually go. That was wrong. I've been corrected by the city many times since.</p>
-    <p>The Bains des Pâquis is a Geneva institution in the truest sense — not a tourist trap dressed up as one, but the real thing. A floating bathing complex on the lake, opened in 1932, with a proper seventies vintage feel that's completely authentic. The diving board. The wooden jetties. The hammam that's been running for decades. The bar with cold rosé and a Greek salad that is, genuinely, a good Greek salad.</p>
+  <!-- BODY -->
+  <div class="pc-body">
+
+    <div class="pc-content">
+      <div class="pc-location"><span>/</span>Swimming<span>·</span>Pâquis<span>·</span>Geneva</div>
+
+      <h1 class="pc-title">Bains des Pâquis</h1>
+
+      <div class="pc-callout">
+        <p class="pc-callout-text">You jump in, surface, and there are the French Alps. Geneva keeps catching you off-guard.</p>
+      </div>
+
+      <div class="pc-facts">
+        <div class="pc-fact">
+          <span class="pc-fact-label">Where</span>
+          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Bains%20des%20P%C3%A2quis%20Geneva%20Quai%20du%20Mont-Blanc%2030%2C%201201%20Geneva" target="_blank" rel="noopener">Quai du Mont-Blanc 30</a></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">Best for</span>
+          <span class="pc-fact-value">Swimming, <em>cold rosé</em></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">The move</span>
+          <span class="pc-fact-value"><em>cold rosé</em></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc-foot">
+      <div class="pc-byline">
+        <img class="pc-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" onerror="this.style.display='none'" />
+        <div class="pc-byline-text">Tip by<b>Dave</b></div>
+      </div>
+      <div class="pc-share">
+        <span class="pc-share-toast" id="shareToast">Link copied</span>
+        <button class="pc-share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
+        <a class="pc-share-btn primary" href="https://wa.me/?text=Bains%20des%20P%C3%A2quis%20%E2%80%94%20https%3A//hoodtip.com/tip-baindespaquis.html" target="_blank" rel="noopener">
+          Share →
+        </a>
+      </div>
+    </div>
   </div>
-
-  <div class="img-portrait">
-    <img src="baindespaquis-jump.jpg" alt="Diver in mid-air off the high board at Bains des Pâquis, Geneva" />
-    <div class="img-caption" style="padding:0.5rem 0 0;">Quai du Mont-Blanc. The board has been here since 1932.</div>
-  </div>
-
-  <div class="body">
-    <p>In summer, the water is the colour of the Mediterranean — turquoise and clear enough to see the bottom. You jump in, surface, look up, and there are the French Alps behind the Geneva skyline. It's one of those moments that keeps catching you off-guard even after years of living here.</p>
-  </div>
-
-  <div class="img-full">
-    <img src="baindespaquis-water.jpg" alt="Lake Geneva water from Bains des Pâquis — turquoise, the Alps in the distance" style="object-position: center 55%;" />
-    <div class="img-caption">Mediterranean colour. Alpine backdrop. Geneva does this quietly.</div>
-  </div>
-
-  <div class="img-portrait">
-    <img src="baindespaquis-swimmer.jpg" alt="Swimmer about to enter Lake Geneva at Bains des Pâquis" />
-    <div class="img-caption" style="padding:0.5rem 0 0;">Every morning. Every season.</div>
-  </div>
-
-  <div class="pull-quote">
-    <p>"You jump in, surface, and there are the French Alps. Geneva keeps catching you off-guard."</p>
-  </div>
-
-  <div class="body">
-    <p>The food and drink is better than it needs to be. A full bottle of cold rosé is the move on a warm afternoon. The Greek salad is genuinely good. They do fondue and oysters — I haven't tried either, but something that's been running this long doesn't get it wrong. There's also free drinking water if you need to fill up a bottle, which is a very Geneva touch.</p>
-    <p>The sauna and hammam facility is part of the same complex — open year-round, been there forever. I've never done it but I intend to, which might be the most honest thing I can say about it.</p>
-  </div>
-
-  <div class="img-portrait-pair">
-    <img src="baindespaquis-jump-2.jpg" alt="High dive at Bains des Pâquis — the jump sequence" />
-    <img src="baindespaquis-sign.jpg" alt="Bains des Pâquis entrance sign, Pâquis Geneva" />
-  </div>
-
-  <div class="season-note">
-    <div class="season-note-label">On winter swimming</div>
-    <p>Old ladies go in with little caps and gloves through the cold months. The latest I've jumped in was December 31st — a wonderful way to end the year, highly recommended. I tried February once and it was genuinely too cold for me, but the regulars were fine. If that's you, you'll love it here year-round.</p>
-  </div>
-
-  <div class="img-portrait-trio">
-    <img src="baindespaquis-winter-swim-1.jpg" alt="Winter swimming at Bains des Pâquis — wading in" />
-    <img src="baindespaquis-winter-swim-2.jpg" alt="Winter swimming at Bains des Pâquis — the plunge" />
-    <img src="baindespaquis-winter-swim-3.jpg" alt="Winter swimming at Bains des Pâquis — coming out" />
-  </div>
-
-  <div class="body">
-    <p>If I didn't have small children and more time, I'd like to go there on the morning cycle to work — lake jump and sauna, then keep going up the hill to Nations. One day.</p>
-    <p>The point is: don't overlook it because it's famous. That's the wrong filter. It's famous because it's genuinely one of the best places in the city. It puts you right on the water, which is really what everyone wants when they come to Geneva, and it gives you a view of the city you can't get anywhere else.</p>
-  </div>
-
-  <div class="tip-box">
-    <div class="tip-box-label">The tip</div>
-    <ul>
-      <li>Cold rosé, full bottle, at the bar on the jetty — that's the move in summer</li>
-      <li>The Greek salad is genuinely good. Order it.</li>
-      <li>Jump off the board. The high one. There's a queue system — wait your turn, you'll be fine.</li>
-      <li>December 31st swim if you're in Geneva for New Year. End the year properly.</li>
-      <li>The hammam has been running for decades. Worth booking ahead in winter.</li>
-      <li>Free drinking water tap by the entrance — fill up your bottle on the way in.</li>
-      <li>Entry is a few francs. Cheap by Geneva standards. Very cheap by the quality of the experience.</li>
-    </ul>
-  </div>
-
-  <a href="geneva.html" class="back-link">← Geneva</a>
-
 </div>
 
-<div style="border-bottom:1.5px solid var(--ink);">
-  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
-    <div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
-      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
-    </div>
-    <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+<!-- FOOTER STRIP -->
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="profile-build.html" class="foot-cta">Leave your own tip →</a>
   </div>
 </div>
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
-    <div class="footer-stats">
-      <span>63 tips</span><span>·</span>
-      <span>16 neighbourhoods</span><span>·</span>
-      <span>18 cities</span>
-    </div>
-  </div>
-</footer>
 
+<script>
+  // Share
+  function copyLink(){
+    var url = window.location.href;
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.resolve()).then(function(){
+      var t = document.getElementById('shareToast');
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 1800);
+    });
+  }
 
-  <!-- LEAVE A TIP CTA -->
-  <div style="border:1.5px solid #1a1816;padding:1.75rem 2rem;margin:3rem 0 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-    
-    <a href="https://hoodtip.com" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.75rem 1.25rem;text-decoration:none;white-space:nowrap;flex-shrink:0;">Leave a HoodTip &rarr;</a>
-  </div>
+  // Hide broken images — parent gradient shows through
+  document.querySelectorAll('.pc-slide img').forEach(function(img){
+    function hide(){ img.style.display = 'none'; var fb = img.nextElementSibling; if (fb && fb.classList.contains('pc-slide-fallback')) fb.style.display='flex'; }
+    img.addEventListener('error', hide);
+    if (img.complete && img.naturalWidth === 0) hide();
+  });
+
+  // Carousel
+  (function(){
+    var track = document.getElementById('pcTrack');
+    var slides = track ? track.querySelectorAll('.pc-slide') : [];
+    var prev = document.getElementById('pcPrev');
+    var next = document.getElementById('pcNext');
+    var dots = document.querySelectorAll('#pcDots .pc-dot');
+    var current = document.getElementById('pcCurrent');
+    var total = slides.length;
+    if (total <= 1) return;
+
+    var idx = 0;
+    function go(i){
+      idx = Math.max(0, Math.min(total - 1, i));
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+      if (current) current.textContent = idx + 1;
+      prev.disabled = idx === 0;
+      next.disabled = idx === total - 1;
+    }
+
+    prev.addEventListener('click', function(){ go(idx - 1); });
+    next.addEventListener('click', function(){ go(idx + 1); });
+    dots.forEach(function(d, j){ d.addEventListener('click', function(){ go(j); }); });
+
+    // Keyboard
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft') go(idx - 1);
+      else if (e.key === 'ArrowRight') go(idx + 1);
+    });
+
+    // Swipe (touch)
+    var startX = null, startY = null;
+    var imgEl = document.getElementById('pcImage');
+    imgEl.addEventListener('touchstart', function(e){
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, {passive: true});
+    imgEl.addEventListener('touchend', function(e){
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) go(idx + 1);
+        else go(idx - 1);
+      }
+      startX = null; startY = null;
+    }, {passive: true});
+
+    go(0);
+  })();
+</script>
+
 </body>
 </html>

@@ -3,556 +3,586 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Latitude 15 – Lusaka, Zambia | HoodTip</title>
-  <!-- OG / SOCIAL META -->
+  <title>Latitude 15 — Lusaka — HoodTip</title>
+  <meta name="description" content="The coolest place to stay in Lusaka. Great design, good food, a pool. Come for dinner even if you&#x27;re not staying." />
+
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Latitude 15, Lusaka — HoodTip" />
-  <meta property="og:description" content="The coolest place to stay in Lusaka. Great design, good food, a pool. Come for dinner even if you're not staying." />
+  <meta property="og:title" content="Latitude 15 · HoodTip" />
+  <meta property="og:description" content="The coolest place to stay in Lusaka. Great design, good food, a pool. Come for dinner even if you&#x27;re not staying." />
   <meta property="og:image" content="https://hoodtip.com/Latitude-15.JPG" />
-  <meta property="og:image:width" content="1400" />
-  <meta property="og:image:height" content="1050" />
   <meta property="og:url" content="https://hoodtip.com/tip-latitude-15-lusaka.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Latitude 15, Lusaka — HoodTip" />
-  <meta name="twitter:description" content="The coolest place to stay in Lusaka. Great design, good food, a pool. Come for dinner even if you're not staying." />
+  <meta name="twitter:title" content="Latitude 15 · HoodTip" />
+  <meta name="twitter:description" content="The coolest place to stay in Lusaka. Great design, good food, a pool. Come for dinner even if you&#x27;re not staying." />
   <meta name="twitter:image" content="https://hoodtip.com/Latitude-15.JPG" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
 
   <style>
-    /* ── DESIGN TOKENS ────────────────────────────────────── */
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --cream:  #f7f4ef;
-      --ink:    #1a1816;
-      --red:    #b5322a;
-      --muted:  #6b6560;
-      --rule:   #e0dbd3;
-      --max:    780px;
+      --cream: #f7f4ef;
+      --cream2: #efeae1;
+      --ink: #1a1816;
+      --ink2: #2a2925;
+      --muted: #6b6560;
+      --muted2: #8a8378;
+      --rule: #d9d2c6;
+      --rule-soft: #e8e2d6;
+      --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
     }
-
-    /* ── RESET / BASE ─────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
+    html, body { height: 100%; }
     body {
       background: var(--cream);
       color: var(--ink);
-      font-family: 'Barlow', sans-serif;
+      font-family: var(--sans);
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body::before {
+      content:''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
+      background-size: 3px 3px; opacity: 0.5; mix-blend-mode: multiply;
     }
     a { color: inherit; text-decoration: none; }
-    img { display: block; width: 100%; height: auto; }
 
-    /* ── PHOTO LAYOUT SYSTEM ──────────────────────────────── */
-    .img-full { width: 100%; margin: 2rem 0; }
-    .img-full img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    /* ------ NAV ------ */
+    .nav { border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: baseline; gap: 12px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-logo .dot { color: var(--red); }
+    .nav-tag { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; }
+    .nav-right { display: flex; align-items: stretch; height: 54px; }
+    .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 0 22px; display: flex; align-items: center; border-left: 1px solid var(--ink); transition: background 0.15s; }
+    .nav-cta:hover { background: var(--red); }
 
-    .img-pair {
+    /* ------ POSTCARD ------ */
+    .postcard {
+      flex: 1;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin: 2rem 0;
-    }
-    .img-pair img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
-
-    .img-portrait-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin: 2rem 0;
-    }
-    .img-portrait-pair img { aspect-ratio: 3/4; object-fit: cover; width: 100%; }
-
-    .img-portrait-single { margin: 2rem auto; max-width: 480px; }
-    .img-portrait-single img { aspect-ratio: 3/4; object-fit: cover; width: 100%; }
-
-    .img-trio {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 6px;
-      margin: 2rem 0;
-    }
-    .img-trio img { aspect-ratio: 4/3; object-fit: cover; width: 100%; }
-
-    .cf::after { content: ''; display: table; clear: both; }
-
-    .img-float-right {
-      float: right;
-      margin: 0 0 1.5rem 2rem;
-      width: 44%;
-    }
-    .img-float-right.portrait img { aspect-ratio: 3/4; object-fit: cover; }
-
-    .img-float-left {
-      float: left;
-      margin: 0 2rem 1.5rem 0;
-      width: 44%;
-    }
-    .img-float-left.portrait img { aspect-ratio: 3/4; object-fit: cover; }
-
-    /* ── FULL-BLEED ───────────────────────────────────────── */
-    .bleed {
-      width: 100vw;
+      grid-template-columns: 1.15fr 1fr;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: calc(100vh - 54px - 46px);
       position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      margin: 3rem 0;
-    }
-    .bleed img {
-      width: 100%;
-      max-height: 520px;
-      object-fit: cover;
-      object-position: center 40%;
+      z-index: 2;
     }
 
-    /* ── SITE HEADER ──────────────────────────────────────── */
-    .site-header { border-bottom: 1px solid var(--rule); padding: 0 1.5rem; }
-    .site-header__inner {
-      max-width: 1100px;
-      margin: 0 auto;
+    /* ------ CAROUSEL (left side) ------ */
+    .pc-image {
+      position: relative;
+      overflow: hidden;
+      border-right: 1.5px solid var(--ink);
+      background: linear-gradient(135deg, #1f1d1b 0%, #2a2925 50%, #3a2a26 100%);
+    }
+    .pc-track {
+      position: absolute; inset: 0;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
     }
-    .site-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--ink);
+    .pc-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
     }
-    .site-logo span { color: var(--red); }
-    .site-nav { display: flex; gap: 2rem; }
-    .site-nav a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: .8rem;
+    .pc-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      pointer-events: none;
+    }
+    .pc-slide-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 5rem; color: rgba(247,244,239,0.15);
+      pointer-events: none;
+    }
+
+    /* Overlay (breadcrumb top, caption/counter bottom) */
+    .pc-image-overlay {
+      position: absolute; top: 0; left: 0; right: 0; padding: 1.5rem 1.75rem;
+      background: linear-gradient(to bottom, rgba(15,12,10,0.55) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-overlay a, .pc-image-overlay button { pointer-events: auto; }
+    .pc-breadcrumb {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(247,244,239,0.75);
+    }
+    .pc-breadcrumb a { color: rgba(247,244,239,0.75); transition: color 0.15s; }
+    .pc-breadcrumb a:hover { color: #fff; }
+    .pc-breadcrumb span { color: rgba(247,244,239,0.35); padding: 0 0.35rem; }
+    .pc-badge {
+      font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--cream); background: var(--red); padding: 5px 9px;
+    }
+
+    .pc-image-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.75rem;
+      background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-cap-text {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(255,255,255,0.85);
+      max-width: 420px; line-height: 1.4;
+    }
+    .pc-image-credit {
+      font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+
+    /* Carousel arrows */
+    .pc-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(15,12,10,0.45); backdrop-filter: blur(8px);
+      border: 1px solid rgba(247,244,239,0.25);
+      color: var(--cream); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 4;
+      transition: all 0.2s;
+    }
+    .pc-nav:hover { background: var(--red); border-color: var(--red); }
+    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav.prev { left: 1.25rem; }
+    .pc-nav.next { right: 1.25rem; }
+    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+
+    /* Counter + dots */
+    .pc-counter {
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; align-items: center;
+      z-index: 4;
+      padding: 6px 12px;
+      background: rgba(15,12,10,0.35); backdrop-filter: blur(8px);
+      border-radius: 100px;
+    }
+    .pc-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(247,244,239,0.4);
+      border: none; cursor: pointer; padding: 0;
+      transition: all 0.2s;
+    }
+    .pc-dot.active { background: var(--cream); width: 18px; border-radius: 3px; }
+    .pc-dot:hover { background: rgba(247,244,239,0.8); }
+
+    /* Hide individual dots when there are too many; show just counter */
+    .pc-image.many-photos .pc-dot { display: none; }
+    .pc-image.many-photos .pc-counter-text { position: static; transform: none; }
+    .pc-image.many-photos .pc-counter {
+      padding: 5px 12px;
+    }
+
+    .pc-counter-text {
+      font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.7);
+    }
+    .pc-counter-text b { color: var(--cream); font-weight: 500; }
+
+    /* Hide carousel controls when only one photo */
+    .pc-image.single .pc-nav,
+    .pc-image.single .pc-counter,
+    .pc-image.single .pc-counter-text { display: none; }
+
+    /* ------ BODY SIDE ------ */
+    .pc-body {
+      padding: 3rem 3.25rem 2.25rem;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .pc-content {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-bottom: 1rem;
+    }
+    .pc-location {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    .pc-location span { color: var(--rule); padding: 0 0.4rem; }
+    .pc-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
       font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
     }
-    .site-nav a:hover { color: var(--ink); }
+    .pc-title em { font-style: italic; font-weight: 400; }
+    .pc-title.long { font-size: clamp(1.7rem, 2.6vw, 2.4rem); line-height: 1.05; }
+    .pc-title.xlong { font-size: clamp(1.45rem, 2.2vw, 2rem); line-height: 1.1; }
 
-    /* ── HERO ─────────────────────────────────────────────── */
-    .hero { width: 100%; position: relative; overflow: hidden; }
-    .hero img {
-      width: 100%;
-      height: 70vh;
-      min-height: 420px;
-      max-height: 680px;
-      object-fit: cover;
-      object-position: center 50%;
-      display: block;
-    }
-
-    /* ── ARTICLE WRAPPER ──────────────────────────────────── */
-    .article {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 1.5rem 4rem;
-    }
-
-    /* ── BREADCRUMB ───────────────────────────────────────── */
-    .breadcrumb {
-      margin: 1.5rem 0 1rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: .75rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .breadcrumb a { color: var(--muted); }
-    .breadcrumb a:hover { color: var(--red); }
-    .breadcrumb span { margin: 0 .4em; }
-
-    /* ── TAGS ─────────────────────────────────────────────── */
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.2rem; }
-    .tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--red);
-      border: 1px solid var(--red);
-      padding: .2rem .55rem;
-      border-radius: 2px;
-    }
-
-    /* ── HEADLINE ─────────────────────────────────────────── */
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: .6rem;
-      letter-spacing: -.01em;
-    }
-    .subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin-bottom: 1.8rem;
-      line-height: 1.5;
-    }
-
-    /* ── FIND STRIP ───────────────────────────────────────── */
-    .find-strip {
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: 1rem 0;
-      margin-bottom: 2.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 1rem 2rem;
-    }
-    .find-strip__item { display: flex; flex-direction: column; gap: .15rem; }
-    .find-strip__label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: .65rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .find-strip__value { font-size: .88rem; color: var(--ink); font-weight: 400; }
-    .find-strip__actions {
-      margin-left: auto;
-      display: flex;
-      gap: .6rem;
-      align-items: center;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .45rem .9rem;
-      border-radius: 2px;
-      cursor: pointer;
-      border: none;
-      transition: opacity .15s;
-    }
-    .btn:hover { opacity: .8; }
-    .btn-primary { background: var(--ink); color: var(--cream); }
-    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-    .btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-    /* ── BODY COPY ────────────────────────────────────────── */
-    .body-copy p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.4rem; }
-    .body-copy p:last-child { margin-bottom: 0; }
-
-    /* ── PULL QUOTE ───────────────────────────────────────── */
-    .pull-quote {
+    /* Callout */
+    .pc-callout {
+      position: relative;
+      padding: 1.75rem 0 1.75rem 1.75rem;
+      margin: 0.25rem 0 2rem;
       border-left: 3px solid var(--red);
-      padding: 1rem 0 1rem 1.5rem;
-      margin: 2.5rem 0;
+      background: linear-gradient(to right, rgba(181,50,42,0.04) 0%, transparent 100%);
     }
-    .pull-quote p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.55rem;
+    .pc-callout::before {
+      content: '"';
+      position: absolute;
+      top: -0.4rem;
+      left: 0.95rem;
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      color: var(--red);
+      opacity: 0.15;
+      line-height: 1;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .pc-callout-text {
+      font-family: var(--serif);
       font-style: italic;
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      line-height: 1.25;
+      color: var(--ink);
       font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    .pc-callout-text b { font-weight: 600; font-style: normal; color: var(--red); }
+
+    /* 3-Fact strip */
+    .pc-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .pc-fact {
+      padding: 1rem 1.25rem 1rem 0;
+      border-right: 1px solid var(--rule-soft);
+      display: flex; flex-direction: column; gap: 0.3rem;
+      min-width: 0;
+    }
+    .pc-fact:first-child { padding-left: 0; }
+    .pc-fact:last-child { border-right: none; padding-right: 0; padding-left: 1.25rem; }
+    .pc-fact:nth-child(2) { padding-left: 1.25rem; }
+    .pc-fact-label {
+      font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pc-fact-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.25;
+      word-wrap: break-word;
+    }
+    .pc-fact-value a { color: var(--ink); border-bottom: 1px solid var(--rule); transition: border-color 0.15s; }
+    .pc-fact-value a:hover { border-color: var(--red); }
+    .pc-fact-value em { font-style: italic; font-weight: 400; color: var(--muted); font-size: 0.92rem; }
+
+    /* Byline + share */
+    .pc-foot {
+      margin-top: auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .pc-byline { display: flex; align-items: center; gap: 0.7rem; }
+    .pc-byline-photo {
+      width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule);
+    }
+    .pc-byline-text {
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
       line-height: 1.4;
     }
-
-    /* ── TIP BOX ──────────────────────────────────────────── */
-    .tip-box {
-      background: white;
-      border: 1px solid var(--rule);
-      border-top: 3px solid var(--red);
-      padding: 1.5rem 1.8rem;
-      margin: 2.5rem 0;
-    }
-    .tip-box__heading {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: .7rem;
-    }
-    .tip-box p { font-size: .95rem; line-height: 1.7; }
-    .tip-box p + p { margin-top: .6rem; }
-
-    /* ── CTA BANNER ───────────────────────────────────────── */
-    .cta-banner {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 2rem;
-      text-align: center;
-      margin: 3rem 0 0;
-    }
-    .cta-banner h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-bottom: .4rem;
-    }
-    .cta-banner p { font-size: .85rem; color: #aaa; margin-bottom: 1rem; }
-    .cta-banner .btn-primary { background: var(--red); color: white; }
-
-    /* ── MORE TIPS GRID ───────────────────────────────────── */
-    .more-tips {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 3rem 1.5rem 4rem;
-    }
-    .more-tips__heading {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.4rem;
-      padding-bottom: .6rem;
-      border-bottom: 1px solid var(--rule);
-    }
-    .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .tip-card { display: block; }
-    .tip-card__img { aspect-ratio: 4/3; overflow: hidden; margin-bottom: .7rem; }
-    .tip-card__img img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform .4s ease;
-    }
-    .tip-card:hover .tip-card__img img { transform: scale(1.04); }
-    .tip-card__city {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: .65rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: .2rem;
-    }
-    .tip-card__name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      line-height: 1.3;
+    .pc-byline-text b {
+      display: block; font-family: var(--serif); font-size: 0.95rem; color: var(--ink);
+      font-weight: 500; text-transform: none; font-style: italic; letter-spacing: 0;
     }
 
-    /* ── FOOTER ───────────────────────────────────────────── */
-    .site-footer { border-top: 1px solid var(--rule); padding: 2rem 1.5rem; }
-    .site-footer__inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+    .pc-share-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink); background: var(--cream); border: 1px solid var(--ink);
+      padding: 9px 14px; cursor: pointer;
+      transition: all 0.15s;
     }
-    .site-footer p { font-size: .75rem; color: var(--muted); }
+    .pc-share-btn:hover { background: var(--ink); color: var(--cream); }
+    .pc-share-btn svg { width: 12px; height: 12px; }
+    .pc-share-btn.primary { background: var(--ink); color: var(--cream); }
+    .pc-share-btn.primary:hover { background: var(--red); border-color: var(--red); }
+    .pc-share-toast {
+      position: absolute; right: 0; bottom: calc(100% + 8px);
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--ink); color: var(--cream); padding: 6px 10px; opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .pc-share-toast.show { opacity: 1; }
 
-    /* ── RESPONSIVE ───────────────────────────────────────── */
-    @media (max-width: 640px) {
-      .site-nav { display: none; }
-      .find-strip__actions { margin-left: 0; width: 100%; }
-      .img-float-right, .img-float-left { float: none; width: 100%; margin: 1.5rem 0; }
-      .img-pair, .img-portrait-pair { grid-template-columns: 1fr; }
-      .img-trio { grid-template-columns: 1fr 1fr; }
-      .tips-grid { grid-template-columns: 1fr 1fr; }
-      .tips-grid .tip-card:last-child { display: none; }
+    /* ------ FOOTER STRIP ------ */
+    .foot-strip {
+      background: var(--ink); color: var(--cream);
+      border-top: 2px solid var(--red);
+      position: relative; z-index: 2;
+    }
+    .foot-strip-inner {
+      max-width: 1360px; margin: 0 auto; padding: 0 32px;
+      height: 46px;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .foot-note {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(247,244,239,0.65);
+    }
+    .foot-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
+    .foot-cta {
+      font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.85);
+      border-bottom: 1px solid rgba(247,244,239,0.3);
+      padding-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .foot-cta:hover { color: var(--cream); border-color: var(--red); }
+
+    /* ------ RESPONSIVE ------ */
+    @media (max-width: 960px) {
+      .postcard { grid-template-columns: 1fr; min-height: 0; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; }
+      .pc-image-caption { display: none; }
+      .pc-nav { width: 36px; height: 36px; }
+      .pc-nav.prev { left: 0.75rem; }
+      .pc-nav.next { right: 0.75rem; }
+      .pc-body { padding: 2rem 1.5rem 1.5rem; }
+      .pc-title { font-size: 2rem; }
+      .pc-facts { grid-template-columns: 1fr; }
+      .pc-fact { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 0.9rem 0; }
+      .pc-fact:first-child { padding-top: 0.5rem; }
+      .pc-fact:last-child { border-bottom: none; padding-bottom: 0.5rem; padding-left: 0; }
+      .pc-fact:nth-child(2) { padding-left: 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-tag, .nav-link { display: none; }
+      .nav-inner { padding: 0 18px; }
+      .pc-image-overlay { padding: 1rem 1.25rem; }
+      .pc-body { padding: 1.5rem 1.25rem 1.5rem; }
+      .pc-title { font-size: 1.8rem; }
+      .pc-callout { padding: 1.25rem 0 1.25rem 1.25rem; margin: 0 0 1.5rem; }
+      .pc-callout-text { font-size: 1.2rem; }
+      .foot-strip-inner { padding: 0 18px; }
+      .foot-note { font-size: 0.72rem; }
+      .foot-cta { font-size: 0.56rem; }
+      .pc-share-btn { padding: 8px 11px; font-size: 0.6rem; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a href="index.html" class="site-logo">Hood<span>Tip</span></a>
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="#">Cities</a>
-        <a href="#">About</a>
-      </nav>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tag">Only the good stuff.</span>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <div class="hero">
-    <img src="Latitude-15.JPG" alt="Latitude 15 Lusaka — checkerboard terrace, patterned armchairs and pool courtyard" />
-  </div>
-
-  <!-- ARTICLE -->
-  <article class="article">
-
-    <!-- BREADCRUMB -->
-    <nav class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <a href="#">Southern Africa</a>
-      <span>›</span>
-      <a href="#">Zambia</a>
-      <span>›</span>
-      Lusaka
-    </nav>
-
-    <!-- TAGS -->
-    <div class="tags">
-      <span class="tag">Hotel</span>
-      <span class="tag">Boutique</span>
-      <span class="tag">Design</span>
-      <span class="tag">Southern Africa</span>
-      <span class="tag">Zambia</span>
+    <div class="nav-right">
+      <a href="profile-dave.html" class="nav-link">Dave</a>
+      <a href="profile-build.html" class="nav-cta">Leave a tip →</a>
     </div>
-
-    <!-- HEADLINE -->
-    <h1>Latitude 15</h1>
-    <p class="subtitle">The coolest place to stay in Lusaka. Possibly in the region.</p>
-
-    <!-- FIND STRIP -->
-    <div class="find-strip">
-      <div class="find-strip__item">
-        <span class="find-strip__label">Address</span>
-        <span class="find-strip__value">H972+FP8, Lusaka 10101, Zambia</span>
-      </div>
-      <div class="find-strip__item">
-        <span class="find-strip__label">Best for</span>
-        <span class="find-strip__value">Staying, working, dinner — all three</span>
-      </div>
-      <div class="find-strip__item">
-        <span class="find-strip__label">Tip by</span>
-        <span class="find-strip__value"><a href="profile-dave.html">Dave</a></span>
-      </div>
-      <div class="find-strip__actions">
-        <a class="btn btn-primary" href="https://maps.google.com/?q=Latitude+15+Hotel+Lusaka+Zambia" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          Maps
-        </a>
-        <button class="btn btn-outline" onclick="navigator.share ? navigator.share({title: document.title, url: location.href}) : navigator.clipboard.writeText(location.href)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
-          Share
-        </button>
-      </div>
-    </div>
-
-    <!-- BODY COPY -->
-    <div class="body-copy">
-
-      <div class="cf">
-        <div class="img-float-right portrait">
-          <img src="Latitude-15-door-2.jpg" alt="Vintage green door with stained glass transom, checkerboard floor and handcrafted wooden pendants — Latitude 15 lobby" />
-        </div>
-        <p>There are hotels that are just somewhere to sleep, and then there are hotels that are the whole point. Latitude 15 is firmly in the second category. It's a small boutique chain — I've stayed at the Lusaka property and another in Malawi — and both times I've walked through the door and thought: this place has genuinely got it together.</p>
-        <p>The design is the first thing that hits you. Checkerboard marble floors, sculptural pendant lights, salvaged antique doors repurposed as interior features, local textiles hung floor to ceiling. It manages to feel eclectic without feeling try-hard — like someone with real taste curated it slowly over time rather than briefed a design agency on a deadline. The art is good. The furniture is interesting. Every corner has something worth looking at.</p>
-      </div>
-
-      <div class="img-pair">
-        <img src="Latitude-15-lobby.JPG" alt="Latitude 15 lobby — brick feature wall, large portrait canvas, red tufted sofa and tropical plants" />
-        <img src="Latitude-15-door.JPG" alt="Ornate patinated metal door in the entrance hall, ornamental pendant lanterns, and bold tilework" />
-      </div>
-
-      <p>The pool courtyard is where you'll want to spend any downtime. Two pools across the property, both surrounded by lush tropical planting, sunloungers, and enough shade that you can actually sit outside in the midday Lusaka heat. The main terrace has those patterned armchairs and a checkerboard floor that photograph well but, more importantly, is genuinely a comfortable place to sit with a drink and watch the afternoon go by.</p>
-
-    </div>
-
-    <!-- PULL QUOTE -->
-    <div class="pull-quote">
-      <p>"The coolest place to stay in Lusaka. Even if you're not a guest, come for dinner — the atmosphere alone is worth it."</p>
-    </div>
-
-    <!-- FULL BLEED -->
-    <div class="bleed">
-      <img src="Latitude-15-pool.JPG" alt="Garden path leading through lush tropical grounds to the pool at Latitude 15, Lusaka" />
-    </div>
-
-    <!-- BODY COPY CONTINUED -->
-    <div class="body-copy">
-
-      <div class="cf">
-        <div class="img-float-left portrait">
-          <img src="Latitude-15-wall-art.JPG" alt="Large textile wall hanging showing a woman in a lush botanical garden — African contemporary art at Latitude 15" />
-        </div>
-        <p>The food is good — proper good, not just hotel-acceptable. The kitchen takes it seriously, the menu feels considered, and the dining room has the right energy in the evening: a mix of travellers passing through, NGO workers on longer postings, diplomats, the occasional journalist, and Lusaka residents who know a good thing when they see it. It's the kind of crowd that makes for interesting conversation at the bar.</p>
-        <p>There's also a small co-working space — genuinely useful if you're in Lusaka for work, with an industrial long table, proper lighting, and power sockets everywhere. And a gym, which is a nice surprise. The rooms are well done: not enormous, but tastefully furnished and comfortable. You're paying for the whole experience here, and it delivers.</p>
-      </div>
-
-      <div class="img-full">
-        <img src="Latitude-15-coworking.JPG" alt="Latitude 15 co-working space — long dark wood communal table, brass industrial pendant lights, steel-framed windows" />
-      </div>
-
-      <p>Worth knowing: Latitude 15 is a chain, but a good one. There are a handful of properties across the region — I can vouch for Lusaka and Malawi, and everything I've heard about the others is consistent. If you find yourself anywhere they operate and need a place to stay, don't overthink it.</p>
-
-    </div>
-
-    <!-- TIP BOX -->
-    <div class="tip-box">
-      <div class="tip-box__heading">The Tip</div>
-      <p><strong>Latitude 15</strong> is a boutique hotel chain with properties in Lusaka, Malawi, and elsewhere in the region. The Lusaka property is exceptional — great design, good food, a pool, co-working space, and a gym. But you don't have to be staying there to enjoy it. <strong>Come for dinner</strong> even if you're based nearby — the atmosphere is worth it on its own.</p>
-      <p>The crowd that gathers here in the evenings is reliably interesting: travellers, UN workers, NGO types, diplomats, and hip Lusakans. One of those rare spots that feels genuinely local and genuinely international at the same time.</p>
-    </div>
-
-    <!-- POOL PAIR -->
-    <div class="img-pair">
-      <img src="Latitude-15-pool-2.JPG" alt="Latitude 15 pool framed by tall palms and white walls, Lusaka" />
-      <img src="Latitude-15-pool.JPG" alt="Stone path through lush garden leading to the pool terrace at Latitude 15" />
-    </div>
-
-  </article>
-
-  <!-- MORE TIPS -->
-  <section class="more-tips">
-    <div class="more-tips__heading">More tips from Africa</div>
-    <div class="tips-grid">
-      <a href="tip-zanzibar-hideaway-nungwi.html" class="tip-card">
-        <div class="tip-card__img"><img src="zanzibar-beach-hero.JPG" alt="Zanzibar beach" /></div>
-        <div class="tip-card__city">Zanzibar</div>
-        <div class="tip-card__name">Hotel Riu Palace Zanzibar</div>
-      </a>
-      <a href="tip-kigali-marriott.html" class="tip-card">
-        <div class="tip-card__img"><img src="kigali-marriot-breakfast.JPG" alt="Kigali Marriott" /></div>
-        <div class="tip-card__city">Kigali</div>
-        <div class="tip-card__name">Kigali Marriott Hotel</div>
-      </a>
-      <a href="tip-lebalafon.html" class="tip-card">
-        <div class="tip-card__img"><img src="lefbalafon-view.JPG" alt="Le Balafon, Senegal" /></div>
-        <div class="tip-card__city">Senegal</div>
-        <div class="tip-card__name">Le Balafon</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- BOTTOM CTA -->
-  <div style="border-top:1.5px solid #1a1816;border-bottom:1.5px solid #1a1816;">
-    <div style="max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
-      <div>
-        <div style="border-bottom:1.5px solid var(--ink);">
-  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
-    <div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
-      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
-    </div>
-    <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
   </div>
 </div>
 
-        <p style="font-size:0.85rem;color:#6b6560;line-height:1.7;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
+<!-- POSTCARD -->
+<div class="postcard">
+
+  <!-- CAROUSEL -->
+  <div class="pc-image many-photos" id="pcImage">
+    <div class="pc-track" id="pcTrack">
+      <div class="pc-slide"><img src="Latitude-15.JPG" alt="Latitude 15 Lusaka — checkerboard terrace, patterned armchairs and pool courtyard" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Latitude-15-door-2.jpg" alt="Vintage green door with stained glass transom, checkerboard floor and handcrafted wooden pendants — Latitude 15 lobby" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Latitude-15-lobby.JPG" alt="Latitude 15 lobby — brick feature wall, large portrait canvas, red tufted sofa and tropical plants" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Latitude-15-door.JPG" alt="Ornate patinated metal door in the entrance hall, ornamental pendant lanterns, and bold tilework" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Latitude-15-pool.JPG" alt="Garden path leading through lush tropical grounds to the pool at Latitude 15, Lusaka" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Latitude-15-wall-art.JPG" alt="Large textile wall hanging showing a woman in a lush botanical garden — African contemporary art at Latitude 15" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Latitude-15-coworking.JPG" alt="Latitude 15 co-working space — long dark wood communal table, brass industrial pendant lights, steel-framed windows" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Latitude-15-pool-2.JPG" alt="Latitude 15 pool framed by tall palms and white walls, Lusaka" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="zanzibar-beach-hero.JPG" alt="Zanzibar beach" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="kigali-marriot-breakfast.JPG" alt="Kigali Marriott" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="lefbalafon-view.JPG" alt="Le Balafon, Senegal" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+    </div>
+
+    <!-- Overlay: breadcrumb + category badge -->
+    <div class="pc-image-overlay">
+      <div class="pc-breadcrumb">
+        <a href="index.html">HoodTip</a><span>/</span>Lusaka
       </div>
-      <a href="profile-build.html" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:13px 26px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+      <span class="pc-badge">Tip</span>
+    </div>
+
+    <!-- Caption (bottom left on desktop) -->
+    <div class="pc-image-caption">
+      <div class="pc-image-cap-text">The coolest place to stay in Lusaka. Possibly in the region.</div>
+      <div class="pc-image-credit">Photo · Dave</div>
+    </div>
+
+    <!-- Carousel nav -->
+    <button class="pc-nav prev" id="pcPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="pc-nav next" id="pcNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Dots + counter -->
+    <div class="pc-counter" id="pcDots">
+      <button class="pc-dot active" aria-label="Photo 1"></button><button class="pc-dot" aria-label="Photo 2"></button><button class="pc-dot" aria-label="Photo 3"></button><button class="pc-dot" aria-label="Photo 4"></button><button class="pc-dot" aria-label="Photo 5"></button><button class="pc-dot" aria-label="Photo 6"></button><button class="pc-dot" aria-label="Photo 7"></button><button class="pc-dot" aria-label="Photo 8"></button><button class="pc-dot" aria-label="Photo 9"></button><button class="pc-dot" aria-label="Photo 10"></button><button class="pc-dot" aria-label="Photo 11"></button>
+      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 11</span>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <p>© 2025 HoodTip. Tips from people who've actually been there.</p>
-      <p><a href="index.html">hoodtip.com</a></p>
+  <!-- BODY -->
+  <div class="pc-body">
+
+    <div class="pc-content">
+      <div class="pc-location"><span>/</span>Lusaka</div>
+
+      <h1 class="pc-title">Latitude 15</h1>
+
+      <div class="pc-callout">
+        <p class="pc-callout-text">The coolest place to stay in Lusaka. Even if you&#x27;re not a guest, come for dinner — the atmosphere alone is worth it.</p>
+      </div>
+
+      <div class="pc-facts">
+        <div class="pc-fact">
+          <span class="pc-fact-label">Where</span>
+          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Latitude%2015%20Lusaka" target="_blank" rel="noopener">Lusaka</a></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">Best for</span>
+          <span class="pc-fact-value"><em>A good time</em></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">The move</span>
+          <span class="pc-fact-value"><em>The coolest place to stay in Lusaka</em></span>
+        </div>
+      </div>
     </div>
-  </footer>
+
+    <div class="pc-foot">
+      <div class="pc-byline">
+        <img class="pc-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" onerror="this.style.display='none'" />
+        <div class="pc-byline-text">Tip by<b>Dave</b></div>
+      </div>
+      <div class="pc-share">
+        <span class="pc-share-toast" id="shareToast">Link copied</span>
+        <button class="pc-share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
+        <a class="pc-share-btn primary" href="https://wa.me/?text=Latitude%2015%20%E2%80%94%20https%3A//hoodtip.com/tip-latitude-15-lusaka.html" target="_blank" rel="noopener">
+          Share →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER STRIP -->
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="profile-build.html" class="foot-cta">Leave your own tip →</a>
+  </div>
+</div>
+
+<script>
+  // Share
+  function copyLink(){
+    var url = window.location.href;
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.resolve()).then(function(){
+      var t = document.getElementById('shareToast');
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 1800);
+    });
+  }
+
+  // Hide broken images — parent gradient shows through
+  document.querySelectorAll('.pc-slide img').forEach(function(img){
+    function hide(){ img.style.display = 'none'; var fb = img.nextElementSibling; if (fb && fb.classList.contains('pc-slide-fallback')) fb.style.display='flex'; }
+    img.addEventListener('error', hide);
+    if (img.complete && img.naturalWidth === 0) hide();
+  });
+
+  // Carousel
+  (function(){
+    var track = document.getElementById('pcTrack');
+    var slides = track ? track.querySelectorAll('.pc-slide') : [];
+    var prev = document.getElementById('pcPrev');
+    var next = document.getElementById('pcNext');
+    var dots = document.querySelectorAll('#pcDots .pc-dot');
+    var current = document.getElementById('pcCurrent');
+    var total = slides.length;
+    if (total <= 1) return;
+
+    var idx = 0;
+    function go(i){
+      idx = Math.max(0, Math.min(total - 1, i));
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+      if (current) current.textContent = idx + 1;
+      prev.disabled = idx === 0;
+      next.disabled = idx === total - 1;
+    }
+
+    prev.addEventListener('click', function(){ go(idx - 1); });
+    next.addEventListener('click', function(){ go(idx + 1); });
+    dots.forEach(function(d, j){ d.addEventListener('click', function(){ go(j); }); });
+
+    // Keyboard
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft') go(idx - 1);
+      else if (e.key === 'ArrowRight') go(idx + 1);
+    });
+
+    // Swipe (touch)
+    var startX = null, startY = null;
+    var imgEl = document.getElementById('pcImage');
+    imgEl.addEventListener('touchstart', function(e){
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, {passive: true});
+    imgEl.addEventListener('touchend', function(e){
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) go(idx + 1);
+        else go(idx - 1);
+      }
+      startX = null; startY = null;
+    }, {passive: true});
+
+    go(0);
+  })();
+</script>
 
 </body>
 </html>

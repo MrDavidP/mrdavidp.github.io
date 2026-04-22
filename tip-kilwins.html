@@ -1,277 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kilwins — HoodTip Saugatuck</title>
-  <!-- OG / SOCIAL META -->
-  <meta property="og:type" content="website" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kilwins — HoodTip</title>
+  <meta name="description" content="Only the good stuff." />
+
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Kilwins — HoodTip Saugatuck" />
+  <meta property="og:title" content="Kilwins · HoodTip" />
   <meta property="og:description" content="Only the good stuff." />
   <meta property="og:image" content="https://hoodtip.com/saugatuck-kilwins-exterior.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="800" />
   <meta property="og:url" content="https://hoodtip.com/tip-kilwins.html" />
-  <!-- TWITTER / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kilwins — HoodTip Saugatuck" />
+  <meta name="twitter:title" content="Kilwins · HoodTip" />
   <meta name="twitter:description" content="Only the good stuff." />
   <meta name="twitter:image" content="https://hoodtip.com/saugatuck-kilwins-exterior.jpg" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --white: #FFFFFF; --off: #F7F6F3; --ink: #141412; --ink2: #3C3C3A;
-  --mid: #888884; --rule: #E2E0DA; --accent: #B5322A; --tag-bg: #F0EDE6;
-}
-html { scroll-behavior: smooth; }
-body { background: var(--white); color: var(--ink); font-family: 'Barlow', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
-.mast { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 50px; background: var(--white); border-bottom: 1.5px solid var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; }
-.logo { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.3px; }
-.logo span { color: var(--accent); }
-.mast-nav { display: flex; align-items: center; gap: 28px; }
-.mast-crumb { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); display: flex; gap: 10px; align-items: center; }
-.mast-crumb a { color: var(--mid); text-decoration: none; transition: color 0.15s; }
-.mast-crumb a:hover { color: var(--ink); }
-.mast-crumb .sep { opacity: 0.35; }
-.mast-crumb .cur { color: var(--ink); }
-.mast-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; padding: 6px 14px; background: var(--ink); color: var(--white); border: none; cursor: pointer; transition: background 0.15s; }
-.mast-btn:hover { background: var(--accent); }
-.tip-hero { margin-top: 50px; position: relative; height: 75vh; min-height: 480px; overflow: hidden; }
-.tip-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; transition: transform 8s ease; }
-.tip-hero img.loaded { transform: scale(1.03); }
-.tip-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(20,20,18,0.55) 100%); }
-.tip-hero-tag { position: absolute; top: 28px; left: 40px; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--white); background: var(--accent); padding: 4px 10px; }
-.tip-wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
-.tip-header { padding: 52px 0 36px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
-.tip-location { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.tip-location svg { width: 10px; height: 10px; fill: var(--accent); flex-shrink: 0; }
-.tip-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 76px); font-weight: 300; line-height: 0.95; letter-spacing: -1px; color: var(--ink); }
-.tip-meta-right { text-align: right; }
-.tip-cat-tag { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; border: 1px solid var(--rule); color: var(--ink2); background: var(--tag-bg); }
-.tip-tips-count { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); margin-top: 8px; }
-.tip-tips-count strong { color: var(--ink); }
-.tip-body { display: grid; grid-template-columns: 1fr 300px; gap: 80px; padding: 48px 0; border-bottom: 1px solid var(--rule); }
-.tip-text { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; line-height: 1.65; color: var(--ink2); }
-.tip-text p { margin-bottom: 20px; }
-.tip-text p:last-child { margin-bottom: 0; }
-.tip-sidebar { display: flex; flex-direction: column; }
-.sidebar-section { padding: 18px 0; border-bottom: 1px solid var(--rule); }
-.sidebar-section:first-child { padding-top: 0; }
-.sidebar-label { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 5px; }
-.sidebar-value { font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); line-height: 1.5; }
-.sidebar-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-.sidebar-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; background: var(--tag-bg); color: var(--ink2); border: 1px solid var(--rule); text-decoration: none; transition: all 0.15s; }
-.sidebar-tag:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
-.tip-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-bottom: 1px solid var(--rule); }
-.tip-photo-item { overflow: hidden; aspect-ratio: 4/3; }
-.tip-photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.88); transition: transform 0.6s ease, filter 0.3s; }
-.tip-photo-item:hover img { transform: scale(1.03); filter: saturate(1); }
-.tip-map-section { padding: 40px 0 64px; }
-.tip-map-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-.tip-map-label::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.map-embed { width: 100%; height: 400px; border: 1px solid var(--rule); overflow: hidden; }
-.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
-.map-footer { margin-top: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.map-address { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); }
-.map-open-link { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(181,50,42,0.3); padding-bottom: 1px; }
-.map-open-link:hover { border-color: var(--accent); }
-.submit-strip { background: var(--ink); padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-.submit-text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; font-style: italic; color: var(--white); }
-.submit-btn { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; padding: 14px 32px; background: var(--accent); color: var(--white); border: none; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
-.submit-btn:hover { background: #8a2420; }
-footer { border-top: 1.5px solid var(--ink); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
-.footer-logo { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; }
-.footer-logo span { color: var(--accent); }
-.footer-copy { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1px; color: var(--mid); }
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(20,20,18,0.82); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
-.modal-overlay.open { display: flex; }
-.modal { background: var(--white); width: 90%; max-width: 460px; border-top: 2px solid var(--ink); position: relative; animation: mIn 0.22s ease; }
-@keyframes mIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-.modal-head { padding: 24px 28px 18px; border-bottom: 1px solid var(--rule); }
-.modal-over { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
-.modal-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; }
-.modal-body { padding: 20px 28px 28px; }
-.modal-note { padding: 9px 12px; background: var(--off); border-left: 2px solid var(--mid); font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--ink2); margin-bottom: 18px; line-height: 1.5; }
-.form-row { margin-bottom: 12px; }
-.form-row label { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
-.form-row input, .form-row select, .form-row textarea { width: 100%; padding: 9px 11px; background: var(--off); border: 1px solid var(--rule); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--ink); outline: none; border-radius: 0; appearance: none; transition: border-color 0.15s; }
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--ink); }
-.form-row textarea { resize: none; height: 75px; }
-.modal-submit { width: 100%; padding: 11px; background: var(--ink); color: var(--white); border: none; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background 0.15s; margin-top: 4px; }
-.modal-submit:hover { background: var(--accent); }
-.modal-close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--mid); }
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.in { opacity: 1; transform: none; }
-@media (max-width: 860px) {
-  .mast { padding: 0 20px; }
-  .mast-crumb { display: none; }
-  .tip-wrap { padding: 0 20px; }
-  .tip-header { grid-template-columns: 1fr; gap: 14px; }
-  .tip-meta-right { text-align: left; }
-  .tip-body { grid-template-columns: 1fr; gap: 40px; }
-  .tip-photos { grid-template-columns: 1fr; }
-  .submit-strip { flex-direction: column; padding: 40px 20px; }
-  footer { padding: 18px 20px; }
-}
-</style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+
+  <style>
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f7f4ef;
+      --cream2: #efeae1;
+      --ink: #1a1816;
+      --ink2: #2a2925;
+      --muted: #6b6560;
+      --muted2: #8a8378;
+      --rule: #d9d2c6;
+      --rule-soft: #e8e2d6;
+      --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
+    }
+    html, body { height: 100%; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body::before {
+      content:''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
+      background-size: 3px 3px; opacity: 0.5; mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ------ NAV ------ */
+    .nav { border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: baseline; gap: 12px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-logo .dot { color: var(--red); }
+    .nav-tag { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; }
+    .nav-right { display: flex; align-items: stretch; height: 54px; }
+    .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 0 22px; display: flex; align-items: center; border-left: 1px solid var(--ink); transition: background 0.15s; }
+    .nav-cta:hover { background: var(--red); }
+
+    /* ------ POSTCARD ------ */
+    .postcard {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: calc(100vh - 54px - 46px);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ------ CAROUSEL (left side) ------ */
+    .pc-image {
+      position: relative;
+      overflow: hidden;
+      border-right: 1.5px solid var(--ink);
+      background: linear-gradient(135deg, #1f1d1b 0%, #2a2925 50%, #3a2a26 100%);
+    }
+    .pc-track {
+      position: absolute; inset: 0;
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .pc-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .pc-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      pointer-events: none;
+    }
+    .pc-slide-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 5rem; color: rgba(247,244,239,0.15);
+      pointer-events: none;
+    }
+
+    /* Overlay (breadcrumb top, caption/counter bottom) */
+    .pc-image-overlay {
+      position: absolute; top: 0; left: 0; right: 0; padding: 1.5rem 1.75rem;
+      background: linear-gradient(to bottom, rgba(15,12,10,0.55) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-overlay a, .pc-image-overlay button { pointer-events: auto; }
+    .pc-breadcrumb {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(247,244,239,0.75);
+    }
+    .pc-breadcrumb a { color: rgba(247,244,239,0.75); transition: color 0.15s; }
+    .pc-breadcrumb a:hover { color: #fff; }
+    .pc-breadcrumb span { color: rgba(247,244,239,0.35); padding: 0 0.35rem; }
+    .pc-badge {
+      font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--cream); background: var(--red); padding: 5px 9px;
+    }
+
+    .pc-image-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.75rem;
+      background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-cap-text {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(255,255,255,0.85);
+      max-width: 420px; line-height: 1.4;
+    }
+    .pc-image-credit {
+      font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+
+    /* Carousel arrows */
+    .pc-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(15,12,10,0.45); backdrop-filter: blur(8px);
+      border: 1px solid rgba(247,244,239,0.25);
+      color: var(--cream); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 4;
+      transition: all 0.2s;
+    }
+    .pc-nav:hover { background: var(--red); border-color: var(--red); }
+    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav.prev { left: 1.25rem; }
+    .pc-nav.next { right: 1.25rem; }
+    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+
+    /* Counter + dots */
+    .pc-counter {
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; align-items: center;
+      z-index: 4;
+      padding: 6px 12px;
+      background: rgba(15,12,10,0.35); backdrop-filter: blur(8px);
+      border-radius: 100px;
+    }
+    .pc-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(247,244,239,0.4);
+      border: none; cursor: pointer; padding: 0;
+      transition: all 0.2s;
+    }
+    .pc-dot.active { background: var(--cream); width: 18px; border-radius: 3px; }
+    .pc-dot:hover { background: rgba(247,244,239,0.8); }
+
+    /* Hide individual dots when there are too many; show just counter */
+    .pc-image.many-photos .pc-dot { display: none; }
+    .pc-image.many-photos .pc-counter-text { position: static; transform: none; }
+    .pc-image.many-photos .pc-counter {
+      padding: 5px 12px;
+    }
+
+    .pc-counter-text {
+      font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.7);
+    }
+    .pc-counter-text b { color: var(--cream); font-weight: 500; }
+
+    /* Hide carousel controls when only one photo */
+    .pc-image.single .pc-nav,
+    .pc-image.single .pc-counter,
+    .pc-image.single .pc-counter-text { display: none; }
+
+    /* ------ BODY SIDE ------ */
+    .pc-body {
+      padding: 3rem 3.25rem 2.25rem;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .pc-content {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-bottom: 1rem;
+    }
+    .pc-location {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    .pc-location span { color: var(--rule); padding: 0 0.4rem; }
+    .pc-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .pc-title em { font-style: italic; font-weight: 400; }
+    .pc-title.long { font-size: clamp(1.7rem, 2.6vw, 2.4rem); line-height: 1.05; }
+    .pc-title.xlong { font-size: clamp(1.45rem, 2.2vw, 2rem); line-height: 1.1; }
+
+    /* Callout */
+    .pc-callout {
+      position: relative;
+      padding: 1.75rem 0 1.75rem 1.75rem;
+      margin: 0.25rem 0 2rem;
+      border-left: 3px solid var(--red);
+      background: linear-gradient(to right, rgba(181,50,42,0.04) 0%, transparent 100%);
+    }
+    .pc-callout::before {
+      content: '"';
+      position: absolute;
+      top: -0.4rem;
+      left: 0.95rem;
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      color: var(--red);
+      opacity: 0.15;
+      line-height: 1;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .pc-callout-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      line-height: 1.25;
+      color: var(--ink);
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    .pc-callout-text b { font-weight: 600; font-style: normal; color: var(--red); }
+
+    /* 3-Fact strip */
+    .pc-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .pc-fact {
+      padding: 1rem 1.25rem 1rem 0;
+      border-right: 1px solid var(--rule-soft);
+      display: flex; flex-direction: column; gap: 0.3rem;
+      min-width: 0;
+    }
+    .pc-fact:first-child { padding-left: 0; }
+    .pc-fact:last-child { border-right: none; padding-right: 0; padding-left: 1.25rem; }
+    .pc-fact:nth-child(2) { padding-left: 1.25rem; }
+    .pc-fact-label {
+      font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pc-fact-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.25;
+      word-wrap: break-word;
+    }
+    .pc-fact-value a { color: var(--ink); border-bottom: 1px solid var(--rule); transition: border-color 0.15s; }
+    .pc-fact-value a:hover { border-color: var(--red); }
+    .pc-fact-value em { font-style: italic; font-weight: 400; color: var(--muted); font-size: 0.92rem; }
+
+    /* Byline + share */
+    .pc-foot {
+      margin-top: auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .pc-byline { display: flex; align-items: center; gap: 0.7rem; }
+    .pc-byline-photo {
+      width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule);
+    }
+    .pc-byline-text {
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+      line-height: 1.4;
+    }
+    .pc-byline-text b {
+      display: block; font-family: var(--serif); font-size: 0.95rem; color: var(--ink);
+      font-weight: 500; text-transform: none; font-style: italic; letter-spacing: 0;
+    }
+
+    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+    .pc-share-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink); background: var(--cream); border: 1px solid var(--ink);
+      padding: 9px 14px; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pc-share-btn:hover { background: var(--ink); color: var(--cream); }
+    .pc-share-btn svg { width: 12px; height: 12px; }
+    .pc-share-btn.primary { background: var(--ink); color: var(--cream); }
+    .pc-share-btn.primary:hover { background: var(--red); border-color: var(--red); }
+    .pc-share-toast {
+      position: absolute; right: 0; bottom: calc(100% + 8px);
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--ink); color: var(--cream); padding: 6px 10px; opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .pc-share-toast.show { opacity: 1; }
+
+    /* ------ FOOTER STRIP ------ */
+    .foot-strip {
+      background: var(--ink); color: var(--cream);
+      border-top: 2px solid var(--red);
+      position: relative; z-index: 2;
+    }
+    .foot-strip-inner {
+      max-width: 1360px; margin: 0 auto; padding: 0 32px;
+      height: 46px;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .foot-note {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(247,244,239,0.65);
+    }
+    .foot-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
+    .foot-cta {
+      font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.85);
+      border-bottom: 1px solid rgba(247,244,239,0.3);
+      padding-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .foot-cta:hover { color: var(--cream); border-color: var(--red); }
+
+    /* ------ RESPONSIVE ------ */
+    @media (max-width: 960px) {
+      .postcard { grid-template-columns: 1fr; min-height: 0; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; }
+      .pc-image-caption { display: none; }
+      .pc-nav { width: 36px; height: 36px; }
+      .pc-nav.prev { left: 0.75rem; }
+      .pc-nav.next { right: 0.75rem; }
+      .pc-body { padding: 2rem 1.5rem 1.5rem; }
+      .pc-title { font-size: 2rem; }
+      .pc-facts { grid-template-columns: 1fr; }
+      .pc-fact { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 0.9rem 0; }
+      .pc-fact:first-child { padding-top: 0.5rem; }
+      .pc-fact:last-child { border-bottom: none; padding-bottom: 0.5rem; padding-left: 0; }
+      .pc-fact:nth-child(2) { padding-left: 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-tag, .nav-link { display: none; }
+      .nav-inner { padding: 0 18px; }
+      .pc-image-overlay { padding: 1rem 1.25rem; }
+      .pc-body { padding: 1.5rem 1.25rem 1.5rem; }
+      .pc-title { font-size: 1.8rem; }
+      .pc-callout { padding: 1.25rem 0 1.25rem 1.25rem; margin: 0 0 1.5rem; }
+      .pc-callout-text { font-size: 1.2rem; }
+      .foot-strip-inner { padding: 0 18px; }
+      .foot-note { font-size: 0.72rem; }
+      .foot-cta { font-size: 0.56rem; }
+      .pc-share-btn { padding: 8px 11px; font-size: 0.6rem; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="mast">
-  <a href="index.html" class="logo">HoodTip<span>.</span></a>
-  <div class="mast-nav">
-    <div class="mast-crumb">
-      <a href="index.html">Cities</a>
-      <span class="sep">/</span>
-      <span class="cur">Saugatuck</span>
-      <span class="sep">/</span>
-      <span class="cur">Kilwins</span>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tag">Only the good stuff.</span>
     </div>
-    <button class="mast-btn" onclick="openModal()">Leave a tip</button>
+    <div class="nav-right">
+      <a href="profile-dave.html" class="nav-link">Dave</a>
+      <a href="profile-build.html" class="nav-cta">Leave a tip →</a>
+    </div>
   </div>
-</header>
-
-<div class="tip-hero">
-  <img src="saugatuck-kilwins-exterior.jpg" alt="Kilwins Saugatuck" id="heroImg">
-  <div class="tip-hero-overlay"></div>
-  <div class="tip-hero-tag">Ice Cream · Saugatuck</div>
 </div>
 
-<div class="tip-wrap">
-  <div class="tip-header reveal">
-    <div>
-      <div class="tip-location">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        Saugatuck, Michigan
-      </div>
-      <h1 class="tip-name">Kilwins</h1>
+<!-- POSTCARD -->
+<div class="postcard">
+
+  <!-- CAROUSEL -->
+  <div class="pc-image" id="pcImage">
+    <div class="pc-track" id="pcTrack">
+      <div class="pc-slide"><img src="saugatuck-kilwins-exterior.jpg" alt="Kilwins Saugatuck" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="saugatuck-kilwins-caramel-apples.jpg" alt="Kilwins caramel apples and fudge" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="saugatuck-kilwins-interior.jpg" alt="Kilwins interior" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
     </div>
-    <div class="tip-meta-right">
-      <div class="tip-cat-tag">Ice Cream</div>
-      <div class="tip-tips-count"><strong>4</strong> people tipped this</div>
+
+    <!-- Overlay: breadcrumb + category badge -->
+    <div class="pc-image-overlay">
+      <div class="pc-breadcrumb">
+        <a href="index.html">HoodTip</a>
+      </div>
+      <span class="pc-badge">Tip</span>
+    </div>
+
+    <!-- Caption (bottom left on desktop) -->
+    <div class="pc-image-caption">
+      <div class="pc-image-cap-text">Kilwins.</div>
+      <div class="pc-image-credit">Photo · Dave</div>
+    </div>
+
+    <!-- Carousel nav -->
+    <button class="pc-nav prev" id="pcPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="pc-nav next" id="pcNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Dots + counter -->
+    <div class="pc-counter" id="pcDots">
+      <button class="pc-dot active" aria-label="Photo 1"></button><button class="pc-dot" aria-label="Photo 2"></button><button class="pc-dot" aria-label="Photo 3"></button>
+      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 3</span>
     </div>
   </div>
 
-  <div class="tip-body reveal">
-    <div class="tip-text">
-      <p>Saugatuck is a quintessential American summer town and Kilwins is the quintessential American sweet shop. Fudge, caramel apples, ice cream, the works.</p>
-      <p>The kind of place you take someone who has never been to America and they're like "hell yes, this is it." You cannot do a trip to Saugatuck without stopping here.</p>
-    </div>
-    <div class="tip-sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-label">Location</div>
-        <div class="sidebar-value">Butler Street, Saugatuck MI</div>
+  <!-- BODY -->
+  <div class="pc-body">
+
+    <div class="pc-content">
+      <div class="pc-location"><span>/</span>HoodTip</div>
+
+      <h1 class="pc-title">Kilwins</h1>
+
+      <div class="pc-callout">
+        <p class="pc-callout-text">Only the good stuff.</p>
       </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">Get</div>
-        <div class="sidebar-value">Sea-salt caramel apple or a scoop. Don't overthink it.</div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">Season</div>
-        <div class="sidebar-value">Summer. That's when Saugatuck is Saugatuck.</div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">Tags</div>
-        <div class="sidebar-tags">
-          <a class="sidebar-tag" href="#">Ice Cream</a>
-          <a class="sidebar-tag" href="#">Fudge</a>
-          <a class="sidebar-tag" href="#">Summer</a>
-          <a class="sidebar-tag" href="#">Michigan</a>
-          <a class="sidebar-tag" href="#">Classic</a>
+
+      <div class="pc-facts">
+        <div class="pc-fact">
+          <span class="pc-fact-label">Where</span>
+          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Kilwins%20" target="_blank" rel="noopener">Find on Maps</a></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">Best for</span>
+          <span class="pc-fact-value"><em>A good time</em></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">The move</span>
+          <span class="pc-fact-value"><em>Only the good stuff</em></span>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="tip-photos reveal">
-  <div class="tip-photo-item">
-    <img src="saugatuck-kilwins-caramel-apples.jpg" alt="Kilwins caramel apples and fudge">
-  </div>
-  <div class="tip-photo-item">
-    <img src="saugatuck-kilwins-interior.jpg" alt="Kilwins interior">
-  </div>
-</div>
-
-<div class="tip-wrap">
-  <div class="tip-map-section reveal">
-    <div class="tip-map-label">Find it</div>
-    <div class="map-embed">
-      <iframe
-        loading="lazy"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU3c_o&q=Kilwins+152+Butler+St+Saugatuck+MI&zoom=15">
-      </iframe>
-    </div>
-    <div class="map-footer">
-      <span class="map-address">152 Butler St, Saugatuck, MI 49453</span>
-      <a href="https://maps.google.com/?q=152+Butler+St,+Saugatuck,+MI+49453" target="_blank" class="map-open-link">Open in Maps →</a>
-    </div>
-  </div>
-</div>
-
-<div class="submit-strip">
-  <div class="submit-text">Know somewhere else good in Saugatuck?</div>
-  <button class="submit-btn" onclick="openModal()">Leave a HoodTip</button>
-</div>
-
-<div style="border-bottom:1.5px solid var(--ink);">
-  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
-    <div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
-      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
-    </div>
-    <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
-  </div>
-</div>
-<footer>
-  <div class="footer-logo">HoodTip<span>.</span></div>
-  <span class="footer-copy">Only the good stuff.</span>
-</footer>
-
-<div class="modal-overlay" id="modal" onclick="handleOverlay(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-head">
-      <div class="modal-over">Saugatuck</div>
-      <div class="modal-title">Leave a HoodTip</div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-note">Positive only. Specific over general. Write it like a note to a friend going next week.</div>
-      <div class="form-row"><label>Place name</label><input type="text" placeholder="What's it called?"></div>
-      <div class="form-row"><label>Neighbourhood</label><input type="text" placeholder="e.g. Butler Street, downtown..."></div>
-      <div class="form-row"><label>Category</label>
-        <select><option>Food</option><option>Bar</option><option>Coffee</option><option>Experience</option><option>Hotel</option><option>Other</option></select>
+    <div class="pc-foot">
+      <div class="pc-byline">
+        <img class="pc-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" onerror="this.style.display='none'" />
+        <div class="pc-byline-text">Tip by<b>Dave</b></div>
       </div>
-      <div class="form-row"><label>Your tip</label><textarea placeholder="Be specific. What to order, when to go, what to know."></textarea></div>
-      <button class="modal-submit" onclick="submitTip()">Submit tip</button>
+      <div class="pc-share">
+        <span class="pc-share-toast" id="shareToast">Link copied</span>
+        <button class="pc-share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
+        <a class="pc-share-btn primary" href="https://wa.me/?text=Kilwins%20%E2%80%94%20https%3A//hoodtip.com/tip-kilwins.html" target="_blank" rel="noopener">
+          Share →
+        </a>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- FOOTER STRIP -->
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="profile-build.html" class="foot-cta">Leave your own tip →</a>
   </div>
 </div>
 
 <script>
-window.addEventListener('load', () => {
-  const img = document.getElementById('heroImg');
-  if (img.complete) img.classList.add('loaded');
-  else img.addEventListener('load', () => img.classList.add('loaded'));
-});
-function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
-function handleOverlay(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-function submitTip() {
-  const btn = document.querySelector('.modal-submit');
-  btn.textContent = 'Tip received — thank you';
-  btn.style.background = '#2C4A6E';
-  setTimeout(() => { closeModal(); btn.textContent = 'Submit tip'; btn.style.background = ''; }, 1800);
-}
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-}, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  // Share
+  function copyLink(){
+    var url = window.location.href;
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.resolve()).then(function(){
+      var t = document.getElementById('shareToast');
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 1800);
+    });
+  }
+
+  // Hide broken images — parent gradient shows through
+  document.querySelectorAll('.pc-slide img').forEach(function(img){
+    function hide(){ img.style.display = 'none'; var fb = img.nextElementSibling; if (fb && fb.classList.contains('pc-slide-fallback')) fb.style.display='flex'; }
+    img.addEventListener('error', hide);
+    if (img.complete && img.naturalWidth === 0) hide();
+  });
+
+  // Carousel
+  (function(){
+    var track = document.getElementById('pcTrack');
+    var slides = track ? track.querySelectorAll('.pc-slide') : [];
+    var prev = document.getElementById('pcPrev');
+    var next = document.getElementById('pcNext');
+    var dots = document.querySelectorAll('#pcDots .pc-dot');
+    var current = document.getElementById('pcCurrent');
+    var total = slides.length;
+    if (total <= 1) return;
+
+    var idx = 0;
+    function go(i){
+      idx = Math.max(0, Math.min(total - 1, i));
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+      if (current) current.textContent = idx + 1;
+      prev.disabled = idx === 0;
+      next.disabled = idx === total - 1;
+    }
+
+    prev.addEventListener('click', function(){ go(idx - 1); });
+    next.addEventListener('click', function(){ go(idx + 1); });
+    dots.forEach(function(d, j){ d.addEventListener('click', function(){ go(j); }); });
+
+    // Keyboard
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft') go(idx - 1);
+      else if (e.key === 'ArrowRight') go(idx + 1);
+    });
+
+    // Swipe (touch)
+    var startX = null, startY = null;
+    var imgEl = document.getElementById('pcImage');
+    imgEl.addEventListener('touchstart', function(e){
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, {passive: true});
+    imgEl.addEventListener('touchend', function(e){
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) go(idx + 1);
+        else go(idx - 1);
+      }
+      startX = null; startY = null;
+    }, {passive: true});
+
+    go(0);
+  })();
 </script>
+
 </body>
 </html>

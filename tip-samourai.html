@@ -3,417 +3,578 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samouraï des Mers — Carouge Market, Geneva · HoodTip</title>
-  <!-- OG / SOCIAL META -->
-  <meta property="og:type" content="website" />
+  <title>Samouraï des Mers — Market — HoodTip</title>
+  <meta name="description" content="A frazzled Frenchman drives fresh Breton oysters to the Carouge Saturday market. Get a few, get a muscadet, keep moving." />
+
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Samouraï des Mers — Carouge Market, Geneva · HoodTip" />
+  <meta property="og:title" content="Samouraï des Mers · HoodTip" />
   <meta property="og:description" content="A frazzled Frenchman drives fresh Breton oysters to the Carouge Saturday market. Get a few, get a muscadet, keep moving." />
   <meta property="og:image" content="https://hoodtip.com/carouge-oyster-lady.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="800" />
   <meta property="og:url" content="https://hoodtip.com/tip-samourai.html" />
-  <!-- TWITTER / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Samouraï des Mers — Carouge Market, Geneva · HoodTip" />
+  <meta name="twitter:title" content="Samouraï des Mers · HoodTip" />
   <meta name="twitter:description" content="A frazzled Frenchman drives fresh Breton oysters to the Carouge Saturday market. Get a few, get a muscadet, keep moving." />
   <meta name="twitter:image" content="https://hoodtip.com/carouge-oyster-lady.jpg" />
-  <meta name="description" content="A frazzled Frenchman drives fresh Breton oysters to the Carouge Saturday market. Get a few, get a muscadet, keep moving." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+
   <style>
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --cream: #f7f4ef;
-      --ink:   #1a1816;
+      --cream2: #efeae1;
+      --ink: #1a1816;
+      --ink2: #2a2925;
       --muted: #6b6560;
-      --rule:  #e0dbd3;
-      --red:   #b5322a;
+      --muted2: #8a8378;
+      --rule: #d9d2c6;
+      --rule-soft: #e8e2d6;
+      --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
+    html, body { height: 100%; }
     body {
       background: var(--cream);
       color: var(--ink);
-      font-family: 'Barlow', sans-serif;
+      font-family: var(--sans);
       font-weight: 300;
-      line-height: 1.65;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body::before {
+      content:''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
+      background-size: 3px 3px; opacity: 0.5; mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ------ NAV ------ */
+    .nav { border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: baseline; gap: 12px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-logo .dot { color: var(--red); }
+    .nav-tag { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; }
+    .nav-right { display: flex; align-items: stretch; height: 54px; }
+    .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 0 22px; display: flex; align-items: center; border-left: 1px solid var(--ink); transition: background 0.15s; }
+    .nav-cta:hover { background: var(--red); }
+
+    /* ------ POSTCARD ------ */
+    .postcard {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: calc(100vh - 54px - 46px);
+      position: relative;
+      z-index: 2;
     }
 
-    /* ── NAV ── */
-    nav {
-      padding: 0 2rem;
-      border-bottom: 1.5px solid var(--ink);
-      position: sticky; top: 0; z-index: 100;
-      background: var(--cream);
+    /* ------ CAROUSEL (left side) ------ */
+    .pc-image {
+      position: relative;
+      overflow: hidden;
+      border-right: 1.5px solid var(--ink);
+      background: linear-gradient(135deg, #1f1d1b 0%, #2a2925 50%, #3a2a26 100%);
     }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 56px;
+    .pc-track {
+      position: absolute; inset: 0;
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
     }
-    .logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600; font-size: 1.05rem;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      text-decoration: none; color: var(--ink);
-      display: flex; align-items: center; gap: 0.3rem;
+    .pc-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
     }
-    .logo-dot {
-      display: inline-block; width: 7px; height: 7px;
-      border-radius: 50%; background: var(--red); margin-bottom: 1px;
+    .pc-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      pointer-events: none;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 500; font-size: 0.78rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-    }
-    .nav-links a:hover { color: var(--ink); }
-
-    /* ── HERO ── */
-    .hero {
-      width: 100%; height: clamp(400px, 55vw, 620px);
-      overflow: hidden; position: relative;
-    }
-    .hero img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 20%;
-      display: block;
-    }
-    .hero-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 2rem 2.5rem;
-      background: linear-gradient(transparent, rgba(20,16,12,0.55));
-    }
-    .hero-caption-location {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: rgba(255,255,255,0.65);
-      margin-bottom: 0.3rem;
-    }
-    .hero-caption-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 500; color: #fff;
+    .pc-slide-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 5rem; color: rgba(247,244,239,0.15);
+      pointer-events: none;
     }
 
-    /* ── ARTICLE ── */
-    .article {
-      max-width: 680px; margin: 0 auto;
-      padding: 3.5rem 2rem 2rem;
+    /* Overlay (breadcrumb top, caption/counter bottom) */
+    .pc-image-overlay {
+      position: absolute; top: 0; left: 0; right: 0; padding: 1.5rem 1.75rem;
+      background: linear-gradient(to bottom, rgba(15,12,10,0.55) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-overlay a, .pc-image-overlay button { pointer-events: auto; }
+    .pc-breadcrumb {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(247,244,239,0.75);
+    }
+    .pc-breadcrumb a { color: rgba(247,244,239,0.75); transition: color 0.15s; }
+    .pc-breadcrumb a:hover { color: #fff; }
+    .pc-breadcrumb span { color: rgba(247,244,239,0.35); padding: 0 0.35rem; }
+    .pc-badge {
+      font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--cream); background: var(--red); padding: 5px 9px;
     }
 
-    .breadcrumb {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--muted);
-      margin-bottom: 1.75rem;
-      display: flex; align-items: center; gap: 0.5rem;
+    .pc-image-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.75rem;
+      background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+      z-index: 3; pointer-events: none;
     }
-    .breadcrumb a { color: var(--muted); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--ink); }
-    .breadcrumb-sep { opacity: 0.4; }
-
-    .category {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--muted); border: 1px solid var(--rule);
-      padding: 0.2rem 0.65rem; border-radius: 2px;
-      display: inline-block; margin-bottom: 1rem;
+    .pc-image-cap-text {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(255,255,255,0.85);
+      max-width: 420px; line-height: 1.4;
+    }
+    .pc-image-credit {
+      font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5);
     }
 
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500; font-size: clamp(2.2rem, 5vw, 3.4rem);
-      line-height: 1.05; letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
+    /* Carousel arrows */
+    .pc-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(15,12,10,0.45); backdrop-filter: blur(8px);
+      border: 1px solid rgba(247,244,239,0.25);
+      color: var(--cream); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 4;
+      transition: all 0.2s;
     }
-    .subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 1.2rem;
-      color: var(--muted); line-height: 1.45;
-      margin-bottom: 2.5rem;
+    .pc-nav:hover { background: var(--red); border-color: var(--red); }
+    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav.prev { left: 1.25rem; }
+    .pc-nav.next { right: 1.25rem; }
+    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+
+    /* Counter + dots */
+    .pc-counter {
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; align-items: center;
+      z-index: 4;
+      padding: 6px 12px;
+      background: rgba(15,12,10,0.35); backdrop-filter: blur(8px);
+      border-radius: 100px;
+    }
+    .pc-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(247,244,239,0.4);
+      border: none; cursor: pointer; padding: 0;
+      transition: all 0.2s;
+    }
+    .pc-dot.active { background: var(--cream); width: 18px; border-radius: 3px; }
+    .pc-dot:hover { background: rgba(247,244,239,0.8); }
+
+    /* Hide individual dots when there are too many; show just counter */
+    .pc-image.many-photos .pc-dot { display: none; }
+    .pc-image.many-photos .pc-counter-text { position: static; transform: none; }
+    .pc-image.many-photos .pc-counter {
+      padding: 5px 12px;
     }
 
-    .meta-strip {
-      display: flex; flex-wrap: wrap; gap: 1.5rem 3rem;
-      padding: 1.5rem 0; border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem;
+    .pc-counter-text {
+      font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.7);
     }
-    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
-    .meta-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
-    }
-    .meta-value { font-size: 0.88rem; color: var(--ink); }
+    .pc-counter-text b { color: var(--cream); font-weight: 500; }
 
-    .body p {
-      font-size: 1.05rem; line-height: 1.8;
-      color: var(--ink); margin-bottom: 1.4rem; font-weight: 300;
-    }
-    .body p:last-child { margin-bottom: 0; }
+    /* Hide carousel controls when only one photo */
+    .pc-image.single .pc-nav,
+    .pc-image.single .pc-counter,
+    .pc-image.single .pc-counter-text { display: none; }
 
-    /* full-bleed image */
-    .img-full {
-      width: 100vw; position: relative; left: 50%;
-      transform: translateX(-50%);
-      margin: 3rem 0;
+    /* ------ BODY SIDE ------ */
+    .pc-body {
+      padding: 3rem 3.25rem 2.25rem;
+      display: flex; flex-direction: column;
+      position: relative;
     }
-    .img-full img {
-      width: 100%; display: block;
-      max-height: 580px; object-fit: cover; object-position: center 60%;
+    .pc-content {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-bottom: 1rem;
     }
-    .img-caption {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--muted);
-      padding: 0.6rem 2rem 0; max-width: 1200px; margin: 0 auto;
-    }
-
-    /* contained image */
-    .img-contained { margin: 2.5rem 0; }
-    .img-contained img { width: 100%; display: block; }
-    .img-contained .img-caption { padding-left: 0; }
-
-    /* pull quote */
-    .pull-quote {
-      border-left: 2px solid var(--ink);
-      padding: 0.75rem 0 0.75rem 1.75rem;
-      margin: 2.5rem 0;
-    }
-    .pull-quote p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: clamp(1.4rem, 3vw, 1.75rem);
-      line-height: 1.35; color: var(--ink); font-weight: 400;
-    }
-
-    /* tip box */
-    .tip-box {
-      background: white; border: 1px solid var(--rule);
-      padding: 1.5rem 1.75rem; margin-top: 3rem;
-    }
-    .tip-box-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 0.75rem;
-    }
-    .tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-    .tip-box li {
-      font-size: 0.9rem; color: var(--ink);
-      padding-left: 1rem; position: relative; line-height: 1.55;
-    }
-    .tip-box li::before {
-      content: '—'; position: absolute; left: 0;
-      color: var(--muted); font-size: 0.8rem;
-    }
-
-    .back-link {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      margin-top: 3.5rem; border-bottom: 1px solid var(--rule);
-      padding-bottom: 0.15rem; transition: color 0.15s, border-color 0.15s;
-    }
-    .back-link:hover { color: var(--ink); border-color: var(--ink); }
-
-    /* also in carouge */
-    .also-strip {
-      margin-top: 3.5rem; padding-top: 1.5rem;
-      border-top: 1px solid var(--rule);
-    }
-    .also-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
+    .pc-location {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--muted); margin-bottom: 1rem;
     }
-    .also-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-    .also-link {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem; letter-spacing: 0.08em;
-      color: var(--ink); text-decoration: none;
-      border-bottom: 1px solid var(--rule); padding-bottom: 0.1rem;
-      transition: border-color 0.15s;
+    .pc-location span { color: var(--rule); padding: 0 0.4rem; }
+    .pc-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
     }
-    .also-link:hover { border-color: var(--ink); }
+    .pc-title em { font-style: italic; font-weight: 400; }
+    .pc-title.long { font-size: clamp(1.7rem, 2.6vw, 2.4rem); line-height: 1.05; }
+    .pc-title.xlong { font-size: clamp(1.45rem, 2.2vw, 2rem); line-height: 1.1; }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 2px solid var(--red);
-      padding: 2rem; margin-top: 5rem;
-      background: var(--ink);
+    /* Callout */
+    .pc-callout {
+      position: relative;
+      padding: 1.75rem 0 1.75rem 1.75rem;
+      margin: 0.25rem 0 2rem;
+      border-left: 3px solid var(--red);
+      background: linear-gradient(to right, rgba(181,50,42,0.04) 0%, transparent 100%);
     }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    .pc-callout::before {
+      content: '"';
+      position: absolute;
+      top: -0.4rem;
+      left: 0.95rem;
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      color: var(--red);
+      opacity: 0.15;
+      line-height: 1;
+      font-weight: 600;
+      pointer-events: none;
     }
-    .footer-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600; font-size: 0.85rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--cream); text-decoration: none;
-      display: flex; align-items: center; gap: 0.3rem;
-    }
-    .footer-stats {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(247,244,239,0.35);
-      display: flex; gap: 1.5rem;
-    }
-    .footer-note {
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.75rem; color: rgba(247,244,239,0.35);
+    .pc-callout-text {
+      font-family: var(--serif);
       font-style: italic;
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      line-height: 1.25;
+      color: var(--ink);
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    .pc-callout-text b { font-weight: 600; font-style: normal; color: var(--red); }
+
+    /* 3-Fact strip */
+    .pc-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .pc-fact {
+      padding: 1rem 1.25rem 1rem 0;
+      border-right: 1px solid var(--rule-soft);
+      display: flex; flex-direction: column; gap: 0.3rem;
+      min-width: 0;
+    }
+    .pc-fact:first-child { padding-left: 0; }
+    .pc-fact:last-child { border-right: none; padding-right: 0; padding-left: 1.25rem; }
+    .pc-fact:nth-child(2) { padding-left: 1.25rem; }
+    .pc-fact-label {
+      font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pc-fact-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.25;
+      word-wrap: break-word;
+    }
+    .pc-fact-value a { color: var(--ink); border-bottom: 1px solid var(--rule); transition: border-color 0.15s; }
+    .pc-fact-value a:hover { border-color: var(--red); }
+    .pc-fact-value em { font-style: italic; font-weight: 400; color: var(--muted); font-size: 0.92rem; }
+
+    /* Byline + share */
+    .pc-foot {
+      margin-top: auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .pc-byline { display: flex; align-items: center; gap: 0.7rem; }
+    .pc-byline-photo {
+      width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule);
+    }
+    .pc-byline-text {
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+      line-height: 1.4;
+    }
+    .pc-byline-text b {
+      display: block; font-family: var(--serif); font-size: 0.95rem; color: var(--ink);
+      font-weight: 500; text-transform: none; font-style: italic; letter-spacing: 0;
     }
 
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .article { padding: 2.5rem 1.25rem 2rem; }
-      .footer-stats, .footer-note { display: none; }
+    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+    .pc-share-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink); background: var(--cream); border: 1px solid var(--ink);
+      padding: 9px 14px; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pc-share-btn:hover { background: var(--ink); color: var(--cream); }
+    .pc-share-btn svg { width: 12px; height: 12px; }
+    .pc-share-btn.primary { background: var(--ink); color: var(--cream); }
+    .pc-share-btn.primary:hover { background: var(--red); border-color: var(--red); }
+    .pc-share-toast {
+      position: absolute; right: 0; bottom: calc(100% + 8px);
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--ink); color: var(--cream); padding: 6px 10px; opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .pc-share-toast.show { opacity: 1; }
+
+    /* ------ FOOTER STRIP ------ */
+    .foot-strip {
+      background: var(--ink); color: var(--cream);
+      border-top: 2px solid var(--red);
+      position: relative; z-index: 2;
+    }
+    .foot-strip-inner {
+      max-width: 1360px; margin: 0 auto; padding: 0 32px;
+      height: 46px;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .foot-note {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(247,244,239,0.65);
+    }
+    .foot-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
+    .foot-cta {
+      font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.85);
+      border-bottom: 1px solid rgba(247,244,239,0.3);
+      padding-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .foot-cta:hover { color: var(--cream); border-color: var(--red); }
+
+    /* ------ RESPONSIVE ------ */
+    @media (max-width: 960px) {
+      .postcard { grid-template-columns: 1fr; min-height: 0; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; }
+      .pc-image-caption { display: none; }
+      .pc-nav { width: 36px; height: 36px; }
+      .pc-nav.prev { left: 0.75rem; }
+      .pc-nav.next { right: 0.75rem; }
+      .pc-body { padding: 2rem 1.5rem 1.5rem; }
+      .pc-title { font-size: 2rem; }
+      .pc-facts { grid-template-columns: 1fr; }
+      .pc-fact { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 0.9rem 0; }
+      .pc-fact:first-child { padding-top: 0.5rem; }
+      .pc-fact:last-child { border-bottom: none; padding-bottom: 0.5rem; padding-left: 0; }
+      .pc-fact:nth-child(2) { padding-left: 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-tag, .nav-link { display: none; }
+      .nav-inner { padding: 0 18px; }
+      .pc-image-overlay { padding: 1rem 1.25rem; }
+      .pc-body { padding: 1.5rem 1.25rem 1.5rem; }
+      .pc-title { font-size: 1.8rem; }
+      .pc-callout { padding: 1.25rem 0 1.25rem 1.25rem; margin: 0 0 1.5rem; }
+      .pc-callout-text { font-size: 1.2rem; }
+      .foot-strip-inner { padding: 0 18px; }
+      .foot-note { font-size: 0.72rem; }
+      .foot-cta { font-size: 0.56rem; }
+      .pc-share-btn { padding: 8px 11px; font-size: 0.6rem; }
     }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<div class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">Hood<span class="logo-dot"></span>Tip</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#neighbourhoods">Neighbourhoods</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <img src="carouge-oyster-lady.jpg" alt="The oyster lady at the Samouraï des Mers stall, Carouge market — laughing, white wine in hand" />
-  <div class="hero-caption">
-    <div class="hero-caption-location">Carouge · Geneva · Switzerland</div>
-    <div class="hero-caption-name">Samouraï des Mers — Bar à Huîtres</div>
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tag">Only the good stuff.</span>
+    </div>
+    <div class="nav-right">
+      <a href="profile-dave.html" class="nav-link">Dave</a>
+      <a href="profile-build.html" class="nav-cta">Leave a tip →</a>
+    </div>
   </div>
 </div>
 
-<!-- ARTICLE -->
-<div class="article">
+<!-- POSTCARD -->
+<div class="postcard">
 
-  <div class="breadcrumb">
-    <a href="index.html">HoodTip</a>
-    <span class="breadcrumb-sep">·</span>
-    <span>Geneva</span>
-    <span class="breadcrumb-sep">·</span>
-    <span>Carouge</span>
-  </div>
-
-  <span class="category">Seafood · Market</span>
-
-  <h1>Samouraï des Mers</h1>
-  <p class="subtitle">Fresh Breton oysters at the Saturday market. A glass of white. Keep moving.</p>
-
-  <div class="meta-strip">
-    <div class="meta-item">
-      <span class="meta-label">Where</span>
-      <span class="meta-value">Marché de Carouge, Place du Marché</span>
+  <!-- CAROUSEL -->
+  <div class="pc-image" id="pcImage">
+    <div class="pc-track" id="pcTrack">
+      <div class="pc-slide"><img src="carouge-oyster-lady.jpg" alt="The oyster lady at the Samouraï des Mers stall, Carouge market — laughing, white wine in hand" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="carouge-oysters-market.jpg" alt="Oysters and a glass of white wine on a blue barrel table at the Carouge market" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="carouge-oysters.jpg" alt="Samouraï des Mers oyster stall set up in front of the Cinéma Bio, Carouge market" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
     </div>
-    <div class="meta-item">
-      <span class="meta-label">When</span>
-      <span class="meta-value">Saturdays — not guaranteed, usually there</span>
+
+    <!-- Overlay: breadcrumb + category badge -->
+    <div class="pc-image-overlay">
+      <div class="pc-breadcrumb">
+        <a href="index.html">HoodTip</a><span>/</span>Market
+      </div>
+      <span class="pc-badge">Seafood</span>
     </div>
-    <div class="meta-item">
-      <span class="meta-label">Contact</span>
-      <span class="meta-value">07 83 15 02 04</span>
+
+    <!-- Caption (bottom left on desktop) -->
+    <div class="pc-image-caption">
+      <div class="pc-image-cap-text">Fresh Breton oysters at the Saturday market. A glass of white. Keep moving.</div>
+      <div class="pc-image-credit">Photo · Dave</div>
     </div>
-    <div class="meta-item" style="margin-left:auto;text-align:right;">
-      <span class="meta-label">Tip by</span>
-      <span class="meta-value"><a href="profile-dave.html" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);">@dave</a></span>
-    </div>
-  </div>
 
-  <div class="body">
-    <p>There's a stall at the Carouge Saturday market where a frazzled Frenchman sets up a blue barrel table, lays out trays of oysters fresh from Brittany, and pours cold white wine. That's it. That's the tip.</p>
-    <p>He's not there every single Saturday — this is not a guarantee — but he's usually there, and when he is, it's one of the best ten minutes you can spend in Geneva. Get a half-dozen, get a muscadet, stand at the barrel, and eat them while the market moves around you. The stall is right in front of the Cinéma Bio, which has one of the best facades in the neighbourhood.</p>
-  </div>
+    <!-- Carousel nav -->
+    <button class="pc-nav prev" id="pcPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="pc-nav next" id="pcNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
 
-  <div class="pull-quote">
-    <p>"One of the best ten minutes you can spend in Geneva."</p>
-  </div>
-
-  <!-- Oysters on blue table -->
-  <div class="img-full">
-    <img src="carouge-oysters-market.jpg" alt="Oysters and a glass of white wine on a blue barrel table at the Carouge market" />
-    <div class="img-caption">Blue barrel table, Breton oysters, cold white. Saturday morning done right.</div>
-  </div>
-
-  <div class="body">
-    <p>You can take them away too — the stall does orders to go, by the dozen or by the kilo, if you want to bring a tray home and eat them properly. The phone number is on the sign. Call ahead if you're planning something.</p>
-    <p>This pairs perfectly with picking up a bottle from Paul-Henri Soler two stalls over. The man makes a white that was made for oysters, even if he doesn't know it yet.</p>
-  </div>
-
-  <!-- Stall in front of Cinema Bio -->
-  <div class="img-contained">
-    <img src="carouge-oysters.jpg" alt="Samouraï des Mers oyster stall set up in front of the Cinéma Bio, Carouge market" />
-    <div class="img-caption">In front of the Cinéma Bio. The Breton flag is the sign you've found the right stall.</div>
-  </div>
-
-  <div class="tip-box">
-    <div class="tip-box-label">The tip</div>
-    <ul>
-      <li>Look for the Breton flag and the blue barrel tables — that's the stall</li>
-      <li>He's usually there on Saturdays but not guaranteed. Worth checking before making it your only reason to go</li>
-      <li>Orders to go by the dozen or kilo: call 07 83 15 02 04</li>
-      <li>Get a half-dozen and a glass of white. Don't overthink it</li>
-      <li>Two stalls from Paul-Henri Soler's wine stand — do both</li>
-    </ul>
-  </div>
-
-  <div class="also-strip">
-    <div class="also-label">Also in Carouge</div>
-    <div class="also-links">
-      <a class="also-link" href="tip-paulhenri.html">Paul-Henri Soler — Natural wine →</a>
+    <!-- Dots + counter -->
+    <div class="pc-counter" id="pcDots">
+      <button class="pc-dot active" aria-label="Photo 1"></button><button class="pc-dot" aria-label="Photo 2"></button><button class="pc-dot" aria-label="Photo 3"></button>
+      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 3</span>
     </div>
   </div>
 
-  <a href="index.html" class="back-link">← All tips</a>
+  <!-- BODY -->
+  <div class="pc-body">
 
+    <div class="pc-content">
+      <div class="pc-location"><span>/</span>Seafood<span>·</span>Market</div>
+
+      <h1 class="pc-title">Samouraï des Mers</h1>
+
+      <div class="pc-callout">
+        <p class="pc-callout-text">One of the best ten minutes you can spend in Geneva.</p>
+      </div>
+
+      <div class="pc-facts">
+        <div class="pc-fact">
+          <span class="pc-fact-label">Where</span>
+          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Samoura%C3%AF%20des%20Mers%20Market" target="_blank" rel="noopener">Market</a></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">Best for</span>
+          <span class="pc-fact-value">Seafood</span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">The move</span>
+          <span class="pc-fact-value"><em>One of the best ten minutes you can…</em></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc-foot">
+      <div class="pc-byline">
+        <img class="pc-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" onerror="this.style.display='none'" />
+        <div class="pc-byline-text">Tip by<b>Dave</b></div>
+      </div>
+      <div class="pc-share">
+        <span class="pc-share-toast" id="shareToast">Link copied</span>
+        <button class="pc-share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
+        <a class="pc-share-btn primary" href="https://wa.me/?text=Samoura%C3%AF%20des%20Mers%20%E2%80%94%20https%3A//hoodtip.com/tip-samourai.html" target="_blank" rel="noopener">
+          Share →
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- FOOTER -->
-<div style="border-bottom:1.5px solid var(--ink);">
-  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
-    <div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
-      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
-    </div>
-    <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+<!-- FOOTER STRIP -->
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="profile-build.html" class="foot-cta">Leave your own tip →</a>
   </div>
 </div>
-<footer>
-  <div class="footer-inner">
-    <a href="index.html" class="footer-logo">Hood<span class="logo-dot"></span>Tip</a>
-    <div class="footer-stats">
-      <span>63 tips</span><span>·</span>
-      <span>16 neighbourhoods</span><span>·</span>
-      <span>18 cities</span>
-    </div>
-    <p class="footer-note">Write it like you're giving a friend advice the night before they leave.</p>
-  </div>
-</footer>
 
+<script>
+  // Share
+  function copyLink(){
+    var url = window.location.href;
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.resolve()).then(function(){
+      var t = document.getElementById('shareToast');
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 1800);
+    });
+  }
 
-  <!-- LEAVE A TIP CTA -->
-  <div style="border:1.5px solid #1a1816;padding:1.75rem 2rem;margin:3rem 0 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-    
-    <a href="https://hoodtip.com" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.75rem 1.25rem;text-decoration:none;white-space:nowrap;flex-shrink:0;">Leave a HoodTip &rarr;</a>
-  </div>
+  // Hide broken images — parent gradient shows through
+  document.querySelectorAll('.pc-slide img').forEach(function(img){
+    function hide(){ img.style.display = 'none'; var fb = img.nextElementSibling; if (fb && fb.classList.contains('pc-slide-fallback')) fb.style.display='flex'; }
+    img.addEventListener('error', hide);
+    if (img.complete && img.naturalWidth === 0) hide();
+  });
+
+  // Carousel
+  (function(){
+    var track = document.getElementById('pcTrack');
+    var slides = track ? track.querySelectorAll('.pc-slide') : [];
+    var prev = document.getElementById('pcPrev');
+    var next = document.getElementById('pcNext');
+    var dots = document.querySelectorAll('#pcDots .pc-dot');
+    var current = document.getElementById('pcCurrent');
+    var total = slides.length;
+    if (total <= 1) return;
+
+    var idx = 0;
+    function go(i){
+      idx = Math.max(0, Math.min(total - 1, i));
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+      if (current) current.textContent = idx + 1;
+      prev.disabled = idx === 0;
+      next.disabled = idx === total - 1;
+    }
+
+    prev.addEventListener('click', function(){ go(idx - 1); });
+    next.addEventListener('click', function(){ go(idx + 1); });
+    dots.forEach(function(d, j){ d.addEventListener('click', function(){ go(j); }); });
+
+    // Keyboard
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft') go(idx - 1);
+      else if (e.key === 'ArrowRight') go(idx + 1);
+    });
+
+    // Swipe (touch)
+    var startX = null, startY = null;
+    var imgEl = document.getElementById('pcImage');
+    imgEl.addEventListener('touchstart', function(e){
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, {passive: true});
+    imgEl.addEventListener('touchend', function(e){
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) go(idx + 1);
+        else go(idx - 1);
+      }
+      startX = null; startY = null;
+    }, {passive: true});
+
+    go(0);
+  })();
+</script>
+
 </body>
 </html>

@@ -3,260 +3,579 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Empanadas Factory — HoodTip Nations Geneva</title>
-  <!-- OG / SOCIAL META -->
-  <meta property="og:type" content="website" />
+  <title>Empanadas Factory — Geneva — HoodTip</title>
+  <meta name="description" content="Get the Beef Boliviano. Ask for the sauce picante. Don&#x27;t forget to ask for it. Nations, Geneva." />
+
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Empanadas Factory — Get the Beef Boliviano. Ask for the sauce picante." />
+  <meta property="og:title" content="Empanadas Factory · HoodTip" />
   <meta property="og:description" content="Steak and egg on rice with fries, under CHF 25. One of the few genuinely good options near the UN in Geneva." />
   <meta property="og:image" content="https://hoodtip.com/Screenshot_2026-03-17_at_09_24_22.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="800" />
   <meta property="og:url" content="https://hoodtip.com/tip-empanadas.html" />
-  <!-- TWITTER / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Empanadas Factory — Get the Beef Boliviano. Ask for the sauce picante." />
+  <meta name="twitter:title" content="Empanadas Factory · HoodTip" />
   <meta name="twitter:description" content="Steak and egg on rice with fries, under CHF 25. One of the few genuinely good options near the UN in Geneva." />
   <meta name="twitter:image" content="https://hoodtip.com/Screenshot_2026-03-17_at_09_24_22.png" />
-  <meta name="description" content="Get the Beef Boliviano. Ask for the sauce picante. Don't forget to ask for it. Nations, Geneva." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --cream: #f7f4ef; --ink: #1a1816; --muted: #6b6560; --rule: #e0dbd3; --accent: #b5322a; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Barlow', system-ui, sans-serif; --condensed: 'Barlow Condensed', system-ui, sans-serif; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 400; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 56px; background: rgba(247,244,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
-    .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
-    .nav-logo em { font-style: italic; font-weight: 400; }
-    .nav-right { display: flex; gap: 24px; align-items: center; }
-    .nav-right a { font-family: var(--condensed); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-    .nav-right a:hover { color: var(--ink); }
-    .nav-cta { background: var(--ink); color: var(--cream) !important; padding: 7px 16px; border-radius: 2px; }
-    .nav-cta:hover { background: var(--accent) !important; }
-    .breadcrumb { padding: 80px 32px 0; display: flex; gap: 8px; align-items: center; font-family: var(--condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .breadcrumb a { color: var(--muted); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--ink); }
-    .breadcrumb span { opacity: 0.4; }
-    .hero { margin: 20px 32px 0; position: relative; overflow: hidden; border-radius: 4px; height: clamp(360px, 56vw, 640px); }
-    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; object-position: center 40%; transition: transform 0.8s ease; }
-    .hero:hover img { transform: scale(1.015); }
-    .hero-badge { position: absolute; top: 20px; left: 20px; background: var(--accent); color: #fff; font-family: var(--condensed); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
-    .layout { max-width: 1080px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 64px; }
-    .meta-line { font-family: var(--condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .meta-line a { color: var(--accent); text-decoration: none; }
-    h1 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 600; line-height: 1.1; letter-spacing: 0em; margin-bottom: 8px; }
-    .tipped-line { font-size: 0.78rem; color: var(--muted); margin-bottom: 32px; }
-    .tipped-dot { display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-    .divider { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
-    .copy { font-size: 1.05rem; line-height: 1.75; color: var(--ink); max-width: 600px; }
-    .copy p + p { margin-top: 1.2em; }
-    .pull-quote { margin: 36px 0; padding: 24px 28px; border-left: 3px solid var(--accent); background: rgba(181,50,42,0.04); border-radius: 0 3px 3px 0; }
-    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: 1.2rem; line-height: 1.5; color: var(--ink); }
-    .photos { margin-top: 40px; }
-    .photos-label { font-family: var(--condensed); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-    .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
-    .photo-grid a { display: block; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease; }
-    .photo-grid a:hover { transform: scale(1.02); opacity: 0.9; cursor: zoom-in; }
-    .photo-grid img { width: 100%; object-fit: cover; border-radius: 3px; border: 1px solid var(--rule); display: block; }
-    .photo-grid .sq { aspect-ratio: 1/1; }
-    .photo-grid .wide { aspect-ratio: 4/3; }
-    .photo-grid .tall { aspect-ratio: 3/4; }
-    .sidebar { padding-top: 6px; }
-    .fact-block { border-top: 1px solid var(--rule); padding: 18px 0; }
-    .fact-block:last-of-type { border-bottom: 1px solid var(--rule); }
-    .fact-label { font-family: var(--condensed); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-    .fact-value { font-size: 0.92rem; font-weight: 400; color: var(--ink); }
-    .map-block { margin-top: 32px; border-radius: 3px; overflow: hidden; border: 1px solid var(--rule); }
-    .map-inner { background: #e8e4dc; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
-    .map-pin { font-size: 1.5rem; }
-    .map-address { font-size: 0.8rem; color: var(--muted); text-align: center; line-height: 1.4; }
-    .map-link { display: block; background: var(--ink); color: var(--cream); text-align: center; font-family: var(--condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; padding: 12px; text-decoration: none; transition: background 0.2s; }
-    .map-link:hover { background: var(--accent); }
-    .tags { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { font-family: var(--condensed); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--rule); border-radius: 2px; padding: 4px 10px; color: var(--muted); text-decoration: none; transition: all 0.2s; }
-    .tag:hover { border-color: var(--ink); color: var(--ink); }
-    .more-section { max-width: 1080px; margin: 0 auto; padding: 0 32px 80px; border-top: 1px solid var(--rule); }
-    .more-header { display: flex; justify-content: space-between; align-items: baseline; padding: 32px 0 24px; }
-    .more-header h2 { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; letter-spacing: 0em; }
-    .more-header a { font-family: var(--condensed); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-    .more-header a:hover { color: var(--accent); }
-    .more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .tip-card { text-decoration: none; color: var(--ink); display: block; transition: transform 0.25s; }
-    .tip-card:hover { transform: translateY(-2px); }
-    .tip-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 3px; display: block; transition: opacity 0.3s; margin-bottom: 12px; background: var(--rule); }
-    .tip-card:hover .tip-card-img { opacity: 0.85; }
-    .tip-card-cat { font-family: var(--condensed); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .tip-card-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; line-height: 1.2; margin-bottom: 4px; }
-    .tip-card-hood { font-size: 0.75rem; color: var(--muted); }
-    footer { background: var(--ink); color: var(--cream); padding: 40px 32px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-logo { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.01em; }
-    .footer-logo em { font-style: italic; font-weight: 400; }
-    .footer-sub { font-family: var(--condensed); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.4); margin-top: 4px; }
-    .footer-right { font-family: var(--condensed); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(247,244,239,0.4); }
-    @media (max-width: 768px) {
-      nav { padding: 0 16px; }
-      .breadcrumb { padding: 72px 16px 0; }
-      .hero { margin: 16px 16px 0; height: 56vw; min-height: 220px; }
-      .layout { grid-template-columns: 1fr; padding: 32px 16px 48px; gap: 40px; }
-      h1 { font-size: 2.2rem; }
-      .photo-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
-      .more-section { padding: 0 16px 48px; }
-      .more-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-      .more-grid .tip-card:last-child { display: none; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f7f4ef;
+      --cream2: #efeae1;
+      --ink: #1a1816;
+      --ink2: #2a2925;
+      --muted: #6b6560;
+      --muted2: #8a8378;
+      --rule: #d9d2c6;
+      --rule-soft: #e8e2d6;
+      --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
     }
-    @media (max-width: 480px) {
-      .more-grid { grid-template-columns: 1fr; }
-      .more-grid .tip-card:last-child { display: block; }
+    html, body { height: 100%; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body::before {
+      content:''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
+      background-size: 3px 3px; opacity: 0.5; mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ------ NAV ------ */
+    .nav { border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: baseline; gap: 12px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-logo em { font-style: italic; font-weight: 400; }
+    .nav-logo .dot { color: var(--red); }
+    .nav-tag { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; }
+    .nav-right { display: flex; align-items: stretch; height: 54px; }
+    .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 0 22px; display: flex; align-items: center; border-left: 1px solid var(--ink); transition: background 0.15s; }
+    .nav-cta:hover { background: var(--red); }
+
+    /* ------ POSTCARD ------ */
+    .postcard {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: calc(100vh - 54px - 46px);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ------ CAROUSEL (left side) ------ */
+    .pc-image {
+      position: relative;
+      overflow: hidden;
+      border-right: 1.5px solid var(--ink);
+      background: linear-gradient(135deg, #1f1d1b 0%, #2a2925 50%, #3a2a26 100%);
+    }
+    .pc-track {
+      position: absolute; inset: 0;
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .pc-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .pc-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      pointer-events: none;
+    }
+    .pc-slide-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 5rem; color: rgba(247,244,239,0.15);
+      pointer-events: none;
+    }
+
+    /* Overlay (breadcrumb top, caption/counter bottom) */
+    .pc-image-overlay {
+      position: absolute; top: 0; left: 0; right: 0; padding: 1.5rem 1.75rem;
+      background: linear-gradient(to bottom, rgba(15,12,10,0.55) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-overlay a, .pc-image-overlay button { pointer-events: auto; }
+    .pc-breadcrumb {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(247,244,239,0.75);
+    }
+    .pc-breadcrumb a { color: rgba(247,244,239,0.75); transition: color 0.15s; }
+    .pc-breadcrumb a:hover { color: #fff; }
+    .pc-breadcrumb span { color: rgba(247,244,239,0.35); padding: 0 0.35rem; }
+    .pc-badge {
+      font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--cream); background: var(--red); padding: 5px 9px;
+    }
+
+    .pc-image-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.75rem;
+      background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-cap-text {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(255,255,255,0.85);
+      max-width: 420px; line-height: 1.4;
+    }
+    .pc-image-credit {
+      font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+
+    /* Carousel arrows */
+    .pc-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(15,12,10,0.45); backdrop-filter: blur(8px);
+      border: 1px solid rgba(247,244,239,0.25);
+      color: var(--cream); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 4;
+      transition: all 0.2s;
+    }
+    .pc-nav:hover { background: var(--red); border-color: var(--red); }
+    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav.prev { left: 1.25rem; }
+    .pc-nav.next { right: 1.25rem; }
+    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+
+    /* Counter + dots */
+    .pc-counter {
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; align-items: center;
+      z-index: 4;
+      padding: 6px 12px;
+      background: rgba(15,12,10,0.35); backdrop-filter: blur(8px);
+      border-radius: 100px;
+    }
+    .pc-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(247,244,239,0.4);
+      border: none; cursor: pointer; padding: 0;
+      transition: all 0.2s;
+    }
+    .pc-dot.active { background: var(--cream); width: 18px; border-radius: 3px; }
+    .pc-dot:hover { background: rgba(247,244,239,0.8); }
+
+    /* Hide individual dots when there are too many; show just counter */
+    .pc-image.many-photos .pc-dot { display: none; }
+    .pc-image.many-photos .pc-counter-text { position: static; transform: none; }
+    .pc-image.many-photos .pc-counter {
+      padding: 5px 12px;
+    }
+
+    .pc-counter-text {
+      font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.7);
+    }
+    .pc-counter-text b { color: var(--cream); font-weight: 500; }
+
+    /* Hide carousel controls when only one photo */
+    .pc-image.single .pc-nav,
+    .pc-image.single .pc-counter,
+    .pc-image.single .pc-counter-text { display: none; }
+
+    /* ------ BODY SIDE ------ */
+    .pc-body {
+      padding: 3rem 3.25rem 2.25rem;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .pc-content {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-bottom: 1rem;
+    }
+    .pc-location {
+      font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    .pc-location span { color: var(--rule); padding: 0 0.4rem; }
+    .pc-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .pc-title em { font-style: italic; font-weight: 400; }
+    .pc-title.long { font-size: clamp(1.7rem, 2.6vw, 2.4rem); line-height: 1.05; }
+    .pc-title.xlong { font-size: clamp(1.45rem, 2.2vw, 2rem); line-height: 1.1; }
+
+    /* Callout */
+    .pc-callout {
+      position: relative;
+      padding: 1.75rem 0 1.75rem 1.75rem;
+      margin: 0.25rem 0 2rem;
+      border-left: 3px solid var(--red);
+      background: linear-gradient(to right, rgba(181,50,42,0.04) 0%, transparent 100%);
+    }
+    .pc-callout::before {
+      content: '"';
+      position: absolute;
+      top: -0.4rem;
+      left: 0.95rem;
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      color: var(--red);
+      opacity: 0.15;
+      line-height: 1;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .pc-callout-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      line-height: 1.25;
+      color: var(--ink);
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    .pc-callout-text b { font-weight: 600; font-style: normal; color: var(--red); }
+
+    /* 3-Fact strip */
+    .pc-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .pc-fact {
+      padding: 1rem 1.25rem 1rem 0;
+      border-right: 1px solid var(--rule-soft);
+      display: flex; flex-direction: column; gap: 0.3rem;
+      min-width: 0;
+    }
+    .pc-fact:first-child { padding-left: 0; }
+    .pc-fact:last-child { border-right: none; padding-right: 0; padding-left: 1.25rem; }
+    .pc-fact:nth-child(2) { padding-left: 1.25rem; }
+    .pc-fact-label {
+      font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pc-fact-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.25;
+      word-wrap: break-word;
+    }
+    .pc-fact-value a { color: var(--ink); border-bottom: 1px solid var(--rule); transition: border-color 0.15s; }
+    .pc-fact-value a:hover { border-color: var(--red); }
+    .pc-fact-value em { font-style: italic; font-weight: 400; color: var(--muted); font-size: 0.92rem; }
+
+    /* Byline + share */
+    .pc-foot {
+      margin-top: auto;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      padding-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .pc-byline { display: flex; align-items: center; gap: 0.7rem; }
+    .pc-byline-photo {
+      width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule);
+    }
+    .pc-byline-text {
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+      line-height: 1.4;
+    }
+    .pc-byline-text b {
+      display: block; font-family: var(--serif); font-size: 0.95rem; color: var(--ink);
+      font-weight: 500; text-transform: none; font-style: italic; letter-spacing: 0;
+    }
+
+    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+    .pc-share-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink); background: var(--cream); border: 1px solid var(--ink);
+      padding: 9px 14px; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pc-share-btn:hover { background: var(--ink); color: var(--cream); }
+    .pc-share-btn svg { width: 12px; height: 12px; }
+    .pc-share-btn.primary { background: var(--ink); color: var(--cream); }
+    .pc-share-btn.primary:hover { background: var(--red); border-color: var(--red); }
+    .pc-share-toast {
+      position: absolute; right: 0; bottom: calc(100% + 8px);
+      font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--ink); color: var(--cream); padding: 6px 10px; opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .pc-share-toast.show { opacity: 1; }
+
+    /* ------ FOOTER STRIP ------ */
+    .foot-strip {
+      background: var(--ink); color: var(--cream);
+      border-top: 2px solid var(--red);
+      position: relative; z-index: 2;
+    }
+    .foot-strip-inner {
+      max-width: 1360px; margin: 0 auto; padding: 0 32px;
+      height: 46px;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    .foot-note {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(247,244,239,0.65);
+    }
+    .foot-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
+    .foot-cta {
+      font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(247,244,239,0.85);
+      border-bottom: 1px solid rgba(247,244,239,0.3);
+      padding-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .foot-cta:hover { color: var(--cream); border-color: var(--red); }
+
+    /* ------ RESPONSIVE ------ */
+    @media (max-width: 960px) {
+      .postcard { grid-template-columns: 1fr; min-height: 0; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; }
+      .pc-image-caption { display: none; }
+      .pc-nav { width: 36px; height: 36px; }
+      .pc-nav.prev { left: 0.75rem; }
+      .pc-nav.next { right: 0.75rem; }
+      .pc-body { padding: 2rem 1.5rem 1.5rem; }
+      .pc-title { font-size: 2rem; }
+      .pc-facts { grid-template-columns: 1fr; }
+      .pc-fact { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 0.9rem 0; }
+      .pc-fact:first-child { padding-top: 0.5rem; }
+      .pc-fact:last-child { border-bottom: none; padding-bottom: 0.5rem; padding-left: 0; }
+      .pc-fact:nth-child(2) { padding-left: 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-tag, .nav-link { display: none; }
+      .nav-inner { padding: 0 18px; }
+      .pc-image-overlay { padding: 1rem 1.25rem; }
+      .pc-body { padding: 1.5rem 1.25rem 1.5rem; }
+      .pc-title { font-size: 1.8rem; }
+      .pc-callout { padding: 1.25rem 0 1.25rem 1.25rem; margin: 0 0 1.5rem; }
+      .pc-callout-text { font-size: 1.2rem; }
+      .foot-strip-inner { padding: 0 18px; }
+      .foot-note { font-size: 0.72rem; }
+      .foot-cta { font-size: 0.56rem; }
+      .pc-share-btn { padding: 8px 11px; font-size: 0.6rem; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="https://hoodtip.com">Hood<em>Tip.</em></a>
-  <div class="nav-right">
-    <a href="https://hoodtip.com/geneva">Geneva</a>
-    <a href="https://hoodtip.com">All tips</a>
-    <a href="#" class="nav-cta">Leave a tip</a>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tag">Only the good stuff.</span>
+    </div>
+    <div class="nav-right">
+      <a href="profile-dave.html" class="nav-link">Dave</a>
+      <a href="profile-build.html" class="nav-cta">Leave a tip →</a>
+    </div>
   </div>
-</nav>
-
-<div class="breadcrumb">
-  <a href="https://hoodtip.com">HoodTip</a>
-  <span>/</span>
-  <a href="https://hoodtip.com/geneva">Geneva</a>
-  <span>/</span>
-  <a href="https://hoodtip.com/#nations">Nations</a>
-  <span>/</span>
-  Empanadas Factory
 </div>
 
-<div class="hero">
-  <img src="Screenshot_2026-03-17_at_09_24_22.png" alt="Beef Boliviano — steak, egg, rice, fries at Empanadas Factory Geneva" />
-  <div class="hero-badge">Restaurant</div>
-</div>
+<!-- POSTCARD -->
+<div class="postcard">
 
-<div class="layout">
-  <main>
-    <div class="meta-line">
-      <a href="https://hoodtip.com/#nations">Nations</a> · Geneva
+  <!-- CAROUSEL -->
+  <div class="pc-image" id="pcImage">
+    <div class="pc-track" id="pcTrack">
+      <div class="pc-slide"><img src="Screenshot_2026-03-17_at_09_24_22.png" alt="Beef Boliviano — steak, egg, rice, fries at Empanadas Factory Geneva" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="empanadas-factory-soup.jpg" alt="Bolivian soup — chicken, vegetables, herbs" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Screenshot_2026-03-17_at_09_22_48.png" alt="Sauce picante in terracotta bowl" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="Screenshot_2026-03-17_at_09_24_15.png" alt="Empanadas Factory exterior, Nations Geneva" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
     </div>
-    <h1>Empanadas Factory</h1>
-    <div class="tipped-line"><span class="tipped-dot"></span>7 people tipped this</div>
-    <hr class="divider" />
-    <div class="copy">
-      <p>If you work near the UN you already know the problem — there is almost nothing good to eat in this neighbourhood unless you're a senior diplomat with two hours and an expense account. Empanadas Factory is one of the exceptions.</p>
-      <p>Grab empanadas on the way out if you're in a rush. But if you have 25 francs and want to sit down and eat something properly, get the Beef Boliviano — steak and egg on rice with fries, the whole thing. The soup is excellent too — proper Bolivian chicken and vegetable broth. Décor is full Saved by the Bell. It works.</p>
-      <p>The real move is the sauce picante — a little orange salsa they make in house. You have to ask for it.</p>
+
+    <!-- Overlay: breadcrumb + category badge -->
+    <div class="pc-image-overlay">
+      <div class="pc-breadcrumb">
+        <a href="index.html">HoodTip</a><span>/</span>Geneva
+      </div>
+      <span class="pc-badge">Tip</span>
     </div>
-    <div class="pull-quote">
-      <p>"Ask for the sauce picante. They make it in house."</p>
+
+    <!-- Caption (bottom left on desktop) -->
+    <div class="pc-image-caption">
+      <div class="pc-image-cap-text">Empanadas Factory.</div>
+      <div class="pc-image-credit">Photo · Dave</div>
     </div>
-    <div class="photos">
-      <div class="photos-label">Photos</div>
-      <div class="photo-grid">
-        <a href="Screenshot_2026-03-17_at_09_24_22.png" target="_blank" rel="noopener">
-          <img class="wide" src="Screenshot_2026-03-17_at_09_24_22.png" alt="Beef Boliviano — steak, egg, rice, fries" />
-        </a>
-        <a href="empanadas-factory-soup.jpg" target="_blank" rel="noopener">
-          <img class="wide" src="empanadas-factory-soup.jpg" alt="Bolivian soup — chicken, vegetables, herbs" />
-        </a>
-        <a href="Screenshot_2026-03-17_at_09_22_48.png" target="_blank" rel="noopener">
-          <img class="sq" src="Screenshot_2026-03-17_at_09_22_48.png" alt="Sauce picante in terracotta bowl" />
-        </a>
-        <a href="Screenshot_2026-03-17_at_09_24_15.png" target="_blank" rel="noopener">
-          <img class="sq" src="Screenshot_2026-03-17_at_09_24_15.png" alt="Empanadas Factory exterior, Nations Geneva" />
+
+    <!-- Carousel nav -->
+    <button class="pc-nav prev" id="pcPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="pc-nav next" id="pcNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Dots + counter -->
+    <div class="pc-counter" id="pcDots">
+      <button class="pc-dot active" aria-label="Photo 1"></button><button class="pc-dot" aria-label="Photo 2"></button><button class="pc-dot" aria-label="Photo 3"></button><button class="pc-dot" aria-label="Photo 4"></button>
+      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 4</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="pc-body">
+
+    <div class="pc-content">
+      <div class="pc-location"><span>/</span>Geneva</div>
+
+      <h1 class="pc-title">Empanadas Factory</h1>
+
+      <div class="pc-callout">
+        <p class="pc-callout-text">Ask for the sauce picante. They make it in house.</p>
+      </div>
+
+      <div class="pc-facts">
+        <div class="pc-fact">
+          <span class="pc-fact-label">Where</span>
+          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Empanadas%20Factory%20Geneva" target="_blank" rel="noopener">Geneva</a></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">Best for</span>
+          <span class="pc-fact-value"><em>A good time</em></span>
+        </div>
+        <div class="pc-fact">
+          <span class="pc-fact-label">The move</span>
+          <span class="pc-fact-value"><em>Ask for the sauce picante</em></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc-foot">
+      <div class="pc-byline">
+        <img class="pc-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" onerror="this.style.display='none'" />
+        <div class="pc-byline-text">Tip by<b>Dave</b></div>
+      </div>
+      <div class="pc-share">
+        <span class="pc-share-toast" id="shareToast">Link copied</span>
+        <button class="pc-share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
+        <a class="pc-share-btn primary" href="https://wa.me/?text=Empanadas%20Factory%20%E2%80%94%20https%3A//hoodtip.com/tip-empanadas.html" target="_blank" rel="noopener">
+          Share →
         </a>
       </div>
     </div>
-  </main>
-
-  <aside class="sidebar">
-    <div class="fact-block">
-      <div class="fact-label">Order</div>
-      <div class="fact-value">Beef Boliviano — steak, egg, rice, fries. Ask for the sauce picante.</div>
-    </div>
-    <div class="fact-block">
-      <div class="fact-label">Price</div>
-      <div class="fact-value">~25 CHF for a full sit-down meal — excellent value for Geneva</div>
-    </div>
-    <div class="fact-block">
-      <div class="fact-label">Good to know</div>
-      <div class="fact-value">Grab empanadas to go if you're in a rush. The sauce picante is not on the table — you have to ask.</div>
-    </div>
-    <div class="fact-block">
-      <div class="fact-label">Vibe</div>
-      <div class="fact-value">Full Saved by the Bell décor. It works.</div>
-    </div>
-    <div class="map-block">
-      <div class="map-inner">
-        <div class="map-pin">📍</div>
-        <div class="map-address">Rue de Montbrillant 82<br>1202 Genève</div>
-      </div>
-      <a class="map-link" href="https://maps.google.com/?q=Empanadas+Factory+Rue+de+Montbrillant+82+Geneva" target="_blank" rel="noopener">Open in Maps →</a>
-    </div>
-    <div class="tags">
-      <a class="tag" href="#">Restaurant</a>
-      <a class="tag" href="#">Nations</a>
-      <a class="tag" href="#">Geneva</a>
-      <a class="tag" href="#">Lunch</a>
-      <a class="tag" href="#">Value</a>
-    </div>
-  </aside>
-</div>
-
-<section class="more-section">
-  <div class="more-header">
-    <h2>More tips in Nations</h2>
-    <a href="https://hoodtip.com/#nations">All Nations tips →</a>
-  </div>
-  <div class="more-grid">
-    <a class="tip-card" href="https://hoodtip.com/tip-merigonde">
-      <img class="tip-card-img" src="https://hoodtip.com/geneva-merigonde-sandwich.jpg" alt="Chocolaterie Mérigonde" />
-      <div class="tip-card-cat">Boulangerie</div>
-      <div class="tip-card-name">Chocolaterie Mérigonde</div>
-      <div class="tip-card-hood">Nations · Geneva</div>
-    </a>
-    <a class="tip-card" href="https://hoodtip.com/tip-bongojoe">
-      <img class="tip-card-img" src="https://hoodtip.com/bongojoe-yellow-table.jpg" alt="Bongo Joe's" />
-      <div class="tip-card-cat">Bar</div>
-      <div class="tip-card-name">Bongo Joe's</div>
-      <div class="tip-card-hood">Plainpalais · Geneva</div>
-    </a>
-    <a class="tip-card" href="https://hoodtip.com/tip-saintamour">
-      <img class="tip-card-img" src="https://hoodtip.com/saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour" />
-      <div class="tip-card-cat">Wine</div>
-      <div class="tip-card-name">Domaine Saint-Amour</div>
-      <div class="tip-card-hood">Lavaux · Vaud</div>
-    </a>
-  </div>
-</section>
-
-<div style="border-bottom:1.5px solid var(--ink);">
-  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
-    <div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
-      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
-    </div>
-    <a href="profile-build.html" style="display:inline-block;background:#e6a817;color:#1a1816;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
   </div>
 </div>
-<footer>
-  <div>
-    <div class="footer-logo">Hood<em>Tip.</em></div>
-    <div class="footer-sub">Only the good stuff.</div>
-  </div>
-  <div class="footer-right">© 2026 HoodTip</div>
-</footer>
 
-
-  <!-- LEAVE A TIP CTA -->
-  <div style="border:1.5px solid #1a1816;padding:1.75rem 2rem;margin:3rem 0 0;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-    
-    <a href="https://hoodtip.com" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.63rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.75rem 1.25rem;text-decoration:none;white-space:nowrap;flex-shrink:0;">Leave a HoodTip &rarr;</a>
+<!-- FOOTER STRIP -->
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="profile-build.html" class="foot-cta">Leave your own tip →</a>
   </div>
+</div>
+
+<script>
+  // Share
+  function copyLink(){
+    var url = window.location.href;
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.resolve()).then(function(){
+      var t = document.getElementById('shareToast');
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 1800);
+    });
+  }
+
+  // Hide broken images — parent gradient shows through
+  document.querySelectorAll('.pc-slide img').forEach(function(img){
+    function hide(){ img.style.display = 'none'; var fb = img.nextElementSibling; if (fb && fb.classList.contains('pc-slide-fallback')) fb.style.display='flex'; }
+    img.addEventListener('error', hide);
+    if (img.complete && img.naturalWidth === 0) hide();
+  });
+
+  // Carousel
+  (function(){
+    var track = document.getElementById('pcTrack');
+    var slides = track ? track.querySelectorAll('.pc-slide') : [];
+    var prev = document.getElementById('pcPrev');
+    var next = document.getElementById('pcNext');
+    var dots = document.querySelectorAll('#pcDots .pc-dot');
+    var current = document.getElementById('pcCurrent');
+    var total = slides.length;
+    if (total <= 1) return;
+
+    var idx = 0;
+    function go(i){
+      idx = Math.max(0, Math.min(total - 1, i));
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+      if (current) current.textContent = idx + 1;
+      prev.disabled = idx === 0;
+      next.disabled = idx === total - 1;
+    }
+
+    prev.addEventListener('click', function(){ go(idx - 1); });
+    next.addEventListener('click', function(){ go(idx + 1); });
+    dots.forEach(function(d, j){ d.addEventListener('click', function(){ go(j); }); });
+
+    // Keyboard
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft') go(idx - 1);
+      else if (e.key === 'ArrowRight') go(idx + 1);
+    });
+
+    // Swipe (touch)
+    var startX = null, startY = null;
+    var imgEl = document.getElementById('pcImage');
+    imgEl.addEventListener('touchstart', function(e){
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, {passive: true});
+    imgEl.addEventListener('touchend', function(e){
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) go(idx + 1);
+        else go(idx - 1);
+      }
+      startX = null; startY = null;
+    }, {passive: true});
+
+    go(0);
+  })();
+</script>
+
 </body>
 </html>
