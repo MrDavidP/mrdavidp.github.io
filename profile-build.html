@@ -1,696 +1,1646 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="canonical" href="https://hoodtip.com/profile-build.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build your HoodTip profile — share the good stuff</title>
-  <meta property="og:title" content="Build your HoodTip profile" />
-  <meta property="og:description" content="Tips have names on them. Add yours." />
-  <meta property="og:url" content="https://hoodtip.com/profile-build.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
-  <!-- Cloudinary Upload Widget -->
-  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leave a tip · HoodTip</title>
 
-  <style>
-    :root {
-      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
-      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans:  'Barlow', system-ui, sans-serif;
-      --cond:  'Barlow Condensed', system-ui, sans-serif;
-      --max: 560px;
+<meta name="description" content="Send us three sentences and a few photos. We turn it into a permanent polished URL with your name on it. Not an article. Not a review. A link." />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="HoodTip" />
+<meta property="og:title" content="Leave a tip · HoodTip" />
+<meta property="og:description" content="Your favourite place deserves its own link." />
+<meta property="og:url" content="https://hoodtip.com/profile-build.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<!-- Cloudinary upload widget -->
+<script src="https://upload-widget.cloudinary.com/global/all.js" async></script>
+
+<style>
+  :root {
+    --cream: #f7f4ef;
+    --cream2: #efeae1;
+    --ink: #1a1816;
+    --ink2: #2a2925;
+    --muted: #6b6560;
+    --rule: #d9d2c6;
+    --red: #b5322a;
+    --red-dk: #962a22;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Barlow', system-ui, -apple-system, sans-serif;
+    --cond: 'Barlow Condensed', system-ui, -apple-system, sans-serif;
+    --max: 1360px;
+    --gutter: 32px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* =================== NAV =================== */
+  nav.site-nav {
+    padding: 0 var(--gutter);
+    border-bottom: 1.5px solid var(--ink);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: var(--cream);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-left { display: flex; align-items: baseline; gap: 14px; }
+  .logo {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .logo em { font-style: italic; font-weight: 400; }
+  .logo .dot { color: var(--red); }
+  .nav-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border-left: 1px solid var(--rule);
+    padding-left: 14px;
+  }
+  .nav-links { display: flex; list-style: none; height: 56px; }
+  .nav-links a {
+    font-family: var(--cond);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0 18px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid var(--rule);
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.cta {
+    background: var(--ink);
+    color: var(--cream);
+    border-left: 1px solid var(--ink);
+  }
+  .nav-links a.cta:hover { background: var(--ink2); }
+  .nav-links a.cta.here {
+    background: var(--red);
+    border-left-color: var(--red);
+  }
+  .nav-links a.cta.here:hover { background: var(--red-dk); }
+
+  /* =================== MASTHEAD =================== */
+  .masthead { border-bottom: 1.5px solid var(--ink); background: var(--cream); }
+  .masthead-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 11px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--cond);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    gap: 20px;
+  }
+  .masthead .red-dot {
+    color: var(--red);
+    font-size: 0.7rem;
+    line-height: 0;
+    transform: translateY(-1px);
+  }
+
+  /* =================== HERO =================== */
+  .hero { border-bottom: 1.5px solid var(--ink); position: relative; overflow: hidden; }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(181,50,42,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 5rem var(--gutter) 3.5rem;
+    position: relative;
+  }
+  .hero-kicker {
+    font-family: var(--cond);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-kicker::before {
+    content: "";
+    width: 44px;
+    height: 1.5px;
+    background: var(--red);
+    display: block;
+  }
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    max-width: 1060px;
+    margin-bottom: 1.6rem;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--red);
+    font-weight: 400;
+  }
+  .hero-dek {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 760px;
+    margin-bottom: 2.2rem;
+    font-weight: 300;
+  }
+  .hero-dek strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-style: normal;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.6rem;
+    max-width: 780px;
+  }
+  .hero-stat { }
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.4rem, 2vw, 1.7rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .hero-stat-label {
+    font-family: var(--cond);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* =================== SUCCESS BANNER =================== */
+  .success-banner {
+    display: none;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 1.1rem var(--gutter);
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .success-banner.show { display: block; }
+  .success-banner em { font-style: italic; color: var(--cream); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 4px; }
+
+  /* =================== BUILDER =================== */
+  .builder { border-bottom: 1.5px solid var(--ink); }
+  .builder-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 0;
+    align-items: start;
+  }
+  .builder-form-col {
+    border-right: 1px solid var(--rule);
+    padding: 3.5rem 3rem 3.5rem 0;
+    min-width: 0;
+  }
+  .builder-preview-col {
+    padding: 3.5rem 0 3.5rem 3rem;
+    min-width: 0;
+  }
+  .builder-preview-sticky { position: sticky; top: 76px; }
+
+  /* ---- FORM ---- */
+  .form-title {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.015em;
+  }
+  .form-title em { font-style: italic; color: var(--red); }
+  .form-sub {
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 2.5rem;
+  }
+
+  .form-section {
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
+  .form-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+  .form-section-kicker {
+    font-family: var(--cond);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .form-section-kicker .num {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0;
+    font-style: italic;
+  }
+  .form-section-kicker .line {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+  .field { display: flex; flex-direction: column; margin-bottom: 1.3rem; }
+  .field:last-child { margin-bottom: 0; }
+  .field.full { grid-column: 1 / -1; }
+  .field-label {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .field-hint {
+    font-family: var(--cond);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field select {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 1.02rem;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--ink);
+    padding: 8px 0 10px;
+    line-height: 1.4;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: #a8a29a;
+    font-weight: 300;
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 120px;
+    border: 1px solid var(--rule);
+    padding: 14px 16px;
+    background: var(--cream2);
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+    border-radius: 0;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus { border-color: var(--red); }
+  .field select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='none' stroke='%231a1816' stroke-width='1.2' d='M1 1l4 4 4-4'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 2px center;
+    padding-right: 24px;
+    cursor: pointer;
+  }
+  .char-count {
+    font-family: var(--cond);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+    text-align: right;
+  }
+  .char-count.over { color: var(--red); }
+
+  /* ---- UPLOAD ---- */
+  .upload-wrap {
+    border: 1.5px dashed var(--ink);
+    background: var(--cream2);
+    padding: 1.8rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    text-align: center;
+  }
+  .upload-wrap:hover { background: #e7e1d4; border-color: var(--red); }
+  .upload-icon {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .upload-main {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .upload-sub {
+    font-family: var(--cond);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .thumbs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .thumbs:empty { display: none; }
+  .thumb {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    background: var(--cream2);
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb-remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+  }
+  .thumb-remove:hover { background: var(--red); }
+  .thumb-badge {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-family: var(--cond);
+    font-size: 0.52rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--red);
+    color: var(--cream);
+    padding: 2px 7px;
+  }
+
+  /* ---- SUBMIT ---- */
+  .submit-wrap {
+    margin-top: 2.5rem;
+    border-top: 1.5px solid var(--ink);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .submit-btn {
+    background: var(--red);
+    color: var(--cream);
+    font-family: var(--cond);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 15px 28px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .submit-btn:hover { background: var(--red-dk); }
+  .submit-btn:active { transform: translateY(1px); }
+  .submit-btn:disabled { background: var(--muted); cursor: not-allowed; }
+  .submit-fine {
+    font-family: var(--cond);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    max-width: 320px;
+    line-height: 1.6;
+  }
+
+  /* =================== PREVIEW =================== */
+  .preview-meta {
+    font-family: var(--cond);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .preview-meta .live-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--red);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.9); }
+  }
+
+  .postcard {
+    background: var(--cream);
+    border: 1.5px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink);
+    transition: box-shadow 0.2s;
+  }
+  .postcard:hover { box-shadow: 12px 12px 0 var(--ink); }
+
+  .postcard-hero {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--cream2);
+    overflow: hidden;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .postcard-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .postcard-hero-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--cream2);
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(107,101,96,0.05) 12px, rgba(107,101,96,0.05) 13px);
+  }
+  .postcard-hero-placeholder .ph-icon {
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+  }
+  .postcard-hero-placeholder .ph-text {
+    font-family: var(--cond);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+  .postcard-category {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--red);
+    color: var(--cream);
+    font-family: var(--cond);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 6px 11px;
+    z-index: 2;
+    transition: opacity 0.15s;
+  }
+  .postcard-category.empty { opacity: 0.55; }
+  .postcard-breadcrumb {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    font-family: var(--cond);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: rgba(26, 24, 22, 0.8);
+    padding: 6px 11px;
+    z-index: 2;
+    transition: opacity 0.15s;
+  }
+  .postcard-breadcrumb.empty { opacity: 0.7; font-style: italic; text-transform: none; letter-spacing: 0.06em; }
+  .postcard-body { padding: 1.7rem 1.7rem 0.5rem; }
+  .postcard-title {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+    transition: color 0.15s;
+  }
+  .postcard-title.empty {
+    color: var(--muted);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .postcard-quote {
+    border-left: 3px solid var(--red);
+    padding: 4px 0 6px 18px;
+    margin: 1.3rem 0 1.5rem;
+    transition: border-color 0.15s;
+  }
+  .postcard-quote.empty { border-left-color: var(--rule); }
+  .postcard-quote p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0;
+    transition: color 0.15s;
+  }
+  .postcard-quote.empty p { color: var(--muted); font-weight: 300; }
+
+  .postcard-facts {
+    border-top: 1px solid var(--rule);
+    margin-top: 1.3rem;
+  }
+  .postcard-fact {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .postcard-fact:last-child { border-bottom: none; }
+  .postcard-fact-label {
+    font-family: var(--cond);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .postcard-fact-value {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color 0.15s;
+  }
+  .postcard-fact-value.empty { color: var(--muted); font-style: italic; font-weight: 300; }
+
+  .postcard-byline {
+    border-top: 1.5px solid var(--ink);
+    padding: 14px 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: var(--cream2);
+  }
+  .postcard-byline-left { display: flex; align-items: center; gap: 12px; }
+  .postcard-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .postcard-byline-text {
+    font-family: var(--cond);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .postcard-byline-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .postcard-copy-btn {
+    font-family: var(--cond);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    padding: 6px 11px;
+    cursor: not-allowed;
+    opacity: 0.55;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .preview-footnote {
+    font-family: var(--cond);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 1.4rem;
+    text-align: center;
+    line-height: 1.7;
+  }
+  .preview-footnote a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    text-decoration: none;
+    padding-bottom: 1px;
+    transition: border-color 0.15s;
+  }
+  .preview-footnote a:hover { border-color: var(--red); }
+
+  /* =================== 3-STEP STRIP =================== */
+  .steps { border-bottom: 1.5px solid var(--ink); background: var(--cream2); }
+  .steps-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 4rem var(--gutter) 4.5rem;
+  }
+  .steps-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1.2rem;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .steps-kicker {
+    font-family: var(--cond);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+  }
+  .steps-title {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .steps-title em { font-style: italic; color: var(--red); }
+  .steps-aside {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 280px;
+    line-height: 1.5;
+  }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .step {
+    padding: 1.8rem 2rem;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .step:first-child { padding-left: 0; }
+  .step:last-child { border-right: none; padding-right: 0; }
+  .step-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--red);
+    margin-bottom: 1rem;
+    font-style: italic;
+    letter-spacing: -0.02em;
+  }
+  .step-label {
+    font-family: var(--cond);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .step-text {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.35;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* =================== FOOTER =================== */
+  footer { border-top: 2px solid var(--red); background: var(--ink); color: var(--cream); }
+  .footer-top {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 3.5rem var(--gutter) 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    border-bottom: 1px solid rgba(247, 244, 239, 0.1);
+  }
+  .footer-brand-logo {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  .footer-brand-logo em { font-style: italic; font-weight: 400; }
+  .footer-brand-logo .dot { color: var(--red); }
+  .footer-brand-tag {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(247, 244, 239, 0.65);
+    margin-bottom: 1.4rem;
+  }
+  .footer-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+  .footer-stat-num {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .footer-stat-label {
+    font-family: var(--cond);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 239, 0.4);
+    margin-top: 5px;
+  }
+  .footer-col-title {
+    font-family: var(--cond);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 239, 0.4);
+    margin-bottom: 1.1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.55rem; }
+  .footer-col a {
+    color: var(--cream);
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 1.02rem;
+    font-weight: 300;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: var(--red); }
+
+  .footer-bottom {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1.3rem var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-slogan {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(247, 244, 239, 0.55);
+  }
+  .footer-copyright {
+    font-family: var(--cond);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 239, 0.35);
+  }
+
+  /* =================== RESPONSIVE =================== */
+  @media (max-width: 1024px) {
+    .hero-inner { padding: 4rem var(--gutter) 3rem; }
+    .builder-form-col { padding: 2.5rem 2rem 2.5rem 0; }
+    .builder-preview-col { padding: 2.5rem 0 2.5rem 2rem; }
+  }
+
+  @media (max-width: 900px) {
+    .builder-inner { grid-template-columns: 1fr; }
+    .builder-form-col {
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 2.5rem 0;
+      order: 2;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; min-height: 100vh; }
-
-    /* NAV */
-    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); background: var(--cream); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
-    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
-    .logo em { font-style: italic; font-weight: 400; }
-    .logo .dot { color: var(--red); }
-    .nav-back { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-    .nav-back:hover { color: var(--ink); }
-
-    /* PAGE HEADER */
-    .page-header { border-bottom: 1.5px solid var(--ink); padding: 3rem 2rem 2.5rem; text-align: center; }
-    .page-header-kicker { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
-    .page-header-hed { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400; line-height: 1.1; margin-bottom: 0.75rem; }
-    .page-header-hed em { font-style: italic; }
-    .page-header-deck { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.6; }
-
-    /* STEPS INDICATOR */
-    .steps-bar { border-bottom: 1px solid var(--rule); padding: 0 2rem; }
-    .steps-bar-inner { max-width: var(--max); margin: 0 auto; display: flex; height: 44px; align-items: center; gap: 0; }
-    .step-pill { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; flex: 1; }
-    .step-pill.active { color: var(--ink); }
-    .step-pill.done { color: var(--red); }
-    .step-num { width: 20px; height: 20px; border-radius: 50%; border: 1px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; flex-shrink: 0; }
-    .step-pill.done .step-num { background: var(--red); border-color: var(--red); color: white; }
-    .step-pill.done .step-num::after { content: '✓'; }
-    .step-pill.done .step-num span { display: none; }
-    .step-divider { width: 24px; height: 1px; background: var(--rule); flex-shrink: 0; }
-
-    /* FORM WRAPPER */
-    .form-wrap { max-width: var(--max); margin: 0 auto; padding: 2.5rem 2rem 5rem; }
-
-    /* STEP PANELS */
-    .step-panel { display: none; }
-    .step-panel.active { display: block; }
-
-    .step-label { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
-    .step-hed { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; line-height: 1.1; margin-bottom: 0.4rem; }
-    .step-deck { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.5; }
-
-    /* FIELDS */
-    .field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 1.1rem; }
-    .field label { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .field input, .field select, .field textarea {
-      background: white; border: 1px solid var(--rule); padding: 10px 12px;
-      font-family: var(--sans); font-size: 0.9rem; color: var(--ink);
-      outline: none; border-radius: 0; width: 100%;
-      transition: border-color 0.15s;
+    .builder-preview-col { padding: 2.5rem 0; order: 1; }
+    .builder-preview-sticky { position: static; }
+    .postcard {
+      box-shadow: 6px 6px 0 var(--ink);
+      max-width: 480px;
+      margin: 0 auto;
     }
-    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink); }
-    .field textarea { resize: vertical; min-height: 90px; }
-    .field-hint { font-size: 0.72rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
-
-    /* PHOTO UPLOAD COMPONENT */
-    .upload-zone {
-      border: 1.5px dashed var(--rule);
-      background: white;
-      padding: 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      position: relative;
+    .steps-grid { grid-template-columns: 1fr; }
+    .step {
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 1.6rem 0;
     }
-    .upload-zone:hover { border-color: var(--ink); background: rgba(26,24,22,0.02); }
-    .upload-zone-icon { font-size: 1.6rem; margin-bottom: 0.4rem; line-height: 1; }
-    .upload-zone-text { font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
-    .upload-zone-sub { font-size: 0.72rem; color: var(--muted); }
-
-    /* PHOTO PREVIEWS */
-    .photo-previews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 0.75rem; }
-    .photo-preview { position: relative; aspect-ratio: 1; overflow: hidden; }
-    .photo-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo-preview-remove {
-      position: absolute; top: 4px; right: 4px;
-      background: rgba(26,24,22,0.75); color: white;
-      border: none; width: 20px; height: 20px; border-radius: 50%;
-      font-size: 0.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      line-height: 1;
+    .step:last-child { border-bottom: none; }
+    .step:first-child { padding-top: 0; }
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
-    .photo-count { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
 
-    /* AVATAR PREVIEW */
-    .avatar-upload-row { display: flex; align-items: center; gap: 1rem; }
-    .avatar-preview { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule); background: var(--rule); flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .avatar-preview img { width: 100%; height: 100%; object-fit: cover; display: none; }
-    .avatar-preview-placeholder { font-family: var(--serif); font-size: 1.4rem; color: var(--muted); }
-    .avatar-upload-btn {
-      font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      background: transparent; border: 1px solid var(--ink); color: var(--ink);
-      padding: 8px 16px; cursor: pointer; transition: background 0.15s, color 0.15s;
+  @media (max-width: 640px) {
+    :root { --gutter: 20px; }
+    .nav-tagline { display: none; }
+    .nav-links a:not(.cta) { display: none; }
+    .nav-links a { padding: 0 12px; }
+    .masthead-inner {
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      gap: 10px;
+      padding: 8px var(--gutter);
     }
-    .avatar-upload-btn:hover { background: var(--ink); color: var(--cream); }
-
-    /* TASTE TAGS */
-    .taste-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
-    .taste-opt { display: none; }
-    .taste-opt + label {
-      font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); border: 1px solid var(--rule); padding: 0.25rem 0.65rem;
-      cursor: pointer; transition: all 0.15s; user-select: none;
+    .hero-inner { padding: 3rem var(--gutter) 2.5rem; }
+    .hero-headline { font-size: 2.4rem; }
+    .hero-stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 20px;
     }
-    .taste-opt:checked + label { border-color: var(--ink); color: var(--ink); background: rgba(26,24,22,0.05); }
-
-    /* PROFILE CARD PREVIEW */
-    .card-preview { border: 1px solid var(--rule); padding: 1.25rem; background: white; margin: 1.75rem 0; }
-    .card-preview-label { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
-    .card-preview-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
-    .card-preview-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); background: var(--rule); overflow: hidden; flex-shrink: 0; }
-    .card-preview-photo img { width: 100%; height: 100%; object-fit: cover; display: none; }
-    .card-preview-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; }
-    .card-preview-handle { font-family: var(--cond); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .card-preview-bio { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); }
-
-    /* DIVIDER */
-    .field-divider { height: 1px; background: var(--rule); margin: 1.75rem 0; }
-
-    /* RETURNING USER */
-    .returning-toggle { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; cursor: pointer; display: inline-block; margin-top: 0.5rem; }
-    .returning-toggle:hover { color: var(--ink); border-color: var(--ink); }
-    .returning-panel { display: none; margin-top: 1rem; padding: 1rem; border: 1px solid var(--rule); background: white; }
-    .returning-panel.open { display: block; }
-
-    /* BUTTONS */
-    .btn-row { display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; }
-    .btn-next {
-      background: var(--ink); color: var(--cream);
-      font-family: var(--cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-      border: none; padding: 13px 28px; cursor: pointer; transition: background 0.15s;
-    }
-    .btn-next:hover { background: var(--ink2); }
-    .btn-back {
-      background: transparent; color: var(--muted);
-      font-family: var(--cond); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-      border: none; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
-    }
-    .btn-back:hover { color: var(--ink); }
-    .btn-submit {
-      background: var(--red); color: white;
-      font-family: var(--cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-      border: none; padding: 13px 28px; cursor: pointer; transition: background 0.15s;
-    }
-    .btn-submit:hover { background: #9e2a23; }
-
-    /* REVIEW SUMMARY */
-    .review-block { background: white; border: 1px solid var(--rule); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
-    .review-block-label { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
-    .review-row { display: flex; gap: 1rem; padding: 0.35rem 0; border-bottom: 1px solid var(--rule); font-size: 0.85rem; }
-    .review-row:last-child { border-bottom: none; }
-    .review-key { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); width: 100px; flex-shrink: 0; padding-top: 2px; }
-    .review-val { color: var(--ink); line-height: 1.5; }
-    .review-photos { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 0.5rem; }
-    .review-photo { width: 56px; height: 56px; object-fit: cover; }
-
-    /* ERROR */
-    .form-error { font-size: 0.78rem; color: var(--red); margin-top: 0.5rem; display: none; }
-
-    /* SUCCESS */
-    .success-panel { display: none; text-align: center; padding: 4rem 2rem; }
-    .success-panel.active { display: block; }
-    .success-icon { font-family: var(--serif); font-size: 3rem; margin-bottom: 1rem; }
-    .success-hed { font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 0.75rem; }
-    .success-body { font-size: 0.9rem; color: var(--muted); line-height: 1.75; max-width: 380px; margin: 0 auto 1.5rem; }
-
-    /* FOOTER */
-    footer { border-top: 2px solid var(--red); background: var(--ink); }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
-    .footer-logo em { font-style: italic; font-weight: 400; }
-    .footer-logo .dot { color: var(--red); }
-
-    @media (max-width: 600px) {
-      .form-wrap { padding: 2rem 1.25rem 4rem; }
-      .page-header { padding: 2rem 1.25rem; }
-    }
-  </style>
-<!-- Google tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+    .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 0; }
+    .submit-wrap { flex-direction: column; align-items: stretch; }
+    .submit-btn { justify-content: center; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .postcard-fact { grid-template-columns: 1fr; gap: 3px; }
+    .postcard-fact-label { font-size: 0.54rem; }
+    .postcard-hero { aspect-ratio: 3 / 2; }
+    .steps-title-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
 </head>
 <body>
 
-<nav>
+<!-- ========== NAV ========== -->
+<nav class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
-    <a href="index.html" class="nav-back">← Back to HoodTip</a>
+    <div class="nav-left">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile-dave.html">Dave</a></li>
+      <li><a href="profile-foodfiend.html">@foodfiend</a></li>
+      <li><a href="profile-build.html" class="cta here">You're here →</a></li>
+    </ul>
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-header-kicker">HoodTip · Contributors</div>
-  <h1 class="page-header-hed">Your permanent record<br>of <em>the good stuff.</em></h1>
-  <p class="page-header-deck">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
-</div>
-
-<!-- STEPS BAR -->
-<div class="steps-bar">
-  <div class="steps-bar-inner">
-    <div class="step-pill active" id="pill-1">
-      <div class="step-num"><span>1</span></div>
-      Your profile
-    </div>
-    <div class="step-divider"></div>
-    <div class="step-pill" id="pill-2">
-      <div class="step-num"><span>2</span></div>
-      Your tip
-    </div>
-    <div class="step-divider"></div>
-    <div class="step-pill" id="pill-3">
-      <div class="step-num"><span>3</span></div>
-      Submit
-    </div>
+<!-- ========== MASTHEAD RIBBON ========== -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <span>Three sentences</span>
+    <span class="red-dot">●</span>
+    <span>A few photos</span>
+    <span class="red-dot">●</span>
+    <span>One permanent link</span>
   </div>
 </div>
 
-<!-- FORM -->
-<div class="form-wrap">
-
-  <!-- ── STEP 1: PROFILE ─────────────────────────────────── -->
-  <div class="step-panel active" id="step-1">
-    <div class="step-label">Step 1 of 3</div>
-    <h2 class="step-hed">Who are you?</h2>
-    <p class="step-deck">This becomes your byline. Keep it honest and short.</p>
-
-    <div class="field">
-      <label for="f-name">Your name</label>
-      <input id="f-name" type="text" placeholder="e.g. Caroline" autocomplete="given-name" />
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Leave a tip</div>
+    <h1 class="hero-headline">
+      Your favourite place<br>
+      deserves <em>its own link.</em>
+    </h1>
+    <p class="hero-dek">
+      <strong>Not an article. Not a review. A link.</strong> Send us three sentences and a few photos — we turn it into a permanent polished URL with your name on it. Next time someone asks for a recommendation, send the link.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">5 min</div>
+        <div class="hero-stat-label">To fill this in</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">48 hrs</div>
+        <div class="hero-stat-label">Until your page is live</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Forever</div>
+        <div class="hero-stat-label">How long the link lasts</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Free</div>
+        <div class="hero-stat-label">What it costs you</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="field">
-      <label for="f-handle">Handle</label>
-      <input id="f-handle" type="text" placeholder="e.g. caroline" />
-      <div class="field-hint">Appears on your tips and profile. Lowercase, no spaces.</div>
-    </div>
+<!-- ========== SUCCESS BANNER ========== -->
+<div class="success-banner" id="successBanner">
+  Thanks — we've got your tip. We'll have your link ready within 48 hours. <em>Nicely done.</em>
+</div>
 
-    <div class="field">
-      <label for="f-email">Your email</label>
-      <input id="f-email" type="email" placeholder="you@example.com" autocomplete="email" />
-      <div class="field-hint">So we can send you a link when your profile goes live.</div>
-    </div>
+<!-- ========== BUILDER ========== -->
+<section class="builder">
+  <div class="builder-inner">
 
-    <div class="field">
-      <label for="f-city">Based in</label>
-      <input id="f-city" type="text" placeholder="e.g. Paris, London, Kigali" />
-    </div>
+    <!-- FORM -->
+    <div class="builder-form-col">
+      <form id="tipForm" action="https://formspree.io/f/mdawyane" method="POST" novalidate>
+        <div class="form-title">Build your <em>tip.</em></div>
+        <div class="form-sub">Watch the postcard build itself as you type. It'll look like that when we're done.</div>
 
-    <div class="field">
-      <label for="f-bio">One-line bio</label>
-      <input id="f-bio" type="text" placeholder="e.g. Eats well. Travels often. Based in Geneva." />
-    </div>
-
-    <!-- PROFILE PHOTO -->
-    <div class="field">
-      <label>Profile photo <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional)</span></label>
-      <div class="avatar-upload-row">
-        <div class="avatar-preview" id="avatar-preview">
-          <img id="avatar-img" src="" alt="" />
-          <span class="avatar-preview-placeholder" id="avatar-placeholder">?</span>
+        <!-- 01 WHO -->
+        <div class="form-section">
+          <div class="form-section-kicker">
+            <span class="num">01</span>
+            <span>Who's tipping</span>
+            <span class="line"></span>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="f-name">Your name</label>
+              <input type="text" id="f-name" name="name" placeholder="e.g. Dave" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-handle">Your handle or city</label>
+              <input type="text" id="f-handle" name="handle" placeholder="@yourhandle or Geneva" autocomplete="off" />
+            </div>
+          </div>
+          <div class="field full">
+            <label class="field-label" for="f-email">Your email</label>
+            <div class="field-hint">So we can send you the link when it's live. That's it.</div>
+            <input type="email" id="f-email" name="email" placeholder="you@somewhere.com" autocomplete="email" required />
+          </div>
         </div>
-        <button type="button" class="avatar-upload-btn" id="avatar-upload-btn">
-          Upload photo
-        </button>
-        <span id="avatar-upload-status" style="font-size:0.75rem;color:var(--muted);display:none;">Uploading…</span>
-      </div>
-      <div class="field-hint">Pick from your camera roll. Square crops best.</div>
-    </div>
 
-    <!-- TASTE TAGS -->
-    <div class="field">
-      <label>Your taste — pick any that apply</label>
-      <div class="taste-grid">
-        <input class="taste-opt" type="checkbox" id="t-wine" name="taste" value="Natural wine"><label for="t-wine">Natural wine</label>
-        <input class="taste-opt" type="checkbox" id="t-pubs" name="taste" value="Proper pubs"><label for="t-pubs">Proper pubs</label>
-        <input class="taste-opt" type="checkbox" id="t-fish" name="taste" value="Good fish"><label for="t-fish">Good fish</label>
-        <input class="taste-opt" type="checkbox" id="t-water" name="taste" value="Waterfront bars"><label for="t-water">Waterfront bars</label>
-        <input class="taste-opt" type="checkbox" id="t-market" name="taste" value="Saturday markets"><label for="t-market">Saturday markets</label>
-        <input class="taste-opt" type="checkbox" id="t-coffee" name="taste" value="Coffee"><label for="t-coffee">Coffee</label>
-        <input class="taste-opt" type="checkbox" id="t-hotel" name="taste" value="Hotels worth it"><label for="t-hotel">Hotels worth it</label>
-        <input class="taste-opt" type="checkbox" id="t-lunch" name="taste" value="Long lunches"><label for="t-lunch">Long lunches</label>
-        <input class="taste-opt" type="checkbox" id="t-swim" name="taste" value="Swimming"><label for="t-swim">Swimming</label>
-        <input class="taste-opt" type="checkbox" id="t-books" name="taste" value="Bookshops"><label for="t-books">Bookshops</label>
-        <input class="taste-opt" type="checkbox" id="t-late" name="taste" value="Late nights"><label for="t-late">Late nights</label>
-        <input class="taste-opt" type="checkbox" id="t-bake" name="taste" value="Bakeries"><label for="t-bake">Bakeries</label>
-        <input class="taste-opt" type="checkbox" id="t-music" name="taste" value="Live music"><label for="t-music">Live music</label>
-        <input class="taste-opt" type="checkbox" id="t-parks" name="taste" value="Parks"><label for="t-parks">Parks</label>
-        <input class="taste-opt" type="checkbox" id="t-arch" name="taste" value="Architecture"><label for="t-arch">Architecture</label>
-        <input class="taste-opt" type="checkbox" id="t-street" name="taste" value="Street food"><label for="t-street">Street food</label>
-      </div>
-    </div>
-
-    <!-- PROFILE CARD PREVIEW -->
-    <div class="card-preview">
-      <div class="card-preview-label">Your contributor card — preview</div>
-      <div class="card-preview-top">
-        <div class="card-preview-photo" id="card-photo-wrap">
-          <img id="card-photo-img" src="" alt="" />
+        <!-- 02 PLACE -->
+        <div class="form-section">
+          <div class="form-section-kicker">
+            <span class="num">02</span>
+            <span>The place</span>
+            <span class="line"></span>
+          </div>
+          <div class="field full">
+            <label class="field-label" for="f-place">Your spot's name</label>
+            <input type="text" id="f-place" name="place_name" placeholder="e.g. Grand Hotel Belvedere" required />
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="f-hood">Neighbourhood, city</label>
+              <input type="text" id="f-hood" name="neighbourhood" placeholder="e.g. Wengen, Switzerland" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-category">Category</label>
+              <select id="f-category" name="category">
+                <option value="">Pick one</option>
+                <option>Restaurant</option>
+                <option>Bar</option>
+                <option>Café</option>
+                <option>Hotel</option>
+                <option>Shop</option>
+                <option>Museum / Gallery</option>
+                <option>Walk / View</option>
+                <option>Neighbourhood</option>
+                <option>Travel</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="card-preview-name" id="card-name">Your name</div>
-          <div class="card-preview-handle" id="card-handle">@handle</div>
+
+        <!-- 03 THE TIP -->
+        <div class="form-section">
+          <div class="form-section-kicker">
+            <span class="num">03</span>
+            <span>The tip</span>
+            <span class="line"></span>
+          </div>
+          <div class="field full">
+            <label class="field-label" for="f-tip">What makes it great?</label>
+            <div class="field-hint">Three short sentences. Pretend you're texting a friend. Don't overthink it.</div>
+            <textarea id="f-tip" name="tip" rows="4" placeholder="Old bones, smart renovation. The wagyu bresaola will stop you cold. Go now."></textarea>
+            <div class="char-count" id="tipCount">0 / 280</div>
+          </div>
+          <div class="field full">
+            <label class="field-label" for="f-money">The money line</label>
+            <div class="field-hint">One line you'd actually text a friend. Becomes the headline of your postcard.</div>
+            <input type="text" id="f-money" name="money_line" placeholder="Go to Wengen. Stay at the Belvedere. Stop searching." />
+          </div>
+        </div>
+
+        <!-- 04 DETAILS -->
+        <div class="form-section">
+          <div class="form-section-kicker">
+            <span class="num">04</span>
+            <span>The details</span>
+            <span class="line"></span>
+          </div>
+          <div class="field full">
+            <label class="field-label" for="f-where">Where exactly</label>
+            <input type="text" id="f-where" name="where" placeholder="Address, metro stop, or 'next to the church'" />
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="f-bestfor">Best for</label>
+              <input type="text" id="f-bestfor" name="best_for" placeholder="Long dinners. Tuesday nights." />
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-move">The move</label>
+              <input type="text" id="f-move" name="the_move" placeholder="Sit at the bar. Order the bresaola." />
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 PHOTOS -->
+        <div class="form-section">
+          <div class="form-section-kicker">
+            <span class="num">05</span>
+            <span>The photos</span>
+            <span class="line"></span>
+          </div>
+          <div class="field full">
+            <div class="field-hint">3–6 is plenty. Phone shots are fine. Landscape beats portrait.</div>
+            <div class="upload-wrap" id="uploadBtn" role="button" tabindex="0" aria-label="Upload photos">
+              <div class="upload-icon">+</div>
+              <div class="upload-main">Drop photos here</div>
+              <div class="upload-sub">or click to browse — up to 8 · jpg, png, heic</div>
+            </div>
+            <div class="thumbs" id="thumbs"></div>
+            <input type="hidden" name="photo_urls" id="photoUrls" />
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="submit-wrap">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            Send my tip
+            <span>→</span>
+          </button>
+          <div class="submit-fine">
+            We read every tip. We might tighten a line or two. You'll see the live link before anyone else does.
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="builder-preview-col">
+      <div class="builder-preview-sticky">
+        <div class="preview-meta">
+          <span class="live-dot"></span>
+          <span>Live preview · building now</span>
+        </div>
+
+        <div class="postcard">
+          <div class="postcard-hero">
+            <img class="postcard-hero-img" id="previewHero" src="" alt="" style="display: none;" />
+            <div class="postcard-hero-placeholder" id="previewHeroPlaceholder">
+              <div class="ph-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" />
+                  <circle cx="9" cy="9" r="1.8" />
+                  <path d="M21 15l-5-5L5 21" />
+                </svg>
+              </div>
+              <div class="ph-text">Your first photo<br />lands here</div>
+            </div>
+            <div class="postcard-category empty" id="previewCategory">Category</div>
+            <div class="postcard-breadcrumb empty" id="previewBreadcrumb">Neighbourhood, city</div>
+          </div>
+
+          <div class="postcard-body">
+            <h2 class="postcard-title empty" id="previewTitle">Your spot's name.</h2>
+
+            <div class="postcard-quote empty" id="previewQuoteWrap">
+              <p id="previewQuote">"One line you'd text a friend about this place."</p>
+            </div>
+
+            <div class="postcard-facts">
+              <div class="postcard-fact">
+                <div class="postcard-fact-label">Where</div>
+                <div class="postcard-fact-value empty" id="previewWhere">The address goes here.</div>
+              </div>
+              <div class="postcard-fact">
+                <div class="postcard-fact-label">Best for</div>
+                <div class="postcard-fact-value empty" id="previewBestFor">What they come for.</div>
+              </div>
+              <div class="postcard-fact">
+                <div class="postcard-fact-label">The move</div>
+                <div class="postcard-fact-value empty" id="previewMove">The play when you arrive.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="postcard-byline">
+            <div class="postcard-byline-left">
+              <div class="postcard-avatar" id="previewAvatar">?</div>
+              <div class="postcard-byline-text">Tip by <strong id="previewByline">you</strong></div>
+            </div>
+            <button class="postcard-copy-btn" type="button" aria-disabled="true" tabindex="-1">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              Copy link
+            </button>
+          </div>
+        </div>
+
+        <div class="preview-footnote">
+          The final page runs a full-width editorial spread —<br />
+          see <a href="tip-belvedere.html">tip-belvedere.html</a> for the real thing.
         </div>
       </div>
-      <div class="card-preview-bio" id="card-bio">Your bio appears here.</div>
     </div>
 
-    <!-- RETURNING USER -->
-    <div class="field-divider"></div>
-    <span class="returning-toggle" id="returning-toggle">Already a contributor? Skip to leaving a tip →</span>
-    <div class="returning-panel" id="returning-panel">
-      <div class="field" style="margin-bottom:0.5rem;">
-        <label for="f-returning-handle">Your handle</label>
-        <input id="f-returning-handle" type="text" placeholder="e.g. caroline" />
+  </div>
+</section>
+
+<!-- ========== 3-STEP STRIP ========== -->
+<section class="steps">
+  <div class="steps-inner">
+    <div class="steps-title-row">
+      <div>
+        <div class="steps-kicker">How this works</div>
+        <h2 class="steps-title">Three steps. <em>That's the whole thing.</em></h2>
       </div>
-      <div class="field-hint">Enter your handle and we'll attach your tip to your existing profile.</div>
+      <div class="steps-aside">No account. No algorithm. Just your name on a link you'd send a friend.</div>
     </div>
-
-    <div id="step1-error" class="form-error">Please fill in your name, handle and email.</div>
-    <div class="btn-row">
-      <span></span>
-      <button class="btn-next" onclick="goStep(2)">Next: Your tip →</button>
-    </div>
-  </div>
-
-  <!-- ── STEP 2: TIP ──────────────────────────────────────── -->
-  <div class="step-panel" id="step-2">
-    <div class="step-label">Step 2 of 3</div>
-    <h2 class="step-hed">What do you know?</h2>
-    <p class="step-deck">Positive only. Specific over general. Write it like a note to a friend going next week.</p>
-
-    <div class="field">
-      <label for="f-place">Place name</label>
-      <input id="f-place" type="text" placeholder="e.g. Bongo Joe" />
-    </div>
-
-    <div class="field">
-      <label for="f-hood">Neighbourhood &amp; City</label>
-      <input id="f-hood" type="text" placeholder="e.g. Plainpalais, Geneva" />
-    </div>
-
-    <div class="field">
-      <label for="f-cat">Category</label>
-      <select id="f-cat">
-        <option value="">Select one</option>
-        <option>Bar</option><option>Restaurant</option><option>Coffee</option>
-        <option>Wine</option><option>Market</option><option>Hotel</option>
-        <option>Travel</option><option>Cinema</option><option>Swimming</option>
-        <option>Park</option><option>Shop</option><option>Experience</option><option>Other</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="f-tip">Your tip</label>
-      <textarea id="f-tip" placeholder="What to order, when to go, what to know. Be specific. A few lines is plenty."></textarea>
-    </div>
-
-    <!-- TIP PHOTOS -->
-    <div class="field">
-      <label>Photos <span style="font-style:italic;font-family:var(--serif);letter-spacing:0;text-transform:none;">(optional but great)</span></label>
-      <div class="upload-zone" id="tip-upload-zone" onclick="openTipUpload()">
-        <div class="upload-zone-icon">📷</div>
-        <div class="upload-zone-text">Tap to add photos</div>
-        <div class="upload-zone-sub">Pick from your camera roll or drag files here</div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-label">Send</div>
+        <div class="step-text">Three sentences about a place you love. In your own voice.</div>
       </div>
-      <div class="photo-previews" id="tip-photo-previews"></div>
-      <div class="photo-count" id="tip-photo-count" style="display:none;"></div>
-    </div>
-
-    <div id="step2-error" class="form-error">Please fill in the place, neighbourhood, and your tip.</div>
-    <div class="btn-row">
-      <button class="btn-back" onclick="goStep(1)">← Back</button>
-      <button class="btn-next" onclick="goStep(3)">Next: Review →</button>
-    </div>
-  </div>
-
-  <!-- ── STEP 3: REVIEW ───────────────────────────────────── -->
-  <div class="step-panel" id="step-3">
-    <div class="step-label">Step 3 of 3</div>
-    <h2 class="step-hed">Ready?</h2>
-    <p class="step-deck">We'll review it, build your profile, and email you the link within 48 hours.</p>
-
-    <div class="review-block">
-      <div class="review-block-label">Your profile</div>
-      <div class="review-row"><div class="review-key">Name</div><div class="review-val" id="rv-name">—</div></div>
-      <div class="review-row"><div class="review-key">Handle</div><div class="review-val" id="rv-handle">—</div></div>
-      <div class="review-row"><div class="review-key">Based in</div><div class="review-val" id="rv-city">—</div></div>
-      <div class="review-row"><div class="review-key">Bio</div><div class="review-val" id="rv-bio">—</div></div>
-    </div>
-
-    <div class="review-block">
-      <div class="review-block-label">Your tip</div>
-      <div class="review-row"><div class="review-key">Place</div><div class="review-val" id="rv-place">—</div></div>
-      <div class="review-row"><div class="review-key">Location</div><div class="review-val" id="rv-hood">—</div></div>
-      <div class="review-row"><div class="review-key">Category</div><div class="review-val" id="rv-cat">—</div></div>
-      <div class="review-row"><div class="review-key">Tip</div><div class="review-val" id="rv-tip">—</div></div>
-      <div class="review-photos" id="rv-photos"></div>
-    </div>
-
-    <p id="step3-error" class="form-error">Something went wrong — please try again.</p>
-    <div class="btn-row">
-      <button class="btn-back" onclick="goStep(2)">← Back</button>
-      <button class="btn-submit" id="submit-btn" onclick="submitForm()">Submit →</button>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-label">Add</div>
+        <div class="step-text">A few photos. Phone shots are fine — landscape beats portrait.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-label">Get</div>
+        <div class="step-text">A permanent link with your name on it. Send it when anyone asks.</div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ── SUCCESS ──────────────────────────────────────────── -->
-  <div class="success-panel" id="success-panel">
-    <div class="success-icon">✓</div>
-    <h2 class="success-hed">Tip received.</h2>
-    <p class="success-body">We'll review it, build your profile, and publish your tip as its own article — with your byline on it. You'll get the links by email within 48 hours.</p>
-    <a href="index.html" style="font-family:var(--cond);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);text-decoration:underline;text-underline-offset:3px;">← Back to HoodTip</a>
-  </div>
-
-</div><!-- /form-wrap -->
-
+<!-- ========== FOOTER ========== -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <div class="footer-brand-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+      <div class="footer-brand-tag">Only the good stuff.</div>
+      <div class="footer-stats">
+        <div class="footer-stat">
+          <div class="footer-stat-num">68</div>
+          <div class="footer-stat-label">Tips</div>
+        </div>
+        <div class="footer-stat">
+          <div class="footer-stat-num">16</div>
+          <div class="footer-stat-label">Hoods</div>
+        </div>
+        <div class="footer-stat">
+          <div class="footer-stat-num">21</div>
+          <div class="footer-stat-label">Cities</div>
+        </div>
+        <div class="footer-stat">
+          <div class="footer-stat-num">2</div>
+          <div class="footer-stat-label">Tipsters</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Wander</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="geneva.html">Geneva guide</a></li>
+        <li><a href="tip-belvedere.html">Latest tip</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Tipsters</div>
+      <ul>
+        <li><a href="profile-dave.html">Dave</a></li>
+        <li><a href="profile-foodfiend.html">@foodfiend</a></li>
+        <li><a href="profile-build.html">Leave a tip →</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <ul>
+        <li><a href="mailto:hello@hoodtip.com">hello@hoodtip.com</a></li>
+        <li><a href="profile-build.html">Become a tipster</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-slogan">The link you send when someone asks.</div>
+    <div class="footer-copyright">© HoodTip 2026 · Made in Geneva</div>
   </div>
 </footer>
 
 <script>
-  // ─────────────────────────────────────────────────────────
-  // CLOUDINARY CONFIG — fill in your values after signup
-  // ─────────────────────────────────────────────────────────
-  const CL_CLOUD   = 'dq9newmhl';
-  const CL_PRESET  = 'jykjigyw';
+(function () {
+  'use strict';
 
-  // ─────────────────────────────────────────────────────────
-  // STATE
-  // ─────────────────────────────────────────────────────────
-  let avatarUrl = '';
-  let tipPhotoUrls = [];
+  // ============ LIVE PREVIEW BINDING ============
+  const $ = (id) => document.getElementById(id);
 
-  // ─────────────────────────────────────────────────────────
-  // AVATAR UPLOAD
-  // ─────────────────────────────────────────────────────────
-  document.getElementById('avatar-upload-btn').addEventListener('click', function() {
-    const status = document.getElementById('avatar-upload-status');
-    cloudinary.openUploadWidget({
-      cloudName: CL_CLOUD,
-      uploadPreset: CL_PRESET,
-      sources: ['local', 'camera', 'url'],
-      multiple: false,
-      cropping: true,
-      croppingAspectRatio: 1,
-      showSkipCropButton: false,
-      maxFileSize: 10000000,
-      clientAllowedFormats: ['jpg','jpeg','png','webp','heic'],
-      styles: { palette: { window: '#f7f4ef', tabIcon: '#1a1816', link: '#b5322a', action: '#1a1816', inactiveTabIcon: '#6b6560', error: '#b5322a', textDark: '#1a1816', textLight: '#f7f4ef', menuIcons: '#6b6560', windowBorder: '#e0dbd3' } }
-    }, function(error, result) {
-      if (result && result.event === 'success') {
-        avatarUrl = result.info.secure_url;
-        // Show preview
-        const img = document.getElementById('avatar-img');
-        img.src = avatarUrl;
-        img.style.display = 'block';
-        document.getElementById('avatar-placeholder').style.display = 'none';
-        // Update card preview
-        const cardImg = document.getElementById('card-photo-img');
-        cardImg.src = avatarUrl;
-        cardImg.style.display = 'block';
-        status.style.display = 'none';
-      }
-      if (result && result.event === 'upload-added') {
-        status.textContent = 'Uploading…';
-        status.style.display = 'inline';
-      }
-    });
-  });
+  const f = {
+    name: $('f-name'),
+    handle: $('f-handle'),
+    place: $('f-place'),
+    hood: $('f-hood'),
+    category: $('f-category'),
+    tip: $('f-tip'),
+    money: $('f-money'),
+    where: $('f-where'),
+    bestfor: $('f-bestfor'),
+    move: $('f-move'),
+  };
 
-  // ─────────────────────────────────────────────────────────
-  // TIP PHOTO UPLOAD
-  // ─────────────────────────────────────────────────────────
-  function openTipUpload() {
-    cloudinary.openUploadWidget({
-      cloudName: CL_CLOUD,
-      uploadPreset: CL_PRESET,
-      sources: ['local', 'camera', 'url'],
-      multiple: true,
-      maxFiles: 12,
-      maxFileSize: 20000000,
-      clientAllowedFormats: ['jpg','jpeg','png','webp','heic'],
-      styles: { palette: { window: '#f7f4ef', tabIcon: '#1a1816', link: '#b5322a', action: '#1a1816', inactiveTabIcon: '#6b6560', error: '#b5322a', textDark: '#1a1816', textLight: '#f7f4ef', menuIcons: '#6b6560', windowBorder: '#e0dbd3' } }
-    }, function(error, result) {
-      if (result && result.event === 'success') {
-        tipPhotoUrls.push(result.info.secure_url);
-        renderTipPreviews();
-      }
-    });
-  }
+  const p = {
+    title: $('previewTitle'),
+    category: $('previewCategory'),
+    breadcrumb: $('previewBreadcrumb'),
+    quote: $('previewQuote'),
+    quoteWrap: $('previewQuoteWrap'),
+    where: $('previewWhere'),
+    bestfor: $('previewBestFor'),
+    move: $('previewMove'),
+    byline: $('previewByline'),
+    avatar: $('previewAvatar'),
+    hero: $('previewHero'),
+    heroPlaceholder: $('previewHeroPlaceholder'),
+  };
 
-  function renderTipPreviews() {
-    const grid = document.getElementById('tip-photo-previews');
-    const count = document.getElementById('tip-photo-count');
-    grid.innerHTML = '';
-    tipPhotoUrls.forEach(function(url, i) {
-      const wrap = document.createElement('div');
-      wrap.className = 'photo-preview';
-      const img = document.createElement('img');
-      img.src = url;
-      img.alt = '';
-      const btn = document.createElement('button');
-      btn.className = 'photo-preview-remove';
-      btn.innerHTML = '✕';
-      btn.onclick = function(e) { e.stopPropagation(); tipPhotoUrls.splice(i, 1); renderTipPreviews(); };
-      wrap.appendChild(img);
-      wrap.appendChild(btn);
-      grid.appendChild(wrap);
-    });
-    if (tipPhotoUrls.length > 0) {
-      count.style.display = 'block';
-      count.textContent = tipPhotoUrls.length + ' photo' + (tipPhotoUrls.length > 1 ? 's' : '') + ' added';
-      document.getElementById('tip-upload-zone').style.display = 'none';
-    } else {
-      count.style.display = 'none';
-      document.getElementById('tip-upload-zone').style.display = 'block';
-    }
-  }
+  const defaults = {
+    title: "Your spot's name.",
+    category: 'Category',
+    breadcrumb: 'Neighbourhood, city',
+    quote: `"One line you'd text a friend about this place."`,
+    where: 'The address goes here.',
+    bestfor: 'What they come for.',
+    move: 'The play when you arrive.',
+  };
 
-  // ─────────────────────────────────────────────────────────
-  // LIVE PREVIEW
-  // ─────────────────────────────────────────────────────────
-  document.getElementById('f-name').addEventListener('input', function() {
-    document.getElementById('card-name').textContent = this.value || 'Your name';
-  });
-  document.getElementById('f-handle').addEventListener('input', function() {
-    const v = this.value.toLowerCase().replace(/\s/g,'');
-    this.value = v;
-    document.getElementById('card-handle').textContent = v ? '@' + v : '@handle';
-  });
-  document.getElementById('f-bio').addEventListener('input', function() {
-    document.getElementById('card-bio').textContent = this.value || 'Your bio appears here.';
-  });
-
-  // ─────────────────────────────────────────────────────────
-  // STEP NAVIGATION
-  // ─────────────────────────────────────────────────────────
-  function goStep(n) {
-    // Validate before advancing
-    if (n === 2) {
-      const isReturning = document.getElementById('returning-panel').classList.contains('open');
-      if (isReturning) {
-        // Returning contributor — only need their handle
-        const returningHandle = document.getElementById('f-returning-handle').value.trim();
-        if (!returningHandle) {
-          document.getElementById('step1-error').textContent = 'Please enter your handle.';
-          document.getElementById('step1-error').style.display = 'block';
-          return;
-        }
-        // Copy handle into the main handle field so the rest of the form works
-        document.getElementById('f-handle').value = returningHandle;
-        document.getElementById('step1-error').style.display = 'none';
+  function bind(input, el, opts) {
+    opts = opts || {};
+    const update = () => {
+      const raw = (input.value || '').trim();
+      if (raw) {
+        el.textContent = opts.transform ? opts.transform(raw) : raw;
+        el.classList.remove('empty');
+        if (opts.wrap) opts.wrap.classList.remove('empty');
       } else {
-        const name = document.getElementById('f-name').value.trim();
-        const handle = document.getElementById('f-handle').value.trim();
-        const email = document.getElementById('f-email').value.trim();
-        if (!name || !handle || !email) {
-          document.getElementById('step1-error').textContent = 'Please fill in your name, handle and email.';
-          document.getElementById('step1-error').style.display = 'block';
-          return;
-        }
-        document.getElementById('step1-error').style.display = 'none';
+        el.textContent = opts.placeholder;
+        el.classList.add('empty');
+        if (opts.wrap) opts.wrap.classList.add('empty');
       }
-    }
-    if (n === 3) {
-      const place = document.getElementById('f-place').value.trim();
-      const hood = document.getElementById('f-hood').value.trim();
-      const tip = document.getElementById('f-tip').value.trim();
-      if (!place || !hood || !tip) {
-        document.getElementById('step2-error').style.display = 'block';
-        return;
-      }
-      document.getElementById('step2-error').style.display = 'none';
-      populateReview();
-    }
-
-    // Hide all panels
-    document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
-    document.querySelectorAll('.step-pill').forEach(function(p, i) {
-      p.classList.remove('active');
-      if (i + 1 < n) p.classList.add('done'); else p.classList.remove('done');
-    });
-
-    document.getElementById('step-' + n).classList.add('active');
-    document.getElementById('pill-' + n).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    input.addEventListener('input', update);
+    input.addEventListener('change', update);
+    update();
   }
 
-  function populateReview() {
-    document.getElementById('rv-name').textContent    = document.getElementById('f-name').value;
-    document.getElementById('rv-handle').textContent  = '@' + document.getElementById('f-handle').value;
-    document.getElementById('rv-city').textContent    = document.getElementById('f-city').value || '—';
-    document.getElementById('rv-bio').textContent     = document.getElementById('f-bio').value || '—';
-    document.getElementById('rv-place').textContent   = document.getElementById('f-place').value;
-    document.getElementById('rv-hood').textContent    = document.getElementById('f-hood').value;
-    document.getElementById('rv-cat').textContent     = document.getElementById('f-cat').value || '—';
-    document.getElementById('rv-tip').textContent     = document.getElementById('f-tip').value;
+  bind(f.place, p.title, { placeholder: defaults.title });
+  bind(f.category, p.category, { placeholder: defaults.category, transform: (v) => v.toUpperCase() });
+  bind(f.hood, p.breadcrumb, { placeholder: defaults.breadcrumb });
+  bind(f.money, p.quote, {
+    placeholder: defaults.quote,
+    transform: (v) => '"' + v.replace(/^["'""]|["'""]$/g, '').trim() + '"',
+    wrap: p.quoteWrap,
+  });
+  bind(f.where, p.where, { placeholder: defaults.where });
+  bind(f.bestfor, p.bestfor, { placeholder: defaults.bestfor });
+  bind(f.move, p.move, { placeholder: defaults.move });
 
-    const photosWrap = document.getElementById('rv-photos');
-    photosWrap.innerHTML = '';
-    tipPhotoUrls.forEach(function(url) {
+  // Byline + avatar
+  function updateByline() {
+    const name = (f.name.value || '').trim();
+    const handle = (f.handle.value || '').trim();
+    let label = 'you';
+    let initial = '?';
+    if (name && handle) {
+      label = name + ' · ' + handle;
+      initial = name[0].toUpperCase();
+    } else if (name) {
+      label = name;
+      initial = name[0].toUpperCase();
+    } else if (handle) {
+      label = handle;
+      const stripped = handle.replace(/^@/, '');
+      initial = stripped ? stripped[0].toUpperCase() : '?';
+    }
+    p.byline.textContent = label;
+    p.avatar.textContent = initial;
+  }
+  f.name.addEventListener('input', updateByline);
+  f.handle.addEventListener('input', updateByline);
+  updateByline();
+
+  // Char count
+  const tipCount = $('tipCount');
+  const updateCount = () => {
+    const n = f.tip.value.length;
+    tipCount.textContent = n + ' / 280';
+    tipCount.classList.toggle('over', n > 280);
+  };
+  f.tip.addEventListener('input', updateCount);
+  updateCount();
+
+  // ============ PHOTO UPLOAD ============
+  const thumbsEl = $('thumbs');
+  const photoUrlsEl = $('photoUrls');
+  const uploadBtn = $('uploadBtn');
+  let uploadedPhotos = [];
+
+  function renderThumbs() {
+    thumbsEl.innerHTML = '';
+    uploadedPhotos.forEach((url, i) => {
+      const t = document.createElement('div');
+      t.className = 'thumb';
       const img = document.createElement('img');
       img.src = url;
-      img.className = 'review-photo';
       img.alt = '';
-      photosWrap.appendChild(img);
+      img.loading = 'lazy';
+      t.appendChild(img);
+
+      if (i === 0) {
+        const badge = document.createElement('span');
+        badge.className = 'thumb-badge';
+        badge.textContent = 'Hero';
+        t.appendChild(badge);
+      }
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'thumb-remove';
+      btn.dataset.i = String(i);
+      btn.title = 'Remove';
+      btn.setAttribute('aria-label', 'Remove photo ' + (i + 1));
+      btn.textContent = '×';
+      t.appendChild(btn);
+
+      thumbsEl.appendChild(t);
     });
+    photoUrlsEl.value = uploadedPhotos.join('\n');
+
+    if (uploadedPhotos[0]) {
+      p.hero.src = uploadedPhotos[0];
+      p.hero.style.display = 'block';
+      p.heroPlaceholder.style.display = 'none';
+    } else {
+      p.hero.style.display = 'none';
+      p.hero.src = '';
+      p.heroPlaceholder.style.display = 'flex';
+    }
   }
 
-  // ─────────────────────────────────────────────────────────
-  // RETURNING USER TOGGLE
-  // ─────────────────────────────────────────────────────────
-  document.getElementById('returning-toggle').addEventListener('click', function() {
-    document.getElementById('returning-panel').classList.toggle('open');
+  thumbsEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.thumb-remove');
+    if (!btn) return;
+    const i = Number(btn.dataset.i);
+    uploadedPhotos.splice(i, 1);
+    renderThumbs();
   });
 
-  // ─────────────────────────────────────────────────────────
-  // SUBMIT
-  // ─────────────────────────────────────────────────────────
-  async function submitForm() {
-    const btn = document.getElementById('submit-btn');
-    const err = document.getElementById('step3-error');
-    err.style.display = 'none';
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
+  function openWidget() {
+    if (typeof cloudinary === 'undefined') {
+      setTimeout(openWidget, 300);
+      return;
+    }
+    const widget = cloudinary.createUploadWidget(
+      {
+        cloudName: 'dq9newmhl',
+        uploadPreset: 'jykjigyw',
+        multiple: true,
+        maxFiles: 8,
+        sources: ['local', 'camera', 'url'],
+        clientAllowedFormats: ['image'],
+        maxImageFileSize: 15000000,
+        theme: 'minimal',
+        showPoweredBy: false,
+      },
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        if (result && result.event === 'success') {
+          if (uploadedPhotos.length >= 8) return;
+          uploadedPhotos.push(result.info.secure_url);
+          renderThumbs();
+        }
+      }
+    );
+    widget.open();
+  }
+  uploadBtn.addEventListener('click', openWidget);
+  uploadBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openWidget();
+    }
+  });
 
-    // Collect taste tags
-    const tastes = Array.from(document.querySelectorAll('.taste-opt:checked')).map(function(el) { return el.value; });
+  // ============ FORM SUBMIT (Formspree AJAX) ============
+  const form = $('tipForm');
+  const submitBtn = $('submitBtn');
+  const banner = $('successBanner');
 
-    const data = {
-      // Profile
-      name:     document.getElementById('f-name').value,
-      handle:   document.getElementById('f-handle').value,
-      email:    document.getElementById('f-email').value,
-      city:     document.getElementById('f-city').value,
-      bio:      document.getElementById('f-bio').value,
-      avatar:   avatarUrl,
-      tastes:   tastes.join(', '),
-      // Tip
-      place:       document.getElementById('f-place').value,
-      neighbourhood: document.getElementById('f-hood').value,
-      category:    document.getElementById('f-cat').value,
-      tip:         document.getElementById('f-tip').value,
-      photos:      tipPhotoUrls.join('\n'),
-    };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Simple required check
+    if (!f.name.value.trim() || !$('f-email').value.trim() || !f.place.value.trim()) {
+      alert("Name, email, and the spot's name are required. Everything else is optional.");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const originalBtn = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Sending… <span>→</span>';
+
+    const data = new FormData(form);
 
     try {
-      const res = await fetch('https://formspree.io/f/mdawyane', {
+      const resp = await fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
+        body: data,
+        headers: { Accept: 'application/json' },
       });
-      if (res.ok) {
-        document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
-        document.getElementById('success-panel').classList.add('active');
+
+      if (resp.ok) {
+        banner.classList.add('show');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        form.reset();
+        uploadedPhotos = [];
+        renderThumbs();
+        updateCount();
+        updateByline();
+        // Re-trigger the bindings to show placeholders
+        ['place','hood','category','money','where','bestfor','move'].forEach((k) => {
+          f[k].dispatchEvent(new Event('input'));
+        });
+        submitBtn.innerHTML = 'Sent ✓';
       } else {
-        throw new Error('bad');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtn;
+        alert("Hmm, that didn't go through. Try once more, or email hello@hoodtip.com.");
       }
-    } catch(e) {
-      err.style.display = 'block';
-      btn.textContent = 'Submit →';
-      btn.disabled = false;
+    } catch (err) {
+      console.error(err);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtn;
+      alert("Network error. Try again, or email hello@hoodtip.com.");
     }
-  }
+  });
+})();
 </script>
+
 </body>
 </html>
