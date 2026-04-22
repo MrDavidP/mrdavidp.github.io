@@ -513,9 +513,9 @@
       .masthead-left, .masthead-right { font-size: 0.55rem; gap: 0.7rem; }
 
       .cover-inner { grid-template-columns: 1fr; height: auto; max-height: none; min-height: 0; }
-      .cover-main { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; }
+      .cover-main { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: auto; min-height: 540px; }
       .cover-side { grid-template-rows: auto auto; }
-      .cover-teaser { aspect-ratio: 4/3; }
+      .cover-teaser { aspect-ratio: auto; }
       .cover-teaser-img-wrap { aspect-ratio: 16/9; flex: 0 0 auto; }
 
       .rules-inner { grid-template-columns: 1fr; }
@@ -540,6 +540,7 @@
       .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
     @media (max-width: 540px) {
+      .masthead-right { display: none; }
       .index-grid-inner { grid-template-columns: 1fr; }
       .tip-card.feature { grid-column: span 1; }
       .cities-grid { grid-template-columns: 1fr; }
