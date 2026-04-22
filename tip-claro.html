@@ -421,8 +421,8 @@
 
     /* ------ RESPONSIVE ------ */
     @media (max-width: 960px) {
-      .postcard { grid-template-columns: 1fr; min-height: 0; }
-      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; }
+      .postcard { display: flex; flex-direction: column; grid-template-columns: 1fr; min-height: 0; flex: 0 0 auto; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; flex: 0 0 auto; }
       .pc-image-caption { display: none; }
       .pc-nav { width: 36px; height: 36px; }
       .pc-nav.prev { left: 0.75rem; }
