@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <link rel="canonical" href="https://hoodtip.com/" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HoodTip — Only the good stuff</title>
+  <title>HoodTip — The link you send when someone asks you for recs</title>
 
   <!-- SEO / OG -->
-  <meta name="description" content="The recommendation you'd get from your most well-travelled friend. Attributed, positive-only travel tips from real people. Geneva, Istanbul, New York, Wengen and beyond." />
+  <meta name="description" content="Attributed, positive-only travel tips from people who actually went. Three sentences, a few photos, one permanent link. Geneva, Istanbul, New York, Wengen and beyond." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="HoodTip" />
   <meta property="og:title" content="HoodTip — Only the good stuff" />
-  <meta property="og:description" content="Attributed, positive-only travel tips. Every tip has a name on it." />
+  <meta property="og:description" content="The link you send when someone asks you for recs." />
   <meta property="og:image" content="https://hoodtip.com/grand-belvedere-spa-outside.jpg" />
   <meta property="og:url" content="https://hoodtip.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="HoodTip — Only the good stuff" />
-  <meta name="twitter:description" content="Attributed, positive-only travel tips. Every tip has a name on it." />
+  <meta name="twitter:description" content="The link you send when someone asks you for recs." />
   <meta name="twitter:image" content="https://hoodtip.com/grand-belvedere-spa-outside.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -65,7 +65,7 @@
       z-index: 1;
       background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
       background-size: 3px 3px;
-      opacity: 0.6;
+      opacity: 0.5;
       mix-blend-mode: multiply;
     }
 
@@ -81,32 +81,30 @@
     .nav-logo .dot { color: var(--red); }
     .nav-tag { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; }
     .nav-right { display: flex; align-items: stretch; height: 54px; }
-    .nav-stat { font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted2); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); }
-    .nav-stat b { color: var(--ink); font-weight: 600; margin-right: 4px; }
     .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
     .nav-link:hover { color: var(--ink); }
     .nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 0 22px; display: flex; align-items: center; border-left: 1px solid var(--ink); transition: background 0.15s; }
     .nav-cta:hover { background: var(--red); }
 
     /* ---------- MASTHEAD STRIP (newspaper bar) ---------- */
-    .masthead { background: var(--ink); color: var(--cream); border-bottom: 1px solid var(--ink); }
+    .masthead { background: var(--ink); color: var(--cream); border-bottom: 1px solid var(--ink); position: relative; z-index: 2; }
     .masthead-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); height: 38px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
     .masthead-left, .masthead-right { display: flex; align-items: center; gap: 1.25rem; font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.55); }
     .masthead-left b { color: var(--cream); font-weight: 500; }
-    .masthead-center { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: rgba(247,244,239,0.85); letter-spacing: 0.01em; }
+    .masthead-center { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: rgba(247,244,239,0.88); letter-spacing: 0.005em; }
     .masthead-center .red-dot { color: var(--red); margin: 0 8px; }
     .masthead-sep { color: rgba(247,244,239,0.25); }
     .masthead-right b { color: var(--cream); font-weight: 500; font-size: 0.72rem; }
 
     /* ---------- COVER HERO (split: 1 big + 2 teasers) ---------- */
-    .cover { border-bottom: 1.5px solid var(--ink); }
+    .cover { border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; }
     .cover-inner {
       max-width: var(--max);
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr;
       height: calc(100vh - 92px);
-      max-height: 760px;
+      max-height: 720px;
       min-height: 540px;
     }
     .cover-main { position: relative; border-right: 1.5px solid var(--ink); overflow: hidden; display: block; color: var(--cream); min-height: 0; }
@@ -114,11 +112,11 @@
     .cover-main:hover .cover-main-img { transform: scale(1.04); }
     .cover-main-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.92) 0%, rgba(15,12,10,0.55) 40%, rgba(15,12,10,0.15) 75%, rgba(15,12,10,0.05) 100%); }
     .cover-main-top { position: absolute; top: 1.75rem; left: 2rem; right: 2rem; display: flex; justify-content: space-between; align-items: flex-start; z-index: 2; }
-    .cover-main-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); background: var(--red); padding: 6px 10px; }
+    .cover-main-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); background: var(--red); padding: 6px 10px; }
     .cover-main-issue { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,244,239,0.6); text-align: right; line-height: 1.5; }
     .cover-main-issue b { color: var(--cream); font-weight: 500; display: block; font-size: 0.65rem; margin-top: 2px; }
     .cover-main-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 2.5rem 2rem 2.25rem; z-index: 2; }
-    .cover-main-kicker { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,244,239,0.75); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.7rem; }
+    .cover-main-kicker { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,244,239,0.75); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
     .cover-main-kicker .dot { color: var(--red); font-size: 1.1em; }
     .cover-main-hed { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4.4rem); font-weight: 400; line-height: 1.02; letter-spacing: -0.022em; color: #fff; margin-bottom: 1.1rem; max-width: 760px; }
     .cover-main-hed em { font-style: italic; }
@@ -126,18 +124,19 @@
     .cover-main-foot { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; padding-top: 1.25rem; border-top: 1px solid rgba(247,244,239,0.2); }
     .cover-byline { display: flex; align-items: center; gap: 0.75rem; }
     .cover-byline-photo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(247,244,239,0.4); }
-    .cover-byline-text { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,244,239,0.65); line-height: 1.4; }
-    .cover-byline-text b { display: block; color: var(--cream); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; font-family: var(--serif); text-transform: none; font-style: italic; }
-    .cover-read { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); background: rgba(247,244,239,0.14); backdrop-filter: blur(4px); padding: 12px 20px; border: 1px solid rgba(247,244,239,0.35); transition: all 0.2s; }
+    .cover-byline-text { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(247,244,239,0.65); line-height: 1.4; }
+    .cover-byline-text b { display: block; color: var(--cream); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; font-family: var(--serif); text-transform: none; font-style: italic; }
+    .cover-read { font-family: var(--cond); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); background: rgba(247,244,239,0.14); backdrop-filter: blur(4px); padding: 12px 22px; border: 1px solid rgba(247,244,239,0.35); transition: all 0.2s; }
     .cover-main:hover .cover-read { background: var(--cream); color: var(--ink); border-color: var(--cream); }
 
     .cover-side { display: grid; grid-template-rows: 1fr 1fr; min-height: 0; }
-    .cover-teaser { position: relative; display: flex; flex-direction: column; overflow: hidden; color: var(--ink); border-bottom: 1.5px solid var(--ink); min-height: 0; }
+    .cover-teaser { position: relative; display: flex; flex-direction: column; overflow: hidden; color: var(--ink); border-bottom: 1.5px solid var(--ink); min-height: 0; transition: background 0.15s; }
     .cover-teaser:last-child { border-bottom: none; }
+    .cover-teaser:hover { background: rgba(181,50,42,0.03); }
     .cover-teaser-img-wrap { position: relative; flex: 1 1 0; min-height: 140px; overflow: hidden; border-bottom: 1px solid var(--rule); }
     .cover-teaser-img { width: 100%; height: 100%; object-fit: cover; transition: transform 4s ease; }
     .cover-teaser:hover .cover-teaser-img { transform: scale(1.05); }
-    .cover-teaser-badge { position: absolute; top: 14px; left: 14px; font-family: var(--cond); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); background: var(--ink); padding: 5px 8px; }
+    .cover-teaser-badge { position: absolute; top: 14px; left: 14px; font-family: var(--cond); font-size: 0.54rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); background: var(--ink); padding: 5px 8px; }
     .cover-teaser-body { flex: 0 0 auto; padding: 1rem 1.35rem 1.1rem; display: flex; flex-direction: column; gap: 0.45rem; }
     .cover-teaser-kicker { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); }
     .cover-teaser-hed { font-family: var(--serif); font-size: 1.22rem; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
@@ -149,7 +148,7 @@
     .cover-teaser-foot b { color: var(--ink); font-weight: 500; }
 
     /* ---------- THE RULES (manifesto band) ---------- */
-    .rules { background: var(--cream2); border-bottom: 1.5px solid var(--ink); }
+    .rules { background: var(--cream2); border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; }
     .rules-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: 1.1fr 2fr; gap: 0; min-height: 300px; }
     .rules-left { padding: 2.75rem 2.5rem 2.75rem 0; border-right: 1px solid var(--rule); display: flex; flex-direction: column; justify-content: center; }
     .rules-mark { font-family: var(--serif); font-size: 3.2rem; color: var(--red); line-height: 0.8; margin-bottom: 0.8rem; font-weight: 500; }
@@ -166,15 +165,14 @@
     .rule-item { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
     .rule-item:last-child { border-bottom: none; padding-bottom: 0; }
     .rule-item:first-child { padding-top: 0; }
-    .rule-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: var(--rule); line-height: 1; letter-spacing: -0.02em; }
+    .rule-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: var(--rule); line-height: 1; letter-spacing: -0.02em; transition: color 0.25s; }
     .rule-item:hover .rule-num { color: var(--red); }
-    .rule-num { transition: color 0.25s; }
     .rule-text { font-family: var(--serif); font-size: 1.35rem; line-height: 1.3; color: var(--ink); }
     .rule-text em { font-style: italic; color: var(--red); }
     .rule-text-sub { font-size: 0.82rem; color: var(--muted); font-family: var(--sans); line-height: 1.6; margin-top: 0.4rem; }
 
     /* ---------- SECTION HEADER ---------- */
-    .sec { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    .sec { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); position: relative; z-index: 2; }
     .sec-head {
       display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem;
       padding: 3rem 0 1.5rem;
@@ -192,7 +190,7 @@
     .sec-head-link:hover { color: var(--red); border-color: var(--red); }
 
     /* ---------- FILTER TABS ---------- */
-    .filters { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); border-bottom: 1px solid var(--rule); }
+    .filters { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); border-bottom: 1px solid var(--rule); position: relative; z-index: 2; background: var(--cream); }
     .filters-inner { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
     .filters-inner::-webkit-scrollbar { display: none; }
     .filter {
@@ -217,7 +215,7 @@
     .filter-count { font-size: 0.56rem; color: var(--muted2); margin-left: 4px; letter-spacing: 0.1em; }
 
     /* ---------- TIPS INDEX GRID ---------- */
-    .index-grid { border-bottom: 1.5px solid var(--ink); }
+    .index-grid { border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; background: var(--cream); }
     .index-grid-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--rule); }
     .tip-card {
       display: block; color: var(--ink); overflow: hidden;
@@ -228,7 +226,7 @@
       transition: background 0.15s;
     }
     .tip-card:hover { background: rgba(181,50,42,0.03); }
-    .tip-card-img-wrap { overflow: hidden; aspect-ratio: 4/3; }
+    .tip-card-img-wrap { overflow: hidden; aspect-ratio: 4/3; position: relative; }
     .tip-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .tip-card:hover .tip-card-img { transform: scale(1.05); }
     .tip-card-body { padding: 1.1rem 1.25rem 1.4rem; }
@@ -252,13 +250,13 @@
     .tip-card.feature .tip-card-dek { font-size: 0.86rem; -webkit-line-clamp: 3; }
 
     /* ---------- CONTRIBUTORS STRIP ---------- */
-    .contribs { background: var(--cream2); border-bottom: 1.5px solid var(--ink); }
+    .contribs { background: var(--cream2); border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; }
     .contribs-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
     .contribs-head { padding: 3rem 0 2rem; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: end; border-bottom: 1.5px solid var(--ink); }
     .contribs-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1; letter-spacing: -0.015em; }
     .contribs-title em { font-style: italic; color: var(--red); }
     .contribs-kicker { font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
-    .contribs-copy { font-size: 0.92rem; color: var(--muted); line-height: 1.7; font-style: italic; font-family: var(--serif); font-size: 1.05rem; }
+    .contribs-copy { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--muted); line-height: 1.6; }
 
     .contribs-list { display: grid; grid-template-columns: repeat(3, 1fr); }
     .contrib {
@@ -270,12 +268,12 @@
     }
     .contrib:last-child { border-right: none; }
     .contrib:hover { background: var(--cream2); }
-    .contrib.empty { background: transparent; border: 2px dashed var(--rule); margin: 0; }
     .contrib-head { display: flex; align-items: center; gap: 1rem; }
-    .contrib-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule); }
+    .contrib-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule); flex-shrink: 0; }
+    .contrib-photo-fb { width: 64px; height: 64px; border-radius: 50%; background: var(--red); color: var(--cream); font-family: var(--serif); font-size: 1.6rem; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .contrib-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; line-height: 1.05; }
     .contrib-handle { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
-    .contrib-quote { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink); line-height: 1.5; padding: 0.5rem 0; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 0.8rem 0; }
+    .contrib-quote { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink); line-height: 1.5; padding: 0.8rem 0; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); }
     .contrib-quote::before { content: '“'; font-size: 1.2em; color: var(--red); margin-right: 2px; }
     .contrib-quote::after { content: '”'; font-size: 1.2em; color: var(--red); margin-left: 2px; }
     .contrib-stats { display: flex; gap: 1.5rem; }
@@ -294,78 +292,76 @@
 
     .contrib.invite {
       background: var(--ink); color: var(--cream); border: none;
-      padding: 2.25rem 2rem 2rem;
     }
+    .contrib.invite:hover { background: var(--ink2); }
     .contrib.invite .contrib-name { color: var(--cream); }
-    .contrib.invite .contrib-placeholder { width: 64px; height: 64px; border-radius: 50%; border: 2px dashed rgba(247,244,239,0.3); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.6rem; color: rgba(247,244,239,0.4); }
-    .contrib.invite .contrib-handle { color: rgba(247,244,239,0.45); }
-    .contrib.invite .contrib-quote { color: rgba(247,244,239,0.85); border-color: rgba(247,244,239,0.15); font-size: 1rem; }
-    .contrib.invite .contrib-link { color: var(--cream); border-color: var(--red); background: var(--red); padding: 12px 16px; border-bottom-width: 1px; }
-    .contrib.invite .contrib-link:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+    .contrib.invite .contrib-handle { color: rgba(247,244,239,0.5); }
+    .contrib.invite .contrib-quote { color: var(--cream); border-color: rgba(247,244,239,0.15); }
+    .contrib.invite .contrib-stat-val { color: var(--red); }
+    .contrib.invite .contrib-stat-lbl { color: rgba(247,244,239,0.45); }
+    .contrib.invite .contrib-link { color: var(--cream); border-color: var(--cream); }
+    .contrib.invite .contrib-link:hover { color: var(--red); border-color: var(--red); }
+    .contrib-placeholder {
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 2px dashed rgba(247,244,239,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 1.8rem; color: rgba(247,244,239,0.5);
+      flex-shrink: 0;
+    }
 
     /* ---------- CITY EXPLORER ---------- */
-    .cities { border-bottom: 1.5px solid var(--ink); padding-bottom: 0.5rem; }
+    .cities { border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; background: var(--cream); }
     .cities-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
-    .cities-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 0;
-      padding: 0;
-      border-top: 0;
-    }
+    .cities-grid { display: grid; grid-template-columns: repeat(6, 1fr); border-left: 1px solid var(--rule); }
     .city {
-      display: flex; flex-direction: column;
-      padding: 1.75rem 1.25rem 1.6rem;
       border-right: 1px solid var(--rule);
+      padding: 1.6rem 1.4rem 1.5rem;
+      display: flex; flex-direction: column; gap: 0.4rem;
       transition: background 0.15s;
+      color: var(--ink);
+    }
+    .city:hover { background: rgba(181,50,42,0.04); }
+    .city-count { font-family: var(--serif); font-size: 2.4rem; font-weight: 500; line-height: 0.9; color: var(--red); }
+    .city-count sub { font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-left: 6px; vertical-align: 4px; font-weight: 500; }
+    .city-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; }
+    .city-name em { font-style: italic; }
+    .city-sub { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+
+    /* ---------- SLOGAN BAND (the new positioning line) ---------- */
+    .slogan {
+      background: var(--cream);
+      border-bottom: 1.5px solid var(--ink);
+      padding: 5rem 0 5rem;
       position: relative;
+      z-index: 2;
       overflow: hidden;
     }
-    .city:last-child { border-right: none; }
-    .city::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, var(--red) 0%, transparent 40%);
-      opacity: 0; transition: opacity 0.2s;
-    }
-    .city:hover::before { opacity: 0.04; }
-    .city-count { font-family: var(--serif); font-size: 2.6rem; font-weight: 400; letter-spacing: -0.03em; line-height: 1; color: var(--ink); margin-bottom: 0.35rem; }
-    .city-count sub { font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); vertical-align: baseline; margin-left: 4px; }
-    .city-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; line-height: 1.2; margin-bottom: 0.35rem; }
-    .city-name em { font-style: italic; font-weight: 400; }
-    .city-sub { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-
-    /* ---------- SLOGAN PULL QUOTE ---------- */
-    .slogan { border-bottom: 1.5px solid var(--ink); background: var(--cream); padding: 5rem 0 5rem; position: relative; overflow: hidden; }
     .slogan::before {
       content: '“';
       position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--serif);
-      font-size: 28rem;
-      color: var(--rule-soft);
-      line-height: 1;
+      top: -3rem; left: 50%; transform: translateX(-50%);
+      font-family: var(--serif); font-size: 18rem; color: var(--red);
+      opacity: 0.06; line-height: 1; font-weight: 600;
       pointer-events: none;
-      font-weight: 400;
     }
     .slogan-inner { max-width: 900px; margin: 0 auto; padding: 0 var(--gutter); text-align: center; position: relative; z-index: 2; }
     .slogan-kicker { font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; }
-    .slogan-text { font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 400; font-style: italic; line-height: 1.15; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 1.5rem; }
-    .slogan-text .hl { color: var(--red); }
+    .slogan-text { font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.6rem); font-weight: 400; line-height: 1.12; letter-spacing: -0.018em; color: var(--ink); margin-bottom: 1.5rem; }
+    .slogan-text em { font-style: italic; }
+    .slogan-text .hl { color: var(--red); font-style: italic; }
     .slogan-attr { font-family: var(--cond); font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
 
-    /* ---------- WRITE FOR HOODTIP ---------- */
-    .invite { background: var(--ink); color: var(--cream); border-bottom: 1.5px solid var(--ink); }
-    .invite-inner { max-width: var(--max); margin: 0 auto; padding: 4rem var(--gutter) 4.5rem; display: grid; grid-template-columns: 1.1fr 1fr; gap: 4.5rem; align-items: center; }
+    /* ---------- WRITE FOR HOODTIP (the new pitch) ---------- */
+    .invite { background: var(--ink); color: var(--cream); border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; }
+    .invite-inner { max-width: var(--max); margin: 0 auto; padding: 4.5rem var(--gutter) 5rem; display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: center; }
     .invite-kicker { font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
     .invite-kicker::before { content: ''; width: 28px; height: 1px; background: var(--red); display: inline-block; }
     .invite-hed { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.018em; color: var(--cream); margin-bottom: 1.25rem; }
     .invite-hed em { font-style: italic; color: #e6d4d2; }
-    .invite-copy { font-size: 1rem; color: rgba(247,244,239,0.7); line-height: 1.75; margin-bottom: 2rem; max-width: 480px; }
+    .invite-copy { font-size: 1rem; color: rgba(247,244,239,0.72); line-height: 1.75; margin-bottom: 2rem; max-width: 480px; }
     .invite-copy b { color: var(--cream); font-weight: 500; }
     .invite-steps { display: flex; gap: 0; margin-bottom: 2rem; border-top: 1px solid rgba(247,244,239,0.15); border-bottom: 1px solid rgba(247,244,239,0.15); }
-    .invite-step { flex: 1; padding: 1rem 0; padding-right: 1rem; display: flex; flex-direction: column; gap: 0.3rem; border-right: 1px solid rgba(247,244,239,0.1); }
+    .invite-step { flex: 1; padding: 1rem 1rem 1rem 0; display: flex; flex-direction: column; gap: 0.3rem; border-right: 1px solid rgba(247,244,239,0.1); }
     .invite-step:first-child { padding-left: 0; }
     .invite-step:last-child { border-right: none; padding-left: 1rem; }
     .invite-step:nth-child(2) { padding-left: 1rem; }
@@ -373,62 +369,99 @@
     .invite-step-lbl { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,244,239,0.55); }
     .invite-step-sub { font-family: var(--serif); font-size: 0.95rem; color: var(--cream); font-style: italic; line-height: 1.3; margin-top: 0.15rem; }
     .invite-ctas { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-    .invite-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--red); color: var(--cream); font-family: var(--cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 14px 24px; transition: all 0.2s; border: 1px solid var(--red); }
+    .invite-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--red); color: var(--cream); font-family: var(--cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 14px 24px; transition: all 0.2s; border: 1px solid var(--red); cursor: pointer; }
     .invite-btn:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
-    .invite-btn-ghost { background: transparent; color: rgba(247,244,239,0.85); border: 1px solid rgba(247,244,239,0.3); font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 14px 24px; transition: all 0.2s; }
+    .invite-btn-ghost { background: transparent; color: rgba(247,244,239,0.85); border: 1px solid rgba(247,244,239,0.3); font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 14px 24px; transition: all 0.2s; cursor: pointer; }
     .invite-btn-ghost:hover { color: var(--cream); border-color: var(--cream); }
 
-    /* Tip preview mockup */
+    /* ---- POSTCARD MOCKUP (right side of invite) ---- */
     .invite-mock {
       background: var(--cream); color: var(--ink);
-      padding: 0;
       position: relative;
       box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.2);
-      transform: rotate(-1deg);
+      transform: rotate(-1.2deg);
       transition: transform 0.4s ease;
     }
     .invite:hover .invite-mock { transform: rotate(0deg); }
     .invite-mock::before {
-      content: 'Preview';
+      content: 'Preview · what your tip will look like';
       position: absolute;
-      top: -14px; right: 16px;
+      top: -14px; left: 16px;
       font-family: var(--cond); font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
       background: var(--red); color: var(--cream);
-      padding: 5px 9px;
+      padding: 5px 10px;
       z-index: 3;
     }
     .invite-mock-nav {
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-bottom: 1.5px solid var(--ink);
       display: flex; align-items: center; justify-content: space-between;
     }
-    .invite-mock-logo { font-family: var(--serif); font-size: 0.8rem; font-weight: 600; }
+    .invite-mock-logo { font-family: var(--serif); font-size: 0.78rem; font-weight: 600; }
     .invite-mock-logo em { font-style: italic; font-weight: 400; }
     .invite-mock-logo .dot { color: var(--red); }
     .invite-mock-dots { display: flex; gap: 4px; }
     .invite-mock-dots span { width: 5px; height: 5px; border-radius: 50%; background: var(--rule); }
-    .invite-mock-hero-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
-    .invite-mock-body { padding: 1rem 1.25rem 1.25rem; }
-    .invite-mock-crumb { font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
-    .invite-mock-crumb b { color: var(--red); }
-    .invite-mock-kicker { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
-    .invite-mock-hed { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-    .invite-mock-hed em { font-style: italic; font-weight: 400; color: var(--red); }
-    .invite-mock-dek { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); line-height: 1.45; margin-bottom: 0.8rem; }
-    .invite-mock-byline { display: flex; align-items: center; gap: 0.5rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); }
-    .invite-mock-byline-avatar { width: 22px; height: 22px; border-radius: 50%; border: 1.5px dashed var(--rule); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.7rem; color: var(--muted); }
-    .invite-mock-byline-text { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+    .invite-mock-hero { position: relative; }
+    .invite-mock-hero img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+    .invite-mock-hero-badge {
+      position: absolute; top: 12px; right: 12px;
+      font-family: var(--cond); font-size: 0.5rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--cream); background: var(--red); padding: 4px 7px;
+    }
+    .invite-mock-hero-crumb {
+      position: absolute; top: 12px; left: 12px;
+      font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    }
+
+    .invite-mock-body { padding: 1.1rem 1.25rem 1.1rem; }
+    .invite-mock-loc { font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .invite-mock-loc span { color: var(--rule); padding: 0 0.3rem; }
+    .invite-mock-hed { font-family: var(--serif); font-size: 1.55rem; font-weight: 500; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 0.85rem; }
+    .invite-mock-hed em { font-style: italic; font-weight: 400; }
+    .invite-mock-callout {
+      position: relative;
+      padding: 0.7rem 0 0.7rem 0.9rem;
+      margin: 0 0 0.95rem;
+      border-left: 2.5px solid var(--red);
+      background: linear-gradient(to right, rgba(181,50,42,0.04) 0%, transparent 100%);
+    }
+    .invite-mock-callout-text {
+      font-family: var(--serif); font-style: italic; font-size: 0.92rem; line-height: 1.3; color: var(--ink);
+    }
+    .invite-mock-callout-text b { font-weight: 600; font-style: normal; color: var(--red); }
+    .invite-mock-facts {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+      padding: 0.5rem 0;
+      margin-bottom: 0.85rem;
+    }
+    .invite-mock-fact { padding: 0.2rem 0.5rem 0.2rem 0; border-right: 1px solid var(--rule-soft); }
+    .invite-mock-fact:last-child { border-right: none; padding-left: 0.5rem; padding-right: 0; }
+    .invite-mock-fact:nth-child(2) { padding-left: 0.5rem; }
+    .invite-mock-fact-lbl { font-family: var(--cond); font-size: 0.45rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .invite-mock-fact-val { font-family: var(--serif); font-size: 0.7rem; color: var(--ink); margin-top: 1px; line-height: 1.2; }
+    .invite-mock-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding-top: 0.4rem; }
+    .invite-mock-byline { display: flex; align-items: center; gap: 0.45rem; }
+    .invite-mock-byline-avatar { width: 22px; height: 22px; border-radius: 50%; border: 1.5px dashed var(--rule); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 0.75rem; color: var(--muted); }
+    .invite-mock-byline-text { font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
     .invite-mock-byline-text b { color: var(--red); font-weight: 500; }
-    .invite-mock-para { font-size: 0.76rem; color: var(--muted); line-height: 1.6; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px dashed var(--rule); }
-    .invite-mock-para::first-line { color: var(--ink); }
+    .invite-mock-share {
+      font-family: var(--cond); font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cream); background: var(--ink);
+      padding: 5px 10px;
+    }
 
     /* ---------- FOOTER ---------- */
-    footer { background: var(--ink); color: var(--cream); border-top: 2px solid var(--red); }
+    footer { background: var(--ink); color: var(--cream); border-top: 2px solid var(--red); position: relative; z-index: 2; }
     .footer-top { max-width: var(--max); margin: 0 auto; padding: 3rem var(--gutter) 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; border-bottom: 1px solid rgba(247,244,239,0.12); }
     .footer-logo-big { font-family: var(--serif); font-size: 2.4rem; font-weight: 600; color: var(--cream); line-height: 1; margin-bottom: 0.8rem; }
     .footer-logo-big em { font-style: italic; font-weight: 400; }
     .footer-logo-big .dot { color: var(--red); }
-    .footer-tag { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: rgba(247,244,239,0.65); line-height: 1.5; max-width: 320px; margin-bottom: 1.25rem; }
+    .footer-tag { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: rgba(247,244,239,0.65); line-height: 1.5; max-width: 360px; margin-bottom: 1.25rem; }
     .footer-stats-big { display: flex; gap: 2rem; flex-wrap: wrap; }
     .footer-stat-big { display: flex; flex-direction: column; gap: 2px; }
     .footer-stat-val { font-family: var(--serif); font-size: 1.4rem; color: var(--cream); line-height: 1; }
@@ -441,86 +474,79 @@
     .footer-col a em { font-style: italic; color: rgba(247,244,239,0.55); font-size: 0.85rem; margin-left: 4px; }
 
     .footer-bottom { max-width: var(--max); margin: 0 auto; padding: 1.25rem var(--gutter); display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-    .footer-note { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: rgba(247,244,239,0.5); }
+    .footer-note { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: rgba(247,244,239,0.55); }
     .footer-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
     .footer-copy { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(247,244,239,0.35); }
 
     /* ---------- MODAL ---------- */
-    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(20,16,12,0.78); backdrop-filter: blur(4px); align-items: center; justify-content: center; }
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(20,16,12,0.78); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 24px; }
     .modal-overlay.open { display: flex; }
-    .modal { background: var(--cream); width: 100%; max-width: 480px; margin: 20px; max-height: 92vh; overflow-y: auto; border: 1px solid var(--ink); }
-    .modal-header { padding: 18px 22px; border-bottom: 1.5px solid var(--ink); display: flex; align-items: center; justify-content: space-between; background: var(--cream2); }
-    .modal-header h4 { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
-    .modal-close { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 1rem; }
-    .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
-    .modal-sub { font-family: var(--serif); font-size: 0.92rem; color: var(--muted); line-height: 1.6; font-style: italic; }
-    .field { display: flex; flex-direction: column; gap: 6px; }
-    .field label { font-family: var(--cond); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    .field input, .field select, .field textarea { background: white; border: 1px solid var(--rule); padding: 10px 12px; font-family: var(--sans); font-size: 0.88rem; color: var(--ink); outline: none; border-radius: 0; transition: border-color 0.15s; }
-    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink); }
-    .field textarea { resize: vertical; min-height: 90px; }
-    .submit-btn { padding: 13px; background: var(--ink); color: var(--cream); border: none; cursor: pointer; font-family: var(--cond); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; transition: background 0.15s; }
+    .modal { background: var(--cream); width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1.5px solid var(--ink); }
+    .modal-header h4 { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; }
+    .modal-close { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--muted); padding: 4px 8px; }
+    .modal-close:hover { color: var(--ink); }
+    .modal-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+    .modal-sub { font-family: var(--serif); font-style: italic; font-size: 0.92rem; color: var(--muted); margin-bottom: 0.4rem; line-height: 1.5; }
+    .field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .field label { font-family: var(--cond); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .field input, .field textarea, .field select { font-family: var(--sans); font-size: 0.9rem; padding: 9px 11px; border: 1px solid var(--rule); background: var(--cream); color: var(--ink); }
+    .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--ink); }
+    .field textarea { min-height: 100px; resize: vertical; line-height: 1.5; }
+    .submit-btn { background: var(--ink); color: var(--cream); font-family: var(--cond); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 13px 22px; border: none; cursor: pointer; transition: background 0.15s; margin-top: 0.4rem; }
     .submit-btn:hover { background: var(--red); }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 1100px) {
+      .index-grid-inner { grid-template-columns: repeat(3, 1fr); }
+      .tip-card.feature { grid-column: span 3; }
+      .cities-grid { grid-template-columns: repeat(3, 1fr); }
+      .cities-grid .city:nth-child(3n) { border-right: none; }
+      .invite-inner { gap: 3rem; grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 880px) {
+      .nav-link { display: none; }
+      .nav-tag { display: none; }
+      .nav-inner { padding: 0 18px; }
+      .masthead-inner { padding: 0 18px; gap: 1rem; }
+      .masthead-center { display: none; }
+      .masthead-left, .masthead-right { font-size: 0.55rem; gap: 0.7rem; }
+
       .cover-inner { grid-template-columns: 1fr; height: auto; max-height: none; min-height: 0; }
-      .cover-main { border-right: none; border-bottom: 1.5px solid var(--ink); min-height: 520px; }
-      .cover-side { grid-template-rows: auto auto; grid-template-columns: 1fr 1fr; }
-      .cover-teaser { border-bottom: none; border-right: 1.5px solid var(--ink); }
-      .cover-teaser:last-child { border-right: none; }
-      .cover-teaser-img-wrap { flex: 0 0 200px; min-height: 200px; }
-      .rules-inner { grid-template-columns: 1fr; gap: 0; }
-      .rules-left { padding: 2rem 0; border-right: none; border-bottom: 1px solid var(--rule); }
-      .rules-right { padding: 2rem 0; }
+      .cover-main { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; }
+      .cover-side { grid-template-rows: auto auto; }
+      .cover-teaser { aspect-ratio: 4/3; }
+      .cover-teaser-img-wrap { aspect-ratio: 16/9; flex: 0 0 auto; }
+
+      .rules-inner { grid-template-columns: 1fr; }
+      .rules-left { padding: 2.25rem 0; border-right: none; border-bottom: 1px solid var(--rule); }
+      .rules-right { padding: 2.25rem 0; }
+
       .index-grid-inner { grid-template-columns: repeat(2, 1fr); }
       .tip-card.feature { grid-column: span 2; grid-template-columns: 1fr; }
-      .tip-card.feature .tip-card-img-wrap { aspect-ratio: 16/9; border-right: none; }
+      .tip-card.feature .tip-card-img-wrap { aspect-ratio: 4/3; border-right: none; border-bottom: 1px solid var(--rule); }
+
+      .contribs-head { grid-template-columns: 1fr; gap: 1.5rem; }
       .contribs-list { grid-template-columns: 1fr; }
       .contrib { border-right: none; border-bottom: 1px solid var(--rule); }
-      .contrib:last-child { border-bottom: none; }
-      .cities-grid { grid-template-columns: repeat(3, 1fr); }
-      .city:nth-child(3n) { border-right: none; }
-      .city { border-bottom: 1px solid var(--rule); }
-      .invite-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .contribs-head { grid-template-columns: 1fr; gap: 1.5rem; align-items: flex-start; }
-    }
-    @media (max-width: 720px) {
-      .nav-tag, .nav-stat, .nav-link { display: none; }
-      .nav-inner { padding: 0 20px; }
-      .masthead-inner { padding: 0 20px; gap: 1rem; }
-      .masthead-center { display: none; }
-      .masthead-right .masthead-sep:last-of-type, .masthead-right span:last-child { display: none; }
-      .cover-main-body { padding: 1.75rem 1.5rem 1.5rem; }
-      .cover-main-top { top: 1.25rem; left: 1.5rem; right: 1.5rem; }
-      .cover-side { grid-template-columns: 1fr; }
-      .cover-teaser { border-right: none; border-bottom: 1.5px solid var(--ink); }
-      .cover-teaser:last-child { border-bottom: none; }
-      .cover-teaser-img-wrap { flex: 0 0 200px; min-height: 200px; }
-      .sec-head { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2rem 0 1.25rem; }
-      .sec-head-right { gap: 1rem; }
-      .index-grid-inner { grid-template-columns: 1fr; }
-      .cities-grid { grid-template-columns: repeat(2, 1fr); }
-      .city:nth-child(2n) { border-right: none; }
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 20px; }
-      .footer-bottom { padding: 1rem 20px; }
-      .slogan { padding: 3rem 0; }
-      .slogan::before { font-size: 16rem; top: -40px; }
-      .rules-hed { font-size: 1.4rem; }
-      .rule-item { grid-template-columns: 50px 1fr; gap: 1rem; }
-      .rule-text { font-size: 1.1rem; }
-      .invite-steps { flex-direction: column; }
-      .invite-step, .invite-step:last-child, .invite-step:nth-child(2) { padding-left: 0; padding-right: 0; border-right: none; border-bottom: 1px solid rgba(247,244,239,0.1); }
-      .invite-step:last-child { border-bottom: none; }
-    }
 
-    /* ---------- STAGGERED REVEAL ---------- */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-    .reveal { opacity: 0; animation: fadeUp 0.8s ease forwards; }
-    .reveal:nth-child(1) { animation-delay: 0.05s; }
-    .reveal:nth-child(2) { animation-delay: 0.15s; }
-    .reveal:nth-child(3) { animation-delay: 0.25s; }
+      .cities-grid { grid-template-columns: repeat(2, 1fr); }
+      .cities-grid .city:nth-child(odd) { border-right: 1px solid var(--rule); }
+      .cities-grid .city:nth-child(even) { border-right: none; }
+
+      .invite-inner { grid-template-columns: 1fr; padding: 3.5rem 18px 4rem; gap: 3rem; }
+      .invite-mock { transform: rotate(0deg); max-width: 420px; margin: 0 auto; width: 100%; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 540px) {
+      .index-grid-inner { grid-template-columns: 1fr; }
+      .tip-card.feature { grid-column: span 1; }
+      .cities-grid { grid-template-columns: 1fr; }
+      .cities-grid .city { border-right: none !important; }
+      .footer-top { grid-template-columns: 1fr; }
+      .slogan-text { font-size: 1.7rem; }
+    }
   </style>
 </head>
 <body>
@@ -529,36 +555,36 @@
 <div class="nav">
   <div class="nav-inner">
     <div class="nav-brand">
-      <a href="/" class="nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <a href="index.html" class="nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
       <span class="nav-tag">Only the good stuff.</span>
     </div>
     <div class="nav-right">
-      <span class="nav-stat"><b>70</b>Tips in print</span>
       <a href="profile-dave.html" class="nav-link">Dave</a>
+      <a href="profile-foodfiend.html" class="nav-link">foodfiend</a>
       <a href="profile-build.html" class="nav-cta">Leave a tip →</a>
     </div>
   </div>
 </div>
 
-<!-- ==================== MASTHEAD (newspaper bar) ==================== -->
+<!-- ==================== MASTHEAD STRIP ==================== -->
 <div class="masthead">
   <div class="masthead-inner">
     <div class="masthead-left">
-      <span><b>No. 04</b></span>
+      <span><b>HoodTip</b></span>
       <span class="masthead-sep">·</span>
-      <span>Vol. I</span>
+      <span>Issue No. 04</span>
       <span class="masthead-sep">·</span>
       <span>April 2026</span>
     </div>
     <div class="masthead-center">
-      Attributed tips from people who actually went <span class="red-dot">●</span> Specific over general <span class="red-dot">●</span> Positive only
+      The link you send when someone asks for recs <span class="red-dot">●</span> Attributed <span class="red-dot">●</span> Positive only
     </div>
     <div class="masthead-right">
       <span><b>70</b> tips</span>
       <span class="masthead-sep">·</span>
       <span><b>22</b> cities</span>
       <span class="masthead-sep">·</span>
-      <span><b>16</b> neighbourhoods</span>
+      <span><b>2</b> contributors</span>
     </div>
   </div>
 </div>
@@ -568,7 +594,7 @@
   <div class="cover-inner">
 
     <!-- MAIN COVER -->
-    <a class="cover-main reveal" href="tip-belvedere.html">
+    <a class="cover-main" href="tip-belvedere.html">
       <img class="cover-main-img" src="grand-belvedere-spa-outside.jpg" alt="Grand Hotel Belvedere, Wengen" />
       <div class="cover-main-overlay"></div>
       <div class="cover-main-top">
@@ -584,7 +610,7 @@
         <div class="cover-main-foot">
           <div class="cover-byline">
             <img class="cover-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
-            <div class="cover-byline-text">Tip by <b>Dave</b>12-min read</div>
+            <div class="cover-byline-text">Tip by <b>Dave</b></div>
           </div>
           <span class="cover-read">Read the tip →</span>
         </div>
@@ -593,7 +619,7 @@
 
     <!-- SIDE TEASERS -->
     <div class="cover-side">
-      <a class="cover-teaser reveal" href="tip-nagomi.html">
+      <a class="cover-teaser" href="tip-nagomi.html">
         <div class="cover-teaser-img-wrap">
           <img class="cover-teaser-img" src="nagomi-chef.jpg" alt="Nagomi" style="object-position:center 20%;" />
           <span class="cover-teaser-badge">Also this issue</span>
@@ -606,12 +632,12 @@
           </div>
           <div class="cover-teaser-foot">
             <img src="bongojoe-rhone-light.jpg" alt="Dave" />
-            <span>Tip by <b>Dave</b></span>
+            <span>By <b>Dave</b></span>
           </div>
         </div>
       </a>
 
-      <a class="cover-teaser reveal" href="tip-arnavutkoy.html">
+      <a class="cover-teaser" href="tip-arnavutkoy.html">
         <div class="cover-teaser-img-wrap">
           <img class="cover-teaser-img" src="photo-arnavutkoy-restaurant.jpg" alt="Arnavutköy Istanbul" style="object-position:center 55%;" />
           <span class="cover-teaser-badge">Also this issue</span>
@@ -624,7 +650,7 @@
           </div>
           <div class="cover-teaser-foot">
             <img src="bongojoe-rhone-light.jpg" alt="Dave" />
-            <span>Tip by <b>Dave</b></span>
+            <span>By <b>Dave</b></span>
           </div>
         </div>
       </a>
@@ -662,8 +688,8 @@
         <div class="rule-item">
           <div class="rule-num">03</div>
           <div>
-            <div class="rule-text">Write a few lines. We make it <em>a proper article.</em></div>
-            <div class="rule-text-sub">Send words and photos. Get a beautifully edited page with your name on it.</div>
+            <div class="rule-text">Three sentences. A few photos. <em>One permanent link.</em></div>
+            <div class="rule-text-sub">Send the basics. We turn it into a polished postcard you can send anyone who asks.</div>
           </div>
         </div>
       </div>
@@ -671,7 +697,7 @@
   </div>
 </div>
 
-<!-- ==================== THE INDEX ==================== -->
+<!-- ==================== THE INDEX (TIPS GRID) ==================== -->
 <div class="sec">
   <div class="sec-head">
     <div class="sec-head-left">
@@ -714,7 +740,7 @@
         <p class="tip-card-dek">Locals swim here in all seasons. The sunset from the jetty, the fondue in winter, the cheap breakfast at 7am. This is the soul of Geneva if Geneva has one.</p>
         <div class="tip-card-foot">
           <img src="bongojoe-rhone-light.jpg" alt="Dave" />
-          <span>By <b>Dave</b> · 6-min read</span>
+          <span>By <b>Dave</b></span>
         </div>
       </div>
     </a>
@@ -845,17 +871,17 @@
       </div>
     </a>
 
-    <a class="tip-card" href="tip-saintamour.html">
+    <a class="tip-card" href="tip-pignata.html">
       <div class="tip-card-img-wrap">
-        <img class="tip-card-img" src="carouge-wine-bottles.jpg" alt="Paul-Henri Soler" style="object-position:center 50%;" />
+        <img class="tip-card-img" src="pignata-pizza-athome.jpg" alt="La Pignata" />
       </div>
       <div class="tip-card-body">
         <div class="tip-card-kicker">
-          <span class="tip-card-cat">Wine</span><span class="tip-card-sep">/</span>
-          <span class="tip-card-loc">Carouge · Geneva</span>
+          <span class="tip-card-cat">Pizza</span><span class="tip-card-sep">/</span>
+          <span class="tip-card-loc">Plainpalais · Geneva</span>
         </div>
-        <h3 class="tip-card-hed">The natural wine guy in Carouge. <em>Trust him.</em></h3>
-        <p class="tip-card-dek">Whatever he hands you will be delicious. The shop smells the way wine shops should smell.</p>
+        <h3 class="tip-card-hed">A good margherita for <em>under CHF 15.</em></h3>
+        <p class="tip-card-dek">In Geneva that counts as a miracle. Small beer, margherita, takeaway. Done.</p>
         <div class="tip-card-foot">
           <img src="bongojoe-rhone-light.jpg" alt="Dave" />
           <span>By <b>Dave</b></span>
@@ -910,7 +936,7 @@
         <div class="contribs-kicker">§ The People</div>
         <h2 class="contribs-title">The <em>named</em> contributors.</h2>
       </div>
-      <p class="contribs-copy">Every tip on HoodTip has a person behind it. Not a username. Click any byline — you get their face, their city, their taste, their other recommendations. This is the whole point.</p>
+      <p class="contribs-copy">Every tip on HoodTip has a person behind it. Click any byline — you get their face, their city, their taste, their other recommendations. This is the whole point.</p>
     </div>
 
     <div class="contribs-list">
@@ -927,7 +953,7 @@
         <div class="contrib-stats">
           <div class="contrib-stat"><span class="contrib-stat-val">68</span><span class="contrib-stat-lbl">Tips</span></div>
           <div class="contrib-stat"><span class="contrib-stat-val">22</span><span class="contrib-stat-lbl">Cities</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">16</span><span class="contrib-stat-lbl">Neighbourhoods</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">16</span><span class="contrib-stat-lbl">Hoods</span></div>
         </div>
         <div class="contrib-tags">
           <span class="contrib-tag">Natural wine</span>
@@ -941,8 +967,7 @@
 
       <a href="profile-foodfiend.html" class="contrib">
         <div class="contrib-head">
-          <img class="contrib-photo" src="foodfiend-avatar.jpg" alt="foodfiend" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div style="display:none;width:64px;height:64px;border-radius:50%;background:var(--red);color:var(--cream);font-family:var(--serif);font-size:1.6rem;font-weight:500;align-items:center;justify-content:center;flex-shrink:0;">f</div>
+          <div class="contrib-photo-fb">f</div>
           <div>
             <div class="contrib-name">foodfiend</div>
             <div class="contrib-handle">@foodfiend · Tel Aviv · Contributor</div>
@@ -952,7 +977,7 @@
         <div class="contrib-stats">
           <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Tips</span></div>
           <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">City</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Neighbourhoods</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Hood</span></div>
         </div>
         <div class="contrib-tags">
           <span class="contrib-tag">Tel Aviv food</span>
@@ -971,16 +996,16 @@
             <div class="contrib-handle">@yourname · Your city · Future contributor</div>
           </div>
         </div>
-        <p class="contrib-quote">Your favourite place deserves a proper article. Write a few lines — we'll do the rest.</p>
+        <p class="contrib-quote">Three sentences. Some photos. A permanent link with your name on it.</p>
         <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val" style="color:var(--red);">—</span><span class="contrib-stat-lbl" style="color:rgba(247,244,239,0.45);">Tips</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val" style="color:var(--red);">—</span><span class="contrib-stat-lbl" style="color:rgba(247,244,239,0.45);">Cities</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val" style="color:var(--red);">—</span><span class="contrib-stat-lbl" style="color:rgba(247,244,239,0.45);">Neighbourhoods</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Tips</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Cities</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Hoods</span></div>
         </div>
         <div class="contrib-tags">
           <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your specialty</span>
-          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your neighbourhood</span>
-          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your opinions</span>
+          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your hood</span>
+          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your taste</span>
         </div>
         <span class="contrib-link">Build your profile →</span>
       </a>
@@ -1041,64 +1066,87 @@
   </div>
 </div>
 
-<!-- ==================== SLOGAN PULL QUOTE ==================== -->
+<!-- ==================== SLOGAN — THE NEW POSITIONING ==================== -->
 <div class="slogan">
   <div class="slogan-inner">
-    <div class="slogan-kicker">The HoodTip Rule</div>
-    <p class="slogan-text">If you didn't love it, <span class="hl">don't write about it.</span></p>
-    <div class="slogan-attr">— The only rule, really</div>
+    <div class="slogan-kicker">The Whole Idea</div>
+    <p class="slogan-text">The link you send when someone asks for <span class="hl">recs.</span></p>
+    <div class="slogan-attr">— That's the whole pitch</div>
   </div>
 </div>
 
-<!-- ==================== WRITE FOR HOODTIP ==================== -->
+<!-- ==================== WRITE FOR HOODTIP — REFRAMED ==================== -->
 <div class="invite">
   <div class="invite-inner">
     <div>
-      <div class="invite-kicker">Write for HoodTip</div>
-      <h2 class="invite-hed">Your favourite place deserves a <em>proper article.</em></h2>
-      <p class="invite-copy">Send us <b>a few lines and some photos</b> about somewhere you genuinely love. We'll turn it into a beautifully edited tip page — with your name, your face, and a permanent link on HoodTip.<br><br>Next time someone asks you for a recommendation, you'll have something better than a text message.</p>
+      <div class="invite-kicker">Leave a tip</div>
+      <h2 class="invite-hed">Your favourite place deserves <em>its own link.</em></h2>
+      <p class="invite-copy">Send <b>three sentences</b> and <b>a few photos</b> about somewhere you genuinely love. We'll turn it into a polished postcard with your name and face on it — and a permanent URL you can send anyone who asks.<br><br>Not an article. Not a review. <b>A link.</b> The one you wish you'd had ready last time someone said "where should I go in Lisbon?"</p>
 
       <div class="invite-steps">
         <div class="invite-step">
           <div class="invite-step-num">01</div>
-          <div class="invite-step-lbl">First</div>
-          <div class="invite-step-sub">Write a few lines</div>
+          <div class="invite-step-lbl">Send</div>
+          <div class="invite-step-sub">Three sentences</div>
         </div>
         <div class="invite-step">
           <div class="invite-step-num">02</div>
-          <div class="invite-step-lbl">Then</div>
-          <div class="invite-step-sub">Add some photos</div>
+          <div class="invite-step-lbl">Add</div>
+          <div class="invite-step-sub">A few photos</div>
         </div>
         <div class="invite-step">
           <div class="invite-step-num">03</div>
-          <div class="invite-step-lbl">We</div>
-          <div class="invite-step-sub">Publish your tip</div>
+          <div class="invite-step-lbl">Get</div>
+          <div class="invite-step-sub">A permanent link</div>
         </div>
       </div>
 
       <div class="invite-ctas">
         <a href="profile-build.html" class="invite-btn">Build your profile →</a>
-        <a href="#" class="invite-btn-ghost" onclick="openModal();return false;">Or just leave a quick tip</a>
+        <button class="invite-btn-ghost" onclick="openModal();return false;">Or just leave a quick tip</button>
       </div>
     </div>
 
-    <!-- Preview mockup of a published tip -->
+    <!-- Postcard-style mockup of a published tip -->
     <div class="invite-mock">
       <div class="invite-mock-nav">
         <div class="invite-mock-logo">Hood<em>Tip<span class="dot">.</span></em></div>
         <div class="invite-mock-dots"><span></span><span></span><span></span></div>
       </div>
-      <img class="invite-mock-hero-img" src="saintamour-lavaux-lake.jpg" alt="" />
+      <div class="invite-mock-hero">
+        <img src="saintamour-lavaux-lake.jpg" alt="" />
+        <span class="invite-mock-hero-crumb">HoodTip / <b>Your Name</b> / Your City</span>
+        <span class="invite-mock-hero-badge">Wine</span>
+      </div>
       <div class="invite-mock-body">
-        <div class="invite-mock-crumb">HoodTip / <b>Your Name</b> / Your City</div>
-        <div class="invite-mock-kicker">Wine · Your Neighbourhood · Your City</div>
-        <h4 class="invite-mock-hed">The honest, specific, <em>only-the-good-stuff</em> tip you always wanted to give.</h4>
-        <p class="invite-mock-dek">A few italic lines of your dek, the thing you'd text a friend — distilled.</p>
-        <div class="invite-mock-byline">
-          <div class="invite-mock-byline-avatar">★</div>
-          <div class="invite-mock-byline-text">Tip by <b>Your Name</b></div>
+        <div class="invite-mock-loc">
+          <span>/</span>Wine<span>·</span>Your Hood<span>·</span>Your City
         </div>
-        <p class="invite-mock-para">The first paragraph of your tip, properly typeset, with a drop cap and everything. This is what your words look like after we edit them into a proper article. It looks good. It looks like something you'd want to send people.</p>
+        <h4 class="invite-mock-hed">Your spot. <em>Right here.</em></h4>
+        <div class="invite-mock-callout">
+          <p class="invite-mock-callout-text">The <b>three-sentence tip</b> you'd actually text a friend, sitting where the pull quote goes.</p>
+        </div>
+        <div class="invite-mock-facts">
+          <div class="invite-mock-fact">
+            <div class="invite-mock-fact-lbl">Where</div>
+            <div class="invite-mock-fact-val">The address</div>
+          </div>
+          <div class="invite-mock-fact">
+            <div class="invite-mock-fact-lbl">Best for</div>
+            <div class="invite-mock-fact-val">Your call</div>
+          </div>
+          <div class="invite-mock-fact">
+            <div class="invite-mock-fact-lbl">The move</div>
+            <div class="invite-mock-fact-val">Your tip</div>
+          </div>
+        </div>
+        <div class="invite-mock-foot">
+          <div class="invite-mock-byline">
+            <div class="invite-mock-byline-avatar">★</div>
+            <div class="invite-mock-byline-text">Tip by <b>You</b></div>
+          </div>
+          <span class="invite-mock-share">Copy link</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1109,11 +1157,11 @@
   <div class="footer-top">
     <div>
       <div class="footer-logo-big">Hood<em>Tip<span class="dot">.</span></em></div>
-      <p class="footer-tag">Only the good stuff. Attributed, positive-only travel tips from people who actually went.</p>
+      <p class="footer-tag">Only the good stuff. The link you send when someone asks for recs.</p>
       <div class="footer-stats-big">
         <div class="footer-stat-big"><span class="footer-stat-val">70</span><span class="footer-stat-lbl">Tips</span></div>
         <div class="footer-stat-big"><span class="footer-stat-val">22</span><span class="footer-stat-lbl">Cities</span></div>
-        <div class="footer-stat-big"><span class="footer-stat-val">16</span><span class="footer-stat-lbl">Neighbourhoods</span></div>
+        <div class="footer-stat-big"><span class="footer-stat-val">16</span><span class="footer-stat-lbl">Hoods</span></div>
         <div class="footer-stat-big"><span class="footer-stat-val">2</span><span class="footer-stat-lbl">Contributors</span></div>
       </div>
     </div>
@@ -1123,9 +1171,9 @@
       <ul>
         <li><a href="profile-dave.html">All tips</a></li>
         <li><a href="geneva.html">Geneva <em>18</em></a></li>
-        <li><a href="#">Istanbul <em>9</em></a></li>
-        <li><a href="#">New York <em>7</em></a></li>
-        <li><a href="#">All cities</a></li>
+        <li><a href="profile-dave.html">Istanbul <em>9</em></a></li>
+        <li><a href="profile-dave.html">New York <em>7</em></a></li>
+        <li><a href="profile-dave.html">All cities</a></li>
       </ul>
     </div>
 
@@ -1141,7 +1189,6 @@
     <div class="footer-col">
       <h5>HoodTip</h5>
       <ul>
-        <li><a href="#">What is this?</a></li>
         <li><a href="profile-build.html">Leave a tip</a></li>
         <li><a href="mailto:hello@hoodtip.com">Email</a></li>
       </ul>
@@ -1149,7 +1196,7 @@
   </div>
 
   <div class="footer-bottom">
-    <div class="footer-note">If you didn't love it, <span class="hl">don't write about it.</span></div>
+    <div class="footer-note">The link you send when someone asks for <span class="hl">recs.</span></div>
     <div class="footer-copy">© HoodTip · Made in Geneva · No. 04 · April 2026</div>
   </div>
 </footer>
@@ -1159,12 +1206,12 @@
   <div class="modal">
     <div class="modal-header"><h4>Leave a HoodTip</h4><button class="modal-close" onclick="closeModal()">&#x2715;</button></div>
     <div class="modal-body" id="modalForm">
-      <p class="modal-sub">Positive only. Specific over general. Write it like a note to a friend going next week.</p>
+      <p class="modal-sub">Three sentences max. Positive only. Specific over general. Like a note to a friend going next week.</p>
       <div class="field"><label for="f-place">Place name</label><input id="f-place" name="place" type="text" placeholder="e.g. Bongo Joe" required /></div>
-      <div class="field"><label for="f-hood">Neighbourhood &amp; City</label><input id="f-hood" name="neighbourhood" type="text" placeholder="e.g. Plainpalais, Geneva" required /></div>
+      <div class="field"><label for="f-hood">Hood &amp; City</label><input id="f-hood" name="neighbourhood" type="text" placeholder="e.g. Plainpalais, Geneva" required /></div>
       <div class="field"><label for="f-email">Your email</label><input id="f-email" name="email" type="email" placeholder="you@example.com" /></div>
       <div class="field"><label for="f-cat">Category</label><select id="f-cat" name="category"><option value="">Select one</option><option>Bar</option><option>Restaurant</option><option>Coffee</option><option>Wine</option><option>Market</option><option>Hotel</option><option>Travel</option><option>Cinema</option><option>Experience</option><option>Other</option></select></div>
-      <div class="field"><label for="f-tip">Your tip</label><textarea id="f-tip" name="tip" placeholder="What to order, when to go, what to know. Be specific." required></textarea></div>
+      <div class="field"><label for="f-tip">Your tip (3 sentences)</label><textarea id="f-tip" name="tip" placeholder="What to order, when to go, what to know. Be specific." required></textarea></div>
       <div class="field"><label for="f-photos">Photo link (optional)</label><input id="f-photos" name="photos" type="url" placeholder="https://photos.google.com/..." /></div>
       <button class="submit-btn" id="submitBtn" onclick="submitTip(event)">Submit tip</button>
       <p id="formError" style="display:none;font-size:0.78rem;color:var(--red);margin-top:4px;">Something went wrong — please try again.</p>
@@ -1179,25 +1226,58 @@
 </div>
 
 <script>
-  function openModal() { document.getElementById('tipModal').classList.add('open'); document.body.style.overflow='hidden'; document.getElementById('modalForm').style.display='flex'; document.getElementById('modalSuccess').style.display='none'; document.getElementById('formError').style.display='none'; document.getElementById('submitBtn').textContent='Submit tip'; document.getElementById('submitBtn').disabled=false; }
-  function closeModal() { document.getElementById('tipModal').classList.remove('open'); document.body.style.overflow=''; }
-  document.getElementById('tipModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+  function openModal() {
+    document.getElementById('tipModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('modalForm').style.display = 'flex';
+    document.getElementById('modalSuccess').style.display = 'none';
+    document.getElementById('formError').style.display = 'none';
+    document.getElementById('submitBtn').textContent = 'Submit tip';
+    document.getElementById('submitBtn').disabled = false;
+  }
+  function closeModal() {
+    document.getElementById('tipModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('tipModal').addEventListener('click', function(e){
+    if (e.target === this) closeModal();
+  });
   async function submitTip(e) {
     e.preventDefault();
-    var btn=document.getElementById('submitBtn'),err=document.getElementById('formError');
-    err.style.display='none'; btn.textContent='Sending…'; btn.disabled=true;
-    var data={place:document.getElementById('f-place').value,neighbourhood:document.getElementById('f-hood').value,email:document.getElementById('f-email').value,category:document.getElementById('f-cat').value,tip:document.getElementById('f-tip').value,photos:document.getElementById('f-photos').value};
+    var btn = document.getElementById('submitBtn'), err = document.getElementById('formError');
+    err.style.display = 'none'; btn.textContent = 'Sending…'; btn.disabled = true;
+    var data = {
+      place: document.getElementById('f-place').value,
+      neighbourhood: document.getElementById('f-hood').value,
+      email: document.getElementById('f-email').value,
+      category: document.getElementById('f-cat').value,
+      tip: document.getElementById('f-tip').value,
+      photos: document.getElementById('f-photos').value
+    };
     try {
-      var res=await fetch('https://formspree.io/f/mdawyane',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
-      if(res.ok){document.getElementById('modalForm').style.display='none';document.getElementById('modalSuccess').style.display='flex';document.getElementById('modalSuccess').style.flexDirection='column';document.getElementById('modalSuccess').style.alignItems='center';}
-      else throw new Error('bad');
-    } catch(e){err.style.display='block';btn.textContent='Submit tip';btn.disabled=false;}
+      var res = await fetch('https://formspree.io/f/mdawyane', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        document.getElementById('modalForm').style.display = 'none';
+        var s = document.getElementById('modalSuccess');
+        s.style.display = 'flex';
+        s.style.flexDirection = 'column';
+        s.style.alignItems = 'center';
+      } else throw new Error('bad');
+    } catch(e) {
+      err.style.display = 'block';
+      btn.textContent = 'Submit tip';
+      btn.disabled = false;
+    }
   }
 
-  // Simple filter tabs (visual only for now; wire to real filtering later)
+  // Filter tabs (visual only; wire to real filtering later)
   document.querySelectorAll('.filter').forEach(function(f){
-    f.addEventListener('click',function(){
-      document.querySelectorAll('.filter').forEach(function(x){x.classList.remove('active');});
+    f.addEventListener('click', function(){
+      document.querySelectorAll('.filter').forEach(function(x){ x.classList.remove('active'); });
       f.classList.add('active');
     });
   });
