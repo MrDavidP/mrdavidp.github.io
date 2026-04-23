@@ -392,6 +392,139 @@
       .foot-cta { font-size: 0.56rem; }
       .pc-share-btn { padding: 8px 11px; font-size: 0.6rem; }
     }
+  
+    /* ------ CLICKABLE BYLINE ------ */
+    a.pc-byline { text-decoration: none; color: inherit; }
+    a.pc-byline:hover .pc-byline-text b { color: var(--red); }
+    a.pc-byline:hover .pc-byline-photo { border-color: var(--red); }
+    .pc-byline-photo { transition: border-color 0.15s; }
+    .pc-byline-text b { transition: color 0.15s; }
+
+    /* ------ MORE TIPS STRIP ------ */
+    .more-tips {
+      border-top: 1.5px solid var(--ink);
+      background: var(--cream);
+      position: relative;
+      z-index: 2;
+    }
+    .more-tips-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .more-tips-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 0 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .more-tips-kicker {
+      font-family: var(--cond);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .more-tips-title {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .more-tips-all {
+      font-family: var(--cond);
+      font-size: 0.64rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .more-tips-all:hover { color: var(--red); border-color: var(--red); }
+    .more-tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .more-tip-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+      border-right: 1px solid var(--rule);
+      padding-bottom: 1.25rem;
+      transition: background 0.15s;
+      overflow: hidden;
+    }
+    .more-tip-card:last-child { border-right: none; }
+    .more-tip-card:hover { background: rgba(181,50,42,0.04); }
+    .more-tip-img-wrap {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--cream2);
+      position: relative;
+    }
+    .more-tip-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .more-tip-card:hover .more-tip-img { transform: scale(1.04); }
+    .more-tip-img-fallback {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif);
+      font-size: 3rem;
+      color: var(--rule);
+      font-weight: 400;
+    }
+    .more-tip-body {
+      padding: 1rem 1.1rem 0;
+    }
+    .more-tip-kicker {
+      font-family: var(--cond);
+      font-size: 0.56rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .more-tip-kicker b { color: var(--red); font-weight: 500; }
+    .more-tip-hed {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+    }
+    .more-tip-hed em { font-style: italic; font-weight: 400; }
+
+    @media (max-width: 960px) {
+      .more-tips-grid { grid-template-columns: 1fr; }
+      .more-tip-card {
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+      }
+      .more-tip-card:last-child { border-bottom: none; }
+      .more-tip-img-wrap { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 600px) {
+      .more-tips-inner { padding: 0 18px; }
+      .more-tips-head { flex-wrap: wrap; padding: 1.1rem 0; }
+      .more-tips-title { flex: 1 1 100%; font-size: 0.95rem; }
+    }
+
   </style>
 </head>
 <body>
@@ -480,10 +613,10 @@
     </div>
 
     <div class="pc-foot">
-      <div class="pc-byline">
+      <a class="pc-byline" href="profile-dave.html">
         <img class="pc-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" onerror="this.style.display='none'" />
         <div class="pc-byline-text">Tip by<b>Dave</b></div>
-      </div>
+      </a>
       <div class="pc-share">
         <span class="pc-share-toast" id="shareToast">Link copied</span>
         <button class="pc-share-btn" onclick="copyLink()">
@@ -494,6 +627,42 @@
           Share →
         </a>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- MORE TIPS -->
+<div class="more-tips">
+  <div class="more-tips-inner">
+    <div class="more-tips-head">
+      <div>
+        <div class="more-tips-kicker">More tips</div>
+        <div class="more-tips-title">Three more places, picked at random.</div>
+      </div>
+      <a href="index.html" class="more-tips-all">See all tips →</a>
+    </div>
+    <div class="more-tips-grid">
+      <a class="more-tip-card" href="tip-glencarlou.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="glencarlou-vineyard-wide.JPG" alt="Glen Carlou" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker"><b>Wine</b> · Wine · Cape Town</div>
+          <div class="more-tip-hed">Glen Carlou</div>
+        </div>
+      </a>
+      <a class="more-tip-card" href="tip-bijougregoire.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="nomos-6.jpg" alt="Bijouterie Grégoire" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker">Geneva</div>
+          <div class="more-tip-hed">Bijouterie Grégoire</div>
+        </div>
+      </a>
+      <a class="more-tip-card" href="tip-claro.html">
+        <div class="more-tip-img-wrap"><div class="more-tip-img-fallback" style="display:flex;">§</div></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker"><b>Restaurant</b> · HoodTip · Tel Aviv · Sarona</div>
+          <div class="more-tip-hed">Claro</div>
+        </div>
+      </a>
     </div>
   </div>
 </div>
