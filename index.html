@@ -76,10 +76,40 @@
     .nav { position: sticky; top: 0; z-index: 300; background: var(--cream); border-bottom: 1.5px solid var(--ink); }
     .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); height: 54px; display: flex; align-items: center; justify-content: space-between; }
     .nav-brand { display: flex; align-items: baseline; gap: 12px; }
-    .nav-logo { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; }
-    .nav-logo em { font-style: italic; font-weight: 400; }
-    .nav-logo .dot { color: var(--red); }
-    .nav-tag { font-family: var(--serif); font-style: italic; font-size: 0.82rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; }
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      border: 1.5px solid var(--ink);
+      padding: 7px 14px;
+      color: var(--ink);
+      text-decoration: none;
+      background: var(--cream);
+      transition: background 0.15s;
+    }
+    .nav-logo:hover { background: var(--cream2); }
+    .nav-logo-word {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .nav-logo-word em { font-style: italic; font-weight: 500; }
+    .nav-logo-tag {
+      font-family: var(--cond);
+      font-weight: 500;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-left: 1.5px solid var(--ink);
+      padding-left: 12px;
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .nav-logo-tag b { color: var(--red); font-weight: 600; }
     .nav-right { display: flex; align-items: stretch; height: 54px; }
     .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
     .nav-link:hover { color: var(--ink); }
@@ -110,7 +140,7 @@
     .cover-main { position: relative; border-right: 1.5px solid var(--ink); overflow: hidden; display: block; color: var(--cream); min-height: 0; }
     .cover-main-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transition: transform 8s ease; }
     .cover-main:hover .cover-main-img { transform: scale(1.04); }
-    .cover-main-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.96) 0%, rgba(15,12,10,0.82) 30%, rgba(15,12,10,0.5) 55%, rgba(15,12,10,0.2) 80%, rgba(15,12,10,0.08) 100%); }
+    .cover-main-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,12,10,0.92) 0%, rgba(15,12,10,0.55) 40%, rgba(15,12,10,0.15) 75%, rgba(15,12,10,0.05) 100%); }
     .cover-main-top { position: absolute; top: 1.75rem; left: 2rem; right: 2rem; display: flex; justify-content: space-between; align-items: flex-start; z-index: 2; }
     .cover-main-label { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); background: var(--red); padding: 6px 10px; }
     .cover-main-issue { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,244,239,0.6); text-align: right; line-height: 1.5; }
@@ -506,22 +536,16 @@
     }
     @media (max-width: 880px) {
       .nav-link { display: none; }
-      .nav-tag { display: none; }
+      .nav-logo-tag { display: none; }
+      .nav-logo { gap: 0; padding: 5px 10px; }
+      .nav-logo-word { font-size: 1.25rem; }
       .nav-inner { padding: 0 18px; }
       .masthead-inner { padding: 0 18px; gap: 1rem; }
       .masthead-center { display: none; }
       .masthead-left, .masthead-right { font-size: 0.55rem; gap: 0.7rem; }
 
       .cover-inner { grid-template-columns: 1fr; height: auto; max-height: none; min-height: 0; }
-      .cover-main { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: auto; min-height: 460px; }
-      .cover-main-top { top: 1.25rem; left: 1.25rem; right: 1.25rem; }
-      .cover-main-body { padding: 1.5rem 1.25rem 1.5rem; }
-      .cover-main-hed { font-size: 2.1rem; line-height: 1.05; margin-bottom: 0.8rem; }
-      .cover-main-dek { font-size: 0.98rem; line-height: 1.45; margin-bottom: 1rem; }
-      .cover-main-kicker { font-size: 0.56rem; letter-spacing: 0.18em; margin-bottom: 0.7rem; }
-      .cover-main-foot { padding-top: 0.9rem; gap: 1rem; }
-      .cover-byline-photo { width: 32px; height: 32px; }
-      .cover-read { padding: 9px 16px; font-size: 0.62rem; }
+      .cover-main { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: auto; min-height: 540px; }
       .cover-side { grid-template-rows: auto auto; }
       .cover-teaser { aspect-ratio: auto; }
       .cover-teaser-img-wrap { aspect-ratio: 16/9; flex: 0 0 auto; }
@@ -564,8 +588,7 @@
 <div class="nav">
   <div class="nav-inner">
     <div class="nav-brand">
-      <a href="index.html" class="nav-logo">Hood<em>Tip<span class="dot">.</span></em></a>
-      <span class="nav-tag">Only the good stuff.</span>
+      <a href="index.html" class="nav-logo" aria-label="HoodTip — Only the good stuff"><span class="nav-logo-word">Hood<em>Tip</em></span><span class="nav-logo-tag">Only the <b>good</b> stuff</span></a>
     </div>
     <div class="nav-right">
       <a href="profile-dave.html" class="nav-link">Dave</a>
@@ -631,6 +654,7 @@
       <a class="cover-teaser" href="tip-nagomi.html">
         <div class="cover-teaser-img-wrap">
           <img class="cover-teaser-img" src="nagomi-chef.jpg" alt="Nagomi" style="object-position:center 20%;" />
+          <span class="cover-teaser-badge">Also this issue</span>
         </div>
         <div class="cover-teaser-body">
           <div>
@@ -648,6 +672,7 @@
       <a class="cover-teaser" href="tip-arnavutkoy.html">
         <div class="cover-teaser-img-wrap">
           <img class="cover-teaser-img" src="photo-arnavutkoy-restaurant.jpg" alt="Arnavutköy Istanbul" style="object-position:center 55%;" />
+          <span class="cover-teaser-badge">Also this issue</span>
         </div>
         <div class="cover-teaser-body">
           <div>
