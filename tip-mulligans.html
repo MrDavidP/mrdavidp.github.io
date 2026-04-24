@@ -557,6 +557,42 @@
       .more-tips-title { flex: 1 1 100%; font-size: 0.95rem; }
     }
 
+  
+    /* === Bolder fact strip (v6) === */
+    .pc-facts { grid-template-columns: 1fr 1fr; }
+    .pc-fact--primary .pc-fact-label {
+      color: var(--red);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+    .pc-fact-value--bold {
+      font-family: var(--serif);
+      font-style: normal;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+    }
+    .pc-fact-value--bold em {
+      font-weight: 500;
+      font-style: italic;
+    }
+    .pc-fact-value--bold a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pc-fact-value--bold a:hover {
+      color: var(--red);
+      border-color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      .pc-facts { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -629,17 +665,13 @@
       </div>
 
       <div class="pc-facts">
-        <div class="pc-fact">
-          <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Mulligans%20Irish%20Pub%20Geneva" target="_blank" rel="noopener">Geneva</a></span>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">How to get here</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Mulligans%20Irish%20Pub%20Geneva" target="_blank" rel="noopener">Geneva</a></span>
         </div>
-        <div class="pc-fact">
-          <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value"><em>A good time</em></span>
-        </div>
-        <div class="pc-fact">
+        <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>Outside feels like a proper city for an…</em></span>
+          <span class="pc-fact-value pc-fact-value--bold"><em>Outside feels like a proper city for an…</em></span>
         </div>
       </div>
     </div>
@@ -669,30 +701,30 @@
     <div class="more-tips-head">
       <div>
         <div class="more-tips-kicker">More tips</div>
-        <div class="more-tips-title">Three more places, picked at random.</div>
+        <div class="more-tips-title">More from Geneva.</div>
       </div>
       <a href="index.html" class="more-tips-all">See all tips →</a>
     </div>
     <div class="more-tips-grid">
-      <a class="more-tip-card" href="tip-bongojoe.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="IMG_3020.jpg" alt="Bongo Joe" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-ohmartine-eauxvives.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="ohmartine-eauxvives-exterior.jpg" alt="Oh Martine!" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Bar</b> · Bar · Plainpalais · Geneva</div>
-          <div class="more-tip-hed">Bongo Joe</div>
+          <div class="more-tip-kicker">Geneva</div>
+          <div class="more-tip-hed">Oh Martine!</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-manor.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="manor-exterior.jpg" alt="Manor Food Hall" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-bibliotheque.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="bastions-park-view.jpg" alt="Bibliothèque de Genève" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Food Hall</b> · Food Hall · Saint-Gervais · Geneva</div>
-          <div class="more-tip-hed">Manor Food Hall</div>
+          <div class="more-tip-kicker"><b>Library</b> · Geneva</div>
+          <div class="more-tip-hed">Bibliothèque de Genève</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-pignata.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="pignata-pizza-athome.jpg" alt="La Pignata" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-galerie123.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="galerie123-1.jpg" alt="Galerie 1 2 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Pizza</b> · Pizza · Plainpalais · Geneva</div>
-          <div class="more-tip-hed">La Pignata</div>
+          <div class="more-tip-kicker"><b>Shop</b> · Geneva</div>
+          <div class="more-tip-hed">Galerie 1 2 3</div>
         </div>
       </a>
     </div>

@@ -557,6 +557,42 @@
       .more-tips-title { flex: 1 1 100%; font-size: 0.95rem; }
     }
 
+  
+    /* === Bolder fact strip (v6) === */
+    .pc-facts { grid-template-columns: 1fr 1fr; }
+    .pc-fact--primary .pc-fact-label {
+      color: var(--red);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+    .pc-fact-value--bold {
+      font-family: var(--serif);
+      font-style: normal;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+    }
+    .pc-fact-value--bold em {
+      font-weight: 500;
+      font-style: italic;
+    }
+    .pc-fact-value--bold a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pc-fact-value--bold a:hover {
+      color: var(--red);
+      border-color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      .pc-facts { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -629,17 +665,13 @@
       </div>
 
       <div class="pc-facts">
-        <div class="pc-fact">
-          <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Jaeger-Le%20Coultre%20Geneva%20Rue%20du%20Rh%C3%B4ne%2056%2C%201204%20Geneva" target="_blank" rel="noopener">Rue du Rhône 56</a></span>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">How to get here</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Jaeger-Le%20Coultre%20Geneva%20Rue%20du%20Rh%C3%B4ne%2056%2C%201204%20Geneva" target="_blank" rel="noopener">Rue du Rhône 56</a></span>
         </div>
-        <div class="pc-fact">
-          <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value">Buying a watch, <em>service</em></span>
-        </div>
-        <div class="pc-fact">
+        <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>service</em></span>
+          <span class="pc-fact-value pc-fact-value--bold"><em>service</em></span>
         </div>
       </div>
     </div>
@@ -669,30 +701,30 @@
     <div class="more-tips-head">
       <div>
         <div class="more-tips-kicker">More tips</div>
-        <div class="more-tips-title">Three more places, picked at random.</div>
+        <div class="more-tips-title">More from Geneva.</div>
       </div>
       <a href="index.html" class="more-tips-all">See all tips →</a>
     </div>
     <div class="more-tips-grid">
-      <a class="more-tip-card" href="tip-barneygreengrass.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="Screenshot_2026-03-17_at_15_29_09.png" alt="Barney Greengrass" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-bongojoe.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="IMG_3020.jpg" alt="Bongo Joe" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Deli</b> · Deli · Upper West Side · New York</div>
-          <div class="more-tip-hed">Barney Greengrass</div>
+          <div class="more-tip-kicker"><b>Bar</b> · Geneva</div>
+          <div class="more-tip-hed">Bongo Joe</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-mulligans.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="mulligans-exterior-2.jpg" alt="Mulligans Irish Pub" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-papabou.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="papabou-exterior-wide.jpg" alt="Papabou" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
           <div class="more-tip-kicker">Geneva</div>
-          <div class="more-tip-hed">Mulligans Irish Pub</div>
+          <div class="more-tip-hed">Papabou</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-glencarlou.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="glencarlou-vineyard-wide.JPG" alt="Glen Carlou" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-paulhenri.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="paulhenri-market-color.jpg" alt="Paul-Henri Soler" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Wine</b> · Wine · Cape Town</div>
-          <div class="more-tip-hed">Glen Carlou</div>
+          <div class="more-tip-kicker">Geneva</div>
+          <div class="more-tip-hed">Paul-Henri Soler</div>
         </div>
       </a>
     </div>

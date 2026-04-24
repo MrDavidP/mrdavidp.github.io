@@ -613,6 +613,42 @@
       .more-tips-title { flex: 1 1 100%; font-size: 0.95rem; }
     }
 
+  
+    /* === Bolder fact strip (v6) === */
+    .pc-facts { grid-template-columns: 1fr 1fr; }
+    .pc-fact--primary .pc-fact-label {
+      color: var(--red);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+    .pc-fact-value--bold {
+      font-family: var(--serif);
+      font-style: normal;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+    }
+    .pc-fact-value--bold em {
+      font-weight: 500;
+      font-style: italic;
+    }
+    .pc-fact-value--bold a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pc-fact-value--bold a:hover {
+      color: var(--red);
+      border-color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      .pc-facts { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -653,17 +689,13 @@
       </div>
 
       <div class="pc-facts">
-        <div class="pc-fact">
-          <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Claro%20Tel%20Aviv%2030%20David%20Elazar%20St%2C%20Sarona%2C%20Tel%20Aviv" target="_blank" rel="noopener">30 David Elazar St, Sarona,…</a></span>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">How to get here</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Claro%20Tel%20Aviv%2030%20David%20Elazar%20St%2C%20Sarona%2C%20Tel%20Aviv" target="_blank" rel="noopener">30 David Elazar St, Sarona,…</a></span>
         </div>
-        <div class="pc-fact">
-          <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value">Lunch, <em>dinner</em></span>
-        </div>
-        <div class="pc-fact">
+        <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>dinner</em></span>
+          <span class="pc-fact-value pc-fact-value--bold"><em>dinner</em></span>
         </div>
       </div>
     </div>
@@ -693,30 +725,30 @@
     <div class="more-tips-head">
       <div>
         <div class="more-tips-kicker">More tips</div>
-        <div class="more-tips-title">Three more places, picked at random.</div>
+        <div class="more-tips-title">More tips.</div>
       </div>
       <a href="index.html" class="more-tips-all">See all tips →</a>
     </div>
     <div class="more-tips-grid">
-      <a class="more-tip-card" href="tip-rubymimi-zurich.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="rubymimi-zurich-room.jpg" alt="Ruby Mimi" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-grea.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="Screenshot_2026-03-17_at_12_09_36.png" alt="Grea Coffee Nations" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker">HoodTip</div>
-          <div class="more-tip-hed">Ruby Mimi</div>
+          <div class="more-tip-kicker">Istanbul</div>
+          <div class="more-tip-hed">Grea Coffee Nations</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-saintamour.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="saintamour-lavaux-lake.jpg" alt="The best place to actually sit in Lavaux and drink wine." loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-arnavutkoy.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="Screenshot_2026-03-17_at_11_27_13.png" alt="Arnavutköy Restaurant" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker">Lavaux · Vaud</div>
-          <div class="more-tip-hed">The best place to actually sit in Lavaux and drink wine.</div>
+          <div class="more-tip-kicker">Istanbul</div>
+          <div class="more-tip-hed">Arnavutköy Restaurant</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-bongojoe.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="IMG_3020.jpg" alt="Bongo Joe" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-thecow.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="IMG_3513.JPG" alt="The Cow" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Bar</b> · Bar · Plainpalais · Geneva</div>
-          <div class="more-tip-hed">Bongo Joe</div>
+          <div class="more-tip-kicker">London</div>
+          <div class="more-tip-hed">The Cow</div>
         </div>
       </a>
     </div>

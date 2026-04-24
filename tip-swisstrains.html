@@ -557,6 +557,42 @@
       .more-tips-title { flex: 1 1 100%; font-size: 0.95rem; }
     }
 
+  
+    /* === Bolder fact strip (v6) === */
+    .pc-facts { grid-template-columns: 1fr 1fr; }
+    .pc-fact--primary .pc-fact-label {
+      color: var(--red);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+    .pc-fact-value--bold {
+      font-family: var(--serif);
+      font-style: normal;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+    }
+    .pc-fact-value--bold em {
+      font-weight: 500;
+      font-style: italic;
+    }
+    .pc-fact-value--bold a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pc-fact-value--bold a:hover {
+      color: var(--red);
+      border-color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      .pc-facts { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -630,17 +666,13 @@
       </div>
 
       <div class="pc-facts">
-        <div class="pc-fact">
-          <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value">SBB intercity trains</span>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">How to get here</span>
+          <span class="pc-fact-value pc-fact-value--bold">SBB intercity trains</span>
         </div>
-        <div class="pc-fact">
-          <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value"><em>Long routes — Geneva ↔ Zürich, anything 2hr+</em></span>
-        </div>
-        <div class="pc-fact">
+        <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>Regular ticket. Walk past first class. Order the wine.</em></span>
+          <span class="pc-fact-value pc-fact-value--bold"><em>Regular ticket. Walk past first class. Order the wine.</em></span>
         </div>
       </div>
     </div>
@@ -670,30 +702,30 @@
     <div class="more-tips-head">
       <div>
         <div class="more-tips-kicker">More tips</div>
-        <div class="more-tips-title">Three more places, picked at random.</div>
+        <div class="more-tips-title">More tips.</div>
       </div>
       <a href="index.html" class="more-tips-all">See all tips →</a>
     </div>
     <div class="more-tips-grid">
-      <a class="more-tip-card" href="tip-lepatio-arusha.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="lepatio-arusha.jpg" alt="Get a beer. Watch the football." loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-gregoire.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="nomos-2.jpg" alt="Want a Nomos in Geneva? There is exactly one shop." loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker">Arusha</div>
-          <div class="more-tip-hed">Get a beer. Watch the football.</div>
+          <div class="more-tip-kicker">Geneva</div>
+          <div class="more-tip-hed">Want a Nomos in Geneva? There is exactly one shop.</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-lebalafon.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="lefbalafon-view.JPG" alt="Le Balafon" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-bijougregoire.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="nomos-6.jpg" alt="Bijouterie Grégoire" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Restaurant</b> · Restaurant</div>
-          <div class="more-tip-hed">Le Balafon</div>
+          <div class="more-tip-kicker">Geneva</div>
+          <div class="more-tip-hed">Bijouterie Grégoire</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-barneygreengrass.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="Screenshot_2026-03-17_at_15_29_09.png" alt="Barney Greengrass" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-sagano.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="sushi-takeout-nations.jpg" alt="Sagano Take Away" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Deli</b> · Deli · Upper West Side · New York</div>
-          <div class="more-tip-hed">Barney Greengrass</div>
+          <div class="more-tip-kicker"><b>Sushi</b> · Geneva</div>
+          <div class="more-tip-hed">Sagano Take Away</div>
         </div>
       </a>
     </div>

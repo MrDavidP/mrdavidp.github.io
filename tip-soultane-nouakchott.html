@@ -557,6 +557,42 @@
       .more-tips-title { flex: 1 1 100%; font-size: 0.95rem; }
     }
 
+  
+    /* === Bolder fact strip (v6) === */
+    .pc-facts { grid-template-columns: 1fr 1fr; }
+    .pc-fact--primary .pc-fact-label {
+      color: var(--red);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+    .pc-fact-value--bold {
+      font-family: var(--serif);
+      font-style: normal;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+    }
+    .pc-fact-value--bold em {
+      font-weight: 500;
+      font-style: italic;
+    }
+    .pc-fact-value--bold a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pc-fact-value--bold a:hover {
+      color: var(--red);
+      border-color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      .pc-facts { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -630,17 +666,13 @@
       </div>
 
       <div class="pc-facts">
-        <div class="pc-fact">
-          <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Le%20Soultane%20Mauritania" target="_blank" rel="noopener">Mauritania</a></span>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">How to get here</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Le%20Soultane%20Mauritania" target="_blank" rel="noopener">Mauritania</a></span>
         </div>
-        <div class="pc-fact">
-          <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value"><em>A good time</em></span>
-        </div>
-        <div class="pc-fact">
+        <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>Camels, horses, grilled fish, the Atlantic</em></span>
+          <span class="pc-fact-value pc-fact-value--bold"><em>Camels, horses, grilled fish, the Atlantic</em></span>
         </div>
       </div>
     </div>
@@ -670,30 +702,30 @@
     <div class="more-tips-head">
       <div>
         <div class="more-tips-kicker">More tips</div>
-        <div class="more-tips-title">Three more places, picked at random.</div>
+        <div class="more-tips-title">More tips.</div>
       </div>
       <a href="index.html" class="more-tips-all">See all tips →</a>
     </div>
     <div class="more-tips-grid">
-      <a class="more-tip-card" href="tip-karmabread.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="london-karmabread-challah-hand.jpg" alt="Karma Bread" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-glencarlou.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="glencarlou-vineyard-wide.JPG" alt="Glen Carlou" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker">London</div>
-          <div class="more-tip-hed">Karma Bread</div>
+          <div class="more-tip-kicker"><b>Wine</b> · Cape Town</div>
+          <div class="more-tip-hed">Glen Carlou</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-electriccinema.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="682384E6-2714-486C-A716-4757245349A1.jpg" alt="Electric Cinema" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-latitude-15-lusaka.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="Latitude-15.JPG" alt="Latitude 15" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker">London</div>
-          <div class="more-tip-hed">Electric Cinema</div>
+          <div class="more-tip-kicker">Lusaka</div>
+          <div class="more-tip-hed">Latitude 15</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-bibliotheque.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="bastions-park-view.jpg" alt="Bibliothèque de Genève" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-lepatio-arusha.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="lepatio-arusha.jpg" alt="Get a beer. Watch the football." loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Library</b> · Library · Geneva</div>
-          <div class="more-tip-hed">Bibliothèque de Genève</div>
+          <div class="more-tip-kicker">Arusha</div>
+          <div class="more-tip-hed">Get a beer. Watch the football.</div>
         </div>
       </a>
     </div>

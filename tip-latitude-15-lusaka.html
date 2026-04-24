@@ -557,6 +557,42 @@
       .more-tips-title { flex: 1 1 100%; font-size: 0.95rem; }
     }
 
+  
+    /* === Bolder fact strip (v6) === */
+    .pc-facts { grid-template-columns: 1fr 1fr; }
+    .pc-fact--primary .pc-fact-label {
+      color: var(--red);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+    .pc-fact-value--bold {
+      font-family: var(--serif);
+      font-style: normal;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+    }
+    .pc-fact-value--bold em {
+      font-weight: 500;
+      font-style: italic;
+    }
+    .pc-fact-value--bold a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pc-fact-value--bold a:hover {
+      color: var(--red);
+      border-color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      .pc-facts { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -632,17 +668,13 @@
       </div>
 
       <div class="pc-facts">
-        <div class="pc-fact">
-          <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value"><a href="https://maps.google.com/?q=Latitude%2015%20Lusaka" target="_blank" rel="noopener">Lusaka</a></span>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">How to get here</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Latitude%2015%20Lusaka" target="_blank" rel="noopener">Lusaka</a></span>
         </div>
-        <div class="pc-fact">
-          <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value"><em>A good time</em></span>
-        </div>
-        <div class="pc-fact">
+        <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>The coolest place to stay in Lusaka</em></span>
+          <span class="pc-fact-value pc-fact-value--bold"><em>The coolest place to stay in Lusaka</em></span>
         </div>
       </div>
     </div>
@@ -672,30 +704,30 @@
     <div class="more-tips-head">
       <div>
         <div class="more-tips-kicker">More tips</div>
-        <div class="more-tips-title">Three more places, picked at random.</div>
+        <div class="more-tips-title">More tips.</div>
       </div>
       <a href="index.html" class="more-tips-all">See all tips →</a>
     </div>
     <div class="more-tips-grid">
-      <a class="more-tip-card" href="tip-galerie123.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="galerie123-1.jpg" alt="Galerie 1 2 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-zanzibar-hideaway-nungwi.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="zanzibar-beach-hero.JPG" alt="Hotel Riu Palace Zanzibar" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Shop</b> · Shop · Eaux-Vives · Geneva</div>
-          <div class="more-tip-hed">Galerie 1 2 3</div>
+          <div class="more-tip-kicker">Zanzibar</div>
+          <div class="more-tip-hed">Hotel Riu Palace Zanzibar</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-lagrandeboucherie.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="Screenshot_2026-03-17_at_15_29_23.png" alt="La Grande Boucherie" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-glencarlou.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="glencarlou-vineyard-wide.JPG" alt="Glen Carlou" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Restaurant &amp; Bar</b> · Restaurant &amp; Bar · Midtown</div>
-          <div class="more-tip-hed">La Grande Boucherie</div>
+          <div class="more-tip-kicker"><b>Wine</b> · Cape Town</div>
+          <div class="more-tip-hed">Glen Carlou</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-pano-photography.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="pano-photography-london-long-street.jpg" alt="Your phone can bend reality. Most people never try." loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-kigali-question-coffee.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="kigali-question-coffee.JPG" alt="Question Coffee" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker">London</div>
-          <div class="more-tip-hed">Your phone can bend reality. Most people never try.</div>
+          <div class="more-tip-kicker"><b>Coffee</b> · Kigali</div>
+          <div class="more-tip-hed">Question Coffee</div>
         </div>
       </a>
     </div>

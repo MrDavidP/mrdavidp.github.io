@@ -557,6 +557,42 @@
       .more-tips-title { flex: 1 1 100%; font-size: 0.95rem; }
     }
 
+  
+    /* === Bolder fact strip (v6) === */
+    .pc-facts { grid-template-columns: 1fr 1fr; }
+    .pc-fact--primary .pc-fact-label {
+      color: var(--red);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+    }
+    .pc-fact-value--bold {
+      font-family: var(--serif);
+      font-style: normal;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+    }
+    .pc-fact-value--bold em {
+      font-weight: 500;
+      font-style: italic;
+    }
+    .pc-fact-value--bold a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pc-fact-value--bold a:hover {
+      color: var(--red);
+      border-color: var(--ink);
+    }
+    @media (max-width: 720px) {
+      .pc-facts { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -628,17 +664,13 @@
       </div>
 
       <div class="pc-facts">
-        <div class="pc-fact">
-          <span class="pc-fact-label">Where</span>
-          <span class="pc-fact-value"><a href="https://maps.google.com/?q=H%C3%B4tel%20Les%20Rives%20Oceanik%20Paris" target="_blank" rel="noopener">Paris</a></span>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">How to get here</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=H%C3%B4tel%20Les%20Rives%20Oceanik%20Paris" target="_blank" rel="noopener">Paris</a></span>
         </div>
-        <div class="pc-fact">
-          <span class="pc-fact-label">Best for</span>
-          <span class="pc-fact-value"><em>A good time</em></span>
-        </div>
-        <div class="pc-fact">
+        <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
-          <span class="pc-fact-value"><em>Skip the hotel breakfast</em></span>
+          <span class="pc-fact-value pc-fact-value--bold"><em>Skip the hotel breakfast</em></span>
         </div>
       </div>
     </div>
@@ -668,30 +700,30 @@
     <div class="more-tips-head">
       <div>
         <div class="more-tips-kicker">More tips</div>
-        <div class="more-tips-title">Three more places, picked at random.</div>
+        <div class="more-tips-title">More from Paris.</div>
       </div>
       <a href="index.html" class="more-tips-all">See all tips →</a>
     </div>
     <div class="more-tips-grid">
-      <a class="more-tip-card" href="tip-kigali-marriott.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="kigali-marriot-breakfast-2.JPG" alt="Kigali Marriott" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-paulbert.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="paulbert-steak-fritte.jpg" alt="Bistrot Paul Bert" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Hotel</b> · Hotel · Kigali</div>
-          <div class="more-tip-hed">Kigali Marriott</div>
+          <div class="more-tip-kicker"><b>Bistro</b> · Paris</div>
+          <div class="more-tip-hed">Bistrot Paul Bert</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-galerie123.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="galerie123-1.jpg" alt="Galerie 1 2 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-leverrevole.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="leverrevole-wine-bottle.jpg" alt="Le Verre Volé" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker"><b>Shop</b> · Shop · Eaux-Vives · Geneva</div>
-          <div class="more-tip-hed">Galerie 1 2 3</div>
+          <div class="more-tip-kicker">Paris</div>
+          <div class="more-tip-hed">Le Verre Volé</div>
         </div>
       </a>
-      <a class="more-tip-card" href="tip-zanzibar-hideaway-nungwi.html">
-        <div class="more-tip-img-wrap"><img class="more-tip-img" src="zanzibar-beach-hero.JPG" alt="Hotel Riu Palace Zanzibar" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+      <a class="more-tip-card" href="tip-asritursucu.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="pickle-shop.jpg" alt="Asri Turşucu" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
         <div class="more-tip-body">
-          <div class="more-tip-kicker">Zanzibar</div>
-          <div class="more-tip-hed">Hotel Riu Palace Zanzibar</div>
+          <div class="more-tip-kicker"><b>Shop</b> · Istanbul</div>
+          <div class="more-tip-hed">Asri Turşucu</div>
         </div>
       </a>
     </div>
