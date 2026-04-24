@@ -593,6 +593,108 @@
       .pc-facts { grid-template-columns: 1fr; }
     }
 
+  
+    /* === More tips: smaller, distinct from main tip (v6.1) === */
+    .more-tips {
+      background: var(--ink) !important;
+      color: var(--cream);
+      border-top: none !important;
+      margin-top: 2.5rem;
+    }
+    .more-tips-inner {
+      padding: 0 32px;
+      max-width: 1360px;
+    }
+    .more-tips-head {
+      padding: 1.4rem 0 1rem !important;
+      border-bottom: 1px solid rgba(247,244,239,0.15) !important;
+      align-items: center !important;
+    }
+    .more-tips-kicker {
+      display: none;
+    }
+    .more-tips-title {
+      font-family: var(--cond) !important;
+      font-style: normal !important;
+      font-size: 0.7rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      color: var(--cream) !important;
+    }
+    .more-tips-title::before {
+      content: "↓  ";
+      color: var(--red);
+      font-weight: 600;
+    }
+    .more-tips-all {
+      color: rgba(247,244,239,0.7) !important;
+      border-color: rgba(247,244,239,0.3) !important;
+      font-size: 0.58rem !important;
+      letter-spacing: 0.14em !important;
+    }
+    .more-tips-all:hover {
+      color: var(--cream) !important;
+      border-color: var(--cream) !important;
+    }
+    .more-tips-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      border-bottom: none !important;
+    }
+    .more-tip-card {
+      border-right: 1px solid rgba(247,244,239,0.12) !important;
+      color: rgba(247,244,239,0.95) !important;
+      padding-bottom: 1rem !important;
+    }
+    .more-tip-card:last-child { border-right: none !important; }
+    .more-tip-card:hover {
+      background: rgba(247,244,239,0.04) !important;
+    }
+    .more-tip-img-wrap {
+      aspect-ratio: 16/10 !important;
+      background: #2a2825 !important;
+    }
+    .more-tip-img-fallback {
+      color: rgba(247,244,239,0.15) !important;
+      font-size: 2rem !important;
+    }
+    .more-tip-body {
+      padding: 0.7rem 0.9rem 0 !important;
+    }
+    .more-tip-kicker {
+      font-size: 0.5rem !important;
+      letter-spacing: 0.18em !important;
+      color: rgba(247,244,239,0.45) !important;
+      margin-bottom: 0.3rem !important;
+    }
+    .more-tip-kicker b {
+      color: var(--red) !important;
+      font-weight: 600 !important;
+    }
+    .more-tip-hed {
+      font-size: 0.92rem !important;
+      font-weight: 500 !important;
+      line-height: 1.25 !important;
+      color: var(--cream) !important;
+    }
+    .more-tip-card:hover .more-tip-hed { color: var(--cream); }
+
+    @media (max-width: 720px) {
+      .more-tips-grid { grid-template-columns: 1fr !important; }
+      .more-tip-card {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(247,244,239,0.12) !important;
+        display: grid !important;
+        grid-template-columns: 100px 1fr !important;
+        gap: 12px !important;
+        padding: 12px !important;
+        align-items: center !important;
+      }
+      .more-tip-card:last-child { border-bottom: none !important; }
+      .more-tip-img-wrap { aspect-ratio: 4/3 !important; }
+      .more-tip-body { padding: 0 !important; }
+    }
+
   </style>
 </head>
 <body>
