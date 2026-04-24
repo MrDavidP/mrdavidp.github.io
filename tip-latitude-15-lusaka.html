@@ -695,6 +695,29 @@
       .more-tip-body { padding: 0 !important; }
     }
 
+  
+    /* === Optional paragraph slots (v6.2) === */
+    .pc-context {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      max-width: 38em;
+    }
+    .pc-context p {
+      margin: 0 0 0.7rem;
+    }
+    .pc-context p:last-child { margin-bottom: 0; }
+    .pc-context.below { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+    /* Empty state: invisible until filled */
+    .pc-context:empty { display: none; }
+    .pc-context p:empty { display: none; }
+    .pc-context:has(p:only-child:empty) { display: none; }
+    @media (max-width: 720px) {
+      .pc-context { font-size: 1rem; }
+    }
+
   </style>
 </head>
 <body>
@@ -765,9 +788,12 @@
 
       <h1 class="pc-title">Latitude 15</h1>
 
+      <div class="pc-context above"><p></p></div>
+
       <div class="pc-callout">
         <p class="pc-callout-text">The coolest place to stay in Lusaka. Even if you&#x27;re not a guest, come for dinner — the atmosphere alone is worth it.</p>
       </div>
+      <div class="pc-context below"><p></p></div>
 
       <div class="pc-facts">
         <div class="pc-fact pc-fact--primary">
