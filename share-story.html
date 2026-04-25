@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share to Story — HoodTip</title>
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/html-to-image@1.11.13/dist/html-to-image.js"></script>
+
+<style>
+:root {
+  --cream: #f7f4ef;
+  --paper: #ebe2ce;
+  --cream2: #efeae1;
+  --ink: #1a1816;
+  --ink2: #2a2925;
+  --muted: #6b6560;
+  --rule: #d9d2c6;
+  --red: #b5322a;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Barlow', system-ui, sans-serif;
+  --cond: 'Barlow Condensed', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  background: #100f0e;
+  color: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 14px 48px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app { width: 100%; max-width: 460px; display: flex; flex-direction: column; gap: 16px; }
+
+.app-header { text-align: center; margin-bottom: 2px; }
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.55);
+  text-decoration: none;
+  padding: 6px 0;
+  margin-bottom: 6px;
+}
+.back-link:hover { color: var(--cream); }
+.app-header h1 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--cream);
+}
+.app-header p {
+  font-family: var(--cond);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.4);
+  margin-top: 5px;
+}
+
+/* === Preview frame === */
+.story-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #050505;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+}
+
+/* === The story card (1080x1920) === */
+.story-card {
+  width: 1080px;
+  height: 1920px;
+  transform-origin: top left;
+  position: absolute;
+  top: 0; left: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(rgba(26,24,22,0.06) 1px, transparent 1px),
+    radial-gradient(rgba(26,24,22,0.035) 1px, transparent 1px);
+  background-size: 4px 4px, 9px 9px;
+  background-position: 0 0, 2px 3px;
+  font-family: var(--sans);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  padding: 200px 80px 90px;
+}
+
+/* === MASTHEAD: matches v11 nav-logo === */
+.sc-masthead {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  padding: 22px 32px;
+  align-self: center;
+  margin-bottom: 8px;
+}
+.sc-masthead-word {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 100px;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  color: var(--ink);
+}
+.sc-masthead-word em { font-style: italic; font-weight: 500; }
+.sc-masthead-tag {
+  font-family: var(--cond);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-left: 3px solid var(--ink);
+  padding-left: 26px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.sc-masthead-tag b { color: var(--red); font-weight: 700; }
+
+/* Magazine meta row */
+.sc-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 14px 4px;
+  margin-top: 36px;
+  margin-bottom: 50px;
+}
+.sc-meta-row .left, .sc-meta-row .right {
+  font-family: var(--cond);
+  font-size: 22px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 500;
+}
+.sc-meta-row .center {
+  width: 8px; height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+/* Photo */
+.sc-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--cream2);
+  border: 2.5px solid var(--ink);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 18px 20px 0 rgba(26,24,22,0.09);
+}
+.sc-photo {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Quote — auto-sizes via JS based on length */
+.sc-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  margin-top: 60px;
+  flex-grow: 1;
+  position: relative;
+}
+.sc-quote-mark {
+  font-family: var(--serif);
+  font-size: 150px;
+  line-height: 0.3;
+  color: var(--red);
+  font-style: italic;
+  display: block;
+  margin-bottom: 26px;
+  font-weight: 500;
+}
+
+/* Bottom: byline + URL */
+.sc-bottom {
+  margin-top: 50px;
+  border-top: 4px double var(--ink);
+  padding-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.sc-byline {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.sc-byline-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ink);
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 600;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sc-byline-by {
+  font-family: var(--cond);
+  font-size: 18px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.sc-byline-name {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+}
+.sc-byline-loc {
+  font-family: var(--cond);
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.sc-url-block {
+  text-align: right;
+  flex-shrink: 0;
+}
+.sc-url-label {
+  font-family: var(--cond);
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.sc-url {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 3px solid var(--red);
+  padding-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+/* === Controls === */
+.controls { display: flex; flex-direction: column; gap: 12px; }
+
+.share-btn {
+  background: var(--red);
+  color: var(--cream);
+  border: none;
+  font-family: var(--cond);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 18px 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.share-btn:hover { background: #9c2920; }
+.share-btn:disabled { opacity: 0.5; cursor: wait; }
+
+.status {
+  font-family: var(--cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(247,244,239,0.5);
+  text-align: center;
+  min-height: 16px;
+}
+.status.success { color: #8fc183; }
+.status.error { color: #ff8b75; }
+
+.note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: rgba(247,244,239,0.42);
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.5;
+  padding: 0 12px;
+}
+
+.error-state {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: var(--serif);
+  font-style: italic;
+  color: rgba(247,244,239,0.7);
+}
+.error-state a { color: var(--red); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <a class="back-link" id="backLink" href="index.html">&larr; Back</a>
+
+  <div class="app-header">
+    <h1>Share to Story</h1>
+    <p>Posts to Instagram &middot; 9:16</p>
+  </div>
+
+  <div class="story-frame" id="storyFrame">
+    <div class="story-card" id="storyCard">
+
+      <div class="sc-masthead">
+        <span class="sc-masthead-word">Hood<em>Tip</em></span>
+        <span class="sc-masthead-tag">Only the <b>good</b> stuff</span>
+      </div>
+
+      <div class="sc-meta-row">
+        <div class="left" id="scNum">A HOODTIP</div>
+        <div class="center"></div>
+        <div class="right" id="scKicker">FROM DAVE</div>
+      </div>
+
+      <div class="sc-photo-wrap">
+        <img class="sc-photo" id="scPhoto" crossorigin="anonymous" alt="">
+      </div>
+
+      <div class="sc-quote" id="scQuoteWrap">
+        <span class="sc-quote-mark">&ldquo;</span>
+        <span id="scQuote"></span>
+      </div>
+
+      <div class="sc-bottom">
+        <div class="sc-byline">
+          <div class="sc-byline-avatar" id="scAvatar">D</div>
+          <div>
+            <div class="sc-byline-by">A tip from</div>
+            <div class="sc-byline-name" id="scName">Dave</div>
+            <div class="sc-byline-loc" id="scLoc"></div>
+          </div>
+        </div>
+        <div class="sc-url-block">
+          <div class="sc-url-label">Read it</div>
+          <div class="sc-url">hoodtip.com</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="share-btn" id="shareBtn">Generate &amp; Share to Story</button>
+    <div class="status" id="status">&nbsp;</div>
+  </div>
+
+  <div class="note">
+    On iPhone: opens the share sheet &mdash; tap Instagram Stories. On desktop: downloads the PNG.
+  </div>
+
+</div>
+
+<script>
+const TIPS = {"arnavutkoy":{"quote":"Order the şalgam alongside your raki. It sounds wrong. It tastes extraordinary. Then pick your fish. There is no way you leave anything less than happy.","photo":"Screenshot_2026-03-17_at_11_27_13.png","name":"Dave","initial":"D","location":"Istanbul"},"artmuseum-geneva":{"quote":"Musée d'Art et d'Histoire","photo":"artmuseum-geneva-exterior.jpg","name":"Dave","initial":"D","location":"Geneva"},"asritursucu":{"quote":"If you like pickled things, this place will bring you joy.","photo":"pickle-shop.jpg","name":"Dave","initial":"D","location":"Shop · Istanbul"},"astypalea":{"quote":"Go to a wedding. Break your ankle. Stay two weeks.","photo":"astypalea-10.jpg","name":"Dave","initial":"D","location":"Astypalea"},"baindespaquis":{"quote":"You jump in, surface, and there are the French Alps. Geneva keeps catching you off-guard.","photo":"baindespaquis-sunset.jpg","name":"Dave","initial":"D","location":"Swimming · Pâquis · Geneva"},"barneygreengrass":{"quote":"The kind of place that doesn't need to try because it never stopped being itself.","photo":"Screenshot_2026-03-17_at_15_29_09.png","name":"Dave","initial":"D","location":"Deli · Upper West Side · New York"},"bates-subotica":{"quote":"The more of those little glass vials I drank, the more memorable the meal became. The more my covid went away.","photo":"bates-suboptica-laughing.jpg","name":"Dave","initial":"D","location":"HoodTip"},"belvedere":{"quote":"Go to Wengen. Stay at the Belvedere. Stop searching.","photo":"grand-belvedere-train-up.jpg","name":"Dave","initial":"D","location":"Wengen"},"bibliotheque":{"quote":"Walk in off the street. Find a table. The park is outside when you need a break. Free.","photo":"bastions-park-view.jpg","name":"Dave","initial":"D","location":"Library · Geneva"},"bijougregoire":{"quote":"NOMOS watches in a Vieille Ville stone building. Ring the bell. Geneva tip by @paddy.","photo":"nomos-6.jpg","name":"Dave","initial":"D","location":"Geneva"},"bongojoe":{"quote":"One of the only places in this city that feels genuinely relaxed.","photo":"IMG_3020.jpg","name":"Dave","initial":"D","location":"Bar · Plainpalais · Geneva"},"chou":{"quote":"Ici on aime faire des choux et du bon café.\" It says so on the window. They mean it.","photo":"eauxvives-chou.jpg","name":"Dave","initial":"D","location":"Café · Eaux-Vives · Geneva"},"cinema-riviera-athens":{"quote":"Sitting outside, having a drink, watching a film under the sky. There are worse ways to spend a night in Athens.","photo":"outdoor-movie-athens-1.jpg","name":"Dave","initial":"D","location":"Exarchia · Athens"},"claro":{"quote":"The restaurant itself has a crazy history, which you can hear all about whilst tucking into the lamb platter.","photo":"photo-arnavutkoy-restaurant.jpg","name":"Dave","initial":"D","location":""},"electriccinema":{"quote":"The room itself is worth the ticket before the film even starts.","photo":"682384E6-2714-486C-A716-4757245349A1.jpg","name":"Dave","initial":"D","location":"London"},"empanadas":{"quote":"Ask for the sauce picante. They make it in house.","photo":"Screenshot_2026-03-17_at_09_24_22.png","name":"Dave","initial":"D","location":"Geneva"},"enfaim":{"quote":"Not Sabich Tchernichovsky. But for Geneva — still nice.","photo":"enfaim-sabich.jpg","name":"Dave","initial":"D","location":"Restaurant · Saint-Gervais · Geneva"},"galerie123":{"quote":"Galerie 1 2 3","photo":"galerie123-1.jpg","name":"Dave","initial":"D","location":"Shop · Eaux-Vives · Geneva"},"glencarlou":{"quote":"I also remember drinking from the bottle on the van ride back to the hotel. No regrets whatsoever.","photo":"glencarlou-vineyard-wide.JPG","name":"Dave","initial":"D","location":"Wine · Cape Town"},"grea":{"quote":"The kind of spot you find on a morning walk and end up staying longer than planned.","photo":"Screenshot_2026-03-17_at_12_09_36.png","name":"Dave","initial":"D","location":"Istanbul"},"gregoire":{"quote":"Want a Nomos in Geneva? There is exactly one shop.","photo":"nomos-2.jpg","name":"Dave","initial":"D","location":"Geneva"},"iskender":{"quote":"Any real Turkish guy will tell you — yes, that's the good stuff.","photo":"Bursa-meat-stick.jpg","name":"Dave","initial":"D","location":"Restaurant"},"jlc":{"quote":"Walk in, buy the watch, leave with it on your wrist. In Geneva that's rarer than you'd think.","photo":"jlc_river.jpg","name":"Dave","initial":"D","location":"Watch · Rive · City Centre · Geneva"},"karmabread":{"quote":"Come on Friday. That's when they bake the challah and it goes fast.","photo":"london-karmabread-challah-hand.jpg","name":"Dave","initial":"D","location":"London"},"kigali-marriott":{"quote":"The breakfast alone is worth factoring into your accommodation decision.","photo":"kigali-marriot-breakfast-2.JPG","name":"Dave","initial":"D","location":"Hotel · Kigali"},"kigali-question-coffee":{"quote":"Nothing is a cooler present than a bag of coffee beans you hand-carried back from Rwanda.","photo":"kigali-question-coffee.JPG","name":"Dave","initial":"D","location":"Coffee · Kigali"},"kilwins":{"quote":"Only the good stuff.","photo":"saugatuck-kilwins-exterior.jpg","name":"Dave","initial":"D","location":"HoodTip"},"kunsthalle-bern":{"quote":"A room suspended in the trees above the Aare. Bern doesn't get enough credit.","photo":"Kunsthalle-bern-cafe.jpg","name":"Dave","initial":"D","location":"Kirchenfeld · Bern · Bern"},"labarge":{"quote":"Leave work a bit early. You're at La Barge in 15 minutes. You jump in the water, then drink a cold beer, and you say: this is the greatest city in the world.","photo":"barge-water-example.jpg","name":"Dave","initial":"D","location":"Geneva"},"lagrandeboucherie":{"quote":"It's the 45 minutes where Midtown stops being Midtown.","photo":"Screenshot_2026-03-17_at_15_29_23.png","name":"Dave","initial":"D","location":"Restaurant & Bar · Midtown"},"latitude-15-lusaka":{"quote":"The coolest place to stay in Lusaka. Even if you're not a guest, come for dinner — the atmosphere alone is worth it.","photo":"Latitude-15.JPG","name":"Dave","initial":"D","location":"Lusaka"},"lebalafon":{"quote":"Ate some fish, drank some wine, had a good vibe, then kept it moving. Exactly what it needed to be.","photo":"lefbalafon-view.JPG","name":"Dave","initial":"D","location":"Restaurant"},"lepatio-arusha":{"quote":"Get a beer. Watch the football.","photo":"lepatio-arusha.jpg","name":"Dave","initial":"D","location":"Arusha"},"leverrevole":{"quote":"If you're doing the natural wine thing in Paris, this is a good stop. Among many. Enjoy.","photo":"leverrevole-wine-bottle.jpg","name":"Dave","initial":"D","location":"Paris"},"manor":{"quote":"The fishmonger gets fera from Lake Geneva. That alone is worth the trip.","photo":"manor-exterior.jpg","name":"Dave","initial":"D","location":"Food Hall · Saint-Gervais · Geneva"},"merigonde":{"quote":"A short walk from the UN. Get the sandwich, take it to the park.","photo":"Screenshot_2026-03-17_at_09_33_28.png","name":"Dave","initial":"D","location":"Boulangerie · Nations · Geneva"},"mulligans":{"quote":"Outside feels like a proper city for an hour. Which in Geneva is rarer than you'd think.","photo":"mulligans-exterior-2.jpg","name":"Dave","initial":"D","location":"Geneva"},"nagomi":{"quote":"Sit at the bar. Cold sake. The uni if they have it. You are briefly in Tokyo.","photo":"nagomi-chef.jpg","name":"Dave","initial":"D","location":"Sushi · Pâquis · Geneva"},"oceanik":{"quote":"Hôtel Les Rives Oceanik","photo":"paris-oceanik-window-dusk.jpg","name":"Dave","initial":"D","location":"Paris"},"ohmartine-eauxvives":{"quote":"Specialty coffee taken seriously. Marble tables. Relaxed without trying to be relaxed.","photo":"ohmartine-eauxvives-exterior.jpg","name":"Dave","initial":"D","location":"Eaux-Vives · Geneva"},"ottolenghi":{"quote":"A genuine joy to have an Ottolenghi in our little Swiss village by the lake.","photo":"ottolenghi-exterior-1.jpg","name":"Dave","initial":"D","location":"Restaurant · Rive · Geneva"},"pano-photography":{"quote":"Your phone can bend reality. Most people never try.","photo":"pano-photography-london-long-street.jpg","name":"Dave","initial":"D","location":"London"},"papabou":{"quote":"The fries are Swiss potatoes. The wine is natural. In Geneva this still counts as progressive.","photo":"papabou-exterior-wide.jpg","name":"Dave","initial":"D","location":"Plainpalais · Geneva"},"pastrami-queen":{"quote":"Skip Katz's. Go to Pastrami Queen.","photo":"pastrami-queen-1.jpg","name":"Dave","initial":"D","location":"New York"},"paulbert":{"quote":"Steak frites in the copper pan. A bottle of something red. That's the whole evening sorted.","photo":"paulbert-steak-fritte.jpg","name":"Dave","initial":"D","location":"Bistro · Paris"},"paulhenri":{"quote":"Say his name at Bombar and you will pass the cool test.","photo":"carouge-wine-bottles.jpg","name":"Dave","initial":"D","location":"Geneva"},"pero":{"quote":"Not why you come to Yeniköy. But if you find yourself up this way, go.","photo":"IMG_7505.JPG","name":"Dave","initial":"D","location":"Istanbul"},"pignata":{"quote":"A good margherita for under CHF 15. In Geneva that counts as a miracle.","photo":"pignata-pizza-athome.jpg","name":"Dave","initial":"D","location":"Pizza · Plainpalais · Geneva"},"puppet-theatre":{"quote":"Never underestimate your neighbourhood puppet theatre.","photo":"puppet-theater-2.jpg","name":"Dave","initial":"D","location":"Geneva"},"rubymimi-zurich":{"quote":"Book here and stop wasting time looking at hotels online.","photo":"rubymimi-zurich-room.jpg","name":"Dave","initial":"D","location":"HoodTip"},"rubyzoe":{"quote":"Book the top floor. The view over the Notting Hill rooftops is worth it and still comes in under £200.","photo":"Screenshot_2026-03-17_at_12_13_20.png","name":"Dave","initial":"D","location":"Notting Hill"},"sagano":{"quote":"Made in the legit Japanese restaurant next door. This is the place for the rest of us.","photo":"sushi-takeout-nations.jpg","name":"Dave","initial":"D","location":"Sushi · Nations · Geneva"},"saintamour":{"quote":"The best place to actually sit in Lavaux and drink wine.","photo":"saintamour-lavaux-lake.jpg","name":"Dave","initial":"D","location":"Lavaux · Vaud"},"samourai":{"quote":"One of the best ten minutes you can spend in Geneva.","photo":"carouge-oyster-lady.jpg","name":"Dave","initial":"D","location":"Seafood · Market"},"smalls":{"quote":"A New York jazz club. Go to Smalls.","photo":"nyc-smalls.jpg","name":"Dave","initial":"D","location":"New York"},"soultane-nouakchott":{"quote":"Camels, horses, grilled fish, the Atlantic. I don't know how else to explain Mauritania but this is a start.","photo":"soultane-camel-2.jpg","name":"Dave","initial":"D","location":"Mauritania"},"swisstrains":{"quote":"Skip first class. Take the restaurant car.","photo":"swiss-train-restaurant-car-white-table-cloth.jpg","name":"Dave","initial":"D","location":"Switzerland"},"tanuki":{"quote":"Get the large platter, grab sake from Uchitomi around the corner, go home, put on some cheesy Japanese restaurant music.","photo":"Screenshot_2026-03-17_at_08_56_54.png","name":"Dave","initial":"D","location":"Sushi · Geneva"},"thecow":{"quote":"Order oysters with your Guinness at the bar. That's the move. Everything else is optional.","photo":"IMG_3513.JPG","name":"Dave","initial":"D","location":"London"},"victoriahall":{"quote":"Walk in for the first time and the ceiling will stop you.","photo":"victoria-hall-wide.jpg","name":"Dave","initial":"D","location":"Concert Hall · Plainpalais · Geneva"},"xampanyet-barcelona":{"quote":"Stand at the bar. Order the house cava. You're in Barcelona now.","photo":"Xampanyet-street-color.jpg","name":"Dave","initial":"D","location":"El BornBarcelona"},"zanzibar-hideaway-nungwi":{"quote":"Hotel Riu Palace Zanzibar","photo":"zanzibar-beach-hero.JPG","name":"Dave","initial":"D","location":"Zanzibar"}};
+
+const C = (url) => `https://res.cloudinary.com/dq9newmhl/image/fetch/w_900,h_1125,c_fill,g_auto,f_auto,q_auto/https://hoodtip.com/${url}`;
+
+// Read slug from URL
+const params = new URLSearchParams(window.location.search);
+const slug = (params.get('tip') || 'belvedere').toLowerCase();
+const tip = TIPS[slug];
+
+const root = document.querySelector('.app');
+
+if (!tip) {
+  root.innerHTML = `<div class="error-state">
+    Couldn't find tip <em>${slug}</em>.<br><br>
+    <a href="index.html">&larr; Back to HoodTip</a>
+  </div>`;
+} else {
+  // Wire up data
+  document.getElementById('scNum').textContent = 'A HOODTIP';
+  document.getElementById('scKicker').textContent = `FROM ${tip.name.toUpperCase()}`;
+  document.getElementById('scPhoto').src = C(tip.photo);
+  document.getElementById('scQuote').textContent = tip.quote;
+  document.getElementById('scAvatar').textContent = tip.initial || tip.name.charAt(0);
+  document.getElementById('scName').textContent = tip.name;
+  document.getElementById('scLoc').textContent = tip.location || '';
+  document.getElementById('backLink').href = `tip-${slug}.html`;
+  document.title = `Share &mdash; ${tip.quote.slice(0,40)}`;
+
+  // Auto-size quote based on length
+  const q = tip.quote;
+  const wrap = document.getElementById('scQuoteWrap');
+  let size = 80;
+  if (q.length > 60) size = 70;
+  if (q.length > 90) size = 60;
+  if (q.length > 120) size = 52;
+  wrap.style.fontSize = size + 'px';
+}
+
+function fitCard() {
+  const frame = document.getElementById('storyFrame');
+  const card = document.getElementById('storyCard');
+  if (!frame || !card) return;
+  const scale = frame.offsetWidth / 1080;
+  card.style.transform = `scale(${scale})`;
+}
+window.addEventListener('resize', fitCard);
+window.addEventListener('load', fitCard);
+setTimeout(fitCard, 50);
+
+const status = document.getElementById('status');
+const shareBtn = document.getElementById('shareBtn');
+
+if (shareBtn) {
+  shareBtn.onclick = async () => {
+    shareBtn.disabled = true;
+    status.className = 'status';
+    status.textContent = 'Rendering image...';
+
+    try {
+      const card = document.getElementById('storyCard');
+      const blob = await htmlToImage.toBlob(card, {
+        pixelRatio: 1,
+        cacheBust: true,
+        style: { transform: 'scale(1)' }
+      });
+      if (!blob) throw new Error('Render returned no blob');
+
+      const file = new File([blob], `hoodtip-${slug}.png`, { type: 'image/png' });
+      const tipUrl = `https://hoodtip.com/tip-${slug}.html`;
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: 'HoodTip',
+          text: `${tip.quote} — ${tipUrl}`
+        });
+        status.className = 'status success';
+        status.textContent = '&#10003; Shared';
+      } else {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `hoodtip-${slug}-story.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        status.className = 'status success';
+        status.textContent = '&#10003; Downloaded - drop into Instagram Stories';
+      }
+    } catch (e) {
+      if (e.name !== 'AbortError') {
+        console.error(e);
+        status.className = 'status error';
+        status.textContent = 'Error: ' + (e.message || 'render failed').slice(0, 60);
+      } else {
+        status.className = 'status';
+        status.innerHTML = '&nbsp;';
+      }
+    } finally {
+      shareBtn.disabled = false;
+      setTimeout(() => {
+        if (status.textContent.indexOf('Shared') >= 0 || status.textContent.indexOf('Downloaded') >= 0) {
+          status.className = 'status';
+          status.innerHTML = '&nbsp;';
+        }
+      }, 4000);
+    }
+  };
+}
+</script>
+
+</body>
+</html>
