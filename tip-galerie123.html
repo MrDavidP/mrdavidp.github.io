@@ -718,6 +718,23 @@
       .pc-context { font-size: 1rem; }
     }
 
+  
+    /* === Website fact (v9) === */
+    .pc-fact-website .pc-fact-value a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .pc-fact-website[data-empty="true"] { display: none; }
+    .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 720px) {
+      .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -793,11 +810,15 @@
       <div class="pc-facts">
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">How to get here</span>
-          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Galerie%201%202%203%20Geneva%20Rue%20des%20Eaux-Vives%204%2C%201207%20Geneva" target="_blank" rel="noopener">Rue des Eaux-Vives 4</a></span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Galerie+123+Geneva" target="_blank" rel="noopener">Rue des Eaux-Vives 4</a></span>
         </div>
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
           <span class="pc-fact-value pc-fact-value--bold"><em>Go to the store with a specific ask</em></span>
+        </div>
+        <div class="pc-fact pc-fact--primary pc-fact-website">
+          <span class="pc-fact-label">Website</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://galerie123.com" target="_blank" rel="noopener">galerie123.com</a></span>
         </div>
       </div>
     </div>

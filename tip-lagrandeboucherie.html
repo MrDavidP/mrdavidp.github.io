@@ -718,6 +718,23 @@
       .pc-context { font-size: 1rem; }
     }
 
+  
+    /* === Website fact (v9) === */
+    .pc-fact-website .pc-fact-value a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .pc-fact-website[data-empty="true"] { display: none; }
+    .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 720px) {
+      .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -791,11 +808,15 @@
       <div class="pc-facts">
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">How to get here</span>
-          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=La%20Grande%20Boucherie%20Midtown%20145%20W%2053rd%20St%2C%20New%20York%2C%20NY%2010019" target="_blank" rel="noopener">145 W 53rd St, New York, NY…</a></span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=La+Grande+Boucherie+New+York" target="_blank" rel="noopener">145 W 53rd St, New York, NY…</a></span>
         </div>
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
           <span class="pc-fact-value pc-fact-value--bold"><em>drinks</em></span>
+        </div>
+        <div class="pc-fact pc-fact--primary pc-fact-website" data-empty="true">
+          <span class="pc-fact-label">Website</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="" target="_blank" rel="noopener"></a></span>
         </div>
       </div>
     </div>

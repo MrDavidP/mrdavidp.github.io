@@ -718,6 +718,23 @@
       .pc-context { font-size: 1rem; }
     }
 
+  
+    /* === Website fact (v9) === */
+    .pc-fact-website .pc-fact-value a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .pc-fact-website[data-empty="true"] { display: none; }
+    .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 720px) {
+      .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -793,11 +810,15 @@
       <div class="pc-facts">
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">How to get here</span>
-          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Never%20underestimate%20your%20neighbourhood%20puppet%20theatre.%20Geneva" target="_blank" rel="noopener">Geneva</a></span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Th%C3%A9%C3%A2tre+des+Marionnettes+de+Gen%C3%A8ve" target="_blank" rel="noopener">Geneva</a></span>
         </div>
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
           <span class="pc-fact-value pc-fact-value--bold"><em>All in French, but the language of…</em></span>
+        </div>
+        <div class="pc-fact pc-fact--primary pc-fact-website">
+          <span class="pc-fact-label">Website</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://www.marionnettes.ch" target="_blank" rel="noopener">marionnettes.ch</a></span>
         </div>
       </div>
     </div>

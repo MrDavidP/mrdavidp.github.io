@@ -718,6 +718,23 @@
       .pc-context { font-size: 1rem; }
     }
 
+  
+    /* === Website fact (v9) === */
+    .pc-fact-website .pc-fact-value a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .pc-fact-website[data-empty="true"] { display: none; }
+    .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 720px) {
+      .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -794,11 +811,15 @@
       <div class="pc-facts">
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">How to get here</span>
-          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Barney%20Greengrass%20New%20York%20541%20Amsterdam%20Ave%2C%20New%20York%2C%20NY%2010024" target="_blank" rel="noopener">541 Amsterdam Ave, New York,…</a></span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Barney+Greengrass+541+Amsterdam+Avenue+New+York" target="_blank" rel="noopener">541 Amsterdam Ave, New York,…</a></span>
         </div>
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
           <span class="pc-fact-value pc-fact-value--bold"><em>brunch</em></span>
+        </div>
+        <div class="pc-fact pc-fact--primary pc-fact-website">
+          <span class="pc-fact-label">Website</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://barneygreengrass.com" target="_blank" rel="noopener">barneygreengrass.com</a></span>
         </div>
       </div>
     </div>

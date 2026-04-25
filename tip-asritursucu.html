@@ -718,6 +718,23 @@
       .pc-context { font-size: 1rem; }
     }
 
+  
+    /* === Website fact (v9) === */
+    .pc-fact-website .pc-fact-value a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .pc-fact-website[data-empty="true"] { display: none; }
+    .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 720px) {
+      .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -793,11 +810,15 @@
       <div class="pc-facts">
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">How to get here</span>
-          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Asri%20Tur%C5%9Fucu%20Istanbul%20A%C4%9Fa%20Hamam%C4%B1%20Sk.%209/A%2C%20Beyo%C4%9Flu%2C%20Istanbul" target="_blank" rel="noopener">Ağa Hamamı Sk. 9/A, Beyoğlu,…</a></span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Asri+Tur%C5%9Fucu+Istanbul" target="_blank" rel="noopener">Ağa Hamamı Sk. 9/A, Beyoğlu,…</a></span>
         </div>
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
           <span class="pc-fact-value pc-fact-value--bold"><em>If you like pickled things, this place…</em></span>
+        </div>
+        <div class="pc-fact pc-fact--primary pc-fact-website" data-empty="true">
+          <span class="pc-fact-label">Website</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="" target="_blank" rel="noopener"></a></span>
         </div>
       </div>
     </div>

@@ -718,6 +718,23 @@
       .pc-context { font-size: 1rem; }
     }
 
+  
+    /* === Website fact (v9) === */
+    .pc-fact-website .pc-fact-value a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .pc-fact-website[data-empty="true"] { display: none; }
+    .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 720px) {
+      .pc-facts:has(.pc-fact-website:not([data-empty="true"])) {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -800,11 +817,15 @@
       <div class="pc-facts">
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">How to get here</span>
-          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Domaine%20Saint%20Amour%2C%20Chem.%20de%20Baussan%2044%2C%201091%20Bourg-en-Lavaux" target="_blank" rel="noopener">Chem. de Baussan 44, Bourg-en-Lavaux</a></span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Domaine+Saint+Amour+Chem.+de+Baussan+44+Bourg-en-Lavaux" target="_blank" rel="noopener">Chem. de Baussan 44, Bourg-en-Lavaux</a></span>
         </div>
         <div class="pc-fact pc-fact--primary">
           <span class="pc-fact-label">The move</span>
           <span class="pc-fact-value pc-fact-value--bold"><em>Leave cash in the box</em></span>
+        </div>
+        <div class="pc-fact pc-fact--primary pc-fact-website">
+          <span class="pc-fact-label">Website</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://saint-amour.ch" target="_blank" rel="noopener">saint-amour.ch</a></span>
         </div>
       </div>
     </div>
