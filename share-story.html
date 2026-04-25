@@ -101,24 +101,24 @@ body {
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  padding: 200px 80px 90px;
+  padding: 140px 70px 80px;
 }
 
 /* === MASTHEAD: matches v11 nav-logo === */
 .sc-masthead {
   display: inline-flex;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
   border: 3px solid var(--ink);
   background: var(--paper);
-  padding: 22px 32px;
+  padding: 16px 26px;
   align-self: center;
   margin-bottom: 8px;
 }
 .sc-masthead-word {
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 100px;
+  font-size: 78px;
   letter-spacing: -0.02em;
   line-height: 0.95;
   color: var(--ink);
@@ -127,12 +127,12 @@ body {
 .sc-masthead-tag {
   font-family: var(--cond);
   font-weight: 500;
-  font-size: 26px;
-  letter-spacing: 0.24em;
+  font-size: 22px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink);
-  border-left: 3px solid var(--ink);
-  padding-left: 26px;
+  border-left: 2.5px solid var(--ink);
+  padding-left: 22px;
   line-height: 1.3;
   white-space: nowrap;
 }
@@ -145,13 +145,13 @@ body {
   align-items: center;
   border-top: 1.5px solid var(--ink);
   border-bottom: 1.5px solid var(--ink);
-  padding: 14px 4px;
-  margin-top: 36px;
-  margin-bottom: 50px;
+  padding: 11px 4px;
+  margin-top: 26px;
+  margin-bottom: 36px;
 }
 .sc-meta-row .left, .sc-meta-row .right {
   font-family: var(--cond);
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink);
@@ -167,7 +167,7 @@ body {
 .sc-photo-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   background: var(--cream2);
   border: 2.5px solid var(--ink);
   overflow: hidden;
@@ -184,47 +184,48 @@ body {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 500;
-  line-height: 1.05;
+  line-height: 1.08;
   color: var(--ink);
   letter-spacing: -0.015em;
-  margin-top: 60px;
+  margin-top: 32px;
   flex-grow: 1;
   position: relative;
 }
 .sc-quote-mark {
   font-family: var(--serif);
-  font-size: 150px;
+  font-size: 110px;
   line-height: 0.3;
   color: var(--red);
   font-style: italic;
   display: block;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
   font-weight: 500;
 }
 
 /* Bottom: byline + URL */
 .sc-bottom {
-  margin-top: 50px;
+  margin-top: 20px;
   border-top: 4px double var(--ink);
-  padding-top: 36px;
+  padding-top: 26px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
+  flex-shrink: 0;
 }
 .sc-byline {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 18px;
 }
 .sc-byline-avatar {
-  width: 80px; height: 80px;
+  width: 68px; height: 68px;
   border-radius: 50%;
   border: 2.5px solid var(--ink);
   background: var(--ink);
   color: var(--cream);
   font-family: var(--serif);
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 600;
   font-style: italic;
   display: flex;
@@ -234,7 +235,7 @@ body {
 }
 .sc-byline-by {
   font-family: var(--cond);
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
@@ -243,14 +244,14 @@ body {
 }
 .sc-byline-name {
   font-family: var(--serif);
-  font-size: 38px;
+  font-size: 32px;
   font-weight: 600;
   color: var(--ink);
   line-height: 1;
 }
 .sc-byline-loc {
   font-family: var(--cond);
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
@@ -262,7 +263,7 @@ body {
 }
 .sc-url-label {
   font-family: var(--cond);
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
@@ -270,7 +271,7 @@ body {
 }
 .sc-url {
   font-family: var(--serif);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
   color: var(--ink);
   border-bottom: 3px solid var(--red);
@@ -397,7 +398,7 @@ body {
 <script>
 const TIPS = {"arnavutkoy":{"quote":"Order the şalgam alongside your raki. It sounds wrong. It tastes extraordinary. Then pick your fish. There is no way you leave anything less than happy.","photo":"Screenshot_2026-03-17_at_11_27_13.png","name":"Dave","initial":"D","location":"Istanbul"},"artmuseum-geneva":{"quote":"Musée d'Art et d'Histoire","photo":"artmuseum-geneva-exterior.jpg","name":"Dave","initial":"D","location":"Geneva"},"asritursucu":{"quote":"If you like pickled things, this place will bring you joy.","photo":"pickle-shop.jpg","name":"Dave","initial":"D","location":"Shop · Istanbul"},"astypalea":{"quote":"Go to a wedding. Break your ankle. Stay two weeks.","photo":"astypalea-10.jpg","name":"Dave","initial":"D","location":"Astypalea"},"baindespaquis":{"quote":"You jump in, surface, and there are the French Alps. Geneva keeps catching you off-guard.","photo":"baindespaquis-sunset.jpg","name":"Dave","initial":"D","location":"Swimming · Pâquis · Geneva"},"barneygreengrass":{"quote":"The kind of place that doesn't need to try because it never stopped being itself.","photo":"Screenshot_2026-03-17_at_15_29_09.png","name":"Dave","initial":"D","location":"Deli · Upper West Side · New York"},"bates-subotica":{"quote":"The more of those little glass vials I drank, the more memorable the meal became. The more my covid went away.","photo":"bates-suboptica-laughing.jpg","name":"Dave","initial":"D","location":"HoodTip"},"belvedere":{"quote":"Go to Wengen. Stay at the Belvedere. Stop searching.","photo":"grand-belvedere-train-up.jpg","name":"Dave","initial":"D","location":"Wengen"},"bibliotheque":{"quote":"Walk in off the street. Find a table. The park is outside when you need a break. Free.","photo":"bastions-park-view.jpg","name":"Dave","initial":"D","location":"Library · Geneva"},"bijougregoire":{"quote":"NOMOS watches in a Vieille Ville stone building. Ring the bell. Geneva tip by @paddy.","photo":"nomos-6.jpg","name":"Dave","initial":"D","location":"Geneva"},"bongojoe":{"quote":"One of the only places in this city that feels genuinely relaxed.","photo":"IMG_3020.jpg","name":"Dave","initial":"D","location":"Bar · Plainpalais · Geneva"},"chou":{"quote":"Ici on aime faire des choux et du bon café.\" It says so on the window. They mean it.","photo":"eauxvives-chou.jpg","name":"Dave","initial":"D","location":"Café · Eaux-Vives · Geneva"},"cinema-riviera-athens":{"quote":"Sitting outside, having a drink, watching a film under the sky. There are worse ways to spend a night in Athens.","photo":"outdoor-movie-athens-1.jpg","name":"Dave","initial":"D","location":"Exarchia · Athens"},"claro":{"quote":"The restaurant itself has a crazy history, which you can hear all about whilst tucking into the lamb platter.","photo":"photo-arnavutkoy-restaurant.jpg","name":"Dave","initial":"D","location":""},"electriccinema":{"quote":"The room itself is worth the ticket before the film even starts.","photo":"682384E6-2714-486C-A716-4757245349A1.jpg","name":"Dave","initial":"D","location":"London"},"empanadas":{"quote":"Ask for the sauce picante. They make it in house.","photo":"Screenshot_2026-03-17_at_09_24_22.png","name":"Dave","initial":"D","location":"Geneva"},"enfaim":{"quote":"Not Sabich Tchernichovsky. But for Geneva — still nice.","photo":"enfaim-sabich.jpg","name":"Dave","initial":"D","location":"Restaurant · Saint-Gervais · Geneva"},"galerie123":{"quote":"Galerie 1 2 3","photo":"galerie123-1.jpg","name":"Dave","initial":"D","location":"Shop · Eaux-Vives · Geneva"},"glencarlou":{"quote":"I also remember drinking from the bottle on the van ride back to the hotel. No regrets whatsoever.","photo":"glencarlou-vineyard-wide.JPG","name":"Dave","initial":"D","location":"Wine · Cape Town"},"grea":{"quote":"The kind of spot you find on a morning walk and end up staying longer than planned.","photo":"Screenshot_2026-03-17_at_12_09_36.png","name":"Dave","initial":"D","location":"Istanbul"},"gregoire":{"quote":"Want a Nomos in Geneva? There is exactly one shop.","photo":"nomos-2.jpg","name":"Dave","initial":"D","location":"Geneva"},"iskender":{"quote":"Any real Turkish guy will tell you — yes, that's the good stuff.","photo":"Bursa-meat-stick.jpg","name":"Dave","initial":"D","location":"Restaurant"},"jlc":{"quote":"Walk in, buy the watch, leave with it on your wrist. In Geneva that's rarer than you'd think.","photo":"jlc_river.jpg","name":"Dave","initial":"D","location":"Watch · Rive · City Centre · Geneva"},"karmabread":{"quote":"Come on Friday. That's when they bake the challah and it goes fast.","photo":"london-karmabread-challah-hand.jpg","name":"Dave","initial":"D","location":"London"},"kigali-marriott":{"quote":"The breakfast alone is worth factoring into your accommodation decision.","photo":"kigali-marriot-breakfast-2.JPG","name":"Dave","initial":"D","location":"Hotel · Kigali"},"kigali-question-coffee":{"quote":"Nothing is a cooler present than a bag of coffee beans you hand-carried back from Rwanda.","photo":"kigali-question-coffee.JPG","name":"Dave","initial":"D","location":"Coffee · Kigali"},"kilwins":{"quote":"Only the good stuff.","photo":"saugatuck-kilwins-exterior.jpg","name":"Dave","initial":"D","location":"HoodTip"},"kunsthalle-bern":{"quote":"A room suspended in the trees above the Aare. Bern doesn't get enough credit.","photo":"Kunsthalle-bern-cafe.jpg","name":"Dave","initial":"D","location":"Kirchenfeld · Bern · Bern"},"labarge":{"quote":"Leave work a bit early. You're at La Barge in 15 minutes. You jump in the water, then drink a cold beer, and you say: this is the greatest city in the world.","photo":"barge-water-example.jpg","name":"Dave","initial":"D","location":"Geneva"},"lagrandeboucherie":{"quote":"It's the 45 minutes where Midtown stops being Midtown.","photo":"Screenshot_2026-03-17_at_15_29_23.png","name":"Dave","initial":"D","location":"Restaurant & Bar · Midtown"},"latitude-15-lusaka":{"quote":"The coolest place to stay in Lusaka. Even if you're not a guest, come for dinner — the atmosphere alone is worth it.","photo":"Latitude-15.JPG","name":"Dave","initial":"D","location":"Lusaka"},"lebalafon":{"quote":"Ate some fish, drank some wine, had a good vibe, then kept it moving. Exactly what it needed to be.","photo":"lefbalafon-view.JPG","name":"Dave","initial":"D","location":"Restaurant"},"lepatio-arusha":{"quote":"Get a beer. Watch the football.","photo":"lepatio-arusha.jpg","name":"Dave","initial":"D","location":"Arusha"},"leverrevole":{"quote":"If you're doing the natural wine thing in Paris, this is a good stop. Among many. Enjoy.","photo":"leverrevole-wine-bottle.jpg","name":"Dave","initial":"D","location":"Paris"},"manor":{"quote":"The fishmonger gets fera from Lake Geneva. That alone is worth the trip.","photo":"manor-exterior.jpg","name":"Dave","initial":"D","location":"Food Hall · Saint-Gervais · Geneva"},"merigonde":{"quote":"A short walk from the UN. Get the sandwich, take it to the park.","photo":"Screenshot_2026-03-17_at_09_33_28.png","name":"Dave","initial":"D","location":"Boulangerie · Nations · Geneva"},"mulligans":{"quote":"Outside feels like a proper city for an hour. Which in Geneva is rarer than you'd think.","photo":"mulligans-exterior-2.jpg","name":"Dave","initial":"D","location":"Geneva"},"nagomi":{"quote":"Sit at the bar. Cold sake. The uni if they have it. You are briefly in Tokyo.","photo":"nagomi-chef.jpg","name":"Dave","initial":"D","location":"Sushi · Pâquis · Geneva"},"oceanik":{"quote":"Hôtel Les Rives Oceanik","photo":"paris-oceanik-window-dusk.jpg","name":"Dave","initial":"D","location":"Paris"},"ohmartine-eauxvives":{"quote":"Specialty coffee taken seriously. Marble tables. Relaxed without trying to be relaxed.","photo":"ohmartine-eauxvives-exterior.jpg","name":"Dave","initial":"D","location":"Eaux-Vives · Geneva"},"ottolenghi":{"quote":"A genuine joy to have an Ottolenghi in our little Swiss village by the lake.","photo":"ottolenghi-exterior-1.jpg","name":"Dave","initial":"D","location":"Restaurant · Rive · Geneva"},"pano-photography":{"quote":"Your phone can bend reality. Most people never try.","photo":"pano-photography-london-long-street.jpg","name":"Dave","initial":"D","location":"London"},"papabou":{"quote":"The fries are Swiss potatoes. The wine is natural. In Geneva this still counts as progressive.","photo":"papabou-exterior-wide.jpg","name":"Dave","initial":"D","location":"Plainpalais · Geneva"},"pastrami-queen":{"quote":"Skip Katz's. Go to Pastrami Queen.","photo":"pastrami-queen-1.jpg","name":"Dave","initial":"D","location":"New York"},"paulbert":{"quote":"Steak frites in the copper pan. A bottle of something red. That's the whole evening sorted.","photo":"paulbert-steak-fritte.jpg","name":"Dave","initial":"D","location":"Bistro · Paris"},"paulhenri":{"quote":"Say his name at Bombar and you will pass the cool test.","photo":"carouge-wine-bottles.jpg","name":"Dave","initial":"D","location":"Geneva"},"pero":{"quote":"Not why you come to Yeniköy. But if you find yourself up this way, go.","photo":"IMG_7505.JPG","name":"Dave","initial":"D","location":"Istanbul"},"pignata":{"quote":"A good margherita for under CHF 15. In Geneva that counts as a miracle.","photo":"pignata-pizza-athome.jpg","name":"Dave","initial":"D","location":"Pizza · Plainpalais · Geneva"},"puppet-theatre":{"quote":"Never underestimate your neighbourhood puppet theatre.","photo":"puppet-theater-2.jpg","name":"Dave","initial":"D","location":"Geneva"},"rubymimi-zurich":{"quote":"Book here and stop wasting time looking at hotels online.","photo":"rubymimi-zurich-room.jpg","name":"Dave","initial":"D","location":"HoodTip"},"rubyzoe":{"quote":"Book the top floor. The view over the Notting Hill rooftops is worth it and still comes in under £200.","photo":"Screenshot_2026-03-17_at_12_13_20.png","name":"Dave","initial":"D","location":"Notting Hill"},"sagano":{"quote":"Made in the legit Japanese restaurant next door. This is the place for the rest of us.","photo":"sushi-takeout-nations.jpg","name":"Dave","initial":"D","location":"Sushi · Nations · Geneva"},"saintamour":{"quote":"The best place to actually sit in Lavaux and drink wine.","photo":"saintamour-lavaux-lake.jpg","name":"Dave","initial":"D","location":"Lavaux · Vaud"},"samourai":{"quote":"One of the best ten minutes you can spend in Geneva.","photo":"carouge-oyster-lady.jpg","name":"Dave","initial":"D","location":"Seafood · Market"},"smalls":{"quote":"A New York jazz club. Go to Smalls.","photo":"nyc-smalls.jpg","name":"Dave","initial":"D","location":"New York"},"soultane-nouakchott":{"quote":"Camels, horses, grilled fish, the Atlantic. I don't know how else to explain Mauritania but this is a start.","photo":"soultane-camel-2.jpg","name":"Dave","initial":"D","location":"Mauritania"},"swisstrains":{"quote":"Skip first class. Take the restaurant car.","photo":"swiss-train-restaurant-car-white-table-cloth.jpg","name":"Dave","initial":"D","location":"Switzerland"},"tanuki":{"quote":"Get the large platter, grab sake from Uchitomi around the corner, go home, put on some cheesy Japanese restaurant music.","photo":"Screenshot_2026-03-17_at_08_56_54.png","name":"Dave","initial":"D","location":"Sushi · Geneva"},"thecow":{"quote":"Order oysters with your Guinness at the bar. That's the move. Everything else is optional.","photo":"IMG_3513.JPG","name":"Dave","initial":"D","location":"London"},"victoriahall":{"quote":"Walk in for the first time and the ceiling will stop you.","photo":"victoria-hall-wide.jpg","name":"Dave","initial":"D","location":"Concert Hall · Plainpalais · Geneva"},"xampanyet-barcelona":{"quote":"Stand at the bar. Order the house cava. You're in Barcelona now.","photo":"Xampanyet-street-color.jpg","name":"Dave","initial":"D","location":"El BornBarcelona"},"zanzibar-hideaway-nungwi":{"quote":"Hotel Riu Palace Zanzibar","photo":"zanzibar-beach-hero.JPG","name":"Dave","initial":"D","location":"Zanzibar"}};
 
-const C = (url) => `https://res.cloudinary.com/dq9newmhl/image/fetch/w_900,h_1125,c_fill,g_auto,f_auto,q_auto/https://hoodtip.com/${url}`;
+const C = (url) => `https://res.cloudinary.com/dq9newmhl/image/fetch/w_1000,h_1000,c_fill,g_auto,f_auto,q_auto/https://hoodtip.com/${url}`;
 
 // Read slug from URL
 const params = new URLSearchParams(window.location.search);
@@ -423,14 +424,20 @@ if (!tip) {
   document.getElementById('backLink').href = `tip-${slug}.html`;
   document.title = `Share &mdash; ${tip.quote.slice(0,40)}`;
 
-  // Auto-size quote based on length
-  const q = tip.quote;
+  // Auto-size quote: measure, then shrink to fit available height
   const wrap = document.getElementById('scQuoteWrap');
-  let size = 80;
-  if (q.length > 60) size = 70;
-  if (q.length > 90) size = 60;
-  if (q.length > 120) size = 52;
-  wrap.style.fontSize = size + 'px';
+  // Available space for the quote: card 1920 - top padding 140 - bottom padding 80
+  // - masthead ~120 - meta margins+row ~100 - photo (940 + border ~5) - 42 top margin
+  // - bottom strip ~140. Leaves roughly 350px for the quote at most.
+  const MAX_QUOTE_HEIGHT = 360;
+  const tryFit = () => {
+    const sizes = [68, 62, 56, 50, 46, 42, 38, 34];
+    for (const s of sizes) {
+      wrap.style.fontSize = s + 'px';
+      if (wrap.offsetHeight <= MAX_QUOTE_HEIGHT) return;
+    }
+  };
+  tryFit();
 }
 
 function fitCard() {
@@ -451,13 +458,39 @@ if (shareBtn) {
   shareBtn.onclick = async () => {
     shareBtn.disabled = true;
     status.className = 'status';
-    status.textContent = 'Rendering image...';
+    status.textContent = 'Loading photo...';
 
     try {
+      // Pre-load photo as data URL to dodge CORS during render
+      const photoEl = document.getElementById('scPhoto');
+      const photoSrc = photoEl.src;
+      try {
+        const r = await fetch(photoSrc, { mode: 'cors' });
+        const b = await r.blob();
+        const dataUrl = await new Promise((res, rej) => {
+          const fr = new FileReader();
+          fr.onload = () => res(fr.result);
+          fr.onerror = rej;
+          fr.readAsDataURL(b);
+        });
+        photoEl.src = dataUrl;
+        // Wait for the new src to load
+        await new Promise((res, rej) => {
+          if (photoEl.complete && photoEl.naturalWidth > 0) return res();
+          photoEl.onload = res;
+          photoEl.onerror = rej;
+          setTimeout(rej, 8000);
+        });
+      } catch (e) {
+        console.warn('Photo preload failed, attempting direct render:', e);
+      }
+
+      status.textContent = 'Rendering image...';
       const card = document.getElementById('storyCard');
       const blob = await htmlToImage.toBlob(card, {
         pixelRatio: 1,
-        cacheBust: true,
+        cacheBust: false,
+        skipFonts: false,
         style: { transform: 'scale(1)' }
       });
       if (!blob) throw new Error('Render returned no blob');
