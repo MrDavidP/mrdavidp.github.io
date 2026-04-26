@@ -349,7 +349,7 @@
       font-weight: 500; text-transform: none; font-style: italic; letter-spacing: 0;
     }
 
-    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; }
+    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; flex-wrap: wrap; row-gap: 0.5rem; justify-content: flex-end; }
     .pc-share-btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
@@ -806,12 +806,12 @@
 
       <h1 class="pc-title">Tanuki</h1>
 
-      <div class="pc-context above"><p>Genuinely some of the best sushi in Geneva. The wasabi is homemade, which makes a larger difference than you'd expect — completely different from the stuff in little plastic sachets. The fish is good. The rice is good. The whole thing is quiet and honest.</p></div>
+      <div class="pc-context above"><p>Genuinely some of the best sushi in Geneva. A Japanese couple runs it — he makes the sushi, she handles the rest. Takeout only. When they run out of something, that's it for the day.</p></div>
 
       <div class="pc-callout">
-        <p class="pc-callout-text">Get the large platter, grab sake from Uchitomi around the corner, go home, put on some cheesy Japanese restaurant music.</p>
+        <p class="pc-callout-text">Get a nice bottle of sake. Take a platter home. A+ sushi evening.</p>
       </div>
-      <div class="pc-context below"><p></p></div>
+      <div class="pc-context below"><p>The wasabi is homemade, which makes a larger difference than you'd expect — completely different from the stuff in little plastic sachets. The fish is good. The rice is good. The whole thing is quiet and honest.</p></div>
 
       <div class="pc-facts">
         <div class="pc-fact pc-fact--primary">
@@ -842,6 +842,10 @@
         </button>
         <a class="pc-share-btn primary" href="https://wa.me/?text=Tanuki%20%E2%80%94%20https%3A//hoodtip.com/tip-tanuki.html" target="_blank" rel="noopener">
           Share →
+        </a>
+        <a class="pc-share-btn primary" href="share-story.html?tip=tanuki" style="background:var(--red);border-color:var(--red);color:var(--cream);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg>
+          Share to Story &rarr;
         </a>
       </div>
     </div>
