@@ -311,9 +311,9 @@
 
   .form-section-kicker {
     font-family: var(--cond);
-    font-size: 0.66rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--red);
     margin-bottom: 1.2rem;
@@ -323,8 +323,8 @@
   }
   .form-section-kicker .num {
     font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 700;
     color: var(--ink);
     letter-spacing: 0;
     font-style: italic;
@@ -344,15 +344,15 @@
   .field-label {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--ink);
     margin-bottom: 6px;
-    font-weight: 500;
+    font-weight: 600;
   }
   .field-hint {
     font-family: var(--cond);
-    font-size: 0.64rem;
-    font-weight: 500;
+    font-size: 0.7rem;
+    font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
@@ -1178,11 +1178,6 @@
             <textarea id="f-tip" name="tip" rows="4" placeholder="Old bones, smart renovation. The wagyu bresaola will stop you cold. Go now."></textarea>
             <div class="char-count" id="tipCount">0 / 280</div>
           </div>
-          <div class="field full">
-            <label class="field-label" for="f-money">The money line</label>
-            <div class="field-hint">One line you'd actually text a friend. Becomes the headline of your postcard.</div>
-            <input type="text" id="f-money" name="money_line" placeholder="Go to Wengen. Stay at the Belvedere. Stop searching." />
-          </div>
         </div>
 
         <!-- 04 DETAILS -->
@@ -1197,15 +1192,10 @@
             <div class="field-hint">Full street address. "Barcelona" isn't useful to the person you're sending this link to — give them somewhere to actually walk to.</div>
             <input type="text" id="f-where" name="where" placeholder="e.g. Carrer de Montcada 22, El Born, Barcelona" />
           </div>
-          <div class="form-row">
-            <div class="field">
-              <label class="field-label" for="f-bestfor">Best for</label>
-              <input type="text" id="f-bestfor" name="best_for" placeholder="Long dinners. Tuesday nights." />
-            </div>
-            <div class="field">
-              <label class="field-label" for="f-move">The move</label>
-              <input type="text" id="f-move" name="the_move" placeholder="Sit at the bar. Order the bresaola." />
-            </div>
+          <div class="field full">
+            <label class="field-label" for="f-move">The move</label>
+            <div class="field-hint">The play when you arrive. What to order, what to do.</div>
+            <input type="text" id="f-move" name="the_move" placeholder="Sit at the bar. Order the bresaola." />
           </div>
         </div>
 
@@ -1277,10 +1267,6 @@
               <div class="postcard-fact">
                 <div class="postcard-fact-label">Address</div>
                 <div class="postcard-fact-value empty" id="previewWhere">A real street address.</div>
-              </div>
-              <div class="postcard-fact">
-                <div class="postcard-fact-label">Best for</div>
-                <div class="postcard-fact-value empty" id="previewBestFor">What they come for.</div>
               </div>
               <div class="postcard-fact">
                 <div class="postcard-fact-label">The move</div>
@@ -1413,9 +1399,7 @@
     hood: $('f-hood'),
     category: $('f-category'),
     tip: $('f-tip'),
-    money: $('f-money'),
     where: $('f-where'),
-    bestfor: $('f-bestfor'),
     move: $('f-move'),
   };
 
@@ -1426,7 +1410,6 @@
     quote: $('previewQuote'),
     quoteWrap: $('previewQuoteWrap'),
     where: $('previewWhere'),
-    bestfor: $('previewBestFor'),
     move: $('previewMove'),
     byline: $('previewByline'),
     avatar: $('previewAvatar'),
@@ -1440,7 +1423,6 @@
     breadcrumb: 'Neighbourhood, city',
     quote: `"One line you'd text a friend about this place."`,
     where: 'A real street address.',
-    bestfor: 'What they come for.',
     move: 'The play when you arrive.',
   };
 
@@ -1466,13 +1448,18 @@
   bind(f.place, p.title, { placeholder: defaults.title });
   bind(f.category, p.category, { placeholder: defaults.category, transform: (v) => v.toUpperCase() });
   bind(f.hood, p.breadcrumb, { placeholder: defaults.breadcrumb });
-  bind(f.money, p.quote, {
+  bind(f.tip, p.quote, {
     placeholder: defaults.quote,
-    transform: (v) => '"' + v.replace(/^["'""]|["'""]$/g, '').trim() + '"',
+    transform: (v) => {
+      // Pull first sentence (up to first . ! ?), or all of it if none yet
+      const cleaned = v.replace(/\s+/g, ' ').trim();
+      const m = cleaned.match(/^[^.!?]*[.!?]/);
+      const first = (m ? m[0] : cleaned).replace(/^["'""]|["'""]$/g, '').trim();
+      return '"' + first + '"';
+    },
     wrap: p.quoteWrap,
   });
   bind(f.where, p.where, { placeholder: defaults.where });
-  bind(f.bestfor, p.bestfor, { placeholder: defaults.bestfor });
   bind(f.move, p.move, { placeholder: defaults.move });
 
   // Byline + avatar
@@ -1640,7 +1627,7 @@
         updateCount();
         updateByline();
         // Re-trigger the bindings to show placeholders
-        ['place','hood','category','money','where','bestfor','move'].forEach((k) => {
+        ['place','hood','category','tip','where','move'].forEach((k) => {
           f[k].dispatchEvent(new Event('input'));
         });
         submitBtn.innerHTML = 'Sent ✓';
