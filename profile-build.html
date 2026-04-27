@@ -366,16 +366,15 @@
     font-weight: 400;
     font-size: 1.02rem;
     color: var(--ink);
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--ink);
-    padding: 8px 0 10px;
+    background: var(--cream2);
+    border: 1px solid var(--rule);
+    padding: 12px 14px;
     line-height: 1.4;
     border-radius: 0;
     -webkit-appearance: none;
     appearance: none;
     outline: none;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, background 0.15s;
     width: 100%;
   }
   .field input::placeholder,
@@ -400,12 +399,12 @@
   }
   .field input:focus,
   .field textarea:focus,
-  .field select:focus { border-color: var(--red); }
+  .field select:focus { border-color: var(--red); background: var(--cream); }
   .field select {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='none' stroke='%231a1816' stroke-width='1.2' d='M1 1l4 4 4-4'/></svg>");
     background-repeat: no-repeat;
-    background-position: right 2px center;
-    padding-right: 24px;
+    background-position: right 14px center;
+    padding-right: 36px;
     cursor: pointer;
   }
   .char-count {
@@ -976,11 +975,14 @@
     .builder-inner { grid-template-columns: 1fr; }
     .builder-form-col {
       border-right: none;
-      border-bottom: 1px solid var(--rule);
+      padding: 2.5rem 0;
+      order: 1;
+    }
+    .builder-preview-col {
       padding: 2.5rem 0;
       order: 2;
+      border-top: 1px solid var(--rule);
     }
-    .builder-preview-col { padding: 2.5rem 0; order: 1; }
     .builder-preview-sticky { position: static; }
     .postcard {
       box-shadow: 6px 6px 0 var(--ink);
@@ -1180,29 +1182,10 @@
           </div>
         </div>
 
-        <!-- 04 DETAILS -->
+        <!-- 04 PHOTOS -->
         <div class="form-section">
           <div class="form-section-kicker">
             <span class="num">04</span>
-            <span>The details</span>
-            <span class="line"></span>
-          </div>
-          <div class="field full">
-            <label class="field-label" for="f-where">The address</label>
-            <div class="field-hint">Full street address. "Barcelona" isn't useful to the person you're sending this link to — give them somewhere to actually walk to.</div>
-            <input type="text" id="f-where" name="where" placeholder="e.g. Carrer de Montcada 22, El Born, Barcelona" />
-          </div>
-          <div class="field full">
-            <label class="field-label" for="f-move">The move</label>
-            <div class="field-hint">The play when you arrive. What to order, what to do.</div>
-            <input type="text" id="f-move" name="the_move" placeholder="Sit at the bar. Order the bresaola." />
-          </div>
-        </div>
-
-        <!-- 05 PHOTOS -->
-        <div class="form-section">
-          <div class="form-section-kicker">
-            <span class="num">05</span>
             <span>The photos</span>
             <span class="line"></span>
           </div>
@@ -1262,17 +1245,6 @@
             <div class="postcard-quote empty" id="previewQuoteWrap">
               <p id="previewQuote">"One line you'd text a friend about this place."</p>
             </div>
-
-            <div class="postcard-facts">
-              <div class="postcard-fact">
-                <div class="postcard-fact-label">Address</div>
-                <div class="postcard-fact-value empty" id="previewWhere">A real street address.</div>
-              </div>
-              <div class="postcard-fact">
-                <div class="postcard-fact-label">The move</div>
-                <div class="postcard-fact-value empty" id="previewMove">The play when you arrive.</div>
-              </div>
-            </div>
           </div>
 
           <div class="postcard-byline">
@@ -1308,7 +1280,7 @@
         <div class="steps-kicker">How this works</div>
         <h2 class="steps-title">Three steps. <em>That's the whole thing.</em></h2>
       </div>
-      <div class="steps-aside">No account. No algorithm. Just your name on a link you'd send a friend.</div>
+      <div class="steps-aside">No algorithm. No anonymous reviews. Just your name on a link you'd send a friend.</div>
     </div>
     <div class="steps-grid">
       <div class="step">
@@ -1399,8 +1371,6 @@
     hood: $('f-hood'),
     category: $('f-category'),
     tip: $('f-tip'),
-    where: $('f-where'),
-    move: $('f-move'),
   };
 
   const p = {
@@ -1409,8 +1379,6 @@
     breadcrumb: $('previewBreadcrumb'),
     quote: $('previewQuote'),
     quoteWrap: $('previewQuoteWrap'),
-    where: $('previewWhere'),
-    move: $('previewMove'),
     byline: $('previewByline'),
     avatar: $('previewAvatar'),
     hero: $('previewHero'),
@@ -1422,8 +1390,6 @@
     category: 'Category',
     breadcrumb: 'Neighbourhood, city',
     quote: `"One line you'd text a friend about this place."`,
-    where: 'A real street address.',
-    move: 'The play when you arrive.',
   };
 
   function bind(input, el, opts) {
@@ -1451,7 +1417,6 @@
   bind(f.tip, p.quote, {
     placeholder: defaults.quote,
     transform: (v) => {
-      // Pull first sentence (up to first . ! ?), or all of it if none yet
       const cleaned = v.replace(/\s+/g, ' ').trim();
       const m = cleaned.match(/^[^.!?]*[.!?]/);
       const first = (m ? m[0] : cleaned).replace(/^["'""]|["'""]$/g, '').trim();
@@ -1459,8 +1424,6 @@
     },
     wrap: p.quoteWrap,
   });
-  bind(f.where, p.where, { placeholder: defaults.where });
-  bind(f.move, p.move, { placeholder: defaults.move });
 
   // Byline + avatar
   function updateByline() {
@@ -1627,7 +1590,7 @@
         updateCount();
         updateByline();
         // Re-trigger the bindings to show placeholders
-        ['place','hood','category','tip','where','move'].forEach((k) => {
+        ['place','hood','category','tip'].forEach((k) => {
           f[k].dispatchEvent(new Event('input'));
         });
         submitBtn.innerHTML = 'Sent ✓';
