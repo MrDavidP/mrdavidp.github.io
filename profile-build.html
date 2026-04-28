@@ -508,6 +508,97 @@
     padding: 2px 7px;
   }
 
+  /* ---- PROFILE PHOTO UPLOAD ---- */
+  .profile-upload-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .profile-upload-preview {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--ink);
+    background: var(--cream2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+  }
+  .profile-upload-preview:hover { background: #e7e1d4; border-color: var(--red); }
+  .profile-upload-preview.has-photo {
+    border-style: solid;
+    border-color: var(--ink);
+    background: transparent;
+  }
+  .profile-upload-preview.has-photo:hover { border-color: var(--red); }
+  .profile-upload-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .profile-upload-placeholder {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .profile-upload-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .profile-upload-btn {
+    background: transparent;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    font-family: var(--cond);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .profile-upload-btn:hover { background: var(--ink); color: var(--cream); }
+  .profile-upload-remove {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-family: var(--cond);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: none;
+  }
+  .profile-upload-remove.show { display: inline-block; }
+  .profile-upload-remove:hover { color: var(--red); }
+  .profile-upload-meta {
+    font-family: var(--cond);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: italic;
+  }
+
   /* ---- SUBMIT ---- */
   .submit-wrap {
     margin-top: 2.5rem;
@@ -746,7 +837,17 @@
     font-size: 0.9rem;
     font-weight: 500;
     flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
   }
+  .postcard-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .postcard-avatar.has-photo { background: transparent; }
   .postcard-byline-text {
     font-family: var(--cond);
     font-size: 0.66rem;
@@ -1131,6 +1232,22 @@
             <div class="field-hint">So we can send you the link when it's live. That's it.</div>
             <input type="email" id="f-email" name="email" placeholder="you@somewhere.com" autocomplete="email" required />
           </div>
+          <div class="field full">
+            <label class="field-label">Your photo <em style="font-style:italic;color:var(--muted);font-weight:400;">(optional)</em></label>
+            <div class="field-hint">Looks much better with a face attached. Square crop. Skip it and we'll show your initial in a circle.</div>
+            <div class="profile-upload-row">
+              <div class="profile-upload-preview" id="profilePhotoPreview" role="button" tabindex="0" aria-label="Upload profile photo">
+                <span class="profile-upload-placeholder" id="profilePhotoPlaceholder">+</span>
+                <img id="profilePhotoImg" src="" alt="" style="display:none" />
+              </div>
+              <div class="profile-upload-actions">
+                <button type="button" class="profile-upload-btn" id="profileUploadBtn">Add a photo</button>
+                <button type="button" class="profile-upload-remove" id="profileRemoveBtn">Remove</button>
+                <div class="profile-upload-meta" id="profileUploadMeta">jpg, png, heic · up to 10mb</div>
+              </div>
+            </div>
+            <input type="hidden" name="profile_photo_url" id="profilePhotoUrl" />
+          </div>
         </div>
 
         <!-- 02 PLACE -->
@@ -1250,7 +1367,7 @@
 
           <div class="postcard-byline">
             <div class="postcard-byline-left">
-              <div class="postcard-avatar" id="previewAvatar">?</div>
+              <div class="postcard-avatar" id="previewAvatar"><span id="previewAvatarInitial">?</span><img id="previewAvatarImg" src="" alt="" style="display:none" /></div>
               <div class="postcard-byline-text">Tip by <strong id="previewByline">you</strong></div>
             </div>
             <button class="postcard-copy-btn" type="button" aria-disabled="true" tabindex="-1">
@@ -1382,6 +1499,8 @@
     quoteWrap: $('previewQuoteWrap'),
     byline: $('previewByline'),
     avatar: $('previewAvatar'),
+    avatarInitial: $('previewAvatarInitial'),
+    avatarImg: $('previewAvatarImg'),
     hero: $('previewHero'),
     heroPlaceholder: $('previewHeroPlaceholder'),
   };
@@ -1444,7 +1563,7 @@
       initial = stripped ? stripped[0].toUpperCase() : '?';
     }
     p.byline.textContent = label;
-    p.avatar.textContent = initial;
+    p.avatarInitial.textContent = initial;
   }
   f.name.addEventListener('input', updateByline);
   f.handle.addEventListener('input', updateByline);
@@ -1459,6 +1578,96 @@
   };
   f.tip.addEventListener('input', updateCount);
   updateCount();
+
+  // ============ PROFILE PHOTO UPLOAD ============
+  const profilePreviewEl = $('profilePhotoPreview');
+  const profileImgEl = $('profilePhotoImg');
+  const profilePlaceholderEl = $('profilePhotoPlaceholder');
+  const profileUrlEl = $('profilePhotoUrl');
+  const profileUploadBtnEl = $('profileUploadBtn');
+  const profileRemoveBtnEl = $('profileRemoveBtn');
+  const profileMetaEl = $('profileUploadMeta');
+  let profilePhotoUrl = '';
+
+  function applyProfilePhoto(url) {
+    profilePhotoUrl = url || '';
+    profileUrlEl.value = profilePhotoUrl;
+    if (profilePhotoUrl) {
+      profileImgEl.src = profilePhotoUrl;
+      profileImgEl.style.display = 'block';
+      profilePlaceholderEl.style.display = 'none';
+      profilePreviewEl.classList.add('has-photo');
+      profileRemoveBtnEl.classList.add('show');
+      profileUploadBtnEl.textContent = 'Replace';
+      profileMetaEl.textContent = 'Looking sharp.';
+      // Mirror onto live preview avatar
+      p.avatarImg.src = profilePhotoUrl;
+      p.avatarImg.style.display = 'block';
+      p.avatarInitial.style.display = 'none';
+      p.avatar.classList.add('has-photo');
+    } else {
+      profileImgEl.src = '';
+      profileImgEl.style.display = 'none';
+      profilePlaceholderEl.style.display = 'block';
+      profilePreviewEl.classList.remove('has-photo');
+      profileRemoveBtnEl.classList.remove('show');
+      profileUploadBtnEl.textContent = 'Add a photo';
+      profileMetaEl.textContent = 'jpg, png, heic · up to 10mb';
+      p.avatarImg.src = '';
+      p.avatarImg.style.display = 'none';
+      p.avatarInitial.style.display = 'block';
+      p.avatar.classList.remove('has-photo');
+    }
+  }
+
+  let profileWidget = null;
+  function openProfileWidget() {
+    if (typeof cloudinary === 'undefined') {
+      setTimeout(openProfileWidget, 300);
+      return;
+    }
+    if (!profileWidget) {
+      profileWidget = cloudinary.createUploadWidget(
+        {
+          cloudName: 'dq9newmhl',
+          uploadPreset: 'jykjigyw',
+          multiple: false,
+          maxFiles: 1,
+          cropping: true,
+          croppingAspectRatio: 1,
+          croppingShowDimensions: false,
+          croppingDefaultSelectionRatio: 1,
+          showSkipCropButton: false,
+          sources: ['local', 'camera'],
+          clientAllowedFormats: ['image'],
+          maxImageFileSize: 10000000,
+          theme: 'minimal',
+          showPoweredBy: false,
+          folder: 'profile-photos',
+        },
+        (err, result) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          if (result && result.event === 'success') {
+            applyProfilePhoto(result.info.secure_url);
+          }
+        }
+      );
+    }
+    profileWidget.open();
+  }
+
+  profileUploadBtnEl.addEventListener('click', openProfileWidget);
+  profilePreviewEl.addEventListener('click', openProfileWidget);
+  profilePreviewEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openProfileWidget();
+    }
+  });
+  profileRemoveBtnEl.addEventListener('click', () => applyProfilePhoto(''));
 
   // ============ PHOTO UPLOAD ============
   const thumbsEl = $('thumbs');
@@ -1588,6 +1797,7 @@
         form.reset();
         uploadedPhotos = [];
         renderThumbs();
+        applyProfilePhoto('');
         updateCount();
         updateByline();
         // Re-trigger the bindings to show placeholders

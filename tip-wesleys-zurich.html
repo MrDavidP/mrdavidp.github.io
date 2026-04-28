@@ -3,624 +3,551 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wesley's Kitchen, Zürich — HoodTip</title>
+  <title>Wesley's Kitchen — Zürich — HoodTip</title>
+  <meta name="description" content="Three Wesley's in Zürich. The one to know is the revamped shipping container behind Hauptbahnhof. Order the chicken katsu." />
 
-  <!-- SEO META -->
-  <meta name="description" content="Three Wesley's Kitchens in Zürich. The one you want is the revamped shipping container by Hauptbahnhof. Order the chicken katsu." />
-  <meta name="keywords" content="Wesley's Kitchen Zürich, Zurich Hauptbahnhof food, Museumstrasse Zurich, chicken katsu Zurich, shipping container restaurant Zurich, quick lunch Zurich" />
-
-  <!-- OG / SOCIAL -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="HoodTip" />
-  <meta property="og:title" content="Wesley's Kitchen, Zürich · HoodTip" />
-  <meta property="og:description" content="Three of these in Zürich. Take the one by the station. Order the katsu." />
-  <meta property="og:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/wesleys-kitchen-katsu.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:title" content="Wesley's Kitchen · HoodTip" />
+  <meta property="og:description" content="Three of these in Zürich. Go to the one by the train station. Get the chicken katsu." />
+  <meta property="og:image" content="https://hoodtip.com/wesleys-kitchen-katsu.jpg" />
   <meta property="og:url" content="https://hoodtip.com/tip-wesleys-zurich.html" />
-
-  <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Wesley's Kitchen, Zürich · HoodTip" />
-  <meta name="twitter:description" content="Three of these in Zürich. Take the one by the station. Order the katsu." />
-  <meta name="twitter:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/wesleys-kitchen-katsu.jpg" />
+  <meta name="twitter:title" content="Wesley's Kitchen · HoodTip" />
+  <meta name="twitter:description" content="Three of these in Zürich. Go to the one by the train station. Get the chicken katsu." />
+  <meta name="twitter:image" content="https://hoodtip.com/wesleys-kitchen-katsu.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
 
   <style>
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
-      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --cream: #f7f4ef;
+      --cream2: #efeae1;
+      --ink: #1a1816;
+      --ink2: #2a2925;
+      --muted: #6b6560;
+      --muted2: #8a8378;
+      --rule: #d9d2c6;
+      --rule-soft: #e8e2d6;
+      --red: #b5322a;
       --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans:  'Barlow', system-ui, sans-serif;
-      --cond:  'Barlow Condensed', system-ui, sans-serif;
-      --article-width: 720px;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-
-    /* NAV */
-    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
-    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
-    .logo em { font-style: italic; font-weight: 400; }
-    .logo .dot { color: var(--red); }
-    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
-    .nav-links { display: flex; list-style: none; }
-    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
-    .nav-links a.cta:hover { background: var(--ink2); }
-
-    /* TIP HEADER */
-    .tip-header { border-bottom: 1.5px solid var(--ink); padding: 2.5rem 2rem 2rem; max-width: 1200px; margin: 0 auto; }
-    .tip-breadcrumb { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; gap: 0.5rem; align-items: center; }
-    .tip-breadcrumb a { color: var(--muted); text-decoration: none; }
-    .tip-breadcrumb a:hover { color: var(--ink); }
-    .tip-breadcrumb span { color: var(--rule); }
-    .tip-kicker { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
-    .tip-headline { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 820px; }
-    .tip-headline em { font-style: italic; }
-    .tip-dek { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--muted); line-height: 1.55; max-width: 620px; margin-bottom: 1.5rem; }
-    .tip-meta { display: flex; gap: 0; border-top: 1px solid var(--rule); padding-top: 1rem; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
-    .tip-meta-item { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .tip-meta-item strong { color: var(--ink); font-weight: 500; }
-    .tip-meta-sep { color: var(--rule); }
-    .tip-byline { display: flex; align-items: center; gap: 0.6rem; }
-    .tip-byline-photo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid var(--rule); }
-    .tip-byline-name { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .tip-byline-name a { color: var(--ink); text-decoration: none; font-weight: 500; }
-
-    /* ARTICLE BODY */
-    .tip-body { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    .tip-body-inner { max-width: var(--article-width); margin: 0 auto; padding: 2rem 0 3rem; }
-
-    p { font-size: 1.05rem; line-height: 1.8; color: var(--ink); margin-bottom: 1.4rem; }
-    p:last-child { margin-bottom: 0; }
-
-    .drop-cap::first-letter {
-      font-family: var(--serif);
-      font-size: 4.5rem;
-      font-weight: 600;
-      line-height: 0.8;
-      float: left;
-      margin-right: 0.08em;
-      margin-top: 0.05em;
-      color: var(--ink);
-    }
-
-    /* PULL QUOTE */
-    .pull-quote {
-      border-top: 2px solid var(--ink);
-      border-bottom: 1px solid var(--rule);
-      padding: 1.5rem 0;
-      margin: 2.5rem 0;
-    }
-    .pull-quote p {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.55rem;
-      line-height: 1.3;
-      color: var(--ink);
-      margin: 0;
-    }
-    .pull-quote cite {
-      display: block;
-      font-family: var(--cond);
-      font-style: normal;
-      font-size: 0.58rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
-
-    /* SECTION LABEL */
-    .section-label {
-      font-family: var(--cond);
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 0.6rem;
-      margin-top: 2.5rem;
-      display: block;
-    }
-
-    /* IMAGES */
-    .img-full-wrap {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-    }
-    .img-full { width: 100%; height: auto; display: block; max-height: 80vh; object-fit: cover; }
-
-    .img-landscape-wrap { margin: 2rem 0; }
-    .img-landscape { width: 100%; height: auto; display: block; }
-
-    .img-caption {
-      font-family: var(--cond);
-      font-size: 0.56rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 0.5rem 0 0;
-    }
-
-    /* DETAILS STRIP */
-    .tip-details {
-      border-top: 1.5px solid var(--ink);
-      border-bottom: 1.5px solid var(--ink);
-      background: var(--ink);
-      color: var(--cream);
-    }
-    .tip-details-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
-    }
-    .tip-detail-label {
-      font-family: var(--cond);
-      font-size: 0.52rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(247,244,239,0.4);
-      margin-bottom: 0.25rem;
-    }
-    .tip-detail-value {
-      font-family: var(--serif);
-      font-size: 0.95rem;
-      color: var(--cream);
-      line-height: 1.4;
-    }
-
-    /* FOOTER */
-    footer { border-top: 2px solid var(--red); background: var(--ink); }
-    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
-    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
-    .footer-logo em { font-style: italic; font-weight: 400; }
-    .footer-logo .dot { color: var(--red); }
-    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
-
-    @media (max-width: 640px) {
-      .nav-links a:not(.cta) { display: none; }
-      .nav-tagline { display: none; }
-      .tip-headline { font-size: 2rem; }
-      .footer-stats { display: none; }
-    }
-
-    /* ===== ADD PHOTOS CTA ===== */
-    .photos-cta {
-      background: #efeae1;
-      border-bottom: 1.5px solid var(--ink);
-    }
-    .photos-cta-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.75rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .photos-cta-kicker {
-      font-family: var(--cond);
-      font-size: 0.58rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 0.4rem;
-    }
-    .photos-cta-text {
-      font-family: var(--serif);
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      font-weight: 400;
-      line-height: 1.2;
-    }
-    .photos-cta-text em { font-style: italic; }
-    .photos-cta-btn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: transparent;
-      color: var(--ink);
-      font-family: var(--cond);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 11px 22px;
-      border: 1.5px solid var(--ink);
-      cursor: pointer;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-    .photos-cta-btn:hover {
-      background: var(--ink);
-      color: var(--cream);
-    }
-
-    /* ===== UPLOAD MODAL ===== */
-    .photo-modal-overlay {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(26,24,22,0.72);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-    .photo-modal-overlay.open { display: flex; }
-    .photo-modal {
+    html, body { height: 100%; }
+    body {
       background: var(--cream);
-      width: 100%; max-width: 520px;
-      max-height: 90vh;
-      overflow-y: auto;
-      display: flex; flex-direction: column;
-      border: 1.5px solid var(--ink);
-    }
-    .photo-modal-header {
-      padding: 1.1rem 1.5rem;
-      border-bottom: 1.5px solid var(--ink);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-shrink: 0;
-    }
-    .photo-modal-header h4 {
-      font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 500;
-      margin: 0;
-      line-height: 1.15;
-    }
-    .photo-modal-header h4 em { font-style: italic; color: var(--red); }
-    .photo-modal-close {
-      background: transparent;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      color: var(--muted);
-      padding: 4px 8px;
-      line-height: 1;
-    }
-    .photo-modal-close:hover { color: var(--ink); }
-    .photo-modal-body {
-      padding: 1.5rem;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
     }
-    .photo-modal-sub {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin: 0;
+    body::before {
+      content:''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
+      background-size: 3px 3px; opacity: 0.5; mix-blend-mode: multiply;
     }
-    .photo-upload-btn {
-      width: 100%;
-      padding: 1.4rem;
-      border: 1.5px dashed var(--ink);
-      background: transparent;
-      font-family: var(--cond);
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink);
-      cursor: pointer;
-      transition: all 0.15s;
+    a { color: inherit; text-decoration: none; }
+
+    /* ------ NAV ------ */
+    .nav { border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: baseline; gap: 12px; }
+    .nav-logo {
+      display: inline-flex; align-items: center; gap: 14px;
+      border: 1.5px solid var(--ink);
+      padding: 7px 14px;
+      color: var(--ink); text-decoration: none;
+      background: var(--cream); transition: background 0.15s;
     }
-    .photo-upload-btn:hover {
-      background: #efeae1;
-      border-style: solid;
-    }
-    .photo-thumbs {
+    .nav-logo:hover { background: var(--cream2); }
+    .nav-logo-word { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; line-height: 1; color: var(--ink); }
+    .nav-logo-word em { font-style: italic; font-weight: 500; }
+    .nav-logo-tag { font-family: var(--cond); font-weight: 500; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); border-left: 1.5px solid var(--ink); padding-left: 12px; line-height: 1.3; white-space: nowrap; }
+    .nav-logo-tag b { color: var(--red); font-weight: 600; }
+    .nav-right { display: flex; align-items: stretch; height: 54px; }
+    .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 0 22px; display: flex; align-items: center; border-left: 1px solid var(--ink); transition: background 0.15s; }
+    .nav-cta:hover { background: var(--red); }
+
+    /* ------ POSTCARD ------ */
+    .postcard {
+      flex: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 0.5rem;
-    }
-    .photo-thumb {
+      grid-template-columns: 1.15fr 1fr;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: calc(100vh - 54px - 46px);
       position: relative;
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      border: 1px solid var(--rule);
+      z-index: 2;
     }
-    .photo-thumb img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
+
+    /* ------ CAROUSEL (left) ------ */
+    .pc-image {
+      position: relative; overflow: hidden;
+      border-right: 1.5px solid var(--ink);
+      background: linear-gradient(135deg, #1f1d1b 0%, #2a2925 50%, #3a2a26 100%);
     }
-    .photo-thumb-remove {
-      position: absolute; top: 4px; right: 4px;
-      width: 22px; height: 22px;
-      background: var(--ink);
-      color: var(--cream);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 0.7rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .pc-track { position: absolute; inset: 0; display: flex; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+    .pc-slide { flex: 0 0 100%; height: 100%; position: relative; overflow: hidden; }
+    .pc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+    .pc-slide-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 5rem; color: rgba(247,244,239,0.15); pointer-events: none; }
+
+    .pc-image-overlay {
+      position: absolute; top: 0; left: 0; right: 0; padding: 1.5rem 1.75rem;
+      background: linear-gradient(to bottom, rgba(15,12,10,0.55) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-overlay a, .pc-image-overlay button { pointer-events: auto; }
+    .pc-breadcrumb { font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,244,239,0.75); }
+    .pc-breadcrumb a { color: rgba(247,244,239,0.75); transition: color 0.15s; }
+    .pc-breadcrumb a:hover { color: #fff; }
+    .pc-breadcrumb span { color: rgba(247,244,239,0.35); padding: 0 0.35rem; }
+    .pc-badge { font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); background: var(--red); padding: 5px 9px; }
+
+    .pc-image-caption {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.75rem;
+      background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0) 100%);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+      z-index: 3; pointer-events: none;
+    }
+    .pc-image-cap-text { font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(255,255,255,0.85); max-width: 420px; line-height: 1.4; }
+    .pc-image-credit { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+    .pc-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(15,12,10,0.45); backdrop-filter: blur(8px);
+      border: 1px solid rgba(247,244,239,0.25);
+      color: var(--cream); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 4; transition: all 0.2s;
+    }
+    .pc-nav:hover { background: var(--red); border-color: var(--red); }
+    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav.prev { left: 1.25rem; }
+    .pc-nav.next { right: 1.25rem; }
+    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+
+    .pc-counter {
+      position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; align-items: center; z-index: 4;
+      padding: 6px 12px; background: rgba(15,12,10,0.35); backdrop-filter: blur(8px);
+      border-radius: 100px;
+    }
+    .pc-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(247,244,239,0.4); border: none; cursor: pointer; padding: 0; transition: all 0.2s; }
+    .pc-dot.active { background: var(--cream); width: 18px; border-radius: 3px; }
+    .pc-dot:hover { background: rgba(247,244,239,0.8); }
+    .pc-counter-text { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.7); }
+    .pc-counter-text b { color: var(--cream); font-weight: 500; }
+
+    /* Hide carousel controls when only one photo */
+    .pc-image.single .pc-nav,
+    .pc-image.single .pc-counter,
+    .pc-image.single .pc-counter-text { display: none; }
+
+    /* ------ BODY (right) ------ */
+    .pc-body { padding: 3rem 3.25rem 4rem; display: flex; flex-direction: column; position: relative; }
+    .pc-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-bottom: 1rem; }
+    .pc-location { font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .pc-location span { color: var(--rule); padding: 0 0.4rem; }
+    .pc-title { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 500; line-height: 1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .pc-title em { font-style: italic; font-weight: 400; }
+
+    /* Callout */
+    .pc-callout {
+      position: relative;
+      padding: 1.75rem 0 1.75rem 1.75rem;
+      margin: 0.25rem 0 2rem;
+      border-left: 3px solid var(--red);
+      background: linear-gradient(to right, rgba(181,50,42,0.04) 0%, transparent 100%);
+    }
+    .pc-callout::before {
+      content: '"';
+      position: absolute;
+      top: -0.4rem; left: 0.95rem;
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      color: var(--red);
+      opacity: 0.15;
       line-height: 1;
-      padding: 0;
+      font-weight: 600;
+      pointer-events: none;
     }
-    .photo-field {
-      display: flex; flex-direction: column; gap: 0.35rem;
-    }
-    .photo-field label {
-      font-family: var(--cond);
-      font-size: 0.58rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .photo-field input,
-    .photo-field textarea {
-      font-family: var(--sans);
-      font-size: 0.92rem;
-      font-weight: 300;
-      padding: 10px 12px;
-      border: 1px solid var(--rule);
-      background: var(--cream);
+    .pc-callout-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+      line-height: 1.25;
       color: var(--ink);
-      border-radius: 0;
-      outline: none;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+    .pc-callout-text b { font-weight: 600; font-style: normal; color: var(--red); }
+
+    /* Optional paragraphs */
+    .pc-context { font-family: var(--serif); font-size: 1.05rem; line-height: 1.55; color: var(--ink); margin-bottom: 1.5rem; max-width: 38em; }
+    .pc-context p { margin: 0 0 0.7rem; }
+    .pc-context p:last-child { margin-bottom: 0; }
+    .pc-context.below { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+    .pc-context:empty { display: none; }
+    .pc-context p:empty { display: none; }
+    .pc-context:has(p:only-child:empty) { display: none; }
+
+    /* Fact strip */
+    .pc-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .pc-fact {
+      padding: 1rem 1.25rem 1rem 0;
+      border-right: 1px solid var(--rule-soft);
+      display: flex; flex-direction: column; gap: 0.3rem;
+      min-width: 0;
+    }
+    .pc-fact:first-child { padding-left: 0; }
+    .pc-fact:last-child { border-right: none; padding-right: 0; padding-left: 1.25rem; }
+    .pc-fact:nth-child(2) { padding-left: 1.25rem; }
+    .pc-fact-label { font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .pc-fact--primary .pc-fact-label { color: var(--red); font-weight: 600; letter-spacing: 0.18em; }
+    .pc-fact-value { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); line-height: 1.25; word-wrap: break-word; }
+    .pc-fact-value--bold { font-family: var(--serif); font-style: normal; font-size: 1.15rem; font-weight: 600; color: var(--ink); line-height: 1.3; letter-spacing: -0.005em; }
+    .pc-fact-value--bold em { font-weight: 500; font-style: italic; }
+    .pc-fact-value--bold a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--red); padding-bottom: 1px; transition: color 0.15s, border-color 0.15s; }
+    .pc-fact-value--bold a:hover { color: var(--red); border-color: var(--ink); }
+
+    .pc-fact-website .pc-fact-value a { font-size: 0.95rem; font-weight: 500; word-break: break-all; }
+    .pc-fact-website[data-empty="true"] { display: none; }
+    .pc-facts:has(.pc-fact-website:not([data-empty="true"])) { grid-template-columns: 1fr 1fr 1fr; }
+
+    /* Byline + share */
+    .pc-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1.5rem; flex-wrap: wrap; }
+    .pc-byline { display: flex; align-items: center; gap: 0.7rem; }
+    a.pc-byline { text-decoration: none; color: inherit; }
+    a.pc-byline:hover .pc-byline-text b { color: var(--red); }
+    a.pc-byline:hover .pc-byline-photo,
+    a.pc-byline:hover .pc-byline-photo-fb { border-color: var(--red); }
+    .pc-byline-photo { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule); transition: border-color 0.15s; }
+    .pc-byline-photo-fb {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--red); color: var(--cream);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 1.05rem; font-weight: 600;
+      border: 1.5px solid var(--red);
       transition: border-color 0.15s;
     }
-    .photo-field textarea {
-      min-height: 70px;
-      resize: vertical;
-      line-height: 1.5;
-    }
-    .photo-field input:focus,
-    .photo-field textarea:focus { border-color: var(--ink); }
-    .photo-submit-btn {
-      background: var(--ink);
-      color: var(--cream);
-      font-family: var(--cond);
-      font-size: 0.74rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 600;
-      padding: 13px 22px;
+    .pc-byline-text { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
+    .pc-byline-text b { display: block; font-family: var(--serif); font-size: 0.95rem; color: var(--ink); font-weight: 500; text-transform: none; font-style: italic; letter-spacing: 0; transition: color 0.15s; }
+
+    /* Tipper-specific affordance — sits under the byline */
+    .pc-byline-stack { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .pc-tipper-add {
+      background: transparent;
       border: none;
-      cursor: pointer;
-      transition: background 0.15s;
-      margin-top: 0.25rem;
-    }
-    .photo-submit-btn:hover:not(:disabled) { background: var(--red); }
-    .photo-submit-btn:disabled {
-      background: var(--rule);
-      color: var(--muted);
-      cursor: not-allowed;
-    }
-    #photoFormError {
-      font-size: 0.8rem;
-      color: var(--red);
-      margin: 0;
-    }
-    .photo-success {
-      text-align: center;
-      padding: 2.5rem 1.5rem !important;
-    }
-    .photo-success-mark {
-      font-family: var(--serif);
-      font-size: 2.6rem;
-      color: var(--red);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .photo-success h4 {
-      font-family: var(--serif);
-      font-size: 1.4rem;
+      padding: 0 0 1px;
+      margin-left: 50px;
+      font-family: var(--cond);
+      font-size: 0.6rem;
       font-weight: 500;
-      margin: 0 0 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      cursor: pointer;
+      text-align: left;
+      border-bottom: 1px solid var(--red);
+      transition: opacity 0.15s, color 0.15s;
+      align-self: flex-start;
     }
-    .photo-success p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin: 0 0 1.5rem;
+    .pc-tipper-add:hover { opacity: 0.7; }
+
+    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; flex-wrap: wrap; row-gap: 0.5rem; justify-content: flex-end; }
+    .pc-share-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); background: var(--cream); border: 1px solid var(--ink); padding: 9px 14px; cursor: pointer; transition: all 0.15s; }
+    .pc-share-btn:hover { background: var(--ink); color: var(--cream); }
+    .pc-share-btn svg { width: 12px; height: 12px; }
+    .pc-share-btn.primary { background: var(--ink); color: var(--cream); }
+    .pc-share-btn.primary:hover { background: var(--red); border-color: var(--red); }
+    .pc-share-toast { position: absolute; right: 0; bottom: calc(100% + 8px); font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 6px 10px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+    .pc-share-toast.show { opacity: 1; }
+
+    /* ------ ADD PHOTOS BAND ------ */
+    .photos-band { background: var(--cream2); border-top: 1.5px solid var(--ink); position: relative; z-index: 2; }
+    .photos-band-inner { max-width: 1360px; margin: 0 auto; padding: 1.1rem 32px; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .photos-band-text { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+    .photos-band-kicker { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); font-weight: 600; }
+    .photos-band-line { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink); line-height: 1.3; }
+    .photos-band-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; color: var(--ink);
+      font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 9px 18px; border: 1.5px solid var(--ink); cursor: pointer;
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .photos-band-btn:hover { background: var(--ink); color: var(--cream); }
+
+    /* ------ MORE TIPS ------ */
+    .more-tips { background: var(--ink); color: var(--cream); position: relative; z-index: 2; }
+    .more-tips-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+    .more-tips-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.4rem 0 1rem; border-bottom: 1px solid rgba(247,244,239,0.15); }
+    .more-tips-title { font-family: var(--cond); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); }
+    .more-tips-title::before { content: "↓  "; color: var(--red); font-weight: 600; }
+    .more-tips-all { color: rgba(247,244,239,0.7); border-bottom: 1px solid rgba(247,244,239,0.3); padding-bottom: 2px; font-family: var(--cond); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: all 0.15s; }
+    .more-tips-all:hover { color: var(--cream); border-color: var(--cream); }
+    .more-tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .more-tip-card { display: flex; flex-direction: column; text-decoration: none; color: rgba(247,244,239,0.95); border-right: 1px solid rgba(247,244,239,0.12); padding-bottom: 1rem; transition: background 0.15s; overflow: hidden; }
+    .more-tip-card:last-child { border-right: none; }
+    .more-tip-card:hover { background: rgba(247,244,239,0.04); }
+    .more-tip-img-wrap { aspect-ratio: 16/10; overflow: hidden; background: #2a2825; position: relative; }
+    .more-tip-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .more-tip-card:hover .more-tip-img { transform: scale(1.04); }
+    .more-tip-img-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 2rem; color: rgba(247,244,239,0.15); }
+    .more-tip-body { padding: 0.7rem 0.9rem 0; }
+    .more-tip-kicker { font-family: var(--cond); font-size: 0.5rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.45); margin-bottom: 0.3rem; }
+    .more-tip-kicker b { color: var(--red); font-weight: 600; }
+    .more-tip-hed { font-family: var(--serif); font-size: 0.92rem; font-weight: 500; line-height: 1.25; color: var(--cream); }
+
+    /* ------ FOOTER STRIP ------ */
+    .foot-strip { background: var(--ink); color: var(--cream); border-top: 2px solid var(--red); position: relative; z-index: 2; }
+    .foot-strip-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 46px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .foot-note { font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(247,244,239,0.65); }
+    .foot-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
+    .foot-cta { font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.85); border-bottom: 1px solid rgba(247,244,239,0.3); padding-bottom: 2px; transition: all 0.15s; }
+    .foot-cta:hover { color: var(--cream); border-color: var(--red); }
+
+    /* ------ UPLOAD MODAL ------ */
+    .photo-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,24,22,0.72); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
+    .photo-modal-overlay.open { display: flex; }
+    .photo-modal { background: var(--cream); width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column; border: 1.5px solid var(--ink); }
+    .photo-modal-header { padding: 1.1rem 1.5rem; border-bottom: 1.5px solid var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-shrink: 0; }
+    .photo-modal-header h4 { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; margin: 0; line-height: 1.15; }
+    .photo-modal-header h4 em { font-style: italic; color: var(--red); }
+    .photo-modal-close { background: transparent; border: none; font-size: 1rem; cursor: pointer; color: var(--muted); padding: 4px 8px; line-height: 1; }
+    .photo-modal-close:hover { color: var(--ink); }
+    .photo-modal-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .photo-modal-sub { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin: 0; }
+    .photo-upload-btn { width: 100%; padding: 1.4rem; border: 1.5px dashed var(--ink); background: transparent; font-family: var(--cond); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); cursor: pointer; transition: all 0.15s; }
+    .photo-upload-btn:hover { background: var(--cream2); border-style: solid; }
+    .photo-thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 0.5rem; }
+    .photo-thumb { position: relative; aspect-ratio: 1/1; overflow: hidden; border: 1px solid var(--rule); }
+    .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-thumb-remove { position: absolute; top: 4px; right: 4px; width: 22px; height: 22px; background: var(--ink); color: var(--cream); border: none; border-radius: 50%; cursor: pointer; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; line-height: 1; padding: 0; }
+    .photo-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .photo-field label { font-family: var(--cond); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .photo-field input, .photo-field textarea { font-family: var(--sans); font-size: 0.92rem; font-weight: 300; padding: 10px 12px; border: 1px solid var(--rule); background: var(--cream); color: var(--ink); border-radius: 0; outline: none; transition: border-color 0.15s; }
+    .photo-field textarea { min-height: 70px; resize: vertical; line-height: 1.5; }
+    .photo-field input:focus, .photo-field textarea:focus { border-color: var(--ink); }
+    .photo-submit-btn { background: var(--ink); color: var(--cream); font-family: var(--cond); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; padding: 13px 22px; border: none; cursor: pointer; transition: background 0.15s; margin-top: 0.25rem; }
+    .photo-submit-btn:hover:not(:disabled) { background: var(--red); }
+    .photo-submit-btn:disabled { background: var(--rule); color: var(--muted); cursor: not-allowed; }
+    #photoFormError { font-size: 0.8rem; color: var(--red); margin: 0; }
+    .photo-success { text-align: center; padding: 2.5rem 1.5rem !important; }
+    .photo-success-mark { font-family: var(--serif); font-size: 2.6rem; color: var(--red); line-height: 1; margin-bottom: 0.5rem; }
+    .photo-success h4 { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; margin: 0 0 0.6rem; }
+    .photo-success p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin: 0 0 1.5rem; }
+
+    /* ------ RESPONSIVE ------ */
+    @media (max-width: 960px) {
+      .postcard { display: flex; flex-direction: column; grid-template-columns: 1fr; min-height: 0; flex: 0 0 auto; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; flex: 0 0 auto; }
+      .pc-image-caption { display: none; }
+      .pc-nav { width: 36px; height: 36px; }
+      .pc-nav.prev { left: 0.75rem; }
+      .pc-nav.next { right: 0.75rem; }
+      .pc-body { padding: 2rem 1.5rem 1.5rem; }
+      .pc-title { font-size: 2rem; }
+      .pc-facts { grid-template-columns: 1fr; }
+      .pc-fact { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 0.9rem 0; }
+      .pc-fact:first-child { padding-top: 0.5rem; }
+      .pc-fact:last-child { border-bottom: none; padding-bottom: 0.5rem; padding-left: 0; }
+      .pc-fact:nth-child(2) { padding-left: 0; }
+      .more-tips-grid { grid-template-columns: 1fr; }
+      .more-tip-card { border-right: none; border-bottom: 1px solid rgba(247,244,239,0.12); display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding: 12px; align-items: center; }
+      .more-tip-card:last-child { border-bottom: none; }
+      .more-tip-img-wrap { aspect-ratio: 4/3; }
+      .more-tip-body { padding: 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-logo-tag, .nav-link { display: none; }
+      .nav-logo { gap: 0; padding: 5px 10px; }
+      .nav-logo-word { font-size: 1.25rem; }
+      .nav-inner { padding: 0 18px; }
+      .pc-image-overlay { padding: 1rem 1.25rem; }
+      .pc-body { padding: 1.5rem 1.25rem 1.5rem; }
+      .pc-title { font-size: 1.8rem; }
+      .pc-callout { padding: 1.25rem 0 1.25rem 1.25rem; margin: 0 0 1.5rem; }
+      .pc-callout-text { font-size: 1.2rem; }
+      .photos-band-inner { padding: 1rem 18px; }
+      .photos-band-line { font-size: 0.9rem; }
+      .foot-strip-inner { padding: 0 18px; }
+      .foot-note { font-size: 0.72rem; }
+      .foot-cta { font-size: 0.56rem; }
+      .pc-share-btn { padding: 8px 11px; font-size: 0.6rem; }
     }
   </style>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HL9EJDL2YS');
-  </script>
 </head>
 <body>
 
-<nav>
+<!-- NAV -->
+<div class="nav">
   <div class="nav-inner">
-    <div style="display:flex;align-items:baseline;">
-      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
-      <span class="nav-tagline">Only the good stuff.</span>
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo" aria-label="HoodTip — Only the good stuff"><span class="nav-logo-word">Hood<em>Tip</em></span><span class="nav-logo-tag">Only the <b>good</b> stuff</span></a>
     </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="profile-zurich.html">Lee</a></li>
-      <li><a href="profile-build.html" class="cta">Leave a tip</a></li>
-    </ul>
+    <div class="nav-right">
+      <a href="profile-zurich.html" class="nav-link">Lee</a>
+      <a href="profile-build.html" class="nav-cta">Leave a HoodTip →</a>
+    </div>
   </div>
-</nav>
+</div>
 
-<!-- TIP HEADER -->
-<div style="border-bottom: 1.5px solid var(--ink);">
-  <div class="tip-header">
-    <div class="tip-breadcrumb">
-      <a href="index.html">HoodTip</a>
-      <span>/</span>
-      <a href="profile-zurich.html">Lee</a>
-      <span>/</span>
-      Zürich, Switzerland
+<!-- POSTCARD -->
+<div class="postcard">
+
+  <!-- CAROUSEL -->
+  <div class="pc-image single" id="pcImage">
+    <div class="pc-track" id="pcTrack">
+      <div class="pc-slide"><img src="wesleys-kitchen-katsu.jpg" alt="Chicken katsu over rice in takeaway container at Wesley's Kitchen, Zürich" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
     </div>
-    <div class="tip-kicker">Restaurant · Lunch · Zürich, Switzerland</div>
-    <h1 class="tip-headline">Three Wesley's in Zürich.<br><em>Take the one by the station.</em></h1>
-    <p class="tip-dek">A revamped shipping container at Museumstrasse, behind Hauptbahnhof. Order the chicken katsu. Thank Lee later.</p>
-    <div class="tip-meta">
-      <div class="tip-byline">
-        <img class="tip-byline-photo" src="lee-avnit.jpg" alt="Lee Avnit" />
-        <span class="tip-byline-name">Tip by <a href="profile-zurich.html">Lee Avnit</a></span>
+
+    <div class="pc-image-overlay">
+      <div class="pc-breadcrumb">
+        <a href="index.html">HoodTip</a><span>/</span><a href="index.html">Zürich</a><span>/</span>Hauptbahnhof
       </div>
-      <span class="tip-meta-sep">·</span>
-      <div class="tip-meta-item"><strong>Wesley's Kitchen</strong></div>
-      <span class="tip-meta-sep">·</span>
-      <div class="tip-meta-item">Museumstrasse, 8005 Zürich</div>
-      <span class="tip-meta-sep">·</span>
-      <div class="tip-meta-item">Behind Hauptbahnhof</div>
+      <span class="pc-badge">Restaurant</span>
+    </div>
+
+    <div class="pc-image-caption">
+      <div class="pc-image-cap-text">Chicken katsu over rice. Crisp skin, soy glaze, scallions on top.</div>
+      <div class="pc-image-credit">Photo · Lee</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="pc-body">
+
+    <div class="pc-content">
+      <div class="pc-location"><span>/</span>Restaurant<span>·</span>Hauptbahnhof<span>·</span>Zürich</div>
+
+      <h1 class="pc-title">Wesley's Kitchen</h1>
+
+      <div class="pc-context above"><p>Wesley Qian opened his first Zürich restaurant in February 2015 with his wife Jing and longtime friend Yang Wei — a Cantonese dim sum master who'd been head dim sum chef at the Grand Hyatt Shanghai. Wesley grew up in his mother's Shanghai restaurant before becoming a rising star of Chinese gastronomy himself. Traditional Chinese, reinterpreted with Japanese and European influences. Three locations in Zürich now — the one to know is the revamped shipping container behind Hauptbahnhof.</p></div>
+
+      <div class="pc-callout">
+        <p class="pc-callout-text">There are 3 of these places in Zürich — I'd recommend the one by the central train station — it's just a revamped shipping container with cool graphics on it — get the chicken katsu — <b>thank me later</b></p>
+      </div>
+      <div class="pc-context below"><p></p></div>
+
+      <div class="pc-facts">
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">How to get here</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=Wesley%27s+Kitchen+Museumstrasse+Z%C3%BCrich" target="_blank" rel="noopener">Museumstrasse, 8005</a></span>
+        </div>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">The move</span>
+          <span class="pc-fact-value pc-fact-value--bold">Chicken katsu over rice. <em>Eat in or take on the train.</em></span>
+        </div>
+        <div class="pc-fact pc-fact--primary pc-fact-website" data-empty="true">
+          <span class="pc-fact-label">Website</span>
+          <span class="pc-fact-value pc-fact-value--bold"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc-foot">
+      <div class="pc-byline-stack">
+        <a class="pc-byline" href="profile-zurich.html">
+          <img class="pc-byline-photo" src="lee-avnit.jpg" alt="Lee" onerror="this.outerHTML='&lt;div class=&quot;pc-byline-photo-fb&quot;&gt;L&lt;/div&gt;'" />
+          <div class="pc-byline-text">Tip by<b>Lee</b></div>
+        </a>
+        <button class="pc-tipper-add" onclick="openPhotoModal(true)">+ Lee, got more photos?</button>
+      </div>
+      <div class="pc-share">
+        <span class="pc-share-toast" id="shareToast">Link copied</span>
+        <button class="pc-share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
+        <a class="pc-share-btn primary" href="https://wa.me/?text=Wesley%27s%20Kitchen%20%E2%80%94%20https%3A//hoodtip.com/tip-wesleys-zurich.html" target="_blank" rel="noopener">
+          Share →
+        </a>
+        <a class="pc-share-btn primary" href="share-story.html?tip=wesleys-zurich" style="background:var(--red);border-color:var(--red);color:var(--cream);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg>
+          Share to Story →
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- HERO IMAGE: chicken katsu -->
-<div class="img-full-wrap">
-  <img class="img-full" src="wesleys-kitchen-katsu.jpg" alt="Chicken katsu over rice in takeaway container at Wesley's Kitchen, Zürich" />
-</div>
-
-<!-- ARTICLE BODY -->
-<div class="tip-body">
-  <div class="tip-body-inner">
-
-    <p class="drop-cap">Three of these in Zürich. The one to know is at Museumstrasse, just behind Hauptbahnhof — a revamped shipping container with cool graphics on it. You can clock it from the platforms. Quick line, in and out.</p>
-
-    <p>Get the chicken katsu over rice. Crisp skin, glossy soy glaze, scallions on top, slaw on the side. Eat it there or take it on the train.</p>
-
-    <div class="pull-quote">
-      <p>"There are 3 of these places in Zurich. I'd recommend the one by the central train station. It's just a revamped shipping container with cool graphics on it. Get the chicken katsu. Thank me later."</p>
-      <cite>— Lee</cite>
+<!-- ADD PHOTOS BAND -->
+<div class="photos-band">
+  <div class="photos-band-inner">
+    <div class="photos-band-text">
+      <span class="photos-band-kicker">Been to Wesley's?</span>
+      <span class="photos-band-line">Got photos? Help the next person see it.</span>
     </div>
-
-    <p>First tip from Lee. More to come.</p>
-
-  </div>
-</div>
-
-<!-- ADD PHOTOS CTA -->
-<div class="photos-cta">
-  <div class="photos-cta-inner">
-    <div>
-      <div class="photos-cta-kicker">Been to Wesley's?</div>
-      <div class="photos-cta-text">Got photos? <em>Help the next person see it.</em></div>
-    </div>
-    <button class="photos-cta-btn" onclick="openPhotoModal()">+ Add photos</button>
-  </div>
-</div>
-
-<!-- DETAILS STRIP -->
-<div class="tip-details">
-  <div class="tip-details-inner">
-    <div class="tip-detail">
-      <div class="tip-detail-label">Where</div>
-      <div class="tip-detail-value">Museumstrasse, 8005 Zürich (behind Hauptbahnhof)</div>
-    </div>
-    <div class="tip-detail">
-      <div class="tip-detail-label">Why this one</div>
-      <div class="tip-detail-value">There are three Wesley's in Zürich. This is the shipping-container one.</div>
-    </div>
-    <div class="tip-detail">
-      <div class="tip-detail-label">Category</div>
-      <div class="tip-detail-value">Restaurant · Lunch · Takeaway</div>
-    </div>
-    <div class="tip-detail">
-      <div class="tip-detail-label">Don't miss</div>
-      <div class="tip-detail-value">Chicken katsu over rice.</div>
-    </div>
-    <div class="tip-detail">
-      <div class="tip-detail-label">Tip from</div>
-      <div class="tip-detail-value">Lee Avnit · @Zurich</div>
-    </div>
+    <button class="photos-band-btn" onclick="openPhotoModal()">+ Add photos</button>
   </div>
 </div>
 
 <!-- MORE TIPS -->
-<div style="border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);">
-  <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
-    <div style="display:flex;align-items:baseline;gap:16px;padding:1.25rem 0 1rem;border-bottom:1px solid var(--rule);">
-      <span style="font-family:var(--cond);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);">More tips</span>
-      <div style="flex:1;height:1px;background:var(--rule);"></div>
-      <a href="index.html" style="font-family:var(--cond);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;">All tips →</a>
+<div class="more-tips">
+  <div class="more-tips-inner">
+    <div class="more-tips-head">
+      <div class="more-tips-title">More Swiss tips</div>
+      <a href="index.html" class="more-tips-all">See all tips →</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);">
-      <a href="tip-rubymimi-zurich.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
-        <div style="overflow:hidden;"><img src="rubymimi-zurich-room.jpg" alt="Ruby Mimi Zürich" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 40%;display:block;" /></div>
-        <div style="padding:10px 14px 0;">
-          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Hotel · Zürich</div>
-          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Ruby Mimi</div>
-          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Book here and stop looking at hotels online.</div>
+    <div class="more-tips-grid">
+      <a class="more-tip-card" href="tip-rubymimi-zurich.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="rubymimi-zurich-room.jpg" alt="Ruby Mimi Zürich" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker"><b>Hotel</b> · Zürich</div>
+          <div class="more-tip-hed">Ruby Mimi</div>
         </div>
       </a>
-      <a href="tip-belvedere.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
-        <div style="overflow:hidden;"><img src="grand-belvedere-spa-outside.jpg" alt="Grand Hotel Belvedere Wengen" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
-        <div style="padding:10px 14px 0;">
-          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Hotel · Wengen</div>
-          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Grand Hotel Belvedere</div>
-          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Go to Wengen. Stay at the Belvedere. Stop searching.</div>
+      <a class="more-tip-card" href="tip-belvedere.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="grand-belvedere-spa-outside.jpg" alt="Grand Hotel Belvedere, Wengen" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker"><b>Hotel</b> · Wengen</div>
+          <div class="more-tip-hed">Grand Hotel Belvedere</div>
         </div>
       </a>
-      <a href="tip-swisstrains.html" style="text-decoration:none;color:var(--ink);padding-bottom:20px;display:block;">
-        <div style="overflow:hidden;"><img src="swiss-train-restaurant-car-white-table-cloth.jpg" alt="Swiss train restaurant car" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
-        <div style="padding:10px 14px 0;">
-          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Travel · Switzerland</div>
-          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Swiss Train Restaurant Car</div>
-          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Get a regular ticket. Upgrade yourself to the restaurant car.</div>
+      <a class="more-tip-card" href="tip-swisstrains.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="swiss-train-restaurant-car-white-table-cloth.jpg" alt="Swiss train restaurant car" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><div class="more-tip-img-fallback" style="display:none;">§</div></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker"><b>Travel</b> · Switzerland</div>
+          <div class="more-tip-hed">Swiss Train Restaurant Car</div>
         </div>
       </a>
     </div>
   </div>
 </div>
 
-<!-- LOCATION -->
-<div style="border-bottom:1.5px solid var(--ink);">
-  <div style="max-width:1200px;margin:0 auto;padding:1.75rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
-    <div style="display:flex;flex-direction:column;gap:0.4rem;">
-      <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Location</div>
-      <div style="font-family:var(--serif);font-size:1.1rem;font-weight:500;">Wesley's Kitchen, Museumstrasse, 8005 Zürich</div>
-      <div style="font-family:var(--cond);font-size:0.62rem;color:var(--muted);letter-spacing:0.08em;">Behind Zürich Hauptbahnhof. The shipping container one.</div>
-    </div>
-    <a href="https://maps.google.com/?q=Wesley's+Kitchen+Museumstrasse+Zurich" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:10px 18px;text-decoration:none;flex-shrink:0;transition:background 0.15s;">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Get directions →
-    </a>
+<!-- FOOTER STRIP -->
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="profile-build.html" class="foot-cta">Leave your own HoodTip →</a>
   </div>
 </div>
-
-<!-- BUILD CTA -->
-<div style="border-bottom:1.5px solid var(--ink);">
-  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
-    <div>
-      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
-      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
-    </div>
-    <a href="profile-build.html" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
-  </div>
-</div>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
-    <div class="footer-stats">
-      <span>69 tips</span><span>·</span>
-      <span>21 cities</span>
-    </div>
-  </div>
-</footer>
 
 <!-- ==================== UPLOAD MODAL ==================== -->
 <div class="photo-modal-overlay" id="photoModal">
@@ -658,22 +585,98 @@
   </div>
 </div>
 
-<!-- Cloudinary upload widget -->
 <script src="https://upload-widget.cloudinary.com/global/all.js"></script>
 <script>
   // ===== TIP CONTEXT — change these on each tip page =====
-  const TIP_SLUG  = 'tip-wesleys-zurich';
-  const TIP_PLACE = "Wesley's Kitchen";
+  const TIP_SLUG    = 'tip-wesleys-zurich';
+  const TIP_PLACE   = "Wesley's Kitchen";
+  const TIPPER_NAME = "Lee Avnit";
   // ========================================================
 
   document.getElementById('photoModalPlace').textContent = TIP_PLACE;
 
+  // Share — copy link
+  function copyLink(){
+    var url = window.location.href;
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.resolve()).then(function(){
+      var t = document.getElementById('shareToast');
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 1800);
+    });
+  }
+
+  // Hide broken images
+  document.querySelectorAll('.pc-slide img').forEach(function(img){
+    function hide(){ img.style.display = 'none'; var fb = img.nextElementSibling; if (fb && fb.classList.contains('pc-slide-fallback')) fb.style.display='flex'; }
+    img.addEventListener('error', hide);
+    if (img.complete && img.naturalWidth === 0) hide();
+  });
+
+  // Carousel (bails out cleanly when only 1 photo)
+  (function(){
+    var track = document.getElementById('pcTrack');
+    var slides = track ? track.querySelectorAll('.pc-slide') : [];
+    var prev = document.getElementById('pcPrev');
+    var next = document.getElementById('pcNext');
+    var dots = document.querySelectorAll('#pcDots .pc-dot');
+    var current = document.getElementById('pcCurrent');
+    var total = slides.length;
+    if (total <= 1) return;
+
+    var idx = 0;
+    function go(i){
+      idx = Math.max(0, Math.min(total - 1, i));
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+      if (current) current.textContent = idx + 1;
+      if (prev) prev.disabled = idx === 0;
+      if (next) next.disabled = idx === total - 1;
+    }
+
+    if (prev) prev.addEventListener('click', function(){ go(idx - 1); });
+    if (next) next.addEventListener('click', function(){ go(idx + 1); });
+    dots.forEach(function(d, j){ d.addEventListener('click', function(){ go(j); }); });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft') go(idx - 1);
+      else if (e.key === 'ArrowRight') go(idx + 1);
+    });
+
+    var startX = null, startY = null;
+    var imgEl = document.getElementById('pcImage');
+    imgEl.addEventListener('touchstart', function(e){
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, {passive: true});
+    imgEl.addEventListener('touchend', function(e){
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) go(idx + 1);
+        else go(idx - 1);
+      }
+      startX = null; startY = null;
+    }, {passive: true});
+
+    go(0);
+  })();
+
+  // ===== PHOTO UPLOAD MODAL =====
   let uploadedPhotos = [];
   let cloudinaryWidget = null;
 
-  function openPhotoModal() {
+  function openPhotoModal(asTipper) {
     document.getElementById('photoModal').classList.add('open');
     document.body.style.overflow = 'hidden';
+    var sub = document.querySelector('.photo-modal-sub');
+    var nameField = document.getElementById('ph-name');
+    if (asTipper) {
+      nameField.value = TIPPER_NAME;
+      if (sub) sub.textContent = "Adding to your Wesley's tip. Send photos and we'll work them into the page.";
+    } else {
+      if (sub) sub.textContent = "Took your own photos here? Send them. We'll add the best ones to the page.";
+    }
   }
   function closePhotoModal() {
     document.getElementById('photoModal').classList.remove('open');
