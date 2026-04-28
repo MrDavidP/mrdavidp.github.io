@@ -280,7 +280,7 @@
     .tip-card.feature .tip-card-dek { font-size: 0.86rem; -webkit-line-clamp: 3; }
 
     /* ---------- CONTRIBUTORS STRIP ---------- */
-    .contribs { background: var(--cream2); border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; }
+    .contribs { background: var(--cream2); border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; scroll-margin-top: 70px; }
     .contribs-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
     .contribs-head { padding: 3rem 0 2rem; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: end; border-bottom: 1.5px solid var(--ink); }
     .contribs-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1; letter-spacing: -0.015em; }
@@ -591,8 +591,7 @@
       <a href="index.html" class="nav-logo" aria-label="HoodTip — Only the good stuff"><span class="nav-logo-word">Hood<em>Tip</em></span><span class="nav-logo-tag">Only the <b>good</b> stuff</span></a>
     </div>
     <div class="nav-right">
-      <a href="profile-dave.html" class="nav-link">Dave</a>
-      <a href="profile-foodfiend.html" class="nav-link">foodfiend</a>
+      <a href="#tipsters" class="nav-link">Tipsters</a>
       <a href="profile-build.html" class="nav-cta">Leave a HoodTip →</a>
     </div>
   </div>
@@ -1015,7 +1014,7 @@
 </div>
 
 <!-- ==================== CONTRIBUTORS ==================== -->
-<div class="contribs">
+<div class="contribs" id="tipsters">
   <div class="contribs-inner">
     <div class="contribs-head">
       <div>
