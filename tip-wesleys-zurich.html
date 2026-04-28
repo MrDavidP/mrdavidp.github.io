@@ -199,6 +199,241 @@
       .tip-headline { font-size: 2rem; }
       .footer-stats { display: none; }
     }
+
+    /* ===== ADD PHOTOS CTA ===== */
+    .photos-cta {
+      background: #efeae1;
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .photos-cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .photos-cta-kicker {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+    .photos-cta-text {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .photos-cta-text em { font-style: italic; }
+    .photos-cta-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--cond);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border: 1.5px solid var(--ink);
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .photos-cta-btn:hover {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    /* ===== UPLOAD MODAL ===== */
+    .photo-modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(26,24,22,0.72);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .photo-modal-overlay.open { display: flex; }
+    .photo-modal {
+      background: var(--cream);
+      width: 100%; max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: flex; flex-direction: column;
+      border: 1.5px solid var(--ink);
+    }
+    .photo-modal-header {
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1.5px solid var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+    .photo-modal-header h4 {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.15;
+    }
+    .photo-modal-header h4 em { font-style: italic; color: var(--red); }
+    .photo-modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 4px 8px;
+      line-height: 1;
+    }
+    .photo-modal-close:hover { color: var(--ink); }
+    .photo-modal-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .photo-modal-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .photo-upload-btn {
+      width: 100%;
+      padding: 1.4rem;
+      border: 1.5px dashed var(--ink);
+      background: transparent;
+      font-family: var(--cond);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .photo-upload-btn:hover {
+      background: #efeae1;
+      border-style: solid;
+    }
+    .photo-thumbs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 0.5rem;
+    }
+    .photo-thumb {
+      position: relative;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+    }
+    .photo-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .photo-thumb-remove {
+      position: absolute; top: 4px; right: 4px;
+      width: 22px; height: 22px;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      padding: 0;
+    }
+    .photo-field {
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .photo-field label {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .photo-field input,
+    .photo-field textarea {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 300;
+      padding: 10px 12px;
+      border: 1px solid var(--rule);
+      background: var(--cream);
+      color: var(--ink);
+      border-radius: 0;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .photo-field textarea {
+      min-height: 70px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .photo-field input:focus,
+    .photo-field textarea:focus { border-color: var(--ink); }
+    .photo-submit-btn {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--cond);
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 13px 22px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 0.25rem;
+    }
+    .photo-submit-btn:hover:not(:disabled) { background: var(--red); }
+    .photo-submit-btn:disabled {
+      background: var(--rule);
+      color: var(--muted);
+      cursor: not-allowed;
+    }
+    #photoFormError {
+      font-size: 0.8rem;
+      color: var(--red);
+      margin: 0;
+    }
+    .photo-success {
+      text-align: center;
+      padding: 2.5rem 1.5rem !important;
+    }
+    .photo-success-mark {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .photo-success h4 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 0 0 0.6rem;
+    }
+    .photo-success p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0 0 1.5rem;
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -274,6 +509,17 @@
 
     <p>First tip from Lee. More to come.</p>
 
+  </div>
+</div>
+
+<!-- ADD PHOTOS CTA -->
+<div class="photos-cta">
+  <div class="photos-cta-inner">
+    <div>
+      <div class="photos-cta-kicker">Been to Wesley's?</div>
+      <div class="photos-cta-text">Got photos? <em>Help the next person see it.</em></div>
+    </div>
+    <button class="photos-cta-btn" onclick="openPhotoModal()">+ Add photos</button>
   </div>
 </div>
 
@@ -375,6 +621,175 @@
     </div>
   </div>
 </footer>
+
+<!-- ==================== UPLOAD MODAL ==================== -->
+<div class="photo-modal-overlay" id="photoModal">
+  <div class="photo-modal">
+    <div class="photo-modal-header">
+      <h4>Add photos to <em id="photoModalPlace">this tip</em></h4>
+      <button class="photo-modal-close" onclick="closePhotoModal()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="photo-modal-body" id="photoModalForm">
+      <p class="photo-modal-sub">Took your own photos here? Send them. We'll add the best ones to the page.</p>
+
+      <button class="photo-upload-btn" onclick="openCloudinaryWidget()">+ Upload photos</button>
+
+      <div class="photo-thumbs" id="photoThumbs"></div>
+
+      <div class="photo-field">
+        <label for="ph-name">Your name (optional)</label>
+        <input id="ph-name" type="text" placeholder="So we know who to credit" />
+      </div>
+
+      <div class="photo-field">
+        <label for="ph-note">A note (optional)</label>
+        <textarea id="ph-note" placeholder="When you took these, what's in them, anything we should know"></textarea>
+      </div>
+
+      <button class="photo-submit-btn" id="photoSubmitBtn" onclick="submitPhotos(event)" disabled>Send photos</button>
+      <p id="photoFormError" style="display:none;">Something went wrong — please try again.</p>
+    </div>
+    <div class="photo-modal-body photo-success" id="photoModalSuccess" style="display:none;">
+      <div class="photo-success-mark">✓</div>
+      <h4>Got them. Thanks.</h4>
+      <p>I'll review and add them to the page. May reach out if I need anything else.</p>
+      <button class="photo-submit-btn" onclick="closePhotoModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cloudinary upload widget -->
+<script src="https://upload-widget.cloudinary.com/global/all.js"></script>
+<script>
+  // ===== TIP CONTEXT — change these on each tip page =====
+  const TIP_SLUG  = 'tip-wesleys-zurich';
+  const TIP_PLACE = "Wesley's Kitchen";
+  // ========================================================
+
+  document.getElementById('photoModalPlace').textContent = TIP_PLACE;
+
+  let uploadedPhotos = [];
+  let cloudinaryWidget = null;
+
+  function openPhotoModal() {
+    document.getElementById('photoModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePhotoModal() {
+    document.getElementById('photoModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('photoModal').addEventListener('click', function(e){
+    if (e.target === this) closePhotoModal();
+  });
+
+  function openCloudinaryWidget() {
+    if (!cloudinaryWidget) {
+      cloudinaryWidget = cloudinary.createUploadWidget({
+        cloudName: 'dq9newmhl',
+        uploadPreset: 'jykjigyw',
+        multiple: true,
+        maxFiles: 10,
+        sources: ['local', 'camera'],
+        resourceType: 'image',
+        clientAllowedFormats: ['jpg', 'jpeg', 'png', 'webp', 'heic'],
+        styles: {
+          palette: {
+            window: '#f7f4ef',
+            windowBorder: '#1a1816',
+            tabIcon: '#1a1816',
+            menuIcons: '#1a1816',
+            textDark: '#1a1816',
+            textLight: '#f7f4ef',
+            link: '#b5322a',
+            action: '#1a1816',
+            inactiveTabIcon: '#6b6560',
+            error: '#b5322a',
+            inProgress: '#b5322a',
+            complete: '#1a1816',
+            sourceBg: '#efeae1'
+          }
+        }
+      }, function(error, result) {
+        if (!error && result && result.event === 'success') {
+          uploadedPhotos.push(result.info.secure_url);
+          renderThumbs();
+          updateSubmitButton();
+        }
+      });
+    }
+    cloudinaryWidget.open();
+  }
+
+  function renderThumbs() {
+    const el = document.getElementById('photoThumbs');
+    if (!uploadedPhotos.length) { el.innerHTML = ''; return; }
+    el.innerHTML = uploadedPhotos.map(function(url, i) {
+      return '<div class="photo-thumb">' +
+               '<img src="' + url + '" alt="" />' +
+               '<button class="photo-thumb-remove" onclick="removePhoto(' + i + ')" aria-label="Remove">&#x2715;</button>' +
+             '</div>';
+    }).join('');
+  }
+
+  function removePhoto(i) {
+    uploadedPhotos.splice(i, 1);
+    renderThumbs();
+    updateSubmitButton();
+  }
+
+  function updateSubmitButton() {
+    const btn = document.getElementById('photoSubmitBtn');
+    if (uploadedPhotos.length > 0) {
+      btn.disabled = false;
+      btn.textContent = 'Send ' + uploadedPhotos.length + ' photo' + (uploadedPhotos.length === 1 ? '' : 's');
+    } else {
+      btn.disabled = true;
+      btn.textContent = 'Send photos';
+    }
+  }
+
+  async function submitPhotos(e) {
+    e.preventDefault();
+    if (!uploadedPhotos.length) return;
+    const btn = document.getElementById('photoSubmitBtn');
+    const err = document.getElementById('photoFormError');
+    err.style.display = 'none';
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const data = {
+      type: 'additional_photos',
+      tip_slug: TIP_SLUG,
+      place_name: TIP_PLACE,
+      contributor_name: document.getElementById('ph-name').value,
+      note: document.getElementById('ph-note').value,
+      photo_urls: uploadedPhotos.join('\n'),
+      photo_count: uploadedPhotos.length,
+      page_url: window.location.href
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/mdawyane', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        document.getElementById('photoModalForm').style.display = 'none';
+        document.getElementById('photoModalSuccess').style.display = 'flex';
+        document.getElementById('photoModalSuccess').style.flexDirection = 'column';
+        document.getElementById('photoModalSuccess').style.alignItems = 'center';
+      } else {
+        throw new Error('bad');
+      }
+    } catch(e) {
+      err.style.display = 'block';
+      btn.textContent = 'Send ' + uploadedPhotos.length + ' photo' + (uploadedPhotos.length === 1 ? '' : 's');
+      btn.disabled = false;
+    }
+  }
+</script>
 
 </body>
 </html>
