@@ -106,6 +106,55 @@
 
     .profile-photo-wrap { position: relative; }
     .profile-photo { width: 220px; height: 220px; object-fit: cover; object-position: center top; border: 1.5px solid var(--ink); display: block; background: var(--cream2); }
+
+    /* Photo upload empty state — appears if photo fails to load */
+    .profile-photo-empty {
+      width: 220px; height: 220px;
+      border: 1.5px dashed var(--ink);
+      background: rgba(224,219,211,0.35);
+      display: none;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      text-align: center; padding: 16px;
+    }
+    .profile-photo-empty.show { display: flex; }
+    .profile-photo-empty:hover { background: rgba(224,219,211,0.7); border-color: var(--red); }
+    .profile-photo-empty-icon {
+      width: 38px; height: 38px;
+      border: 1.5px solid var(--ink); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 1.4rem; color: var(--ink); font-weight: 500; line-height: 1;
+    }
+    .profile-photo-empty-text { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
+    .profile-photo-empty-sub { font-family: var(--cond); font-size: 0.5rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-style: italic; max-width: 180px; line-height: 1.4; }
+
+    /* Photo upload success state — after upload */
+    .profile-photo-success { width: 220px; height: 220px; border: 1.5px solid var(--ink); display: none; position: relative; overflow: hidden; }
+    .profile-photo-success.show { display: block; }
+    .profile-photo-success img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .profile-photo-success-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(26,24,22,0.92) 0%, rgba(26,24,22,0.4) 70%, transparent 100%); padding: 28px 12px 12px; text-align: center; }
+    .profile-photo-success-overlay strong { font-family: var(--cond); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream); display: block; margin-bottom: 3px; }
+    .profile-photo-success-overlay span { font-family: var(--cond); font-size: 0.48rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.75); }
+
+    /* Bio editor */
+    .profile-bio-edit-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--cond); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: none; border: none; padding: 0; cursor: pointer; transition: color 0.15s; margin-top: 0.65rem; margin-left: 1.5rem; }
+    .profile-bio-edit-link:hover { color: var(--red); }
+    .profile-bio-edit-link svg { width: 10px; height: 10px; flex-shrink: 0; }
+    .profile-bio-editor { display: none; margin-top: 0.5rem; max-width: 580px; }
+    .profile-bio-editor.show { display: block; }
+    .profile-bio-editor textarea { width: 100%; font-family: var(--serif); font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.5rem); color: var(--ink); line-height: 1.3; background: var(--cream); border: 1.5px solid var(--ink); padding: 1rem 1.2rem; resize: vertical; min-height: 100px; outline: none; transition: border-color 0.15s; display: block; }
+    .profile-bio-editor textarea:focus { border-color: var(--red); }
+    .profile-bio-editor-actions { display: flex; gap: 6px; margin-top: 0.5rem; align-items: center; }
+    .profile-bio-save { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); padding: 7px 14px; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+    .profile-bio-save:hover { background: var(--red); border-color: var(--red); }
+    .profile-bio-save:disabled { opacity: 0.5; cursor: not-allowed; }
+    .profile-bio-cancel { font-family: var(--cond); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; background: none; color: var(--muted); border: none; padding: 7px 8px; cursor: pointer; transition: color 0.15s; }
+    .profile-bio-cancel:hover { color: var(--ink); }
+    .profile-bio-saved { font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-top: 0.4rem; margin-left: 1.5rem; display: none; }
+    .profile-bio-saved.show { display: block; }
     .profile-badge { position: absolute; top: -10px; left: -10px; font-family: var(--cond); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; background: var(--red); color: var(--cream); padding: 5px 10px; }
 
     .profile-meta { display: flex; flex-direction: column; }
@@ -274,7 +323,7 @@
       Geneva-based <span class="red-dot">●</span> Founding contributor <span class="red-dot">●</span> Built HoodTip
     </div>
     <div class="masthead-right">
-      <span><b>69</b> tips</span>
+      <span><b>70</b> tips</span>
       <span class="masthead-sep">·</span>
       <span><b>22</b> cities</span>
       <span class="masthead-sep">·</span>
@@ -288,7 +337,19 @@
   <div class="profile-inner">
     <div class="profile-photo-wrap">
       <span class="profile-badge">Founding</span>
-      <img class="profile-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
+      <img class="profile-photo" src="bongojoe-rhone-light.jpg" alt="Dave" id="profilePhotoImg" />
+      <div class="profile-photo-empty" id="profilePhotoUpload" role="button" tabindex="0" aria-label="Add your profile photo">
+        <div class="profile-photo-empty-icon">+</div>
+        <div class="profile-photo-empty-text">Add your photo</div>
+        <div class="profile-photo-empty-sub">Square crop · jpg, png, heic</div>
+      </div>
+      <div class="profile-photo-success" id="profilePhotoSuccess">
+        <img id="profilePhotoSuccessImg" alt="" />
+        <div class="profile-photo-success-overlay">
+          <strong>✓ Got it.</strong>
+          <span>Live on the site soon.</span>
+        </div>
+      </div>
     </div>
 
     <div class="profile-meta">
@@ -298,14 +359,26 @@
         Geneva, Switzerland<span>·</span>The person who built HoodTip
       </div>
       <div class="profile-quote">
-        <p class="profile-quote-text">Meeting people, making videos. Live in Geneva.</p>
+        <p class="profile-quote-text" id="profileBio">Meeting people, making videos. Live in Geneva.</p>
       </div>
+      <button class="profile-bio-edit-link" id="profileBioEditBtn" type="button" aria-label="Edit your bio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Edit bio
+      </button>
+      <div class="profile-bio-editor" id="profileBioEditor">
+        <textarea id="profileBioTextarea" rows="3" placeholder="Where you're based, what you're into. A line or two."></textarea>
+        <div class="profile-bio-editor-actions">
+          <button class="profile-bio-save" id="profileBioSaveBtn" type="button">Save bio</button>
+          <button class="profile-bio-cancel" id="profileBioCancelBtn" type="button">Cancel</button>
+        </div>
+      </div>
+      <div class="profile-bio-saved" id="profileBioSaved">✓ Saved — your bio will be live on the site soon.</div>
     </div>
 
     <div class="profile-stats">
       <div class="profile-stat">
         <span class="profile-stat-lbl">Tips</span>
-        <span class="profile-stat-val">69</span>
+        <span class="profile-stat-val">70</span>
       </div>
       <div class="profile-stat">
         <span class="profile-stat-lbl">Cities</span>
@@ -368,7 +441,7 @@
       <h2 class="city-head-name"><em>Geneva</em></h2>
       <span class="city-head-country">Switzerland · Home base</span>
     </div>
-    <span class="city-head-count"><b>24</b> tips</span>
+    <span class="city-head-count"><b>25</b> tips</span>
   </div>
   <div class="tip-grid">
     <a class="tip-card" href="tip-paulhenri.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="paulhenri-wine-bottles.jpg" alt="Paul-Henri Soler" /></div><div class="tip-card-body"><div class="tip-card-cat">Wine · Market</div><h3 class="tip-card-name">Paul-Henri Soler</h3><div class="tip-card-hood">Carouge</div><p class="tip-card-copy">The best wine in Geneva, maybe Switzerland, maybe the world.</p></div></a>
@@ -378,6 +451,7 @@
     <a class="tip-card" href="tip-labarge.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="barge-swimming-me.jpg" alt="La Barge" style="object-position:center 35%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Bar · Swimming</div><h3 class="tip-card-name">La Barge</h3><div class="tip-card-hood">Saint-Gervais</div><p class="tip-card-copy">Jump in the Rhône, drink a shockingly cold beer. Summer only.</p></div></a>
     <a class="tip-card" href="tip-jlc.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="jlc_river.jpg" alt="Jaeger-LeCoultre" style="object-position:center 40%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Watch · Boutique</div><h3 class="tip-card-name">Jaeger-LeCoultre</h3><div class="tip-card-hood">Rive</div><p class="tip-card-copy">You can't buy a Rolex in Geneva. JLC you can. The watchmaker's watchmaker.</p></div></a>
     <a class="tip-card" href="tip-victoriahall.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="victoria-hall-wide.jpg" alt="Victoria Hall" style="object-position:center 35%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Concert Hall</div><h3 class="tip-card-name">Victoria Hall</h3><div class="tip-card-hood">Plainpalais</div><p class="tip-card-copy">One of the most beautiful concert halls in Europe. The ceiling will stop you.</p></div></a>
+    <a class="tip-card" href="tip-puppet-theatre.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="puppet-theater-2.jpg" alt="Théâtre des Marionnettes de Genève" /></div><div class="tip-card-body"><div class="tip-card-cat">Theatre · Family</div><h3 class="tip-card-name">Théâtre des Marionnettes</h3><div class="tip-card-hood">Plainpalais</div><p class="tip-card-copy">All in French, but the language of puppeteering knows no boundaries.</p></div></a>
     <a class="tip-card" href="tip-papabou.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="papabou-burger-wine.jpg" alt="Papabou" style="object-position:center 40%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Burger · Wine</div><h3 class="tip-card-name">Papabou</h3><div class="tip-card-hood">Plainpalais</div><p class="tip-card-copy">Smashburgers and natural wine. Swiss potato fries.</p></div></a>
     <a class="tip-card" href="tip-ottolenghi.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="ottolenghi-eggs.jpg" alt="Ottolenghi" style="object-position:center 50%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Restaurant</div><h3 class="tip-card-name">Ottolenghi Geneva</h3><div class="tip-card-hood">Rive</div><p class="tip-card-copy">Out of all the places in the world, Ottolenghi opened here. The check must have been good.</p></div></a>
     <a class="tip-card" href="tip-chou.html"><div class="tip-card-img-wrap"><img class="tip-card-img" src="eauxvives-chou.jpg" alt="Café Chou" style="object-position:center 50%;" /></div><div class="tip-card-body"><div class="tip-card-cat">Café · Pâtisserie</div><h3 class="tip-card-name">Café Chou</h3><div class="tip-card-hood">Eaux-Vives</div><p class="tip-card-copy">Named after the little dough ball they make. Good coffee. On the main street.</p></div></a>
@@ -606,6 +680,152 @@
     <div class="footer-copy">© HoodTip · Made in Geneva · No. 04 · April 2026</div>
   </div>
 </footer>
+
+<!-- Cloudinary upload widget + bio editor -->
+<script src="https://upload-widget.cloudinary.com/global/all.js"></script>
+<script>
+(function() {
+  // ===== PROFILE CONTEXT =====
+  const PROFILE_SLUG = 'dave';
+  const PROFILE_NAME = 'Dave';
+  // ===========================
+
+  const STORAGE_KEY = 'hoodtip_profile_photo_' + PROFILE_SLUG;
+  const photoImg   = document.getElementById('profilePhotoImg');
+  const uploadEl   = document.getElementById('profilePhotoUpload');
+  const successEl  = document.getElementById('profilePhotoSuccess');
+  const successImg = document.getElementById('profilePhotoSuccessImg');
+
+  let alreadySubmitted = false;
+
+  try {
+    const cached = localStorage.getItem(STORAGE_KEY);
+    if (cached) {
+      alreadySubmitted = true;
+      showSuccess(cached);
+    }
+  } catch (e) {}
+
+  function showUploadAffordance() {
+    if (alreadySubmitted) return;
+    photoImg.style.display = 'none';
+    uploadEl.classList.add('show');
+  }
+  photoImg.addEventListener('error', showUploadAffordance);
+  if (photoImg.complete && photoImg.naturalWidth === 0) showUploadAffordance();
+
+  let widget = null;
+  function openProfilePhotoWidget() {
+    if (typeof cloudinary === 'undefined') { setTimeout(openProfilePhotoWidget, 300); return; }
+    if (!widget) {
+      widget = cloudinary.createUploadWidget({
+        cloudName: 'dq9newmhl',
+        uploadPreset: 'jykjigyw',
+        multiple: false,
+        maxFiles: 1,
+        cropping: true,
+        croppingAspectRatio: 1,
+        croppingShowDimensions: false,
+        croppingDefaultSelectionRatio: 1,
+        showSkipCropButton: false,
+        sources: ['local', 'camera'],
+        clientAllowedFormats: ['image'],
+        maxImageFileSize: 10000000,
+        theme: 'minimal',
+        showPoweredBy: false,
+        folder: 'profile-photos',
+        styles: { palette: { window: '#f7f4ef', windowBorder: '#1a1816', tabIcon: '#1a1816', menuIcons: '#1a1816', textDark: '#1a1816', textLight: '#f7f4ef', link: '#b5322a', action: '#1a1816', inactiveTabIcon: '#6b6560', error: '#b5322a', inProgress: '#b5322a', complete: '#1a1816', sourceBg: '#efeae1' } }
+      }, function(err, result) {
+        if (err) { console.error(err); return; }
+        if (result && result.event === 'success') submitPhoto(result.info.secure_url);
+      });
+    }
+    widget.open();
+  }
+
+  uploadEl.addEventListener('click', openProfilePhotoWidget);
+  uploadEl.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProfilePhotoWidget(); }
+  });
+
+  function showSuccess(url) {
+    photoImg.style.display = 'none';
+    uploadEl.classList.remove('show');
+    successImg.src = url;
+    successEl.classList.add('show');
+  }
+
+  async function submitPhoto(url) {
+    alreadySubmitted = true;
+    try { localStorage.setItem(STORAGE_KEY, url); } catch (e) {}
+    showSuccess(url);
+    try {
+      await fetch('https://formspree.io/f/mdawyane', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ type: 'profile_photo', profile_slug: PROFILE_SLUG, profile_name: PROFILE_NAME, photo_url: url, page_url: window.location.href })
+      });
+    } catch (e) { console.error('Formspree submission failed:', e); }
+  }
+
+  // ===== BIO EDITOR =====
+  const BIO_STORAGE_KEY = 'hoodtip_profile_bio_' + PROFILE_SLUG;
+  const bioEl       = document.getElementById('profileBio');
+  const bioEditBtn  = document.getElementById('profileBioEditBtn');
+  const bioEditor   = document.getElementById('profileBioEditor');
+  const bioTextarea = document.getElementById('profileBioTextarea');
+  const bioSaveBtn  = document.getElementById('profileBioSaveBtn');
+  const bioCancelBtn= document.getElementById('profileBioCancelBtn');
+  const bioSavedEl  = document.getElementById('profileBioSaved');
+
+  try {
+    const cachedBio = localStorage.getItem(BIO_STORAGE_KEY);
+    if (cachedBio && cachedBio.trim()) bioEl.textContent = cachedBio;
+  } catch (e) {}
+
+  function openBioEditor() {
+    bioTextarea.value = bioEl.textContent.trim();
+    bioEl.style.display = 'none';
+    bioEditBtn.style.display = 'none';
+    bioSavedEl.classList.remove('show');
+    bioEditor.classList.add('show');
+    setTimeout(function(){ bioTextarea.focus(); bioTextarea.select(); }, 50);
+  }
+  function closeBioEditor() {
+    bioEl.style.display = '';
+    bioEditBtn.style.display = '';
+    bioEditor.classList.remove('show');
+  }
+  async function saveBio() {
+    const newBio = bioTextarea.value.trim();
+    if (!newBio) return;
+    bioSaveBtn.disabled = true;
+    bioSaveBtn.textContent = 'Saving…';
+    bioEl.textContent = newBio;
+    try { localStorage.setItem(BIO_STORAGE_KEY, newBio); } catch (e) {}
+    closeBioEditor();
+    bioSavedEl.classList.add('show');
+    setTimeout(function(){ bioSavedEl.classList.remove('show'); }, 5000);
+    try {
+      await fetch('https://formspree.io/f/mdawyane', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ type: 'profile_bio', profile_slug: PROFILE_SLUG, profile_name: PROFILE_NAME, bio: newBio, page_url: window.location.href })
+      });
+    } catch (e) { console.error('Bio submission failed:', e); }
+    bioSaveBtn.disabled = false;
+    bioSaveBtn.textContent = 'Save bio';
+  }
+
+  bioEditBtn.addEventListener('click', openBioEditor);
+  bioCancelBtn.addEventListener('click', closeBioEditor);
+  bioSaveBtn.addEventListener('click', saveBio);
+  bioTextarea.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeBioEditor();
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) saveBio();
+  });
+})();
+</script>
 
 </body>
 </html>
