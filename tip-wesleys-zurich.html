@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wesley's Kitchen, Zürich — HoodTip</title>
+
+  <!-- SEO META -->
+  <meta name="description" content="Three Wesley's Kitchens in Zürich. The one you want is the revamped shipping container by Hauptbahnhof. Order the chicken katsu." />
+  <meta name="keywords" content="Wesley's Kitchen Zürich, Zurich Hauptbahnhof food, Museumstrasse Zurich, chicken katsu Zurich, shipping container restaurant Zurich, quick lunch Zurich" />
+
+  <!-- OG / SOCIAL -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="HoodTip" />
+  <meta property="og:title" content="Wesley's Kitchen, Zürich · HoodTip" />
+  <meta property="og:description" content="Three of these in Zürich. Take the one by the station. Order the katsu." />
+  <meta property="og:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/wesleys-kitchen-katsu.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://hoodtip.com/tip-wesleys-zurich.html" />
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wesley's Kitchen, Zürich · HoodTip" />
+  <meta name="twitter:description" content="Three of these in Zürich. Take the one by the station. Order the katsu." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,f_auto,q_auto/https://hoodtip.com/wesleys-kitchen-katsu.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #f7f4ef; --ink: #1a1816; --ink2: #2a2925;
+      --muted: #6b6560; --rule: #e0dbd3; --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Barlow', system-ui, sans-serif;
+      --cond:  'Barlow Condensed', system-ui, sans-serif;
+      --article-width: 720px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { padding: 0 2rem; border-bottom: 1.5px solid var(--ink); position: sticky; top: 0; z-index: 100; background: var(--cream); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+    .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; font-weight: 400; }
+    .logo .dot { color: var(--red); }
+    .nav-tagline { font-family: var(--serif); font-style: italic; font-size: 0.8rem; color: var(--muted); border-left: 1px solid var(--rule); padding-left: 12px; margin-left: 12px; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a { font-family: var(--cond); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0 16px; height: 52px; display: flex; align-items: center; border-left: 1px solid var(--rule); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.cta { background: var(--ink); color: var(--cream); border-left: 1px solid var(--ink); }
+    .nav-links a.cta:hover { background: var(--ink2); }
+
+    /* TIP HEADER */
+    .tip-header { border-bottom: 1.5px solid var(--ink); padding: 2.5rem 2rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .tip-breadcrumb { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; gap: 0.5rem; align-items: center; }
+    .tip-breadcrumb a { color: var(--muted); text-decoration: none; }
+    .tip-breadcrumb a:hover { color: var(--ink); }
+    .tip-breadcrumb span { color: var(--rule); }
+    .tip-kicker { font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 0.75rem; }
+    .tip-headline { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 820px; }
+    .tip-headline em { font-style: italic; }
+    .tip-dek { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--muted); line-height: 1.55; max-width: 620px; margin-bottom: 1.5rem; }
+    .tip-meta { display: flex; gap: 0; border-top: 1px solid var(--rule); padding-top: 1rem; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
+    .tip-meta-item { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .tip-meta-item strong { color: var(--ink); font-weight: 500; }
+    .tip-meta-sep { color: var(--rule); }
+    .tip-byline { display: flex; align-items: center; gap: 0.6rem; }
+    .tip-byline-photo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; object-position: center top; border: 1px solid var(--rule); }
+    .tip-byline-name { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .tip-byline-name a { color: var(--ink); text-decoration: none; font-weight: 500; }
+
+    /* ARTICLE BODY */
+    .tip-body { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .tip-body-inner { max-width: var(--article-width); margin: 0 auto; padding: 2rem 0 3rem; }
+
+    p { font-size: 1.05rem; line-height: 1.8; color: var(--ink); margin-bottom: 1.4rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .drop-cap::first-letter {
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      font-weight: 600;
+      line-height: 0.8;
+      float: left;
+      margin-right: 0.08em;
+      margin-top: 0.05em;
+      color: var(--ink);
+    }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.5rem 0;
+      margin: 2.5rem 0;
+    }
+    .pull-quote p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.55rem;
+      line-height: 1.3;
+      color: var(--ink);
+      margin: 0;
+    }
+    .pull-quote cite {
+      display: block;
+      font-family: var(--cond);
+      font-style: normal;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+      margin-top: 2.5rem;
+      display: block;
+    }
+
+    /* IMAGES */
+    .img-full-wrap {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .img-full { width: 100%; height: auto; display: block; max-height: 80vh; object-fit: cover; }
+
+    .img-landscape-wrap { margin: 2rem 0; }
+    .img-landscape { width: 100%; height: auto; display: block; }
+
+    .img-caption {
+      font-family: var(--cond);
+      font-size: 0.56rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.5rem 0 0;
+    }
+
+    /* DETAILS STRIP */
+    .tip-details {
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .tip-details-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+    .tip-detail-label {
+      font-family: var(--cond);
+      font-size: 0.52rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.4);
+      margin-bottom: 0.25rem;
+    }
+    .tip-detail-value {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--cream);
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer { border-top: 2px solid var(--red); background: var(--ink); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; height: 60px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--cream); }
+    .footer-logo em { font-style: italic; font-weight: 400; }
+    .footer-logo .dot { color: var(--red); }
+    .footer-stats { font-family: var(--cond); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.3); display: flex; gap: 1rem; }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.cta) { display: none; }
+      .nav-tagline { display: none; }
+      .tip-headline { font-size: 2rem; }
+      .footer-stats { display: none; }
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HL9EJDL2YS');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;">
+      <a href="index.html" class="logo">Hood<em>Tip<span class="dot">.</span></em></a>
+      <span class="nav-tagline">Only the good stuff.</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="profile-zurich.html">Lee</a></li>
+      <li><a href="profile-build.html" class="cta">Leave a tip</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- TIP HEADER -->
+<div style="border-bottom: 1.5px solid var(--ink);">
+  <div class="tip-header">
+    <div class="tip-breadcrumb">
+      <a href="index.html">HoodTip</a>
+      <span>/</span>
+      <a href="profile-zurich.html">Lee</a>
+      <span>/</span>
+      Zürich, Switzerland
+    </div>
+    <div class="tip-kicker">Restaurant · Lunch · Zürich, Switzerland</div>
+    <h1 class="tip-headline">Three Wesley's in Zürich.<br><em>Take the one by the station.</em></h1>
+    <p class="tip-dek">A revamped shipping container at Museumstrasse, behind Hauptbahnhof. Order the chicken katsu. Thank Lee later.</p>
+    <div class="tip-meta">
+      <div class="tip-byline">
+        <img class="tip-byline-photo" src="lee-avnit.jpg" alt="Lee Avnit" />
+        <span class="tip-byline-name">Tip by <a href="profile-zurich.html">Lee Avnit</a></span>
+      </div>
+      <span class="tip-meta-sep">·</span>
+      <div class="tip-meta-item"><strong>Wesley's Kitchen</strong></div>
+      <span class="tip-meta-sep">·</span>
+      <div class="tip-meta-item">Museumstrasse, 8005 Zürich</div>
+      <span class="tip-meta-sep">·</span>
+      <div class="tip-meta-item">Behind Hauptbahnhof</div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO IMAGE: chicken katsu -->
+<div class="img-full-wrap">
+  <img class="img-full" src="wesleys-kitchen-katsu.jpg" alt="Chicken katsu over rice in takeaway container at Wesley's Kitchen, Zürich" />
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="tip-body">
+  <div class="tip-body-inner">
+
+    <p class="drop-cap">Three of these in Zürich. The one to know is at Museumstrasse, just behind Hauptbahnhof — a revamped shipping container with cool graphics on it. You can clock it from the platforms. Quick line, in and out.</p>
+
+    <p>Get the chicken katsu over rice. Crisp skin, glossy soy glaze, scallions on top, slaw on the side. Eat it there or take it on the train.</p>
+
+    <div class="pull-quote">
+      <p>"There are 3 of these places in Zurich. I'd recommend the one by the central train station. It's just a revamped shipping container with cool graphics on it. Get the chicken katsu. Thank me later."</p>
+      <cite>— Lee</cite>
+    </div>
+
+    <p>First tip from Lee. More to come.</p>
+
+  </div>
+</div>
+
+<!-- DETAILS STRIP -->
+<div class="tip-details">
+  <div class="tip-details-inner">
+    <div class="tip-detail">
+      <div class="tip-detail-label">Where</div>
+      <div class="tip-detail-value">Museumstrasse, 8005 Zürich (behind Hauptbahnhof)</div>
+    </div>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Why this one</div>
+      <div class="tip-detail-value">There are three Wesley's in Zürich. This is the shipping-container one.</div>
+    </div>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Category</div>
+      <div class="tip-detail-value">Restaurant · Lunch · Takeaway</div>
+    </div>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Don't miss</div>
+      <div class="tip-detail-value">Chicken katsu over rice.</div>
+    </div>
+    <div class="tip-detail">
+      <div class="tip-detail-label">Tip from</div>
+      <div class="tip-detail-value">Lee Avnit · @Zurich</div>
+    </div>
+  </div>
+</div>
+
+<!-- MORE TIPS -->
+<div style="border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+    <div style="display:flex;align-items:baseline;gap:16px;padding:1.25rem 0 1rem;border-bottom:1px solid var(--rule);">
+      <span style="font-family:var(--cond);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);">More tips</span>
+      <div style="flex:1;height:1px;background:var(--rule);"></div>
+      <a href="index.html" style="font-family:var(--cond);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;">All tips →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);">
+      <a href="tip-rubymimi-zurich.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="rubymimi-zurich-room.jpg" alt="Ruby Mimi Zürich" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 40%;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Hotel · Zürich</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Ruby Mimi</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Book here and stop looking at hotels online.</div>
+        </div>
+      </a>
+      <a href="tip-belvedere.html" style="text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="grand-belvedere-spa-outside.jpg" alt="Grand Hotel Belvedere Wengen" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Hotel · Wengen</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Grand Hotel Belvedere</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Go to Wengen. Stay at the Belvedere. Stop searching.</div>
+        </div>
+      </a>
+      <a href="tip-swisstrains.html" style="text-decoration:none;color:var(--ink);padding-bottom:20px;display:block;">
+        <div style="overflow:hidden;"><img src="swiss-train-restaurant-car-white-table-cloth.jpg" alt="Swiss train restaurant car" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;" /></div>
+        <div style="padding:10px 14px 0;">
+          <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Travel · Switzerland</div>
+          <div style="font-family:var(--serif);font-size:1rem;font-weight:500;line-height:1.15;margin-bottom:4px;">Swiss Train Restaurant Car</div>
+          <div style="font-size:0.74rem;color:var(--muted);line-height:1.5;">Get a regular ticket. Upgrade yourself to the restaurant car.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div style="border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:1.75rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div style="display:flex;flex-direction:column;gap:0.4rem;">
+      <div style="font-family:var(--cond);font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);">Location</div>
+      <div style="font-family:var(--serif);font-size:1.1rem;font-weight:500;">Wesley's Kitchen, Museumstrasse, 8005 Zürich</div>
+      <div style="font-family:var(--cond);font-size:0.62rem;color:var(--muted);letter-spacing:0.08em;">Behind Zürich Hauptbahnhof. The shipping container one.</div>
+    </div>
+    <a href="https://maps.google.com/?q=Wesley's+Kitchen+Museumstrasse+Zurich" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;padding:10px 18px;text-decoration:none;flex-shrink:0;transition:background 0.15s;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Get directions →
+    </a>
+  </div>
+</div>
+
+<!-- BUILD CTA -->
+<div style="border-bottom:1.5px solid var(--ink);">
+  <div style="max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:400;line-height:1.2;margin-bottom:0.4rem;">Your permanent record of <em>the good stuff.</em></div>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.65;max-width:480px;">Write a few lines. Add some photos. We turn it into a proper travel article. Next time someone asks you for a recommendation, you'll have a link.</p>
+    </div>
+    <a href="profile-build.html" style="display:inline-block;background:#1a1816;color:#f7f4ef;font-family:'Barlow Condensed',system-ui,sans-serif;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;padding:11px 22px;text-decoration:none;white-space:nowrap;flex-shrink:0;">Build your profile →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <div class="footer-stats">
+      <span>69 tips</span><span>·</span>
+      <span>21 cities</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
