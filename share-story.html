@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 
-<script src="https://unpkg.com/html-to-image@1.11.13/dist/html-to-image.js"></script>
+
 
 <style>
 :root {
@@ -282,6 +282,29 @@ body {
 /* === Controls === */
 .controls { display: flex; flex-direction: column; gap: 12px; }
 
+.screenshot-prompt {
+  text-align: center;
+  padding: 18px 16px;
+  border: 1.5px dashed rgba(247,244,239,0.32);
+  border-radius: 4px;
+}
+.screenshot-prompt-head {
+  font-family: var(--cond);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+.screenshot-prompt-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: rgba(247,244,239,0.7);
+  line-height: 1.4;
+}
+
 .share-btn {
   background: var(--red);
   color: var(--cream);
@@ -298,6 +321,13 @@ body {
 }
 .share-btn:hover { background: #9c2920; }
 .share-btn:disabled { opacity: 0.5; cursor: wait; }
+.share-btn.secondary {
+  background: transparent;
+  border: 1.5px solid rgba(247,244,239,0.4);
+  color: var(--cream);
+  padding: 14px 24px;
+}
+.share-btn.secondary:hover { background: rgba(247,244,239,0.08); border-color: var(--cream); }
 
 .status {
   font-family: var(--cond);
@@ -385,12 +415,16 @@ body {
   </div>
 
   <div class="controls">
-    <button class="share-btn" id="shareBtn">Generate &amp; Share to Story</button>
+    <div class="screenshot-prompt">
+      <div class="screenshot-prompt-head">Screenshot this card</div>
+      <div class="screenshot-prompt-sub">Then share to your Instagram story.</div>
+    </div>
+    <button class="share-btn secondary" id="copyLinkBtn">Copy tip link</button>
     <div class="status" id="status">&nbsp;</div>
   </div>
 
   <div class="note">
-    On iPhone: opens the share sheet &mdash; tap Instagram Stories. On desktop: downloads the PNG.
+    iPhone: side button + volume up. Android: power + volume down. Mac: Cmd+Shift+4. Windows: Win+Shift+S.
   </div>
 
 </div>
@@ -452,89 +486,33 @@ window.addEventListener('load', fitCard);
 setTimeout(fitCard, 50);
 
 const status = document.getElementById('status');
-const shareBtn = document.getElementById('shareBtn');
+const copyLinkBtn = document.getElementById('copyLinkBtn');
 
-if (shareBtn) {
-  shareBtn.onclick = async () => {
-    shareBtn.disabled = true;
-    status.className = 'status';
-    status.textContent = 'Loading photo...';
-
+if (copyLinkBtn) {
+  copyLinkBtn.onclick = async () => {
+    const tipUrl = `https://hoodtip.com/tip-${slug}.html`;
     try {
-      // Pre-load photo as data URL to dodge CORS during render
-      const photoEl = document.getElementById('scPhoto');
-      const photoSrc = photoEl.src;
-      try {
-        const r = await fetch(photoSrc, { mode: 'cors' });
-        const b = await r.blob();
-        const dataUrl = await new Promise((res, rej) => {
-          const fr = new FileReader();
-          fr.onload = () => res(fr.result);
-          fr.onerror = rej;
-          fr.readAsDataURL(b);
-        });
-        photoEl.src = dataUrl;
-        // Wait for the new src to load
-        await new Promise((res, rej) => {
-          if (photoEl.complete && photoEl.naturalWidth > 0) return res();
-          photoEl.onload = res;
-          photoEl.onerror = rej;
-          setTimeout(rej, 8000);
-        });
-      } catch (e) {
-        console.warn('Photo preload failed, attempting direct render:', e);
-      }
-
-      status.textContent = 'Rendering image...';
-      const card = document.getElementById('storyCard');
-      const blob = await htmlToImage.toBlob(card, {
-        pixelRatio: 1,
-        cacheBust: false,
-        skipFonts: false,
-        style: { transform: 'scale(1)' }
-      });
-      if (!blob) throw new Error('Render returned no blob');
-
-      const file = new File([blob], `hoodtip-${slug}.png`, { type: 'image/png' });
-      const tipUrl = `https://hoodtip.com/tip-${slug}.html`;
-
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: 'HoodTip',
-          text: `${tip.quote} — ${tipUrl}`
-        });
-        status.className = 'status success';
-        status.textContent = '&#10003; Shared';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(tipUrl);
       } else {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `hoodtip-${slug}-story.png`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        status.className = 'status success';
-        status.textContent = '&#10003; Downloaded - drop into Instagram Stories';
+        const ta = document.createElement('textarea');
+        ta.value = tipUrl;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
       }
-    } catch (e) {
-      if (e.name !== 'AbortError') {
-        console.error(e);
-        status.className = 'status error';
-        status.textContent = 'Error: ' + (e.message || 'render failed').slice(0, 60);
-      } else {
+      status.className = 'status success';
+      status.textContent = '\u2713 Link copied';
+      setTimeout(() => {
         status.className = 'status';
         status.innerHTML = '&nbsp;';
-      }
-    } finally {
-      shareBtn.disabled = false;
-      setTimeout(() => {
-        if (status.textContent.indexOf('Shared') >= 0 || status.textContent.indexOf('Downloaded') >= 0) {
-          status.className = 'status';
-          status.innerHTML = '&nbsp;';
-        }
-      }, 4000);
+      }, 2500);
+    } catch (e) {
+      status.className = 'status error';
+      status.textContent = 'Copy failed \u2014 ' + tipUrl;
     }
   };
 }
