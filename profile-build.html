@@ -1222,10 +1222,15 @@
               <input type="text" id="f-name" name="name" placeholder="e.g. Dave" autocomplete="name" required />
             </div>
             <div class="field">
-              <label class="field-label" for="f-handle">Your handle or city</label>
+              <label class="field-label" for="f-handle">Your handle</label>
               <div class="field-hint">If you've left a tip before, use the same one — we'll add it to your profile.</div>
-              <input type="text" id="f-handle" name="handle" placeholder="@yourhandle or Geneva" autocomplete="off" />
+              <input type="text" id="f-handle" name="handle" placeholder="@yourhandle" autocomplete="off" />
             </div>
+          </div>
+          <div class="field full">
+            <label class="field-label" for="f-bio">Your bio <em style="font-style:italic;color:var(--muted);font-weight:400;">(optional)</em></label>
+            <div class="field-hint">A line or two for your profile page. Where you're based, what you're into.</div>
+            <textarea id="f-bio" name="bio" rows="2" placeholder="Geneva-based. Always hunting good fish and proper pubs." style="min-height: 72px;"></textarea>
           </div>
           <div class="field full">
             <label class="field-label" for="f-email">Your email</label>
