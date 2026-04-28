@@ -163,7 +163,7 @@
 
     /* ------ BODY (right) ------ */
     .pc-body { padding: 3rem 3.25rem 4rem; display: flex; flex-direction: column; position: relative; }
-    .pc-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-bottom: 1rem; }
+    .pc-content { display: flex; flex-direction: column; justify-content: flex-start; padding-bottom: 1.5rem; }
     .pc-location { font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
     .pc-location span { color: var(--rule); padding: 0 0.4rem; }
     .pc-title { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 500; line-height: 1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
@@ -213,7 +213,7 @@
     /* Fact strip */
     .pc-facts {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       border-top: 1.5px solid var(--ink);
       border-bottom: 1.5px solid var(--ink);
       margin-bottom: 1.5rem;
@@ -237,10 +237,9 @@
 
     .pc-fact-website .pc-fact-value a { font-size: 0.95rem; font-weight: 500; word-break: break-all; }
     .pc-fact-website[data-empty="true"] { display: none; }
-    .pc-facts:has(.pc-fact-website:not([data-empty="true"])) { grid-template-columns: 1fr 1fr 1fr; }
 
     /* Byline + share */
-    .pc-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1.5rem; flex-wrap: wrap; }
+    .pc-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); flex-wrap: wrap; }
     .pc-byline { display: flex; align-items: center; gap: 0.7rem; }
     a.pc-byline { text-decoration: none; color: inherit; }
     a.pc-byline:hover .pc-byline-text b { color: var(--red); }
