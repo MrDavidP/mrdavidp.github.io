@@ -72,6 +72,105 @@
       display: block;
       border: 1px solid var(--rule);
     }
+
+    /* Empty state — appears when profile photo is missing */
+    .profile-photo-empty {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border: 1.5px dashed var(--ink);
+      background: rgba(224,219,211,0.35);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      text-align: center;
+      padding: 20px;
+    }
+    .profile-photo-empty.show { display: flex; }
+    .profile-photo-empty:hover {
+      background: rgba(224,219,211,0.7);
+      border-color: var(--red);
+    }
+    .profile-photo-empty-icon {
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 1;
+    }
+    .profile-photo-empty-text {
+      font-family: var(--cond);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .profile-photo-empty-sub {
+      font-family: var(--cond);
+      font-size: 0.56rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: italic;
+      max-width: 200px;
+      line-height: 1.5;
+    }
+
+    /* Success state — after upload */
+    .profile-photo-success {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border: 1.5px solid var(--ink);
+      display: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-photo-success.show { display: block; }
+    .profile-photo-success img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .profile-photo-success-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(26,24,22,0.92) 0%, rgba(26,24,22,0.4) 70%, transparent 100%);
+      padding: 32px 16px 14px;
+      text-align: center;
+    }
+    .profile-photo-success-overlay strong {
+      font-family: var(--cond);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .profile-photo-success-overlay span {
+      font-family: var(--cond);
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.75);
+    }
     .profile-handle {
       font-family: var(--cond);
       font-size: 0.65rem;
@@ -312,7 +411,19 @@
 <!-- PROFILE HEADER -->
 <div class="profile-header">
   <div class="profile-photo-wrap">
-    <img class="profile-photo" src="lee-avnit.jpg" alt="Lee Avnit" />
+    <img class="profile-photo" src="lee-avnit.jpg" alt="Lee Avnit" id="profilePhotoImg" />
+    <div class="profile-photo-empty" id="profilePhotoUpload" role="button" tabindex="0" aria-label="Add your profile photo">
+      <div class="profile-photo-empty-icon">+</div>
+      <div class="profile-photo-empty-text">Add your photo</div>
+      <div class="profile-photo-empty-sub">Square crop · jpg, png, heic</div>
+    </div>
+    <div class="profile-photo-success" id="profilePhotoSuccess">
+      <img id="profilePhotoSuccessImg" alt="" />
+      <div class="profile-photo-success-overlay">
+        <strong>✓ Got it.</strong>
+        <span>Your photo will be live on the site soon.</span>
+      </div>
+    </div>
   </div>
   <div>
     <div class="profile-handle">@Zurich</div>
@@ -379,6 +490,134 @@
     </div>
   </div>
 </footer>
+
+<!-- Cloudinary upload widget -->
+<script src="https://upload-widget.cloudinary.com/global/all.js"></script>
+<script>
+(function() {
+  // ===== PROFILE CONTEXT — change these for each contributor's profile =====
+  const PROFILE_SLUG = 'zurich';
+  const PROFILE_NAME = 'Lee Avnit';
+  // =========================================================================
+
+  const STORAGE_KEY = 'hoodtip_profile_photo_' + PROFILE_SLUG;
+  const photoImg     = document.getElementById('profilePhotoImg');
+  const uploadEl     = document.getElementById('profilePhotoUpload');
+  const successEl    = document.getElementById('profilePhotoSuccess');
+  const successImg   = document.getElementById('profilePhotoSuccessImg');
+
+  let alreadySubmitted = false;
+
+  // If they uploaded earlier (this browser), restore the success state immediately
+  try {
+    const cached = localStorage.getItem(STORAGE_KEY);
+    if (cached) {
+      alreadySubmitted = true;
+      showSuccess(cached);
+    }
+  } catch (e) {}
+
+  // Detect a missing/broken profile photo and show the upload affordance instead
+  function showUploadAffordance() {
+    if (alreadySubmitted) return;
+    photoImg.style.display = 'none';
+    uploadEl.classList.add('show');
+  }
+  photoImg.addEventListener('error', showUploadAffordance);
+  // Catch the case where the error has already fired before this script ran
+  if (photoImg.complete && photoImg.naturalWidth === 0) {
+    showUploadAffordance();
+  }
+
+  // Upload widget
+  let widget = null;
+  function openProfilePhotoWidget() {
+    if (typeof cloudinary === 'undefined') {
+      setTimeout(openProfilePhotoWidget, 300);
+      return;
+    }
+    if (!widget) {
+      widget = cloudinary.createUploadWidget({
+        cloudName: 'dq9newmhl',
+        uploadPreset: 'jykjigyw',
+        multiple: false,
+        maxFiles: 1,
+        cropping: true,
+        croppingAspectRatio: 1,
+        croppingShowDimensions: false,
+        croppingDefaultSelectionRatio: 1,
+        showSkipCropButton: false,
+        sources: ['local', 'camera'],
+        clientAllowedFormats: ['image'],
+        maxImageFileSize: 10000000,
+        theme: 'minimal',
+        showPoweredBy: false,
+        folder: 'profile-photos',
+        styles: {
+          palette: {
+            window: '#f7f4ef',
+            windowBorder: '#1a1816',
+            tabIcon: '#1a1816',
+            menuIcons: '#1a1816',
+            textDark: '#1a1816',
+            textLight: '#f7f4ef',
+            link: '#b5322a',
+            action: '#1a1816',
+            inactiveTabIcon: '#6b6560',
+            error: '#b5322a',
+            inProgress: '#b5322a',
+            complete: '#1a1816',
+            sourceBg: '#efeae1'
+          }
+        }
+      }, function(err, result) {
+        if (err) { console.error(err); return; }
+        if (result && result.event === 'success') {
+          submitPhoto(result.info.secure_url);
+        }
+      });
+    }
+    widget.open();
+  }
+
+  uploadEl.addEventListener('click', openProfilePhotoWidget);
+  uploadEl.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openProfilePhotoWidget();
+    }
+  });
+
+  function showSuccess(url) {
+    photoImg.style.display = 'none';
+    uploadEl.classList.remove('show');
+    successImg.src = url;
+    successEl.classList.add('show');
+  }
+
+  async function submitPhoto(url) {
+    alreadySubmitted = true;
+    try { localStorage.setItem(STORAGE_KEY, url); } catch (e) {}
+    showSuccess(url);
+
+    try {
+      await fetch('https://formspree.io/f/mdawyane', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          type: 'profile_photo',
+          profile_slug: PROFILE_SLUG,
+          profile_name: PROFILE_NAME,
+          photo_url: url,
+          page_url: window.location.href
+        })
+      });
+    } catch (e) {
+      console.error('Formspree submission failed:', e);
+    }
+  }
+})();
+</script>
 
 </body>
 </html>
