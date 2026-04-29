@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create your profile — HoodTip</title>
+<meta name="description" content="Get on the HoodTip masthead. Add your name, photo, and a line about your travel taste. Leave tips whenever you want — or not." />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="HoodTip" />
+<meta property="og:title" content="Create your profile · HoodTip" />
+<meta property="og:description" content="Get on the masthead. Tips optional." />
+<meta property="og:image" content="https://hoodtip.com/social-card.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://hoodtip.com/create-profile.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Create your profile · HoodTip" />
+<meta name="twitter:description" content="Get on the masthead. Tips optional." />
+<meta name="twitter:image" content="https://hoodtip.com/social-card.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #f7f4ef;
+  --paper: #ebe2ce;
+  --cream2: #efeae1;
+  --ink: #1a1816;
+  --ink2: #2a2925;
+  --muted: #6b6560;
+  --muted2: #8a8378;
+  --rule: #d9d2c6;
+  --rule-soft: #e8e2d6;
+  --red: #b5322a;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Barlow', system-ui, sans-serif;
+  --cond: 'Barlow Condensed', system-ui, sans-serif;
+}
+html, body { height: 100%; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
+  background-size: 3px 3px; opacity: 0.5; mix-blend-mode: multiply;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ------ NAV ------ */
+.nav { border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+.nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border: 1.5px solid var(--ink);
+  padding: 7px 14px;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--cream);
+  transition: background 0.15s;
+}
+.nav-logo:hover { background: var(--cream2); }
+.nav-logo-word {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+}
+.nav-logo-word em { font-style: italic; font-weight: 500; }
+.nav-logo-tag {
+  font-family: var(--cond);
+  font-weight: 500;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-left: 1.5px solid var(--ink);
+  padding-left: 12px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.nav-logo-tag b { color: var(--red); font-weight: 600; }
+.nav-back {
+  font-family: var(--cond);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s;
+}
+.nav-back:hover { color: var(--ink); }
+
+/* ------ MAIN ------ */
+.main {
+  flex: 1;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 32px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header / pitch */
+.head {
+  text-align: left;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1.5px solid var(--ink);
+}
+.head-issue {
+  font-family: var(--cond);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 18px;
+}
+.head-title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+.head-title em { font-style: italic; font-weight: 400; }
+.head-dek {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 580px;
+}
+
+/* What you get — small bullet list, editorial */
+.perks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-bottom: 50px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.perk {
+  padding: 18px 22px 18px 0;
+  border-right: 1px solid var(--rule-soft);
+}
+.perk:last-child { border-right: none; padding-right: 0; padding-left: 22px; }
+.perk:nth-child(2) { padding-left: 22px; }
+.perk-num {
+  font-family: var(--cond);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+.perk-text {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.perk-text em { font-style: italic; color: var(--muted); }
+
+/* Form */
+.form { display: flex; flex-direction: column; gap: 26px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+
+.label {
+  font-family: var(--cond);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.label-hint {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+}
+.label-required {
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.input, .textarea {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: none;
+  border-bottom: 1.5px solid var(--ink);
+  padding: 10px 0 10px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+.input:focus, .textarea:focus { border-color: var(--red); }
+.input::placeholder, .textarea::placeholder {
+  color: var(--muted2);
+  font-style: italic;
+}
+.textarea {
+  font-size: 1rem;
+  line-height: 1.55;
+  min-height: 90px;
+  resize: vertical;
+  padding: 12px 0;
+}
+
+.handle-row { position: relative; }
+.handle-row .input { padding-left: 22px; }
+.handle-row::before {
+  content: '@';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+/* Photo upload */
+.photo-field {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.photo-upload {
+  border: 1.5px dashed var(--rule);
+  background: var(--cream2);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.photo-upload:hover { border-color: var(--ink); background: rgba(217,210,198,0.4); }
+.photo-upload.has-photo { border-style: solid; border-color: var(--ink); background: var(--cream); }
+.photo-preview {
+  width: 72px; height: 72px;
+  background: var(--cream);
+  border: 1.5px solid var(--rule);
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+.photo-upload-text {
+  font-family: var(--cond);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.photo-upload-text small {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-top: 2px;
+}
+
+/* Submit */
+.submit-row {
+  margin-top: 18px;
+  padding-top: 26px;
+  border-top: 4px double var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.submit-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--muted);
+  flex: 1;
+  min-width: 250px;
+}
+.submit-btn {
+  font-family: var(--cond);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  padding: 16px 28px;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.submit-btn:hover { background: var(--red); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Success state */
+.success {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+  border: 1.5px solid var(--ink);
+  background: var(--cream2);
+}
+.success.show { display: block; }
+.success-mark {
+  font-family: var(--serif);
+  font-size: 4rem;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.success-title {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.success-title em { font-style: italic; font-weight: 400; }
+.success-body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 460px;
+  margin: 0 auto 28px;
+}
+.success-back {
+  display: inline-block;
+  font-family: var(--cond);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--red);
+  padding-bottom: 3px;
+  transition: color 0.15s;
+}
+.success-back:hover { color: var(--red); }
+
+/* Footer strip */
+.foot-strip {
+  background: var(--ink); color: var(--cream);
+  border-top: 2px solid var(--red);
+  position: relative; z-index: 2;
+}
+.foot-strip-inner {
+  max-width: 1360px; margin: 0 auto; padding: 0 32px;
+  height: 46px;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.foot-note {
+  font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(247,244,239,0.65);
+}
+.foot-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
+.foot-link {
+  font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(247,244,239,0.85);
+  border-bottom: 1px solid rgba(247,244,239,0.3);
+  padding-bottom: 2px;
+  transition: all 0.15s;
+}
+.foot-link:hover { color: var(--cream); border-color: var(--red); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .nav-logo-tag { display: none; }
+  .nav-logo { padding: 5px 10px; }
+  .nav-logo-word { font-size: 1.25rem; }
+  .nav-inner { padding: 0 18px; }
+  .nav-back { font-size: 0.6rem; }
+  .main { padding: 36px 20px 60px; }
+  .head-title { font-size: 2.1rem; }
+  .head-dek { font-size: 1.05rem; }
+  .perks { grid-template-columns: 1fr; }
+  .perk {
+    border-right: none;
+    border-bottom: 1px solid var(--rule-soft);
+    padding: 14px 0 !important;
+  }
+  .perk:last-child { border-bottom: none; }
+  .field-row { grid-template-columns: 1fr; gap: 26px; }
+  .submit-row { flex-direction: column; align-items: stretch; }
+  .submit-btn { width: 100%; padding: 18px; }
+  .foot-strip-inner { padding: 0 18px; }
+  .foot-note { font-size: 0.72rem; }
+  .foot-link { font-size: 0.56rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="HoodTip — Only the good stuff">
+      <span class="nav-logo-word">Hood<em>Tip</em></span>
+      <span class="nav-logo-tag">Only the <b>good</b> stuff</span>
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- FORM CARD -->
+  <div id="formCard">
+
+    <header class="head">
+      <div class="head-issue">Become a contributor</div>
+      <h1 class="head-title">Get on the <em>masthead.</em></h1>
+      <p class="head-dek">Your name, your photo, your taste. Leave tips when you want to. Or just sit on the masthead and look good — no pressure either way.</p>
+    </header>
+
+    <!-- Three-up perk strip -->
+    <div class="perks">
+      <div class="perk">
+        <div class="perk-num">01</div>
+        <div class="perk-text">Your own profile page <em>at hoodtip.com/profile-yourname</em></div>
+      </div>
+      <div class="perk">
+        <div class="perk-num">02</div>
+        <div class="perk-text">Every tip you ever leave <em>attributed to you, forever</em></div>
+      </div>
+      <div class="perk">
+        <div class="perk-num">03</div>
+        <div class="perk-text">No tips required <em>now or ever</em></div>
+      </div>
+    </div>
+
+    <!-- THE FORM -->
+    <form class="form" id="profileForm" onsubmit="return submitForm(event)">
+
+      <!-- Name + Email -->
+      <div class="field-row">
+        <div class="field">
+          <label class="label" for="name">Your name <span class="label-required">*</span></label>
+          <input class="input" type="text" id="name" name="name" placeholder="Jane Smith" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label class="label" for="email">Email <span class="label-required">*</span></label>
+          <input class="input" type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email" />
+        </div>
+      </div>
+
+      <!-- Handle -->
+      <div class="field">
+        <label class="label" for="handle">Handle <span class="label-hint">— how your name appears on the site, Instagram-style</span></label>
+        <div class="handle-row">
+          <input class="input" type="text" id="handle" name="handle" placeholder="jane" autocomplete="off" />
+        </div>
+      </div>
+
+      <!-- Where you're based -->
+      <div class="field">
+        <label class="label" for="city">Where you're based <span class="label-hint">— city, country</span></label>
+        <input class="input" type="text" id="city" name="city" placeholder="Lisbon, Portugal" autocomplete="address-level2" />
+      </div>
+
+      <!-- Photo -->
+      <div class="field photo-field">
+        <label class="label">Profile photo <span class="label-hint">— square crop works best, you can change it later</span></label>
+        <div class="photo-upload" id="photoUpload" onclick="openUploadWidget()">
+          <div class="photo-preview" id="photoPreview"><span id="photoPreviewInitial">+</span></div>
+          <div class="photo-upload-text">
+            <span id="photoUploadLabel">Click to upload</span>
+            <small id="photoUploadHint">JPG or PNG, ideally a portrait of you</small>
+          </div>
+        </div>
+        <input type="hidden" id="photoUrl" name="photo_url" />
+      </div>
+
+      <!-- Bio -->
+      <div class="field">
+        <label class="label" for="bio">Tell us about you <span class="label-hint">— one or two sentences, in your own voice</span></label>
+        <textarea class="textarea" id="bio" name="bio" placeholder="What do you spend your time doing, where do you travel, what kind of recommendations would your friends ask you for?" rows="4"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="submit-row">
+        <div class="submit-note">We'll set up your profile page and email you when it's live. Usually within a few days.</div>
+        <button type="submit" class="submit-btn" id="submitBtn">Create my profile →</button>
+      </div>
+
+    </form>
+
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success" id="success">
+    <div class="success-mark">✓</div>
+    <h2 class="success-title">You're <em>in.</em></h2>
+    <p class="success-body">We'll get your profile page set up over the next few days and email you the link. Welcome to HoodTip.</p>
+    <a href="index.html" class="success-back">Back to HoodTip →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER STRIP -->
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="index.html" class="foot-link">Browse tips →</a>
+  </div>
+</div>
+
+<!-- Cloudinary upload widget -->
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<script>
+// ---- Auto-suggest handle from first name ----
+const nameInput = document.getElementById('name');
+const handleInput = document.getElementById('handle');
+let handleEdited = false;
+handleInput.addEventListener('input', () => { handleEdited = true; });
+nameInput.addEventListener('input', () => {
+  if (!handleEdited && nameInput.value) {
+    const first = nameInput.value.trim().split(/\s+/)[0] || '';
+    handleInput.value = first.toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+});
+
+// ---- Cloudinary upload widget ----
+let uploadedPhotoUrl = '';
+let widget = null;
+
+function openUploadWidget() {
+  if (!widget) {
+    widget = cloudinary.createUploadWidget({
+      cloudName: 'dq9newmhl',
+      uploadPreset: 'jykjigyw',
+      folder: 'profile-photos',
+      sources: ['local', 'camera', 'url'],
+      multiple: false,
+      maxFileSize: 10000000, // 10MB
+      cropping: true,
+      croppingAspectRatio: 1,
+      croppingShowBackButton: true,
+      showSkipCropButton: false,
+      clientAllowedFormats: ['jpg', 'jpeg', 'png', 'heic', 'heif'],
+      styles: {
+        palette: {
+          window: '#f7f4ef',
+          windowBorder: '#1a1816',
+          tabIcon: '#b5322a',
+          menuIcons: '#1a1816',
+          textDark: '#1a1816',
+          textLight: '#f7f4ef',
+          link: '#b5322a',
+          action: '#1a1816',
+          inactiveTabIcon: '#6b6560',
+          error: '#b5322a',
+          inProgress: '#b5322a',
+          complete: '#1a1816',
+          sourceBg: '#efeae1'
+        },
+        fonts: {
+          default: { active: true }
+        }
+      }
+    }, (error, result) => {
+      if (error) {
+        console.error('Cloudinary error:', error);
+        return;
+      }
+      if (result && result.event === 'success') {
+        uploadedPhotoUrl = result.info.secure_url;
+        showPhotoPreview(uploadedPhotoUrl);
+      }
+    });
+  }
+  widget.open();
+}
+
+function showPhotoPreview(url) {
+  document.getElementById('photoUrl').value = url;
+  const preview = document.getElementById('photoPreview');
+  preview.innerHTML = '<img src="' + url + '" alt="Profile photo">';
+  document.getElementById('photoUpload').classList.add('has-photo');
+  document.getElementById('photoUploadLabel').textContent = 'Photo uploaded';
+  document.getElementById('photoUploadHint').textContent = 'Click again to change';
+}
+
+// ---- Submit ----
+async function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  const data = {
+    type: 'profile_signup',
+    name: document.getElementById('name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    handle: document.getElementById('handle').value.trim().toLowerCase().replace(/[^a-z0-9]/g, ''),
+    city: document.getElementById('city').value.trim(),
+    photo_url: uploadedPhotoUrl,
+    bio: document.getElementById('bio').value.trim(),
+    submitted_from: 'create-profile.html'
+  };
+
+  try {
+    const res = await fetch('https://formspree.io/f/mdawyane', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('success').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('Formspree returned ' + res.status);
+    }
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = 'Create my profile →';
+    alert("Something went wrong submitting the form. Please try again in a moment, or refresh and resubmit.");
+  }
+  return false;
+}
+</script>
+
+</body>
+</html>
