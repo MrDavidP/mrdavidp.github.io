@@ -473,16 +473,17 @@ if (!tip) {
   document.getElementById('backLink').href = `tip-${slug}.html`;
   document.title = `Share &mdash; ${tip.quote.slice(0,40)}`;
 
-  // Auto-size quote: starts at a sensible bump from the original 68px and
-  // steps down. Uses scrollHeight (not offsetHeight) so flex-grow on the
-  // wrap doesn't mask content overflow.
-  // Layout math at 1080x1920 with 110/70 padding:
-  //   masthead ~120, meta ~112, photo 940, place row ~110, margins ~92,
-  //   bottom strip ~120 → leaves ~310 for quote with place, ~395 without.
+  // Auto-size quote: starting sizes are tiered so short quotes (1–2 lines)
+  // can land at 95–110px and dominate the canvas, while medium 3-line
+  // quotes still settle around 80 and longer quotes step down further.
+  // scrollHeight catches actual content height (offsetHeight is masked by
+  // flex-grow on the wrap).
+  // Layout budget at 1080x1920 with 110/70 padding leaves ~320px for the
+  // quote when the place row is showing, ~410px without it.
   const wrap = document.getElementById('scQuoteWrap');
-  const MAX_QUOTE_HEIGHT = placeEl.textContent ? 310 : 395;
+  const MAX_QUOTE_HEIGHT = placeEl.textContent ? 320 : 410;
   const tryFit = () => {
-    const sizes = [80, 72, 64, 58, 52, 46, 42, 38, 34];
+    const sizes = [110, 95, 82, 70, 62, 54, 48, 42, 38, 34];
     for (const s of sizes) {
       wrap.style.fontSize = s + 'px';
       if (wrap.scrollHeight <= MAX_QUOTE_HEIGHT) return;
