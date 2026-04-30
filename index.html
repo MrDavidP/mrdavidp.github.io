@@ -46,6 +46,19 @@
           "height": 630
         },
         "description": "The link you send when someone asks you for recs."
+      },
+      {
+        "@type": "ItemList",
+        "name": "HoodTip Guides",
+        "description": "Longer-form guides — specific scenarios in cities we know.",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://hoodtip.com/geneva-after-work-beer.html",
+            "name": "Where to Get a Cheeky Beer After Work in Geneva"
+          }
+        ]
       }
     ]
   }
@@ -250,6 +263,152 @@
     .sec-head-meta b { color: var(--ink); font-weight: 500; }
     .sec-head-link { font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); border-bottom: 1.5px solid var(--ink); padding-bottom: 2px; transition: color 0.2s; }
     .sec-head-link:hover { color: var(--red); border-color: var(--red); }
+
+    /* ---------- GUIDES STRIP ---------- */
+    .guides-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      position: relative;
+      z-index: 2;
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .guides-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 0;
+      padding: 2rem 0 2.5rem;
+    }
+    .guide-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background 0.15s;
+    }
+    .guide-card.feature {
+      border-right: 1px solid var(--rule);
+      padding-right: 2.5rem;
+    }
+    .guide-card.next {
+      padding-left: 2.5rem;
+      justify-content: center;
+    }
+    .guide-card-img-wrap {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--cream2);
+      margin-bottom: 1.25rem;
+    }
+    .guide-card-img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.6s ease;
+    }
+    .guide-card.feature:hover .guide-card-img { transform: scale(1.03); }
+    .guide-card-issue {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+    .guide-card-issue b { color: var(--ink); font-weight: 600; }
+    .guide-card-hed {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .guide-card-hed em { font-style: italic; font-weight: 400; }
+    .guide-card.feature:hover .guide-card-hed { color: var(--red); }
+    .guide-card-dek {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      max-width: 40em;
+    }
+    .guide-card-meta {
+      display: flex; gap: 0.75rem; align-items: center;
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .guide-card-meta-sep { color: var(--rule); }
+    .guide-card-cta {
+      font-family: var(--cond);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px;
+      align-self: flex-start;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .guide-card.feature:hover .guide-card-cta { color: var(--red); border-color: var(--red); }
+    .guide-next-label {
+      font-family: var(--cond);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .guide-next-hed {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .guide-next-hed em { font-style: italic; font-weight: 400; }
+    .guide-next-dek {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+    .guide-next-list {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+    .guide-next-item {
+      font-family: var(--cond);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    .guide-next-item::before {
+      content: "→";
+      color: var(--red);
+      font-weight: 600;
+    }
+    @media (max-width: 820px) {
+      .guides-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .guide-card.feature { border-right: none; padding-right: 0; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+      .guide-card.next { padding-left: 0; }
+    }
 
     /* ---------- FILTER TABS ---------- */
     .filters { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); border-bottom: 1px solid var(--rule); position: relative; z-index: 2; background: var(--cream); }
@@ -625,6 +784,7 @@
       <a href="index.html" class="nav-logo" aria-label="HoodTip — Only the good stuff"><span class="nav-logo-word">Hood<em>Tip</em></span><span class="nav-logo-tag">Only the <b>good</b> stuff</span></a>
     </div>
     <div class="nav-right">
+      <a href="#guides" class="nav-link">Guides</a>
       <a href="#tipsters" class="nav-link">Tipsters</a>
       <a href="create-profile.html" class="nav-link nav-link-show">Build profile</a>
       <a href="profile-build.html" class="nav-cta">Leave a HoodTip →</a>
@@ -760,6 +920,56 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ==================== GUIDES ==================== -->
+<div class="sec" id="guides">
+  <div class="sec-head">
+    <div class="sec-head-left">
+      <div class="sec-head-kicker">§ Guides</div>
+      <h2 class="sec-head-title">Longer reads. <em>Specific scenarios.</em></h2>
+    </div>
+    <div class="sec-head-right">
+      <span class="sec-head-meta"><b>1</b> guide live · more on the way</span>
+    </div>
+  </div>
+</div>
+
+<div class="guides-wrap">
+  <div class="guides-grid">
+
+    <!-- Featured guide — cheeky beer -->
+    <a class="guide-card feature" href="geneva-after-work-beer.html">
+      <div class="guide-card-img-wrap">
+        <img class="guide-card-img" src="cheeky-guide-nations.jpg" alt="UN flags at golden hour, Geneva — start of the after-work walk down the hill" />
+      </div>
+      <div class="guide-card-issue">§ Issue No. 01 · <b>Geneva · Drinking</b></div>
+      <h3 class="guide-card-hed">Where to get a cheeky beer <em>after work</em> in Geneva</h3>
+      <p class="guide-card-dek">A walk down the hill from the UN to the river, with stops along the way. Six pubs, one tram line, and a strong opinion about Murphy's red.</p>
+      <div class="guide-card-meta">
+        <span>By Dave</span>
+        <span class="guide-card-meta-sep">·</span>
+        <span>April 2026</span>
+        <span class="guide-card-meta-sep">·</span>
+        <span>6 places</span>
+      </div>
+      <span class="guide-card-cta">Read the guide →</span>
+    </a>
+
+    <!-- Coming next teaser -->
+    <div class="guide-card next">
+      <div class="guide-next-label">§ Coming next</div>
+      <h3 class="guide-next-hed">More guides, <em>same voice.</em></h3>
+      <p class="guide-next-dek">Specific scenarios from people who actually go. The link you send when a friend texts asking for a rec.</p>
+      <div class="guide-next-list">
+        <div class="guide-next-item">Lunch under 25 CHF in Geneva</div>
+        <div class="guide-next-item">Geneva on a Sunday when everything's closed</div>
+        <div class="guide-next-item">Where to take visiting parents in Geneva</div>
+        <div class="guide-next-item">Istanbul: a long weekend on the Bosphorus</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
