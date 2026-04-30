@@ -196,80 +196,6 @@
     .hero { width: 100%; height: auto; display: block; max-height: 70vh; object-fit: cover; }
     .hero-caption { max-width: 1100px; margin: 0 auto; padding: 0.6rem 2rem; font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink); }
 
-    /* MAP — click to expand */
-    .map-wrap { background: var(--cream2); border-bottom: 1.5px solid var(--ink); }
-    .map-inner { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; }
-    .map-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
-    .map-label { font-family: var(--cond); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); }
-    .map-title { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 1.8vw, 1.35rem); color: var(--muted); font-weight: 400; }
-    .map-figure {
-      cursor: zoom-in;
-      display: block;
-      background: var(--cream);
-      border: 1.5px solid var(--ink);
-      transition: transform 0.2s;
-      position: relative;
-    }
-    .map-figure:hover { transform: translateY(-2px); }
-    .map-img { width: 100%; height: auto; display: block; }
-    .map-zoom-hint {
-      position: absolute;
-      top: 12px; right: 12px;
-      background: var(--ink);
-      color: var(--cream);
-      font-family: var(--cond);
-      font-size: 0.58rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 6px 10px;
-      pointer-events: none;
-    }
-    .map-caption { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 0.6rem; }
-
-    /* MAP MODAL */
-    .map-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(15,12,10,0.92);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      cursor: zoom-out;
-    }
-    .map-modal.open { display: flex; }
-    .map-modal img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      display: block;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    }
-    .map-modal-close {
-      position: absolute;
-      top: 20px; right: 20px;
-      background: var(--cream);
-      color: var(--ink);
-      border: none;
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      font-family: var(--serif);
-    }
-    .map-modal-close:hover { background: var(--red); color: var(--cream); }
-    @media (max-width: 720px) {
-      .map-inner { padding: 1.75rem 1.25rem; }
-      .map-modal { padding: 0.5rem; }
-    }
-
     /* TABLE OF CONTENTS */
     .toc-wrap { background: var(--cream2); border-bottom: 1.5px solid var(--ink); }
     .toc { max-width: 1100px; margin: 0 auto; padding: 1.25rem 2rem; display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
@@ -491,58 +417,68 @@
     .list-strip {
       background: var(--ink);
       color: var(--cream);
-      padding: 2.5rem 0;
+      padding: 3rem 0 3.5rem;
       border-top: 1px solid rgba(247,244,239,0.15);
     }
     .list-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
     .list-label {
       font-family: var(--cond);
-      font-size: 0.62rem;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
     .list-title {
       font-family: var(--serif);
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-size: clamp(1.7rem, 3.4vw, 2.6rem);
       font-weight: 500;
-      line-height: 1.15;
-      margin-bottom: 1.75rem;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
       color: var(--cream);
     }
-    .list-title em { font-style: italic; font-weight: 400; color: rgba(247,244,239,0.7); }
-    .list-grid { display: grid; gap: 0; }
+    .list-title em { font-style: italic; font-weight: 400; color: rgba(247,244,239,0.6); }
+    .list-grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid rgba(247,244,239,0.18);
+    }
     .list-row {
       display: grid;
-      grid-template-columns: 50px 1fr auto;
-      gap: 1rem;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid rgba(247,244,239,0.12);
-      align-items: baseline;
+      grid-template-columns: 72px 1fr auto;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid rgba(247,244,239,0.18);
+      align-items: center;
     }
-    .list-row:last-child { border-bottom: none; }
     .list-num {
       font-family: var(--cond);
-      font-size: 0.65rem;
+      font-size: 1.5rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
-      color: rgba(247,244,239,0.4);
+      letter-spacing: 0.02em;
+      color: var(--red);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
     }
     .list-name {
       font-family: var(--serif);
-      font-size: 1.1rem;
+      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
       font-weight: 500;
+      letter-spacing: -0.01em;
       color: var(--cream);
+      line-height: 1.15;
     }
     .list-tag {
       font-family: var(--cond);
-      font-size: 0.58rem;
+      font-size: 0.78rem;
+      font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(247,244,239,0.6);
+      color: rgba(247,244,239,0.85);
       text-align: right;
+      line-height: 1.3;
     }
 
     /* WHERE EXACTLY — for SEO + reader use */
@@ -673,8 +609,10 @@
       .img-portrait-pair { grid-template-columns: 1fr; }
       .img-portrait-pair img { aspect-ratio: 4/3; }
       .pull-quote p { font-size: 1.25rem; }
-      .list-row { grid-template-columns: 32px 1fr; }
-      .list-tag { grid-column: 2; text-align: left; padding-top: 0.2rem; }
+      .list-row { grid-template-columns: 48px 1fr; gap: 1rem; padding: 1.1rem 0; }
+      .list-num { font-size: 1.2rem; }
+      .list-name { font-size: 1.25rem; }
+      .list-tag { grid-column: 2; text-align: left; padding-top: 0.3rem; font-size: 0.7rem; }
       .address-item { padding: 1rem 0 !important; border-right: none !important; }
       .foot-strip-inner { padding: 0 18px; }
       .foot-note { font-size: 0.72rem; }
@@ -728,29 +666,6 @@
   <img class="hero" src="cheeky-guide-nations.jpg" alt="Flag plaza outside the UN in Geneva at golden hour, looking towards the Broken Chair" />
 </div>
 <div class="hero-caption">The flags outside the UN at end of day. The walk down the hill begins here.</div>
-
-<!-- MAP -->
-<div class="map-wrap">
-  <div class="map-inner">
-    <div class="map-header">
-      <div>
-        <div class="map-label">§ The route</div>
-        <div class="map-title">Nations to La Barje · 8 stops · ~1.6 km</div>
-      </div>
-    </div>
-    <figure class="map-figure" onclick="document.getElementById('mapModal').classList.add('open')">
-      <img class="map-img" src="cheeky-guide-map.jpg" alt="Map of Geneva showing the after-work cheeky pints route from Nations down to La Barje on the Rhône — 8 numbered stops along Rue de Montbrillant, Rue de Lausanne, and Rue De-Grenus" />
-      <span class="map-zoom-hint">Click to expand</span>
-    </figure>
-    <div class="map-caption">From the UN down to the river. One walk. Eight stops. Use it as you go.</div>
-  </div>
-</div>
-
-<!-- MAP MODAL -->
-<div class="map-modal" id="mapModal" onclick="this.classList.remove('open')">
-  <button class="map-modal-close" aria-label="Close map" onclick="document.getElementById('mapModal').classList.remove('open');event.stopPropagation();">×</button>
-  <img src="cheeky-guide-map.jpg" alt="Map of Geneva — Nations to La Barje after-work pub crawl" />
-</div>
 
 <!-- TABLE OF CONTENTS -->
 <div class="toc-wrap">
@@ -1072,16 +987,6 @@
     <a href="index.html" class="foot-link">Browse all tips →</a>
   </div>
 </div>
-
-<script>
-  // Close map modal on Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      var modal = document.getElementById('mapModal');
-      if (modal) modal.classList.remove('open');
-    }
-  });
-</script>
 
 </body>
 </html>
