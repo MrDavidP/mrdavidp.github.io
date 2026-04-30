@@ -285,6 +285,13 @@
     /* IMAGES */
     .img-landscape-wrap { margin: 1.75rem 0; }
     .img-landscape { width: 100%; height: auto; display: block; }
+    /* Tight variant — cinematic crop for in-article photos so the page doesn't scroll forever on a laptop */
+    .img-landscape.tight {
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      height: 100%;
+      max-height: 460px;
+    }
     .img-portrait-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -322,66 +329,36 @@
       margin: 0;
     }
 
-    /* WEF CALLOUT — the conversion engine */
-    .wef-callout-wrap {
+    /* OPEN CHALLENGE — articled, with black "write yours" panel */
+    .open-challenge {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1.5px solid var(--ink);
+    }
+    .open-challenge .place-num { color: var(--red); }
+    .open-challenge p { margin-bottom: 1.1rem; }
+    .open-challenge p strong { color: var(--ink); font-weight: 600; }
+    .open-challenge-cta {
       background: var(--ink);
       color: var(--cream);
+      padding: 2.25rem 2rem 2rem;
+      margin-top: 2rem;
       border-top: 3px solid var(--red);
-      margin-top: 4rem;
       position: relative;
     }
-    .wef-callout-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(247,244,239,0.04) 1px, transparent 1px);
-      background-size: 4px 4px;
-      pointer-events: none;
-    }
-    .wef-callout {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      position: relative;
-    }
-    .wef-kicker {
-      font-family: var(--cond);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 1.5rem;
-    }
-    .wef-hed {
+    .oc-pitch {
       font-family: var(--serif);
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
-      font-weight: 500;
-      line-height: 1.05;
-      letter-spacing: -0.015em;
-      color: var(--cream);
-      margin-bottom: 2rem;
-      max-width: 700px;
-    }
-    .wef-hed em { font-style: italic; font-weight: 400; color: var(--red); }
-    .wef-body {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: rgba(247,244,239,0.85);
-      margin-bottom: 1.25rem;
-      max-width: 640px;
-    }
-    .wef-body b { color: var(--cream); font-weight: 600; }
-    .wef-pitch {
       font-style: italic;
-      padding-top: 1.5rem;
-      margin-top: 1.5rem;
-      border-top: 1px solid rgba(247,244,239,0.15);
-      color: rgba(247,244,239,0.95);
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: rgba(247,244,239,0.92);
+      margin-bottom: 1.5rem !important;
+      max-width: 560px;
     }
-    .wef-cta {
-      display: inline-block;
+    .oc-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-family: var(--cond);
       font-size: 0.78rem;
       font-weight: 700;
@@ -389,29 +366,29 @@
       text-transform: uppercase;
       background: var(--red);
       color: var(--cream);
-      padding: 16px 28px;
-      margin-top: 1.5rem;
-      transition: background 0.15s, transform 0.15s;
+      padding: 14px 22px;
+      transition: background 0.15s, color 0.15s;
     }
-    .wef-cta:hover { background: var(--cream); color: var(--ink); }
-    .wef-footnote {
-      margin-top: 1.5rem;
+    .oc-cta-btn:hover { background: var(--cream); color: var(--ink); }
+    .oc-footnote {
+      margin-top: 1.1rem;
       font-family: var(--cond);
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(247,244,239,0.4);
+      color: rgba(247,244,239,0.5);
     }
-    .wef-footnote a {
-      color: rgba(247,244,239,0.7);
+    .oc-footnote a {
+      color: rgba(247,244,239,0.85);
       border-bottom: 1px solid rgba(247,244,239,0.3);
       padding-bottom: 1px;
     }
-    .wef-footnote a:hover { color: var(--cream); border-color: var(--cream); }
+    .oc-footnote a:hover { color: var(--cream); border-color: var(--cream); }
     @media (max-width: 720px) {
-      .wef-callout { padding: 3rem 1.5rem; }
-      .wef-body { font-size: 1.05rem; }
+      .open-challenge-cta { padding: 1.75rem 1.4rem 1.5rem; }
+      .oc-pitch { font-size: 1rem; }
     }
+
 
     /* THE LIST — visual at-a-glance ranking */
     .list-strip {
@@ -695,9 +672,7 @@
 <div class="article">
   <div class="article-inner">
 
-    <p class="drop-cap">You work at Nations. The UN, the WTO, the WHO, the ILO, the WIPO, the IOM, one of the dozens of NGOs orbiting them — doesn't matter, the alphabet soup all ends the same way. You finish a long day doing whatever it is you do up there. And before you head home to your loving family for dinner, you want a cheeky pint and a chance to decompress with your friends from work. Here are the eight places worth knowing, in order, as you head down the hill from Nations.</p>
-
-    <p>The geography of this is straightforward: the 15 tram line runs from Nations down through Plainpalais to Cornavin, and most of the good options sit along it. From Cornavin you can walk to the river in five to ten minutes. By the end of the list you've made it to the Rhône, which — depending on the season — is either where you want to be or where you should have stopped two pubs ago.</p>
+    <p class="drop-cap">You work at the UN or a UN adjacent organization in Geneva, you finish a long day doing whatever it is you do up there at Nations, and before you head home to your loving family for dinner, you want to have a cheeky pint and decompress with your friends from work. Here's the best places to get that cheeky pint in as you head down the hill.</p>
 
     <!-- SECTION 1: MEDUSA -->
     <div class="place-section" id="medusa">
@@ -726,14 +701,14 @@
       <p>The first stop out of the bubble. Now, I'm not a big Pickwicks fan if I'm being honest. The outside aesthetic gives Eugene, Oregon — Boulder, Colorado — 80s college campus. The inside is way bigger than you'd imagine. The staff are great, super friendly. And I don't mean to complain, but there's just something <em>off</em> about Pickwicks.</p>
 
       <div class="img-landscape-wrap">
-        <img class="img-landscape" src="cheeky-guide-mr-pickwick-exterior.jpg" alt="Mr. Pickwick Pub exterior in Geneva, blue facade with green and yellow lettering, terrace under a tree" />
+        <img class="img-landscape tight" src="cheeky-guide-mr-pickwick-exterior.jpg" alt="Mr. Pickwick Pub exterior in Geneva, blue facade with green and yellow lettering, terrace under a tree" />
         <div class="img-caption">Pickwicks. Blue facade, green lettering, the tree out front. Ideal tram-stop access.</div>
       </div>
 
       <p>That said: it's directly on the 15 tram line, making it the fastest place to get a cheeky pint and hop back on the tram heading home. The best thing to order at Pickwicks — despite looking like a place that would serve a good Guinness — is actually the Murphy's Irish Red. I can't explain it. Something about that creamy red pint just hits better at Pickwicks. Trust me.</p>
 
       <div class="img-landscape-wrap">
-        <img class="img-landscape" src="cheeky-guide-pickwicks-murphys.jpg" alt="A pint of Murphy's Irish Red on a metal table outside Mr. Pickwick Pub Geneva" />
+        <img class="img-landscape tight" src="cheeky-guide-pickwicks-murphys.jpg" alt="A pint of Murphy's Irish Red on a metal table outside Mr. Pickwick Pub Geneva" />
         <div class="img-caption">The Murphy's. Order this, not the Guinness.</div>
       </div>
     </div>
@@ -776,7 +751,7 @@
       <p>My favourite cheeky place in town. About five minutes' walk from Cornavin, head towards Manor and tuck into the best pint of Guinness in town at Mulligans. This is the place to sit, have a creamy pint, maybe a bag of salt and vinegar crisps if they have them. Sit outside if it's nice and do some of the best people-watching in the city, courtesy of Manor's heavy foot traffic. Love this place.</p>
 
       <div class="img-landscape-wrap">
-        <img class="img-landscape" src="geneva-mulligans-pints.jpg" alt="Two creamy pints of Guinness on the bar at Mulligans Irish Pub in Geneva" onerror="this.parentElement.style.display='none'" />
+        <img class="img-landscape tight" src="geneva-mulligans-pints.jpg" alt="Two creamy pints of Guinness on the bar at Mulligans Irish Pub in Geneva" onerror="this.parentElement.style.display='none'" />
         <div class="img-caption">The whole point. Two creamy pints, salt and vinegar crisps if they have them.</div>
       </div>
 
@@ -792,12 +767,12 @@
       <p>Further towards the centre of town, in the Bel-Air area close to the river, you have Bongo Joe and its summer-loving cousin La Barje. Both are excellent options when the sun is out. Sit at Bongo, get a bottle of wine — disappears quicker than you expect with two or three people — and watch the river go by. Proximity to water always calms the nerves. Bongo does good pilsners and always has local Geneva wine on the list.</p>
 
       <div class="img-landscape-wrap">
-        <img class="img-landscape" src="cheeky-guide-bongojoe-rhoneriver.jpg" alt="The Rhône river in Geneva from Bongo Joe terrace, blue and white striped umbrellas, sun on the water" />
+        <img class="img-landscape tight" src="cheeky-guide-bongojoe-rhoneriver.jpg" alt="The Rhône river in Geneva from Bongo Joe terrace, blue and white striped umbrellas, sun on the water" />
         <div class="img-caption">Bongo's terrace on the Rhône. Reason enough.</div>
       </div>
 
       <div class="img-landscape-wrap">
-        <img class="img-landscape" src="cheeky-guide-bongojoe-wine.jpg" alt="A green bottle of local Geneva wine in an ice bucket at Bongo Joe, with sunflower and the river in the background" />
+        <img class="img-landscape tight" src="cheeky-guide-bongojoe-wine.jpg" alt="A green bottle of local Geneva wine in an ice bucket at Bongo Joe, with sunflower and the river in the background" />
         <div class="img-caption">Local Geneva white in the bucket. Two glasses, three people, gone.</div>
       </div>
 
@@ -813,7 +788,7 @@
       <p>Walk along the river through the graffiti tunnel and you end up at La Barje. Also on the river, also excellent. This place is only open in summer, and despite serving their beers in plastic cups, somehow delivers one of the coldest, crispest beers in town. It's also the spot to actually jump in the river — or at least take off the shoes and let your feet dangle.</p>
 
       <div class="img-landscape-wrap">
-        <img class="img-landscape" src="cheeky-guide-labarje-beer.jpg" alt="A plastic cup of cold beer on a green table by the Rhône river at La Barje Geneva, white sneakers in the foreground" />
+        <img class="img-landscape tight" src="cheeky-guide-labarje-beer.jpg" alt="A plastic cup of cold beer on a green table by the Rhône river at La Barje Geneva, white sneakers in the foreground" />
         <div class="img-caption">Plastic cup, ice-cold pilsner, feet up by the river. The point of summer.</div>
       </div>
 
@@ -827,23 +802,29 @@
 
     <!-- CLOSING NOTE -->
     <div class="place-section">
-      <p>I live fairly close to Bongo Joe, so this is the end of the line for my cheeky pint tour of Geneva. Eight places, one walk, one set of opinions. Now, the obvious question.</p>
+      <p>I live fairly close to Bongo Joe, so this is the end of the line for my cheeky pint tour of Geneva.</p>
     </div>
 
   </div>
 </div>
 
-<!-- WEF CALLOUT — the conversion engine -->
-<div class="wef-callout-wrap">
-  <div class="wef-callout">
-    <div class="wef-kicker">An open challenge</div>
-    <h2 class="wef-hed">To the <em>WEF crowd</em> on the other side of the lake.</h2>
-    <p class="wef-body">This guide is the Nations side. The UN, WTO, WHO, NGOs, the whole left-bank ecosystem walking down the hill at 6pm thirsty.</p>
-    <p class="wef-body"><b>What does the right bank do?</b> The Eaux-Vives crowd, the WEF crowd, the private banking crowd, the trading floors of Rive. Where do you go after work? What's the WEF version of Mulligans? Of Pub Lord Jim? Of La Barje on the river?</p>
-    <p class="wef-body">We don't know. We don't work over there. <b>You do.</b></p>
-    <p class="wef-body wef-pitch">Write yours. Three sentences a place, eight places, a few photos. We'll turn it into a polished guide on HoodTip with your name on it. The link you'll send to every new colleague who joins your firm and asks where to drink.</p>
-    <a href="add-tip.html?handle=wef" class="wef-cta">Send your version →</a>
-    <div class="wef-footnote">Or build a profile first: <a href="create-profile.html">create-profile.html</a></div>
+<!-- OPEN CHALLENGE — same article layout, black panel for "write yours" -->
+<div class="article">
+  <div class="article-inner">
+    <div class="open-challenge">
+      <span class="place-num">An open challenge</span>
+      <h2 class="place-name">To the <em>WEF crowd</em> on the other side of the lake.</h2>
+
+      <p>This guide is the Nations side. The UN, WTO, WHO, NGOs, the whole left-bank ecosystem walking down the hill at 6pm thirsty.</p>
+      <p><strong>What does the right bank do?</strong> The Eaux-Vives crowd, the WEF crowd, the private banking crowd, the trading floors of Rive. Where do you go after work? What&rsquo;s the WEF version of Mulligans? Of Pub Lord Jim? Of La Barje on the river?</p>
+      <p>We don&rsquo;t know. We don&rsquo;t work over there. <strong>You do.</strong></p>
+
+      <div class="open-challenge-cta">
+        <p class="oc-pitch">Write yours. Three sentences a place, eight places, a few photos. We&rsquo;ll turn it into a polished guide on HoodTip with your name on it. The link you&rsquo;ll send to every new colleague who joins your firm and asks where to drink.</p>
+        <a href="add-tip.html?handle=wef" class="oc-cta-btn">Send your version &rarr;</a>
+        <div class="oc-footnote">Or build a profile first: <a href="create-profile.html">create-profile.html</a></div>
+      </div>
+    </div>
   </div>
 </div>
 
