@@ -20,11 +20,36 @@
   <meta name="twitter:title" content="HoodTip — Only the good stuff" />
   <meta name="twitter:description" content="The link you send when someone asks you for recs." />
   <meta name="twitter:image" content="https://hoodtip.com/social-card.jpg" />
-  <meta property="og:url" content="https://hoodtip.com/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="HoodTip — Only the good stuff" />
-  <meta name="twitter:description" content="The link you send when someone asks you for recs." />
-  <meta name="twitter:image" content="https://hoodtip.com/grand-belvedere-spa-outside.jpg" />
+
+  <!-- STRUCTURED DATA: WebSite + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://hoodtip.com/#website",
+        "url": "https://hoodtip.com/",
+        "name": "HoodTip",
+        "description": "Attributed, positive-only travel tips from people who actually went.",
+        "publisher": { "@id": "https://hoodtip.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://hoodtip.com/#organization",
+        "name": "HoodTip",
+        "url": "https://hoodtip.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hoodtip.com/social-card.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "description": "The link you send when someone asks you for recs."
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
