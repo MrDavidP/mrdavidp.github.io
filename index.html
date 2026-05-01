@@ -166,7 +166,7 @@
     .masthead-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); height: 38px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
     .masthead-left, .masthead-right { display: flex; align-items: center; gap: 1.25rem; font-family: var(--cond); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.55); }
     .masthead-left b { color: var(--cream); font-weight: 500; }
-    .masthead-center { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: rgba(247,244,239,0.88); letter-spacing: 0.005em; }
+    .masthead-center { font-family: var(--serif); font-style: italic; font-size: 0.98rem; color: var(--cream); letter-spacing: 0.01em; }
     .masthead-center .red-dot { color: var(--red); margin: 0 8px; }
     .masthead-sep { color: rgba(247,244,239,0.25); }
     .masthead-right b { color: var(--cream); font-weight: 500; font-size: 0.72rem; }
@@ -727,8 +727,8 @@
     }
     @media (max-width: 880px) {
       .nav-link { display: none; }
-      .nav-link.nav-link-show { display: flex; padding: 0 12px; font-size: 0.58rem; letter-spacing: 0.12em; color: var(--ink); }
-      .nav-cta { padding: 0 14px; font-size: 0.62rem; letter-spacing: 0.12em; }
+      .nav-link.nav-link-show { display: flex; padding: 0 10px; font-size: 0.56rem; letter-spacing: 0.1em; color: var(--ink); }
+      .nav-cta { padding: 0 12px; font-size: 0.6rem; letter-spacing: 0.1em; }
       .nav-logo-tag { display: none; }
       .nav-logo { gap: 0; padding: 5px 10px; }
       .nav-logo-word { font-size: 1.25rem; }
@@ -772,7 +772,6 @@
       .cities-grid .city { border-right: none !important; }
       .footer-top { grid-template-columns: 1fr; }
       .slogan-text { font-size: 1.7rem; }
-      .guide-card.next { display: none; }
     }
   </style>
 </head>
@@ -786,7 +785,7 @@
     </div>
     <div class="nav-right">
       <a href="#guides" class="nav-link">Guides</a>
-      <a href="#tipsters" class="nav-link">Tipsters</a>
+      <a href="#tipsters" class="nav-link nav-link-show">Tipsters</a>
       <a href="create-profile.html" class="nav-link nav-link-show">Build profile</a>
       <a href="profile-build.html" class="nav-cta">Leave a HoodTip →</a>
     </div>
@@ -807,11 +806,11 @@
       The link you send when someone asks for recs <span class="red-dot">●</span> Attributed <span class="red-dot">●</span> Positive only
     </div>
     <div class="masthead-right">
-      <span><b>81</b> tips</span>
+      <span><b>79</b> tips</span>
       <span class="masthead-sep">·</span>
-      <span><b>25</b> cities</span>
+      <span><b>24</b> cities</span>
       <span class="masthead-sep">·</span>
-      <span><b>5</b> contributors</span>
+      <span><b>4</b> contributors</span>
     </div>
   </div>
 </div>
@@ -943,7 +942,7 @@
     <!-- Featured guide — cheeky beer -->
     <a class="guide-card feature" href="geneva-after-work-beer.html">
       <div class="guide-card-img-wrap">
-        <img class="guide-card-img" src="cheeky-guide-labarje-beer.jpg" alt="A plastic cup of cold pilsner on a green table by the Rhône at La Barje Geneva — the last stop on the cheeky beer walk" />
+        <img class="guide-card-img" src="cheeky-guide-nations.jpg" alt="UN flags at golden hour, Geneva — start of the after-work walk down the hill" />
       </div>
       <div class="guide-card-issue">§ Issue No. 01 · <b>Geneva · Drinking</b></div>
       <h3 class="guide-card-hed">Where to get a cheeky beer <em>after work</em> in Geneva</h3>
@@ -982,7 +981,7 @@
       <h2 class="sec-head-title">All the <em>good stuff,</em> filed</h2>
     </div>
     <div class="sec-head-right">
-      <span class="sec-head-meta">Showing <b>21 of 81</b> tips</span>
+      <span class="sec-head-meta">Showing <b>19 of 79</b> tips</span>
       <a href="profile-dave.html" class="sec-head-link">View all tips →</a>
     </div>
   </div>
@@ -990,9 +989,9 @@
 
 <div class="filters">
   <div class="filters-inner">
-    <button class="filter active">All <span class="filter-count">81</span></button>
-    <button class="filter">Eat <span class="filter-count">28</span></button>
-    <button class="filter">Drink <span class="filter-count">19</span></button>
+    <button class="filter active">All <span class="filter-count">79</span></button>
+    <button class="filter">Eat <span class="filter-count">27</span></button>
+    <button class="filter">Drink <span class="filter-count">18</span></button>
     <button class="filter">Sleep <span class="filter-count">8</span></button>
     <button class="filter">See &amp; Do <span class="filter-count">13</span></button>
     <button class="filter">Travel <span class="filter-count">8</span></button>
@@ -1015,42 +1014,6 @@
         </div>
         <h3 class="tip-card-hed">Bains des Pâquis. <em>Don't skip it because it's easy to find.</em></h3>
         <p class="tip-card-dek">Locals swim here in all seasons. The sunset from the jetty, the fondue in winter, the cheap breakfast at 7am. This is the soul of Geneva if Geneva has one.</p>
-        <div class="tip-card-foot">
-          <img src="bongojoe-rhone-light.jpg" alt="Dave" />
-          <span>By <b>Dave</b></span>
-        </div>
-      </div>
-    </a>
-
-    <a class="tip-card" href="tip-deputamadre.html">
-      <div class="tip-card-img-wrap" style="background:linear-gradient(135deg,#1f1d1b 0%,#2a2925 50%,#3a2a26 100%);display:flex;align-items:center;justify-content:center;padding:1.5rem;">
-        <span style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.85rem;color:rgba(247,244,239,0.92);text-align:center;line-height:1.05;letter-spacing:-0.01em;">De puta madre</span>
-      </div>
-      <div class="tip-card-body">
-        <div class="tip-card-kicker">
-          <span class="tip-card-cat">Restaurant</span><span class="tip-card-sep">/</span>
-          <span class="tip-card-loc">Biarritz · France</span>
-        </div>
-        <h3 class="tip-card-hed">De puta madre. <em>Garden setting, outdoor cooking.</em></h3>
-        <p class="tip-card-dek">Beautiful garden setting and outdoor cooking by highly trained seasonal chefs. South Biarritz, near Lac Marion. Russell's first tip.</p>
-        <div class="tip-card-foot">
-          <img src="russell.jpg" alt="Russell" />
-          <span>By <b>Russell</b></span>
-        </div>
-      </div>
-    </a>
-
-    <a class="tip-card" href="tip-briomate.html">
-      <div class="tip-card-img-wrap">
-        <img class="tip-card-img" src="briomate-bottle-street.jpg" alt="Brio Maté bottle held up on a Geneva street" style="object-position:center 60%;" />
-      </div>
-      <div class="tip-card-body">
-        <div class="tip-card-kicker">
-          <span class="tip-card-cat">Drink</span><span class="tip-card-sep">/</span>
-          <span class="tip-card-loc">Migros · Switzerland</span>
-        </div>
-        <h3 class="tip-card-hed">Brio Maté. <em>The tastiest carbonated drink in Switzerland.</em></h3>
-        <p class="tip-card-dek">Swiss-made yerba maté, sold at most Migros. Not too sweet, good carbonation, a nice bit of caffeine. A daily lunch grab.</p>
         <div class="tip-card-foot">
           <img src="bongojoe-rhone-light.jpg" alt="Dave" />
           <span>By <b>Dave</b></span>
@@ -1444,7 +1407,7 @@
         </div>
         <p class="contrib-quote">Meeting people, making videos. Live in Geneva.</p>
         <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val">75</span><span class="contrib-stat-lbl">Tips</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">69</span><span class="contrib-stat-lbl">Tips</span></div>
           <div class="contrib-stat"><span class="contrib-stat-val">24</span><span class="contrib-stat-lbl">Cities</span></div>
           <div class="contrib-stat"><span class="contrib-stat-val">16</span><span class="contrib-stat-lbl">Hoods</span></div>
         </div>
@@ -1527,30 +1490,6 @@
         <span class="contrib-link">See Alex's profile →</span>
       </a>
 
-      <a href="profile-russell.html" class="contrib">
-        <div class="contrib-head">
-          <img class="contrib-photo" src="russell.jpg" alt="Russell Kummer" onerror="this.outerHTML='&lt;div class=&quot;contrib-photo-fb&quot;&gt;R&lt;/div&gt;'" />
-          <div>
-            <div class="contrib-name">Russell Kummer</div>
-            <div class="contrib-handle">@russell · Los Angeles · Contributor</div>
-          </div>
-        </div>
-        <p class="contrib-quote">Outdoor adventure and culture.</p>
-        <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Tips</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">City</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Hood</span></div>
-        </div>
-        <div class="contrib-tags">
-          <span class="contrib-tag">Proper pubs</span>
-          <span class="contrib-tag">Hotels worth it</span>
-          <span class="contrib-tag">Swimming</span>
-          <span class="contrib-tag">Parks</span>
-          <span class="contrib-tag">Architecture</span>
-        </div>
-        <span class="contrib-link">See Russell's tips →</span>
-      </a>
-
       <a href="profile-build.html" class="contrib invite">
         <div class="contrib-head">
           <div class="contrib-placeholder">+</div>
@@ -1586,7 +1525,7 @@
         <h2 class="sec-head-title">Pick a city. <em>Get the good stuff.</em></h2>
       </div>
       <div class="sec-head-right">
-        <span class="sec-head-meta"><b>25</b> cities indexed</span>
+        <span class="sec-head-meta"><b>24</b> cities indexed</span>
       </div>
     </div>
   </div>
@@ -1624,7 +1563,7 @@
       </a>
     </div>
     <div style="display:flex;justify-content:flex-end;padding:1rem 0;">
-      <a href="profile-dave.html" class="sec-head-link">All 25 cities →</a>
+      <a href="profile-dave.html" class="sec-head-link">All 24 cities →</a>
     </div>
   </div>
 </div>
@@ -1723,10 +1662,10 @@
       <div class="footer-logo-big">Hood<em>Tip<span class="dot">.</span></em></div>
       <p class="footer-tag">Only the good stuff. The link you send when someone asks for recs.</p>
       <div class="footer-stats-big">
-        <div class="footer-stat-big"><span class="footer-stat-val">81</span><span class="footer-stat-lbl">Tips</span></div>
-        <div class="footer-stat-big"><span class="footer-stat-val">25</span><span class="footer-stat-lbl">Cities</span></div>
+        <div class="footer-stat-big"><span class="footer-stat-val">79</span><span class="footer-stat-lbl">Tips</span></div>
+        <div class="footer-stat-big"><span class="footer-stat-val">24</span><span class="footer-stat-lbl">Cities</span></div>
         <div class="footer-stat-big"><span class="footer-stat-val">16</span><span class="footer-stat-lbl">Hoods</span></div>
-        <div class="footer-stat-big"><span class="footer-stat-val">5</span><span class="footer-stat-lbl">Contributors</span></div>
+        <div class="footer-stat-big"><span class="footer-stat-val">4</span><span class="footer-stat-lbl">Contributors</span></div>
       </div>
     </div>
 
@@ -1748,7 +1687,6 @@
         <li><a href="profile-foodfiend.html">foodfiend</a></li>
         <li><a href="profile-lee.html">Lee</a></li>
         <li><a href="profile-corduroygreen.html">corduroygreen</a></li>
-        <li><a href="profile-russell.html">Russell</a></li>
         <li><a href="create-profile.html">Become one →</a></li>
       </ul>
     </div>
