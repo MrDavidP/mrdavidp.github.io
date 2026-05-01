@@ -247,7 +247,7 @@
     .rule-text-sub { font-size: 0.82rem; color: var(--muted); font-family: var(--sans); line-height: 1.6; margin-top: 0.4rem; }
 
     /* ---------- SECTION HEADER ---------- */
-    .sec { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); position: relative; z-index: 2; }
+    .sec { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); position: relative; z-index: 2; scroll-margin-top: 70px; }
     .sec-head {
       display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem;
       padding: 3rem 0 1.5rem;
@@ -531,7 +531,7 @@
     }
 
     /* ---------- CITY EXPLORER ---------- */
-    .cities { border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; background: var(--cream); }
+    .cities { border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; background: var(--cream); scroll-margin-top: 70px; }
     .cities-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
     .cities-grid { display: grid; grid-template-columns: repeat(6, 1fr); border-left: 1px solid var(--rule); }
     .city {
@@ -773,7 +773,75 @@
       .footer-top { grid-template-columns: 1fr; }
       .slogan-text { font-size: 1.7rem; }
     }
-  </style>
+
+    /* ==================== MOBILE STICKY BOTTOM NAV ==================== */
+    .mnav {
+      display: none; /* hidden on desktop */
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 200;
+      background: var(--ink);
+      border-top: 2px solid var(--red);
+      padding: 6px 0 calc(6px + env(safe-area-inset-bottom)) 0;
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.18);
+    }
+    .mnav-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .mnav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 8px 4px 6px;
+      text-decoration: none;
+      color: rgba(247,244,239,0.7);
+      font-family: var(--cond);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-right: 1px solid rgba(247,244,239,0.08);
+      transition: color 0.15s, background 0.15s;
+      -webkit-tap-highlight-color: rgba(181,50,42,0.3);
+    }
+    .mnav-btn:last-child { border-right: none; }
+    .mnav-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .mnav-btn:active,
+    .mnav-btn.active {
+      color: var(--cream);
+      background: rgba(181,50,42,0.18);
+    }
+    .mnav-btn.cta {
+      color: var(--cream);
+      background: var(--red);
+    }
+    .mnav-btn.cta svg { stroke: var(--cream); }
+    .mnav-btn.cta:active {
+      background: #8e2520;
+    }
+
+    /* show only on mobile */
+    @media (max-width: 880px) {
+      .mnav { display: block; }
+      /* push footer above the bottom nav so it isn't covered */
+      body { padding-bottom: 64px; }
+    }
+
+    </style>
 </head>
 <body>
 
@@ -974,7 +1042,7 @@
 </div>
 
 <!-- ==================== THE INDEX (TIPS GRID) ==================== -->
-<div class="sec">
+<div class="sec" id="tips">
   <div class="sec-head">
     <div class="sec-head-left">
       <div class="sec-head-kicker">§ The Index · Issue No. 04</div>
@@ -1517,7 +1585,7 @@
 </div>
 
 <!-- ==================== CITY EXPLORER ==================== -->
-<div class="cities">
+<div class="cities" id="cities">
   <div class="cities-inner">
     <div class="sec-head" style="border-bottom:none;">
       <div class="sec-head-left">
@@ -1786,6 +1854,64 @@
       f.classList.add('active');
     });
   });
+</script>
+
+
+<!-- MOBILE STICKY BOTTOM NAV — phones only -->
+<nav class="mnav" aria-label="Primary navigation">
+  <div class="mnav-inner">
+    <a href="#tips" class="mnav-btn" aria-label="Browse tips">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Tips
+    </a>
+    <a href="#cities" class="mnav-btn" aria-label="Cities">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Cities
+    </a>
+    <a href="#tipsters" class="mnav-btn" aria-label="Tipsters">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Tipsters
+    </a>
+    <a href="profile-build.html" class="mnav-btn cta" aria-label="Leave a HoodTip">
+      <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      Leave one
+    </a>
+  </div>
+</nav>
+
+<script>
+  // Highlight active mnav button based on scroll position
+  (function(){
+    var sections = ['tips','cities','tipsters'].map(function(id){
+      var el = document.getElementById(id);
+      return el ? { id: id, el: el } : null;
+    }).filter(Boolean);
+    var btns = {};
+    document.querySelectorAll('.mnav-btn').forEach(function(b){
+      var href = b.getAttribute('href') || '';
+      if (href.indexOf('#') === 0) btns[href.slice(1)] = b;
+    });
+    if (sections.length === 0) return;
+
+    function update() {
+      var y = window.scrollY + 120;
+      var current = null;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].el.offsetTop <= y) current = sections[i].id;
+      }
+      Object.keys(btns).forEach(function(k){
+        btns[k].classList.toggle('active', k === current);
+      });
+    }
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if (!ticking) {
+        window.requestAnimationFrame(function(){ update(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+    update();
+  })();
 </script>
 
 </body>
