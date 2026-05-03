@@ -1168,6 +1168,85 @@
       .guides-grid > *:last-child { border-bottom: none !important; }
     }
 
+
+    /* ============== Curated picks — small editorial 3-col grid ============== */
+    .picks-wrap {
+      background: var(--cream);
+      border-bottom: 1.5px solid var(--ink);
+      position: relative;
+      z-index: 2;
+    }
+    .picks-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-left: 1px solid var(--rule);
+    }
+    .pick {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+      border-right: 1px solid var(--rule);
+      border-top: 1px solid var(--rule);
+      transition: background 0.15s;
+    }
+    .pick:hover { background: var(--cream2); }
+    .pick:hover .pick-img { transform: scale(1.04); }
+    .pick:hover .pick-hed { color: var(--red); }
+    .pick-img-wrap {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: var(--cream2);
+    }
+    .pick-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .pick-body {
+      padding: 1rem 1.1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .pick-kicker {
+      font-family: var(--cond);
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pick-kicker b { color: var(--red); font-weight: 600; }
+    .pick-hed {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.18;
+      letter-spacing: -0.005em;
+      transition: color 0.15s;
+    }
+    .pick-hed em { font-style: italic; font-weight: 400; }
+    .pick-byline {
+      font-family: var(--cond);
+      font-size: 0.56rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    .pick-byline b { color: var(--ink); font-weight: 500; }
+
+    @media (max-width: 880px) {
+      .picks-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .picks-grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -1327,6 +1406,80 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- ==================== CURATED PICKS — between manifesto and tipsters ==================== -->
+<div class="sec" style="padding-top: 0;">
+  <div class="sec-head" style="border-bottom: none;">
+    <div class="sec-head-left">
+      <div class="sec-head-kicker">§ A few good ones</div>
+      <h2 class="sec-head-title">A taste, <em>before you scroll</em></h2>
+    </div>
+    <div class="sec-head-right">
+      <a href="#tips" class="sec-head-link">All 81 tips &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<div class="picks-wrap">
+  <div class="picks-grid">
+
+    <a class="pick" href="tip-greek-house-white.html">
+      <div class="pick-img-wrap"><img class="pick-img" src="greece-house-white-1.jpg" alt="Cold Greek house white wine in a small carafe by the Aegean" style="object-position:center 60%;" /></div>
+      <div class="pick-body">
+        <div class="pick-kicker"><b>Wine</b> &middot; Any taverna &middot; Greece</div>
+        <h3 class="pick-hed">Trust the process. <em>Order the house white.</em></h3>
+        <div class="pick-byline">By <b>Dave</b></div>
+      </div>
+    </a>
+
+    <a class="pick" href="tip-filinta-assos.html">
+      <div class="pick-img-wrap"><img class="pick-img" src="filinta-8.jpg" alt="Filinta restaurant deck on the Aegean at sunset" style="object-position:center 50%;" /></div>
+      <div class="pick-body">
+        <div class="pick-kicker"><b>Restaurant</b> &middot; Küçükkuyu &middot; Turkey</div>
+        <h3 class="pick-hed">Hands down, my favourite restaurant <em>in the world.</em></h3>
+        <div class="pick-byline">By <b>Dave</b></div>
+      </div>
+    </a>
+
+    <a class="pick" href="tip-saintamour.html">
+      <div class="pick-img-wrap"><img class="pick-img" src="saintamour-lavaux-lake.jpg" alt="Domaine Saint-Amour vineyard above Lake Geneva, Lavaux" /></div>
+      <div class="pick-body">
+        <div class="pick-kicker"><b>Wine</b> &middot; Lavaux &middot; Vaud</div>
+        <h3 class="pick-hed">Honour-system rosé in a <em>UNESCO vineyard.</em></h3>
+        <div class="pick-byline">By <b>Dave</b></div>
+      </div>
+    </a>
+
+    <a class="pick" href="tip-pastrami-queen.html">
+      <div class="pick-img-wrap"><img class="pick-img" src="pastrami-queen-1.jpg" alt="The pastrami sandwich at Pastrami Queen, Upper East Side" style="object-position:center 45%;" /></div>
+      <div class="pick-body">
+        <div class="pick-kicker"><b>Deli</b> &middot; UES &middot; New York</div>
+        <h3 class="pick-hed">Skip Katz&apos;s. <em>Go to Pastrami Queen.</em></h3>
+        <div class="pick-byline">By <b>Dave</b></div>
+      </div>
+    </a>
+
+    <a class="pick" href="tip-smalls.html">
+      <div class="pick-img-wrap"><img class="pick-img" src="nyc-smalls.jpg" alt="Smalls Jazz Club, West Village basement" style="object-position:center 55%;" /></div>
+      <div class="pick-body">
+        <div class="pick-kicker"><b>Jazz</b> &middot; West Village &middot; New York</div>
+        <h3 class="pick-hed">A New York jazz club. <em>Go to Smalls.</em></h3>
+        <div class="pick-byline">By <b>Dave</b></div>
+      </div>
+    </a>
+
+    <a class="pick" href="tip-iskender.html">
+      <div class="pick-img-wrap"><img class="pick-img" src="Bursa-meat-stick.jpg" alt="The doner spit at Bursa İskenderoglu, Sisli Istanbul" style="object-position:center 50%;" /></div>
+      <div class="pick-body">
+        <div class="pick-kicker"><b>Restaurant</b> &middot; Sisli &middot; Istanbul</div>
+        <h3 class="pick-hed">The king of all <em>Turkish kebab meals.</em></h3>
+        <div class="pick-byline">By <b>Dave</b></div>
+      </div>
+    </a>
+
   </div>
 </div>
 
