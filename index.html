@@ -843,7 +843,332 @@
       body { padding-bottom: 64px; }
     }
 
-    </style>
+  
+    /* ============== REDESIGN: enlarged nav logo tagline ============== */
+    .nav-logo-tag {
+      font-size: 0.7rem !important;
+      font-weight: 600 !important;
+      color: var(--ink) !important;
+      letter-spacing: 0.16em !important;
+    }
+    .nav-logo-tag b {
+      font-weight: 700 !important;
+    }
+    @media (max-width: 720px) {
+      .nav-logo-tag { font-size: 0.6rem !important; }
+    }
+
+    /* ============== REDESIGN: bigger, bolder masthead band ============== */
+    /* Two-row masthead: top row = stats, bottom row = TAGLINE + SEARCH side by side */
+    .masthead { padding: 0; background: var(--ink); }
+    .masthead-inner {
+      height: auto !important;
+      padding: 14px var(--gutter) !important;
+      flex-wrap: wrap;
+      gap: 0.75rem 2rem !important;
+      align-items: center !important;
+    }
+    .masthead-band {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px solid rgba(247,244,239,0.12);
+    }
+    .masthead-tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.05rem, 1.8vw, 1.55rem) !important;
+      font-weight: 500;
+      color: var(--cream);
+      line-height: 1.25;
+      letter-spacing: -0.005em !important;
+    }
+    .masthead-tagline .red-dot {
+      color: var(--red);
+      margin: 0 8px;
+      font-size: 0.55em;
+      vertical-align: middle;
+    }
+    .masthead-tagline .pill {
+      font-family: var(--cond);
+      font-size: 0.62rem;
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.7);
+      vertical-align: middle;
+      padding-left: 4px;
+    }
+
+    /* Search */
+    .ht-search {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      max-width: 480px;
+      justify-self: end;
+    }
+    .ht-search-form {
+      display: flex;
+      width: 100%;
+      background: var(--cream);
+      border-radius: 999px;
+      overflow: hidden;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.05), inset 0 0 0 1px rgba(0,0,0,0.06);
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .ht-search-form:focus-within {
+      box-shadow: 0 0 0 2px var(--red), 0 4px 12px rgba(0,0,0,0.18);
+    }
+    .ht-search-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      align-self: center;
+      margin-left: 16px;
+      color: var(--muted);
+    }
+    .ht-search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--ink);
+      background: transparent;
+      padding: 11px 12px 11px 12px;
+      letter-spacing: 0;
+    }
+    .ht-search-input::placeholder { color: var(--muted2); font-style: italic; }
+    .ht-search-btn {
+      flex-shrink: 0;
+      border: none;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--cond);
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0 18px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .ht-search-btn:hover { background: var(--red); }
+
+    /* Search dropdown (results + empty state) */
+    .ht-search-results {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border: 1.5px solid var(--ink);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+      z-index: 50;
+      max-height: 380px;
+      overflow-y: auto;
+      display: none;
+    }
+    .ht-search-results.open { display: block; }
+    .ht-result {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.12s;
+    }
+    .ht-result:last-child { border-bottom: none; }
+    .ht-result:hover, .ht-result.active { background: var(--cream2); }
+    .ht-result-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .ht-result-meta {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ht-result-meta b { color: var(--red); font-weight: 600; }
+    .ht-empty {
+      padding: 1.5rem 1.4rem 1.4rem;
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .ht-empty-kicker {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+    .ht-empty-hed {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 0.85rem;
+    }
+    .ht-empty-hed b { font-style: normal; font-weight: 500; }
+    .ht-empty-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--red);
+      color: var(--cream);
+      font-family: var(--cond);
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .ht-empty-cta:hover { background: #962820; }
+
+    @media (max-width: 880px) {
+      .masthead-band { grid-template-columns: 1fr; gap: 0.85rem; }
+      .ht-search { justify-self: stretch; max-width: none; }
+      .masthead-tagline { font-size: 1rem !important; }
+      .masthead-tagline .pill { display: inline-block; margin-top: 0.3rem; }
+    }
+    @media (max-width: 540px) {
+      .ht-search-btn { display: none; }
+      .ht-search-input { font-size: 0.9rem; padding: 10px 14px 10px 8px; }
+    }
+
+    /* ============== REDESIGN: "What is HoodTip" — kill § symbol, beef up ============== */
+    .rules-mark { display: none !important; }
+    .rules-kicker {
+      font-size: 0.7rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.24em !important;
+      color: var(--red) !important;
+      margin-bottom: 1.1rem !important;
+    }
+    .rules-hed {
+      font-size: clamp(1.85rem, 3vw, 2.7rem) !important;
+      font-weight: 500 !important;
+      letter-spacing: -0.018em !important;
+      line-height: 1.08 !important;
+    }
+
+    /* ============== REDESIGN: compressed Guides section ============== */
+    /* Make the Guides feature card no longer dominate. Match a regular tip card silhouette. */
+    .guides-grid {
+      grid-template-columns: 1fr 1fr 1fr !important;
+      gap: 0 !important;
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .guide-card.feature {
+      flex-direction: column !important;
+      padding: 0 !important;
+      border-right: 1px solid var(--rule) !important;
+    }
+    .guide-card.feature .guide-card-img-wrap {
+      flex: 0 0 auto !important;
+      aspect-ratio: 4 / 3 !important;
+      width: 100% !important;
+      max-height: none !important;
+    }
+    .guide-card.feature .guide-card-issue {
+      padding: 1rem 1.1rem 0 !important;
+      font-size: 0.56rem !important;
+    }
+    .guide-card.feature .guide-card-hed {
+      padding: 0 1.1rem !important;
+      font-size: clamp(1.05rem, 1.6vw, 1.3rem) !important;
+      line-height: 1.18 !important;
+      margin-bottom: 0.5rem !important;
+    }
+    .guide-card.feature .guide-card-dek {
+      padding: 0 1.1rem !important;
+      font-size: 0.82rem !important;
+      -webkit-line-clamp: 2 !important;
+      margin-bottom: 0.7rem !important;
+    }
+    .guide-card.feature .guide-card-meta {
+      padding: 0 1.1rem !important;
+      font-size: 0.52rem !important;
+    }
+    .guide-card.feature .guide-card-cta {
+      margin: 0.7rem 1.1rem 1rem !important;
+      font-size: 0.6rem !important;
+    }
+    .guide-card.next {
+      padding: 1.5rem 1.4rem !important;
+      border-right: 1px solid var(--rule) !important;
+    }
+    .guide-card.next:last-child { border-right: none !important; }
+    .guide-next-hed {
+      font-size: clamp(1.05rem, 1.6vw, 1.3rem) !important;
+      line-height: 1.18 !important;
+    }
+    .guide-next-dek { font-size: 0.82rem !important; }
+
+    /* "Coming next 2" — placeholder card so the row holds 3 columns visually */
+    .guide-card.placeholder {
+      padding: 1.5rem 1.4rem !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background: var(--cream2);
+      color: var(--muted);
+    }
+    .guide-card.placeholder .placeholder-kicker {
+      font-family: var(--cond);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+    .guide-card.placeholder .placeholder-hed {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .guide-card.placeholder .placeholder-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 880px) {
+      .guides-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+      .guide-card.feature, .guide-card.next, .guide-card.placeholder {
+        border-right: none !important;
+        border-bottom: 1px solid var(--rule) !important;
+      }
+      .guides-grid > *:last-child { border-bottom: none !important; }
+    }
+
+  </style>
 </head>
 <body>
 
@@ -872,15 +1197,28 @@
       <span class="masthead-sep">·</span>
       <span>April 2026</span>
     </div>
-    <div class="masthead-center">
-      The link you send when someone asks for recs <span class="red-dot">●</span> Attributed <span class="red-dot">●</span> Positive only
-    </div>
     <div class="masthead-right">
       <span><b>81</b> tips</span>
       <span class="masthead-sep">·</span>
       <span><b>25</b> cities</span>
       <span class="masthead-sep">·</span>
       <span><b>5</b> contributors</span>
+    </div>
+
+    <div class="masthead-band">
+      <div class="masthead-tagline">
+        The link you send when someone asks for recs.
+        <span class="pill">Attributed <span class="red-dot">●</span> Positive only</span>
+      </div>
+
+      <div class="ht-search" id="htSearch">
+        <form class="ht-search-form" onsubmit="return htSearchSubmit(event)" autocomplete="off">
+          <svg class="ht-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input type="text" class="ht-search-input" id="htSearchInput" placeholder="Where to? Try Geneva, Istanbul, NYC&hellip;" aria-label="Search HoodTip" />
+          <button type="submit" class="ht-search-btn">Find</button>
+        </form>
+        <div class="ht-search-results" id="htSearchResults" role="listbox"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -958,7 +1296,6 @@
 <div class="rules">
   <div class="rules-inner">
     <div class="rules-left">
-      <div class="rules-mark">§</div>
       <div class="rules-kicker">What is HoodTip?</div>
       <h2 class="rules-hed">The recommendation you'd get from your <em>most well-travelled</em> <b>friend.</b></h2>
       <p class="rules-body">Not a ranking. Not a star rating. Every tip on this site has a name attached — a real person who went, paid, and thought it was worth writing down. Specific over general. Positive only. The kind of thing you'd text a friend going next week.</p>
@@ -993,12 +1330,166 @@
   </div>
 </div>
 
+<!-- ==================== CONTRIBUTORS ==================== -->
+<div class="contribs" id="tipsters">
+  <div class="contribs-inner">
+    <div class="contribs-head">
+      <div>
+        <div class="contribs-kicker">§ The People</div>
+        <h2 class="contribs-title">The <em>named</em> contributors.</h2>
+      </div>
+      <p class="contribs-copy">Every tip on HoodTip has a person behind it. Click any byline — you get their face, their city, their taste, their other recommendations. This is the whole point.</p>
+    </div>
+
+    <div class="contribs-list">
+
+      <a href="profile-dave.html" class="contrib">
+        <div class="contrib-head">
+          <img class="contrib-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
+          <div>
+            <div class="contrib-name">Dave</div>
+            <div class="contrib-handle">@dave · Geneva · Founding contributor</div>
+          </div>
+        </div>
+        <p class="contrib-quote">Meeting people, making videos. Live in Geneva.</p>
+        <div class="contrib-stats">
+          <div class="contrib-stat"><span class="contrib-stat-val">69</span><span class="contrib-stat-lbl">Tips</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">24</span><span class="contrib-stat-lbl">Cities</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">16</span><span class="contrib-stat-lbl">Hoods</span></div>
+        </div>
+        <div class="contrib-tags">
+          <span class="contrib-tag">Natural wine</span>
+          <span class="contrib-tag">Proper pubs</span>
+          <span class="contrib-tag">Waterfront bars</span>
+          <span class="contrib-tag">Good fish</span>
+          <span class="contrib-tag">Hotels worth it</span>
+        </div>
+        <span class="contrib-link">See Dave's tips →</span>
+      </a>
+
+      <a href="profile-foodfiend.html" class="contrib">
+        <div class="contrib-head">
+          <div class="contrib-photo-fb">f</div>
+          <div>
+            <div class="contrib-name">foodfiend</div>
+            <div class="contrib-handle">@foodfiend · Tel Aviv · Contributor</div>
+          </div>
+        </div>
+        <p class="contrib-quote">I eat for a living. The places I write about are the ones I go back to on my day off.</p>
+        <div class="contrib-stats">
+          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Tips</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">City</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Hood</span></div>
+        </div>
+        <div class="contrib-tags">
+          <span class="contrib-tag">Tel Aviv food</span>
+          <span class="contrib-tag">Italian</span>
+          <span class="contrib-tag">Neighbourhood spots</span>
+          <span class="contrib-tag">Chef picks</span>
+        </div>
+        <span class="contrib-link">See foodfiend's tips →</span>
+      </a>
+
+      <a href="profile-lee.html" class="contrib">
+        <div class="contrib-head">
+          <div class="contrib-photo-fb">L</div>
+          <div>
+            <div class="contrib-name">Lee Avnit</div>
+            <div class="contrib-handle">@Lee · Zürich · Contributor</div>
+          </div>
+        </div>
+        <p class="contrib-quote">Zürich based.</p>
+        <div class="contrib-stats">
+          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Tips</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">City</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Hood</span></div>
+        </div>
+        <div class="contrib-tags">
+          <span class="contrib-tag">Quick lunches</span>
+          <span class="contrib-tag">Station finds</span>
+          <span class="contrib-tag">Hidden in plain sight</span>
+          <span class="contrib-tag">Casual eats</span>
+          <span class="contrib-tag">Asian comfort</span>
+        </div>
+        <span class="contrib-link">See Lee's tips →</span>
+      </a>
+
+      <a href="profile-corduroygreen.html" class="contrib">
+        <div class="contrib-head">
+          <img class="contrib-photo" src="corduroygreen.jpg" alt="Alex St-Denis" onerror="this.outerHTML='&lt;div class=&quot;contrib-photo-fb&quot;&gt;A&lt;/div&gt;'" />
+          <div>
+            <div class="contrib-name">Alex St-Denis</div>
+            <div class="contrib-handle">@corduroygreen · Geneva · Contributor</div>
+          </div>
+        </div>
+        <p class="contrib-quote">Sports, music, creamy cheekies — and all the good stuff.</p>
+        <div class="contrib-stats">
+          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">New</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">GVA</span><span class="contrib-stat-lbl">Based</span></div>
+        </div>
+        <div class="contrib-tags">
+          <span class="contrib-tag">Sports</span>
+          <span class="contrib-tag">Music</span>
+          <span class="contrib-tag">Creamy cheekies</span>
+          <span class="contrib-tag">Geneva native</span>
+        </div>
+        <span class="contrib-link">See Alex's profile →</span>
+      </a>
+
+      <a href="profile-russell.html" class="contrib">
+        <div class="contrib-head">
+          <img class="contrib-photo" src="russell.jpg" alt="Russell Kummer" onerror="this.outerHTML='&lt;div class=&quot;contrib-photo-fb&quot;&gt;R&lt;/div&gt;'" />
+          <div>
+            <div class="contrib-name">Russell Kummer</div>
+            <div class="contrib-handle">@russell &middot; Los Angeles &middot; Contributor</div>
+          </div>
+        </div>
+        <p class="contrib-quote">Outdoor adventure and culture.</p>
+        <div class="contrib-stats">
+          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Tip</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">LA</span><span class="contrib-stat-lbl">Based</span></div>
+        </div>
+        <div class="contrib-tags">
+          <span class="contrib-tag">Proper pubs</span>
+          <span class="contrib-tag">Hotels worth it</span>
+          <span class="contrib-tag">Swimming</span>
+          <span class="contrib-tag">Architecture</span>
+        </div>
+        <span class="contrib-link">See Russell&apos;s profile &rarr;</span>
+      </a>
+
+      <a href="profile-build.html" class="contrib invite">
+        <div class="contrib-head">
+          <div class="contrib-placeholder">+</div>
+          <div>
+            <div class="contrib-name">You, next</div>
+            <div class="contrib-handle">@yourname · Your city · Future contributor</div>
+          </div>
+        </div>
+        <p class="contrib-quote">Three sentences. Some photos. A permanent link with your name on it.</p>
+        <div class="contrib-stats">
+          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Tips</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Cities</span></div>
+          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Hoods</span></div>
+        </div>
+        <div class="contrib-tags">
+          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your specialty</span>
+          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your hood</span>
+          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your taste</span>
+        </div>
+        <span class="contrib-link">Build your profile →</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
 <!-- ==================== GUIDES ==================== -->
 <div class="sec" id="guides">
   <div class="sec-head">
     <div class="sec-head-left">
-      <div class="sec-head-kicker">§ Guides</div>
-      <h2 class="sec-head-title">Longer reads. <em>Specific scenarios.</em></h2>
+      <div class="sec-head-kicker">§ The HoodTip Guides</div>
+      <h2 class="sec-head-title">Specific. <em>Opinionated.</em> <b>Send-able.</b></h2>
     </div>
     <div class="sec-head-right">
       <span class="sec-head-meta"><b>1</b> guide live · more on the way</span>
@@ -1029,16 +1520,22 @@
 
     <!-- Coming next teaser -->
     <div class="guide-card next">
-      <div class="guide-next-label">§ Coming next</div>
+      <div class="guide-next-label">Coming next</div>
       <h3 class="guide-next-hed">More guides, <em>same voice.</em></h3>
       <p class="guide-next-dek">Specific scenarios from people who actually go. The link you send when a friend texts asking for a rec.</p>
       <div class="guide-next-list">
         <div class="guide-next-item">Lunch under 25 CHF in Geneva</div>
         <div class="guide-next-item">Geneva on a Sunday when everything's closed</div>
-        <div class="guide-next-item">Where to take visiting parents in Geneva</div>
         <div class="guide-next-item">Istanbul: a long weekend on the Bosphorus</div>
       </div>
     </div>
+
+    <!-- Placeholder / contributor invite -->
+    <a href="profile-build.html" class="guide-card placeholder">
+      <div class="placeholder-kicker">Write yours</div>
+      <div class="placeholder-hed">Got a guide in <em>your</em> head?</div>
+      <div class="placeholder-text">A neighbourhood, a weekend, a scenario you'd send a friend. We'll turn it into a polished guide on HoodTip with your name on it.</div>
+    </a>
 
   </div>
 </div>
@@ -1490,160 +1987,6 @@
   </div>
 </div>
 
-<!-- ==================== CONTRIBUTORS ==================== -->
-<div class="contribs" id="tipsters">
-  <div class="contribs-inner">
-    <div class="contribs-head">
-      <div>
-        <div class="contribs-kicker">§ The People</div>
-        <h2 class="contribs-title">The <em>named</em> contributors.</h2>
-      </div>
-      <p class="contribs-copy">Every tip on HoodTip has a person behind it. Click any byline — you get their face, their city, their taste, their other recommendations. This is the whole point.</p>
-    </div>
-
-    <div class="contribs-list">
-
-      <a href="profile-dave.html" class="contrib">
-        <div class="contrib-head">
-          <img class="contrib-photo" src="bongojoe-rhone-light.jpg" alt="Dave" />
-          <div>
-            <div class="contrib-name">Dave</div>
-            <div class="contrib-handle">@dave · Geneva · Founding contributor</div>
-          </div>
-        </div>
-        <p class="contrib-quote">Meeting people, making videos. Live in Geneva.</p>
-        <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val">69</span><span class="contrib-stat-lbl">Tips</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">24</span><span class="contrib-stat-lbl">Cities</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">16</span><span class="contrib-stat-lbl">Hoods</span></div>
-        </div>
-        <div class="contrib-tags">
-          <span class="contrib-tag">Natural wine</span>
-          <span class="contrib-tag">Proper pubs</span>
-          <span class="contrib-tag">Waterfront bars</span>
-          <span class="contrib-tag">Good fish</span>
-          <span class="contrib-tag">Hotels worth it</span>
-        </div>
-        <span class="contrib-link">See Dave's tips →</span>
-      </a>
-
-      <a href="profile-foodfiend.html" class="contrib">
-        <div class="contrib-head">
-          <div class="contrib-photo-fb">f</div>
-          <div>
-            <div class="contrib-name">foodfiend</div>
-            <div class="contrib-handle">@foodfiend · Tel Aviv · Contributor</div>
-          </div>
-        </div>
-        <p class="contrib-quote">I eat for a living. The places I write about are the ones I go back to on my day off.</p>
-        <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Tips</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">City</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Hood</span></div>
-        </div>
-        <div class="contrib-tags">
-          <span class="contrib-tag">Tel Aviv food</span>
-          <span class="contrib-tag">Italian</span>
-          <span class="contrib-tag">Neighbourhood spots</span>
-          <span class="contrib-tag">Chef picks</span>
-        </div>
-        <span class="contrib-link">See foodfiend's tips →</span>
-      </a>
-
-      <a href="profile-lee.html" class="contrib">
-        <div class="contrib-head">
-          <div class="contrib-photo-fb">L</div>
-          <div>
-            <div class="contrib-name">Lee Avnit</div>
-            <div class="contrib-handle">@Lee · Zürich · Contributor</div>
-          </div>
-        </div>
-        <p class="contrib-quote">Zürich based.</p>
-        <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Tips</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">City</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Hood</span></div>
-        </div>
-        <div class="contrib-tags">
-          <span class="contrib-tag">Quick lunches</span>
-          <span class="contrib-tag">Station finds</span>
-          <span class="contrib-tag">Hidden in plain sight</span>
-          <span class="contrib-tag">Casual eats</span>
-          <span class="contrib-tag">Asian comfort</span>
-        </div>
-        <span class="contrib-link">See Lee's tips →</span>
-      </a>
-
-      <a href="profile-corduroygreen.html" class="contrib">
-        <div class="contrib-head">
-          <img class="contrib-photo" src="corduroygreen.jpg" alt="Alex St-Denis" onerror="this.outerHTML='&lt;div class=&quot;contrib-photo-fb&quot;&gt;A&lt;/div&gt;'" />
-          <div>
-            <div class="contrib-name">Alex St-Denis</div>
-            <div class="contrib-handle">@corduroygreen · Geneva · Contributor</div>
-          </div>
-        </div>
-        <p class="contrib-quote">Sports, music, creamy cheekies — and all the good stuff.</p>
-        <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">New</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">GVA</span><span class="contrib-stat-lbl">Based</span></div>
-        </div>
-        <div class="contrib-tags">
-          <span class="contrib-tag">Sports</span>
-          <span class="contrib-tag">Music</span>
-          <span class="contrib-tag">Creamy cheekies</span>
-          <span class="contrib-tag">Geneva native</span>
-        </div>
-        <span class="contrib-link">See Alex's profile →</span>
-      </a>
-
-      <a href="profile-russell.html" class="contrib">
-        <div class="contrib-head">
-          <img class="contrib-photo" src="russell.jpg" alt="Russell Kummer" onerror="this.outerHTML='&lt;div class=&quot;contrib-photo-fb&quot;&gt;R&lt;/div&gt;'" />
-          <div>
-            <div class="contrib-name">Russell Kummer</div>
-            <div class="contrib-handle">@russell &middot; Los Angeles &middot; Contributor</div>
-          </div>
-        </div>
-        <p class="contrib-quote">Outdoor adventure and culture.</p>
-        <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val">1</span><span class="contrib-stat-lbl">Tip</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">LA</span><span class="contrib-stat-lbl">Based</span></div>
-        </div>
-        <div class="contrib-tags">
-          <span class="contrib-tag">Proper pubs</span>
-          <span class="contrib-tag">Hotels worth it</span>
-          <span class="contrib-tag">Swimming</span>
-          <span class="contrib-tag">Architecture</span>
-        </div>
-        <span class="contrib-link">See Russell&apos;s profile &rarr;</span>
-      </a>
-
-      <a href="profile-build.html" class="contrib invite">
-        <div class="contrib-head">
-          <div class="contrib-placeholder">+</div>
-          <div>
-            <div class="contrib-name">You, next</div>
-            <div class="contrib-handle">@yourname · Your city · Future contributor</div>
-          </div>
-        </div>
-        <p class="contrib-quote">Three sentences. Some photos. A permanent link with your name on it.</p>
-        <div class="contrib-stats">
-          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Tips</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Cities</span></div>
-          <div class="contrib-stat"><span class="contrib-stat-val">—</span><span class="contrib-stat-lbl">Hoods</span></div>
-        </div>
-        <div class="contrib-tags">
-          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your specialty</span>
-          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your hood</span>
-          <span class="contrib-tag" style="border-color:rgba(247,244,239,0.2);color:rgba(247,244,239,0.5);">Your taste</span>
-        </div>
-        <span class="contrib-link">Build your profile →</span>
-      </a>
-
-    </div>
-  </div>
-</div>
-
 <!-- ==================== CITY EXPLORER ==================== -->
 <div class="cities" id="cities">
   <div class="cities-inner">
@@ -1973,6 +2316,137 @@
     }, { passive: true });
     update();
   })();
+</script>
+
+
+<!-- Homepage search — fuzzy match across known tips/cities, with growth-loop empty state -->
+<script>
+(function(){
+  // Known places — keyed by what users actually type (city / neighborhood / venue name)
+  // If a query doesn't match anything, we route to the "Be the first" empty state.
+  var INDEX = [
+    // Cities (with primary URL = a representative tip page or profile)
+    { type: 'city', name: 'Geneva',    aliases: ['geneva','genève','geneve','gva','geneve switzerland'], url: 'profile-dave.html#geneva',    meta: '24 tips' },
+    { type: 'city', name: 'Istanbul',  aliases: ['istanbul','constantinople','türkiye','turkey'],         url: 'profile-dave.html#istanbul',  meta: '5 tips'  },
+    { type: 'city', name: 'New York',  aliases: ['new york','nyc','ny','manhattan','brooklyn'],           url: 'profile-dave.html#nyc',       meta: '8 tips'  },
+    { type: 'city', name: 'London',    aliases: ['london','england','uk'],                                url: 'profile-dave.html#london',    meta: '6 tips'  },
+    { type: 'city', name: 'Athens',    aliases: ['athens','greece','αθηνα'],                              url: 'profile-dave.html#athens',    meta: '4 tips'  },
+    { type: 'city', name: 'Barcelona', aliases: ['barcelona','spain','espana','catalonia'],               url: 'profile-dave.html#barcelona', meta: '4 tips'  },
+    { type: 'city', name: 'Zürich',    aliases: ['zurich','zürich','zuri','zh'],                          url: 'tip-rubymimi-zurich.html',    meta: '3 tips'  },
+    { type: 'city', name: 'Lausanne',  aliases: ['lausanne','vaud'],                                      url: 'tip-pinte-besson.html',       meta: '2 tips'  },
+    { type: 'city', name: 'Paris',     aliases: ['paris','france'],                                       url: 'profile-dave.html#paris',     meta: 'tips inside' },
+    { type: 'city', name: 'Wengen',    aliases: ['wengen','bernese oberland','jungfrau'],                 url: 'tip-belvedere.html',          meta: '1 tip' },
+    { type: 'city', name: 'Biarritz',  aliases: ['biarritz','basque','france'],                           url: 'tip-deputamadre.html',        meta: '1 tip' },
+
+    // Notable venues / tips
+    { type: 'tip', name: 'De puta madre',         aliases: ['de puta madre','biarritz restaurant','garden restaurant'],          url: 'tip-deputamadre.html',          meta: 'Biarritz · Restaurant' },
+    { type: 'tip', name: 'Brio Maté',             aliases: ['brio mate','brio maté','migros drink','yerba mate switzerland'],   url: 'tip-briomate.html',             meta: 'Switzerland · Drink' },
+    { type: 'tip', name: 'Bains des Pâquis',       aliases: ['bains des paquis','bains','paquis','geneva swim'],                 url: 'tip-baindespaquis.html',        meta: 'Geneva · Swim'  },
+    { type: 'tip', name: 'Pinte Besson',           aliases: ['pinte besson','lausanne pub','oldest restaurant lausanne'],        url: 'tip-pinte-besson.html',         meta: 'Lausanne · Bar' },
+    { type: 'tip', name: 'Grand Hotel Belvedere',  aliases: ['belvedere','grand hotel belvedere','wengen hotel'],                url: 'tip-belvedere.html',            meta: 'Wengen · Hotel' },
+    { type: 'tip', name: 'Greek house white',      aliases: ['greek house white','greek wine','aegean wine','santorini wine'],   url: 'tip-greek-house-white.html',    meta: 'Greece · Wine'  },
+    { type: 'tip', name: 'Bursa İskenderoğlu',     aliases: ['iskender','bursa iskender','iskenderoglu','istanbul kebab'],       url: 'tip-iskender.html',             meta: 'Istanbul · Restaurant' },
+
+    // Guides
+    { type: 'guide', name: 'Cheeky beer in Geneva', aliases: ['cheeky beer','geneva beer','after work geneva','un beer'],         url: 'geneva-after-work-beer.html',  meta: 'Guide · Geneva' }
+  ];
+
+  var input   = document.getElementById('htSearchInput');
+  var results = document.getElementById('htSearchResults');
+  if (!input || !results) return;
+
+  function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
+
+  function search(q){
+    q = norm(q);
+    if (!q) return [];
+    var out = [];
+    for (var i = 0; i < INDEX.length; i++){
+      var item = INDEX[i];
+      var hit = false;
+      var score = 0;
+      var nameN = norm(item.name);
+      if (nameN === q) { hit = true; score = 100; }
+      else if (nameN.indexOf(q) === 0) { hit = true; score = 90; }
+      else if (nameN.indexOf(q) > -1)  { hit = true; score = 70; }
+      if (!hit){
+        for (var j = 0; j < item.aliases.length; j++){
+          var a = norm(item.aliases[j]);
+          if (a === q)         { hit = true; score = 95; break; }
+          if (a.indexOf(q)===0){ hit = true; score = 80; break; }
+          if (a.indexOf(q)>-1) { hit = true; score = 60; break; }
+        }
+      }
+      if (hit) out.push({ item: item, score: score });
+    }
+    out.sort(function(a,b){ return b.score - a.score; });
+    return out.slice(0, 6).map(function(r){ return r.item; });
+  }
+
+  function render(q){
+    var matches = search(q);
+    if (!q.trim()){
+      results.classList.remove('open');
+      results.innerHTML = '';
+      return;
+    }
+    if (matches.length === 0){
+      // Empty state — growth loop CTA
+      results.innerHTML =
+        '<div class="ht-empty">' +
+          '<div class="ht-empty-kicker">No tips for "' + escapeHtml(q.trim()) + '" — yet.</div>' +
+          '<div class="ht-empty-hed">Be the <b>first</b> to put it on the map.</div>' +
+          '<a href="profile-build.html?city=' + encodeURIComponent(q.trim()) + '" class="ht-empty-cta">Leave the first HoodTip &rarr;</a>' +
+        '</div>';
+      results.classList.add('open');
+      return;
+    }
+    var html = matches.map(function(m){
+      var typeLabel = m.type === 'city' ? '<b>City</b>' : (m.type === 'guide' ? '<b>Guide</b>' : 'Tip');
+      return '<a class="ht-result" href="' + m.url + '">' +
+        '<span class="ht-result-name">' + escapeHtml(m.name) + '</span>' +
+        '<span class="ht-result-meta">' + typeLabel + ' &middot; ' + escapeHtml(m.meta) + '</span>' +
+      '</a>';
+    }).join('');
+    results.innerHTML = html;
+    results.classList.add('open');
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+  }
+
+  input.addEventListener('input', function(){ render(input.value); });
+  input.addEventListener('focus', function(){ if (input.value) render(input.value); });
+
+  // Close on outside click
+  document.addEventListener('click', function(e){
+    if (!document.getElementById('htSearch').contains(e.target)){
+      results.classList.remove('open');
+    }
+  });
+
+  // Escape closes
+  input.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){ input.value = ''; render(''); input.blur(); }
+  });
+
+  // Form submit — go to first match if any, else trigger empty-state
+  window.htSearchSubmit = function(ev){
+    ev.preventDefault();
+    var q = input.value.trim();
+    if (!q) return false;
+    var matches = search(q);
+    if (matches.length > 0){
+      window.location.href = matches[0].url;
+    } else {
+      window.location.href = 'profile-build.html?city=' + encodeURIComponent(q);
+    }
+    return false;
+  };
+})();
 </script>
 
 </body>
