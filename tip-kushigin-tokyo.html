@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kushigin, Akihabara — HoodTip</title>
+  <meta name="description" content="Stumbled in looking for yakitori. Left in love with sake. Giant cold bottles poured into bowl-shaped cups, curious locals, smoke from the grill. Two days in Tokyo and this was the one." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="HoodTip" />
+  <meta property="og:title" content="Kushigin, Tokyo · HoodTip" />
+  <meta property="og:description" content="The night I fell in love with sake. Giant cold bottles, bowl-shaped cups, yakitori smoke. Akihabara, Tokyo." />
+  <meta property="og:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,g_auto,f_auto,q_auto/https://hoodtip.com/Kushigin-tokyo-exterior.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://hoodtip.com/tip-kushigin-tokyo.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kushigin, Tokyo · HoodTip" />
+  <meta name="twitter:description" content="The night I fell in love with sake. Giant cold bottles, bowl-shaped cups, yakitori smoke. Akihabara, Tokyo." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dq9newmhl/image/fetch/w_1200,h_630,c_fill,g_auto,f_auto,q_auto/https://hoodtip.com/Kushigin-tokyo-exterior.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
+
+  <style>
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f7f4ef;
+      --cream2: #efeae1;
+      --ink: #1a1816;
+      --ink2: #2a2925;
+      --muted: #6b6560;
+      --muted2: #8a8378;
+      --rule: #d9d2c6;
+      --rule-soft: #e8e2d6;
+      --red: #b5322a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Barlow', system-ui, sans-serif;
+      --cond: 'Barlow Condensed', system-ui, sans-serif;
+    }
+    html, body { height: 100%; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    body::before {
+      content:''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background-image: radial-gradient(rgba(26,24,22,0.025) 1px, transparent 1px);
+      background-size: 3px 3px; opacity: 0.5; mix-blend-mode: multiply;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    .nav { border-bottom: 1.5px solid var(--ink); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: baseline; gap: 12px; }
+    .nav-logo { display: inline-flex; align-items: center; gap: 14px; border: 1.5px solid var(--ink); padding: 7px 14px; color: var(--ink); text-decoration: none; background: var(--cream); transition: background 0.15s; }
+    .nav-logo:hover { background: var(--cream2); }
+    .nav-logo-word { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.02em; line-height: 1; color: var(--ink); }
+    .nav-logo-word em { font-style: italic; font-weight: 500; }
+    .nav-logo-tag { font-family: var(--cond); font-weight: 500; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); border-left: 1.5px solid var(--ink); padding-left: 12px; line-height: 1.3; white-space: nowrap; }
+    .nav-logo-tag b { color: var(--red); font-weight: 600; }
+    .nav-right { display: flex; align-items: stretch; height: 54px; }
+    .nav-link { font-family: var(--cond); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 18px; display: flex; align-items: center; border-left: 1px solid var(--rule-soft); transition: color 0.15s; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta { font-family: var(--cond); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 0 22px; display: flex; align-items: center; border-left: 1px solid var(--ink); transition: background 0.15s; }
+    .nav-cta:hover { background: var(--red); }
+
+    /* POSTCARD */
+    .postcard {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* CAROUSEL */
+    .pc-image { position: relative; overflow: hidden; border-right: 1.5px solid var(--ink); background: linear-gradient(135deg, #1f1d1b 0%, #2a2925 50%, #3a2a26 100%); }
+    .pc-track { position: absolute; inset: 0; display: flex; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+    .pc-slide { flex: 0 0 100%; height: 100%; position: relative; overflow: hidden; }
+    .pc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+    .pc-slide-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 5rem; color: rgba(247,244,239,0.15); pointer-events: none; }
+
+    .pc-image-overlay { position: absolute; top: 0; left: 0; right: 0; padding: 1.5rem 1.75rem; background: linear-gradient(to bottom, rgba(15,12,10,0.55) 0%, rgba(15,12,10,0) 100%); display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; z-index: 3; pointer-events: none; }
+    .pc-image-overlay a, .pc-image-overlay button { pointer-events: auto; }
+    .pc-breadcrumb { font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,244,239,0.75); }
+    .pc-breadcrumb a { color: rgba(247,244,239,0.75); transition: color 0.15s; }
+    .pc-breadcrumb a:hover { color: #fff; }
+    .pc-breadcrumb span { color: rgba(247,244,239,0.35); padding: 0 0.35rem; }
+    .pc-badge { font-family: var(--cond); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); background: var(--red); padding: 5px 9px; }
+
+    .pc-image-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem 1.75rem; background: linear-gradient(to top, rgba(15,12,10,0.72) 0%, rgba(15,12,10,0) 100%); display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; z-index: 3; pointer-events: none; }
+    .pc-image-cap-text { font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(255,255,255,0.85); max-width: 420px; line-height: 1.4; }
+    .pc-image-credit { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+    .pc-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(15,12,10,0.45); backdrop-filter: blur(8px); border: 1px solid rgba(247,244,239,0.25); color: var(--cream); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 4; transition: all 0.2s; }
+    .pc-nav:hover { background: var(--red); border-color: var(--red); }
+    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav.prev { left: 1.25rem; }
+    .pc-nav.next { right: 1.25rem; }
+    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+
+    .pc-counter { position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; align-items: center; z-index: 4; padding: 6px 12px; background: rgba(15,12,10,0.35); backdrop-filter: blur(8px); border-radius: 100px; }
+    .pc-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(247,244,239,0.4); border: none; cursor: pointer; padding: 0; transition: all 0.2s; }
+    .pc-dot.active { background: var(--cream); width: 18px; border-radius: 3px; }
+    .pc-dot:hover { background: rgba(247,244,239,0.8); }
+    .pc-counter-text { font-family: var(--cond); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.7); }
+    .pc-counter-text b { color: var(--cream); font-weight: 500; }
+    .pc-image.single .pc-nav, .pc-image.single .pc-counter { display: none; }
+
+    /* BODY SIDE */
+    .pc-body { padding: 3rem 3.25rem 4rem; display: flex; flex-direction: column; position: relative; }
+    .pc-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-bottom: 1rem; }
+    .pc-location { font-family: var(--cond); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .pc-location span { color: var(--rule); padding: 0 0.4rem; }
+    .pc-title { font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 500; line-height: 1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .pc-title em { font-style: italic; font-weight: 400; }
+
+    .pc-callout { position: relative; padding: 1.75rem 0 1.75rem 1.75rem; margin: 0.25rem 0 2rem; border-left: 3px solid var(--red); background: linear-gradient(to right, rgba(181,50,42,0.04) 0%, transparent 100%); }
+    .pc-callout::before { content: '"'; position: absolute; top: -0.4rem; left: 0.95rem; font-family: var(--serif); font-size: 4.5rem; color: var(--red); opacity: 0.15; line-height: 1; font-weight: 600; pointer-events: none; }
+    .pc-callout-text { font-family: var(--serif); font-style: italic; font-size: clamp(1.4rem, 2.1vw, 1.85rem); line-height: 1.25; color: var(--ink); font-weight: 400; position: relative; z-index: 1; }
+
+    .pc-facts { display: grid; grid-template-columns: 1fr 1fr; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); margin-bottom: 1.5rem; }
+    .pc-fact { padding: 1rem 1.25rem 1rem 0; border-right: 1px solid var(--rule-soft); display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+    .pc-fact:first-child { padding-left: 0; }
+    .pc-fact:last-child { border-right: none; padding-right: 0; padding-left: 1.25rem; }
+    .pc-fact:nth-child(2) { padding-left: 1.25rem; }
+    .pc-fact-label { font-family: var(--cond); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .pc-fact--primary .pc-fact-label { color: var(--red); font-weight: 600; letter-spacing: 0.18em; }
+    .pc-fact-value { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); line-height: 1.25; word-wrap: break-word; }
+    .pc-fact-value--bold { font-family: var(--serif); font-style: normal; font-size: 1.15rem; font-weight: 600; color: var(--ink); line-height: 1.3; letter-spacing: -0.005em; }
+    .pc-fact-value--bold em { font-weight: 500; font-style: italic; }
+    .pc-fact-value--bold a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--red); padding-bottom: 1px; transition: color 0.15s, border-color 0.15s; }
+    .pc-fact-value--bold a:hover { color: var(--red); border-color: var(--ink); }
+
+    .pc-context { font-family: var(--serif); font-size: 1.05rem; line-height: 1.55; color: var(--ink); margin-bottom: 1.5rem; max-width: 38em; }
+    .pc-context p { margin: 0 0 0.7rem; }
+    .pc-context p:last-child { margin-bottom: 0; }
+
+    .pc-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1.5rem; flex-wrap: wrap; }
+    .pc-byline { display: flex; align-items: center; gap: 0.7rem; }
+    .pc-byline-photo { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--rule); }
+    .pc-byline-text { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
+    .pc-byline-text b { display: block; font-family: var(--serif); font-size: 0.95rem; color: var(--ink); font-weight: 500; text-transform: none; font-style: italic; letter-spacing: 0; }
+    a.pc-byline { text-decoration: none; color: inherit; }
+    a.pc-byline:hover .pc-byline-text b { color: var(--red); }
+    a.pc-byline:hover .pc-byline-photo { border-color: var(--red); }
+    .pc-byline-photo { transition: border-color 0.15s; }
+    .pc-byline-text b { transition: color 0.15s; }
+
+    .pc-share { display: flex; align-items: center; gap: 0.5rem; position: relative; flex-wrap: wrap; row-gap: 0.5rem; justify-content: flex-end; }
+    .pc-share-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--cond); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); background: var(--cream); border: 1px solid var(--ink); padding: 9px 14px; cursor: pointer; transition: all 0.15s; }
+    .pc-share-btn:hover { background: var(--ink); color: var(--cream); }
+    .pc-share-btn svg { width: 12px; height: 12px; }
+    .pc-share-btn.primary { background: var(--ink); color: var(--cream); }
+    .pc-share-btn.primary:hover { background: var(--red); border-color: var(--red); }
+    .pc-share-toast { position: absolute; right: 0; bottom: calc(100% + 8px); font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 6px 10px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+    .pc-share-toast.show { opacity: 1; }
+
+    /* FOOTER STRIP */
+    .foot-strip { background: var(--ink); color: var(--cream); border-top: 2px solid var(--red); position: relative; z-index: 2; }
+    .foot-strip-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; height: 46px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .foot-note { font-family: var(--serif); font-style: italic; font-size: 0.88rem; color: rgba(247,244,239,0.65); }
+    .foot-note .hl { color: var(--red); font-style: normal; font-weight: 500; }
+    .foot-cta { font-family: var(--cond); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.85); border-bottom: 1px solid rgba(247,244,239,0.3); padding-bottom: 2px; transition: all 0.15s; }
+    .foot-cta:hover { color: var(--cream); border-color: var(--red); }
+
+    /* MORE TIPS */
+    .more-tips { background: var(--ink); color: var(--cream); border-top: 1.5px solid var(--ink); position: relative; z-index: 2; margin-top: 2.5rem; }
+    .more-tips-inner { max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+    .more-tips-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.4rem 0 1rem; border-bottom: 1px solid rgba(247,244,239,0.15); }
+    .more-tips-title { font-family: var(--cond); font-style: normal; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); }
+    .more-tips-title::before { content: "↓  "; color: var(--red); font-weight: 600; }
+    .more-tips-all { font-family: var(--cond); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,244,239,0.7); border-bottom: 1px solid rgba(247,244,239,0.3); padding-bottom: 2px; transition: all 0.15s; }
+    .more-tips-all:hover { color: var(--cream); border-color: var(--cream); }
+    .more-tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .more-tip-card { display: flex; flex-direction: column; text-decoration: none; color: rgba(247,244,239,0.95); border-right: 1px solid rgba(247,244,239,0.12); padding-bottom: 1rem; transition: background 0.15s; overflow: hidden; }
+    .more-tip-card:last-child { border-right: none; }
+    .more-tip-card:hover { background: rgba(247,244,239,0.04); }
+    .more-tip-img-wrap { aspect-ratio: 16/10; overflow: hidden; background: #2a2825; position: relative; }
+    .more-tip-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .more-tip-card:hover .more-tip-img { transform: scale(1.04); }
+    .more-tip-body { padding: 0.7rem 0.9rem 0; }
+    .more-tip-kicker { font-family: var(--cond); font-size: 0.5rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.45); margin-bottom: 0.3rem; }
+    .more-tip-kicker b { color: var(--red); font-weight: 600; }
+    .more-tip-hed { font-family: var(--serif); font-size: 0.92rem; font-weight: 500; line-height: 1.25; color: var(--cream); }
+    .more-tip-hed em { font-style: italic; font-weight: 400; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .postcard { display: flex; flex-direction: column; }
+      .pc-image { border-right: none; border-bottom: 1.5px solid var(--ink); aspect-ratio: 4/3; max-height: 60vh; }
+      .pc-image-caption { display: none; }
+      .pc-body { padding: 2rem 1.5rem 1.5rem; }
+      .pc-title { font-size: 2rem; }
+      .pc-facts { grid-template-columns: 1fr; }
+      .pc-fact { border-right: none; border-bottom: 1px solid var(--rule-soft); padding: 0.9rem 0; }
+      .pc-fact:last-child { border-bottom: none; padding-left: 0; }
+      .pc-fact:nth-child(2) { padding-left: 0; }
+      .more-tips-grid { grid-template-columns: 1fr; }
+      .more-tip-card { border-right: none; border-bottom: 1px solid rgba(247,244,239,0.12); display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding: 12px; align-items: center; }
+      .more-tip-card:last-child { border-bottom: none; }
+      .more-tip-img-wrap { aspect-ratio: 4/3; }
+      .more-tip-body { padding: 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-logo-tag, .nav-link { display: none; }
+      .nav-logo { gap: 0; padding: 5px 10px; }
+      .nav-logo-word { font-size: 1.25rem; }
+      .nav-inner { padding: 0 18px; }
+      .pc-body { padding: 1.5rem 1.25rem 1.5rem; }
+      .pc-title { font-size: 1.8rem; }
+      .pc-callout { padding: 1.25rem 0 1.25rem 1.25rem; margin: 0 0 1.5rem; }
+      .pc-callout-text { font-size: 1.2rem; }
+      .foot-strip-inner { padding: 0 18px; }
+      .more-tips-inner { padding: 0 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <a href="index.html" class="nav-logo" aria-label="HoodTip — Only the good stuff">
+        <span class="nav-logo-word">Hood<em>Tip</em></span>
+        <span class="nav-logo-tag">Only the <b>good</b> stuff</span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="profile-dave.html" class="nav-link">Dave</a>
+      <a href="profile-build.html" class="nav-cta">Leave a HoodTip →</a>
+    </div>
+  </div>
+</div>
+
+<!-- POSTCARD -->
+<div class="postcard">
+
+  <!-- CAROUSEL -->
+  <div class="pc-image" id="pcImage">
+    <div class="pc-track" id="pcTrack">
+      <div class="pc-slide">
+        <img src="Kushigin-tokyo-exterior.jpg" alt="Kushigin izakaya exterior at night, Akihabara, Tokyo — crowd spilling out, lamplight" loading="eager" />
+        <div class="pc-slide-fallback" style="display:none;">§</div>
+      </div>
+      <div class="pc-slide">
+        <img src="Kushigin-tokyo-main.jpg" alt="Kushigin kitchen — tattooed chef, smoke rising off the grill, packed counter" loading="lazy" />
+        <div class="pc-slide-fallback" style="display:none;">§</div>
+      </div>
+      <div class="pc-slide">
+        <img src="Kushigin-tokyo-sake.jpg" alt="Giant sake bottle being poured into a small cup at Kushigin, Tokyo" loading="lazy" />
+        <div class="pc-slide-fallback" style="display:none;">§</div>
+      </div>
+      <div class="pc-slide">
+        <img src="Kushigin-tokyo-sake-jen.jpg" alt="The Kan sake bottle, bowl cups, yakitori menu at Kushigin Tokyo" loading="lazy" />
+        <div class="pc-slide-fallback" style="display:none;">§</div>
+      </div>
+    </div>
+
+    <div class="pc-image-overlay">
+      <div class="pc-breadcrumb">
+        <a href="index.html">HoodTip</a><span>/</span>Izakaya · Akihabara · Tokyo
+      </div>
+      <span class="pc-badge">Izakaya</span>
+    </div>
+
+    <div class="pc-image-caption">
+      <div class="pc-image-cap-text">The night I fell in love with sake. Cold, crisp, poured from a giant bottle into a bowl-shaped cup.</div>
+      <div class="pc-image-credit">Photo · Dave</div>
+    </div>
+
+    <button class="pc-nav prev" id="pcPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="pc-nav next" id="pcNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <div class="pc-counter" id="pcDots">
+      <button class="pc-dot active" aria-label="Photo 1"></button>
+      <button class="pc-dot" aria-label="Photo 2"></button>
+      <button class="pc-dot" aria-label="Photo 3"></button>
+      <button class="pc-dot" aria-label="Photo 4"></button>
+      <span class="pc-counter-text"><b id="pcCurrent">1</b> / 4</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="pc-body">
+    <div class="pc-content">
+      <div class="pc-location"><span>/</span>Izakaya · Akihabara · Tokyo</div>
+
+      <h1 class="pc-title">Kushigin<em>串吟</em></h1>
+
+      <div class="pc-context">
+        <p>I was looking for yakitori. I'm not sure how I ended up here — something about the crowd spilling out onto the street, the smoke, the noise. Walked in anyway.</p>
+        <p>This was the night I fell in love with sake as a beverage. Giant cold bottles they pour into small bowl-shaped cups while you eat chicken skewers at the counter. Curious locals asking what you're doing in Tokyo, in this particular spot. Probably not a top-rated anything. Exactly right for a two-day trip.</p>
+      </div>
+
+      <div class="pc-callout">
+        <p class="pc-callout-text">Cold sake poured from a giant bottle into a small bowl. Chicken skewers, smoke, and curious locals. That's the one.</p>
+      </div>
+
+      <div class="pc-facts">
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">Where</span>
+          <span class="pc-fact-value pc-fact-value--bold"><a href="https://maps.google.com/?q=1+Chome-8-4+Kanda+Sakumacho,+Chiyoda+City,+Tokyo+101-0025" target="_blank" rel="noopener">1-8-4 Kanda Sakumacho, Chiyoda, Tokyo</a></span>
+        </div>
+        <div class="pc-fact pc-fact--primary">
+          <span class="pc-fact-label">The move</span>
+          <span class="pc-fact-value pc-fact-value--bold"><em>Cold sake. Whatever's on the skewers. Stay longer than you planned.</em></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc-foot">
+      <a class="pc-byline" href="profile-dave.html">
+        <img class="pc-byline-photo" src="bongojoe-rhone-light.jpg" alt="Dave" onerror="this.style.display='none'" />
+        <div class="pc-byline-text">Tip by<b>Dave</b></div>
+      </a>
+      <div class="pc-share">
+        <span class="pc-share-toast" id="shareToast">Link copied</span>
+        <button class="pc-share-btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
+        <a class="pc-share-btn primary" href="https://wa.me/?text=Kushigin%20Tokyo%20%E2%80%94%20https%3A//hoodtip.com/tip-kushigin-tokyo.html" target="_blank" rel="noopener">Share →</a>
+        <a class="pc-share-btn primary" href="share-story.html?tip=kushigin-tokyo" style="background:var(--red);border-color:var(--red);color:var(--cream);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg>
+          Share to Story &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MORE TIPS -->
+<div class="more-tips">
+  <div class="more-tips-inner">
+    <div class="more-tips-head">
+      <div class="more-tips-title">More tips from Tokyo &amp; Japan</div>
+      <a href="index.html" class="more-tips-all">See all tips →</a>
+    </div>
+    <div class="more-tips-grid">
+      <a class="more-tip-card" href="tip-iskender.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="Bursa-meat-stick.jpg" alt="Bursa İskenderoğlu" loading="lazy" /></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker"><b>Izakaya</b> · Istanbul</div>
+          <div class="more-tip-hed">The king of all <em>Turkish kebab meals.</em></div>
+        </div>
+      </a>
+      <a class="more-tip-card" href="tip-filinta-assos.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="filinta-8.jpg" alt="Filinta, Assos" loading="lazy" /></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker"><b>Restaurant</b> · Turkey</div>
+          <div class="more-tip-hed">Hands down, my favourite restaurant <em>in the world.</em></div>
+        </div>
+      </a>
+      <a class="more-tip-card" href="tip-smalls.html">
+        <div class="more-tip-img-wrap"><img class="more-tip-img" src="nyc-smalls.jpg" alt="Smalls Jazz Club" loading="lazy" /></div>
+        <div class="more-tip-body">
+          <div class="more-tip-kicker"><b>Jazz</b> · New York</div>
+          <div class="more-tip-hed">A New York jazz club. <em>Go to Smalls.</em></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="profile-build.html" class="foot-cta">Leave your own HoodTip →</a>
+  </div>
+</div>
+
+<script>
+  const TIP_SLUG    = 'kushigin-tokyo';
+  const TIP_PLACE   = 'Kushigin';
+  const TIPPER_NAME = 'Dave';
+
+  function copyLink(){
+    var url = window.location.href;
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.resolve()).then(function(){
+      var t = document.getElementById('shareToast');
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 1800);
+    });
+  }
+
+  document.querySelectorAll('.pc-slide img').forEach(function(img){
+    function hide(){ img.style.display='none'; var fb=img.nextElementSibling; if(fb&&fb.classList.contains('pc-slide-fallback')) fb.style.display='flex'; }
+    img.addEventListener('error', hide);
+    if(img.complete && img.naturalWidth===0) hide();
+  });
+
+  (function(){
+    var track = document.getElementById('pcTrack');
+    var slides = track ? track.querySelectorAll('.pc-slide') : [];
+    var prev = document.getElementById('pcPrev');
+    var next = document.getElementById('pcNext');
+    var dots = document.querySelectorAll('#pcDots .pc-dot');
+    var current = document.getElementById('pcCurrent');
+    var total = slides.length;
+    if(total <= 1) return;
+    var idx = 0;
+    function go(i){
+      idx = Math.max(0, Math.min(total-1, i));
+      track.style.transform = 'translateX(-'+(idx*100)+'%)';
+      dots.forEach(function(d,j){ d.classList.toggle('active', j===idx); });
+      if(current) current.textContent = idx+1;
+      prev.disabled = idx===0;
+      next.disabled = idx===total-1;
+    }
+    prev.addEventListener('click', function(){ go(idx-1); });
+    next.addEventListener('click', function(){ go(idx+1); });
+    dots.forEach(function(d,j){ d.addEventListener('click', function(){ go(j); }); });
+    document.addEventListener('keydown', function(e){ if(e.key==='ArrowLeft') go(idx-1); else if(e.key==='ArrowRight') go(idx+1); });
+    var startX=null, startY=null;
+    var imgEl = document.getElementById('pcImage');
+    imgEl.addEventListener('touchstart', function(e){ startX=e.touches[0].clientX; startY=e.touches[0].clientY; },{passive:true});
+    imgEl.addEventListener('touchend', function(e){
+      if(startX===null) return;
+      var dx=e.changedTouches[0].clientX-startX, dy=e.changedTouches[0].clientY-startY;
+      if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ if(dx<0) go(idx+1); else go(idx-1); }
+      startX=null; startY=null;
+    },{passive:true});
+    go(0);
+  })();
+</script>
+
+</body>
+</html>
