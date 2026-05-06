@@ -412,6 +412,122 @@
       .guide-card.next { padding-left: 0; }
     }
 
+    /* ---------- LOOP STRIP ---------- */
+    .loop {
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--ink);
+      position: relative;
+      z-index: 2;
+    }
+    .loop-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 0;
+      min-height: 0;
+    }
+    .loop-left {
+      padding: 2.5rem 2.5rem 2.5rem 0;
+      border-right: 1px solid rgba(247,244,239,0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .loop-kicker {
+      font-family: var(--cond);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .loop-hed {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--cream);
+    }
+    .loop-hed em { font-style: italic; }
+    .loop-body {
+      font-size: 0.9rem;
+      color: rgba(247,244,239,0.6);
+      line-height: 1.7;
+      max-width: 32em;
+      margin-top: 0.25rem;
+    }
+    .loop-right {
+      padding: 2.5rem 0 2.5rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .loop-step {
+      padding: 0 2rem 0 0;
+      border-right: 1px solid rgba(247,244,239,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .loop-step:last-child {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 2rem;
+    }
+    .loop-step:nth-child(2) {
+      padding-left: 2rem;
+    }
+    .loop-step-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: rgba(247,244,239,0.12);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .loop-step-hed {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+    .loop-step-hed em { font-style: italic; font-weight: 400; color: var(--red); }
+    .loop-step-body {
+      font-size: 0.82rem;
+      color: rgba(247,244,239,0.55);
+      line-height: 1.6;
+    }
+    .loop-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--cond);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream);
+      border-bottom: 1px solid rgba(247,244,239,0.35);
+      padding-bottom: 2px;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .loop-cta:hover { color: var(--red); border-color: var(--red); }
+    @media (max-width: 960px) {
+      .loop-inner { grid-template-columns: 1fr; }
+      .loop-left { border-right: none; border-bottom: 1px solid rgba(247,244,239,0.12); padding: 2rem 0; }
+      .loop-right { padding: 2rem 0; grid-template-columns: 1fr; gap: 1.5rem; }
+      .loop-step { border-right: none; border-bottom: 1px solid rgba(247,244,239,0.1); padding: 0 0 1.5rem; }
+      .loop-step:last-child { border-bottom: none; padding-bottom: 0; padding-left: 0; }
+      .loop-step:nth-child(2) { padding-left: 0; }
+    }
+
     /* ---------- FILTER TABS ---------- */
     .filters { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); border-bottom: 1px solid var(--rule); position: relative; z-index: 2; background: var(--cream); }
     .filters-inner { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
@@ -1409,6 +1525,35 @@
   </div>
 </div>
 
+
+<!-- ==================== HOW IT WORKS / THE LOOP ==================== -->
+<div class="loop">
+  <div class="loop-inner">
+    <div class="loop-left">
+      <div class="loop-kicker">How it works</div>
+      <h2 class="loop-hed">A permanent record of<br><em>the things that bring you joy.</em></h2>
+      <p class="loop-body">Build a few tips and you have a taste profile — specific places, visible to your friends. Someone asks for Paris recs, you send your HoodTip. Someone you trust is going to Istanbul, you check their profile before you go.</p>
+      <a href="profile-build.html" class="loop-cta">Build your first tip →</a>
+    </div>
+    <div class="loop-right">
+      <div class="loop-step">
+        <div class="loop-step-num">01</div>
+        <div class="loop-step-hed">Write a tip.<br><em>Three sentences.</em></div>
+        <div class="loop-step-body">A place you loved. A few photos. What to order, where to sit, what time to go. The thing you'd text a friend going next week.</div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-step-num">02</div>
+        <div class="loop-step-hed">Get a<br><em>permanent link.</em></div>
+        <div class="loop-step-body">We turn it into a proper page with your name on it. Next time someone asks for a rec, you have a link instead of a long WhatsApp.</div>
+      </div>
+      <div class="loop-step">
+        <div class="loop-step-num">03</div>
+        <div class="loop-step-hed">It builds<br><em>your profile.</em></div>
+        <div class="loop-step-body">Every tip accumulates. Click any byline on HoodTip and you see that person's taste — their cities, their picks, whether they're someone to trust.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ==================== CURATED PICKS — between manifesto and tipsters ==================== -->
 <div class="sec" style="padding-top: 0;">
