@@ -91,6 +91,20 @@
   <!-- TIPS — NEW YORK -->
   <url><loc>https://hoodtip.com/tip-pastrami-queen.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
+  <!-- GUIDES -->
+  <url>
+    <loc>https://hoodtip.com/geneva-after-work-beer.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://hoodtip.com/guide-chamonix-blue-runs.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- UTILITY -->
   <url>
     <loc>https://hoodtip.com/share-story.html</loc>
