@@ -263,14 +263,19 @@
     display: none;
     background: var(--ink);
     color: var(--cream);
-    padding: 1.1rem var(--gutter);
+    padding: 2rem var(--gutter);
     text-align: center;
     font-family: var(--serif);
-    font-size: 1.15rem;
-    border-bottom: 1.5px solid var(--ink);
+    font-size: 1.2rem;
+    border-bottom: 3px solid var(--red);
+    position: relative;
   }
   .success-banner.show { display: block; }
   .success-banner em { font-style: italic; color: var(--cream); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 4px; }
+  .success-banner-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+  .success-banner-hed { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
+  .success-banner-hed em { font-style: italic; }
+  .success-banner-sub { font-family: var(--sans); font-weight: 300; font-size: 0.95rem; color: rgba(247,244,239,0.7); max-width: 480px; margin: 0 auto; line-height: 1.65; }
 
   /* =================== BUILDER =================== */
   .builder { border-bottom: 1.5px solid var(--ink); }
@@ -1160,6 +1165,13 @@
   </div>
 </nav>
 
+<!-- ========== SUCCESS BANNER ========== -->
+<div class="success-banner" id="successBanner">
+  <span class="success-banner-icon">✓</span>
+  <div class="success-banner-hed">We've got it. <em>Your link is on its way.</em></div>
+  <div class="success-banner-sub">We'll have your tip page ready within 48 hours and send it to you directly. Want to add another? Come back and use the same handle — we'll find you.</div>
+</div>
+
 <!-- ========== MASTHEAD RIBBON ========== -->
 <div class="masthead">
   <div class="masthead-inner">
@@ -1203,10 +1215,6 @@
   </div>
 </section>
 
-<!-- ========== SUCCESS BANNER ========== -->
-<div class="success-banner" id="successBanner">
-  Thanks — we've got your tip. We'll have your link ready within 48 hours. <em>Nicely done.</em> Want to leave another? Just come back and use the same handle — we'll find you.
-</div>
 
 <!-- ========== BUILDER ========== -->
 <section class="builder">
@@ -1806,6 +1814,7 @@
       if (resp.ok) {
         banner.classList.add('show');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('successBanner').scrollIntoView({ behavior: 'smooth', block: 'start' });
         form.reset();
         uploadedPhotos = [];
         renderThumbs();
