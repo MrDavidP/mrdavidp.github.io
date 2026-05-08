@@ -52,9 +52,9 @@
 
     /* PHOTO */
     .profile-photo-wrap{position:relative;flex-shrink:0}
-    .profile-photo{width:110px;height:110px;border-radius:50%;border:2px solid var(--ink);object-fit:cover;object-position:center top;background:var(--cream2)}
-    .profile-photo-placeholder{width:110px;height:110px;border-radius:50%;border:2px solid var(--ink);background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.5rem;font-weight:500;color:var(--cream)}
-    .photo-edit-btn{position:absolute;bottom:2px;right:2px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--cream);border:2px solid var(--cream);display:none;align-items:center;justify-content:center;cursor:pointer;font-size:12px;transition:background .15s}
+    .profile-photo{width:110px;height:110px;border-radius:0;border:2px solid var(--ink);object-fit:cover;object-position:center top;background:var(--cream2)}
+    .profile-photo-placeholder{width:110px;height:110px;border-radius:0;border:2px solid var(--ink);background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.5rem;font-weight:500;color:var(--cream)}
+    .photo-edit-btn{position:absolute;bottom:-6px;right:-6px;width:28px;height:28px;border-radius:0;background:var(--ink);color:var(--cream);border:2px solid var(--cream);display:none;align-items:center;justify-content:center;cursor:pointer;font-size:12px;transition:background .15s}
     .photo-edit-btn:hover{background:var(--red)}
     .photo-edit-btn.visible{display:flex}
 
@@ -297,8 +297,36 @@
     }
 
     document.getElementById('tipsLabel').textContent = '@' + c.handle + '\u2019s tips';
-    document.getElementById('statTips').textContent = '0';
-    document.getElementById('noTips').style.display = 'block';
+
+    var tips = [];
+    try { tips = c.tips ? JSON.parse(c.tips) : []; } catch(e) { tips = []; }
+
+    document.getElementById('statTips').textContent = tips.length || '0';
+
+    var grid = document.getElementById('tipsGrid');
+    var noTips = document.getElementById('noTips');
+    grid.innerHTML = '';
+
+    if (tips.length === 0) {
+      noTips.style.display = 'block';
+    } else {
+      noTips.style.display = 'none';
+      tips.forEach(function(tip, i) {
+        var card = document.createElement('a');
+        card.className = 'tip-card';
+        card.href = tip.url || '#';
+        if (i === tips.length - 1) card.style.borderRight = 'none';
+        card.innerHTML =
+          '<div class="tip-card-img-wrap">' +
+            (tip.photo ? '<img class="tip-card-img" src="' + tip.photo + '" alt="' + (tip.place || '') + '" loading="lazy" />' : '') +
+          '</div>' +
+          '<div class="tip-card-body">' +
+            '<div class="tip-card-kicker">' + (tip.category || '') + (tip.city ? ' \u00b7 ' + tip.city : '') + '</div>' +
+            '<div class="tip-card-hed">' + (tip.place || '') + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    }
   }
 
   // BIO EDIT
