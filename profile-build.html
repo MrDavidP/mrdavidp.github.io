@@ -29,6 +29,8 @@
 
 <!-- Cloudinary upload widget -->
 <script src="https://upload-widget.cloudinary.com/global/all.js" async></script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
   :root {
@@ -1498,6 +1500,121 @@
 
 <script>
 (function () {
+  // ============ SUPABASE SESSION ============
+  var SUPABASE_URL = 'https://lgyjsqwnicbbcqsfpuop.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_lXgUz-wrmSbDOz0c5hHMBg_oJF6csBe';
+  var _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // Show a signed-in status bar if user is logged in
+  function showUserBar(user) {
+    var meta = user.user_metadata || {};
+    var name = meta.full_name || meta.name || '';
+    var email = user.email || '';
+    var avatar = meta.avatar_url || meta.picture || '';
+
+    // Pre-fill form fields
+    var nameEl = document.getElementById('f-name');
+    var emailEl = document.getElementById('f-email');
+    if (nameEl && name && !nameEl.value) {
+      nameEl.value = name;
+      nameEl.dispatchEvent(new Event('input'));
+    }
+    if (emailEl && email && !emailEl.value) {
+      emailEl.value = email;
+    }
+
+    // Pre-fill profile photo if Google avatar available
+    if (avatar) {
+      // Wait for applyProfilePhoto to be defined
+      var attempts = 0;
+      var tryApply = setInterval(function() {
+        attempts++;
+        if (typeof applyProfilePhoto === 'function') {
+          clearInterval(tryApply);
+          applyProfilePhoto(avatar);
+        }
+        if (attempts > 40) clearInterval(tryApply);
+      }, 100);
+    }
+
+    // Inject a small "signed in as" bar below the nav
+    var bar = document.createElement('div');
+    bar.id = 'authBar';
+    bar.style.cssText = [
+      'background: var(--ink)',
+      'color: var(--cream)',
+      'font-family: var(--cond)',
+      'font-size: 0.6rem',
+      'letter-spacing: 0.14em',
+      'text-transform: uppercase',
+      'padding: 8px 32px',
+      'display: flex',
+      'align-items: center',
+      'justify-content: space-between',
+      'gap: 1rem',
+      'border-bottom: 1px solid rgba(247,244,239,0.1)',
+    ].join(';');
+
+    var left = document.createElement('span');
+    left.style.color = 'rgba(247,244,239,0.6)';
+    if (avatar) {
+      var img = document.createElement('img');
+      img.src = avatar;
+      img.style.cssText = 'width:18px;height:18px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:8px;border:1px solid rgba(247,244,239,0.3)';
+      left.appendChild(img);
+    }
+    left.appendChild(document.createTextNode('Signed in as ' + (name || email)));
+
+    var right = document.createElement('button');
+    right.textContent = 'Sign out';
+    right.style.cssText = [
+      'background: transparent',
+      'border: 1px solid rgba(247,244,239,0.25)',
+      'color: rgba(247,244,239,0.6)',
+      'font-family: var(--cond)',
+      'font-size: 0.56rem',
+      'letter-spacing: 0.14em',
+      'text-transform: uppercase',
+      'padding: 4px 10px',
+      'cursor: pointer',
+    ].join(';');
+    right.addEventListener('click', function() {
+      _supabase.auth.signOut().then(function() {
+        window.location.href = 'login.html';
+      });
+    });
+
+    bar.appendChild(left);
+    bar.appendChild(right);
+
+    var nav = document.querySelector('nav.site-nav');
+    if (nav && nav.nextSibling) {
+      nav.parentNode.insertBefore(bar, nav.nextSibling);
+    } else {
+      document.body.prepend(bar);
+    }
+  }
+
+  // Check session on load
+  _supabase.auth.getSession().then(function(ref) {
+    var session = ref.data.session;
+    if (session && session.user) {
+      showUserBar(session.user);
+    }
+  });
+
+  // Also handle the hash-based token on redirect from Google
+  _supabase.auth.onAuthStateChange(function(event, session) {
+    if ((event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') && session && session.user) {
+      showUserBar(session.user);
+    }
+  });
+
+})();
+</script>
+
+<script>
+(function () {
   'use strict';
 
   // ============ LIVE PREVIEW BINDING ============
@@ -1611,6 +1728,7 @@
   let profilePhotoUrl = '';
 
   function applyProfilePhoto(url) {
+    window.applyProfilePhoto = applyProfilePhoto; // expose for session pre-fill
     profilePhotoUrl = url || '';
     profileUrlEl.value = profilePhotoUrl;
     if (profilePhotoUrl) {
