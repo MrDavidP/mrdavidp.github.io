@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile · HoodTip</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://upload-widget.cloudinary.com/global/all.js" async></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--cream:#f7f4ef;--cream2:#efeae1;--ink:#1a1816;--ink2:#2a2925;--muted:#6b6560;--rule:#d9d2c6;--rule-soft:#e8e2d6;--red:#b5322a;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',system-ui,sans-serif;--cond:'Barlow Condensed',system-ui,sans-serif;--max:1360px;--gutter:32px}
+    html{scroll-behavior:smooth}
+    body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(rgba(26,24,22,0.025) 1px,transparent 1px);background-size:3px 3px;opacity:0.5;mix-blend-mode:multiply}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:300;background:var(--cream);border-bottom:1.5px solid var(--ink)}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);height:54px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:inline-flex;align-items:center;gap:14px;border:1.5px solid var(--ink);padding:7px 14px;background:var(--cream);transition:background .15s}
+    .nav-logo:hover{background:var(--cream2)}
+    .nav-logo-word{font-family:var(--serif);font-weight:700;font-size:1.4rem;letter-spacing:-.02em;line-height:1}
+    .nav-logo-word em{font-style:italic;font-weight:500}
+    .nav-logo-tag{font-family:var(--cond);font-weight:500;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;border-left:1.5px solid var(--ink);padding-left:12px}
+    .nav-logo-tag b{color:var(--red)}
+    .nav-right{display:flex;align-items:stretch;height:54px}
+    .nav-link{font-family:var(--cond);font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 18px;display:flex;align-items:center;border-left:1px solid var(--rule-soft);transition:color .15s}
+    .nav-link:hover{color:var(--ink)}
+    .nav-cta{font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:0 22px;display:flex;align-items:center;border-left:1px solid var(--ink);transition:background .15s}
+    .nav-cta:hover{background:var(--red)}
+
+    /* AUTH BAR */
+    .auth-bar{background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:8px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(247,244,239,.1)}
+    .auth-bar-left{color:rgba(247,244,239,.6);display:flex;align-items:center;gap:8px}
+    .auth-bar-left img{width:18px;height:18px;border-radius:50%;object-fit:cover;border:1px solid rgba(247,244,239,.3)}
+    .auth-bar button{background:transparent;border:1px solid rgba(247,244,239,.25);color:rgba(247,244,239,.6);font-family:var(--cond);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;cursor:pointer}
+    .auth-bar button:hover{color:var(--cream);border-color:var(--cream)}
+
+    /* STATES */
+    .page-state{max-width:var(--max);margin:6rem auto;padding:0 var(--gutter);text-align:center}
+    .page-state-title{font-family:var(--serif);font-size:2rem;font-weight:400;margin-bottom:.5rem}
+    .page-state-sub{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--muted)}
+
+    /* PROFILE HEADER */
+    .profile-header{border-bottom:1.5px solid var(--ink)}
+    .profile-header-inner{max-width:var(--max);margin:0 auto;padding:3rem var(--gutter) 2.5rem;display:grid;grid-template-columns:auto 1fr auto;gap:2.5rem;align-items:start}
+
+    /* PHOTO */
+    .profile-photo-wrap{position:relative;flex-shrink:0}
+    .profile-photo{width:110px;height:110px;border-radius:50%;border:2px solid var(--ink);object-fit:cover;object-position:center top;background:var(--cream2)}
+    .profile-photo-placeholder{width:110px;height:110px;border-radius:50%;border:2px solid var(--ink);background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.5rem;font-weight:500;color:var(--cream)}
+    .photo-edit-btn{position:absolute;bottom:2px;right:2px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--cream);border:2px solid var(--cream);display:none;align-items:center;justify-content:center;cursor:pointer;font-size:12px;transition:background .15s}
+    .photo-edit-btn:hover{background:var(--red)}
+    .photo-edit-btn.visible{display:flex}
+
+    /* INFO */
+    .profile-info{min-width:0}
+    .profile-handle{font-family:var(--cond);font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+    .profile-name{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin-bottom:.75rem}
+    .profile-bio-view{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);line-height:1.6;max-width:560px}
+    .profile-bio-view.empty{color:var(--rule)}
+    .bio-edit-trigger{font-family:var(--cond);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;margin-top:.5rem;display:none;text-decoration:underline;text-underline-offset:3px}
+    .bio-edit-trigger:hover{color:var(--red)}
+    .bio-edit-trigger.visible{display:inline-block}
+    .bio-edit-wrap{display:none;margin-top:.75rem}
+    .bio-edit-wrap.visible{display:block}
+    .bio-textarea{width:100%;max-width:560px;padding:10px 12px;font-family:var(--serif);font-style:italic;font-size:1.05rem;line-height:1.6;color:var(--muted);background:var(--cream2);border:1px solid var(--rule);resize:vertical;min-height:80px;outline:none}
+    .bio-textarea:focus{border-color:var(--ink)}
+    .bio-save-row{display:flex;gap:.75rem;margin-top:.5rem;align-items:center}
+    .bio-save-btn{font-family:var(--cond);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--cream);border:none;padding:7px 14px;cursor:pointer;transition:background .15s}
+    .bio-save-btn:hover{background:var(--red)}
+    .bio-cancel-btn{font-family:var(--cond);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted);border:none;padding:7px 0;cursor:pointer}
+    .bio-status{font-family:var(--cond);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .profile-stats{display:flex;gap:2rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--rule);flex-wrap:wrap}
+    .profile-stat-num{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink);line-height:1}
+    .profile-stat-label{font-family:var(--cond);font-size:.56rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+    /* ACTIONS */
+    .profile-actions{display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
+    .add-tip-btn{font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--cream);border:none;padding:12px 20px;cursor:pointer;display:inline-block;transition:background .15s;white-space:nowrap}
+    .add-tip-btn:hover{background:var(--red)}
+    .profile-actions.hidden{display:none}
+
+    /* TIPS */
+    .tips-section{border-bottom:1.5px solid var(--ink)}
+    .tips-section-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+    .tips-section-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1.5rem 0 1.25rem;border-bottom:1px solid var(--rule)}
+    .tips-section-label{font-family:var(--cond);font-size:.66rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+    .tips-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+    .tip-card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);border-right:1px solid var(--rule);padding-bottom:1.25rem;transition:background .15s;overflow:hidden}
+    .tip-card:last-child{border-right:none}
+    .tip-card:hover{background:rgba(181,50,42,.04)}
+    .tip-card-img-wrap{aspect-ratio:4/3;overflow:hidden;background:var(--cream2)}
+    .tip-card-img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .tip-card:hover .tip-card-img{transform:scale(1.04)}
+    .tip-card-body{padding:1rem 1.1rem 0}
+    .tip-card-kicker{font-family:var(--cond);font-size:.56rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+    .tip-card-hed{font-family:var(--serif);font-size:1.15rem;font-weight:500;line-height:1.2;letter-spacing:-.005em}
+    .no-tips{padding:3rem 0;text-align:center}
+    .no-tips p{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted)}
+
+    /* FOOTER */
+    .foot-strip{background:var(--ink);color:var(--cream);border-top:2px solid var(--red)}
+    .foot-strip-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);height:46px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+    .foot-note{font-family:var(--serif);font-style:italic;font-size:.88rem;color:rgba(247,244,239,.65)}
+    .foot-note .hl{color:var(--red);font-style:normal;font-weight:500}
+    .foot-cta{font-family:var(--cond);font-size:.64rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,244,239,.85);border-bottom:1px solid rgba(247,244,239,.3);padding-bottom:2px;transition:all .15s}
+    .foot-cta:hover{color:var(--cream);border-color:var(--red)}
+
+    @media(max-width:900px){
+      .profile-header-inner{grid-template-columns:auto 1fr}
+      .profile-actions{grid-column:1/-1;flex-direction:row;align-items:center}
+      .tips-grid{grid-template-columns:1fr 1fr}
+      .tip-card:nth-child(2n){border-right:none}
+    }
+    @media(max-width:600px){
+      :root{--gutter:20px}
+      .nav-logo-tag,.nav-link{display:none}
+      .profile-header-inner{grid-template-columns:1fr;gap:1.5rem}
+      .profile-photo,.profile-photo-placeholder{width:80px;height:80px}
+      .tips-grid{grid-template-columns:1fr}
+      .tip-card{border-right:none;border-bottom:1px solid var(--rule)}
+    }
+  </style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-word">Hood<em>Tip</em></span>
+      <span class="nav-logo-tag">Only the <b>good</b> stuff</span>
+    </a>
+    <div class="nav-right">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="profile-build.html" class="nav-cta">Leave a HoodTip &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<div id="authBar" style="display:none" class="auth-bar">
+  <div class="auth-bar-left" id="authBarLeft"></div>
+  <button id="authBarSignOut">Sign out</button>
+</div>
+
+<div class="page-state" id="stateLoading">
+  <div class="page-state-title">Loading&hellip;</div>
+</div>
+<div class="page-state" id="stateError" style="display:none">
+  <div class="page-state-title">Profile not found.</div>
+  <div class="page-state-sub">This handle doesn&rsquo;t match any contributor yet.</div>
+</div>
+
+<div id="profileWrap" style="display:none">
+  <div class="profile-header">
+    <div class="profile-header-inner">
+      <div class="profile-photo-wrap">
+        <img class="profile-photo" id="profilePhoto" src="" alt="" style="display:none" />
+        <div class="profile-photo-placeholder" id="profilePhotoPlaceholder" style="display:none"></div>
+        <button class="photo-edit-btn" id="photoEditBtn" title="Change photo">&#9998;</button>
+      </div>
+      <div class="profile-info">
+        <div class="profile-handle" id="profileHandle"></div>
+        <div class="profile-name" id="profileName"></div>
+        <div class="profile-bio-view" id="profileBioView"></div>
+        <button class="bio-edit-trigger" id="bioEditTrigger">Edit bio</button>
+        <div class="bio-edit-wrap" id="bioEditWrap">
+          <textarea class="bio-textarea" id="bioTextarea" rows="3" maxlength="300" placeholder="A line or two about where you're based and what you're into."></textarea>
+          <div class="bio-save-row">
+            <button class="bio-save-btn" id="bioSaveBtn">Save</button>
+            <button class="bio-cancel-btn" id="bioCancelBtn">Cancel</button>
+            <span class="bio-status" id="bioStatus"></span>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <div class="profile-stat-num" id="statTips">&mdash;</div>
+            <div class="profile-stat-label">Tips</div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-actions hidden" id="profileActions">
+        <a href="profile-build.html" class="add-tip-btn">+ Add a tip</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <div class="tips-section-inner">
+      <div class="tips-section-head">
+        <span class="tips-section-label" id="tipsLabel">Tips</span>
+      </div>
+      <div class="tips-grid" id="tipsGrid"></div>
+      <div class="no-tips" id="noTips" style="display:none">
+        <p>No tips yet &mdash; <a href="profile-build.html" style="color:var(--ink);border-bottom:1px solid var(--rule)">add the first one</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="foot-strip">
+  <div class="foot-strip-inner">
+    <div class="foot-note">The link you send when someone asks you for <span class="hl">recs.</span></div>
+    <a href="profile-build.html" class="foot-cta">Leave your own HoodTip &rarr;</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var SUPABASE_URL = 'https://lgyjsqwnicbbcqsfpuop.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWpzcXduaWNiYmNxc2ZwdW9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNDUzMTEsImV4cCI6MjA5MzgyMTMxMX0.lUsEAtYNG5OaIGfbdpedKEImjPw_eIzt69oIjrmHhvQ';
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  var params = new URLSearchParams(window.location.search);
+  var handle = params.get('handle');
+  var currentUser = null;
+  var contributor = null;
+
+  sb.auth.getSession().then(function(ref) {
+    var session = ref.data.session;
+    if (session && session.user) {
+      currentUser = session.user;
+      showAuthBar(currentUser);
+    }
+    loadProfile();
+  });
+
+  function showAuthBar(user) {
+    var meta = user.user_metadata || {};
+    var name = meta.full_name || meta.name || user.email || '';
+    var avatar = meta.avatar_url || meta.picture || '';
+    var bar = document.getElementById('authBar');
+    var left = document.getElementById('authBarLeft');
+    bar.style.display = 'flex';
+    if (avatar) {
+      var img = document.createElement('img');
+      img.src = avatar;
+      left.appendChild(img);
+    }
+    left.appendChild(document.createTextNode('Signed in as ' + name));
+    document.getElementById('authBarSignOut').addEventListener('click', function() {
+      sb.auth.signOut().then(function() { window.location.href = 'login.html'; });
+    });
+  }
+
+  function loadProfile() {
+    if (!handle) { showError(); return; }
+    sb.from('contributors').select('*').eq('handle', handle).single().then(function(ref) {
+      if (ref.error || !ref.data) { showError(); return; }
+      contributor = ref.data;
+      renderProfile(contributor);
+    });
+  }
+
+  function showError() {
+    document.getElementById('stateLoading').style.display = 'none';
+    document.getElementById('stateError').style.display = 'block';
+  }
+
+  function renderProfile(c) {
+    document.getElementById('stateLoading').style.display = 'none';
+    document.getElementById('profileWrap').style.display = 'block';
+    document.title = c.name + ' \u00b7 HoodTip';
+    document.getElementById('profileHandle').textContent = '@' + c.handle;
+    document.getElementById('profileName').textContent = c.name;
+
+    if (c.photo_url) {
+      var img = document.getElementById('profilePhoto');
+      img.src = c.photo_url; img.alt = c.name; img.style.display = 'block';
+      document.getElementById('profilePhotoPlaceholder').style.display = 'none';
+    } else {
+      document.getElementById('profilePhoto').style.display = 'none';
+      var ph = document.getElementById('profilePhotoPlaceholder');
+      ph.textContent = c.name ? c.name[0].toUpperCase() : '?';
+      ph.style.display = 'flex';
+    }
+
+    var bioView = document.getElementById('profileBioView');
+    if (c.bio) {
+      bioView.textContent = c.bio;
+      bioView.classList.remove('empty');
+    } else {
+      bioView.textContent = 'No bio yet.';
+      bioView.classList.add('empty');
+    }
+
+    var isOwner = currentUser && currentUser.id === c.user_id;
+    if (isOwner) {
+      document.getElementById('bioEditTrigger').classList.add('visible');
+      document.getElementById('photoEditBtn').classList.add('visible');
+      document.getElementById('profileActions').classList.remove('hidden');
+    }
+
+    document.getElementById('tipsLabel').textContent = '@' + c.handle + '\u2019s tips';
+    document.getElementById('statTips').textContent = '0';
+    document.getElementById('noTips').style.display = 'block';
+  }
+
+  // BIO EDIT
+  document.getElementById('bioEditTrigger').addEventListener('click', function() {
+    document.getElementById('bioTextarea').value = contributor ? (contributor.bio || '') : '';
+    document.getElementById('bioEditWrap').classList.add('visible');
+    document.getElementById('bioEditTrigger').classList.remove('visible');
+    document.getElementById('bioTextarea').focus();
+  });
+  document.getElementById('bioCancelBtn').addEventListener('click', function() {
+    document.getElementById('bioEditWrap').classList.remove('visible');
+    document.getElementById('bioEditTrigger').classList.add('visible');
+    document.getElementById('bioStatus').textContent = '';
+  });
+  document.getElementById('bioSaveBtn').addEventListener('click', function() {
+    var newBio = document.getElementById('bioTextarea').value.trim();
+    var status = document.getElementById('bioStatus');
+    status.textContent = 'Saving\u2026';
+    sb.from('contributors').update({ bio: newBio }).eq('id', contributor.id).then(function(ref) {
+      if (ref.error) { status.textContent = 'Error \u2014 try again.'; return; }
+      contributor.bio = newBio;
+      var bioView = document.getElementById('profileBioView');
+      if (newBio) { bioView.textContent = newBio; bioView.classList.remove('empty'); }
+      else { bioView.textContent = 'No bio yet.'; bioView.classList.add('empty'); }
+      document.getElementById('bioEditWrap').classList.remove('visible');
+      document.getElementById('bioEditTrigger').classList.add('visible');
+      status.textContent = '';
+    });
+  });
+
+  // PHOTO EDIT
+  document.getElementById('photoEditBtn').addEventListener('click', function() {
+    if (typeof cloudinary === 'undefined') { alert('Photo uploader still loading, try again in a moment.'); return; }
+    cloudinary.createUploadWidget({
+      cloudName: 'dq9newmhl', uploadPreset: 'jykjigyw',
+      multiple: false, maxFiles: 1, cropping: true, croppingAspectRatio: 1,
+      showSkipCropButton: false, sources: ['local','camera'],
+      clientAllowedFormats: ['image'], maxImageFileSize: 10000000,
+      folder: 'profile-photos', theme: 'minimal', showPoweredBy: false
+    }, function(err, result) {
+      if (err) { console.error(err); return; }
+      if (result && result.event === 'success') {
+        var url = result.info.secure_url;
+        sb.from('contributors').update({ photo_url: url }).eq('id', contributor.id).then(function(ref) {
+          if (ref.error) { alert('Error saving photo.'); return; }
+          contributor.photo_url = url;
+          var img = document.getElementById('profilePhoto');
+          img.src = url; img.alt = contributor.name; img.style.display = 'block';
+          document.getElementById('profilePhotoPlaceholder').style.display = 'none';
+        });
+      }
+    }).open();
+  });
+
+})();
+</script>
+</body>
+</html>
