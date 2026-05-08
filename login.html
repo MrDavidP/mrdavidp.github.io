@@ -310,20 +310,38 @@
 
   var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // If already logged in, redirect to profile build
+  // Smart redirect — existing contributor goes to their profile, new user to profile-build
+  function smartRedirect(user) {
+    supabase.from('contributors').select('handle').eq('user_id', user.id).single().then(function(ref) {
+      if (ref.data && ref.data.handle) {
+        window.location.href = 'profile.html?handle=' + encodeURIComponent(ref.data.handle);
+      } else {
+        window.location.href = 'profile-build.html';
+      }
+    });
+  }
+
+  // If already logged in, smart redirect
   supabase.auth.getSession().then(function(ref) {
     var session = ref.data.session;
-    if (session) {
-      window.location.href = 'profile-build.html';
+    if (session && session.user) {
+      smartRedirect(session.user);
     }
   });
 
-  // Google sign in
+  // Handle redirect back from Google OAuth
+  supabase.auth.onAuthStateChange(function(event, session) {
+    if (event === 'SIGNED_IN' && session && session.user) {
+      smartRedirect(session.user);
+    }
+  });
+
+  // Google sign in — redirect back to login.html so onAuthStateChange fires
   document.getElementById('btnGoogle').addEventListener('click', function() {
     supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: 'https://hoodtip.com/profile-build.html'
+        redirectTo: 'https://hoodtip.com/login.html'
       }
     });
   });
