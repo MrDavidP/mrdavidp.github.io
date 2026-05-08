@@ -1523,18 +1523,9 @@
       emailEl.value = email;
     }
 
-    // Pre-fill profile photo if Google avatar available
+    // Store avatar for applyProfilePhoto to pick up once it's ready
     if (avatar) {
-      // Wait for applyProfilePhoto to be defined
-      var attempts = 0;
-      var tryApply = setInterval(function() {
-        attempts++;
-        if (typeof applyProfilePhoto === 'function') {
-          clearInterval(tryApply);
-          applyProfilePhoto(avatar);
-        }
-        if (attempts > 40) clearInterval(tryApply);
-      }, 100);
+      window._pendingAvatarUrl = avatar;
     }
 
     // Inject a small "signed in as" bar below the nav
@@ -1729,6 +1720,12 @@
 
   function applyProfilePhoto(url) {
     window.applyProfilePhoto = applyProfilePhoto; // expose for session pre-fill
+    if (window._pendingAvatarUrl && url === undefined) {
+      url = window._pendingAvatarUrl;
+      window._pendingAvatarUrl = null;
+    }
+    // On first call with no arg, just register and return
+    if (url === undefined) return;
     profilePhotoUrl = url || '';
     profileUrlEl.value = profilePhotoUrl;
     if (profilePhotoUrl) {
@@ -1758,6 +1755,10 @@
       p.avatar.classList.remove('has-photo');
     }
   }
+
+  // Apply any pending avatar from session pre-fill
+  applyProfilePhoto(window._pendingAvatarUrl || undefined);
+  if (window._pendingAvatarUrl) window._pendingAvatarUrl = null;
 
   let profileWidget = null;
   function openProfileWidget() {
