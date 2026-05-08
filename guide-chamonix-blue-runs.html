@@ -243,6 +243,10 @@
     .img-full-wrap { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-top: 2rem; margin-bottom: 2rem; }
     .img-full { width: 100%; height: auto; display: block; }
 
+    .img-landscape-wrap { margin: 2rem 0; border: 1.5px solid var(--ink); }
+    .img-landscape { width: 100%; height: auto; display: block; }
+    .img-caption { font-family: var(--cond); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.5rem 0 0; border-top: none; }
+
     /* ── YOUTUBE EMBED ────────────────────────────── */
     .yt-embed {
       position: relative;
@@ -395,9 +399,9 @@
 
     <p>The other thing to understand before you arrive: Chamonix is not one ski resort. It is six completely separate ski areas spread across 20 kilometres of valley. A free shuttle bus connects them. You cannot ski between them. This changes how you plan every single day of the trip.</p>
 
-    <div class="img-landscape-wrap" style="max-width: 560px; margin-left: auto; margin-right: auto;">
+    <div class="img-landscape-wrap">
       <img class="img-landscape" src="chamonix-resort-map.png" alt="Map of Chamonix ski areas showing Les Houches and Le Tour / Balme as non-connecting (red), Brévent–Flégère as interconnected by cable car, and bus transitions between all areas" />
-      <div class="img-caption">Les Houches and Le Tour/Balme are non-connecting — bus only. Brévent and Flégère share a cable car liaison. Everything else: take the bus.</div>
+      <div class="img-caption" style="padding: 0.5rem 0.75rem;">Les Houches and Le Tour/Balme are non-connecting — bus only. Brévent and Flégère share a cable car liaison. Everything else: take the bus.</div>
     </div>
 
     <p>Chamonix grades its runs harder than most French resorts. A blue here is often equivalent to a demanding blue or an easy red elsewhere. The community consensus on this is unusually consistent: don't start at Brévent. Don't start at Flégère. Start at Les Houches, spend two days there, then see how you feel.</p>
@@ -455,8 +459,8 @@
     </div>
     <p>Chamois is the second essential Les Houches easy blue — slightly different character from La Cha, with more open sections where you can open up and build speed. Good second run of the day once La Cha has warmed up your legs. The recommendation for a first day in Chamonix: alternate these two until you've calibrated to the grading here before you go anywhere else.</p>
 
-    <div class="yt-embed" onclick="loadYT(this,'Wsz8uxx3_HI')" role="button" tabindex="0" aria-label="Watch Chamois POV — click to play">
-      <img src="https://img.youtube.com/vi/Wsz8uxx3_HI/maxresdefault.jpg" alt="Chamois blue run — full POV descent, Les Houches, Chamonix" loading="lazy" />
+    <div class="yt-embed" onclick="loadYT(this,'CZlxY-jmQq4')" role="button" tabindex="0" aria-label="Watch Chamois POV — click to play">
+      <img src="https://img.youtube.com/vi/CZlxY-jmQq4/maxresdefault.jpg" alt="Chamois blue run — full POV descent, Les Houches, Chamonix" loading="lazy" />
       <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="yt-badge">Watch POV ↗</div>
       <div class="yt-bar">
@@ -496,9 +500,20 @@
     <div class="run-meta">
       <span class="run-tag easy">Easy Blue</span>
       <span class="run-tag">Le Tour village — valley floor</span>
-      <span class="run-tag">Lift: Vormaine drag lifts (no gondola)</span>
+      <span class="run-tag">Lift: 4 drag lifts (no gondola)</span>
     </div>
-    <p>Technically separate from the main Domaine du Balme area above — La Vormaine is a flat, gentle zone at the valley floor in Le Tour village, served by three drag lifts. No gondola. The easiest skiing in the entire Chamonix valley. When people say "go to Le Tour" they usually mean the full mountain. La Vormaine is the gentle precursor at the base. If you're nervous about Chamonix's reputation, or returning after a long gap, spending a morning here before taking the Balme gondola up is the right move. Step off the bus and you're there, with a café terrace and views of the Aiguille du Tour above. The video in Run 3 covers its character at the valley floor.</p>
+    <p>Separate from the main Domaine du Balme area above — La Vormaine sits at the valley floor in Le Tour village, at 1,464m, served by four drag lifts. No gondola required. The ski area is specifically designed as a beginner-to-intermediate progression zone: three green runs, one blue run through the forest, a boardercross area, and a freestyle learning area. The blue is gentle by Chamonix standards — a forest-sheltered descent that serves as the logical step between the nursery slopes and the steeper terrain of Balme above.</p>
+    <p>The sunny, south-facing aspect and protected position make it the most forgiving environment in the valley. If you're nervous about Chamonix's reputation, or returning after a long gap, a morning here before taking the Balme gondola up is the right move. Café terrace at the base, views of the Tour glacier above. Step off the bus and you're there.</p>
+
+    <div class="yt-embed" onclick="loadYT(this,'nHqtSHHPXgE')" role="button" tabindex="0" aria-label="Watch La Vormaine area overview — click to play">
+      <img src="https://img.youtube.com/vi/nHqtSHHPXgE/maxresdefault.jpg" alt="La Vormaine ski area — Le Tour, Chamonix valley" loading="lazy" />
+      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="yt-badge">Area overview ↗</div>
+      <div class="yt-bar">
+        <div class="yt-bar-title">La Vormaine — ski area overview</div>
+        <div class="yt-bar-sub">Le Tour · Valley floor · Beginner progression zone</div>
+      </div>
+    </div>
 
     <!-- RUN 5 -->
     <div class="run-label"><span class="run-label-num">5</span><span class="run-label-text">Flégère · Blue</span></div>
@@ -514,6 +529,16 @@
       <p><strong>The green at Flégère is not the easy option.</strong> It has a narrow, steep, curving start that's been flagged repeatedly as harder than marked. Retour Flégère (blue) is actually the better choice for nervous skiers here. The green label is misleading.</p>
     </div>
 
+    <div class="yt-embed" onclick="loadYT(this,'0ixmU9wV_YE')" role="button" tabindex="0" aria-label="Watch Flégère area POV — click to play">
+      <img src="https://img.youtube.com/vi/0ixmU9wV_YE/maxresdefault.jpg" alt="Flégère ski area — Retour Flégère blue run, Chamonix" loading="lazy" />
+      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="yt-badge">Watch POV ↗</div>
+      <div class="yt-bar">
+        <div class="yt-bar-title">Flégère — Retour Flégère blue run</div>
+        <div class="yt-bar-sub">Flégère · South-facing · Morning laps</div>
+      </div>
+    </div>
+
     <!-- RUN 6 -->
     <div class="run-label"><span class="run-label-num">6</span><span class="run-label-text">Flégère · Blue</span></div>
     <h2 class="run-headline" id="chavanne">Chavanne</h2>
@@ -527,6 +552,16 @@
     <div class="pull-quote">
       <p>"Ski Chavanne and end at the bar at the bottom of the lift. One of the best après spots in the valley."</p>
       <cite>— Chamonix ski community</cite>
+    </div>
+
+    <div class="yt-embed" onclick="loadYT(this,'txGk4JRNkmg')" role="button" tabindex="0" aria-label="Watch Chavanne POV — click to play">
+      <img src="https://img.youtube.com/vi/txGk4JRNkmg/maxresdefault.jpg" alt="Chavanne blue run — Flégère, Chamonix" loading="lazy" />
+      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="yt-badge">Watch POV ↗</div>
+      <div class="yt-bar">
+        <div class="yt-bar-title">Chavanne — mid-mountain blue, Flégère</div>
+        <div class="yt-bar-sub">Flégère · Afternoon run · Bar at the bottom</div>
+      </div>
     </div>
 
     <!-- RUN 7 -->
