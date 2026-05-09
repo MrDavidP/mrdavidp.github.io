@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose your handle · HoodTip</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://upload-widget.cloudinary.com/global/all.js" async></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --cream:#f7f4ef;--cream2:#efeae1;--ink:#1a1816;--ink2:#2a2925;
+      --muted:#6b6560;--rule:#d9d2c6;--red:#b5322a;
+      --green:#2d6a4f;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Barlow',system-ui,sans-serif;
+      --cond:'Barlow Condensed',system-ui,sans-serif;
+      --max:1360px;--gutter:32px;
+    }
+    html,body{height:100%}
+    body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(rgba(26,24,22,0.025) 1px,transparent 1px);background-size:3px 3px;opacity:.5;mix-blend-mode:multiply}
+    a{color:inherit;text-decoration:none}
+
+    /* NAV */
+    nav{padding:0 var(--gutter);border-bottom:1.5px solid var(--ink);background:var(--cream);position:sticky;top:0;z-index:100}
+    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;height:54px}
+    .nav-logo{display:inline-flex;align-items:center;gap:14px;border:1.5px solid var(--ink);padding:7px 14px;color:var(--ink);background:var(--cream);transition:background .15s}
+    .nav-logo:hover{background:var(--cream2)}
+    .nav-logo-word{font-family:var(--serif);font-weight:700;font-size:1.4rem;letter-spacing:-.02em;line-height:1}
+    .nav-logo-word em{font-style:italic;font-weight:500}
+    .nav-logo-tag{font-family:var(--cond);font-weight:500;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;border-left:1.5px solid var(--ink);padding-left:12px}
+    .nav-logo-tag b{color:var(--red)}
+
+    /* MAIN */
+    main{flex:1;display:flex;align-items:center;justify-content:center;padding:3rem var(--gutter)}
+
+    /* STEPS */
+    .onboard{max-width:520px;width:100%}
+
+    /* Step indicator */
+    .steps-bar{display:flex;gap:6px;margin-bottom:2.5rem}
+    .step-dot{height:3px;flex:1;background:var(--rule);transition:background .3s}
+    .step-dot.done{background:var(--ink)}
+    .step-dot.active{background:var(--red)}
+
+    .step{display:none}
+    .step.active{display:block}
+
+    .step-kicker{font-family:var(--cond);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem}
+    .step-headline{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:.6rem}
+    .step-headline em{font-style:italic}
+    .step-dek{font-family:var(--serif);font-style:italic;font-size:.98rem;color:var(--muted);line-height:1.6;margin-bottom:2rem;max-width:400px}
+
+    /* HANDLE INPUT */
+    .handle-wrap{position:relative;margin-bottom:.6rem}
+    .handle-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--muted);pointer-events:none;line-height:1}
+    .handle-input{width:100%;padding:14px 14px 14px 32px;font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--ink);background:var(--cream2);border:1.5px solid var(--rule);outline:none;transition:border-color .15s;line-height:1}
+    .handle-input:focus{border-color:var(--ink);background:var(--cream)}
+    .handle-input.valid{border-color:var(--green)}
+    .handle-input.invalid{border-color:var(--red)}
+    .handle-status{font-family:var(--cond);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;height:1.2rem;margin-bottom:1.25rem;transition:color .15s}
+    .handle-status.available{color:var(--green)}
+    .handle-status.taken{color:var(--red)}
+    .handle-status.checking{color:var(--muted)}
+    .handle-rules{font-family:var(--cond);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;line-height:1.8}
+
+    /* PHOTO UPLOAD */
+    .photo-upload-row{display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem}
+    .photo-preview{width:88px;height:88px;border:1.5px dashed var(--rule);background:var(--cream2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0;overflow:hidden;position:relative}
+    .photo-preview:hover{border-color:var(--ink);background:var(--cream)}
+    .photo-preview.has-photo{border-style:solid;border-color:var(--ink)}
+    .photo-preview img{width:100%;height:100%;object-fit:cover;display:block}
+    .photo-placeholder{font-family:var(--serif);font-size:2rem;font-weight:500;color:var(--muted);pointer-events:none}
+    .photo-actions{display:flex;flex-direction:column;gap:.5rem}
+    .photo-btn{font-family:var(--cond);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:8px 14px;cursor:pointer;transition:all .15s}
+    .photo-btn:hover{background:var(--ink);color:var(--cream)}
+    .photo-meta{font-family:var(--cond);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+    /* BIO */
+    .bio-field{margin-bottom:1.5rem}
+    .bio-label{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink);display:block;margin-bottom:.5rem}
+    .bio-input{width:100%;padding:12px 14px;font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.6;color:var(--muted);background:var(--cream2);border:1.5px solid var(--rule);resize:none;outline:none;transition:border-color .15s;min-height:88px}
+    .bio-input:focus{border-color:var(--ink);background:var(--cream)}
+    .bio-char{font-family:var(--cond);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:right;margin-top:.3rem}
+
+    /* NAME */
+    .name-field{margin-bottom:1.5rem}
+    .name-label{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink);display:block;margin-bottom:.5rem}
+    .name-input{width:100%;padding:12px 14px;font-family:var(--sans);font-size:1rem;color:var(--ink);background:var(--cream2);border:1.5px solid var(--rule);outline:none;transition:border-color .15s}
+    .name-input:focus{border-color:var(--ink);background:var(--cream)}
+
+    /* BUTTONS */
+    .btn-primary{width:100%;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:15px;border:none;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:.6rem}
+    .btn-primary:hover{background:var(--red)}
+    .btn-primary:disabled{background:var(--muted);cursor:not-allowed}
+    .btn-skip{width:100%;background:transparent;color:var(--muted);font-family:var(--cond);font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:10px;border:none;cursor:pointer;margin-top:.5rem;transition:color .15s}
+    .btn-skip:hover{color:var(--ink)}
+
+    /* ERROR / AUTH STATE */
+    .auth-gate{text-align:center;padding:2rem 0}
+    .auth-gate p{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);margin-bottom:1.25rem}
+    .auth-gate a{font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:12px 24px;display:inline-block;transition:background .15s}
+    .auth-gate a:hover{background:var(--red)}
+
+    /* COMPLETE STATE */
+    .complete{text-align:center;padding:2rem 0}
+    .complete-icon{font-size:3rem;margin-bottom:1rem;display:block}
+    .complete h2{font-family:var(--serif);font-size:2rem;font-weight:400;margin-bottom:.5rem}
+    .complete h2 em{font-style:italic}
+    .complete p{font-family:var(--serif);font-style:italic;font-size:.98rem;color:var(--muted);margin-bottom:1.5rem}
+    .complete a{font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:12px 24px;display:inline-block;transition:background .15s}
+    .complete a:hover{background:var(--red)}
+
+    /* FOOTER */
+    footer{border-top:2px solid var(--red);background:var(--ink)}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:46px}
+    .footer-logo{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--cream)}
+    .footer-logo em{font-style:italic;font-weight:400}
+    .footer-logo .dot{color:var(--red)}
+    .footer-back{font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,244,239,.4);transition:color .15s}
+    .footer-back:hover{color:var(--cream)}
+
+    @media(max-width:540px){
+      :root{--gutter:20px}
+      .nav-logo-tag{display:none}
+      .step-headline{font-size:1.6rem}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-word">Hood<em>Tip</em></span>
+      <span class="nav-logo-tag">Only the <b>good</b> stuff</span>
+    </a>
+  </div>
+</nav>
+
+<main>
+  <div class="onboard" id="onboard">
+
+    <!-- AUTH GATE — shown if not logged in -->
+    <div class="auth-gate" id="authGate" style="display:none">
+      <p>You need to sign in first to claim your handle.</p>
+      <a href="login.html">Sign in with Google &rarr;</a>
+    </div>
+
+    <!-- ALREADY HAS PROFILE — redirect in progress -->
+    <div class="auth-gate" id="alreadyHasProfile" style="display:none">
+      <p>You already have a HoodTip profile. Taking you there now&hellip;</p>
+    </div>
+
+    <!-- STEP PROGRESS BAR -->
+    <div class="steps-bar" id="stepsBar" style="display:none">
+      <div class="step-dot active" id="dot1"></div>
+      <div class="step-dot" id="dot2"></div>
+      <div class="step-dot" id="dot3"></div>
+    </div>
+
+    <!-- STEP 1: HANDLE -->
+    <div class="step active" id="step1" style="display:none">
+      <div class="step-kicker">Step 1 of 3</div>
+      <h1 class="step-headline">Pick your<br><em>handle.</em></h1>
+      <p class="step-dek">This is your permanent HoodTip address. Choose something you'll be happy sending to people.</p>
+
+      <div class="handle-wrap">
+        <span class="handle-prefix">@</span>
+        <input class="handle-input" type="text" id="handleInput" placeholder="yourhandle" maxlength="30" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+      </div>
+      <div class="handle-status" id="handleStatus"></div>
+      <div class="handle-rules">3–30 characters · letters, numbers, underscores only · no spaces</div>
+
+      <button class="btn-primary" id="btnStep1" disabled>
+        Claim this handle &rarr;
+      </button>
+    </div>
+
+    <!-- STEP 2: PHOTO + NAME -->
+    <div class="step" id="step2" style="display:none">
+      <div class="step-kicker">Step 2 of 3</div>
+      <h1 class="step-headline">Put a face<br><em>to the name.</em></h1>
+      <p class="step-dek">Every recommendation on HoodTip has a real person attached. This is yours.</p>
+
+      <div class="name-field">
+        <label class="name-label" for="nameInput">Your name</label>
+        <input class="name-input" type="text" id="nameInput" placeholder="e.g. Dave" maxlength="60" autocomplete="name" />
+      </div>
+
+      <div class="photo-upload-row">
+        <div class="photo-preview" id="photoPreview" role="button" tabindex="0" aria-label="Upload profile photo">
+          <span class="photo-placeholder" id="photoPlaceholder">+</span>
+          <img id="photoImg" src="" alt="" style="display:none" />
+        </div>
+        <div class="photo-actions">
+          <button type="button" class="photo-btn" id="photoBtnUpload">Add a photo</button>
+          <div class="photo-meta" id="photoMeta">jpg, png · up to 10mb</div>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="btnStep2">
+        Continue &rarr;
+      </button>
+      <button class="btn-skip" id="btnSkip2">Skip for now</button>
+    </div>
+
+    <!-- STEP 3: BIO -->
+    <div class="step" id="step3" style="display:none">
+      <div class="step-kicker">Step 3 of 3</div>
+      <h1 class="step-headline">One line<br><em>about you.</em></h1>
+      <p class="step-dek">Where you're based. What you're into. Keep it short — this goes on your public profile.</p>
+
+      <div class="bio-field">
+        <label class="bio-label" for="bioInput">Your bio</label>
+        <textarea class="bio-input" id="bioInput" placeholder="Geneva-based. Always hunting good fish and proper pubs." maxlength="200" rows="3"></textarea>
+        <div class="bio-char" id="bioChar">0 / 200</div>
+      </div>
+
+      <button class="btn-primary" id="btnStep3">
+        Finish &rarr; Go to my profile
+      </button>
+      <button class="btn-skip" id="btnSkip3">Skip for now</button>
+    </div>
+
+    <!-- COMPLETE -->
+    <div class="complete" id="stepComplete" style="display:none">
+      <span class="complete-icon">✓</span>
+      <h2>You're on HoodTip.<br><em>Welcome.</em></h2>
+      <p>Your profile is live. Add your first tip whenever you're ready.</p>
+      <a id="profileLink" href="#">See your profile &rarr;</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+    <a href="index.html" class="footer-back">&larr; Back to HoodTip</a>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var SUPABASE_URL = 'https://lgyjsqwnicbbcqsfpuop.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWpzcXduaWNiYmNxc2ZwdW9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNDUzMTEsImV4cCI6MjA5MzgyMTMxMX0.lUsEAtYNG5OaIGfbdpedKEImjPw_eIzt69oIjrmHhvQ';
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  var currentUser = null;
+  var chosenHandle = '';
+  var photoUrl = '';
+  var checkTimeout = null;
+
+  // ── AUTH CHECK ──────────────────────────────────────────
+  sb.auth.getSession().then(function(ref) {
+    var session = ref.data.session;
+    if (!session || !session.user) {
+      document.getElementById('authGate').style.display = 'block';
+      return;
+    }
+    currentUser = session.user;
+
+    // Pre-fill name from Google
+    var meta = currentUser.user_metadata || {};
+    var googleName = meta.full_name || meta.name || '';
+    if (googleName) document.getElementById('nameInput').value = googleName;
+
+    // Check if they already have a profile
+    sb.from('contributors').select('handle').eq('user_id', currentUser.id).single().then(function(ref) {
+      if (ref.data && ref.data.handle) {
+        // Already has profile — redirect
+        document.getElementById('alreadyHasProfile').style.display = 'block';
+        setTimeout(function() {
+          window.location.href = 'profile.html?handle=' + encodeURIComponent(ref.data.handle);
+        }, 1500);
+        return;
+      }
+      // New user — show the flow
+      document.getElementById('stepsBar').style.display = 'flex';
+      showStep(1);
+    });
+  });
+
+  function showStep(n) {
+    document.querySelectorAll('.step').forEach(function(s) { s.style.display = 'none'; });
+    var el = document.getElementById('step' + n);
+    if (el) { el.style.display = 'block'; }
+
+    // Update dots
+    [1,2,3].forEach(function(i) {
+      var dot = document.getElementById('dot' + i);
+      if (!dot) return;
+      dot.className = 'step-dot' + (i < n ? ' done' : i === n ? ' active' : '');
+    });
+
+    if (n === 1) document.getElementById('handleInput').focus();
+  }
+
+  // ── STEP 1: HANDLE ──────────────────────────────────────
+  var handleInput = document.getElementById('handleInput');
+  var handleStatus = document.getElementById('handleStatus');
+  var btnStep1 = document.getElementById('btnStep1');
+
+  handleInput.addEventListener('input', function() {
+    var val = handleInput.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
+    handleInput.value = val;
+    btnStep1.disabled = true;
+    handleInput.className = 'handle-input';
+    handleStatus.textContent = '';
+    handleStatus.className = 'handle-status';
+
+    if (!val) return;
+    if (val.length < 3) {
+      handleStatus.textContent = 'Too short — minimum 3 characters';
+      handleStatus.className = 'handle-status taken';
+      handleInput.className = 'handle-input invalid';
+      return;
+    }
+
+    handleStatus.textContent = 'Checking\u2026';
+    handleStatus.className = 'handle-status checking';
+
+    clearTimeout(checkTimeout);
+    checkTimeout = setTimeout(function() {
+      sb.from('contributors').select('handle').eq('handle', val).single().then(function(ref) {
+        if (ref.data) {
+          handleStatus.textContent = '@' + val + ' is taken — try another';
+          handleStatus.className = 'handle-status taken';
+          handleInput.className = 'handle-input invalid';
+          btnStep1.disabled = true;
+        } else {
+          handleStatus.textContent = '@' + val + ' is available \u2713';
+          handleStatus.className = 'handle-status available';
+          handleInput.className = 'handle-input valid';
+          btnStep1.disabled = false;
+        }
+      });
+    }, 450);
+  });
+
+  btnStep1.addEventListener('click', function() {
+    chosenHandle = handleInput.value.toLowerCase().trim();
+    if (!chosenHandle || chosenHandle.length < 3) return;
+    showStep(2);
+  });
+
+  // ── STEP 2: PHOTO + NAME ────────────────────────────────
+  var photoPreview = document.getElementById('photoPreview');
+  var photoImg = document.getElementById('photoImg');
+  var photoPlaceholder = document.getElementById('photoPlaceholder');
+  var photoMeta = document.getElementById('photoMeta');
+
+  function openPhotoWidget() {
+    if (typeof cloudinary === 'undefined') {
+      setTimeout(openPhotoWidget, 300); return;
+    }
+    cloudinary.createUploadWidget({
+      cloudName: 'dq9newmhl', uploadPreset: 'jykjigyw',
+      multiple: false, maxFiles: 1,
+      cropping: true, croppingAspectRatio: 1,
+      showSkipCropButton: false,
+      sources: ['local','camera'],
+      clientAllowedFormats: ['image'],
+      maxImageFileSize: 10000000,
+      folder: 'profile-photos',
+      theme: 'minimal', showPoweredBy: false
+    }, function(err, result) {
+      if (err) { console.error(err); return; }
+      if (result && result.event === 'success') {
+        photoUrl = result.info.secure_url;
+        photoImg.src = photoUrl;
+        photoImg.style.display = 'block';
+        photoPlaceholder.style.display = 'none';
+        photoPreview.classList.add('has-photo');
+        document.getElementById('photoBtnUpload').textContent = 'Replace';
+        photoMeta.textContent = 'Looking good.';
+      }
+    }).open();
+  }
+
+  photoPreview.addEventListener('click', openPhotoWidget);
+  photoPreview.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPhotoWidget(); }
+  });
+  document.getElementById('photoBtnUpload').addEventListener('click', openPhotoWidget);
+
+  document.getElementById('btnStep2').addEventListener('click', function() {
+    showStep(3);
+  });
+  document.getElementById('btnSkip2').addEventListener('click', function() {
+    showStep(3);
+  });
+
+  // ── STEP 3: BIO ─────────────────────────────────────────
+  var bioInput = document.getElementById('bioInput');
+  var bioChar = document.getElementById('bioChar');
+  bioInput.addEventListener('input', function() {
+    bioChar.textContent = bioInput.value.length + ' / 200';
+  });
+
+  function saveAndFinish(bio) {
+    var name = document.getElementById('nameInput').value.trim() || chosenHandle;
+    var meta = currentUser.user_metadata || {};
+    var finalPhoto = photoUrl || meta.avatar_url || meta.picture || '';
+
+    sb.from('contributors').insert({
+      user_id: currentUser.id,
+      handle: chosenHandle,
+      name: name,
+      bio: bio || '',
+      photo_url: finalPhoto
+    }).then(function(ref) {
+      if (ref.error) {
+        alert('Error saving profile: ' + ref.error.message);
+        return;
+      }
+      // Show complete state
+      document.querySelectorAll('.step').forEach(function(s) { s.style.display = 'none'; });
+      document.getElementById('stepsBar').style.display = 'none';
+      document.getElementById('stepComplete').style.display = 'block';
+      document.getElementById('profileLink').href = 'profile.html?handle=' + encodeURIComponent(chosenHandle);
+
+      // Auto-redirect after 2.5s
+      setTimeout(function() {
+        window.location.href = 'profile.html?handle=' + encodeURIComponent(chosenHandle);
+      }, 2500);
+    });
+  }
+
+  document.getElementById('btnStep3').addEventListener('click', function() {
+    saveAndFinish(bioInput.value.trim());
+  });
+  document.getElementById('btnSkip3').addEventListener('click', function() {
+    saveAndFinish('');
+  });
+
+  // Enter key on handle input
+  handleInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !btnStep1.disabled) btnStep1.click();
+  });
+
+})();
+</script>
+
+</body>
+</html>
