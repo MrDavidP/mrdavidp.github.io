@@ -1423,17 +1423,6 @@
   </div>
 </div>
 
-<!-- ==================== CONTRAST STRIP ==================== -->
-<div style="border-bottom:1.5px solid var(--ink);background:var(--ink);padding:2.5rem var(--gutter);">
-  <div style="max-width:var(--max);margin:0 auto;">
-    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:400;line-height:1.25;letter-spacing:-.015em;color:rgba(247,244,239,.45);">
-      TripAdvisor gives you the crowd.
-      Google gives you SEO.
-      <span style="color:var(--cream);font-style:italic;">HoodTip gives you Dave &mdash; or whoever you trust.</span>
-    </p>
-  </div>
-</div>
-
 <!-- ==================== COVER STORY HERO ==================== -->
 <div class="cover">
   <div class="cover-inner">
@@ -1514,35 +1503,54 @@
     </div>
 
     <div class="rules-right">
-      <div class="rules-list">
-        <div class="rule-item">
-          <div class="rule-num">01</div>
-          <div>
-            <div class="rule-text">Every tip has a <em>name</em> attached.</div>
-            <div class="rule-text-sub">Not a username. Not an algorithm. A person you can click on and trust.</div>
+      <div style="display:flex;flex-direction:column;gap:.75rem;">
+
+        <a href="profile.html?handle=dave" style="display:block;text-decoration:none;color:var(--ink);border:1.5px solid var(--ink);background:var(--cream);padding:1.25rem 1.5rem;transition:background .15s;" onmouseover="this.style.background='var(--cream2)'" onmouseout="this.style.background='var(--cream)'">
+          <div style="display:flex;align-items:center;gap:.85rem;margin-bottom:.75rem;">
+            <img src="bongojoe-rhone-light.jpg" alt="Dave" style="width:44px;height:44px;object-fit:cover;object-position:center top;border:1px solid var(--rule);flex-shrink:0;" />
+            <div>
+              <div style="font-family:var(--serif);font-size:1.1rem;font-weight:500;line-height:1;">Dave</div>
+              <div style="font-family:var(--cond);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px;">@dave &middot; Geneva &middot; Founding contributor</div>
+            </div>
+            <span style="font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-left:auto;border-bottom:1px solid var(--red);padding-bottom:1px;">82 tips &rarr;</span>
           </div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-num">02</div>
-          <div>
-            <div class="rule-text">If you didn't love it, <em>don't write about it.</em></div>
-            <div class="rule-text-sub">HoodTip is positive-only. We leave the complaining to everyone else.</div>
+          <p style="font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--muted);line-height:1.55;margin-bottom:.75rem;">Meeting people, making videos. Live in Geneva.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem;">
+            <span style="font-family:var(--cond);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:3px 8px;">Natural wine</span>
+            <span style="font-family:var(--cond);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:3px 8px;">Proper pubs</span>
+            <span style="font-family:var(--cond);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:3px 8px;">Hotels worth it</span>
+            <span style="font-family:var(--cond);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:3px 8px;">Waterfront bars</span>
           </div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-num">03</div>
-          <div>
-            <div class="rule-text">Three sentences. A few photos. <em>One permanent link.</em></div>
-            <div class="rule-text-sub">Send the basics. We turn it into a polished page with your name on it.</div>
+        </a>
+
+        <a href="profile-lee.html" style="display:block;text-decoration:none;color:var(--ink);border:1.5px solid var(--rule);background:var(--cream);padding:1.25rem 1.5rem;transition:background .15s;" onmouseover="this.style.background='var(--cream2)'" onmouseout="this.style.background='var(--cream)'">
+          <div style="display:flex;align-items:center;gap:.85rem;margin-bottom:.65rem;">
+            <div style="width:44px;height:44px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--cream);flex-shrink:0;">L</div>
+            <div>
+              <div style="font-family:var(--serif);font-size:1.1rem;font-weight:500;line-height:1;">Lee Avnit</div>
+              <div style="font-family:var(--cond);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px;">@lee &middot; Zurich &middot; Contributor</div>
+            </div>
+            <span style="font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:auto;border-bottom:1px solid var(--rule);padding-bottom:1px;">Tips &rarr;</span>
           </div>
-        </div>
-        <div class="rule-item">
-          <div class="rule-num">04</div>
-          <div>
-            <div class="rule-text">Tips accumulate into <em>your taste profile.</em></div>
-            <div class="rule-text-sub">A permanent record of the things that bring you joy — visible to anyone who asks.</div>
+          <p style="font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--muted);line-height:1.5;">Knows where to eat in every city he&rsquo;s been to.</p>
+        </a>
+
+        <a href="profile-foodfiend.html" style="display:block;text-decoration:none;color:var(--ink);border:1.5px solid var(--rule);background:var(--cream);padding:1.25rem 1.5rem;transition:background .15s;" onmouseover="this.style.background='var(--cream2)'" onmouseout="this.style.background='var(--cream)'">
+          <div style="display:flex;align-items:center;gap:.85rem;">
+            <div style="width:44px;height:44px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--cream);flex-shrink:0;">f</div>
+            <div>
+              <div style="font-family:var(--serif);font-size:1.1rem;font-weight:500;line-height:1;">foodfiend</div>
+              <div style="font-family:var(--cond);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px;">@foodfiend &middot; Tel Aviv &middot; Contributor</div>
+            </div>
+            <span style="font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-left:auto;border-bottom:1px solid var(--rule);padding-bottom:1px;">Tips &rarr;</span>
           </div>
-        </div>
+        </a>
+
+        <a href="login.html" style="display:block;text-decoration:none;color:var(--cream);border:1.5px solid var(--ink);background:var(--ink);padding:1rem 1.5rem;transition:background .15s;text-align:center;" onmouseover="this.style.background='var(--red)';this.style.borderColor='var(--red)'" onmouseout="this.style.background='var(--ink)';this.style.borderColor='var(--ink)'">
+          <div style="font-family:var(--cond);font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;">+ Add your profile &rarr;</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:.82rem;color:rgba(247,244,239,.55);margin-top:.25rem;">Your taste. Your name. Your permanent page.</div>
+        </a>
+
       </div>
     </div>
   </div>
