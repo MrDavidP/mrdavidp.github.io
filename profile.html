@@ -11,7 +11,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HL9EJDL2YS"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HL9EJDL2YS');</script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="https://upload-widget.cloudinary.com/global/all.js" async></script>
+  <script src="hoodtip-uploader.js"></script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--cream:#f7f4ef;--cream2:#efeae1;--ink:#1a1816;--ink2:#2a2925;--muted:#6b6560;--muted2:#8a8378;--rule:#d9d2c6;--rule-soft:#e8e2d6;--red:#b5322a;--red-deep:#8f2821;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Barlow',system-ui,sans-serif;--cond:'Barlow Condensed',system-ui,sans-serif;--max:1360px;--gutter:32px}
@@ -578,24 +578,25 @@
 
   // PHOTO EDIT
   document.getElementById('photoEditBtn').addEventListener('click', function() {
-    if (typeof cloudinary === 'undefined') { alert('Photo uploader still loading, try again in a moment.'); return; }
-    cloudinary.createUploadWidget({
-      cloudName: 'dq9newmhl', uploadPreset: 'jykjigyw',
-      multiple: false, maxFiles: 1, cropping: true, croppingAspectRatio: 1,
-      showSkipCropButton: false, sources: ['local','camera'],
-      clientAllowedFormats: ['image'], maxImageFileSize: 10000000,
-      folder: 'profile-photos', theme: 'minimal', showPoweredBy: false
-    }, function(err, result) {
-      if (err) { console.error(err); return; }
-      if (result && result.event === 'success') {
-        var url = result.info.secure_url;
+    var tmp = document.createElement('div');
+    tmp.style.display = 'none';
+    document.body.appendChild(tmp);
+    var uploader = HoodTipUploader.single({
+      target: tmp,
+      onUpload: function(url) {
+        if (!url) return;
         sb.from('contributors').update({ photo_url: url }).eq('id', contributor.id).then(function(ref) {
           if (ref.error) { alert('Error saving photo.'); return; }
           contributor.photo_url = url;
-          document.getElementById('profilePhoto').src = url;
+          var img = document.getElementById('profilePhoto');
+          img.src = url; img.alt = contributor.name; img.style.display = 'block';
+          document.getElementById('profilePhotoPlaceholder').style.display = 'none';
+          document.body.removeChild(tmp);
         });
       }
-    }).open();
+    });
+    // Trigger file picker immediately
+    tmp.querySelector('input[type=file]').click();
   });
 
 })();

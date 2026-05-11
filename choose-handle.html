@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="https://upload-widget.cloudinary.com/global/all.js" async></script>
+  <script src="hoodtip-uploader.js"></script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -193,16 +193,7 @@
         <input class="name-input" type="text" id="nameInput" placeholder="e.g. Dave" maxlength="60" autocomplete="name" />
       </div>
 
-      <div class="photo-upload-row">
-        <div class="photo-preview" id="photoPreview" role="button" tabindex="0" aria-label="Upload profile photo">
-          <span class="photo-placeholder" id="photoPlaceholder">+</span>
-          <img id="photoImg" src="" alt="" style="display:none" />
-        </div>
-        <div class="photo-actions">
-          <button type="button" class="photo-btn" id="photoBtnUpload">Add a photo</button>
-          <div class="photo-meta" id="photoMeta">jpg, png · up to 10mb</div>
-        </div>
-      </div>
+      <div id="chooseHandlePhotoMount"></div>
 
       <button class="btn-primary" id="btnStep2">
         Continue &rarr;
@@ -351,48 +342,16 @@
   });
 
   // ── STEP 2: PHOTO + NAME ────────────────────────────────
-  var photoPreview = document.getElementById('photoPreview');
-  var photoImg = document.getElementById('photoImg');
-  var photoPlaceholder = document.getElementById('photoPlaceholder');
-  var photoMeta = document.getElementById('photoMeta');
-
-  function openPhotoWidget() {
-    if (typeof cloudinary === 'undefined') {
-      setTimeout(openPhotoWidget, 300); return;
-    }
-    cloudinary.createUploadWidget({
-      cloudName: 'dq9newmhl', uploadPreset: 'jykjigyw',
-      multiple: false, maxFiles: 1,
-      cropping: true, croppingAspectRatio: 1,
-      showSkipCropButton: false,
-      sources: ['local','camera'],
-      clientAllowedFormats: ['image'],
-      maxImageFileSize: 10000000,
-      folder: 'profile-photos',
-      theme: 'minimal', showPoweredBy: false
-    }, function(err, result) {
-      if (err) { console.error(err); return; }
-      if (result && result.event === 'success') {
-        photoUrl = result.info.secure_url;
-        photoImg.src = photoUrl;
-        photoImg.style.display = 'block';
-        photoPlaceholder.style.display = 'none';
-        photoPreview.classList.add('has-photo');
-        document.getElementById('photoBtnUpload').textContent = 'Replace';
-        photoMeta.textContent = 'Looking good.';
-      }
-    }).open();
-  }
-
-  photoPreview.addEventListener('click', openPhotoWidget);
-  photoPreview.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPhotoWidget(); }
-  });
-  document.getElementById('photoBtnUpload').addEventListener('click', openPhotoWidget);
-
-  document.getElementById('btnStep2').addEventListener('click', function() {
-    showStep(3);
-  });
+  // Photo uploader — Step 2
+  var _handleUploader = null;
+  (function() {
+    var mount = document.getElementById('chooseHandlePhotoMount');
+    if (!mount) return;
+    _handleUploader = HoodTipUploader.single({
+      target: mount,
+      onUpload: function(url) { photoUrl = url; }
+    });
+  })();
   document.getElementById('btnSkip2').addEventListener('click', function() {
     showStep(3);
   });

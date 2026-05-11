@@ -27,8 +27,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
 
-<!-- Cloudinary upload widget -->
-<script src="https://upload-widget.cloudinary.com/global/all.js" async></script>
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1151,6 +1149,7 @@
   }
 </style>
   <script src="https://static.memberstack.com/scripts/v1/memberstack.js" data-memberstack-id="pk_2e0df449834d9c2427fc"></script>
+<script src="hoodtip-uploader.js"></script>
 </head>
 <body>
 
@@ -1260,17 +1259,7 @@
           <div class="field full">
             <label class="field-label">Your photo <em style="font-style:italic;color:var(--muted);font-weight:400;">(optional)</em></label>
             <div class="field-hint">Looks much better with a face attached. Square crop. Skip it and we'll show your initial in a circle.</div>
-            <div class="profile-upload-row">
-              <div class="profile-upload-preview" id="profilePhotoPreview" role="button" tabindex="0" aria-label="Upload profile photo">
-                <span class="profile-upload-placeholder" id="profilePhotoPlaceholder">+</span>
-                <img id="profilePhotoImg" src="" alt="" style="display:none" />
-              </div>
-              <div class="profile-upload-actions">
-                <button type="button" class="profile-upload-btn" id="profileUploadBtn">Add a photo</button>
-                <button type="button" class="profile-upload-remove" id="profileRemoveBtn">Remove</button>
-                <div class="profile-upload-meta" id="profileUploadMeta">jpg, png, heic · up to 10mb</div>
-              </div>
-            </div>
+            <div id="profileUploaderMount"></div>
             <input type="hidden" name="profile_photo_url" id="profilePhotoUrl" />
           </div>
         </div>
@@ -1334,12 +1323,7 @@
           </div>
           <div class="field full">
             <div class="field-hint">3–6 is plenty. Phone shots are fine. Landscape beats portrait.</div>
-            <div class="upload-wrap" id="uploadBtn" role="button" tabindex="0" aria-label="Upload photos">
-              <div class="upload-icon">+</div>
-              <div class="upload-main">Drop photos here</div>
-              <div class="upload-sub">or click to browse — up to 8 · jpg, png, heic</div>
-            </div>
-            <div class="thumbs" id="thumbs"></div>
+            <div id="tipUploaderMount"></div>
             <input type="hidden" name="photo_urls" id="photoUrls" />
           </div>
         </div>
@@ -1709,202 +1693,59 @@
   updateCount();
 
   // ============ PROFILE PHOTO UPLOAD ============
-  const profilePreviewEl = $('profilePhotoPreview');
-  const profileImgEl = $('profilePhotoImg');
-  const profilePlaceholderEl = $('profilePhotoPlaceholder');
-  const profileUrlEl = $('profilePhotoUrl');
-  const profileUploadBtnEl = $('profileUploadBtn');
-  const profileRemoveBtnEl = $('profileRemoveBtn');
-  const profileMetaEl = $('profileUploadMeta');
-  let profilePhotoUrl = '';
-
-  function applyProfilePhoto(url) {
-    window.applyProfilePhoto = applyProfilePhoto; // expose for session pre-fill
-    if (window._pendingAvatarUrl && url === undefined) {
-      url = window._pendingAvatarUrl;
-      window._pendingAvatarUrl = null;
-    }
-    // On first call with no arg, just register and return
-    if (url === undefined) return;
-    profilePhotoUrl = url || '';
-    profileUrlEl.value = profilePhotoUrl;
-    if (profilePhotoUrl) {
-      profileImgEl.src = profilePhotoUrl;
-      profileImgEl.style.display = 'block';
-      profilePlaceholderEl.style.display = 'none';
-      profilePreviewEl.classList.add('has-photo');
-      profileRemoveBtnEl.classList.add('show');
-      profileUploadBtnEl.textContent = 'Replace';
-      profileMetaEl.textContent = 'Looking sharp.';
-      // Mirror onto live preview avatar
-      p.avatarImg.src = profilePhotoUrl;
-      p.avatarImg.style.display = 'block';
-      p.avatarInitial.style.display = 'none';
-      p.avatar.classList.add('has-photo');
-    } else {
-      profileImgEl.src = '';
-      profileImgEl.style.display = 'none';
-      profilePlaceholderEl.style.display = 'block';
-      profilePreviewEl.classList.remove('has-photo');
-      profileRemoveBtnEl.classList.remove('show');
-      profileUploadBtnEl.textContent = 'Add a photo';
-      profileMetaEl.textContent = 'jpg, png, heic · up to 10mb';
-      p.avatarImg.src = '';
-      p.avatarImg.style.display = 'none';
-      p.avatarInitial.style.display = 'block';
-      p.avatar.classList.remove('has-photo');
-    }
-  }
-
-  // Apply any pending avatar from session pre-fill
-  applyProfilePhoto(window._pendingAvatarUrl || undefined);
-  if (window._pendingAvatarUrl) window._pendingAvatarUrl = null;
-
-  let profileWidget = null;
-  function openProfileWidget() {
-    if (typeof cloudinary === 'undefined') {
-      setTimeout(openProfileWidget, 300);
-      return;
-    }
-    if (!profileWidget) {
-      profileWidget = cloudinary.createUploadWidget(
-        {
-          cloudName: 'dq9newmhl',
-          uploadPreset: 'jykjigyw',
-          multiple: false,
-          maxFiles: 1,
-          cropping: true,
-          croppingAspectRatio: 1,
-          croppingShowDimensions: false,
-          croppingDefaultSelectionRatio: 1,
-          showSkipCropButton: false,
-          sources: ['local', 'camera'],
-          clientAllowedFormats: ['image'],
-          maxImageFileSize: 10000000,
-          theme: 'minimal',
-          showPoweredBy: false,
-          folder: 'profile-photos',
-        },
-        (err, result) => {
-          if (err) {
-            console.error(err);
-            return;
-          }
-          if (result && result.event === 'success') {
-            applyProfilePhoto(result.info.secure_url);
-          }
-        }
-      );
-    }
-    profileWidget.open();
-  }
-
-  profileUploadBtnEl.addEventListener('click', openProfileWidget);
-  profilePreviewEl.addEventListener('click', openProfileWidget);
-  profilePreviewEl.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      openProfileWidget();
-    }
-  });
-  profileRemoveBtnEl.addEventListener('click', () => applyProfilePhoto(''));
+  var _profileUploader = null;
+  // Initialise after DOM ready — mount into profileUploaderMount
+  (function() {
+    var mount = document.getElementById('profileUploaderMount');
+    if (!mount) return;
+    _profileUploader = HoodTipUploader.single({
+      target: mount,
+      onUpload: function(url) {
+        $('profilePhotoUrl').value = url;
+        // expose for Supabase pre-fill
+        window.applyProfilePhoto = function(u) { if (_profileUploader) _profileUploader.setUrl(u); };
+        if (window._pendingAvatarUrl) { _profileUploader.setUrl(window._pendingAvatarUrl); window._pendingAvatarUrl = null; }
+      }
+    });
+    // expose applyProfilePhoto globally for session pre-fill
+    window.applyProfilePhoto = function(url) { _profileUploader.setUrl(url); $('profilePhotoUrl').value = url; };
+    if (window._pendingAvatarUrl) { window.applyProfilePhoto(window._pendingAvatarUrl); window._pendingAvatarUrl = null; }
+  })();
 
   // ============ PHOTO UPLOAD ============
-  const thumbsEl = $('thumbs');
-  const photoUrlsEl = $('photoUrls');
-  const uploadBtn = $('uploadBtn');
-  let uploadedPhotos = [];
-
-  function renderThumbs() {
-    thumbsEl.innerHTML = '';
-    uploadedPhotos.forEach((url, i) => {
-      const t = document.createElement('div');
-      t.className = 'thumb';
-      const img = document.createElement('img');
-      img.src = url;
-      img.alt = '';
-      img.loading = 'lazy';
-      t.appendChild(img);
-
-      if (i === 0) {
-        const badge = document.createElement('span');
-        badge.className = 'thumb-badge';
-        badge.textContent = 'Hero';
-        t.appendChild(badge);
-      }
-
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'thumb-remove';
-      btn.dataset.i = String(i);
-      btn.title = 'Remove';
-      btn.setAttribute('aria-label', 'Remove photo ' + (i + 1));
-      btn.textContent = '×';
-      t.appendChild(btn);
-
-      thumbsEl.appendChild(t);
-    });
-    photoUrlsEl.value = uploadedPhotos.join('\n');
-
-    if (uploadedPhotos[0]) {
-      p.hero.src = uploadedPhotos[0];
-      p.hero.style.display = 'block';
-      p.heroPlaceholder.style.display = 'none';
-    } else {
-      p.hero.style.display = 'none';
-      p.hero.src = '';
-      p.heroPlaceholder.style.display = 'flex';
-    }
-  }
-
-  thumbsEl.addEventListener('click', (e) => {
-    const btn = e.target.closest('.thumb-remove');
-    if (!btn) return;
-    const i = Number(btn.dataset.i);
-    uploadedPhotos.splice(i, 1);
-    renderThumbs();
-  });
-
-  function openWidget() {
-    if (typeof cloudinary === 'undefined') {
-      setTimeout(openWidget, 300);
-      return;
-    }
-    const widget = cloudinary.createUploadWidget(
-      {
-        cloudName: 'dq9newmhl',
-        uploadPreset: 'jykjigyw',
-        multiple: true,
-        maxFiles: 8,
-        sources: ['local', 'camera', 'url'],
-        clientAllowedFormats: ['image'],
-        maxImageFileSize: 15000000,
-        theme: 'minimal',
-        showPoweredBy: false,
+  var _tipUploader = null;
+  (function() {
+    var mount = document.getElementById('tipUploaderMount');
+    if (!mount) return;
+    _tipUploader = HoodTipUploader.multi({
+      target: mount,
+      maxFiles: 8,
+      onUpload: function(url) {
+        // update preview hero
+        if (p && p.hero) {
+          p.hero.src = url;
+          p.hero.style.display = 'block';
+          if (p.heroPlaceholder) p.heroPlaceholder.style.display = 'none';
+        }
       },
-      (err, result) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        if (result && result.event === 'success') {
-          if (uploadedPhotos.length >= 8) return;
-          uploadedPhotos.push(result.info.secure_url);
-          renderThumbs();
+      onChange: function(urls) {
+        $('photoUrls').value = urls.join('\n');
+        // update preview hero with first photo
+        if (p && p.hero) {
+          if (urls[0]) {
+            p.hero.src = urls[0];
+            p.hero.style.display = 'block';
+            if (p.heroPlaceholder) p.heroPlaceholder.style.display = 'none';
+          } else {
+            p.hero.style.display = 'none';
+            if (p.heroPlaceholder) p.heroPlaceholder.style.display = 'flex';
+          }
         }
       }
-    );
-    widget.open();
-  }
-  uploadBtn.addEventListener('click', openWidget);
-  uploadBtn.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      openWidget();
-    }
-  });
+    });
+  })();
 
-  // ============ FORM SUBMIT (Formspree AJAX) ============
+  // ============ FORM SUBMIT// ============ FORM SUBMIT (Formspree AJAX) ============
   const form = $('tipForm');
   const submitBtn = $('submitBtn');
   const banner = $('successBanner');
@@ -1936,9 +1777,9 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
         document.getElementById('successBanner').scrollIntoView({ behavior: 'smooth', block: 'start' });
         form.reset();
-        uploadedPhotos = [];
-        renderThumbs();
-        applyProfilePhoto('');
+        if (_tipUploader) _tipUploader.clear();
+        if (_profileUploader) _profileUploader.setUrl('');
+        $('profilePhotoUrl').value = '';
         updateCount();
         updateByline();
         // Re-trigger the bindings to show placeholders
