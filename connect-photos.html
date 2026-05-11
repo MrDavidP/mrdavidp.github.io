@@ -356,29 +356,83 @@
   });
 
   // ── OAUTH CALLBACK ───────────────────────────────────────────────
+  // Check for PKCE auth code (?code=...) — returned by authorization_code flow
+  var urlParams = new URLSearchParams(window.location.search);
+  var authCode = urlParams.get('code');
+  if (authCode) {
+    history.replaceState(null, '', window.location.pathname);
+    handleAuthCode(authCode);
+  }
+  // Legacy implicit flow fallback
   var fragment = new URLSearchParams(window.location.hash.slice(1));
   var urlToken = fragment.get('access_token');
   if (urlToken) {
     history.replaceState(null, '', window.location.pathname);
     accessToken = urlToken;
-    showLoading('Connecting to Google Photos\u2026', 10);
+    showLoading('Connecting to Google Photos…', 10);
     loadPhotosPage(null);
   }
 
   // ── CONNECT BUTTON ───────────────────────────────────────────────
-  document.getElementById('btnConnect').addEventListener('click', function() {
-    var scope = [
-      'https://www.googleapis.com/auth/photoslibrary.readonly'
-    ].join(' ');
-    window.location.href =
-      'https://accounts.google.com/o/oauth2/v2/auth'
-      + '?client_id=' + encodeURIComponent(CLIENT_ID)
-      + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
-      + '&response_type=token'
-      + '&scope=' + encodeURIComponent(scope)
-      + '&prompt=consent'
-      + '&include_granted_scopes=false';
+  // PKCE helper functions
+  function base64url(buf) {
+    return btoa(String.fromCharCode.apply(null, new Uint8Array(buf)))
+      .replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+  }
+  async function generatePKCE() {
+    var verifier = base64url(crypto.getRandomValues(new Uint8Array(32)));
+    var hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
+    var challenge = base64url(hash);
+    return { verifier: verifier, challenge: challenge };
+  }
+
+  document.getElementById('btnConnect').addEventListener('click', async function() {
+    var pkce = await generatePKCE();
+    sessionStorage.setItem('ht_pkce_verifier', pkce.verifier);
+
+    var params = new URLSearchParams({
+      client_id: CLIENT_ID,
+      redirect_uri: REDIRECT_URI,
+      response_type: 'code',
+      scope: 'https://www.googleapis.com/auth/photoslibrary.readonly',
+      code_challenge: pkce.challenge,
+      code_challenge_method: 'S256',
+      access_type: 'online',
+      prompt: 'consent',
+      include_granted_scopes: 'false'
+    });
+    window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' + params.toString();
   });
+
+  // Handle PKCE auth code callback
+  async function handleAuthCode(code) {
+    var verifier = sessionStorage.getItem('ht_pkce_verifier');
+    if (!verifier) { showErr('Auth session expired. Please try again.'); return; }
+    sessionStorage.removeItem('ht_pkce_verifier');
+
+    showLoading('Connecting to Google Photos…', 20);
+
+    // Exchange code for token via Google's token endpoint
+    var resp = await fetch('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        client_id: CLIENT_ID,
+        redirect_uri: REDIRECT_URI,
+        grant_type: 'authorization_code',
+        code: code,
+        code_verifier: verifier
+      }).toString()
+    });
+    var data = await resp.json();
+    if (data.error) {
+      showErr('Token exchange failed: ' + data.error_description);
+      return;
+    }
+    accessToken = data.access_token;
+    setProgress(50);
+    loadPhotosPage(null);
+  }
 
   // ── LOAD PHOTOS FROM API ─────────────────────────────────────────
   function loadPhotosPage(pageToken) {
