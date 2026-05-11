@@ -1588,6 +1588,12 @@
     var session = ref.data.session;
     if (session && session.user) {
       showUserBar(session.user);
+      // Existing contributor? Send them to their profile instead
+      _supabase.from('contributors').select('handle').eq('user_id', session.user.id).single().then(function(r) {
+        if (r.data && r.data.handle) {
+          window.location.href = 'profile.html?handle=' + encodeURIComponent(r.data.handle);
+        }
+      });
     }
   });
 

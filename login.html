@@ -314,15 +314,10 @@
   function smartRedirect(user) {
     supabase.from('contributors').select('handle').eq('user_id', user.id).single().then(function(ref) {
       if (ref.data && ref.data.handle) {
-        // Existing contributor — go straight to add a tip
-        // Check if we were sent here from a specific destination
-        var dest = new URLSearchParams(window.location.search).get('dest');
-        if (dest === 'profile') {
-          window.location.href = 'profile.html?handle=' + encodeURIComponent(ref.data.handle);
-        } else {
-          window.location.href = 'profile-build.html';
-        }
+        // Existing contributor — always go to their profile
+        window.location.href = 'profile.html?handle=' + encodeURIComponent(ref.data.handle);
       } else {
+        // New user — create a handle first
         window.location.href = 'choose-handle.html';
       }
     });
