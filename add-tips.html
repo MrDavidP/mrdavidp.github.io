@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add tips · HoodTip</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="hoodtip-uploader.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --cream:#f7f4ef;--cream2:#efeae1;--ink:#1a1816;--ink2:#2a2925;
+      --muted:#6b6560;--rule:#d9d2c6;--red:#b5322a;--green:#2d6a4f;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Barlow',system-ui,sans-serif;
+      --cond:'Barlow Condensed',system-ui,sans-serif;
+      --max:1360px;--gutter:32px;
+    }
+    html,body{min-height:100%;background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(rgba(26,24,22,.025) 1px,transparent 1px);background-size:3px 3px;opacity:.5;mix-blend-mode:multiply}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* NAV */
+    nav{padding:0 var(--gutter);border-bottom:1.5px solid var(--ink);background:var(--cream);position:sticky;top:0;z-index:100}
+    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:54px}
+    .nav-logo{display:inline-flex;align-items:center;gap:14px;border:1.5px solid var(--ink);padding:7px 14px;background:var(--cream);transition:background .15s}
+    .nav-logo:hover{background:var(--cream2)}
+    .nav-logo-word{font-family:var(--serif);font-weight:700;font-size:1.4rem;letter-spacing:-.02em;line-height:1}
+    .nav-logo-word em{font-style:italic;font-weight:500}
+    .nav-logo-tag{font-family:var(--cond);font-weight:500;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;border-left:1.5px solid var(--ink);padding-left:12px}
+    .nav-logo-tag b{color:var(--red)}
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .nav-link{font-family:var(--cond);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .15s}
+    .nav-link:hover{color:var(--ink)}
+
+    /* HERO */
+    .page-hero{border-bottom:1.5px solid var(--ink);padding:3rem var(--gutter) 2.5rem}
+    .page-hero-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem}
+    .page-kicker{font-family:var(--cond);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:.85rem;display:flex;align-items:center;gap:10px}
+    .page-kicker::before{content:'';width:20px;height:1px;background:var(--red)}
+    .page-h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin-bottom:.5rem}
+    .page-h1 em{font-style:italic;color:var(--red)}
+    .page-dek{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--muted);line-height:1.6;max-width:560px}
+    .method-tabs{display:flex;gap:0;border:1.5px solid var(--ink)}
+    .method-tab{font-family:var(--cond);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;background:transparent;color:var(--muted);border:none;cursor:pointer;transition:all .15s;border-right:1px solid var(--rule)}
+    .method-tab:last-child{border-right:none}
+    .method-tab.active{background:var(--ink);color:var(--cream)}
+    .method-tab:hover:not(.active){background:var(--cream2);color:var(--ink)}
+
+    /* AUTH GATE */
+    .auth-gate{max-width:480px;margin:6rem auto;padding:0 var(--gutter);text-align:center}
+    .auth-gate p{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);margin-bottom:1.5rem}
+    .auth-gate a{display:inline-block;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:13px 26px;transition:background .15s}
+    .auth-gate a:hover{background:var(--red)}
+
+    /* MAIN LAYOUT */
+    .main-wrap{max-width:var(--max);margin:0 auto;padding:2.5rem var(--gutter) 4rem;display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start}
+
+    /* ── UPLOAD METHOD: DIRECT ───────────────── */
+    .method-panel{display:none}
+    .method-panel.active{display:block}
+
+    .upload-zone-wrap{margin-bottom:2rem}
+    .upload-zone-label{font-family:var(--cond);font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+
+    /* tip fields */
+    .field{margin-bottom:1.5rem}
+    .field-label{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink);display:block;margin-bottom:.4rem}
+    .field-hint{font-family:var(--cond);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+    .field input,.field select,.field textarea{width:100%;padding:11px 13px;font-family:var(--sans);font-size:.95rem;color:var(--ink);background:var(--cream2);border:1px solid var(--rule);outline:none;transition:border-color .15s;-webkit-appearance:none}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink);background:var(--cream)}
+    .field textarea{resize:vertical;min-height:80px;font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.6}
+    .field select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='none' stroke='%231a1816' stroke-width='1.2' d='M1 1l4 4 4-4'/></svg>");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px;cursor:pointer}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .char-count{font-family:var(--cond);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;margin-top:.3rem}
+
+    /* AI generating state */
+    .ai-generating{display:none;padding:1.5rem;border:1px solid var(--rule);background:var(--cream2);margin-bottom:1.5rem}
+    .ai-generating.show{display:block}
+    .ai-gen-label{font-family:var(--cond);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+    .ai-dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse-ai 1.2s ease-in-out infinite}
+    @keyframes pulse-ai{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+    .ai-gen-msg{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--muted)}
+
+    /* submit */
+    .submit-row{display:flex;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1.5px solid var(--ink);margin-top:2rem;flex-wrap:wrap}
+    .btn-submit{background:var(--red);color:var(--cream);font-family:var(--cond);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:14px 28px;border:none;cursor:pointer;transition:background .15s}
+    .btn-submit:hover{background:#8f2821}
+    .btn-submit:disabled{background:var(--muted);cursor:not-allowed}
+    .submit-note{font-family:var(--cond);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+
+    /* ── PREVIEW PANEL ───────────────────────── */
+    .preview-panel{position:sticky;top:74px}
+    .preview-label{font-family:var(--cond);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+    .preview-dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse-ai 1.8s ease-in-out infinite}
+    .tip-preview{border:1.5px solid var(--ink);background:var(--cream);box-shadow:8px 8px 0 var(--ink)}
+    .tp-img{aspect-ratio:4/3;background:var(--cream2);overflow:hidden;border-bottom:1px solid var(--rule);position:relative}
+    .tp-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .tp-img-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+    .tp-img-placeholder svg{width:28px;height:28px;stroke:var(--rule);fill:none;stroke-width:1.5}
+    .tp-img-placeholder span{font-family:var(--cond);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rule)}
+    .tp-body{padding:1.25rem 1.4rem .75rem}
+    .tp-cat{font-family:var(--cond);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:.35rem}
+    .tp-name{font-family:var(--serif);font-size:1.45rem;font-weight:500;line-height:1.1;letter-spacing:-.01em;margin-bottom:.3rem;color:var(--ink)}
+    .tp-name.empty{color:var(--muted);font-style:italic;font-weight:300;font-size:1.2rem}
+    .tp-hood{font-family:var(--cond);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem}
+    .tp-quote{border-left:2.5px solid var(--red);padding:3px 0 5px 14px}
+    .tp-quote p{font-family:var(--serif);font-style:italic;font-size:.98rem;line-height:1.45;color:var(--ink)}
+    .tp-quote.empty p{color:var(--muted);font-weight:300}
+    .tp-foot{border-top:1px solid var(--rule);padding:.75rem 1.4rem;display:flex;align-items:center;gap:.6rem;background:var(--cream2)}
+    .tp-foot-photo{width:26px;height:26px;border-radius:50%;object-fit:cover;border:1px solid var(--rule)}
+    .tp-foot-name{font-family:var(--cond);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .tp-foot-name b{color:var(--ink)}
+
+    /* ── LIVE TIPS LIST ─────────────────────── */
+    .live-tips{border-top:1.5px solid var(--ink);margin-top:3rem}
+    .live-tips-head{max-width:var(--max);margin:0 auto;padding:1.5rem var(--gutter) 1.25rem;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--rule)}
+    .live-tips-label{font-family:var(--cond);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+    .live-tips-link{font-family:var(--cond);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .15s}
+    .live-tips-link:hover{color:var(--ink)}
+    .live-tips-grid{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:repeat(4,1fr)}
+    .lt-card{border-right:1px solid var(--rule);padding-bottom:1.25rem;overflow:hidden}
+    .lt-card:last-child{border-right:none}
+    .lt-img{aspect-ratio:4/3;overflow:hidden;background:var(--cream2)}
+    .lt-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .lt-card:hover .lt-img img{transform:scale(1.04)}
+    .lt-body{padding:.85rem 1rem 0}
+    .lt-cat{font-family:var(--cond);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+    .lt-cat b{color:var(--red)}
+    .lt-name{font-family:var(--serif);font-size:1.05rem;font-weight:500;line-height:1.2}
+    .lt-city{font-family:var(--cond);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+
+    /* SUCCESS STATE */
+    .success-banner{display:none;background:var(--ink);color:var(--cream);border-bottom:2px solid var(--red);padding:2rem var(--gutter);text-align:center}
+    .success-banner.show{display:block}
+    .success-banner h2{font-family:var(--serif);font-size:1.8rem;font-weight:400;margin-bottom:.35rem}
+    .success-banner h2 em{font-style:italic;color:#e6d4d2}
+    .success-banner p{font-family:var(--serif);font-style:italic;font-size:.95rem;color:rgba(247,244,239,.65);margin-bottom:1.25rem}
+    .success-banner a{display:inline-block;background:var(--red);color:var(--cream);font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:12px 24px;transition:background .15s;margin:.4rem}
+    .success-banner a:hover{background:#8f2821}
+    .success-banner a.secondary{background:transparent;border:1px solid rgba(247,244,239,.3);color:rgba(247,244,239,.7)}
+    .success-banner a.secondary:hover{background:rgba(247,244,239,.1)}
+
+    /* FOOTER */
+    footer{border-top:2px solid var(--red);background:var(--ink);margin-top:4rem}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;height:46px;justify-content:space-between}
+    .footer-logo{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--cream)}
+    .footer-logo em{font-style:italic;font-weight:400}
+    .footer-logo .dot{color:var(--red)}
+
+    @media(max-width:900px){
+      .main-wrap{grid-template-columns:1fr;gap:2rem}
+      .preview-panel{position:static}
+      .live-tips-grid{grid-template-columns:1fr 1fr}
+      .lt-card:nth-child(2n){border-right:none}
+    }
+    @media(max-width:600px){
+      :root{--gutter:20px}
+      .nav-logo-tag{display:none}
+      .page-hero-inner{grid-template-columns:1fr}
+      .field-row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-word">Hood<em>Tip</em></span>
+      <span class="nav-logo-tag">Only the <b>good</b> stuff</span>
+    </a>
+    <div class="nav-right">
+      <a href="#" class="nav-link" id="navProfileLink">My profile</a>
+    </div>
+  </div>
+</nav>
+
+<!-- SUCCESS BANNER -->
+<div class="success-banner" id="successBanner">
+  <h2>Tip published. <em>It&rsquo;s live.</em></h2>
+  <p>Your tip is on your profile now. Add another or go see it.</p>
+  <a href="#" id="successProfileLink">See my profile &rarr;</a>
+  <a href="#" class="secondary" onclick="resetForm();return false;">Add another tip</a>
+</div>
+
+<!-- AUTH GATE -->
+<div class="auth-gate" id="authGate" style="display:none">
+  <p>Sign in to add tips to your HoodTip profile.</p>
+  <a href="login.html?dest=addtip">Sign in &rarr;</a>
+</div>
+
+<!-- PAGE CONTENT -->
+<div id="pageContent" style="display:none">
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <div class="page-kicker">Add a tip</div>
+        <h1 class="page-h1">Drop your photos.<br><em>We write the tip.</em></h1>
+        <p class="page-dek">Upload photos from a place you loved. Claude reads them and drafts the tip — you edit and publish. Or skip the AI and write it yourself.</p>
+      </div>
+      <div class="method-tabs">
+        <button class="method-tab active" data-method="upload" onclick="switchMethod('upload')">&#8679; Upload photos</button>
+        <button class="method-tab" data-method="google" onclick="switchMethod('google')">&#9742; Google Photos</button>
+        <button class="method-tab" data-method="manual" onclick="switchMethod('manual')">&#9998; Write manually</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-wrap">
+
+    <!-- LEFT: FORM -->
+    <div>
+
+      <!-- METHOD: UPLOAD -->
+      <div class="method-panel active" id="methodUpload">
+        <div class="upload-zone-label">Your photos from this place</div>
+        <div id="uploadMount"></div>
+        <input type="hidden" id="uploadedUrls" />
+
+        <div class="ai-generating" id="aiGenerating">
+          <div class="ai-gen-label"><div class="ai-dot"></div> Claude is reading your photos&hellip;</div>
+          <div class="ai-gen-msg" id="aiGenMsg">Looking at what you photographed and drafting a tip.</div>
+        </div>
+
+        <div id="uploadFields" style="display:none">
+          <div class="field">
+            <label class="field-label" for="u-place">Place name</label>
+            <input type="text" id="u-place" placeholder="e.g. Grand Hotel Belvedere" maxlength="100" />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="u-cat">Category</label>
+              <select id="u-cat">
+                <option value="">Pick one</option>
+                <option>Restaurant</option><option>Bar</option><option>Café</option>
+                <option>Hotel</option><option>Shop</option><option>Museum / Gallery</option>
+                <option>Walk / View</option><option>Beach / Swimming</option>
+                <option>Market</option><option>Travel</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="u-city">City</label>
+              <input type="text" id="u-city" placeholder="e.g. Geneva" maxlength="60" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="u-tip">Your tip</label>
+            <div class="field-hint">Edit what Claude wrote, or replace it entirely.</div>
+            <textarea id="u-tip" rows="4" placeholder="What made it worth tipping?" maxlength="280"></textarea>
+            <div class="char-count" id="u-tip-count">0 / 280</div>
+          </div>
+          <div class="submit-row">
+            <button class="btn-submit" id="btnUploadSubmit">Publish tip &rarr;</button>
+            <div class="submit-note">Goes live on your profile immediately.<br>You can edit it any time.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- METHOD: GOOGLE PHOTOS -->
+      <div class="method-panel" id="methodGoogle">
+        <p style="font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.65;">Connect your Google Photos library to pull photos from a trip — we&rsquo;ll find every place and build your tips automatically.</p>
+        <a href="connect-photos.html" style="display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:14px 26px;transition:background .15s;">
+          &#9742;&nbsp; Open Google Photos connection &rarr;
+        </a>
+      </div>
+
+      <!-- METHOD: MANUAL -->
+      <div class="method-panel" id="methodManual">
+        <div class="upload-zone-label">Photos (optional)</div>
+        <div id="manualUploadMount"></div>
+        <input type="hidden" id="manualUrls" />
+
+        <div class="field" style="margin-top:1.5rem">
+          <label class="field-label" for="m-place">Place name</label>
+          <input type="text" id="m-place" placeholder="e.g. Bains des Pâquis" maxlength="100" />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="m-cat">Category</label>
+            <select id="m-cat">
+              <option value="">Pick one</option>
+              <option>Restaurant</option><option>Bar</option><option>Café</option>
+              <option>Hotel</option><option>Shop</option><option>Museum / Gallery</option>
+              <option>Walk / View</option><option>Beach / Swimming</option>
+              <option>Market</option><option>Travel</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="m-city">City</label>
+            <input type="text" id="m-city" placeholder="e.g. Geneva" maxlength="60" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="m-hood">Neighbourhood <span style="font-style:normal;font-weight:300;color:var(--muted);font-size:.85rem;">(optional)</span></label>
+          <input type="text" id="m-hood" placeholder="e.g. Pâquis" maxlength="80" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="m-tip">Your tip</label>
+          <div class="field-hint">Three honest sentences. Pretend you're texting a friend.</div>
+          <textarea id="m-tip" rows="4" placeholder="Old bones, smart renovation. The wagyu bresaola will stop you cold. Go now." maxlength="280"></textarea>
+          <div class="char-count" id="m-tip-count">0 / 280</div>
+        </div>
+        <div class="submit-row">
+          <button class="btn-submit" id="btnManualSubmit">Publish tip &rarr;</button>
+          <div class="submit-note">Goes live on your profile immediately.<br>You can edit it any time.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: LIVE PREVIEW -->
+    <div class="preview-panel">
+      <div class="preview-label"><div class="preview-dot"></div> Live preview</div>
+      <div class="tip-preview">
+        <div class="tp-img" id="tpImg">
+          <img id="tpHeroImg" src="" alt="" style="display:none" />
+          <div class="tp-img-placeholder" id="tpPlaceholder">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>First photo appears here</span>
+          </div>
+        </div>
+        <div class="tp-body">
+          <div class="tp-cat" id="tpCat"></div>
+          <div class="tp-name empty" id="tpName">Place name</div>
+          <div class="tp-hood" id="tpHood"></div>
+          <div class="tp-quote empty" id="tpQuoteWrap">
+            <p id="tpQuote">Your tip appears here as you type&hellip;</p>
+          </div>
+        </div>
+        <div class="tp-foot">
+          <img class="tp-foot-photo" id="tpFootPhoto" src="" alt="" />
+          <div class="tp-foot-name">Tip by <b id="tpFootName">you</b></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LIVE TIPS -->
+<div class="live-tips" id="liveTipsSection" style="display:none">
+  <div class="live-tips-head">
+    <span class="live-tips-label" id="liveTipsLabel">Your tips</span>
+    <a href="#" class="live-tips-link" id="liveTipsProfileLink">See full profile &rarr;</a>
+  </div>
+  <div class="live-tips-grid" id="liveTipsGrid"></div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var SB_URL = 'https://lgyjsqwnicbbcqsfpuop.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWpzcXduaWNiYmNxc2ZwdW9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNDUzMTEsImV4cCI6MjA5MzgyMTMxMX0.lUsEAtYNG5OaIGfbdpedKEImjPw_eIzt69oIjrmHhvQ';
+  var sb = window.supabase.createClient(SB_URL, SB_KEY);
+
+  var currentUser = null;
+  var contributor = null;
+  var uploadedPhotoUrls = [];
+  var manualPhotoUrls = [];
+
+  // ── AUTH ─────────────────────────────────────────────────────────
+  sb.auth.getSession().then(function(ref) {
+    var session = ref.data.session;
+    if (!session || !session.user) {
+      document.getElementById('authGate').style.display = 'block';
+      return;
+    }
+    currentUser = session.user;
+
+    sb.from('contributors').select('*').eq('user_id', currentUser.id).single().then(function(r) {
+      if (!r.data) {
+        document.getElementById('authGate').style.display = 'block';
+        return;
+      }
+      contributor = r.data;
+      init();
+    });
+  });
+
+  function init() {
+    document.getElementById('pageContent').style.display = 'block';
+
+    var profileUrl = 'profile.html?handle=' + contributor.handle;
+    document.getElementById('navProfileLink').href = profileUrl;
+    document.getElementById('successProfileLink').href = profileUrl;
+    document.getElementById('liveTipsProfileLink').href = profileUrl;
+
+    // Set preview byline
+    if (contributor.photo_url) {
+      document.getElementById('tpFootPhoto').src = contributor.photo_url;
+    }
+    document.getElementById('tpFootName').textContent = contributor.name || contributor.handle;
+
+    // Init uploaders
+    window._uploadUploader = HoodTipUploader.multi({
+      target: document.getElementById('uploadMount'),
+      maxFiles: 8,
+      onUpload: function(url) {
+        // First photo — show in preview
+        if (uploadedPhotoUrls.length === 0) {
+          document.getElementById('tpHeroImg').src = url;
+          document.getElementById('tpHeroImg').style.display = 'block';
+          document.getElementById('tpPlaceholder').style.display = 'none';
+        }
+        uploadedPhotoUrls.push(url);
+        document.getElementById('uploadedUrls').value = uploadedPhotoUrls.join('\n');
+
+        // Once we have at least one photo, show fields and trigger AI
+        if (uploadedPhotoUrls.length === 1) {
+          document.getElementById('uploadFields').style.display = 'block';
+          generateAITip(url);
+        }
+      },
+      onChange: function(urls) {
+        uploadedPhotoUrls = urls;
+        document.getElementById('uploadedUrls').value = urls.join('\n');
+        if (urls[0]) {
+          document.getElementById('tpHeroImg').src = urls[0];
+          document.getElementById('tpHeroImg').style.display = 'block';
+          document.getElementById('tpPlaceholder').style.display = 'none';
+        } else {
+          document.getElementById('tpHeroImg').style.display = 'none';
+          document.getElementById('tpPlaceholder').style.display = 'flex';
+        }
+      }
+    });
+
+    window._manualUploader = HoodTipUploader.multi({
+      target: document.getElementById('manualUploadMount'),
+      maxFiles: 8,
+      onUpload: function(url) {
+        if (manualPhotoUrls.length === 0) {
+          document.getElementById('tpHeroImg').src = url;
+          document.getElementById('tpHeroImg').style.display = 'block';
+          document.getElementById('tpPlaceholder').style.display = 'none';
+        }
+        manualPhotoUrls.push(url);
+      },
+      onChange: function(urls) {
+        manualPhotoUrls = urls;
+        if (urls[0]) {
+          document.getElementById('tpHeroImg').src = urls[0];
+          document.getElementById('tpHeroImg').style.display = 'block';
+          document.getElementById('tpPlaceholder').style.display = 'none';
+        } else {
+          document.getElementById('tpHeroImg').style.display = 'none';
+          document.getElementById('tpPlaceholder').style.display = 'flex';
+        }
+      }
+    });
+
+    // Live preview bindings — upload method
+    bindPreview('u-place', 'tpName', 'Place name', false);
+    bindPreview('u-cat', 'tpCat', '', true);
+    bindPreview('u-city', 'tpHood', '', false);
+    bindPreviewTip('u-tip');
+
+    // Live preview bindings — manual method
+    bindPreview('m-place', 'tpName', 'Place name', false);
+    bindPreview('m-cat', 'tpCat', '', true);
+    bindPreview('m-city', 'tpHood', '', false);
+    bindPreviewTip('m-tip');
+
+    // Char counts
+    ['u-tip','m-tip'].forEach(function(id) {
+      var el = document.getElementById(id);
+      var count = document.getElementById(id + '-count');
+      if (el && count) el.addEventListener('input', function() { count.textContent = el.value.length + ' / 280'; });
+    });
+
+    // Load existing tips
+    loadExistingTips();
+  }
+
+  function bindPreview(srcId, tgtId, placeholder, isCategory) {
+    var src = document.getElementById(srcId);
+    var tgt = document.getElementById(tgtId);
+    if (!src || !tgt) return;
+    src.addEventListener('input', function() { updatePreviewField(src.value, tgt, placeholder, isCategory); });
+    src.addEventListener('change', function() { updatePreviewField(src.value, tgt, placeholder, isCategory); });
+  }
+
+  function updatePreviewField(val, tgt, placeholder, isCategory) {
+    if (val.trim()) {
+      tgt.textContent = isCategory ? val.toUpperCase() : val;
+      tgt.classList.remove('empty');
+    } else {
+      tgt.textContent = placeholder;
+      tgt.classList.add('empty');
+    }
+  }
+
+  function bindPreviewTip(srcId) {
+    var src = document.getElementById(srcId);
+    if (!src) return;
+    src.addEventListener('input', function() {
+      var val = src.value.trim();
+      var quote = document.getElementById('tpQuote');
+      var wrap = document.getElementById('tpQuoteWrap');
+      if (val) {
+        var first = val.split(/[.!?]/)[0];
+        quote.textContent = '\u201c' + first.trim() + '\u201d';
+        wrap.classList.remove('empty');
+      } else {
+        quote.textContent = 'Your tip appears here as you type\u2026';
+        wrap.classList.add('empty');
+      }
+    });
+  }
+
+  // ── AI TIP GENERATION ────────────────────────────────────────────
+  // ── AI TIP GENERATION (Gemini Vision — free tier) ───────────────
+  function generateAITip(photoUrl) {
+    var aiBox = document.getElementById('aiGenerating');
+    var aiMsg = document.getElementById('aiGenMsg');
+    aiBox.classList.add('show');
+    aiMsg.textContent = 'Reading your photo and drafting a tip…';
+
+    var GEMINI_KEY = 'AIzaSyCigQtmebn9M6yT_PUBcKoiOO1K5pEqOtM';
+    var GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
+
+    fetch(photoUrl)
+      .then(function(r) { return r.blob(); })
+      .then(function(blob) {
+        return new Promise(function(resolve) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            resolve({ b64: e.target.result.split(',')[1], mime: blob.type || 'image/jpeg' });
+          };
+          reader.readAsDataURL(blob);
+        });
+      })
+      .then(function(img) {
+        return fetch(GEMINI_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [
+              { inline_data: { mime_type: img.mime, data: img.b64 } },
+              { text: 'Look at this photo and write a HoodTip-style recommendation. Respond with JSON only, no markdown, no backticks. Format: {"place_name":"your best guess at the place type eg Rooftop bar or Mountain hotel","category":"one of: Restaurant, Bar, Cafe, Hotel, Shop, Museum / Gallery, Walk / View, Beach / Swimming, Market, Travel, Other","tip":"2-3 honest sentences first person past tense specific not generic under 200 chars"}' }
+            ]}],
+            generationConfig: { temperature: 0.7, maxOutputTokens: 300 }
+          })
+        });
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        aiBox.classList.remove('show');
+        try {
+          var text = data.candidates[0].content.parts[0].text;
+          var json = JSON.parse(text.replace(/```json|```/g,'').trim());
+          if (json.place_name) {
+            var el = document.getElementById('u-place');
+            if (el && !el.value) { el.value = json.place_name; updatePreviewField(json.place_name, document.getElementById('tpName'), 'Place name', false); }
+          }
+          if (json.category) {
+            var sel = document.getElementById('u-cat');
+            if (sel) { for (var i=0;i<sel.options.length;i++) { if (sel.options[i].text.toLowerCase()===json.category.toLowerCase()) { sel.selectedIndex=i; break; } } updatePreviewField(json.category, document.getElementById('tpCat'),'',true); }
+          }
+          if (json.tip) {
+            var ta = document.getElementById('u-tip');
+            if (ta && !ta.value) { ta.value = json.tip; document.getElementById('u-tip-count').textContent = json.tip.length+' / 280'; ta.dispatchEvent(new Event('input')); }
+          }
+          document.getElementById('uploadFields').style.display = 'block';
+        } catch(e) { console.error('Gemini parse error:', e, data); document.getElementById('uploadFields').style.display='block'; }
+      })
+      .catch(function(e) { aiBox.classList.remove('show'); console.error('Gemini error:', e); document.getElementById('uploadFields').style.display='block'; });
+  }
+
+    })
+    .catch(function(e) {
+      aiBox.classList.remove('show');
+      console.error('AI error:', e);
+      document.getElementById('uploadFields').style.display = 'block';
+    });
+  }
+
+  // ── SUBMIT ───────────────────────────────────────────────────────
+  function submitTip(place, category, city, hood, tip, photos, source) {
+    if (!place.trim()) { alert('Please add a place name.'); return; }
+    if (!tip.trim()) { alert('Please add a tip — even one line.'); return; }
+    if (!contributor) { alert('You need to be signed in.'); return; }
+
+    return sb.from('tips').insert({
+      contributor_id: contributor.id,
+      handle: contributor.handle,
+      place_name: place.trim(),
+      category: category || null,
+      neighbourhood: hood || null,
+      city: city || null,
+      tip_text: tip.trim(),
+      photo_urls: photos.join('\n'),
+      status: 'live',
+      source: source || 'manual'
+    }).then(function(ref) {
+      if (ref.error) { alert('Error saving tip: ' + ref.error.message); return; }
+      showSuccess();
+      loadExistingTips();
+    });
+  }
+
+  document.getElementById('btnUploadSubmit').addEventListener('click', function() {
+    submitTip(
+      document.getElementById('u-place').value,
+      document.getElementById('u-cat').value,
+      document.getElementById('u-city').value,
+      '',
+      document.getElementById('u-tip').value,
+      uploadedPhotoUrls,
+      'ai_upload'
+    );
+  });
+
+  document.getElementById('btnManualSubmit').addEventListener('click', function() {
+    submitTip(
+      document.getElementById('m-place').value,
+      document.getElementById('m-cat').value,
+      document.getElementById('m-city').value,
+      document.getElementById('m-hood').value,
+      document.getElementById('m-tip').value,
+      manualPhotoUrls,
+      'manual'
+    );
+  });
+
+  // ── LOAD EXISTING TIPS ───────────────────────────────────────────
+  function loadExistingTips() {
+    if (!contributor) return;
+    sb.from('tips').select('*').eq('handle', contributor.handle).eq('status','live').order('created_at', { ascending: false }).limit(8).then(function(ref) {
+      if (ref.error || !ref.data || ref.data.length === 0) return;
+      var section = document.getElementById('liveTipsSection');
+      var grid = document.getElementById('liveTipsGrid');
+      document.getElementById('liveTipsLabel').textContent = contributor.name + '\u2019s tips (' + ref.data.length + ')';
+      section.style.display = 'block';
+      grid.innerHTML = '';
+      ref.data.slice(0,4).forEach(function(tip) {
+        var photos = tip.photo_urls ? tip.photo_urls.split('\n').filter(Boolean) : [];
+        var card = document.createElement('div');
+        card.className = 'lt-card';
+        card.innerHTML = '<div class="lt-img">' +
+          (photos[0] ? '<img src="' + photos[0] + '=w400-h300-c" alt="" loading="lazy" />' : '') +
+          '</div><div class="lt-body">' +
+          '<div class="lt-cat">' + (tip.category ? '<b>' + tip.category + '</b>' : '') + (tip.city ? ' &middot; ' + tip.city : '') + '</div>' +
+          '<div class="lt-name">' + tip.place_name + '</div>' +
+          '</div>';
+        grid.appendChild(card);
+      });
+    });
+  }
+
+  // ── UI HELPERS ───────────────────────────────────────────────────
+  function showSuccess() {
+    document.getElementById('successBanner').classList.add('show');
+    document.getElementById('successBanner').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  window.resetForm = function() {
+    document.getElementById('successBanner').classList.remove('show');
+    ['u-place','u-cat','u-city','u-tip','m-place','m-cat','m-city','m-hood','m-tip'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    uploadedPhotoUrls = [];
+    manualPhotoUrls = [];
+    if (window._uploadUploader) window._uploadUploader.clear();
+    if (window._manualUploader) window._manualUploader.clear();
+    document.getElementById('uploadFields').style.display = 'none';
+    document.getElementById('tpHeroImg').style.display = 'none';
+    document.getElementById('tpPlaceholder').style.display = 'flex';
+    document.getElementById('tpName').textContent = 'Place name';
+    document.getElementById('tpName').classList.add('empty');
+    document.getElementById('tpCat').textContent = '';
+    document.getElementById('tpHood').textContent = '';
+    document.getElementById('tpQuote').textContent = 'Your tip appears here as you type\u2026';
+    document.getElementById('tpQuoteWrap').classList.add('empty');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  window.switchMethod = function(method) {
+    document.querySelectorAll('.method-tab').forEach(function(t) {
+      t.classList.toggle('active', t.dataset.method === method);
+    });
+    document.querySelectorAll('.method-panel').forEach(function(p) {
+      p.classList.remove('active');
+    });
+    var panel = document.getElementById('method' + method.charAt(0).toUpperCase() + method.slice(1));
+    if (panel) panel.classList.add('active');
+
+    // Reset preview hero
+    document.getElementById('tpHeroImg').style.display = 'none';
+    document.getElementById('tpPlaceholder').style.display = 'flex';
+  };
+
+})();
+</script>
+
+</body>
+</html>
