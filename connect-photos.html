@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect your Google Photos · HoodTip</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --cream:#f7f4ef;--cream2:#efeae1;--ink:#1a1816;--ink2:#2a2925;
+      --muted:#6b6560;--rule:#d9d2c6;--red:#b5322a;--green:#2d6a4f;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --sans:'Barlow',system-ui,sans-serif;
+      --cond:'Barlow Condensed',system-ui,sans-serif;
+      --max:1360px;--gutter:32px;
+    }
+    html,body{min-height:100%;background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(rgba(26,24,22,0.025) 1px,transparent 1px);background-size:3px 3px;opacity:.5;mix-blend-mode:multiply}
+    a{color:inherit;text-decoration:none}
+
+    /* NAV */
+    nav{padding:0 var(--gutter);border-bottom:1.5px solid var(--ink);background:var(--cream);position:sticky;top:0;z-index:100}
+    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:54px}
+    .nav-logo{display:inline-flex;align-items:center;gap:14px;border:1.5px solid var(--ink);padding:7px 14px;background:var(--cream);transition:background .15s}
+    .nav-logo:hover{background:var(--cream2)}
+    .nav-logo-word{font-family:var(--serif);font-weight:700;font-size:1.4rem;letter-spacing:-.02em;line-height:1}
+    .nav-logo-word em{font-style:italic;font-weight:500}
+    .nav-logo-tag{font-family:var(--cond);font-weight:500;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;border-left:1.5px solid var(--ink);padding-left:12px}
+    .nav-logo-tag b{color:var(--red)}
+    .nav-right a{font-family:var(--cond);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .15s}
+    .nav-right a:hover{color:var(--ink)}
+
+    /* HERO — connect state */
+    .hero{border-bottom:1.5px solid var(--ink);padding:5rem var(--gutter) 4rem;text-align:center}
+    .hero-inner{max-width:600px;margin:0 auto}
+    .hero-kicker{font-family:var(--cond);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:10px}
+    .hero-kicker::before,.hero-kicker::after{content:'';width:24px;height:1px;background:var(--red)}
+    .hero-headline{font-family:var(--serif);font-size:clamp(2rem,5vw,3.4rem);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin-bottom:.75rem}
+    .hero-headline em{font-style:italic;color:var(--red)}
+    .hero-dek{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);line-height:1.65;margin-bottom:2.5rem;max-width:460px;margin-left:auto;margin-right:auto}
+    .btn-connect{display:inline-flex;align-items:center;gap:.75rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:15px 28px;border:none;cursor:pointer;transition:background .15s}
+    .btn-connect:hover{background:var(--red)}
+    .btn-connect svg{width:20px;height:20px;flex-shrink:0}
+    .hero-note{font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:1.25rem;line-height:1.7}
+
+    /* LOADING STATE */
+    .loading-state{padding:6rem var(--gutter);text-align:center;display:none}
+    .loading-state p{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--muted)}
+    .spinner{width:32px;height:32px;border:2px solid var(--rule);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1.5rem}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* PHOTO GRID STATE */
+    .photos-state{display:none}
+    .photos-header{border-bottom:1.5px solid var(--ink);padding:2rem var(--gutter)}
+    .photos-header-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .photos-header-left h1{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:.35rem}
+    .photos-header-left h1 em{font-style:italic}
+    .photos-header-left p{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--muted)}
+    .photos-header-right{display:flex;gap:.75rem;align-items:center;flex-shrink:0}
+    .selected-count{font-family:var(--cond);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    .selected-count b{color:var(--red)}
+    .btn-generate{background:var(--red);color:var(--cream);font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border:none;cursor:pointer;transition:background .15s;display:none}
+    .btn-generate:hover{background:#8f2821}
+    .btn-generate.show{display:block}
+
+    /* FILTER BAR */
+    .filter-bar{border-bottom:1px solid var(--rule);padding:.75rem var(--gutter);background:var(--cream2)}
+    .filter-bar-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+    .filter-tag{font-family:var(--cond);font-size:.58rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--rule);background:var(--cream);color:var(--muted);cursor:pointer;transition:all .15s}
+    .filter-tag:hover,.filter-tag.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+    .filter-lbl{font-family:var(--cond);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:.25rem}
+
+    /* PHOTO GRID */
+    .photo-grid-wrap{max-width:var(--max);margin:0 auto;padding:var(--gutter)}
+    .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px}
+    .photo-item{position:relative;aspect-ratio:1/1;overflow:hidden;cursor:pointer;background:var(--cream2)}
+    .photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s,filter .3s}
+    .photo-item:hover img{transform:scale(1.05)}
+    .photo-item.selected img{filter:brightness(.65)}
+    .photo-item.selected::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:1.8rem;color:var(--cream);pointer-events:none}
+    .photo-item .photo-loc{position:absolute;bottom:0;left:0;right:0;padding:.4rem .5rem;background:linear-gradient(transparent,rgba(15,12,10,.7));font-family:var(--cond);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,244,239,.85);pointer-events:none;opacity:0;transition:opacity .2s}
+    .photo-item:hover .photo-loc{opacity:1}
+    .photo-item.selected .photo-loc{opacity:1}
+    .load-more-wrap{text-align:center;padding:2rem 0}
+    .btn-load-more{font-family:var(--cond);font-size:.64rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:10px 22px;cursor:pointer;transition:all .15s}
+    .btn-load-more:hover{background:var(--ink);color:var(--cream)}
+
+    /* TASTE PROFILE STATE */
+    .profile-state{display:none;padding:4rem var(--gutter)}
+    .profile-state-inner{max-width:var(--max);margin:0 auto}
+    .profile-state h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin-bottom:.5rem}
+    .profile-state h2 em{font-style:italic;color:var(--red)}
+    .profile-state-sub{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--muted);margin-bottom:2.5rem}
+    .clusters-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+    .cluster-card{border:1.5px solid var(--ink);background:var(--cream);overflow:hidden}
+    .cluster-photos{display:grid;grid-template-columns:1fr 1fr;height:140px}
+    .cluster-photo{overflow:hidden;background:var(--cream2)}
+    .cluster-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .cluster-photo:first-child{grid-column:1/-1;height:100px}
+    .cluster-body{padding:1rem 1.25rem 1.25rem}
+    .cluster-loc{font-family:var(--cond);font-size:.58rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem}
+    .cluster-name{font-family:var(--serif);font-size:1.35rem;font-weight:500;line-height:1.1;letter-spacing:-.01em;margin-bottom:.35rem}
+    .cluster-meta{font-family:var(--cond);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem}
+    .cluster-tip-input{width:100%;padding:8px 10px;font-family:var(--serif);font-style:italic;font-size:.92rem;line-height:1.5;color:var(--muted);background:var(--cream2);border:1px solid var(--rule);resize:none;outline:none;min-height:64px;transition:border-color .15s}
+    .cluster-tip-input:focus{border-color:var(--ink);color:var(--ink)}
+    .cluster-tip-input::placeholder{color:#b0a89e}
+    .cluster-actions{display:flex;gap:.5rem;margin-top:.65rem}
+    .btn-tip-submit{flex:1;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:9px;border:none;cursor:pointer;transition:background .15s}
+    .btn-tip-submit:hover{background:var(--red)}
+    .btn-tip-skip{background:transparent;border:1px solid var(--rule);color:var(--muted);font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;cursor:pointer;transition:all .15s}
+    .btn-tip-skip:hover{border-color:var(--ink);color:var(--ink)}
+    .cluster-card.submitted{opacity:.5;pointer-events:none}
+    .cluster-card.submitted .cluster-body::after{content:'Submitted ✓';display:block;font-family:var(--cond);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-top:.5rem}
+
+    /* ERROR */
+    .error-msg{background:rgba(181,50,42,.08);border-left:3px solid var(--red);padding:1rem 1.5rem;margin:2rem var(--gutter);font-family:var(--cond);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);display:none}
+    .error-msg.show{display:block}
+
+    /* FOOTER */
+    footer{border-top:2px solid var(--red);background:var(--ink);margin-top:4rem}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:46px}
+    .footer-logo{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--cream)}
+    .footer-logo em{font-style:italic;font-weight:400}
+    .footer-logo .dot{color:var(--red)}
+
+    @media(max-width:640px){
+      :root{--gutter:20px}
+      .nav-logo-tag{display:none}
+      .photo-grid{grid-template-columns:repeat(3,1fr);gap:3px}
+      .clusters-grid{grid-template-columns:1fr}
+      .photos-header-inner{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-word">Hood<em>Tip</em></span>
+      <span class="nav-logo-tag">Only the <b>good</b> stuff</span>
+    </a>
+    <div class="nav-right">
+      <a href="profile.html?handle=dave">My profile</a>
+    </div>
+  </div>
+</nav>
+
+<!-- CONNECT STATE -->
+<div id="connectState">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">New</div>
+      <h1 class="hero-headline">Your photos already know<br><em>your taste.</em></h1>
+      <p class="hero-dek">Connect your Google Photos and we'll find the places you've actually been — and turn them into your HoodTip taste profile.</p>
+      <button class="btn-connect" id="btnConnect">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Connect Google Photos
+      </button>
+      <div class="hero-note">
+        Read-only access · We never store your photos · Only you see this<br>
+        You choose which places become tips
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOADING STATE -->
+<div class="loading-state" id="loadingState">
+  <div class="spinner"></div>
+  <p id="loadingMsg">Loading your photos&hellip;</p>
+</div>
+
+<!-- ERROR -->
+<div class="error-msg" id="errorMsg"></div>
+
+<!-- PHOTOS STATE -->
+<div class="photos-state" id="photosState">
+  <div class="photos-header">
+    <div class="photos-header-inner">
+      <div class="photos-header-left">
+        <h1>Your photos. <em>Pick the ones worth tipping.</em></h1>
+        <p id="photoCount">Loading&hellip;</p>
+      </div>
+      <div class="photos-header-right">
+        <div class="selected-count" id="selectedCount" style="display:none"><b id="selectedNum">0</b> selected</div>
+        <button class="btn-generate" id="btnGenerate">Build my taste profile &rarr;</button>
+      </div>
+    </div>
+  </div>
+  <div class="filter-bar">
+    <div class="filter-bar-inner">
+      <span class="filter-lbl">Filter:</span>
+      <button class="filter-tag active" data-filter="all">All</button>
+      <button class="filter-tag" data-filter="food">Food &amp; Drink</button>
+      <button class="filter-tag" data-filter="places">Places</button>
+      <button class="filter-tag" data-filter="travel">Travel</button>
+    </div>
+  </div>
+  <div class="photo-grid-wrap">
+    <div class="photo-grid" id="photoGrid"></div>
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+      <button class="btn-load-more" id="btnLoadMore">Load more photos</button>
+    </div>
+  </div>
+</div>
+
+<!-- TASTE PROFILE STATE -->
+<div class="profile-state" id="profileState">
+  <div class="profile-state-inner">
+    <h2>Your taste profile<br><em>is taking shape.</em></h2>
+    <p class="profile-state-sub">These are the places we found in your photos. Add one line to each — or skip the ones you don't want to tip.</p>
+    <div class="clusters-grid" id="clustersGrid"></div>
+    <div style="border-top:1px solid var(--rule);padding-top:1.5rem;text-align:center">
+      <a href="#" id="viewProfileLink" style="font-family:var(--cond);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:12px 24px;display:inline-block;transition:background .15s">See my profile &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Hood<em>Tip<span class="dot">.</span></em></div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var CLIENT_ID = '284485708300-u019r2hvem112eaubfaira56ndcee5rm.apps.googleusercontent.com';
+  var REDIRECT_URI = 'https://hoodtip.com/connect-photos.html';
+  var SCOPE = 'https://www.googleapis.com/auth/photoslibrary.readonly';
+  var SUPABASE_URL = 'https://lgyjsqwnicbbcqsfpuop.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWpzcXduaWNiYmNxc2ZwdW9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNDUzMTEsImV4cCI6MjA5MzgyMTMxMX0.lUsEAtYNG5OaIGfbdpedKEImjPw_eIzt69oIjrmHhvQ';
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  var accessToken = null;
+  var allPhotos = [];
+  var selectedPhotos = [];
+  var nextPageToken = null;
+  var currentUser = null;
+
+  // ── CHECK FOR OAUTH CALLBACK ─────────────────────────────────────
+  var hash = window.location.hash;
+  var params = new URLSearchParams(hash.replace('#',''));
+  var urlToken = params.get('access_token');
+
+  if (urlToken) {
+    // Clean up URL
+    history.replaceState(null, '', window.location.pathname);
+    accessToken = urlToken;
+    showLoading('Loading your photos\u2026');
+    loadPhotos();
+  }
+
+  // ── AUTH STATE ───────────────────────────────────────────────────
+  sb.auth.getSession().then(function(ref) {
+    if (ref.data.session && ref.data.session.user) {
+      currentUser = ref.data.session.user;
+      var meta = currentUser.user_metadata || {};
+      var handle = meta.handle || '';
+      // Update profile link
+      sb.from('contributors').select('handle').eq('user_id', currentUser.id).single().then(function(r) {
+        if (r.data) document.getElementById('viewProfileLink').href = 'profile.html?handle=' + r.data.handle;
+      });
+    }
+  });
+
+  // ── CONNECT BUTTON ───────────────────────────────────────────────
+  document.getElementById('btnConnect').addEventListener('click', function() {
+    var authUrl = 'https://accounts.google.com/o/oauth2/v2/auth'
+      + '?client_id=' + encodeURIComponent(CLIENT_ID)
+      + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
+      + '&response_type=token'
+      + '&scope=' + encodeURIComponent(SCOPE)
+      + '&prompt=consent';
+    window.location.href = authUrl;
+  });
+
+  // ── LOAD PHOTOS ──────────────────────────────────────────────────
+  function loadPhotos(pageToken) {
+    var body = { pageSize: 50 };
+    if (pageToken) body.pageToken = pageToken;
+
+    fetch('https://photoslibrary.googleapis.com/v1/mediaItems:search', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + accessToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data.error) { showError(data.error.message); return; }
+
+      var items = data.mediaItems || [];
+      // Only photos (not videos)
+      items = items.filter(function(i) { return i.mimeType && i.mimeType.startsWith('image/'); });
+
+      allPhotos = allPhotos.concat(items);
+      nextPageToken = data.nextPageToken || null;
+
+      hideLoading();
+      showPhotos();
+    })
+    .catch(function(e) { showError('Failed to load photos: ' + e.message); });
+  }
+
+  // ── RENDER PHOTOS ────────────────────────────────────────────────
+  function showPhotos() {
+    document.getElementById('connectState').style.display = 'none';
+    document.getElementById('photosState').style.display = 'block';
+    document.getElementById('photoCount').textContent =
+      allPhotos.length + ' photos loaded — tap any to select for your taste profile';
+
+    var grid = document.getElementById('photoGrid');
+    grid.innerHTML = '';
+
+    allPhotos.forEach(function(photo, i) {
+      var item = document.createElement('div');
+      item.className = 'photo-item';
+      item.dataset.id = photo.id;
+      item.dataset.index = i;
+
+      var img = document.createElement('img');
+      // Use smaller thumbnail for grid
+      img.src = photo.baseUrl + '=w320-h320-c';
+      img.alt = photo.filename || '';
+      img.loading = 'lazy';
+      item.appendChild(img);
+
+      // Show creation time as location hint
+      if (photo.mediaMetadata && photo.mediaMetadata.creationTime) {
+        var date = new Date(photo.mediaMetadata.creationTime);
+        var loc = document.createElement('div');
+        loc.className = 'photo-loc';
+        loc.textContent = date.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+        item.appendChild(loc);
+      }
+
+      item.addEventListener('click', function() { toggleSelect(item, photo); });
+      grid.appendChild(item);
+    });
+
+    // Load more button
+    if (nextPageToken) {
+      document.getElementById('loadMoreWrap').style.display = 'block';
+    }
+  }
+
+  function toggleSelect(item, photo) {
+    var idx = selectedPhotos.findIndex(function(p) { return p.id === photo.id; });
+    if (idx > -1) {
+      selectedPhotos.splice(idx, 1);
+      item.classList.remove('selected');
+    } else {
+      selectedPhotos.push(photo);
+      item.classList.add('selected');
+    }
+    updateSelectedCount();
+  }
+
+  function updateSelectedCount() {
+    var n = selectedPhotos.length;
+    var countEl = document.getElementById('selectedCount');
+    var genBtn = document.getElementById('btnGenerate');
+    if (n > 0) {
+      countEl.style.display = 'block';
+      document.getElementById('selectedNum').textContent = n;
+      genBtn.classList.add('show');
+    } else {
+      countEl.style.display = 'none';
+      genBtn.classList.remove('show');
+    }
+  }
+
+  // Load more
+  document.getElementById('btnLoadMore').addEventListener('click', function() {
+    if (nextPageToken) {
+      showLoading('Loading more photos\u2026');
+      loadPhotos(nextPageToken);
+    }
+  });
+
+  // ── BUILD TASTE PROFILE ──────────────────────────────────────────
+  document.getElementById('btnGenerate').addEventListener('click', function() {
+    if (selectedPhotos.length === 0) return;
+    buildProfile();
+  });
+
+  function buildProfile() {
+    document.getElementById('photosState').style.display = 'none';
+    document.getElementById('profileState').style.display = 'block';
+
+    // Group selected photos into clusters by month/period
+    // (since GPS isn't available from API, we group by time proximity as a proxy)
+    var clusters = clusterByTime(selectedPhotos);
+    renderClusters(clusters);
+  }
+
+  function clusterByTime(photos) {
+    // Sort by date
+    var sorted = photos.slice().sort(function(a, b) {
+      var da = new Date((a.mediaMetadata || {}).creationTime || 0);
+      var db = new Date((b.mediaMetadata || {}).creationTime || 0);
+      return da - db;
+    });
+
+    // Group photos taken within 48 hours of each other
+    var clusters = [];
+    var current = null;
+
+    sorted.forEach(function(photo) {
+      var t = new Date((photo.mediaMetadata || {}).creationTime || 0).getTime();
+      if (!current || t - current.lastTime > 48 * 3600 * 1000) {
+        current = { photos: [], firstTime: t, lastTime: t };
+        clusters.push(current);
+      }
+      current.photos.push(photo);
+      current.lastTime = t;
+    });
+
+    return clusters;
+  }
+
+  function renderClusters(clusters) {
+    var grid = document.getElementById('clustersGrid');
+    grid.innerHTML = '';
+
+    clusters.forEach(function(cluster, ci) {
+      var date = new Date(cluster.firstTime);
+      var dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      var monthStr = date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+      var count = cluster.photos.length;
+
+      var card = document.createElement('div');
+      card.className = 'cluster-card';
+      card.dataset.cluster = ci;
+
+      // Photo collage
+      var photosDiv = document.createElement('div');
+      photosDiv.className = 'cluster-photos';
+      var showCount = Math.min(cluster.photos.length, 3);
+      cluster.photos.slice(0, showCount).forEach(function(p, pi) {
+        var cell = document.createElement('div');
+        cell.className = 'cluster-photo';
+        var img = document.createElement('img');
+        img.src = p.baseUrl + '=w400-h300-c';
+        img.alt = '';
+        img.loading = 'lazy';
+        cell.appendChild(img);
+        photosDiv.appendChild(cell);
+      });
+      card.appendChild(photosDiv);
+
+      var body = document.createElement('div');
+      body.className = 'cluster-body';
+      body.innerHTML = `
+        <div class="cluster-loc">${monthStr}</div>
+        <div class="cluster-name">Trip &mdash; ${monthStr}</div>
+        <div class="cluster-meta">${count} photo${count > 1 ? 's' : ''} &middot; ${dateStr}</div>
+        <textarea class="cluster-tip-input" placeholder="What made this place worth tipping? One honest line." rows="3"></textarea>
+        <div class="cluster-actions">
+          <button class="btn-tip-submit" data-ci="${ci}">Add to my profile &rarr;</button>
+          <button class="btn-tip-skip" data-ci="${ci}">Skip</button>
+        </div>
+      `;
+      card.appendChild(body);
+      grid.appendChild(card);
+
+      // Submit handler
+      body.querySelector('.btn-tip-submit').addEventListener('click', function() {
+        var tip = body.querySelector('.cluster-tip-input').value.trim();
+        submitCluster(cluster, tip, card, monthStr);
+      });
+
+      // Skip handler
+      body.querySelector('.btn-tip-skip').addEventListener('click', function() {
+        card.style.opacity = '.35';
+        card.style.pointerEvents = 'none';
+      });
+    });
+  }
+
+  function submitCluster(cluster, tipText, card, label) {
+    // Send to Formspree as a tip submission
+    var photoUrls = cluster.photos.slice(0, 4).map(function(p) {
+      return p.baseUrl + '=w1200-h800';
+    }).join('\n');
+
+    var formData = new FormData();
+    formData.append('type', 'google_photos_tip');
+    formData.append('period', label);
+    formData.append('tip', tipText || '(no text added)');
+    formData.append('photo_count', cluster.photos.length);
+    formData.append('photo_urls', photoUrls);
+    if (currentUser) {
+      formData.append('user_email', currentUser.email || '');
+      formData.append('user_id', currentUser.id || '');
+    }
+
+    fetch('https://formspree.io/f/mdawyane', {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        card.classList.add('submitted');
+      }
+    }).catch(function() {
+      card.classList.add('submitted'); // optimistic
+    });
+  }
+
+  // ── UTILS ────────────────────────────────────────────────────────
+  function showLoading(msg) {
+    document.getElementById('connectState').style.display = 'none';
+    document.getElementById('loadingState').style.display = 'block';
+    document.getElementById('loadingMsg').textContent = msg || 'Loading\u2026';
+  }
+  function hideLoading() {
+    document.getElementById('loadingState').style.display = 'none';
+  }
+  function showError(msg) {
+    hideLoading();
+    var el = document.getElementById('errorMsg');
+    el.textContent = msg;
+    el.classList.add('show');
+    document.getElementById('connectState').style.display = 'block';
+  }
+
+})();
+</script>
+
+</body>
+</html>
