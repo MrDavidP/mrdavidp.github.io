@@ -367,13 +367,17 @@
 
   // ── CONNECT BUTTON ───────────────────────────────────────────────
   document.getElementById('btnConnect').addEventListener('click', function() {
+    var scope = [
+      'https://www.googleapis.com/auth/photoslibrary.readonly'
+    ].join(' ');
     window.location.href =
       'https://accounts.google.com/o/oauth2/v2/auth'
       + '?client_id=' + encodeURIComponent(CLIENT_ID)
       + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
       + '&response_type=token'
-      + '&scope=' + encodeURIComponent(SCOPE)
-      + '&prompt=select_account';
+      + '&scope=' + encodeURIComponent(scope)
+      + '&prompt=consent'
+      + '&include_granted_scopes=false';
   });
 
   // ── LOAD PHOTOS FROM API ─────────────────────────────────────────
