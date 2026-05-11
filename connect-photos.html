@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- exifr: lightweight EXIF parser, reads GPS from photo files -->
+  <script src="https://cdn.jsdelivr.net/npm/exifr@7/dist/full.umd.cjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -20,8 +22,9 @@
       --max:1360px;--gutter:32px;
     }
     html,body{min-height:100%;background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
-    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(rgba(26,24,22,0.025) 1px,transparent 1px);background-size:3px 3px;opacity:.5;mix-blend-mode:multiply}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(rgba(26,24,22,.025) 1px,transparent 1px);background-size:3px 3px;opacity:.5;mix-blend-mode:multiply}
     a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
 
     /* NAV */
     nav{padding:0 var(--gutter);border-bottom:1.5px solid var(--ink);background:var(--cream);position:sticky;top:0;z-index:100}
@@ -32,98 +35,148 @@
     .nav-logo-word em{font-style:italic;font-weight:500}
     .nav-logo-tag{font-family:var(--cond);font-weight:500;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;border-left:1.5px solid var(--ink);padding-left:12px}
     .nav-logo-tag b{color:var(--red)}
-    .nav-right a{font-family:var(--cond);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .15s}
-    .nav-right a:hover{color:var(--ink)}
+    .nav-link{font-family:var(--cond);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .15s}
+    .nav-link:hover{color:var(--ink)}
 
-    /* HERO — connect state */
-    .hero{border-bottom:1.5px solid var(--ink);padding:5rem var(--gutter) 4rem;text-align:center}
-    .hero-inner{max-width:600px;margin:0 auto}
+    /* ── CONNECT HERO ─────────────────────────────────── */
+    .connect-hero{border-bottom:1.5px solid var(--ink);padding:5rem var(--gutter) 4.5rem}
+    .connect-hero-inner{max-width:680px;margin:0 auto;text-align:center}
     .hero-kicker{font-family:var(--cond);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:10px}
     .hero-kicker::before,.hero-kicker::after{content:'';width:24px;height:1px;background:var(--red)}
-    .hero-headline{font-family:var(--serif);font-size:clamp(2rem,5vw,3.4rem);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin-bottom:.75rem}
-    .hero-headline em{font-style:italic;color:var(--red)}
-    .hero-dek{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);line-height:1.65;margin-bottom:2.5rem;max-width:460px;margin-left:auto;margin-right:auto}
-    .btn-connect{display:inline-flex;align-items:center;gap:.75rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:15px 28px;border:none;cursor:pointer;transition:background .15s}
+    .hero-h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:400;line-height:1.05;letter-spacing:-.025em;margin-bottom:.75rem}
+    .hero-h1 em{font-style:italic;color:var(--red)}
+    .hero-dek{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--muted);line-height:1.65;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+    .how-it-works{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1.5px solid var(--ink);margin-bottom:2.5rem;text-align:left}
+    .hiw-step{padding:1.25rem 1.5rem;border-right:1px solid var(--rule)}
+    .hiw-step:last-child{border-right:none}
+    .hiw-num{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--red);line-height:1;margin-bottom:.5rem;font-style:italic}
+    .hiw-text{font-family:var(--cond);font-size:.66rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);line-height:1.5}
+    .hiw-sub{font-family:var(--serif);font-style:italic;font-size:.85rem;color:var(--muted);margin-top:.25rem}
+    .btn-connect{display:inline-flex;align-items:center;gap:.75rem;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 32px;border:none;cursor:pointer;transition:background .15s}
     .btn-connect:hover{background:var(--red)}
     .btn-connect svg{width:20px;height:20px;flex-shrink:0}
-    .hero-note{font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:1.25rem;line-height:1.7}
+    .connect-note{font-family:var(--cond);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:1rem;line-height:1.8}
+    .connect-note b{color:var(--ink)}
 
-    /* LOADING STATE */
-    .loading-state{padding:6rem var(--gutter);text-align:center;display:none}
-    .loading-state p{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--muted)}
-    .spinner{width:32px;height:32px;border:2px solid var(--rule);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1.5rem}
-    @keyframes spin{to{transform:rotate(360deg)}}
+    /* ── LOADING / PROGRESS ──────────────────────────── */
+    .loading-wrap{padding:6rem var(--gutter);text-align:center;display:none}
+    .loading-title{font-family:var(--serif);font-size:1.6rem;font-weight:400;margin-bottom:.5rem}
+    .loading-title em{font-style:italic;color:var(--red)}
+    .loading-sub{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--muted);margin-bottom:2rem}
+    .progress-track{width:280px;height:2px;background:var(--rule);margin:0 auto 1rem;overflow:hidden}
+    .progress-fill{height:100%;background:var(--red);width:0%;transition:width .3s}
+    .progress-label{font-family:var(--cond);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
-    /* PHOTO GRID STATE */
-    .photos-state{display:none}
-    .photos-header{border-bottom:1.5px solid var(--ink);padding:2rem var(--gutter)}
-    .photos-header-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-    .photos-header-left h1{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin-bottom:.35rem}
-    .photos-header-left h1 em{font-style:italic}
-    .photos-header-left p{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--muted)}
-    .photos-header-right{display:flex;gap:.75rem;align-items:center;flex-shrink:0}
-    .selected-count{font-family:var(--cond);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-    .selected-count b{color:var(--red)}
-    .btn-generate{background:var(--red);color:var(--cream);font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border:none;cursor:pointer;transition:background .15s;display:none}
-    .btn-generate:hover{background:#8f2821}
-    .btn-generate.show{display:block}
+    /* ── PHOTO GRID ──────────────────────────────────── */
+    .photos-wrap{display:none}
+    .photos-top{border-bottom:1.5px solid var(--ink);padding:1.75rem var(--gutter)}
+    .photos-top-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+    .photos-top h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:400;line-height:1.1;letter-spacing:-.02em}
+    .photos-top h2 em{font-style:italic;color:var(--red)}
+    .photos-top-sub{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--muted);margin-top:.3rem}
+    .photos-actions{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+    .sel-badge{font-family:var(--cond);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:var(--red);color:var(--cream);padding:5px 12px;display:none}
+    .sel-badge.show{display:inline-block}
+    .btn-analyse{background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border:none;cursor:pointer;transition:background .15s;display:none}
+    .btn-analyse:hover{background:var(--red)}
+    .btn-analyse.show{display:block}
 
-    /* FILTER BAR */
-    .filter-bar{border-bottom:1px solid var(--rule);padding:.75rem var(--gutter);background:var(--cream2)}
-    .filter-bar-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
-    .filter-tag{font-family:var(--cond);font-size:.58rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--rule);background:var(--cream);color:var(--muted);cursor:pointer;transition:all .15s}
-    .filter-tag:hover,.filter-tag.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
-    .filter-lbl{font-family:var(--cond);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:.25rem}
+    /* INSTRUCTION BAR */
+    .instruction-bar{background:var(--ink);color:var(--cream);padding:.75rem var(--gutter);font-family:var(--cond);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;text-align:center}
+    .instruction-bar span{color:rgba(247,244,239,.55)}
 
-    /* PHOTO GRID */
-    .photo-grid-wrap{max-width:var(--max);margin:0 auto;padding:var(--gutter)}
-    .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px}
-    .photo-item{position:relative;aspect-ratio:1/1;overflow:hidden;cursor:pointer;background:var(--cream2)}
-    .photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s,filter .3s}
-    .photo-item:hover img{transform:scale(1.05)}
-    .photo-item.selected img{filter:brightness(.65)}
-    .photo-item.selected::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);font-size:1.8rem;color:var(--cream);pointer-events:none}
-    .photo-item .photo-loc{position:absolute;bottom:0;left:0;right:0;padding:.4rem .5rem;background:linear-gradient(transparent,rgba(15,12,10,.7));font-family:var(--cond);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,244,239,.85);pointer-events:none;opacity:0;transition:opacity .2s}
-    .photo-item:hover .photo-loc{opacity:1}
-    .photo-item.selected .photo-loc{opacity:1}
-    .load-more-wrap{text-align:center;padding:2rem 0}
-    .btn-load-more{font-family:var(--cond);font-size:.64rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:10px 22px;cursor:pointer;transition:all .15s}
+    /* GRID */
+    .photo-grid-outer{max-width:var(--max);margin:0 auto;padding:var(--gutter)}
+    .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:4px}
+    .p-cell{position:relative;aspect-ratio:1/1;overflow:hidden;cursor:pointer;background:var(--cream2);user-select:none}
+    .p-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .2s,transform .2s}
+    .p-cell:hover img{transform:scale(1.05)}
+    .p-cell.sel img{filter:brightness(.55) saturate(.8)}
+    .p-cell.sel::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.6rem;color:#fff;pointer-events:none;font-family:var(--serif);font-weight:600}
+    .p-cell .p-date{position:absolute;bottom:0;left:0;right:0;padding:.3rem .4rem;background:linear-gradient(transparent,rgba(15,12,10,.75));font-family:var(--cond);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,244,239,.85);pointer-events:none;opacity:0;transition:opacity .2s}
+    .p-cell:hover .p-date,.p-cell.sel .p-date{opacity:1}
+    .p-cell .p-loc-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;background:var(--green);border-radius:50%;pointer-events:none;display:none}
+    .p-cell.has-gps .p-loc-dot{display:block}
+    .load-more{text-align:center;padding:1.5rem 0 2rem}
+    .btn-load-more{font-family:var(--cond);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:10px 22px;cursor:pointer;transition:all .15s}
     .btn-load-more:hover{background:var(--ink);color:var(--cream)}
 
-    /* TASTE PROFILE STATE */
-    .profile-state{display:none;padding:4rem var(--gutter)}
-    .profile-state-inner{max-width:var(--max);margin:0 auto}
-    .profile-state h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin-bottom:.5rem}
-    .profile-state h2 em{font-style:italic;color:var(--red)}
-    .profile-state-sub{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--muted);margin-bottom:2.5rem}
-    .clusters-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-bottom:2.5rem}
-    .cluster-card{border:1.5px solid var(--ink);background:var(--cream);overflow:hidden}
-    .cluster-photos{display:grid;grid-template-columns:1fr 1fr;height:140px}
-    .cluster-photo{overflow:hidden;background:var(--cream2)}
-    .cluster-photo img{width:100%;height:100%;object-fit:cover;display:block}
-    .cluster-photo:first-child{grid-column:1/-1;height:100px}
-    .cluster-body{padding:1rem 1.25rem 1.25rem}
-    .cluster-loc{font-family:var(--cond);font-size:.58rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem}
-    .cluster-name{font-family:var(--serif);font-size:1.35rem;font-weight:500;line-height:1.1;letter-spacing:-.01em;margin-bottom:.35rem}
-    .cluster-meta{font-family:var(--cond);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem}
-    .cluster-tip-input{width:100%;padding:8px 10px;font-family:var(--serif);font-style:italic;font-size:.92rem;line-height:1.5;color:var(--muted);background:var(--cream2);border:1px solid var(--rule);resize:none;outline:none;min-height:64px;transition:border-color .15s}
-    .cluster-tip-input:focus{border-color:var(--ink);color:var(--ink)}
-    .cluster-tip-input::placeholder{color:#b0a89e}
-    .cluster-actions{display:flex;gap:.5rem;margin-top:.65rem}
-    .btn-tip-submit{flex:1;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:9px;border:none;cursor:pointer;transition:background .15s}
-    .btn-tip-submit:hover{background:var(--red)}
-    .btn-tip-skip{background:transparent;border:1px solid var(--rule);color:var(--muted);font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;cursor:pointer;transition:all .15s}
-    .btn-tip-skip:hover{border-color:var(--ink);color:var(--ink)}
-    .cluster-card.submitted{opacity:.5;pointer-events:none}
-    .cluster-card.submitted .cluster-body::after{content:'Submitted ✓';display:block;font-family:var(--cond);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-top:.5rem}
+    /* ── ANALYSE PROGRESS ────────────────────────────── */
+    .analyse-wrap{padding:5rem var(--gutter);text-align:center;display:none}
+    .analyse-title{font-family:var(--serif);font-size:1.8rem;font-weight:400;letter-spacing:-.02em;margin-bottom:.5rem}
+    .analyse-title em{font-style:italic;color:var(--red)}
+    .analyse-sub{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--muted);margin-bottom:2rem}
+    .analyse-steps{max-width:400px;margin:0 auto 2rem;text-align:left;display:flex;flex-direction:column;gap:.5rem}
+    .a-step{display:flex;align-items:center;gap:.75rem;font-family:var(--cond);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.5rem 0;border-bottom:1px solid var(--rule)}
+    .a-step:last-child{border-bottom:none}
+    .a-step-dot{width:10px;height:10px;border-radius:50%;background:var(--rule);flex-shrink:0;transition:background .3s}
+    .a-step.done .a-step-dot{background:var(--green)}
+    .a-step.active .a-step-dot{background:var(--red);animation:pulse-dot 1s ease-in-out infinite}
+    .a-step.done{color:var(--ink)}
+    .a-step.active{color:var(--ink)}
+    @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+
+    /* ── PROFILE CLUSTERS ────────────────────────────── */
+    .profile-wrap{display:none}
+    .profile-top{border-bottom:1.5px solid var(--ink);padding:2rem var(--gutter)}
+    .profile-top-inner{max-width:var(--max);margin:0 auto}
+    .profile-top h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;letter-spacing:-.02em;margin-bottom:.35rem}
+    .profile-top h2 em{font-style:italic;color:var(--red)}
+    .profile-top p{font-family:var(--serif);font-style:italic;font-size:.98rem;color:var(--muted)}
+    .profile-meta-bar{display:flex;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
+    .profile-meta-item{font-family:var(--cond);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.4rem}
+    .profile-meta-item b{color:var(--ink)}
+    .loc-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block}
+    .clusters-outer{max-width:var(--max);margin:0 auto;padding:var(--gutter)}
+    .clusters-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+
+    /* CLUSTER CARD */
+    .cluster-card{border:1.5px solid var(--ink);background:var(--cream);display:flex;flex-direction:column}
+    .cluster-card.dismissed{display:none}
+    .cluster-photos{display:grid;height:160px;overflow:hidden;flex-shrink:0}
+    .cluster-photos.n1{grid-template-columns:1fr}
+    .cluster-photos.n2{grid-template-columns:1fr 1fr}
+    .cluster-photos.n3{grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr}
+    .cluster-photos.n3 .cp:first-child{grid-row:1/-1}
+    .cluster-photos.nmore{grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr}
+    .cluster-photos.nmore .cp:first-child{grid-row:1/-1}
+    .cp{overflow:hidden;background:var(--cream2)}
+    .cp img{width:100%;height:100%;object-fit:cover;display:block}
+    .cluster-body{padding:1.1rem 1.25rem 1.25rem;flex:1;display:flex;flex-direction:column}
+    .cluster-loc-label{font-family:var(--cond);font-size:.56rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;display:flex;align-items:center;gap:.4rem}
+    .cluster-place-name{font-family:var(--serif);font-size:1.45rem;font-weight:500;line-height:1.1;letter-spacing:-.01em;margin-bottom:.25rem}
+    .cluster-place-name input{font-family:var(--serif);font-size:1.35rem;font-weight:500;line-height:1.1;letter-spacing:-.01em;border:none;border-bottom:1px dashed var(--rule);background:transparent;color:var(--ink);outline:none;width:100%;padding:0 0 2px;transition:border-color .15s}
+    .cluster-place-name input:focus{border-color:var(--red)}
+    .cluster-date{font-family:var(--cond);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+    .cluster-tip-label{font-family:var(--cond);font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+    .cluster-tip-area{width:100%;padding:9px 11px;font-family:var(--serif);font-style:italic;font-size:.95rem;line-height:1.55;color:var(--muted);background:var(--cream2);border:1px solid var(--rule);resize:none;outline:none;min-height:72px;transition:border-color .15s;flex:1}
+    .cluster-tip-area:focus{border-color:var(--ink);background:var(--cream);color:var(--ink)}
+    .cluster-tip-area::placeholder{color:#b5aea8}
+    .cluster-char{font-family:var(--cond);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;margin-top:.25rem;margin-bottom:.75rem}
+    .cluster-btns{display:flex;gap:.5rem}
+    .btn-tip-add{flex:1;background:var(--ink);color:var(--cream);font-family:var(--cond);font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:10px;border:none;cursor:pointer;transition:background .15s}
+    .btn-tip-add:hover{background:var(--red)}
+    .btn-tip-add:disabled{background:var(--muted);cursor:not-allowed}
+    .btn-tip-dismiss{background:transparent;border:1px solid var(--rule);color:var(--muted);font-family:var(--cond);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;cursor:pointer;transition:all .15s}
+    .btn-tip-dismiss:hover{border-color:var(--ink);color:var(--ink)}
+    .cluster-card.submitted .cluster-body::after{content:'Added to your profile ✓';display:block;font-family:var(--cond);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-top:.5rem}
+    .cluster-card.submitted .cluster-btns{display:none}
+
+    /* DONE BAR */
+    .done-bar{background:var(--ink);color:var(--cream);padding:2rem var(--gutter);text-align:center;display:none}
+    .done-bar h3{font-family:var(--serif);font-size:1.6rem;font-weight:400;margin-bottom:.4rem}
+    .done-bar h3 em{font-style:italic;color:#e6d4d2}
+    .done-bar p{font-family:var(--serif);font-style:italic;font-size:.9rem;color:rgba(247,244,239,.65);margin-bottom:1.25rem}
+    .btn-view-profile{display:inline-block;background:var(--red);color:var(--cream);font-family:var(--cond);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:13px 26px;transition:background .15s}
+    .btn-view-profile:hover{background:#8f2821}
 
     /* ERROR */
-    .error-msg{background:rgba(181,50,42,.08);border-left:3px solid var(--red);padding:1rem 1.5rem;margin:2rem var(--gutter);font-family:var(--cond);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);display:none}
-    .error-msg.show{display:block}
+    .err-bar{background:rgba(181,50,42,.08);border-left:3px solid var(--red);padding:1rem 1.5rem;margin:1.5rem var(--gutter);font-family:var(--cond);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);display:none}
+    .err-bar.show{display:block}
 
     /* FOOTER */
     footer{border-top:2px solid var(--red);background:var(--ink);margin-top:4rem}
-    .footer-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;height:46px}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;height:46px;justify-content:space-between}
     .footer-logo{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--cream)}
     .footer-logo em{font-style:italic;font-weight:400}
     .footer-logo .dot{color:var(--red)}
@@ -131,9 +184,12 @@
     @media(max-width:640px){
       :root{--gutter:20px}
       .nav-logo-tag{display:none}
+      .how-it-works{grid-template-columns:1fr}
+      .hiw-step{border-right:none;border-bottom:1px solid var(--rule)}
+      .hiw-step:last-child{border-bottom:none}
       .photo-grid{grid-template-columns:repeat(3,1fr);gap:3px}
       .clusters-grid{grid-template-columns:1fr}
-      .photos-header-inner{flex-direction:column;align-items:flex-start}
+      .photos-top-inner{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
@@ -145,19 +201,36 @@
       <span class="nav-logo-word">Hood<em>Tip</em></span>
       <span class="nav-logo-tag">Only the <b>good</b> stuff</span>
     </a>
-    <div class="nav-right">
-      <a href="profile.html?handle=dave">My profile</a>
-    </div>
+    <a href="#" class="nav-link" id="navProfileLink">My profile</a>
   </div>
 </nav>
 
-<!-- CONNECT STATE -->
+<!-- ── CONNECT STATE ─────────────────────────────────── -->
 <div id="connectState">
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-kicker">New</div>
-      <h1 class="hero-headline">Your photos already know<br><em>your taste.</em></h1>
-      <p class="hero-dek">Connect your Google Photos and we'll find the places you've actually been — and turn them into your HoodTip taste profile.</p>
+  <div class="connect-hero">
+    <div class="connect-hero-inner">
+      <div class="hero-kicker">New · Beta</div>
+      <h1 class="hero-h1">Your photos already know<br><em>your taste.</em></h1>
+      <p class="hero-dek">Connect your Google Photos library. We'll find the places you've actually been, group them by location, and turn them into your HoodTip taste profile — in about two minutes.</p>
+
+      <div class="how-it-works">
+        <div class="hiw-step">
+          <div class="hiw-num">01</div>
+          <div class="hiw-text">Browse your library</div>
+          <div class="hiw-sub">Tap the photos that matter</div>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-num">02</div>
+          <div class="hiw-text">We find the places</div>
+          <div class="hiw-sub">GPS from your photos, auto-named</div>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-num">03</div>
+          <div class="hiw-text">Add one line each</div>
+          <div class="hiw-sub">Your profile builds itself</div>
+        </div>
+      </div>
+
       <button class="btn-connect" id="btnConnect">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -167,63 +240,79 @@
         </svg>
         Connect Google Photos
       </button>
-      <div class="hero-note">
-        Read-only access · We never store your photos · Only you see this<br>
-        You choose which places become tips
+      <div class="connect-note">
+        <b>Read-only.</b> We never store your photos or share your library.<br>
+        You choose which places become tips. Revoke access any time in your Google account.
       </div>
     </div>
   </div>
 </div>
 
-<!-- LOADING STATE -->
-<div class="loading-state" id="loadingState">
-  <div class="spinner"></div>
-  <p id="loadingMsg">Loading your photos&hellip;</p>
+<!-- ── LOADING STATE ──────────────────────────────────── -->
+<div class="loading-wrap" id="loadingWrap">
+  <h2 class="loading-title">Loading your <em>library&hellip;</em></h2>
+  <p class="loading-sub" id="loadingMsg">Connecting to Google Photos</p>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel"></div>
 </div>
 
-<!-- ERROR -->
-<div class="error-msg" id="errorMsg"></div>
+<!-- ── ERROR ──────────────────────────────────────────── -->
+<div class="err-bar" id="errBar"></div>
 
-<!-- PHOTOS STATE -->
-<div class="photos-state" id="photosState">
-  <div class="photos-header">
-    <div class="photos-header-inner">
-      <div class="photos-header-left">
-        <h1>Your photos. <em>Pick the ones worth tipping.</em></h1>
-        <p id="photoCount">Loading&hellip;</p>
+<!-- ── PHOTO GRID STATE ───────────────────────────────── -->
+<div class="photos-wrap" id="photosWrap">
+  <div class="photos-top">
+    <div class="photos-top-inner">
+      <div>
+        <h2>Your library. <em>Pick what matters.</em></h2>
+        <div class="photos-top-sub" id="photosTopSub">Loading&hellip;</div>
       </div>
-      <div class="photos-header-right">
-        <div class="selected-count" id="selectedCount" style="display:none"><b id="selectedNum">0</b> selected</div>
-        <button class="btn-generate" id="btnGenerate">Build my taste profile &rarr;</button>
+      <div class="photos-actions">
+        <span class="sel-badge" id="selBadge">0 selected</span>
+        <button class="btn-analyse" id="btnAnalyse">Analyse my picks &rarr;</button>
       </div>
     </div>
   </div>
-  <div class="filter-bar">
-    <div class="filter-bar-inner">
-      <span class="filter-lbl">Filter:</span>
-      <button class="filter-tag active" data-filter="all">All</button>
-      <button class="filter-tag" data-filter="food">Food &amp; Drink</button>
-      <button class="filter-tag" data-filter="places">Places</button>
-      <button class="filter-tag" data-filter="travel">Travel</button>
-    </div>
+  <div class="instruction-bar">
+    Tap photos to select them <span>&middot;</span>
+    <span id="gpsNote">Green dot = GPS location detected</span>
   </div>
-  <div class="photo-grid-wrap">
+  <div class="photo-grid-outer">
     <div class="photo-grid" id="photoGrid"></div>
-    <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
-      <button class="btn-load-more" id="btnLoadMore">Load more photos</button>
+    <div class="load-more" id="loadMoreWrap" style="display:none">
+      <button class="btn-load-more" id="btnLoadMore">Load more &darr;</button>
     </div>
   </div>
 </div>
 
-<!-- TASTE PROFILE STATE -->
-<div class="profile-state" id="profileState">
-  <div class="profile-state-inner">
-    <h2>Your taste profile<br><em>is taking shape.</em></h2>
-    <p class="profile-state-sub">These are the places we found in your photos. Add one line to each — or skip the ones you don't want to tip.</p>
-    <div class="clusters-grid" id="clustersGrid"></div>
-    <div style="border-top:1px solid var(--rule);padding-top:1.5rem;text-align:center">
-      <a href="#" id="viewProfileLink" style="font-family:var(--cond);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:12px 24px;display:inline-block;transition:background .15s">See my profile &rarr;</a>
+<!-- ── ANALYSE PROGRESS ───────────────────────────────── -->
+<div class="analyse-wrap" id="analyseWrap">
+  <h2 class="analyse-title">Reading your <em>photos&hellip;</em></h2>
+  <p class="analyse-sub" id="analyseMsg">This takes about 20 seconds depending on how many you picked.</p>
+  <div class="analyse-steps" id="analyseSteps">
+    <div class="a-step active" id="astep1"><div class="a-step-dot"></div>Reading GPS from your photos</div>
+    <div class="a-step" id="astep2"><div class="a-step-dot"></div>Looking up locations</div>
+    <div class="a-step" id="astep3"><div class="a-step-dot"></div>Grouping into places</div>
+    <div class="a-step" id="astep4"><div class="a-step-dot"></div>Building your taste profile</div>
+  </div>
+</div>
+
+<!-- ── TASTE PROFILE ──────────────────────────────────── -->
+<div class="profile-wrap" id="profileWrap">
+  <div class="profile-top">
+    <div class="profile-top-inner">
+      <h2>We found <em id="clusterCount">0 places</em> in your photos.</h2>
+      <p>Add one line to each. Skip the ones you don&rsquo;t want to tip. Your profile updates instantly.</p>
+      <div class="profile-meta-bar" id="profileMetaBar"></div>
     </div>
+  </div>
+  <div class="clusters-outer">
+    <div class="clusters-grid" id="clustersGrid"></div>
+  </div>
+  <div class="done-bar" id="doneBar">
+    <h3>Your taste profile is <em>live.</em></h3>
+    <p>Every tip has your name on it. Send the link next time anyone asks.</p>
+    <a href="#" class="btn-view-profile" id="viewProfileBtn">See my profile &rarr;</a>
   </div>
 </div>
 
@@ -235,308 +324,544 @@
 
 <script>
 (function() {
-  var CLIENT_ID = '284485708300-u019r2hvem112eaubfaira56ndcee5rm.apps.googleusercontent.com';
+  'use strict';
+
+  var CLIENT_ID    = '284485708300-u019r2hvem112eaubfaira56ndcee5rm.apps.googleusercontent.com';
   var REDIRECT_URI = 'https://hoodtip.com/connect-photos.html';
-  var SCOPE = 'https://www.googleapis.com/auth/photoslibrary.readonly';
-  var SUPABASE_URL = 'https://lgyjsqwnicbbcqsfpuop.supabase.co';
-  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWpzcXduaWNiYmNxc2ZwdW9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNDUzMTEsImV4cCI6MjA5MzgyMTMxMX0.lUsEAtYNG5OaIGfbdpedKEImjPw_eIzt69oIjrmHhvQ';
-  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  var SCOPE        = 'https://www.googleapis.com/auth/photoslibrary.readonly';
+  var SB_URL       = 'https://lgyjsqwnicbbcqsfpuop.supabase.co';
+  var SB_KEY       = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxneWpzcXduaWNiYmNxc2ZwdW9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNDUzMTEsImV4cCI6MjA5MzgyMTMxMX0.lUsEAtYNG5OaIGfbdpedKEImjPw_eIzt69oIjrmHhvQ';
+  var sb           = window.supabase.createClient(SB_URL, SB_KEY);
 
-  var accessToken = null;
-  var allPhotos = [];
-  var selectedPhotos = [];
+  var accessToken  = null;
+  var allPhotos    = [];
+  var selectedIds  = new Set();
   var nextPageToken = null;
-  var currentUser = null;
+  var currentUser  = null;
+  var profileHandle = null;
+  var submittedCount = 0;
 
-  // ── CHECK FOR OAUTH CALLBACK ─────────────────────────────────────
-  var hash = window.location.hash;
-  var params = new URLSearchParams(hash.replace('#',''));
-  var urlToken = params.get('access_token');
-
-  if (urlToken) {
-    // Clean up URL
-    history.replaceState(null, '', window.location.pathname);
-    accessToken = urlToken;
-    showLoading('Loading your photos\u2026');
-    loadPhotos();
-  }
-
-  // ── AUTH STATE ───────────────────────────────────────────────────
+  // ── SUPABASE SESSION ─────────────────────────────────────────────
   sb.auth.getSession().then(function(ref) {
     if (ref.data.session && ref.data.session.user) {
       currentUser = ref.data.session.user;
-      var meta = currentUser.user_metadata || {};
-      var handle = meta.handle || '';
-      // Update profile link
       sb.from('contributors').select('handle').eq('user_id', currentUser.id).single().then(function(r) {
-        if (r.data) document.getElementById('viewProfileLink').href = 'profile.html?handle=' + r.data.handle;
+        if (r.data) {
+          profileHandle = r.data.handle;
+          document.getElementById('navProfileLink').href = 'profile.html?handle=' + profileHandle;
+          document.getElementById('viewProfileBtn').href = 'profile.html?handle=' + profileHandle;
+        }
       });
     }
   });
 
+  // ── OAUTH CALLBACK ───────────────────────────────────────────────
+  var fragment = new URLSearchParams(window.location.hash.slice(1));
+  var urlToken = fragment.get('access_token');
+  if (urlToken) {
+    history.replaceState(null, '', window.location.pathname);
+    accessToken = urlToken;
+    showLoading('Connecting to Google Photos\u2026', 10);
+    loadPhotosPage(null);
+  }
+
   // ── CONNECT BUTTON ───────────────────────────────────────────────
   document.getElementById('btnConnect').addEventListener('click', function() {
-    var authUrl = 'https://accounts.google.com/o/oauth2/v2/auth'
+    window.location.href =
+      'https://accounts.google.com/o/oauth2/v2/auth'
       + '?client_id=' + encodeURIComponent(CLIENT_ID)
       + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
       + '&response_type=token'
       + '&scope=' + encodeURIComponent(SCOPE)
-      + '&prompt=consent';
-    window.location.href = authUrl;
+      + '&prompt=select_account';
   });
 
-  // ── LOAD PHOTOS ──────────────────────────────────────────────────
-  function loadPhotos(pageToken) {
-    var body = { pageSize: 50 };
+  // ── LOAD PHOTOS FROM API ─────────────────────────────────────────
+  function loadPhotosPage(pageToken) {
+    var body = { pageSize: 100 };
     if (pageToken) body.pageToken = pageToken;
 
     fetch('https://photoslibrary.googleapis.com/v1/mediaItems:search', {
       method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + accessToken,
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Authorization': 'Bearer ' + accessToken, 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      if (data.error) { showError(data.error.message); return; }
-
-      var items = data.mediaItems || [];
-      // Only photos (not videos)
-      items = items.filter(function(i) { return i.mimeType && i.mimeType.startsWith('image/'); });
-
+      if (data.error) { showErr('Google Photos error: ' + data.error.message + '. Make sure you\'re added as a test user.'); return; }
+      var items = (data.mediaItems || []).filter(function(i) {
+        return i.mimeType && i.mimeType.startsWith('image/');
+      });
       allPhotos = allPhotos.concat(items);
       nextPageToken = data.nextPageToken || null;
-
-      hideLoading();
-      showPhotos();
+      setProgress(80);
+      setTimeout(function() {
+        setProgress(100);
+        setTimeout(renderPhotoGrid, 200);
+      }, 300);
     })
-    .catch(function(e) { showError('Failed to load photos: ' + e.message); });
+    .catch(function(e) { showErr('Failed to load photos. Please try reconnecting. (' + e.message + ')'); });
   }
 
-  // ── RENDER PHOTOS ────────────────────────────────────────────────
-  function showPhotos() {
-    document.getElementById('connectState').style.display = 'none';
-    document.getElementById('photosState').style.display = 'block';
-    document.getElementById('photoCount').textContent =
-      allPhotos.length + ' photos loaded — tap any to select for your taste profile';
+  // ── RENDER GRID ──────────────────────────────────────────────────
+  function renderPhotoGrid() {
+    document.getElementById('loadingWrap').style.display = 'none';
+    document.getElementById('photosWrap').style.display = 'block';
+
+    var sub = allPhotos.length + ' photos loaded';
+    if (nextPageToken) sub += ' · scroll down to load more';
+    document.getElementById('photosTopSub').textContent = sub;
 
     var grid = document.getElementById('photoGrid');
-    grid.innerHTML = '';
 
-    allPhotos.forEach(function(photo, i) {
-      var item = document.createElement('div');
-      item.className = 'photo-item';
-      item.dataset.id = photo.id;
-      item.dataset.index = i;
+    allPhotos.forEach(function(photo) {
+      if (document.querySelector('[data-pid="' + photo.id + '"]')) return; // already rendered
+
+      var cell = document.createElement('div');
+      cell.className = 'p-cell';
+      cell.dataset.pid = photo.id;
 
       var img = document.createElement('img');
-      // Use smaller thumbnail for grid
-      img.src = photo.baseUrl + '=w320-h320-c';
-      img.alt = photo.filename || '';
+      img.src = photo.baseUrl + '=w300-h300-c';
+      img.alt = '';
       img.loading = 'lazy';
-      item.appendChild(img);
+      cell.appendChild(img);
 
-      // Show creation time as location hint
+      // Date label
       if (photo.mediaMetadata && photo.mediaMetadata.creationTime) {
-        var date = new Date(photo.mediaMetadata.creationTime);
-        var loc = document.createElement('div');
-        loc.className = 'photo-loc';
-        loc.textContent = date.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
-        item.appendChild(loc);
+        var d = new Date(photo.mediaMetadata.creationTime);
+        var label = document.createElement('div');
+        label.className = 'p-date';
+        label.textContent = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: '2-digit' });
+        cell.appendChild(label);
       }
 
-      item.addEventListener('click', function() { toggleSelect(item, photo); });
-      grid.appendChild(item);
+      // GPS dot placeholder (will show if EXIF found later)
+      var dot = document.createElement('div');
+      dot.className = 'p-loc-dot';
+      cell.appendChild(dot);
+
+      cell.addEventListener('click', function() { togglePhoto(cell, photo); });
+      grid.appendChild(cell);
     });
 
-    // Load more button
     if (nextPageToken) {
       document.getElementById('loadMoreWrap').style.display = 'block';
-    }
-  }
-
-  function toggleSelect(item, photo) {
-    var idx = selectedPhotos.findIndex(function(p) { return p.id === photo.id; });
-    if (idx > -1) {
-      selectedPhotos.splice(idx, 1);
-      item.classList.remove('selected');
     } else {
-      selectedPhotos.push(photo);
-      item.classList.add('selected');
-    }
-    updateSelectedCount();
-  }
-
-  function updateSelectedCount() {
-    var n = selectedPhotos.length;
-    var countEl = document.getElementById('selectedCount');
-    var genBtn = document.getElementById('btnGenerate');
-    if (n > 0) {
-      countEl.style.display = 'block';
-      document.getElementById('selectedNum').textContent = n;
-      genBtn.classList.add('show');
-    } else {
-      countEl.style.display = 'none';
-      genBtn.classList.remove('show');
+      document.getElementById('loadMoreWrap').style.display = 'none';
     }
   }
 
-  // Load more
   document.getElementById('btnLoadMore').addEventListener('click', function() {
-    if (nextPageToken) {
-      showLoading('Loading more photos\u2026');
-      loadPhotos(nextPageToken);
+    if (!nextPageToken) return;
+    var btn = document.getElementById('btnLoadMore');
+    btn.textContent = 'Loading\u2026';
+    btn.disabled = true;
+    loadPhotosPage(nextPageToken);
+    setTimeout(function() { btn.textContent = 'Load more \u2193'; btn.disabled = false; }, 2000);
+  });
+
+  function togglePhoto(cell, photo) {
+    if (selectedIds.has(photo.id)) {
+      selectedIds.delete(photo.id);
+      cell.classList.remove('sel');
+    } else {
+      selectedIds.add(photo.id);
+      cell.classList.add('sel');
     }
-  });
-
-  // ── BUILD TASTE PROFILE ──────────────────────────────────────────
-  document.getElementById('btnGenerate').addEventListener('click', function() {
-    if (selectedPhotos.length === 0) return;
-    buildProfile();
-  });
-
-  function buildProfile() {
-    document.getElementById('photosState').style.display = 'none';
-    document.getElementById('profileState').style.display = 'block';
-
-    // Group selected photos into clusters by month/period
-    // (since GPS isn't available from API, we group by time proximity as a proxy)
-    var clusters = clusterByTime(selectedPhotos);
-    renderClusters(clusters);
+    var n = selectedIds.size;
+    var badge = document.getElementById('selBadge');
+    var btn = document.getElementById('btnAnalyse');
+    if (n > 0) {
+      badge.textContent = n + ' selected';
+      badge.classList.add('show');
+      btn.classList.add('show');
+    } else {
+      badge.classList.remove('show');
+      btn.classList.remove('show');
+    }
   }
 
-  function clusterByTime(photos) {
-    // Sort by date
-    var sorted = photos.slice().sort(function(a, b) {
-      var da = new Date((a.mediaMetadata || {}).creationTime || 0);
-      var db = new Date((b.mediaMetadata || {}).creationTime || 0);
-      return da - db;
-    });
+  // ── ANALYSE SELECTED PHOTOS ──────────────────────────────────────
+  document.getElementById('btnAnalyse').addEventListener('click', function() {
+    if (selectedIds.size === 0) return;
+    document.getElementById('photosWrap').style.display = 'none';
+    document.getElementById('analyseWrap').style.display = 'block';
+    runAnalysis();
+  });
 
-    // Group photos taken within 48 hours of each other
-    var clusters = [];
-    var current = null;
+  async function runAnalysis() {
+    var selected = allPhotos.filter(function(p) { return selectedIds.has(p.id); });
+    setAStep(1, 'active');
 
-    sorted.forEach(function(photo) {
-      var t = new Date((photo.mediaMetadata || {}).creationTime || 0).getTime();
-      if (!current || t - current.lastTime > 48 * 3600 * 1000) {
-        current = { photos: [], firstTime: t, lastTime: t };
-        clusters.push(current);
+    // Step 1: Extract GPS from photo files via EXIF
+    var photosWithGPS = [];
+    var photosNoGPS = [];
+
+    for (var i = 0; i < selected.length; i++) {
+      var photo = selected[i];
+      document.getElementById('analyseMsg').textContent =
+        'Reading GPS from photo ' + (i + 1) + ' of ' + selected.length + '\u2026';
+
+      try {
+        // Fetch the photo file bytes
+        var resp = await fetch(photo.baseUrl + '=d'); // =d requests download
+        var blob = await resp.blob();
+        var gps = await window.exifr.gps(blob).catch(function() { return null; });
+
+        if (gps && gps.latitude && gps.longitude) {
+          photosWithGPS.push({ photo: photo, lat: gps.latitude, lng: gps.longitude });
+        } else {
+          photosNoGPS.push(photo);
+        }
+      } catch(e) {
+        photosNoGPS.push(photo);
       }
-      current.photos.push(photo);
-      current.lastTime = t;
+    }
+
+    setAStep(1, 'done');
+    setAStep(2, 'active');
+    document.getElementById('analyseMsg').textContent =
+      'Found GPS in ' + photosWithGPS.length + ' of ' + selected.length + ' photos. Looking up locations\u2026';
+
+    // Step 2: Reverse geocode each GPS point (rate limited to 1/sec)
+    var geocoded = [];
+    for (var j = 0; j < photosWithGPS.length; j++) {
+      var item = photosWithGPS[j];
+      try {
+        var place = await reverseGeocode(item.lat, item.lng);
+        geocoded.push({ photo: item.photo, lat: item.lat, lng: item.lng, place: place });
+        // Show green dot on the grid cell
+        var cell = document.querySelector('[data-pid="' + item.photo.id + '"]');
+        if (cell) cell.classList.add('has-gps');
+      } catch(e) {
+        geocoded.push({ photo: item.photo, lat: item.lat, lng: item.lng, place: null });
+      }
+      await sleep(1100); // Nominatim rate limit
+    }
+
+    setAStep(2, 'done');
+    setAStep(3, 'active');
+    document.getElementById('analyseMsg').textContent = 'Grouping into places\u2026';
+    await sleep(500);
+
+    // Step 3: Cluster by location proximity + add ungeocodable photos by time
+    var clusters = clusterByLocation(geocoded, photosNoGPS, selected);
+
+    setAStep(3, 'done');
+    setAStep(4, 'active');
+    document.getElementById('analyseMsg').textContent = 'Building your taste profile\u2026';
+    await sleep(600);
+    setAStep(4, 'done');
+    await sleep(400);
+
+    renderProfile(clusters);
+  }
+
+  // ── REVERSE GEOCODING (OpenStreetMap Nominatim) ──────────────────
+  async function reverseGeocode(lat, lng) {
+    var url = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lng + '&zoom=14&addressdetails=1';
+    var resp = await fetch(url, { headers: { 'Accept-Language': 'en', 'User-Agent': 'HoodTip/1.0 contact@hoodtip.com' } });
+    var data = await resp.json();
+
+    if (!data || !data.address) return null;
+
+    var a = data.address;
+    // Build a clean place name: neighbourhood/suburb + city
+    var parts = [];
+    var neighbourhood = a.neighbourhood || a.suburb || a.quarter || a.village || a.town;
+    var city = a.city || a.town || a.village || a.county;
+    var country = a.country_code ? a.country_code.toUpperCase() : '';
+
+    if (neighbourhood && city && neighbourhood !== city) {
+      parts.push(neighbourhood + ', ' + city);
+    } else if (city) {
+      parts.push(city);
+    }
+    if (country && country !== 'GB' && country !== 'US') parts.push(country);
+
+    return {
+      display: parts.join(' · '),
+      city: city || '',
+      country: a.country || '',
+      countryCode: country,
+      full: data.display_name || ''
+    };
+  }
+
+  // ── LOCATION-BASED CLUSTERING ────────────────────────────────────
+  function clusterByLocation(geocoded, noGPS, allSelected) {
+    var clusters = [];
+
+    // Group geocoded photos by city/place
+    var cityMap = {};
+    geocoded.forEach(function(g) {
+      var key = g.place ? (g.place.city || g.place.display || 'Unknown') : 'Unknown';
+      if (!cityMap[key]) cityMap[key] = { place: g.place, photos: [], lats: [], lngs: [] };
+      cityMap[key].photos.push(g.photo);
+      cityMap[key].lats.push(g.lat);
+      cityMap[key].lngs.push(g.lng);
     });
 
+    Object.keys(cityMap).forEach(function(key) {
+      var c = cityMap[key];
+      var dates = c.photos.map(function(p) {
+        return new Date((p.mediaMetadata || {}).creationTime || 0);
+      }).sort(function(a,b) { return a-b; });
+      clusters.push({
+        placeName: c.place ? c.place.display : key,
+        city: c.place ? c.place.city : '',
+        country: c.place ? c.place.country : '',
+        photos: c.photos,
+        hasGPS: true,
+        dateFrom: dates[0],
+        dateTo: dates[dates.length - 1]
+      });
+    });
+
+    // Time-cluster the no-GPS photos
+    if (noGPS.length > 0) {
+      var timeClusters = timeCluster(noGPS);
+      timeClusters.forEach(function(tc) {
+        clusters.push({
+          placeName: '',
+          city: '',
+          country: '',
+          photos: tc.photos,
+          hasGPS: false,
+          dateFrom: tc.dateFrom,
+          dateTo: tc.dateTo
+        });
+      });
+    }
+
+    // Sort by date
+    clusters.sort(function(a, b) { return (b.dateFrom || 0) - (a.dateFrom || 0); });
     return clusters;
   }
 
-  function renderClusters(clusters) {
+  function timeCluster(photos) {
+    var sorted = photos.slice().sort(function(a, b) {
+      return new Date((a.mediaMetadata || {}).creationTime || 0) -
+             new Date((b.mediaMetadata || {}).creationTime || 0);
+    });
+    var clusters = [];
+    var current = null;
+    sorted.forEach(function(p) {
+      var t = new Date((p.mediaMetadata || {}).creationTime || 0).getTime();
+      if (!current || t - current.lastTime > 72 * 3600 * 1000) {
+        current = { photos: [], dateFrom: new Date(t), dateTo: new Date(t), lastTime: t };
+        clusters.push(current);
+      }
+      current.photos.push(p);
+      current.dateTo = new Date(t);
+      current.lastTime = t;
+    });
+    return clusters;
+  }
+
+  // ── RENDER PROFILE CLUSTERS ──────────────────────────────────────
+  function renderProfile(clusters) {
+    document.getElementById('analyseWrap').style.display = 'none';
+    document.getElementById('profileWrap').style.display = 'block';
+
+    var gpsCount = clusters.filter(function(c) { return c.hasGPS; }).length;
+    document.getElementById('clusterCount').textContent =
+      clusters.length + ' place' + (clusters.length !== 1 ? 's' : '');
+
+    // Meta bar
+    var meta = document.getElementById('profileMetaBar');
+    meta.innerHTML = '';
+    if (gpsCount > 0) {
+      meta.innerHTML += '<div class="profile-meta-item"><span class="loc-dot"></span><b>' + gpsCount + '</b> locations auto-detected from GPS</div>';
+    }
+    if (clusters.length - gpsCount > 0) {
+      meta.innerHTML += '<div class="profile-meta-item"><b>' + (clusters.length - gpsCount) + '</b> grouped by date (no GPS)</div>';
+    }
+
     var grid = document.getElementById('clustersGrid');
     grid.innerHTML = '';
 
     clusters.forEach(function(cluster, ci) {
-      var date = new Date(cluster.firstTime);
-      var dateStr = date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-      var monthStr = date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
-      var count = cluster.photos.length;
-
-      var card = document.createElement('div');
-      card.className = 'cluster-card';
-      card.dataset.cluster = ci;
-
-      // Photo collage
-      var photosDiv = document.createElement('div');
-      photosDiv.className = 'cluster-photos';
-      var showCount = Math.min(cluster.photos.length, 3);
-      cluster.photos.slice(0, showCount).forEach(function(p, pi) {
-        var cell = document.createElement('div');
-        cell.className = 'cluster-photo';
-        var img = document.createElement('img');
-        img.src = p.baseUrl + '=w400-h300-c';
-        img.alt = '';
-        img.loading = 'lazy';
-        cell.appendChild(img);
-        photosDiv.appendChild(cell);
-      });
-      card.appendChild(photosDiv);
-
-      var body = document.createElement('div');
-      body.className = 'cluster-body';
-      body.innerHTML = `
-        <div class="cluster-loc">${monthStr}</div>
-        <div class="cluster-name">Trip &mdash; ${monthStr}</div>
-        <div class="cluster-meta">${count} photo${count > 1 ? 's' : ''} &middot; ${dateStr}</div>
-        <textarea class="cluster-tip-input" placeholder="What made this place worth tipping? One honest line." rows="3"></textarea>
-        <div class="cluster-actions">
-          <button class="btn-tip-submit" data-ci="${ci}">Add to my profile &rarr;</button>
-          <button class="btn-tip-skip" data-ci="${ci}">Skip</button>
-        </div>
-      `;
-      card.appendChild(body);
+      var card = buildClusterCard(cluster, ci);
       grid.appendChild(card);
-
-      // Submit handler
-      body.querySelector('.btn-tip-submit').addEventListener('click', function() {
-        var tip = body.querySelector('.cluster-tip-input').value.trim();
-        submitCluster(cluster, tip, card, monthStr);
-      });
-
-      // Skip handler
-      body.querySelector('.btn-tip-skip').addEventListener('click', function() {
-        card.style.opacity = '.35';
-        card.style.pointerEvents = 'none';
-      });
     });
   }
 
-  function submitCluster(cluster, tipText, card, label) {
-    // Send to Formspree as a tip submission
-    var photoUrls = cluster.photos.slice(0, 4).map(function(p) {
+  function buildClusterCard(cluster, ci) {
+    var card = document.createElement('div');
+    card.className = 'cluster-card';
+
+    // Photos collage
+    var n = Math.min(cluster.photos.length, 4);
+    var photoDiv = document.createElement('div');
+    var cls = n === 1 ? 'n1' : n === 2 ? 'n2' : n === 3 ? 'n3' : 'nmore';
+    photoDiv.className = 'cluster-photos ' + cls;
+    cluster.photos.slice(0, n).forEach(function(p) {
+      var cp = document.createElement('div');
+      cp.className = 'cp';
+      var img = document.createElement('img');
+      img.src = p.baseUrl + '=w600-h400-c';
+      img.alt = '';
+      img.loading = 'lazy';
+      cp.appendChild(img);
+      photoDiv.appendChild(cp);
+    });
+    card.appendChild(photoDiv);
+
+    // Body
+    var body = document.createElement('div');
+    body.className = 'cluster-body';
+
+    var locLabel = document.createElement('div');
+    locLabel.className = 'cluster-loc-label';
+    locLabel.innerHTML = cluster.hasGPS
+      ? '<svg width="9" height="9" viewBox="0 0 24 24" fill="var(--green)" stroke="none"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Location detected'
+      : 'Date group &middot; add the place name';
+    body.appendChild(locLabel);
+
+    // Place name — editable input
+    var nameWrap = document.createElement('div');
+    nameWrap.className = 'cluster-place-name';
+    var nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.value = cluster.placeName || '';
+    nameInput.placeholder = cluster.hasGPS ? 'Edit place name\u2026' : 'What was this place?';
+    nameInput.maxLength = 80;
+    nameWrap.appendChild(nameInput);
+    body.appendChild(nameWrap);
+
+    // Date range
+    var dateEl = document.createElement('div');
+    dateEl.className = 'cluster-date';
+    var opts = { day: 'numeric', month: 'long', year: 'numeric' };
+    var dateStr = cluster.dateFrom
+      ? cluster.dateFrom.toLocaleDateString('en-GB', opts)
+      : '';
+    if (cluster.dateTo && cluster.dateTo.getTime() !== (cluster.dateFrom || {}).getTime()) {
+      dateStr += ' \u2014 ' + cluster.dateTo.toLocaleDateString('en-GB', opts);
+    }
+    dateEl.textContent = dateStr + (cluster.photos.length > 1 ? ' \u00b7 ' + cluster.photos.length + ' photos' : '');
+    body.appendChild(dateEl);
+
+    // Tip label + textarea
+    var tipLabel = document.createElement('div');
+    tipLabel.className = 'cluster-tip-label';
+    tipLabel.textContent = 'Your tip';
+    body.appendChild(tipLabel);
+
+    var tipArea = document.createElement('textarea');
+    tipArea.className = 'cluster-tip-area';
+    tipArea.placeholder = cluster.hasGPS
+      ? 'What made this place worth tipping? One honest line.'
+      : 'Where was this? What made it worth remembering?';
+    tipArea.rows = 3;
+    tipArea.maxLength = 280;
+    body.appendChild(tipArea);
+
+    var charEl = document.createElement('div');
+    charEl.className = 'cluster-char';
+    charEl.textContent = '0 / 280';
+    tipArea.addEventListener('input', function() {
+      charEl.textContent = tipArea.value.length + ' / 280';
+    });
+    body.appendChild(charEl);
+
+    // Buttons
+    var btns = document.createElement('div');
+    btns.className = 'cluster-btns';
+
+    var addBtn = document.createElement('button');
+    addBtn.className = 'btn-tip-add';
+    addBtn.textContent = 'Add to my profile \u2192';
+    addBtn.addEventListener('click', function() {
+      if (!nameInput.value.trim()) { nameInput.focus(); nameInput.style.borderColor = 'var(--red)'; return; }
+      submitClusterTip(cluster, nameInput.value.trim(), tipArea.value.trim(), card);
+    });
+
+    var dismissBtn = document.createElement('button');
+    dismissBtn.className = 'btn-tip-dismiss';
+    dismissBtn.textContent = 'Skip';
+    dismissBtn.addEventListener('click', function() {
+      card.classList.add('dismissed');
+      checkAllDone();
+    });
+
+    btns.appendChild(addBtn);
+    btns.appendChild(dismissBtn);
+    body.appendChild(btns);
+    card.appendChild(body);
+    return card;
+  }
+
+  function submitClusterTip(cluster, placeName, tipText, card) {
+    var photos = cluster.photos.slice(0, 6).map(function(p) {
       return p.baseUrl + '=w1200-h800';
     }).join('\n');
 
-    var formData = new FormData();
-    formData.append('type', 'google_photos_tip');
-    formData.append('period', label);
-    formData.append('tip', tipText || '(no text added)');
-    formData.append('photo_count', cluster.photos.length);
-    formData.append('photo_urls', photoUrls);
+    var fd = new FormData();
+    fd.append('type', 'google_photos_tip');
+    fd.append('place_name', placeName);
+    fd.append('tip', tipText || '');
+    fd.append('city', cluster.city || '');
+    fd.append('country', cluster.country || '');
+    fd.append('photo_count', cluster.photos.length);
+    fd.append('photo_urls', photos);
+    fd.append('has_gps', cluster.hasGPS ? 'yes' : 'no');
     if (currentUser) {
-      formData.append('user_email', currentUser.email || '');
-      formData.append('user_id', currentUser.id || '');
+      fd.append('user_email', currentUser.email || '');
+      fd.append('user_id', currentUser.id || '');
     }
 
+    var addBtn = card.querySelector('.btn-tip-add');
+    addBtn.disabled = true;
+    addBtn.textContent = 'Saving\u2026';
+
     fetch('https://formspree.io/f/mdawyane', {
-      method: 'POST',
-      body: formData,
-      headers: { Accept: 'application/json' }
+      method: 'POST', body: fd, headers: { Accept: 'application/json' }
     }).then(function(r) {
-      if (r.ok) {
-        card.classList.add('submitted');
-      }
+      card.classList.add('submitted');
+      submittedCount++;
+      checkAllDone();
     }).catch(function() {
-      card.classList.add('submitted'); // optimistic
+      card.classList.add('submitted');
+      submittedCount++;
+      checkAllDone();
     });
   }
 
+  function checkAllDone() {
+    var cards = document.querySelectorAll('.cluster-card:not(.dismissed):not(.submitted)');
+    if (cards.length === 0 && submittedCount > 0) {
+      document.getElementById('doneBar').style.display = 'block';
+      document.getElementById('doneBar').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   // ── UTILS ────────────────────────────────────────────────────────
-  function showLoading(msg) {
+  function showLoading(msg, pct) {
     document.getElementById('connectState').style.display = 'none';
-    document.getElementById('loadingState').style.display = 'block';
+    document.getElementById('loadingWrap').style.display = 'block';
     document.getElementById('loadingMsg').textContent = msg || 'Loading\u2026';
+    setProgress(pct || 0);
   }
-  function hideLoading() {
-    document.getElementById('loadingState').style.display = 'none';
+  function setProgress(pct) {
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = pct < 100 ? pct + '%' : '';
   }
-  function showError(msg) {
-    hideLoading();
-    var el = document.getElementById('errorMsg');
+  function showErr(msg) {
+    document.getElementById('loadingWrap').style.display = 'none';
+    document.getElementById('connectState').style.display = 'block';
+    var el = document.getElementById('errBar');
     el.textContent = msg;
     el.classList.add('show');
-    document.getElementById('connectState').style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth' });
   }
+  function setAStep(n, state) {
+    var el = document.getElementById('astep' + n);
+    if (el) el.className = 'a-step ' + state;
+  }
+  function sleep(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
 
 })();
 </script>
