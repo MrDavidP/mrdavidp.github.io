@@ -65,6 +65,12 @@
             "position": 2,
             "url": "https://hoodtip.com/guide-chamonix-blue-runs.html",
             "name": "Seven Blue Runs You Can Cruise Stress-Free in Chamonix"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://hoodtip.com/guide-swimming-geneva.html",
+            "name": "Where to Swim in and around Geneva"
           }
         ]
       }
@@ -1835,15 +1841,34 @@
       <span class="guide-card-cta">Read the guide →</span>
     </a>
 
-    <!-- Coming next teaser -->
-    <div class="guide-card next">
+    <!-- Featured guide — Geneva swimming -->
+    <a class="guide-card feature" href="guide-swimming-geneva.html">
+      <div class="guide-card-img-wrap">
+        <img class="guide-card-img" src="junction-1.jpg" alt="La Jonction, Geneva — swimmers on the dock where the Rhône meets the Arve" />
+      </div>
+      <div class="guide-card-issue">§ Issue No. 03 · <b>Geneva · Swimming</b></div>
+      <h3 class="guide-card-hed">Where to swim in and around Geneva</h3>
+      <p class="guide-card-dek">Geneva is beset by water on all sides. The lake has its charms, but I prefer the river. Five spots — from CHF 2.50 at the Pâquis to a bar you climb out of the Rhône into.</p>
+      <div class="guide-card-meta">
+        <span>By Dave</span>
+        <span class="guide-card-meta-sep">·</span>
+        <span>May 2026</span>
+        <span class="guide-card-meta-sep">·</span>
+        <span>5 spots</span>
+      </div>
+      <span class="guide-card-cta">Read the guide →</span>
+    </a>
+
+    <!-- Coming next teaser — full width on second row -->
+    <div class="guide-card next" style="grid-column: 1 / -1; border-top: 1px solid var(--rule); border-right: none !important;">
       <div class="guide-next-label">Coming next</div>
-      <h3 class="guide-next-hed">More guides, <em>same voice.</em></h3>
+      <h3 class="guide-next-hed">More guides, same voice.</h3>
       <p class="guide-next-dek">Specific scenarios from people who actually go. The link you send when a friend texts asking for a rec.</p>
-      <div class="guide-next-list">
-        <div class="guide-next-item">Lunch under 25 CHF in Geneva</div>
-        <div class="guide-next-item">Geneva on a Sunday when everything's closed</div>
-        <div class="guide-next-item">Istanbul: a long weekend on the Bosphorus</div>
+      <div class="guide-next-list" style="display:flex;flex-wrap:wrap;gap:0.5rem 2rem;">
+        <div class="guide-next-item">Best Greek islands for normal people</div>
+        <div class="guide-next-item">Old-school bistros in Paris that haven't changed</div>
+        <div class="guide-next-item">Best sushi in Geneva</div>
+        <div class="guide-next-item">Balcony plants that actually survive</div>
       </div>
     </div>
 
@@ -2746,7 +2771,8 @@
 
     // Guides
     { type: 'guide', name: 'Cheeky beer in Geneva', aliases: ['cheeky beer','geneva beer','after work geneva','un beer'],         url: 'geneva-after-work-beer.html',       meta: 'Guide · Geneva' },
-    { type: 'guide', name: 'Chamonix blue runs',    aliases: ['chamonix','chamonix skiing','blue runs chamonix','intermediate skiing chamonix','les houches','le tour','brevent','flegere'], url: 'guide-chamonix-blue-runs.html', meta: 'Guide · Chamonix · Skiing' }
+    { type: 'guide', name: 'Chamonix blue runs',    aliases: ['chamonix','chamonix skiing','blue runs chamonix','intermediate skiing chamonix','les houches','le tour','brevent','flegere'], url: 'guide-chamonix-blue-runs.html', meta: 'Guide · Chamonix · Skiing' },
+    { type: 'guide', name: 'Swimming in Geneva',    aliases: ['swim geneva','swimming geneva','where to swim geneva','paquis','la barge','jonction','hermance','sciez','river swimming'], url: 'guide-swimming-geneva.html', meta: 'Guide · Geneva · Swimming' }
   ];
 
   var input   = document.getElementById('htSearchInput');
