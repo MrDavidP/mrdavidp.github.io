@@ -197,6 +197,70 @@
     }
 
     /* SUBMIT */
+    /* PHOTO UPLOAD */
+    .photo-upload-zone {
+      border: 1.5px dashed var(--rule);
+      background: white;
+      padding: 1.75rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .photo-upload-zone:hover { border-color: var(--ink); background: var(--cream2); }
+    .photo-upload-zone.has-photos { border-style: solid; border-color: var(--ink); }
+    .photo-upload-icon {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    .photo-upload-label {
+      font-family: var(--cond);
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .photo-upload-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .photo-thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 1rem;
+    }
+    .photo-thumb {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--cream2);
+    }
+    .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-thumb-remove {
+      position: absolute;
+      top: 4px; right: 4px;
+      width: 20px; height: 20px;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      border-radius: 50%;
+      font-size: 0.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background 0.15s;
+    }
+    .photo-thumb-remove:hover { background: var(--red); }
+
     .submit-btn {
       width: 100%;
       background: var(--ink);
@@ -358,6 +422,17 @@
           <p class="form-hint">First person, honest, specific. Not a review — a rec.</p>
         </div>
 
+        <div class="form-group">
+          <label>Photos <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;font-family:var(--serif);font-style:italic;font-size:0.82rem;">— optional but makes the page</span></label>
+          <div class="photo-upload-zone" id="photoZone">
+            <div class="photo-upload-icon">⊕</div>
+            <div class="photo-upload-label">Add photos</div>
+            <div class="photo-upload-sub">Up to 8 · jpg, png, heic</div>
+            <div class="photo-thumbs" id="photoThumbs"></div>
+          </div>
+          <input type="hidden" name="photo_urls" id="photoUrls" value="" />
+        </div>
+
         <button type="submit" class="submit-btn" id="submitBtn">
           Send my tip <span>→</span>
         </button>
@@ -384,7 +459,58 @@
   </div>
 </footer>
 
+<script src="https://upload-widget.cloudinary.com/global/all.js"></script>
 <script>
+  // Photo upload
+  var uploadedPhotos = [];
+  var cwWidget = null;
+
+  function openWidget() {
+    if (typeof cloudinary === 'undefined') { setTimeout(openWidget, 300); return; }
+    if (!cwWidget) {
+      cwWidget = cloudinary.createUploadWidget({
+        cloudName: 'dq9newmhl',
+        uploadPreset: 'jykjigyw',
+        multiple: true,
+        maxFiles: 8,
+        sources: ['local', 'camera'],
+        clientAllowedFormats: ['jpg','jpeg','png','webp','heic'],
+        maxImageFileSize: 10000000,
+        theme: 'minimal',
+        showPoweredBy: false,
+        styles: { palette: { window: '#f7f4ef', windowBorder: '#1a1816', tabIcon: '#1a1816', menuIcons: '#1a1816', textDark: '#1a1816', textLight: '#f7f4ef', link: '#b5322a', action: '#1a1816', inactiveTabIcon: '#6b6560', error: '#b5322a', inProgress: '#b5322a', complete: '#1a1816', sourceBg: '#efeae1' } }
+      }, function(err, result) {
+        if (!err && result && result.event === 'success') {
+          uploadedPhotos.push(result.info.secure_url);
+          renderThumbs();
+        }
+      });
+    }
+    cwWidget.open();
+  }
+
+  function renderThumbs() {
+    var zone = document.getElementById('photoZone');
+    var thumbs = document.getElementById('photoThumbs');
+    document.getElementById('photoUrls').value = uploadedPhotos.join('\n');
+    if (!uploadedPhotos.length) {
+      thumbs.innerHTML = '';
+      zone.classList.remove('has-photos');
+      return;
+    }
+    zone.classList.add('has-photos');
+    thumbs.innerHTML = uploadedPhotos.map(function(url, i) {
+      return '<div class="photo-thumb"><img src="' + url + '" /><button type="button" class="photo-thumb-remove" onclick="removePhoto(' + i + ')">✕</button></div>';
+    }).join('');
+  }
+
+  window.removePhoto = function(i) {
+    uploadedPhotos.splice(i, 1);
+    renderThumbs();
+  };
+
+  document.getElementById('photoZone').addEventListener('click', openWidget);
+
   // Handle live preview + sanitise
   var handle = document.getElementById('f-handle');
   var handlePreview = document.getElementById('handlePreview');
