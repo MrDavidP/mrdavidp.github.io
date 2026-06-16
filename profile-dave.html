@@ -787,7 +787,7 @@
     widget.open();
   }
 
-  uploadEl.addEventListener('click', openProfilePhotoWidget);
+  uploadEl.addEventListener('click', function() { if (checkAuth()) openProfilePhotoWidget(); });
   uploadEl.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProfilePhotoWidget(); }
   });
@@ -827,7 +827,17 @@
     if (cachedBio && cachedBio.trim()) bioEl.textContent = cachedBio;
   } catch (e) {}
 
+  // Password gate — owner only
+  var _auth = false;
+  function checkAuth() {
+    if (_auth) return true;
+    var pw = prompt('Enter password to edit this profile:');
+    if (pw === 'butthoagie44$') { _auth = true; return true; }
+    return false;
+  }
+
   function openBioEditor() {
+    if (!checkAuth()) return;
     bioTextarea.value = bioEl.textContent.trim();
     bioEl.style.display = 'none';
     bioEditBtn.style.display = 'none';
