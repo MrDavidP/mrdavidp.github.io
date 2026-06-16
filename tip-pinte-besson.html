@@ -255,20 +255,19 @@
     /* Carousel arrows */
     .pc-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(15,12,10,0.45); backdrop-filter: blur(8px);
-      border: 1px solid rgba(247,244,239,0.25);
-      color: var(--cream); cursor: pointer;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(247,244,239,0.92); backdrop-filter: blur(8px);
+      border: 2px solid var(--ink);
+      color: var(--ink); cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      z-index: 4;
-      transition: all 0.2s;
+      z-index: 4; transition: all 0.2s;
     }
-    .pc-nav:hover { background: var(--red); border-color: var(--red); }
-    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav:hover { background: var(--red); border-color: var(--red); color: var(--cream); }
+    .pc-nav svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
     .pc-nav.prev { left: 1.25rem; }
     .pc-nav.next { right: 1.25rem; }
-    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
-    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+    .pc-nav[disabled] { opacity: 0.25; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(247,244,239,0.92); border-color: var(--ink); color: var(--ink); }
 
     /* Counter + dots */
     .pc-counter {
