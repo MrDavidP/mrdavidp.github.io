@@ -385,18 +385,7 @@
       <div class="profile-quote">
         <p class="profile-quote-text" id="profileBio">Meeting people, making videos. Live in Geneva.</p>
       </div>
-      <button class="profile-bio-edit-link" id="profileBioEditBtn" type="button" aria-label="Edit your bio">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        Edit bio
-      </button>
-      <div class="profile-bio-editor" id="profileBioEditor">
-        <textarea id="profileBioTextarea" rows="3" placeholder="Where you're based, what you're into. A line or two."></textarea>
-        <div class="profile-bio-editor-actions">
-          <button class="profile-bio-save" id="profileBioSaveBtn" type="button">Save bio</button>
-          <button class="profile-bio-cancel" id="profileBioCancelBtn" type="button">Cancel</button>
-        </div>
-      </div>
-      <div class="profile-bio-saved" id="profileBioSaved">✓ Saved — your bio will be live on the site soon.</div>
+
     </div>
 
     <div class="profile-stats">
@@ -827,57 +816,7 @@
     if (cachedBio && cachedBio.trim()) bioEl.textContent = cachedBio;
   } catch (e) {}
 
-  // Password gate — owner only
-  var _auth = false;
-  function checkAuth() {
-    if (_auth) return true;
-    var pw = prompt('Enter password to edit this profile:');
-    if (pw === 'butthoagie44$') { _auth = true; return true; }
-    return false;
-  }
 
-  function openBioEditor() {
-    if (!checkAuth()) return;
-    bioTextarea.value = bioEl.textContent.trim();
-    bioEl.style.display = 'none';
-    bioEditBtn.style.display = 'none';
-    bioSavedEl.classList.remove('show');
-    bioEditor.classList.add('show');
-    setTimeout(function(){ bioTextarea.focus(); bioTextarea.select(); }, 50);
-  }
-  function closeBioEditor() {
-    bioEl.style.display = '';
-    bioEditBtn.style.display = '';
-    bioEditor.classList.remove('show');
-  }
-  async function saveBio() {
-    const newBio = bioTextarea.value.trim();
-    if (!newBio) return;
-    bioSaveBtn.disabled = true;
-    bioSaveBtn.textContent = 'Saving…';
-    bioEl.textContent = newBio;
-    try { localStorage.setItem(BIO_STORAGE_KEY, newBio); } catch (e) {}
-    closeBioEditor();
-    bioSavedEl.classList.add('show');
-    setTimeout(function(){ bioSavedEl.classList.remove('show'); }, 5000);
-    try {
-      await fetch('https://formspree.io/f/mdawyane', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ type: 'profile_bio', profile_slug: PROFILE_SLUG, profile_name: PROFILE_NAME, bio: newBio, page_url: window.location.href })
-      });
-    } catch (e) { console.error('Bio submission failed:', e); }
-    bioSaveBtn.disabled = false;
-    bioSaveBtn.textContent = 'Save bio';
-  }
-
-  bioEditBtn.addEventListener('click', openBioEditor);
-  bioCancelBtn.addEventListener('click', closeBioEditor);
-  bioSaveBtn.addEventListener('click', saveBio);
-  bioTextarea.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeBioEditor();
-    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) saveBio();
-  });
 })();
 </script>
 
