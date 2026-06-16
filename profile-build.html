@@ -341,6 +341,12 @@
         </div>
 
         <div class="form-group">
+          <label for="f-handle">Your handle <span class="req">*</span></label>
+          <input type="text" id="f-handle" name="handle" placeholder="e.g. dave" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          <p class="form-hint">Becomes your profile URL — hoodtip.com/profile-<span id="handlePreview">you</span>. Letters and numbers only. If you've submitted before, use the same one.</p>
+        </div>
+
+        <div class="form-group">
           <label for="f-place">The place <span class="req">*</span></label>
           <input type="text" id="f-place" name="place_name" placeholder="e.g. Filinta, Assos" autocomplete="off" />
         </div>
@@ -379,6 +385,15 @@
 </footer>
 
 <script>
+  // Handle live preview + sanitise
+  var handle = document.getElementById('f-handle');
+  var handlePreview = document.getElementById('handlePreview');
+  handle.addEventListener('input', function() {
+    var clean = handle.value.toLowerCase().replace(/[^a-z0-9-]/g, '');
+    handle.value = clean;
+    handlePreview.textContent = clean || 'you';
+  });
+
   // Char count
   var tip = document.getElementById('f-tip');
   var count = document.getElementById('charCount');
@@ -393,11 +408,12 @@
     e.preventDefault();
     var name = document.getElementById('f-name').value.trim();
     var email = document.getElementById('f-email').value.trim();
+    var handleVal = document.getElementById('f-handle').value.trim();
     var place = document.getElementById('f-place').value.trim();
     var tipVal = document.getElementById('f-tip').value.trim();
 
-    if (!name || !email || !place || !tipVal) {
-      alert('Please fill in all four fields.');
+    if (!name || !email || !handleVal || !place || !tipVal) {
+      alert('Please fill in all fields.');
       return;
     }
 
