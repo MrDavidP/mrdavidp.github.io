@@ -128,19 +128,19 @@
 
     .pc-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(15,12,10,0.45); backdrop-filter: blur(8px);
-      border: 1px solid rgba(247,244,239,0.25);
-      color: var(--cream); cursor: pointer;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(247,244,239,0.92); backdrop-filter: blur(8px);
+      border: 2px solid var(--ink);
+      color: var(--ink); cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       z-index: 4; transition: all 0.2s;
     }
-    .pc-nav:hover { background: var(--red); border-color: var(--red); }
-    .pc-nav svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .pc-nav:hover { background: var(--red); border-color: var(--red); color: var(--cream); }
+    .pc-nav svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
     .pc-nav.prev { left: 1.25rem; }
     .pc-nav.next { right: 1.25rem; }
-    .pc-nav[disabled] { opacity: 0.3; cursor: default; }
-    .pc-nav[disabled]:hover { background: rgba(15,12,10,0.45); border-color: rgba(247,244,239,0.25); }
+    .pc-nav[disabled] { opacity: 0.25; cursor: default; }
+    .pc-nav[disabled]:hover { background: rgba(247,244,239,0.92); border-color: var(--ink); color: var(--ink); }
 
     .pc-counter {
       position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
@@ -407,7 +407,7 @@
     </div>
     <div class="nav-right">
       <a href="profile-dave.html" class="nav-link">Dave</a>
-      <a href="login.html" class="nav-cta">Leave a HoodTip →</a>
+      <a href="profile-build.html" class="nav-cta">Leave a HoodTip →</a>
     </div>
   </div>
 </div>
@@ -418,8 +418,8 @@
   <!-- CAROUSEL -->
   <div class="pc-image" id="pcImage">
     <div class="pc-track" id="pcTrack">
-      <div class="pc-slide"><img src="filinta-8.jpg" alt="Sunset on the wooden deck of Filinta restaurant in Küçükkuyu — blue chairs and white tables right on the Aegean" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
-      <div class="pc-slide"><img src="filinta-1.jpg" alt="Lit fish counter at Filinta — the day's catch laid out on grape leaves on ice" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="filinta-1.jpg" alt="Lit fish counter at Filinta — the day's catch laid out on grape leaves on ice" loading="eager" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
+      <div class="pc-slide"><img src="filinta-8.jpg" alt="Sunset on the wooden deck of Filinta restaurant in Küçükkuyu — blue chairs and white tables right on the Aegean" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
       <div class="pc-slide"><img src="filinta-2.jpg" alt="Grilled sardines on skewers at Filinta — the kind of thing raki was made for" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
       <div class="pc-slide"><img src="filinta-7.jpg" alt="A glass of Yeni Raki on a sunlit table at Filinta, with mezze in the background" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
       <div class="pc-slide"><img src="filinta-6.jpg" alt="The Filinta mezze counter and chalkboard menu in Turkish" loading="lazy" /><div class="pc-slide-fallback" style="display:none;">§</div></div>
