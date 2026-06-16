@@ -520,72 +520,13 @@
     });
   }
 
-  // ── AI TIP GENERATION ────────────────────────────────────────────
-  // ── AI TIP GENERATION (Gemini Vision — free tier) ───────────────
+
+  // ── AI TIP GENERATION (disabled — API key removed for security) ──
   function generateAITip(photoUrl) {
-    var aiBox = document.getElementById('aiGenerating');
-    var aiMsg = document.getElementById('aiGenMsg');
-    aiBox.classList.add('show');
-    aiMsg.textContent = 'Reading your photo and drafting a tip…';
-
-    var GEMINI_KEY = 'AIzaSyCigQtmebn9M6yT_PUBcKoiOO1K5pEqOtM';
-    var GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
-
-    fetch(photoUrl)
-      .then(function(r) { return r.blob(); })
-      .then(function(blob) {
-        return new Promise(function(resolve) {
-          var reader = new FileReader();
-          reader.onload = function(e) {
-            resolve({ b64: e.target.result.split(',')[1], mime: blob.type || 'image/jpeg' });
-          };
-          reader.readAsDataURL(blob);
-        });
-      })
-      .then(function(img) {
-        return fetch(GEMINI_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [
-              { inline_data: { mime_type: img.mime, data: img.b64 } },
-              { text: 'Look at this photo and write a HoodTip-style recommendation. Respond with JSON only, no markdown, no backticks. Format: {"place_name":"your best guess at the place type eg Rooftop bar or Mountain hotel","category":"one of: Restaurant, Bar, Cafe, Hotel, Shop, Museum / Gallery, Walk / View, Beach / Swimming, Market, Travel, Other","tip":"2-3 honest sentences first person past tense specific not generic under 200 chars"}' }
-            ]}],
-            generationConfig: { temperature: 0.7, maxOutputTokens: 300 }
-          })
-        });
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        aiBox.classList.remove('show');
-        try {
-          var text = data.candidates[0].content.parts[0].text;
-          var json = JSON.parse(text.replace(/```json|```/g,'').trim());
-          if (json.place_name) {
-            var el = document.getElementById('u-place');
-            if (el && !el.value) { el.value = json.place_name; updatePreviewField(json.place_name, document.getElementById('tpName'), 'Place name', false); }
-          }
-          if (json.category) {
-            var sel = document.getElementById('u-cat');
-            if (sel) { for (var i=0;i<sel.options.length;i++) { if (sel.options[i].text.toLowerCase()===json.category.toLowerCase()) { sel.selectedIndex=i; break; } } updatePreviewField(json.category, document.getElementById('tpCat'),'',true); }
-          }
-          if (json.tip) {
-            var ta = document.getElementById('u-tip');
-            if (ta && !ta.value) { ta.value = json.tip; document.getElementById('u-tip-count').textContent = json.tip.length+' / 280'; ta.dispatchEvent(new Event('input')); }
-          }
-          document.getElementById('uploadFields').style.display = 'block';
-        } catch(e) { console.error('Gemini parse error:', e, data); document.getElementById('uploadFields').style.display='block'; }
-      })
-      .catch(function(e) { aiBox.classList.remove('show'); console.error('Gemini error:', e); document.getElementById('uploadFields').style.display='block'; });
+    document.getElementById('uploadFields').style.display = 'block';
   }
 
-    })
-    .catch(function(e) {
-      aiBox.classList.remove('show');
-      console.error('AI error:', e);
-      document.getElementById('uploadFields').style.display = 'block';
-    });
-  }
+
 
   // ── SUBMIT ───────────────────────────────────────────────────────
   function submitTip(place, category, city, hood, tip, photos, source) {
